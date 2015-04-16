@@ -1,0 +1,46 @@
+PREFIX=@prefix@
+CXX=@CXX@
+
+SUBDIRS := account betting enum heartbeat
+SRC := src
+OBJ := obj
+INC := include/greentop
+SRC_DIRS := $(SRC) $(addprefix $(SRC)/,$(SUBDIRS))
+OBJ_DIRS := $(addprefix $(OBJ)/,$(SUBDIRS)) $(OBJ)
+INC_DIRS := $(addprefix $(INC)/,$(SUBDIRS))
+
+LIB := lib
+LIBGREENTOP := $(LIB)/libgreentop.so
+
+OBJS := $(patsubst %.cpp,%.o,$(subst $(SRC),$(OBJ),$(wildcard $(SRC)/*.cpp) $(wildcard $(SRC)/*/*.cpp)))
+HEADERS := $(wildcard $(INC)/*.h) $(wildcard $(INC)/*/*.h)
+
+define make-goal
+$1/%.o: $(subst $(OBJ),$(SRC),$1)/%.cpp | $1
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -Wall -fexceptions  -std=c++0x -g -I./include -c $$< -o $$@
+	$(CXX) -MM -MT $$@ -I./include $$< > $$(subst .cpp,.d,$$(subst $$(SRC),$$(OBJ),$$<))
+endef
+
+.PHONY: all
+all: $(OBJS) | $(LIB)
+	$(CXX) -shared $(OBJS) -o $(LIBGREENTOP)
+
+.PHONY: clean
+clean:
+	rm -f $(LIBGREENTOP)
+	rm -f $(OBJ)/*.o $(OBJ)/*.d
+	rm -f $(OBJ)/*/*.o $(OBJ)/*/*.d
+
+.PHONY: install
+install: all
+	install -d $(DESTDIR)$(PREFIX)/lib
+	install $(LIBGREENTOP) $(DESTDIR)$(PREFIX)/lib
+	$(foreach var,$(INC_DIRS),install -d $(DESTDIR)$(PREFIX)/$(var);)
+	$(foreach var,$(HEADERS),install $(var) $(DESTDIR)$(PREFIX)/$(var);)
+
+$(LIB) $(OBJ_DIRS):
+	mkdir -p $@
+
+-include $(OBJS:.o=.d)
+
+$(foreach dir,$(OBJ_DIRS),$(eval $(call make-goal,$(dir))))
