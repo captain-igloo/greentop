@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/ReplaceInstructionReport.h"
 
 namespace greentop {
@@ -30,7 +34,7 @@ void ReplaceInstructionReport::fromJson(const Json::Value& json) {
 }
 
 Json::Value ReplaceInstructionReport::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (status.isValid()) {
         json["status"] = status.getValue();
     }

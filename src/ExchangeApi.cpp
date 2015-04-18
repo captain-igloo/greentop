@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>

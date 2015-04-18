@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/CancelInstructionReport.h"
 
 namespace greentop {
@@ -35,7 +39,7 @@ void CancelInstructionReport::fromJson(const Json::Value& json) {
 }
 
 Json::Value CancelInstructionReport::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (status.isValid()) {
         json["status"] = status.getValue();
     }
@@ -48,8 +52,10 @@ Json::Value CancelInstructionReport::toJson() const {
     if (sizeCancelled >= 0) {
         json["sizeCancelled"] = sizeCancelled;
     }
-    if (false) {
-        // cancelledDate not implemented;
+    if (cancelledDate.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &cancelledDate);
+        json["cancelledDate"] = std::string(buffer);
     }
     return json;
 }

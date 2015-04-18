@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/PlaceInstruction.h"
 
 namespace greentop {
@@ -45,11 +49,11 @@ void PlaceInstruction::fromJson(const Json::Value& json) {
 }
 
 Json::Value PlaceInstruction::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (orderType.isValid()) {
         json["orderType"] = orderType.getValue();
     }
-    if (selectionId >= 0) {
+    if (selectionId > 0) {
         json["selectionId"] = selectionId;
     }
     if (handicap >= 0) {
@@ -71,7 +75,7 @@ Json::Value PlaceInstruction::toJson() const {
 }
 
 bool PlaceInstruction::isValid() const {
-    return orderType.isValid() && selectionId >= 0 && side.isValid();
+    return orderType.isValid() && selectionId > 0 && side.isValid();
 }
 
 const OrderType& PlaceInstruction::getOrderType() const {

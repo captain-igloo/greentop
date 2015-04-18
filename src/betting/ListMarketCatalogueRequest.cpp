@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/ListMarketCatalogueRequest.h"
 
 namespace greentop {
@@ -37,7 +41,7 @@ void ListMarketCatalogueRequest::fromJson(const Json::Value& json) {
 }
 
 Json::Value ListMarketCatalogueRequest::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (filter.isValid()) {
         json["filter"] = filter.toJson();
     }

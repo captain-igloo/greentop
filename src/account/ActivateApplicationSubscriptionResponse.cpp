@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/account/ActivateApplicationSubscriptionResponse.h"
 
 namespace greentop {
@@ -17,7 +21,7 @@ void ActivateApplicationSubscriptionResponse::fromJson(const Json::Value& json) 
 }
 
 Json::Value ActivateApplicationSubscriptionResponse::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (status.isValid()) {
         json["status"] = status.getValue();
     }

@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/TimeRangeResult.h"
 
 namespace greentop {
@@ -18,11 +22,11 @@ void TimeRangeResult::fromJson(const Json::Value& json) {
 }
 
 Json::Value TimeRangeResult::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (timeRange.isValid()) {
         json["timeRange"] = timeRange.toJson();
     }
-    if (marketCount >= 0) {
+    if (marketCount > 0) {
         json["marketCount"] = marketCount;
     }
     return json;

@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/StartingPrices.h"
 
 namespace greentop {
@@ -41,7 +45,7 @@ void StartingPrices::fromJson(const Json::Value& json) {
 }
 
 Json::Value StartingPrices::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (nearPrice >= 0) {
         json["nearPrice"] = nearPrice;
     }

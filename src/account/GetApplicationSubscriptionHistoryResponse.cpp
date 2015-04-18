@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/account/GetApplicationSubscriptionHistoryResponse.h"
 
 namespace greentop {
@@ -17,7 +21,7 @@ void GetApplicationSubscriptionHistoryResponse::fromJson(const Json::Value& json
 }
 
 Json::Value GetApplicationSubscriptionHistoryResponse::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (subscriptionHistories.size() > 0) {
         for (unsigned i = 0; i < subscriptionHistories.size(); ++i) {
             json.append(subscriptionHistories[i].toJson());

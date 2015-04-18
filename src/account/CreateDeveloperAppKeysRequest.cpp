@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/account/CreateDeveloperAppKeysRequest.h"
 
 namespace greentop {
@@ -15,7 +19,7 @@ void CreateDeveloperAppKeysRequest::fromJson(const Json::Value& json) {
 }
 
 Json::Value CreateDeveloperAppKeysRequest::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (appName != "") {
         json["appName"] = appName;
     }

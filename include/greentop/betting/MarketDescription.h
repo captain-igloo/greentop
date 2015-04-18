@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #ifndef MARKETDESCRIPTION_H
 #define MARKETDESCRIPTION_H
 

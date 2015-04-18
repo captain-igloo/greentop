@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/Competition.h"
 
 namespace greentop {
@@ -18,7 +22,7 @@ void Competition::fromJson(const Json::Value& json) {
 }
 
 Json::Value Competition::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (id != "") {
         json["id"] = id;
     }

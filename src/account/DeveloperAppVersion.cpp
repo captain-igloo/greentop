@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/account/DeveloperAppVersion.h"
 
 namespace greentop {
@@ -50,11 +54,11 @@ void DeveloperAppVersion::fromJson(const Json::Value& json) {
 }
 
 Json::Value DeveloperAppVersion::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (owner != "") {
         json["owner"] = owner;
     }
-    if (versionId >= 0) {
+    if (versionId > 0) {
         json["versionId"] = versionId;
     }
     if (version != "") {
@@ -79,7 +83,7 @@ Json::Value DeveloperAppVersion::toJson() const {
 }
 
 bool DeveloperAppVersion::isValid() const {
-    return owner != "" && versionId >= 0 && version != "" && applicationKey != "" && delayData.isValid() && subscriptionRequired.isValid() && ownerManaged.isValid() && active.isValid();
+    return owner != "" && versionId > 0 && version != "" && applicationKey != "" && delayData.isValid() && subscriptionRequired.isValid() && ownerManaged.isValid() && active.isValid();
 }
 
 const std::string& DeveloperAppVersion::getOwner() const {

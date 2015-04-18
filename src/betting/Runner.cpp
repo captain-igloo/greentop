@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/Runner.h"
 
 namespace greentop {
@@ -73,8 +77,8 @@ void Runner::fromJson(const Json::Value& json) {
 }
 
 Json::Value Runner::toJson() const {
-    Json::Value json;
-    if (selectionId >= 0) {
+    Json::Value json(Json::objectValue);
+    if (selectionId > 0) {
         json["selectionId"] = selectionId;
     }
     if (handicap >= 0) {
@@ -92,8 +96,10 @@ Json::Value Runner::toJson() const {
     if (totalMatched >= 0) {
         json["totalMatched"] = totalMatched;
     }
-    if (false) {
-        // removalDate not implemented;
+    if (removalDate.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &removalDate);
+        json["removalDate"] = std::string(buffer);
     }
     if (sp.isValid()) {
         json["sp"] = sp.toJson();
@@ -115,7 +121,7 @@ Json::Value Runner::toJson() const {
 }
 
 bool Runner::isValid() const {
-    return selectionId >= 0 && handicap >= 0 && status.isValid() && adjustmentFactor >= 0;
+    return selectionId > 0 && handicap >= 0 && status.isValid() && adjustmentFactor >= 0;
 }
 
 const uint64_t Runner::getSelectionId() const {

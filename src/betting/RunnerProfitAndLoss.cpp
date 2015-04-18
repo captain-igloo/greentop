@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/RunnerProfitAndLoss.h"
 
 namespace greentop {
@@ -23,7 +27,7 @@ void RunnerProfitAndLoss::fromJson(const Json::Value& json) {
 }
 
 Json::Value RunnerProfitAndLoss::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (selectionId >= 0) {
         json["selectionId"] = selectionId;
     }

@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/Order.h"
 
 namespace greentop {
@@ -85,7 +89,7 @@ void Order::fromJson(const Json::Value& json) {
 }
 
 Json::Value Order::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (betId != "") {
         json["betId"] = betId;
     }
@@ -110,8 +114,10 @@ Json::Value Order::toJson() const {
     if (bspLiability >= 0) {
         json["bspLiability"] = bspLiability;
     }
-    if (false) {
-        // placedDate not implemented;
+    if (placedDate.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &placedDate);
+        json["placedDate"] = std::string(buffer);
     }
     if (avgPriceMatched >= 0) {
         json["avgPriceMatched"] = avgPriceMatched;
@@ -135,7 +141,7 @@ Json::Value Order::toJson() const {
 }
 
 bool Order::isValid() const {
-    return betId != "" && orderType.isValid() && status.isValid() && persistenceType.isValid() && side.isValid() && price >= 0 && size >= 0 && bspLiability >= 0 && false;
+    return betId != "" && orderType.isValid() && status.isValid() && persistenceType.isValid() && side.isValid() && price >= 0 && size >= 0 && bspLiability >= 0 && placedDate.tm_year > 0;
 }
 
 const std::string& Order::getBetId() const {

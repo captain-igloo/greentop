@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/ListCompetitionsResponse.h"
 
 namespace greentop {
@@ -19,7 +23,7 @@ void ListCompetitionsResponse::fromJson(const Json::Value& json) {
 }
 
 Json::Value ListCompetitionsResponse::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (competitionResults.size() > 0) {
         for (unsigned i = 0; i < competitionResults.size(); ++i) {
             json.append(competitionResults[i].toJson());

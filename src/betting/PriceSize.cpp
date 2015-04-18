@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/PriceSize.h"
 
 namespace greentop {
@@ -20,7 +24,7 @@ void PriceSize::fromJson(const Json::Value& json) {
 }
 
 Json::Value PriceSize::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (price >= 0) {
         json["price"] = price;
     }

@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/ExchangePrices.h"
 
 namespace greentop {
@@ -35,7 +39,7 @@ void ExchangePrices::fromJson(const Json::Value& json) {
 }
 
 Json::Value ExchangePrices::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (availableToBack.size() > 0) {
         for (unsigned i = 0; i < availableToBack.size(); ++i) {
             json["availableToBack"].append(availableToBack[i].toJson());

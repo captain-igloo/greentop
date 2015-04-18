@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/LimitOrder.h"
 
 namespace greentop {
@@ -25,7 +29,7 @@ void LimitOrder::fromJson(const Json::Value& json) {
 }
 
 Json::Value LimitOrder::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (size >= 0) {
         json["size"] = size;
     }

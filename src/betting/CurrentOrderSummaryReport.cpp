@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/CurrentOrderSummaryReport.h"
 
 namespace greentop {
@@ -26,7 +30,7 @@ void CurrentOrderSummaryReport::fromJson(const Json::Value& json) {
 }
 
 Json::Value CurrentOrderSummaryReport::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (currentOrders.size() > 0) {
         for (unsigned i = 0; i < currentOrders.size(); ++i) {
             json["currentOrders"].append(currentOrders[i].toJson());

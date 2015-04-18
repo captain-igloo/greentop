@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/CountryCodeResult.h"
 
 namespace greentop {
@@ -18,11 +22,11 @@ void CountryCodeResult::fromJson(const Json::Value& json) {
 }
 
 Json::Value CountryCodeResult::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (countryCode != "") {
         json["countryCode"] = countryCode;
     }
-    if (marketCount >= 0) {
+    if (marketCount > 0) {
         json["marketCount"] = marketCount;
     }
     return json;

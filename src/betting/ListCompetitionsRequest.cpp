@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/ListCompetitionsRequest.h"
 
 namespace greentop {
@@ -20,7 +24,7 @@ void ListCompetitionsRequest::fromJson(const Json::Value& json) {
 }
 
 Json::Value ListCompetitionsRequest::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (filter.isValid()) {
         json["filter"] = filter.toJson();
     }

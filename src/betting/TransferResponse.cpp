@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/TransferResponse.h"
 
 namespace greentop {
@@ -15,7 +19,7 @@ void TransferResponse::fromJson(const Json::Value& json) {
 }
 
 Json::Value TransferResponse::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (transactionId != "") {
         json["transactionId"] = transactionId;
     }

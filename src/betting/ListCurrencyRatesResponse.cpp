@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/ListCurrencyRatesResponse.h"
 
 namespace greentop {
@@ -19,7 +23,7 @@ void ListCurrencyRatesResponse::fromJson(const Json::Value& json) {
 }
 
 Json::Value ListCurrencyRatesResponse::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (currencyRates.size() > 0) {
         for (unsigned i = 0; i < currencyRates.size(); ++i) {
             json.append(currencyRates[i].toJson());

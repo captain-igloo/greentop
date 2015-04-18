@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/ReplaceExecutionReport.h"
 
 namespace greentop {
@@ -39,7 +43,7 @@ void ReplaceExecutionReport::fromJson(const Json::Value& json) {
 }
 
 Json::Value ReplaceExecutionReport::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (customerRef != "") {
         json["customerRef"] = customerRef;
     }

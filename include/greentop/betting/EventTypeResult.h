@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #ifndef EVENTTYPERESULT_H
 #define EVENTTYPERESULT_H
 

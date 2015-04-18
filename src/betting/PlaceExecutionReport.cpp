@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/PlaceExecutionReport.h"
 
 namespace greentop {
@@ -39,7 +43,7 @@ void PlaceExecutionReport::fromJson(const Json::Value& json) {
 }
 
 Json::Value PlaceExecutionReport::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (customerRef != "") {
         json["customerRef"] = customerRef;
     }

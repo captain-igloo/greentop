@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/ListMarketProfitAndLossRequest.h"
 
 namespace greentop {
@@ -32,7 +36,7 @@ void ListMarketProfitAndLossRequest::fromJson(const Json::Value& json) {
 }
 
 Json::Value ListMarketProfitAndLossRequest::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (marketIds.size() > 0) {
         for (std::set<std::string>::const_iterator it = marketIds.begin(); it != marketIds.end(); ++it) {
             json["marketIds"].append(*it);

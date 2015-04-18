@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/EventType.h"
 
 namespace greentop {
@@ -18,7 +22,7 @@ void EventType::fromJson(const Json::Value& json) {
 }
 
 Json::Value EventType::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (id != "") {
         json["id"] = id;
     }

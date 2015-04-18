@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/PlaceInstructionReport.h"
 
 namespace greentop {
@@ -45,7 +49,7 @@ void PlaceInstructionReport::fromJson(const Json::Value& json) {
 }
 
 Json::Value PlaceInstructionReport::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (status.isValid()) {
         json["status"] = status.getValue();
     }
@@ -58,8 +62,10 @@ Json::Value PlaceInstructionReport::toJson() const {
     if (betId != "") {
         json["betId"] = betId;
     }
-    if (false) {
-        // placedDate not implemented;
+    if (placedDate.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &placedDate);
+        json["placedDate"] = std::string(buffer);
     }
     if (averagePriceMatched >= 0) {
         json["averagePriceMatched"] = averagePriceMatched;

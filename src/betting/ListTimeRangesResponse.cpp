@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/ListTimeRangesResponse.h"
 
 namespace greentop {
@@ -19,7 +23,7 @@ void ListTimeRangesResponse::fromJson(const Json::Value& json) {
 }
 
 Json::Value ListTimeRangesResponse::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (timeRangeResults.size() > 0) {
         for (unsigned i = 0; i < timeRangeResults.size(); ++i) {
             json.append(timeRangeResults[i].toJson());

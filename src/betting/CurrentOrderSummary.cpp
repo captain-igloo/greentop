@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/CurrentOrderSummary.h"
 
 namespace greentop {
@@ -110,14 +114,14 @@ void CurrentOrderSummary::fromJson(const Json::Value& json) {
 }
 
 Json::Value CurrentOrderSummary::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (betId != "") {
         json["betId"] = betId;
     }
     if (marketId != "") {
         json["marketId"] = marketId;
     }
-    if (selectionId >= 0) {
+    if (selectionId > 0) {
         json["selectionId"] = selectionId;
     }
     if (handicap >= 0) {
@@ -141,11 +145,15 @@ Json::Value CurrentOrderSummary::toJson() const {
     if (orderType.isValid()) {
         json["orderType"] = orderType.getValue();
     }
-    if (false) {
-        // placedDate not implemented;
+    if (placedDate.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &placedDate);
+        json["placedDate"] = std::string(buffer);
     }
-    if (false) {
-        // matchedDate not implemented;
+    if (matchedDate.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &matchedDate);
+        json["matchedDate"] = std::string(buffer);
     }
     if (averagePriceMatched >= 0) {
         json["averagePriceMatched"] = averagePriceMatched;
@@ -175,7 +183,7 @@ Json::Value CurrentOrderSummary::toJson() const {
 }
 
 bool CurrentOrderSummary::isValid() const {
-    return betId != "" && marketId != "" && selectionId >= 0 && handicap >= 0 && priceSize.isValid() && bspLiability >= 0 && side.isValid() && status.isValid() && persistenceType.isValid() && orderType.isValid() && false && false;
+    return betId != "" && marketId != "" && selectionId > 0 && handicap >= 0 && priceSize.isValid() && bspLiability >= 0 && side.isValid() && status.isValid() && persistenceType.isValid() && orderType.isValid() && placedDate.tm_year > 0 && matchedDate.tm_year > 0;
 }
 
 const std::string& CurrentOrderSummary::getBetId() const {

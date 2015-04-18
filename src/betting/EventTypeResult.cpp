@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/EventTypeResult.h"
 
 namespace greentop {
@@ -18,11 +22,11 @@ void EventTypeResult::fromJson(const Json::Value& json) {
 }
 
 Json::Value EventTypeResult::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (eventType.isValid()) {
         json["eventType"] = eventType.toJson();
     }
-    if (marketCount >= 0) {
+    if (marketCount > 0) {
         json["marketCount"] = marketCount;
     }
     return json;

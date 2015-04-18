@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/Match.h"
 
 namespace greentop {
@@ -38,7 +42,7 @@ void Match::fromJson(const Json::Value& json) {
 }
 
 Json::Value Match::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (betId != "") {
         json["betId"] = betId;
     }
@@ -54,8 +58,10 @@ Json::Value Match::toJson() const {
     if (size >= 0) {
         json["size"] = size;
     }
-    if (false) {
-        // matchDate not implemented;
+    if (matchDate.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &matchDate);
+        json["matchDate"] = std::string(buffer);
     }
     return json;
 }

@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/CancelExecutionReport.h"
 
 namespace greentop {
@@ -39,7 +43,7 @@ void CancelExecutionReport::fromJson(const Json::Value& json) {
 }
 
 Json::Value CancelExecutionReport::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (customerRef != "") {
         json["customerRef"] = customerRef;
     }

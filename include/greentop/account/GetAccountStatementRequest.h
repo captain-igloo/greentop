@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #ifndef GETACCOUNTSTATEMENTREQUEST_H
 #define GETACCOUNTSTATEMENTREQUEST_H
 

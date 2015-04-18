@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/ListCurrencyRatesRequest.h"
 
 namespace greentop {
@@ -13,7 +17,7 @@ void ListCurrencyRatesRequest::fromJson(const Json::Value& json) {
 }
 
 Json::Value ListCurrencyRatesRequest::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (fromCurrency != "") {
         json["fromCurrency"] = fromCurrency;
     }

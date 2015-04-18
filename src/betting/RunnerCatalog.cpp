@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/RunnerCatalog.h"
 
 namespace greentop {
@@ -30,8 +34,8 @@ void RunnerCatalog::fromJson(const Json::Value& json) {
 }
 
 Json::Value RunnerCatalog::toJson() const {
-    Json::Value json;
-    if (selectionId >= 0) {
+    Json::Value json(Json::objectValue);
+    if (selectionId > 0) {
         json["selectionId"] = selectionId;
     }
     if (runnerName != "") {
@@ -47,7 +51,7 @@ Json::Value RunnerCatalog::toJson() const {
 }
 
 bool RunnerCatalog::isValid() const {
-    return selectionId >= 0 && runnerName != "" && handicap >= 0 && sortPriority >= 0;
+    return selectionId > 0 && runnerName != "" && handicap >= 0 && sortPriority >= 0;
 }
 
 const uint64_t RunnerCatalog::getSelectionId() const {

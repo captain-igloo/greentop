@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/heartbeat/HeartbeatRequest.h"
 
 namespace greentop {
@@ -15,7 +19,7 @@ void HeartbeatRequest::fromJson(const Json::Value& json) {
 }
 
 Json::Value HeartbeatRequest::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (preferredTimeoutSeconds >= 0) {
         json["preferredTimeoutSeconds"] = preferredTimeoutSeconds;
     }

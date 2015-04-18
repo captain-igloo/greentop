@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/ClearedOrderSummaryReport.h"
 
 namespace greentop {
@@ -110,7 +114,7 @@ void ClearedOrderSummaryReport::fromJson(const Json::Value& json) {
 }
 
 Json::Value ClearedOrderSummaryReport::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (eventTypeId != "") {
         json["eventTypeId"] = eventTypeId;
     }
@@ -120,7 +124,7 @@ Json::Value ClearedOrderSummaryReport::toJson() const {
     if (marketId != "") {
         json["marketId"] = marketId;
     }
-    if (selectionId >= 0) {
+    if (selectionId > 0) {
         json["selectionId"] = selectionId;
     }
     if (handicap >= 0) {
@@ -129,8 +133,10 @@ Json::Value ClearedOrderSummaryReport::toJson() const {
     if (betId != "") {
         json["betId"] = betId;
     }
-    if (false) {
-        // placedDate not implemented;
+    if (placedDate.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &placedDate);
+        json["placedDate"] = std::string(buffer);
     }
     if (persistenceType.isValid()) {
         json["persistenceType"] = persistenceType.getValue();
@@ -147,10 +153,12 @@ Json::Value ClearedOrderSummaryReport::toJson() const {
     if (priceRequested >= 0) {
         json["priceRequested"] = priceRequested;
     }
-    if (false) {
-        // settledDate not implemented;
+    if (settledDate.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &settledDate);
+        json["settledDate"] = std::string(buffer);
     }
-    if (betCount >= 0) {
+    if (betCount > 0) {
         json["betCount"] = betCount;
     }
     if (commission >= 0) {

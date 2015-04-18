@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/Event.h"
 
 namespace greentop {
@@ -38,7 +42,7 @@ void Event::fromJson(const Json::Value& json) {
 }
 
 Json::Value Event::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (id != "") {
         json["id"] = id;
     }
@@ -54,8 +58,10 @@ Json::Value Event::toJson() const {
     if (venue != "") {
         json["venue"] = venue;
     }
-    if (false) {
-        // openDate not implemented;
+    if (openDate.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &openDate);
+        json["openDate"] = std::string(buffer);
     }
     return json;
 }

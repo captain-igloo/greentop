@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/ItemDescription.h"
 
 namespace greentop {
@@ -38,7 +42,7 @@ void ItemDescription::fromJson(const Json::Value& json) {
 }
 
 Json::Value ItemDescription::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (eventTypeDesc != "") {
         json["eventTypeDesc"] = eventTypeDesc;
     }
@@ -48,13 +52,15 @@ Json::Value ItemDescription::toJson() const {
     if (marketDesc != "") {
         json["marketDesc"] = marketDesc;
     }
-    if (false) {
-        // marketStartTime not implemented;
+    if (marketStartTime.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &marketStartTime);
+        json["marketStartTime"] = std::string(buffer);
     }
     if (runnerDesc != "") {
         json["runnerDesc"] = runnerDesc;
     }
-    if (numberOfWinners >= 0) {
+    if (numberOfWinners > 0) {
         json["numberOfWinners"] = numberOfWinners;
     }
     return json;

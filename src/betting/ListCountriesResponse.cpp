@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/ListCountriesResponse.h"
 
 namespace greentop {
@@ -21,7 +25,7 @@ void ListCountriesResponse::fromJson(const Json::Value& json) {
 }
 
 Json::Value ListCountriesResponse::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (countryCodeResults.size() > 0) {
         for (unsigned i = 0; i < countryCodeResults.size(); ++i) {
             json["countryCodeResults"].append(countryCodeResults[i].toJson());

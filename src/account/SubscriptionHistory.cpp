@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/account/SubscriptionHistory.h"
 
 namespace greentop {
@@ -50,24 +54,34 @@ void SubscriptionHistory::fromJson(const Json::Value& json) {
 }
 
 Json::Value SubscriptionHistory::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (subscriptionToken != "") {
         json["subscriptionToken"] = subscriptionToken;
     }
-    if (false) {
-        // expiryDateTime not implemented;
+    if (expiryDateTime.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &expiryDateTime);
+        json["expiryDateTime"] = std::string(buffer);
     }
-    if (false) {
-        // expiredDateTime not implemented;
+    if (expiredDateTime.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &expiredDateTime);
+        json["expiredDateTime"] = std::string(buffer);
     }
-    if (false) {
-        // createdDateTime not implemented;
+    if (createdDateTime.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &createdDateTime);
+        json["createdDateTime"] = std::string(buffer);
     }
-    if (false) {
-        // activationDateTime not implemented;
+    if (activationDateTime.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &activationDateTime);
+        json["activationDateTime"] = std::string(buffer);
     }
-    if (false) {
-        // cancellationDateTime not implemented;
+    if (cancellationDateTime.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &cancellationDateTime);
+        json["cancellationDateTime"] = std::string(buffer);
     }
     if (subscriptionStatus.isValid()) {
         json["subscriptionStatus"] = subscriptionStatus.getValue();

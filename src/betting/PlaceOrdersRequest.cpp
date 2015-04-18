@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/PlaceOrdersRequest.h"
 
 namespace greentop {
@@ -29,7 +33,7 @@ void PlaceOrdersRequest::fromJson(const Json::Value& json) {
 }
 
 Json::Value PlaceOrdersRequest::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (marketId != "") {
         json["marketId"] = marketId;
     }

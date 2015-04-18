@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/account/GetApplicationSubscriptionHistoryRequest.h"
 
 namespace greentop {
@@ -18,7 +22,7 @@ void GetApplicationSubscriptionHistoryRequest::fromJson(const Json::Value& json)
 }
 
 Json::Value GetApplicationSubscriptionHistoryRequest::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (vendorClientId != "") {
         json["vendorClientId"] = vendorClientId;
     }

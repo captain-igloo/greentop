@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #ifndef ITEMDESCRIPTION_H
 #define ITEMDESCRIPTION_H
 

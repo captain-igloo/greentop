@@ -7,6 +7,7 @@ Sports betting exchange [Betfair](www.betfair.com) provides an API that allows y
  * read market information and prices
  * place / update / cancel bets
  * manage your account
+
 and more.  Greentop is a C++ client for this API.
 
 The API is documented at https://developer.betfair.com/.
@@ -20,14 +21,16 @@ Requirements
 ------------
 
 * [jsoncpp](https://github.com/open-source-parsers/jsoncpp)
-* [curlP](https://github.com/jpbarrette/curlpp)
+* [curlPP](https://github.com/jpbarrette/curlpp)
 * [libcurl](http://curl.haxx.se/libcurl/)
 
 Build
 -----
 
 ./configure --prefix=/usr
+
 make
+
 make install
 
 Example Usage

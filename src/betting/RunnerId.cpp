@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/RunnerId.h"
 
 namespace greentop {
@@ -25,7 +29,7 @@ void RunnerId::fromJson(const Json::Value& json) {
 }
 
 Json::Value RunnerId::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (marketId != "") {
         json["marketId"] = marketId;
     }

@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/EventResult.h"
 
 namespace greentop {
@@ -18,7 +22,7 @@ void EventResult::fromJson(const Json::Value& json) {
 }
 
 Json::Value EventResult::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (event.isValid()) {
         json["event"] = event.toJson();
     }

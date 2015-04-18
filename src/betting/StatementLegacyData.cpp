@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/StatementLegacyData.h"
 
 namespace greentop {
@@ -98,7 +102,7 @@ void StatementLegacyData::fromJson(const Json::Value& json) {
 }
 
 Json::Value StatementLegacyData::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (avgPrice >= 0) {
         json["avgPrice"] = avgPrice;
     }
@@ -114,10 +118,10 @@ Json::Value StatementLegacyData::toJson() const {
     if (commissionRate != "") {
         json["commissionRate"] = commissionRate;
     }
-    if (eventId >= 0) {
+    if (eventId > 0) {
         json["eventId"] = eventId;
     }
-    if (eventTypeId >= 0) {
+    if (eventTypeId > 0) {
         json["eventTypeId"] = eventTypeId;
     }
     if (fullMarketName != "") {
@@ -132,22 +136,26 @@ Json::Value StatementLegacyData::toJson() const {
     if (marketType != "") {
         json["marketType"] = marketType;
     }
-    if (false) {
-        // placedDate not implemented;
+    if (placedDate.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &placedDate);
+        json["placedDate"] = std::string(buffer);
     }
-    if (selectionId >= 0) {
+    if (selectionId > 0) {
         json["selectionId"] = selectionId;
     }
     if (selectionName != "") {
         json["selectionName"] = selectionName;
     }
-    if (false) {
-        // startDate not implemented;
+    if (startDate.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &startDate);
+        json["startDate"] = std::string(buffer);
     }
     if (transactionType != "") {
         json["transactionType"] = transactionType;
     }
-    if (transactionId >= 0) {
+    if (transactionId > 0) {
         json["transactionId"] = transactionId;
     }
     if (winLose != "") {

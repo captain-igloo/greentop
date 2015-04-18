@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/ListClearedOrdersRequest.h"
 
 namespace greentop {
@@ -87,7 +91,7 @@ void ListClearedOrdersRequest::fromJson(const Json::Value& json) {
 }
 
 Json::Value ListClearedOrdersRequest::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (betStatus.isValid()) {
         json["betStatus"] = betStatus.getValue();
     }
@@ -131,10 +135,10 @@ Json::Value ListClearedOrdersRequest::toJson() const {
     if (locale != "") {
         json["locale"] = locale;
     }
-    if (fromRecord >= 0) {
+    if (fromRecord > 0) {
         json["fromRecord"] = fromRecord;
     }
-    if (toRecord >= 0) {
+    if (toRecord > 0) {
         json["toRecord"] = toRecord;
     }
     return json;

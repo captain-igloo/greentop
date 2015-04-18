@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/account/GetDeveloperAppKeysResponse.h"
 
 namespace greentop {
@@ -19,7 +23,7 @@ void GetDeveloperAppKeysResponse::fromJson(const Json::Value& json) {
 }
 
 Json::Value GetDeveloperAppKeysResponse::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (developerAppKeys.size() > 0) {
         for (unsigned i = 0; i < developerAppKeys.size(); ++i) {
             json.append(developerAppKeys[i].toJson());

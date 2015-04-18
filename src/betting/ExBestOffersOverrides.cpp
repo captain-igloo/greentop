@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/ExBestOffersOverrides.h"
 
 namespace greentop {
@@ -33,7 +37,7 @@ void ExBestOffersOverrides::fromJson(const Json::Value& json) {
 }
 
 Json::Value ExBestOffersOverrides::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (bestPricesDepth >= 0) {
         json["bestPricesDepth"] = bestPricesDepth;
     }

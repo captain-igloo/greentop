@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/account/AccountStatementReport.h"
 
 namespace greentop {
@@ -24,7 +28,7 @@ void AccountStatementReport::fromJson(const Json::Value& json) {
 }
 
 Json::Value AccountStatementReport::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (accountStatement.size() > 0) {
         for (unsigned i = 0; i < accountStatement.size(); ++i) {
             json["accountStatement"].append(accountStatement[i].toJson());

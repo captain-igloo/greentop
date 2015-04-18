@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/MarketBook.h"
 
 namespace greentop {
@@ -99,7 +103,7 @@ void MarketBook::fromJson(const Json::Value& json) {
 }
 
 Json::Value MarketBook::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (marketId != "") {
         json["marketId"] = marketId;
     }
@@ -130,8 +134,10 @@ Json::Value MarketBook::toJson() const {
     if (numberOfActiveRunners >= 0) {
         json["numberOfActiveRunners"] = numberOfActiveRunners;
     }
-    if (false) {
-        // lastMatchTime not implemented;
+    if (lastMatchTime.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &lastMatchTime);
+        json["lastMatchTime"] = std::string(buffer);
     }
     if (totalMatched >= 0) {
         json["totalMatched"] = totalMatched;
@@ -145,7 +151,7 @@ Json::Value MarketBook::toJson() const {
     if (runnersVoidable.isValid()) {
         json["runnersVoidable"] = runnersVoidable.toJson();
     }
-    if (version >= 0) {
+    if (version > 0) {
         json["version"] = version;
     }
     if (runners.size() > 0) {

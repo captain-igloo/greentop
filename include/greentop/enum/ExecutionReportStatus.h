@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #ifndef EXECUTIONREPORTSTATUS_H
 #define EXECUTIONREPORTSTATUS_H
 

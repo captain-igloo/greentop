@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/ListMarketBookResponse.h"
 
 namespace greentop {
@@ -19,7 +23,7 @@ void ListMarketBookResponse::fromJson(const Json::Value& json) {
 }
 
 Json::Value ListMarketBookResponse::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (marketBooks.size() > 0) {
         for (unsigned i = 0; i < marketBooks.size(); ++i) {
             json.append(marketBooks[i].toJson());

@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/GetAccountFundsRequest.h"
 
 namespace greentop {
@@ -13,7 +17,7 @@ void GetAccountFundsRequest::fromJson(const Json::Value& json) {
 }
 
 Json::Value GetAccountFundsRequest::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (wallet.isValid()) {
         json["wallet"] = wallet.getValue();
     }

@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/ListCurrentOrdersRequest.h"
 
 namespace greentop {
@@ -52,7 +56,7 @@ void ListCurrentOrdersRequest::fromJson(const Json::Value& json) {
 }
 
 Json::Value ListCurrentOrdersRequest::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (betIds.size() > 0) {
         for (unsigned i = 0; i < betIds.size(); ++i) {
             json["betIds"].append(betIds[i]);

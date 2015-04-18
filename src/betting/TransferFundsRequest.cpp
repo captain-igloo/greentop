@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/TransferFundsRequest.h"
 
 namespace greentop {
@@ -23,7 +27,7 @@ void TransferFundsRequest::fromJson(const Json::Value& json) {
 }
 
 Json::Value TransferFundsRequest::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (from.isValid()) {
         json["from"] = from.getValue();
     }

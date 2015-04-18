@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/TimeRange.h"
 
 namespace greentop {
@@ -18,15 +22,15 @@ void TimeRange::fromJson(const Json::Value& json) {
 }
 
 Json::Value TimeRange::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (from.tm_year > 0) {
-        char buffer [80];
-        strftime (buffer,80,"%Y-%m-%dT%H:%M:%S.000Z", &from);
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &from);
         json["from"] = std::string(buffer);
     }
     if (to.tm_year > 0) {
-        char buffer [50];
-        strftime (buffer, 50,"%Y-%m-%dT%H:%M:%S.000Z", &to);
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &to);
         json["to"] = std::string(buffer);
     }
     return json;

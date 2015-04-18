@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/account/StatementItem.h"
 
 namespace greentop {
@@ -37,7 +41,7 @@ void StatementItem::fromJson(const Json::Value& json) {
     if (json.isMember("itemClassData")) {
         for (std::string const& key : json["itemClassData"].getMemberNames()) {
             itemClassData[key] = json["itemClassData"][key].asString();
-        }
+        };
     }
     if (json.isMember("legacyData")) {
         legacyData.fromJson(json["legacyData"]);
@@ -45,7 +49,7 @@ void StatementItem::fromJson(const Json::Value& json) {
 }
 
 Json::Value StatementItem::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (refId != "") {
         json["refId"] = refId;
     }
@@ -67,7 +71,7 @@ Json::Value StatementItem::toJson() const {
         std::map<std::string, std::string>::const_iterator it;
         for (it = itemClassData.begin(); it != itemClassData.end(); ++it) {
             json["itemClassData"][it->first] = it->second;
-        }
+        };
     }
     if (legacyData.isValid()) {
         json["legacyData"] = legacyData.toJson();

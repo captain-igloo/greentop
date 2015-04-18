@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/LimitOnCloseOrder.h"
 
 namespace greentop {
@@ -20,7 +24,7 @@ void LimitOnCloseOrder::fromJson(const Json::Value& json) {
 }
 
 Json::Value LimitOnCloseOrder::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (liability >= 0) {
         json["liability"] = liability;
     }

@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/MarketOnCloseOrder.h"
 
 namespace greentop {
@@ -15,7 +19,7 @@ void MarketOnCloseOrder::fromJson(const Json::Value& json) {
 }
 
 Json::Value MarketOnCloseOrder::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (liability >= 0) {
         json["liability"] = liability;
     }

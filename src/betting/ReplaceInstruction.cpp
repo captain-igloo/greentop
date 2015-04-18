@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/ReplaceInstruction.h"
 
 namespace greentop {
@@ -20,7 +24,7 @@ void ReplaceInstruction::fromJson(const Json::Value& json) {
 }
 
 Json::Value ReplaceInstruction::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (betId != "") {
         json["betId"] = betId;
     }

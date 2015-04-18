@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/CompetitionResult.h"
 
 namespace greentop {
@@ -23,11 +27,11 @@ void CompetitionResult::fromJson(const Json::Value& json) {
 }
 
 Json::Value CompetitionResult::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (competition.isValid()) {
         json["competition"] = competition.toJson();
     }
-    if (marketCount >= 0) {
+    if (marketCount > 0) {
         json["marketCount"] = marketCount;
     }
     if (competitionRegion != "") {

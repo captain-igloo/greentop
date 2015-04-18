@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #ifndef INSTRUCTIONREPORTERRORCODE_H
 #define INSTRUCTIONREPORTERRORCODE_H
 

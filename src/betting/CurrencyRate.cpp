@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/CurrencyRate.h"
 
 namespace greentop {
@@ -18,7 +22,7 @@ void CurrencyRate::fromJson(const Json::Value& json) {
 }
 
 Json::Value CurrencyRate::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (currencyCode != "") {
         json["currencyCode"] = currencyCode;
     }

@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/account/ActivateApplicationSubscriptionRequest.h"
 
 namespace greentop {
@@ -15,7 +19,7 @@ void ActivateApplicationSubscriptionRequest::fromJson(const Json::Value& json) {
 }
 
 Json::Value ActivateApplicationSubscriptionRequest::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (subscriptionToken != "") {
         json["subscriptionToken"] = subscriptionToken;
     }

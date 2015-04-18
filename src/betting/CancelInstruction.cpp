@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/CancelInstruction.h"
 
 namespace greentop {
@@ -20,7 +24,7 @@ void CancelInstruction::fromJson(const Json::Value& json) {
 }
 
 Json::Value CancelInstruction::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (betId != "") {
         json["betId"] = betId;
     }

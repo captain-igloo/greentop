@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/account/DeveloperApp.h"
 
 namespace greentop {
@@ -31,11 +35,11 @@ void DeveloperApp::fromJson(const Json::Value& json) {
 }
 
 Json::Value DeveloperApp::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (appName != "") {
         json["appName"] = appName;
     }
-    if (appId >= 0) {
+    if (appId > 0) {
         json["appId"] = appId;
     }
     if (appVersions.size() > 0) {
@@ -47,7 +51,7 @@ Json::Value DeveloperApp::toJson() const {
 }
 
 bool DeveloperApp::isValid() const {
-    return appName != "" && appId >= 0 && appVersions.size() > 0;
+    return appName != "" && appId > 0 && appVersions.size() > 0;
 }
 
 const std::string& DeveloperApp::getAppName() const {

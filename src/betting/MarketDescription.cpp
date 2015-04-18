@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/MarketDescription.h"
 
 namespace greentop {
@@ -85,21 +89,27 @@ void MarketDescription::fromJson(const Json::Value& json) {
 }
 
 Json::Value MarketDescription::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (persistenceEnabled.isValid()) {
         json["persistenceEnabled"] = persistenceEnabled.toJson();
     }
     if (bspMarket.isValid()) {
         json["bspMarket"] = bspMarket.toJson();
     }
-    if (false) {
-        // marketTime not implemented;
+    if (marketTime.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &marketTime);
+        json["marketTime"] = std::string(buffer);
     }
-    if (false) {
-        // suspendTime not implemented;
+    if (suspendTime.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &suspendTime);
+        json["suspendTime"] = std::string(buffer);
     }
-    if (false) {
-        // settleTime not implemented;
+    if (settleTime.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &settleTime);
+        json["settleTime"] = std::string(buffer);
     }
     if (bettingType.isValid()) {
         json["bettingType"] = bettingType.getValue();
@@ -135,7 +145,7 @@ Json::Value MarketDescription::toJson() const {
 }
 
 bool MarketDescription::isValid() const {
-    return persistenceEnabled.isValid() && bspMarket.isValid() && false && false && false && bettingType.isValid() && turnInPlayEnabled.isValid() && marketType != "" && regulator != "" && marketBaseRate >= 0 && discountAllowed.isValid();
+    return persistenceEnabled.isValid() && bspMarket.isValid() && marketTime.tm_year > 0 && suspendTime.tm_year > 0 && settleTime.tm_year > 0 && bettingType.isValid() && turnInPlayEnabled.isValid() && marketType != "" && regulator != "" && marketBaseRate >= 0 && discountAllowed.isValid();
 }
 
 const BoolJsonMember& MarketDescription::getPersistenceEnabled() const {

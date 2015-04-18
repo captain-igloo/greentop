@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #ifndef LISTCOUNTRIESREQUEST_H
 #define LISTCOUNTRIESREQUEST_H
 

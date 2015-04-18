@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/heartbeat/HeartbeatReport.h"
 
 namespace greentop {
@@ -20,7 +24,7 @@ void HeartbeatReport::fromJson(const Json::Value& json) {
 }
 
 Json::Value HeartbeatReport::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (actionPerformed.isValid()) {
         json["actionPerformed"] = actionPerformed.getValue();
     }

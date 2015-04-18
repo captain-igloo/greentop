@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #ifndef STATEMENTITEM_H
 #define STATEMENTITEM_H
 
@@ -8,7 +12,6 @@
 #include "greentop/JsonMember.h"
 #include "greentop/betting/StatementLegacyData.h"
 #include "greentop/enum/ItemClass.h"
-// #include "greentop/std::map<std::string,std::string>.h"
 
 namespace greentop {
 

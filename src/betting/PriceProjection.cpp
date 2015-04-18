@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/PriceProjection.h"
 
 namespace greentop {
@@ -30,7 +34,7 @@ void PriceProjection::fromJson(const Json::Value& json) {
 }
 
 Json::Value PriceProjection::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (priceData.size() > 0) {
         for (std::set<PriceData>::const_iterator it = priceData.begin(); it != priceData.end(); ++it) {
             PriceData priceData(*it);

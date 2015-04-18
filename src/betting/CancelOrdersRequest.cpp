@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/CancelOrdersRequest.h"
 
 namespace greentop {
@@ -27,7 +31,7 @@ void CancelOrdersRequest::fromJson(const Json::Value& json) {
 }
 
 Json::Value CancelOrdersRequest::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (marketId != "") {
         json["marketId"] = marketId;
     }

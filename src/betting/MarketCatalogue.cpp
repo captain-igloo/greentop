@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/betting/MarketCatalogue.h"
 
 namespace greentop {
@@ -59,15 +63,17 @@ void MarketCatalogue::fromJson(const Json::Value& json) {
 }
 
 Json::Value MarketCatalogue::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (marketId != "") {
         json["marketId"] = marketId;
     }
     if (marketName != "") {
         json["marketName"] = marketName;
     }
-    if (false) {
-        // marketStartTime not implemented;
+    if (marketStartTime.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &marketStartTime);
+        json["marketStartTime"] = std::string(buffer);
     }
     if (description.isValid()) {
         json["description"] = description.toJson();

@@ -1,3 +1,7 @@
+/**
+ * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ */
+
 #include "greentop/account/AccountFundsResponse.h"
 
 namespace greentop {
@@ -40,7 +44,7 @@ void AccountFundsResponse::fromJson(const Json::Value& json) {
 }
 
 Json::Value AccountFundsResponse::toJson() const {
-    Json::Value json;
+    Json::Value json(Json::objectValue);
     if (availableToBetBalance >= 0) {
         json["availableToBetBalance"] = availableToBetBalance;
     }
@@ -56,7 +60,7 @@ Json::Value AccountFundsResponse::toJson() const {
     if (discountRate >= 0) {
         json["discountRate"] = discountRate;
     }
-    if (pointsBalance >= 0) {
+    if (pointsBalance > 0) {
         json["pointsBalance"] = pointsBalance;
     }
     return json;
