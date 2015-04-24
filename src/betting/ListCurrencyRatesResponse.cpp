@@ -23,7 +23,7 @@ void ListCurrencyRatesResponse::fromJson(const Json::Value& json) {
 }
 
 Json::Value ListCurrencyRatesResponse::toJson() const {
-    Json::Value json(Json::objectValue);
+    Json::Value json(Json::arrayValue);
     if (currencyRates.size() > 0) {
         for (unsigned i = 0; i < currencyRates.size(); ++i) {
             json.append(currencyRates[i].toJson());

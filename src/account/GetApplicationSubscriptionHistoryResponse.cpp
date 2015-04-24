@@ -21,7 +21,7 @@ void GetApplicationSubscriptionHistoryResponse::fromJson(const Json::Value& json
 }
 
 Json::Value GetApplicationSubscriptionHistoryResponse::toJson() const {
-    Json::Value json(Json::objectValue);
+    Json::Value json(Json::arrayValue);
     if (subscriptionHistories.size() > 0) {
         for (unsigned i = 0; i < subscriptionHistories.size(); ++i) {
             json.append(subscriptionHistories[i].toJson());

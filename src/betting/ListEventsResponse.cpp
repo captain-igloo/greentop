@@ -23,7 +23,7 @@ void ListEventsResponse::fromJson(const Json::Value& json) {
 }
 
 Json::Value ListEventsResponse::toJson() const {
-    Json::Value json(Json::objectValue);
+    Json::Value json(Json::arrayValue);
     if (eventResults.size() > 0) {
         for (unsigned i = 0; i < eventResults.size(); ++i) {
             json.append(eventResults[i].toJson());

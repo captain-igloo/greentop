@@ -23,7 +23,7 @@ void ListMarketBookResponse::fromJson(const Json::Value& json) {
 }
 
 Json::Value ListMarketBookResponse::toJson() const {
-    Json::Value json(Json::objectValue);
+    Json::Value json(Json::arrayValue);
     if (marketBooks.size() > 0) {
         for (unsigned i = 0; i < marketBooks.size(); ++i) {
             json.append(marketBooks[i].toJson());

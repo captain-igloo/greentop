@@ -23,7 +23,7 @@ void ListMarketProfitAndLossResponse::fromJson(const Json::Value& json) {
 }
 
 Json::Value ListMarketProfitAndLossResponse::toJson() const {
-    Json::Value json(Json::objectValue);
+    Json::Value json(Json::arrayValue);
     if (marketProfitAndLosses.size() > 0) {
         for (unsigned i = 0; i < marketProfitAndLosses.size(); ++i) {
             json.append(marketProfitAndLosses[i].toJson());

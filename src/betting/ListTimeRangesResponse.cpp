@@ -23,7 +23,7 @@ void ListTimeRangesResponse::fromJson(const Json::Value& json) {
 }
 
 Json::Value ListTimeRangesResponse::toJson() const {
-    Json::Value json(Json::objectValue);
+    Json::Value json(Json::arrayValue);
     if (timeRangeResults.size() > 0) {
         for (unsigned i = 0; i < timeRangeResults.size(); ++i) {
             json.append(timeRangeResults[i].toJson());

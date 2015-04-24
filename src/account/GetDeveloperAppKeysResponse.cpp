@@ -23,7 +23,7 @@ void GetDeveloperAppKeysResponse::fromJson(const Json::Value& json) {
 }
 
 Json::Value GetDeveloperAppKeysResponse::toJson() const {
-    Json::Value json(Json::objectValue);
+    Json::Value json(Json::arrayValue);
     if (developerAppKeys.size() > 0) {
         for (unsigned i = 0; i < developerAppKeys.size(); ++i) {
             json.append(developerAppKeys[i].toJson());

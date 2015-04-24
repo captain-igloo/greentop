@@ -23,7 +23,7 @@ void ListCompetitionsResponse::fromJson(const Json::Value& json) {
 }
 
 Json::Value ListCompetitionsResponse::toJson() const {
-    Json::Value json(Json::objectValue);
+    Json::Value json(Json::arrayValue);
     if (competitionResults.size() > 0) {
         for (unsigned i = 0; i < competitionResults.size(); ++i) {
             json.append(competitionResults[i].toJson());

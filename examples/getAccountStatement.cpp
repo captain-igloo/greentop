@@ -44,6 +44,8 @@ int main(int argc, char* argv[]) {
         } else {
             std::cout << "invalid request" << std::endl;
         }
+    } else {
+        std::cout << "failed to log in" << std::endl;
     }
 
     return 0;
