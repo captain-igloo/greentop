@@ -2,7 +2,7 @@
  * Copyright 2015 Colin Doig.  Distributed under the MIT license.
  */
 
-#include "greentop/betting/StatementLegacyData.h"
+#include "greentop/account/StatementLegacyData.h"
 
 namespace greentop {
 
@@ -61,10 +61,10 @@ void StatementLegacyData::fromJson(const Json::Value& json) {
         commissionRate = json["commissionRate"].asString();
     }
     if (json.isMember("eventId")) {
-        eventId = json["eventId"].asUInt();
+        eventId = json["eventId"].asUInt64();
     }
     if (json.isMember("eventTypeId")) {
-        eventTypeId = json["eventTypeId"].asUInt();
+        eventTypeId = json["eventTypeId"].asUInt64();
     }
     if (json.isMember("fullMarketName")) {
         fullMarketName = json["fullMarketName"].asString();
@@ -82,7 +82,7 @@ void StatementLegacyData::fromJson(const Json::Value& json) {
         strptime(json["placedDate"].asString().c_str(), "%Y-%m-%dT%H:%M:%S.000Z", &placedDate);
     }
     if (json.isMember("selectionId")) {
-        selectionId = json["selectionId"].asUInt();
+        selectionId = json["selectionId"].asUInt64();
     }
     if (json.isMember("selectionName")) {
         selectionName = json["selectionName"].asString();
@@ -94,7 +94,7 @@ void StatementLegacyData::fromJson(const Json::Value& json) {
         transactionType = json["transactionType"].asString();
     }
     if (json.isMember("transactionId")) {
-        transactionId = json["transactionId"].asUInt();
+        transactionId = json["transactionId"].asUInt64();
     }
     if (json.isMember("winLose")) {
         winLose = json["winLose"].asString();
