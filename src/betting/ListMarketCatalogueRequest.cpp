@@ -33,7 +33,7 @@ void ListMarketCatalogueRequest::fromJson(const Json::Value& json) {
         sort = json["sort"].asString();
     }
     if (json.isMember("maxResults")) {
-        maxResults = json["maxResults"].asUInt();
+        maxResults = json["maxResults"].asUInt64();
     }
     if (json.isMember("locale")) {
         locale = json["locale"].asString();

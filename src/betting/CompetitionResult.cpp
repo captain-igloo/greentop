@@ -19,7 +19,7 @@ void CompetitionResult::fromJson(const Json::Value& json) {
         competition.fromJson(json["competition"]);
     }
     if (json.isMember("marketCount")) {
-        marketCount = json["marketCount"].asUInt();
+        marketCount = json["marketCount"].asUInt64();
     }
     if (json.isMember("competitionRegion")) {
         competitionRegion = json["competitionRegion"].asString();

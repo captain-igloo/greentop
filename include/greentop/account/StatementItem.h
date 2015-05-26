@@ -10,7 +10,7 @@
 #include <string>
 
 #include "greentop/JsonMember.h"
-#include "greentop/betting/StatementLegacyData.h"
+#include "greentop/account/StatementLegacyData.h"
 #include "greentop/enum/ItemClass.h"
 
 namespace greentop {

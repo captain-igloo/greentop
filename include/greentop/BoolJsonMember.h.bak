@@ -21,8 +21,6 @@ class BoolJsonMember : public JsonMember {
 
         Json::Value toJson() const;
 
-        operator bool () const;
-
     private:
         bool value;
 };

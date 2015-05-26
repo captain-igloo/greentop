@@ -22,7 +22,7 @@ void DeveloperApp::fromJson(const Json::Value& json) {
             appName = json["appName"].asString();
         }
         if (json.isMember("appId")) {
-            appId = json["appId"].asUInt();
+            appId = json["appId"].asUInt64();
         }
         if (json.isMember("appVersions")) {
             for (unsigned i = 0; i < json["appVersions"].size(); ++i) {

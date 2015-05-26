@@ -17,7 +17,7 @@ void EventTypeResult::fromJson(const Json::Value& json) {
         eventType.fromJson(json["eventType"]);
     }
     if (json.isMember("marketCount")) {
-        marketCount = json["marketCount"].asUInt();
+        marketCount = json["marketCount"].asUInt64();
     }
 }
 

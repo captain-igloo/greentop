@@ -48,7 +48,7 @@ void AccountDetailsResponse::fromJson(const Json::Value& json) {
             discountRate = json["discountRate"].asDouble();
         }
         if (json.isMember("pointsBalance")) {
-            pointsBalance = json["pointsBalance"].asUInt();
+            pointsBalance = json["pointsBalance"].asUInt64();
         }
     }
 }

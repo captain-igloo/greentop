@@ -37,7 +37,7 @@ void ItemDescription::fromJson(const Json::Value& json) {
         runnerDesc = json["runnerDesc"].asString();
     }
     if (json.isMember("numberOfWinners")) {
-        numberOfWinners = json["numberOfWinners"].asUInt();
+        numberOfWinners = json["numberOfWinners"].asUInt64();
     }
 }
 

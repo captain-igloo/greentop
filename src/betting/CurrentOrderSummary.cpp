@@ -58,7 +58,7 @@ void CurrentOrderSummary::fromJson(const Json::Value& json) {
         marketId = json["marketId"].asString();
     }
     if (json.isMember("selectionId")) {
-        selectionId = json["selectionId"].asUInt();
+        selectionId = json["selectionId"].asUInt64();
     }
     if (json.isMember("handicap")) {
         handicap = json["handicap"].asDouble();

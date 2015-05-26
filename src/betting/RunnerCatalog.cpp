@@ -20,7 +20,7 @@ RunnerCatalog::RunnerCatalog(const uint64_t selectionId,
 
 void RunnerCatalog::fromJson(const Json::Value& json) {
     if (json.isMember("selectionId")) {
-        selectionId = json["selectionId"].asUInt();
+        selectionId = json["selectionId"].asUInt64();
     }
     if (json.isMember("runnerName")) {
         runnerName = json["runnerName"].asString();

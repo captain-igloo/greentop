@@ -60,7 +60,7 @@ void ClearedOrderSummaryReport::fromJson(const Json::Value& json) {
             marketId = json["marketId"].asString();
         }
         if (json.isMember("selectionId")) {
-            selectionId = json["selectionId"].asUInt();
+            selectionId = json["selectionId"].asUInt64();
         }
         if (json.isMember("handicap")) {
             handicap = json["handicap"].asDouble();
@@ -90,7 +90,7 @@ void ClearedOrderSummaryReport::fromJson(const Json::Value& json) {
             strptime(json["settledDate"].asString().c_str(), "%Y-%m-%dT%H:%M:%S.000Z", &settledDate);
         }
         if (json.isMember("betCount")) {
-            betCount = json["betCount"].asUInt();
+            betCount = json["betCount"].asUInt64();
         }
         if (json.isMember("commission")) {
             commission = json["commission"].asDouble();

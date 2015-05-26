@@ -17,7 +17,7 @@ void CountryCodeResult::fromJson(const Json::Value& json) {
         countryCode = json["countryCode"].asString();
     }
     if (json.isMember("marketCount")) {
-        marketCount = json["marketCount"].asUInt();
+        marketCount = json["marketCount"].asUInt64();
     }
 }
 

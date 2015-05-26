@@ -17,7 +17,7 @@ void TimeRangeResult::fromJson(const Json::Value& json) {
         timeRange.fromJson(json["timeRange"]);
     }
     if (json.isMember("marketCount")) {
-        marketCount = json["marketCount"].asUInt();
+        marketCount = json["marketCount"].asUInt64();
     }
 }
 

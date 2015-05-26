@@ -83,10 +83,10 @@ void ListClearedOrdersRequest::fromJson(const Json::Value& json) {
         locale = json["locale"].asString();
     }
     if (json.isMember("fromRecord")) {
-        fromRecord = json["fromRecord"].asUInt();
+        fromRecord = json["fromRecord"].asUInt64();
     }
     if (json.isMember("toRecord")) {
-        toRecord = json["toRecord"].asUInt();
+        toRecord = json["toRecord"].asUInt64();
     }
 }
 

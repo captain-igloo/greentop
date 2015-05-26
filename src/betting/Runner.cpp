@@ -34,7 +34,7 @@ Runner::Runner(const uint64_t selectionId,
 
 void Runner::fromJson(const Json::Value& json) {
     if (json.isMember("selectionId")) {
-        selectionId = json["selectionId"].asUInt();
+        selectionId = json["selectionId"].asUInt64();
     }
     if (json.isMember("handicap")) {
         handicap = json["handicap"].asDouble();

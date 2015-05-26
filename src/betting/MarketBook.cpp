@@ -91,7 +91,7 @@ void MarketBook::fromJson(const Json::Value& json) {
         runnersVoidable.fromJson(json["runnersVoidable"]);
     }
     if (json.isMember("version")) {
-        version = json["version"].asUInt();
+        version = json["version"].asUInt64();
     }
     if (json.isMember("runners")) {
         for (unsigned i = 0; i < json["runners"].size(); ++i) {

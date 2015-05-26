@@ -24,7 +24,7 @@ Json::Value BoolJsonMember::toJson() const {
     return json;
 }
 
-BoolJsonMember::operator bool () const {
+operator bool () const {
     return value;
 }
 

@@ -31,7 +31,7 @@ void DeveloperAppVersion::fromJson(const Json::Value& json) {
         owner = json["owner"].asString();
     }
     if (json.isMember("versionId")) {
-        versionId = json["versionId"].asUInt();
+        versionId = json["versionId"].asUInt64();
     }
     if (json.isMember("version")) {
         version = json["version"].asString();
