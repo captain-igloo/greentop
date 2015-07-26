@@ -25,8 +25,6 @@ int main(int argc, char* argv[]) {
         ListMarketCatalogueRequest req(filter, marketProjection);
         req.setMaxResults(1000);
 
-	std::cout << "REQUEST: " << req.toString() << std::endl;
-
         if (req.isValid()) {
 
             ListMarketCatalogueResponse resp = exchangeApi.listMarketCatalogue(exchange, req);

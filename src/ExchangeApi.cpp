@@ -38,7 +38,7 @@ bool ExchangeApi::login(std::string username, std::string password) {
 
     loginRequest.setOpt(new curlpp::options::PostFields("username=" + username +
         "&password=" + password +
-        "&login=true&redirectMethod=POST&product=" + applicationKey + "&url=https://www.betfair.com/"));
+        "&login=true&redirectMethod=POST&product=tsF2F5fsw0cPmwgh&url=https://www.betfair.com/"));
 
     std::stringstream result;
     loginRequest.setOpt(new curlpp::options::WriteStream(&result));
@@ -60,6 +60,10 @@ bool ExchangeApi::login(std::string username, std::string password) {
 
     return success;
 
+}
+
+void ExchangeApi::logout() {
+    ssoid = "";
 }
 
 ListCompetitionsResponse

@@ -81,6 +81,8 @@ class ExchangeApi {
 
         bool login(std::string username, std::string password);
 
+        void logout();
+
         ListCompetitionsResponse
         listCompetitions(const Exchange exchange,
             const ListCompetitionsRequest& listCompetitionsRequest) const;
