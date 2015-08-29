@@ -21,7 +21,6 @@ Requirements
 ------------
 
 * [jsoncpp](https://github.com/open-source-parsers/jsoncpp)
-* [curlPP](https://github.com/jpbarrette/curlpp)
 * [libcurl](http://curl.haxx.se/libcurl/)
 
 Build

@@ -1,12 +1,12 @@
 CXX=@CXX@
 
 all:
-	$(CXX) -o listEventTypes -std=c++0x -I../include -L../lib listEventTypes.cpp -lgreentop -ljsoncpp -lcurlpp
-	$(CXX) -o listCompetitions -std=c++0x -I../include -L../lib listCompetitions.cpp -lgreentop -ljsoncpp -lcurlpp
-	$(CXX) -o listEvents -std=c++0x -I../include -L../lib listEvents.cpp -lgreentop -ljsoncpp -lcurlpp
-	$(CXX) -o listMarketCatalogue -std=c++0x -I../include -L../lib listMarketCatalogue.cpp -lgreentop -ljsoncpp -lcurlpp
-	$(CXX) -o listMarketBook -std=c++0x -I../include -L../lib listMarketBook.cpp -lgreentop -ljsoncpp -lcurlpp
-	$(CXX) -o getAccountStatement -std=c++0x -I../include -L../lib getAccountStatement.cpp -lgreentop -ljsoncpp -lcurlpp
+	$(CXX) -o listEventTypes -std=c++0x -I../include -L../lib listEventTypes.cpp -lgreentop -ljsoncpp -lcurl
+	$(CXX) -o listCompetitions -std=c++0x -I../include -L../lib listCompetitions.cpp -lgreentop -ljsoncpp -lcurl
+	$(CXX) -o listEvents -std=c++0x -I../include -L../lib listEvents.cpp -lgreentop -ljsoncpp -lcurl
+	$(CXX) -o listMarketCatalogue -std=c++0x -I../include -L../lib listMarketCatalogue.cpp -lgreentop -ljsoncpp -lcurl
+	$(CXX) -o listMarketBook -std=c++0x -I../include -L../lib listMarketBook.cpp -lgreentop -ljsoncpp -lcurl
+	$(CXX) -o getAccountStatement -std=c++0x -I../include -L../lib getAccountStatement.cpp -lgreentop -ljsoncpp -lcurl
 
 clean:
 	rm listEventTypes listCompetitions listEvents listMarketCatalogue listMarketBook getAccountStatement

@@ -10,11 +10,11 @@ then
     AC_MSG_ERROR([json/json.h not found])
 fi
 
-AC_CHECK_HEADER([curlpp/cURLpp.hpp], [], [FAIL=1])
+AC_CHECK_HEADER([curl/curl.h], [], [FAIL=1])
 
 if test "$FAIL" == 1
 then
-    AC_MSG_ERROR([curlpp/cURLpp.hpp not found])
+    AC_MSG_ERROR([curl/curl.h not found])
 fi
 
 AC_OUTPUT(Makefile examples/Makefile)

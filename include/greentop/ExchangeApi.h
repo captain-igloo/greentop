@@ -5,13 +5,11 @@
 #ifndef EXCHANGEAPI_H
 #define EXCHANGEAPI_H
 
+#include <curl/curl.h>
 #include <iostream>
 #include <set>
 #include <string>
 #include <vector>
-
-#include <curlpp/cURLpp.hpp>
-#include <curlpp/Easy.hpp>
 
 #include "greentop/JsonRequest.h"
 #include "greentop/JsonResponse.h"
@@ -82,6 +80,8 @@ class ExchangeApi {
         bool login(std::string username, std::string password);
 
         void logout();
+
+        void setApplicationKey(std::string& appKey);
 
         ListCompetitionsResponse
         listCompetitions(const Exchange exchange,
@@ -165,6 +165,8 @@ class ExchangeApi {
         activateApplicationSubscription(const Exchange exchange,
             const ActivateApplicationSubscriptionRequest& activateApplicationSubscriptionRequest) const;
 
+        ~ExchangeApi();
+
     private:
 
         static const std::string LOGIN_END_POINT;
@@ -176,7 +178,7 @@ class ExchangeApi {
 
         bool initRequest(const Exchange exchange,
             const Api api,
-            const std::string method, curlpp::Easy &request) const;
+            const std::string method, CURL* curl) const;
 
         bool performRequest(const Exchange exchange,
             const Api api,
