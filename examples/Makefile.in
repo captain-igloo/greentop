@@ -7,6 +7,8 @@ all:
 	$(CXX) -o listMarketCatalogue -std=c++0x -I../include -L../lib listMarketCatalogue.cpp -lgreentop -ljsoncpp -lcurl
 	$(CXX) -o listMarketBook -std=c++0x -I../include -L../lib listMarketBook.cpp -lgreentop -ljsoncpp -lcurl
 	$(CXX) -o getAccountStatement -std=c++0x -I../include -L../lib getAccountStatement.cpp -lgreentop -ljsoncpp -lcurl
+	$(CXX) -o listCurrencyRates -std=c++0x -I../include -L../lib listCurrencyRates.cpp -lgreentop -ljsoncpp -lcurl
+	$(CXX) -o listClearedOrders -std=c++0x -I../include -L../lib listClearedOrders.cpp -lgreentop -ljsoncpp -lcurl
 
 clean:
 	rm listEventTypes listCompetitions listEvents listMarketCatalogue listMarketBook getAccountStatement

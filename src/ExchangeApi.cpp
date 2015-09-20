@@ -94,7 +94,7 @@ void ExchangeApi::logout() {
     ssoid = "";
 }
 
-void ExchangeApi::setApplicationKey(std::string& appKey) {
+void ExchangeApi::setApplicationKey(const std::string& appKey) {
     applicationKey = appKey;
 }
 

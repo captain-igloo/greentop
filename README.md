@@ -37,4 +37,9 @@ Example Usage
 
 See the "examples" directory.
 
+Contact
+-------
+
+colindoig [at] gmail [dot] com
+
 -- Colin Doig

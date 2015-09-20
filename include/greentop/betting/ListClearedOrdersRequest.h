@@ -35,7 +35,7 @@ class ListClearedOrdersRequest : public JsonRequest {
             const BoolJsonMember& includeItemDescription = BoolJsonMember(),
             const std::string& locale = std::string(),
             const uint64_t fromRecord = 0,
-            const uint64_t toRecord = 0);
+            const uint64_t recordCount = 0);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -79,8 +79,8 @@ class ListClearedOrdersRequest : public JsonRequest {
         const uint64_t getFromRecord() const;
         void setFromRecord(const uint64_t fromRecord);
 
-        const uint64_t getToRecord() const;
-        void setToRecord(const uint64_t toRecord);
+        const uint64_t getRecordCount() const;
+        void setRecordCount(const uint64_t recordCount);
 
 
     private:
@@ -96,7 +96,7 @@ class ListClearedOrdersRequest : public JsonRequest {
         BoolJsonMember includeItemDescription;
         std::string locale;
         uint64_t fromRecord;
-        uint64_t toRecord;
+        uint64_t recordCount;
 };
 
 }

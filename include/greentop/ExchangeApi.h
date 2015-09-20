@@ -81,7 +81,7 @@ class ExchangeApi {
 
         void logout();
 
-        void setApplicationKey(std::string& appKey);
+        void setApplicationKey(const std::string& appKey);
 
         ListCompetitionsResponse
         listCompetitions(const Exchange exchange,

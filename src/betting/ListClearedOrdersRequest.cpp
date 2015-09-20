@@ -5,7 +5,7 @@
 #include "greentop/betting/ListClearedOrdersRequest.h"
 
 namespace greentop {
-ListClearedOrdersRequest::ListClearedOrdersRequest()  : fromRecord(0), toRecord(0){
+ListClearedOrdersRequest::ListClearedOrdersRequest()  : fromRecord(0), recordCount(0){
 }
 
 ListClearedOrdersRequest::ListClearedOrdersRequest(const BetStatus& betStatus,
@@ -20,7 +20,7 @@ ListClearedOrdersRequest::ListClearedOrdersRequest(const BetStatus& betStatus,
     const BoolJsonMember& includeItemDescription,
     const std::string& locale,
     const uint64_t fromRecord,
-    const uint64_t toRecord) :
+    const uint64_t recordCount) :
     betStatus(betStatus),
     eventTypeIds(eventTypeIds),
     eventIds(eventIds),
@@ -33,7 +33,7 @@ ListClearedOrdersRequest::ListClearedOrdersRequest(const BetStatus& betStatus,
     includeItemDescription(includeItemDescription),
     locale(locale),
     fromRecord(fromRecord),
-    toRecord(toRecord) {
+    recordCount(recordCount) {
 }
 
 void ListClearedOrdersRequest::fromJson(const Json::Value& json) {
@@ -85,8 +85,8 @@ void ListClearedOrdersRequest::fromJson(const Json::Value& json) {
     if (json.isMember("fromRecord")) {
         fromRecord = json["fromRecord"].asUInt64();
     }
-    if (json.isMember("toRecord")) {
-        toRecord = json["toRecord"].asUInt64();
+    if (json.isMember("recordCount")) {
+        recordCount = json["recordCount"].asUInt64();
     }
 }
 
@@ -138,8 +138,8 @@ Json::Value ListClearedOrdersRequest::toJson() const {
     if (fromRecord > 0) {
         json["fromRecord"] = fromRecord;
     }
-    if (toRecord > 0) {
-        json["toRecord"] = toRecord;
+    if (recordCount > 0) {
+        json["recordCount"] = recordCount;
     }
     return json;
 }
@@ -232,11 +232,11 @@ void ListClearedOrdersRequest::setFromRecord(const uint64_t fromRecord) {
     this->fromRecord = fromRecord;
 }
 
-const uint64_t ListClearedOrdersRequest::getToRecord() const {
-    return toRecord;
+const uint64_t ListClearedOrdersRequest::getRecordCount() const {
+    return recordCount;
 }
-void ListClearedOrdersRequest::setToRecord(const uint64_t toRecord) {
-    this->toRecord = toRecord;
+void ListClearedOrdersRequest::setRecordCount(const uint64_t recordCount) {
+    this->recordCount = recordCount;
 }
 
 
