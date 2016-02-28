@@ -290,14 +290,21 @@ bool ExchangeApi::performRequest(const Exchange exchange,
         std::stringstream result;
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &result);
 
-        curl_easy_perform(curl);
+        char errorBuffer[CURL_ERROR_SIZE];
+        curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, errorBuffer);
+        errorBuffer[0] = 0;
+
+        CURLcode curlResult = curl_easy_perform(curl);
+        if (curlResult == CURLE_OK) {
+            result >> jsonResponse;
+        } else {
+            curl_easy_cleanup(curl);
+            throw std::runtime_error(errorBuffer);
+        }
 
         curl_easy_cleanup(curl);
 
-        result >> jsonResponse;
-
         return jsonResponse.isSuccess();
-
     }
 
 }
