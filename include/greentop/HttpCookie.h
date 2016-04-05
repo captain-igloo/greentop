@@ -5,8 +5,6 @@
 #ifndef HTTPCOOKIE_H
 #define HTTPCOOKIE_H
 
-#include <iostream>
-
 namespace greentop {
 
 class HttpCookie {

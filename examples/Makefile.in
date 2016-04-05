@@ -10,6 +10,7 @@ all:
 	$(CXX) -o listCurrencyRates -std=c++0x -I../include -L../lib listCurrencyRates.cpp -lgreentop -ljsoncpp -lcurl
 	$(CXX) -o listClearedOrders -std=c++0x -I../include -L../lib listClearedOrders.cpp -lgreentop -ljsoncpp -lcurl
 	$(CXX) -o transferFunds -std=c++0x -I../include -L../lib transferFunds.cpp -lgreentop -ljsoncpp -lcurl
+	$(CXX) -o refreshMenu -std=c++0x -I../include -L../lib refreshMenu.cpp -lgreentop -ljsoncpp -lcurl
 
 clean:
-	rm listEventTypes listCompetitions listEvents listMarketCatalogue listMarketBook getAccountStatement listClearedOrders transferFunds
+	rm listEventTypes listCompetitions listEvents listMarketCatalogue listMarketBook getAccountStatement listClearedOrders transferFunds refreshMenu

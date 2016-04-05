@@ -3,6 +3,7 @@
  */
 
 #include <curl/curl.h>
+#include <fstream>
 #include <sstream>
 
 #include "greentop/DummyRequest.h"
@@ -15,7 +16,7 @@ const std::string ExchangeApi::LOGIN_END_POINT = "https://identitysso.betfair.co
 const std::string ExchangeApi::HOST_UK = "https://api.betfair.com";
 const std::string ExchangeApi::HOST_AUS = "https://api-au.betfair.com";
 
-size_t curlWriteCallback(char* buffer, size_t size, size_t nitems, std::ostream* stream) {
+size_t writeToStream(char* buffer, size_t size, size_t nitems, std::ostream* stream) {
 
     size_t realwrote = size * nitems;
     stream->write(buffer, static_cast<std::streamsize>(realwrote));
@@ -48,7 +49,7 @@ bool ExchangeApi::login(std::string username, std::string password) {
             + "&url=https://www.betfair.com/";
 
         curl_easy_setopt(curl, CURLOPT_POSTFIELDS, postFields.c_str());
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, curlWriteCallback);
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writeToStream);
         std::stringstream result;
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &result);
         curl_easy_setopt(curl, CURLOPT_COOKIEFILE, "");
@@ -64,7 +65,6 @@ bool ExchangeApi::login(std::string username, std::string password) {
 
             curl_easy_getinfo(curl, CURLINFO_COOKIELIST, &cookies);
 
-            int i = 1;
             while (cookies) {
                 HttpCookie cookie(cookies->data);
                 cookies = cookies->next;
@@ -96,6 +96,60 @@ void ExchangeApi::logout() {
 
 void ExchangeApi::setApplicationKey(const std::string& appKey) {
     applicationKey = appKey;
+}
+
+void ExchangeApi::refreshMenu(const std::string& cacheFilename) {
+
+    CURL* curl;
+    curl = curl_easy_init();
+
+    if (curl) {
+        std::string url = ExchangeApi::HOST_UK + "/exchange/betting/rest/v1/en/navigation/menu.json";
+
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+        curl_easy_setopt(curl, CURLOPT_USE_SSL, CURLUSESSL_ALL);
+        curl_easy_setopt(curl, CURLOPT_ACCEPT_ENCODING, "gzip");
+        curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1);
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writeToStream);
+        std::stringstream result;
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &result);
+
+        char errorBuffer[CURL_ERROR_SIZE];
+        curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, errorBuffer);
+        errorBuffer[0] = 0;
+
+        struct curl_slist* chunk = NULL;
+
+        std::string header = "X-Application: " + applicationKey;
+        chunk = curl_slist_append(chunk, header.c_str());
+        header = "X-Authentication: " + ssoid;
+        chunk = curl_slist_append(chunk, header.c_str());
+        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, chunk);
+
+        CURLcode curlResult = curl_easy_perform(curl);
+
+        if (curlResult == CURLE_OK) {
+            curl_easy_cleanup(curl);
+
+            if (cacheFilename != "") {
+                std::fstream fs;
+                fs.open(cacheFilename,  std::fstream::out);
+                fs << result.str();
+            }
+
+            Json::Value json;
+            result >> json;
+            menu.fromJson(json);
+
+        } else {
+            curl_easy_cleanup(curl);
+            throw std::runtime_error(errorBuffer);
+        }
+    }
+}
+
+menu::Menu& ExchangeApi::getMenu() {
+    return menu;
 }
 
 ListCompetitionsResponse
@@ -286,7 +340,7 @@ bool ExchangeApi::performRequest(const Exchange exchange,
             curl_easy_setopt(curl, CURLOPT_POSTFIELDS, request.c_str());
         }
 
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, curlWriteCallback);
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writeToStream);
         std::stringstream result;
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &result);
 
@@ -307,6 +361,7 @@ bool ExchangeApi::performRequest(const Exchange exchange,
         return jsonResponse.isSuccess();
     }
 
+    return false;
 }
 
 bool ExchangeApi::initRequest(const Exchange exchange,

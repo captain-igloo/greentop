@@ -6,7 +6,6 @@
 #define EXCHANGEAPI_H
 
 #include <curl/curl.h>
-#include <iostream>
 #include <set>
 #include <string>
 #include <vector>
@@ -66,6 +65,8 @@
 #include "greentop/heartbeat/HeartbeatReport.h"
 #include "greentop/heartbeat/HeartbeatRequest.h"
 
+#include "greentop/menu/Menu.h"
+
 namespace greentop {
 
 class ExchangeApi {
@@ -82,6 +83,10 @@ class ExchangeApi {
         void logout();
 
         void setApplicationKey(const std::string& appKey);
+
+        void refreshMenu(const std::string& cacheFilename = "");
+
+        menu::Menu& getMenu();
 
         ListCompetitionsResponse
         listCompetitions(const Exchange exchange,
@@ -175,6 +180,7 @@ class ExchangeApi {
 
         std::string ssoid;
         std::string applicationKey;
+        menu::Menu menu;
 
         bool initRequest(const Exchange exchange,
             const Api api,

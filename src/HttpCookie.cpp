@@ -2,7 +2,6 @@
  * Copyright 2015 Colin Doig.  Distributed under the MIT license.
  */
 
-#include <iostream>
 #include <sstream>
 
 #include "greentop/HttpCookie.h"
