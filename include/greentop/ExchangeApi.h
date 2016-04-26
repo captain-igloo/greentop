@@ -62,6 +62,8 @@
 #include "greentop/betting/TransferFundsRequest.h"
 #include "greentop/betting/TransferResponse.h"
 
+#include "greentop/curl/SList.h"
+
 #include "greentop/heartbeat/HeartbeatReport.h"
 #include "greentop/heartbeat/HeartbeatRequest.h"
 
