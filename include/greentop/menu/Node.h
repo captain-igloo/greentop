@@ -7,6 +7,8 @@
 
 #include <ctime>
 #include <json/json.h>
+#include <list>
+#include <string>
 
 namespace greentop {
 namespace menu {

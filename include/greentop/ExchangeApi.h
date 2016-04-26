@@ -182,9 +182,8 @@ class ExchangeApi {
         std::string applicationKey;
         menu::Menu menu;
 
-        bool initRequest(const Exchange exchange,
-            const Api api,
-            const std::string method, CURL* curl) const;
+        bool initRequest(const Exchange exchange, const Api api,
+            const std::string method, CURL* curl, SList& headers) const;
 
         bool performRequest(const Exchange exchange,
             const Api api,

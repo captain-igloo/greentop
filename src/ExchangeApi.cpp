@@ -4,8 +4,10 @@
 
 #include <curl/curl.h>
 #include <fstream>
+#include <memory>
 #include <sstream>
 
+#include "greentop/curl/SList.h"
 #include "greentop/DummyRequest.h"
 #include "greentop/ExchangeApi.h"
 #include "greentop/HttpCookie.h"
@@ -37,37 +39,37 @@ bool ExchangeApi::login(std::string username, std::string password) {
 
     bool success = false;
 
-    CURL* curl;
-    curl = curl_easy_init();
-    if (curl) {
-        curl_easy_setopt(curl, CURLOPT_URL, LOGIN_END_POINT.c_str());
-        curl_easy_setopt(curl, CURLOPT_USE_SSL, CURLUSESSL_ALL);
-        curl_easy_setopt(curl, CURLOPT_COOKIE, "loggedIn=false; expires=Sun, 17-Jan-2038 19:14:07 GMT; path=/; domain=.betfair.com");
+    std::unique_ptr<CURL, void(*)(CURL*)> curl(curl_easy_init(), curl_easy_cleanup);
+
+    if (curl.get()) {
+        curl_easy_setopt(curl.get(), CURLOPT_URL, LOGIN_END_POINT.c_str());
+        curl_easy_setopt(curl.get(), CURLOPT_USE_SSL, CURLUSESSL_ALL);
+        curl_easy_setopt(curl.get(), CURLOPT_COOKIE, "loggedIn=false; expires=Sun, 17-Jan-2038 19:14:07 GMT; path=/; domain=.betfair.com");
 
         std::string postFields = "username=" + username + "&password=" + password +
             "&login=true&redirectMethod=POST&product=" + applicationKey
             + "&url=https://www.betfair.com/";
 
-        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, postFields.c_str());
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writeToStream);
+        curl_easy_setopt(curl.get(), CURLOPT_POSTFIELDS, postFields.c_str());
+        curl_easy_setopt(curl.get(), CURLOPT_WRITEFUNCTION, writeToStream);
         std::stringstream result;
-        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &result);
-        curl_easy_setopt(curl, CURLOPT_COOKIEFILE, "");
-        curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1);
+        curl_easy_setopt(curl.get(), CURLOPT_WRITEDATA, &result);
+        curl_easy_setopt(curl.get(), CURLOPT_COOKIEFILE, "");
+        curl_easy_setopt(curl.get(), CURLOPT_NOSIGNAL, 1);
         char errorBuffer[CURL_ERROR_SIZE];
-        curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, errorBuffer);
+        curl_easy_setopt(curl.get(), CURLOPT_ERRORBUFFER, errorBuffer);
         errorBuffer[0] = 0;
-        CURLcode curlResult = curl_easy_perform(curl);
+        CURLcode curlResult = curl_easy_perform(curl.get());
 
         if (curlResult == CURLE_OK) {
 
-            struct curl_slist* cookies;
+            curl_slist* slist;
+            curl_easy_getinfo(curl.get(), CURLINFO_COOKIELIST, &slist);
+            SList cookies(slist);
 
-            curl_easy_getinfo(curl, CURLINFO_COOKIELIST, &cookies);
-
-            while (cookies) {
-                HttpCookie cookie(cookies->data);
-                cookies = cookies->next;
+            while (cookies.get()) {
+                HttpCookie cookie(cookies.get()->data);
+                cookies.set(cookies.get()->next);
 
                 if (cookie.name == "ssoid") {
                     ssoid = cookie.value;
@@ -76,14 +78,11 @@ bool ExchangeApi::login(std::string username, std::string password) {
                 }
 
             }
-            curl_slist_free_all(cookies);
 
         } else {
-            curl_easy_cleanup(curl);
             throw std::runtime_error(errorBuffer);
         }
 
-        curl_easy_cleanup(curl);
     }
 
     return success;
@@ -100,36 +99,33 @@ void ExchangeApi::setApplicationKey(const std::string& appKey) {
 
 void ExchangeApi::refreshMenu(const std::string& cacheFilename) {
 
-    CURL* curl;
-    curl = curl_easy_init();
+    std::unique_ptr<CURL, void(*)(CURL*)> curl(curl_easy_init(), curl_easy_cleanup);
 
-    if (curl) {
+    if (curl.get()) {
         std::string url = ExchangeApi::HOST_UK + "/exchange/betting/rest/v1/en/navigation/menu.json";
 
-        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
-        curl_easy_setopt(curl, CURLOPT_USE_SSL, CURLUSESSL_ALL);
-        curl_easy_setopt(curl, CURLOPT_ACCEPT_ENCODING, "gzip");
-        curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1);
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writeToStream);
+        curl_easy_setopt(curl.get(), CURLOPT_URL, url.c_str());
+        curl_easy_setopt(curl.get(), CURLOPT_USE_SSL, CURLUSESSL_ALL);
+        curl_easy_setopt(curl.get(), CURLOPT_ACCEPT_ENCODING, "gzip");
+        curl_easy_setopt(curl.get(), CURLOPT_NOSIGNAL, 1);
+        curl_easy_setopt(curl.get(), CURLOPT_WRITEFUNCTION, writeToStream);
         std::stringstream result;
-        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &result);
+        curl_easy_setopt(curl.get(), CURLOPT_WRITEDATA, &result);
 
         char errorBuffer[CURL_ERROR_SIZE];
-        curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, errorBuffer);
+        curl_easy_setopt(curl.get(), CURLOPT_ERRORBUFFER, errorBuffer);
         errorBuffer[0] = 0;
 
-        struct curl_slist* chunk = NULL;
-
+        SList chunk;
         std::string header = "X-Application: " + applicationKey;
-        chunk = curl_slist_append(chunk, header.c_str());
+        chunk.append(header);
         header = "X-Authentication: " + ssoid;
-        chunk = curl_slist_append(chunk, header.c_str());
-        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, chunk);
+        chunk.append(header);
+        curl_easy_setopt(curl.get(), CURLOPT_HTTPHEADER, chunk.get());
 
-        CURLcode curlResult = curl_easy_perform(curl);
+        CURLcode curlResult = curl_easy_perform(curl.get());
 
         if (curlResult == CURLE_OK) {
-            curl_easy_cleanup(curl);
 
             if (cacheFilename != "") {
                 std::fstream fs;
@@ -142,7 +138,6 @@ void ExchangeApi::refreshMenu(const std::string& cacheFilename) {
             menu.fromJson(json);
 
         } else {
-            curl_easy_cleanup(curl);
             throw std::runtime_error(errorBuffer);
         }
     }
@@ -328,35 +323,33 @@ bool ExchangeApi::performRequest(const Exchange exchange,
         const std::string& method,
         const JsonRequest& jsonRequest, JsonResponse& jsonResponse) const {
 
-    CURL* curl;
-    curl = curl_easy_init();
-    if (curl) {
+    std::unique_ptr<CURL, void(*)(CURL*)> curl(curl_easy_init(), &curl_easy_cleanup);
 
-        initRequest(exchange, api, method, curl);
+    if (curl.get()) {
+
+        SList headers;
+        initRequest(exchange, api, method, curl.get(), headers);
 
         std::string request = jsonRequest.toString();
 
         if (request != "") {
-            curl_easy_setopt(curl, CURLOPT_POSTFIELDS, request.c_str());
+            curl_easy_setopt(curl.get(), CURLOPT_POSTFIELDS, request.c_str());
         }
 
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writeToStream);
+        curl_easy_setopt(curl.get(), CURLOPT_WRITEFUNCTION, writeToStream);
         std::stringstream result;
-        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &result);
+        curl_easy_setopt(curl.get(), CURLOPT_WRITEDATA, &result);
 
         char errorBuffer[CURL_ERROR_SIZE];
-        curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, errorBuffer);
+        curl_easy_setopt(curl.get(), CURLOPT_ERRORBUFFER, errorBuffer);
         errorBuffer[0] = 0;
 
-        CURLcode curlResult = curl_easy_perform(curl);
+        CURLcode curlResult = curl_easy_perform(curl.get());
         if (curlResult == CURLE_OK) {
             result >> jsonResponse;
         } else {
-            curl_easy_cleanup(curl);
             throw std::runtime_error(errorBuffer);
         }
-
-        curl_easy_cleanup(curl);
 
         return jsonResponse.isSuccess();
     }
@@ -364,24 +357,21 @@ bool ExchangeApi::performRequest(const Exchange exchange,
     return false;
 }
 
-bool ExchangeApi::initRequest(const Exchange exchange,
-        const Api api,
-        const std::string method, CURL* curl) const {
+bool ExchangeApi::initRequest(const Exchange exchange, const Api api,
+        const std::string method, CURL* curl, SList& headers) const {
 
     curl_easy_setopt(curl, CURLOPT_URL, buildUri(exchange, api, method).c_str());
     curl_easy_setopt(curl, CURLOPT_USE_SSL, CURLUSESSL_ALL);
     curl_easy_setopt(curl, CURLOPT_ACCEPT_ENCODING, "gzip");
     curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1);
 
-    struct curl_slist* chunk = NULL;
-
     std::string header = "X-Application: " + applicationKey;
-    chunk = curl_slist_append(chunk, header.c_str());
+    headers.append(header);
     header = "X-Authentication: " + ssoid;
-    chunk = curl_slist_append(chunk, header.c_str());
-    chunk = curl_slist_append(chunk, "content-type: application/json");
+    headers.append(header);
+    headers.append("content-type: application/json");
 
-    curl_easy_setopt(curl, CURLOPT_HTTPHEADER, chunk);
+    curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers.get());
 
     return true;
 }

@@ -10,6 +10,7 @@ namespace greentop {
 namespace menu {
 
 Menu::Menu() : root(this) {
+    children[makeNodeId(root)] = std::list<Node>();
 }
 
 void Menu::fromJson(const std::string& json) {
@@ -46,16 +47,10 @@ void Menu::addChild(const Node& parentNode, const Node& childNode) {
 }
 
 void Menu::addParent(Node* parentNode) {
-
     for (auto it = parentNode->getChildren().begin(); it != parentNode->getChildren().end(); ++it) {
         std::string childId = makeNodeId(*it);
         parents[childId] = parentNode;
     }
-
-    /* for (unsigned i = 0; i < parentNode->getChildren().size(); ++i) {
-        std::string childId = makeNodeId(parentNode->getChildren()[i]);
-        parents[childId] = parentNode;
-    } */
 }
 
 void Menu::removeChildren(const Node& parentNode) {

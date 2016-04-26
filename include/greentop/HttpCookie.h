@@ -19,9 +19,6 @@ class HttpCookie {
         std::string name;
         std::string value;
 
-        virtual ~HttpCookie();
-    protected:
-    private:
 };
 
 }

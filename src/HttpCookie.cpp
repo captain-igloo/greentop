@@ -38,7 +38,4 @@ HttpCookie::HttpCookie(const std::string &cookieString) {
 
 }
 
-HttpCookie::~HttpCookie() {
-}
-
 }
