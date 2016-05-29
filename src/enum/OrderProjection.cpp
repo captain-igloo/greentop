@@ -38,5 +38,9 @@ bool OrderProjection::operator==(const OrderProjection& other) const {
     return value == other.value;
 }
 
+bool OrderProjection::operator!=(const OrderProjection& other) const {
+    return value != other.value;
+}
+
 }
 

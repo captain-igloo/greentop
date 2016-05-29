@@ -28,6 +28,8 @@ class ExecutionReportStatus : public Enum<ExecutionReportStatus> {
         bool operator<(const ExecutionReportStatus& other) const;
 
         bool operator==(const ExecutionReportStatus& other) const;
+
+		bool operator!=(const ExecutionReportStatus& other) const;
 };
 
 }

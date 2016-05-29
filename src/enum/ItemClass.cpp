@@ -34,5 +34,9 @@ bool ItemClass::operator==(const ItemClass& other) const {
     return value == other.value;
 }
 
+bool ItemClass::operator!=(const ItemClass& other) const {
+    return value != other.value;
+}
+
 }
 

@@ -29,6 +29,8 @@ class PriceData : public Enum<PriceData> {
         bool operator<(const PriceData& other) const;
 
         bool operator==(const PriceData& other) const;
+
+		bool operator!=(const PriceData& other) const;
 };
 
 }

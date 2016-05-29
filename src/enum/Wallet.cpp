@@ -36,5 +36,9 @@ bool Wallet::operator==(const Wallet& other) const {
     return value == other.value;
 }
 
+bool Wallet::operator!=(const Wallet& other) const {
+    return value != other.value;
+}
+
 }
 

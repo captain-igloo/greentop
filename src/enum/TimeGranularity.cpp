@@ -38,5 +38,9 @@ bool TimeGranularity::operator==(const TimeGranularity& other) const {
     return value == other.value;
 }
 
+bool TimeGranularity::operator!=(const TimeGranularity& other) const {
+    return value != other.value;
+}
+
 }
 

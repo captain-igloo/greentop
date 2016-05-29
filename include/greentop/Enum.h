@@ -25,6 +25,8 @@ class Enum {
 
         virtual bool operator==(const T& other) const = 0;
 
+        virtual bool operator!=(const T& other) const = 0;
+
         bool isValid() const {
             return valid;
         }

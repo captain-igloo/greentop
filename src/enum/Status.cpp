@@ -34,5 +34,9 @@ bool Status::operator==(const Status& other) const {
     return value == other.value;
 }
 
+bool Status::operator!=(const Status& other) const {
+    return value != other.value;
+}
+
 }
 

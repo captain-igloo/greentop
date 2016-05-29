@@ -28,6 +28,8 @@ class BetStatus : public Enum<BetStatus> {
         bool operator<(const BetStatus& other) const;
 
         bool operator==(const BetStatus& other) const;
+
+		bool operator!=(const BetStatus& other) const;
 };
 
 }

@@ -26,6 +26,8 @@ class SortDir : public Enum<SortDir> {
         bool operator<(const SortDir& other) const;
 
         bool operator==(const SortDir& other) const;
+
+		bool operator!=(const SortDir& other) const;
 };
 
 }

@@ -30,6 +30,8 @@ class OrderBy : public Enum<OrderBy> {
         bool operator<(const OrderBy& other) const;
 
         bool operator==(const OrderBy& other) const;
+
+		bool operator!=(const OrderBy& other) const;
 };
 
 }

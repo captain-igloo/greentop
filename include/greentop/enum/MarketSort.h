@@ -30,6 +30,8 @@ class MarketSort : public Enum<MarketSort> {
         bool operator<(const MarketSort& other) const;
 
         bool operator==(const MarketSort& other) const;
+
+		bool operator!=(const MarketSort& other) const;
 };
 
 }

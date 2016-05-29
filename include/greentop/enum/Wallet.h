@@ -26,6 +26,8 @@ class Wallet : public Enum<Wallet> {
         bool operator<(const Wallet& other) const;
 
         bool operator==(const Wallet& other) const;
+
+		bool operator!=(const Wallet& other) const;
 };
 
 }

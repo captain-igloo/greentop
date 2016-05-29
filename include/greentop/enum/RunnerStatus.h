@@ -30,6 +30,8 @@ class RunnerStatus : public Enum<RunnerStatus> {
         bool operator<(const RunnerStatus& other) const;
 
         bool operator==(const RunnerStatus& other) const;
+
+		bool operator!=(const RunnerStatus& other) const;
 };
 
 }

@@ -27,6 +27,8 @@ class MatchProjection : public Enum<MatchProjection> {
         bool operator<(const MatchProjection& other) const;
 
         bool operator==(const MatchProjection& other) const;
+
+		bool operator!=(const MatchProjection& other) const;
 };
 
 }

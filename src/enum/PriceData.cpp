@@ -42,5 +42,9 @@ bool PriceData::operator==(const PriceData& other) const {
     return value == other.value;
 }
 
+bool PriceData::operator!=(const PriceData& other) const {
+    return value != other.value;
+}
+
 }
 

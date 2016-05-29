@@ -26,6 +26,8 @@ class OrderStatus : public Enum<OrderStatus> {
         bool operator<(const OrderStatus& other) const;
 
         bool operator==(const OrderStatus& other) const;
+
+		bool operator!=(const OrderStatus& other) const;
 };
 
 }

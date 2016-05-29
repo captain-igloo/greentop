@@ -27,6 +27,8 @@ class OrderProjection : public Enum<OrderProjection> {
         bool operator<(const OrderProjection& other) const;
 
         bool operator==(const OrderProjection& other) const;
+
+		bool operator!=(const OrderProjection& other) const;
 };
 
 }

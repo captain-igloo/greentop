@@ -31,6 +31,8 @@ class MarketProjection : public Enum<MarketProjection> {
         bool operator<(const MarketProjection& other) const;
 
         bool operator==(const MarketProjection& other) const;
+
+		bool operator!=(const MarketProjection& other) const;
 };
 
 }

@@ -40,5 +40,9 @@ bool MarketStatus::operator==(const MarketStatus& other) const {
     return value == other.value;
 }
 
+bool MarketStatus::operator!=(const MarketStatus& other) const {
+    return value != other.value;
+}
+
 }
 

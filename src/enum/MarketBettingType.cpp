@@ -44,5 +44,9 @@ bool MarketBettingType::operator==(const MarketBettingType& other) const {
     return value == other.value;
 }
 
+bool MarketBettingType::operator!=(const MarketBettingType& other) const {
+    return value != other.value;
+}
+
 }
 

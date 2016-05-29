@@ -46,5 +46,9 @@ bool MarketProjection::operator==(const MarketProjection& other) const {
     return value == other.value;
 }
 
+bool MarketProjection::operator!=(const MarketProjection& other) const {
+    return value != other.value;
+}
+
 }
 

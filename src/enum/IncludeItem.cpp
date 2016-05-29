@@ -40,5 +40,9 @@ bool IncludeItem::operator==(const IncludeItem& other) const {
     return value == other.value;
 }
 
+bool IncludeItem::operator!=(const IncludeItem& other) const {
+    return value != other.value;
+}
+
 }
 

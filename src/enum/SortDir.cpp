@@ -36,5 +36,9 @@ bool SortDir::operator==(const SortDir& other) const {
     return value == other.value;
 }
 
+bool SortDir::operator!=(const SortDir& other) const {
+    return value != other.value;
+}
+
 }
 

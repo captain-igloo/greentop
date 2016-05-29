@@ -38,5 +38,9 @@ bool OrderType::operator==(const OrderType& other) const {
     return value == other.value;
 }
 
+bool OrderType::operator!=(const OrderType& other) const {
+    return value != other.value;
+}
+
 }
 

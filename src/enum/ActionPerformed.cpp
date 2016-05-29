@@ -44,5 +44,9 @@ bool ActionPerformed::operator==(const ActionPerformed& other) const {
     return value == other.value;
 }
 
+bool ActionPerformed::operator!=(const ActionPerformed& other) const {
+    return value != other.value;
+}
+
 }
 

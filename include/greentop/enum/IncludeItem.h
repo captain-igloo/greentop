@@ -28,6 +28,8 @@ class IncludeItem : public Enum<IncludeItem> {
         bool operator<(const IncludeItem& other) const;
 
         bool operator==(const IncludeItem& other) const;
+
+		bool operator!=(const IncludeItem& other) const;
 };
 
 }

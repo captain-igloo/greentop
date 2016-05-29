@@ -25,6 +25,8 @@ class Status : public Enum<Status> {
         bool operator<(const Status& other) const;
 
         bool operator==(const Status& other) const;
+
+		bool operator!=(const Status& other) const;
 };
 
 }

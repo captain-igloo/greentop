@@ -36,5 +36,9 @@ bool Side::operator==(const Side& other) const {
     return value == other.value;
 }
 
+bool Side::operator!=(const Side& other) const {
+    return value != other.value;
+}
+
 }
 

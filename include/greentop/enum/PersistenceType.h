@@ -27,6 +27,8 @@ class PersistenceType : public Enum<PersistenceType> {
         bool operator<(const PersistenceType& other) const;
 
         bool operator==(const PersistenceType& other) const;
+
+		bool operator!=(const PersistenceType& other) const;
 };
 
 }

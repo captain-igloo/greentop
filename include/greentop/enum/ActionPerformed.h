@@ -30,6 +30,8 @@ class ActionPerformed : public Enum<ActionPerformed> {
         bool operator<(const ActionPerformed& other) const;
 
         bool operator==(const ActionPerformed& other) const;
+
+		bool operator!=(const ActionPerformed& other) const;
 };
 
 }

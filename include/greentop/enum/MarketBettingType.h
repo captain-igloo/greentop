@@ -30,6 +30,8 @@ class MarketBettingType : public Enum<MarketBettingType> {
         bool operator<(const MarketBettingType& other) const;
 
         bool operator==(const MarketBettingType& other) const;
+
+		bool operator!=(const MarketBettingType& other) const;
 };
 
 }

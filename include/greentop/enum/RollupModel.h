@@ -28,6 +28,8 @@ class RollupModel : public Enum<RollupModel> {
         bool operator<(const RollupModel& other) const;
 
         bool operator==(const RollupModel& other) const;
+
+		bool operator!=(const RollupModel& other) const;
 };
 
 }

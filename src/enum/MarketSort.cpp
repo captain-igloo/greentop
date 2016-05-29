@@ -44,5 +44,9 @@ bool MarketSort::operator==(const MarketSort& other) const {
     return value == other.value;
 }
 
+bool MarketSort::operator!=(const MarketSort& other) const {
+    return value != other.value;
+}
+
 }
 

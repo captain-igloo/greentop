@@ -35,6 +35,8 @@ class InstructionReportErrorCode : public Enum<InstructionReportErrorCode> {
         bool operator<(const InstructionReportErrorCode& other) const;
 
         bool operator==(const InstructionReportErrorCode& other) const;
+
+		bool operator!=(const InstructionReportErrorCode& other) const;
 };
 
 }

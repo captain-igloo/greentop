@@ -42,5 +42,9 @@ bool SubscriptionStatus::operator==(const SubscriptionStatus& other) const {
     return value == other.value;
 }
 
+bool SubscriptionStatus::operator!=(const SubscriptionStatus& other) const {
+    return value != other.value;
+}
+
 }
 

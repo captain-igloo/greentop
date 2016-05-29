@@ -54,5 +54,9 @@ bool InstructionReportErrorCode::operator==(const InstructionReportErrorCode& ot
     return value == other.value;
 }
 
+bool InstructionReportErrorCode::operator!=(const InstructionReportErrorCode& other) const {
+    return value != other.value;
+}
+
 }
 

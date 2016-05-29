@@ -66,5 +66,9 @@ bool ExecutionReportErrorCode::operator==(const ExecutionReportErrorCode& other)
     return value == other.value;
 }
 
+bool ExecutionReportErrorCode::operator!=(const ExecutionReportErrorCode& other) const {
+    return value != other.value;
+}
+
 }
 

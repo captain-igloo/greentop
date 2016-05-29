@@ -44,5 +44,9 @@ bool RunnerStatus::operator==(const RunnerStatus& other) const {
     return value == other.value;
 }
 
+bool RunnerStatus::operator!=(const RunnerStatus& other) const {
+    return value != other.value;
+}
+
 }
 

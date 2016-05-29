@@ -38,5 +38,9 @@ bool MatchProjection::operator==(const MatchProjection& other) const {
     return value == other.value;
 }
 
+bool MatchProjection::operator!=(const MatchProjection& other) const {
+    return value != other.value;
+}
+
 }
 

@@ -38,5 +38,9 @@ bool PersistenceType::operator==(const PersistenceType& other) const {
     return value == other.value;
 }
 
+bool PersistenceType::operator!=(const PersistenceType& other) const {
+    return value != other.value;
+}
+
 }
 

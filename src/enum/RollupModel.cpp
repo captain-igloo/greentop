@@ -40,5 +40,9 @@ bool RollupModel::operator==(const RollupModel& other) const {
     return value == other.value;
 }
 
+bool RollupModel::operator!=(const RollupModel& other) const {
+    return value != other.value;
+}
+
 }
 

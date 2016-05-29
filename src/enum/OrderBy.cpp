@@ -44,5 +44,9 @@ bool OrderBy::operator==(const OrderBy& other) const {
     return value == other.value;
 }
 
+bool OrderBy::operator!=(const OrderBy& other) const {
+    return value != other.value;
+}
+
 }
 

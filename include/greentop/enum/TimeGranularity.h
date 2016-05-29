@@ -27,6 +27,8 @@ class TimeGranularity : public Enum<TimeGranularity> {
         bool operator<(const TimeGranularity& other) const;
 
         bool operator==(const TimeGranularity& other) const;
+
+		bool operator!=(const TimeGranularity& other) const;
 };
 
 }

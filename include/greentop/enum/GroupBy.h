@@ -29,6 +29,8 @@ class GroupBy : public Enum<GroupBy> {
         bool operator<(const GroupBy& other) const;
 
         bool operator==(const GroupBy& other) const;
+
+		bool operator!=(const GroupBy& other) const;
 };
 
 }

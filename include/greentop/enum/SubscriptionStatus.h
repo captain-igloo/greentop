@@ -29,6 +29,8 @@ class SubscriptionStatus : public Enum<SubscriptionStatus> {
         bool operator<(const SubscriptionStatus& other) const;
 
         bool operator==(const SubscriptionStatus& other) const;
+
+		bool operator!=(const SubscriptionStatus& other) const;
 };
 
 }

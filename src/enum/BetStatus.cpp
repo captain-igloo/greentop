@@ -40,5 +40,9 @@ bool BetStatus::operator==(const BetStatus& other) const {
     return value == other.value;
 }
 
+bool BetStatus::operator!=(const BetStatus& other) const {
+    return value != other.value;
+}
+
 }
 

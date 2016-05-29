@@ -27,6 +27,8 @@ class InstructionReportStatus : public Enum<InstructionReportStatus> {
         bool operator<(const InstructionReportStatus& other) const;
 
         bool operator==(const InstructionReportStatus& other) const;
+
+		bool operator!=(const InstructionReportStatus& other) const;
 };
 
 }

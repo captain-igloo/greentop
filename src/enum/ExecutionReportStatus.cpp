@@ -40,5 +40,9 @@ bool ExecutionReportStatus::operator==(const ExecutionReportStatus& other) const
     return value == other.value;
 }
 
+bool ExecutionReportStatus::operator!=(const ExecutionReportStatus& other) const {
+    return value != other.value;
+}
+
 }
 

@@ -41,6 +41,8 @@ class ExecutionReportErrorCode : public Enum<ExecutionReportErrorCode> {
         bool operator<(const ExecutionReportErrorCode& other) const;
 
         bool operator==(const ExecutionReportErrorCode& other) const;
+
+		bool operator!=(const ExecutionReportErrorCode& other) const;
 };
 
 }

@@ -42,5 +42,9 @@ bool GroupBy::operator==(const GroupBy& other) const {
     return value == other.value;
 }
 
+bool GroupBy::operator!=(const GroupBy& other) const {
+    return value != other.value;
+}
+
 }
 

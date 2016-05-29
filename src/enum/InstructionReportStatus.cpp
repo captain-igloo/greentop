@@ -38,5 +38,9 @@ bool InstructionReportStatus::operator==(const InstructionReportStatus& other) c
     return value == other.value;
 }
 
+bool InstructionReportStatus::operator!=(const InstructionReportStatus& other) const {
+    return value != other.value;
+}
+
 }
 
