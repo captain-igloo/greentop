@@ -30,9 +30,11 @@ void Node::fromJson(const Json::Value& json) {
     }
 
     exchangeId = -1;
+    exchange = Exchange::UNKNOWN;
     if (json.isMember("exchangeId")) {
         std::string id = json["exchangeId"].asString();
         exchangeId = atoi(id.c_str());
+        exchange = static_cast<Exchange>(exchangeId);
     }
 
     numberOfWinners = 0;
@@ -89,6 +91,10 @@ const Node::Type Node::getType() const {
 
 const unsigned Node::getExchangeId() const {
     return exchangeId;
+}
+
+const Exchange Node::getExchange() const {
+    return exchange;
 }
 
 const unsigned Node::getNumberOfWinners() const {

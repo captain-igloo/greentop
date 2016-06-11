@@ -10,6 +10,8 @@
 #include <list>
 #include <string>
 
+#include "greentop/Exchange.h"
+
 namespace greentop {
 namespace menu {
 
@@ -31,6 +33,7 @@ class Node {
         const Node::Type getType() const;
         const std::list<Node>& getChildren() const;
         const unsigned getExchangeId() const;
+        const Exchange getExchange() const;
         const unsigned getNumberOfWinners() const;
         const std::tm& getMarketStartTime() const;
         bool hasParent() const;
@@ -42,6 +45,7 @@ class Node {
         std::string name;
         Node::Type type;
         unsigned exchangeId;
+        Exchange exchange;
         unsigned numberOfWinners;
         std::tm marketStartTime;
 

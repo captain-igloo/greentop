@@ -61,12 +61,10 @@
 #include "greentop/betting/ReplaceOrdersRequest.h"
 #include "greentop/betting/TransferFundsRequest.h"
 #include "greentop/betting/TransferResponse.h"
-
 #include "greentop/curl/SList.h"
-
+#include "greentop/Exchange.h"
 #include "greentop/heartbeat/HeartbeatReport.h"
 #include "greentop/heartbeat/HeartbeatRequest.h"
-
 #include "greentop/menu/Menu.h"
 
 namespace greentop {
@@ -76,7 +74,6 @@ class ExchangeApi {
     public:
 
         enum class Api {ACCOUNT, BETTING, HEARTBEAT};
-        enum class Exchange { UK = 1, AUS = 2};
 
         ExchangeApi(const std::string& applicationKey = "");
 
