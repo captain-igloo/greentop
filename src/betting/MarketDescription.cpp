@@ -5,23 +5,23 @@
 #include "greentop/betting/MarketDescription.h"
 
 namespace greentop {
-MarketDescription::MarketDescription()  : marketBaseRate(-1){
+MarketDescription::MarketDescription()  : persistenceEnabled(0), bspMarket(0), turnInPlayEnabled(0), marketBaseRate(-1), discountAllowed(0){
 }
 
-MarketDescription::MarketDescription(const BoolJsonMember& persistenceEnabled,
-    const BoolJsonMember& bspMarket,
+MarketDescription::MarketDescription(const bool persistenceEnabled,
+    const bool bspMarket,
     const std::tm& marketTime,
     const std::tm& suspendTime,
     const std::tm& settleTime,
     const MarketBettingType& bettingType,
-    const BoolJsonMember& turnInPlayEnabled,
+    const bool turnInPlayEnabled,
     const std::string& marketType,
     const std::string& regulator,
     const double marketBaseRate,
-    const BoolJsonMember& discountAllowed,
+    const bool discountAllowed,
     const std::string& wallet,
     const std::string& rules,
-    const BoolJsonMember& rulesHasDate,
+    const Optional<bool>& rulesHasDate,
     const std::string& clarifications) :
     persistenceEnabled(persistenceEnabled),
     bspMarket(bspMarket),
@@ -42,10 +42,10 @@ MarketDescription::MarketDescription(const BoolJsonMember& persistenceEnabled,
 
 void MarketDescription::fromJson(const Json::Value& json) {
     if (json.isMember("persistenceEnabled")) {
-        persistenceEnabled.fromJson(json["persistenceEnabled"]);
+        persistenceEnabled = json["persistenceEnabled"].asBool();
     }
     if (json.isMember("bspMarket")) {
-        bspMarket.fromJson(json["bspMarket"]);
+        bspMarket = json["bspMarket"].asBool();
     }
     if (json.isMember("marketTime")) {
         strptime(json["marketTime"].asString().c_str(), "%Y-%m-%dT%H:%M:%S.000Z", &marketTime);
@@ -60,7 +60,7 @@ void MarketDescription::fromJson(const Json::Value& json) {
         bettingType = json["bettingType"].asString();
     }
     if (json.isMember("turnInPlayEnabled")) {
-        turnInPlayEnabled.fromJson(json["turnInPlayEnabled"]);
+        turnInPlayEnabled = json["turnInPlayEnabled"].asBool();
     }
     if (json.isMember("marketType")) {
         marketType = json["marketType"].asString();
@@ -72,7 +72,7 @@ void MarketDescription::fromJson(const Json::Value& json) {
         marketBaseRate = json["marketBaseRate"].asDouble();
     }
     if (json.isMember("discountAllowed")) {
-        discountAllowed.fromJson(json["discountAllowed"]);
+        discountAllowed = json["discountAllowed"].asBool();
     }
     if (json.isMember("wallet")) {
         wallet = json["wallet"].asString();
@@ -90,12 +90,8 @@ void MarketDescription::fromJson(const Json::Value& json) {
 
 Json::Value MarketDescription::toJson() const {
     Json::Value json(Json::objectValue);
-    if (persistenceEnabled.isValid()) {
-        json["persistenceEnabled"] = persistenceEnabled.toJson();
-    }
-    if (bspMarket.isValid()) {
-        json["bspMarket"] = bspMarket.toJson();
-    }
+    json["persistenceEnabled"] = persistenceEnabled;
+    json["bspMarket"] = bspMarket;
     if (marketTime.tm_year > 0) {
         char buffer[25];
         strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &marketTime);
@@ -114,21 +110,15 @@ Json::Value MarketDescription::toJson() const {
     if (bettingType.isValid()) {
         json["bettingType"] = bettingType.getValue();
     }
-    if (turnInPlayEnabled.isValid()) {
-        json["turnInPlayEnabled"] = turnInPlayEnabled.toJson();
-    }
+    json["turnInPlayEnabled"] = turnInPlayEnabled;
     if (marketType != "") {
         json["marketType"] = marketType;
     }
     if (regulator != "") {
         json["regulator"] = regulator;
     }
-    if (marketBaseRate >= 0) {
-        json["marketBaseRate"] = marketBaseRate;
-    }
-    if (discountAllowed.isValid()) {
-        json["discountAllowed"] = discountAllowed.toJson();
-    }
+    json["marketBaseRate"] = marketBaseRate;
+    json["discountAllowed"] = discountAllowed;
     if (wallet != "") {
         json["wallet"] = wallet;
     }
@@ -145,20 +135,20 @@ Json::Value MarketDescription::toJson() const {
 }
 
 bool MarketDescription::isValid() const {
-    return persistenceEnabled.isValid() && bspMarket.isValid() && marketTime.tm_year > 0 && suspendTime.tm_year > 0 && settleTime.tm_year > 0 && bettingType.isValid() && turnInPlayEnabled.isValid() && marketType != "" && regulator != "" && marketBaseRate >= 0 && discountAllowed.isValid();
+    return true && true && marketTime.tm_year > 0 && suspendTime.tm_year > 0 && bettingType.isValid() && true && marketType != "" && regulator != "" && true && true;
 }
 
-const BoolJsonMember& MarketDescription::getPersistenceEnabled() const {
+const bool MarketDescription::getPersistenceEnabled() const {
     return persistenceEnabled;
 }
-void MarketDescription::setPersistenceEnabled(const BoolJsonMember& persistenceEnabled) {
+void MarketDescription::setPersistenceEnabled(const bool persistenceEnabled) {
     this->persistenceEnabled = persistenceEnabled;
 }
 
-const BoolJsonMember& MarketDescription::getBspMarket() const {
+const bool MarketDescription::getBspMarket() const {
     return bspMarket;
 }
-void MarketDescription::setBspMarket(const BoolJsonMember& bspMarket) {
+void MarketDescription::setBspMarket(const bool bspMarket) {
     this->bspMarket = bspMarket;
 }
 
@@ -190,10 +180,10 @@ void MarketDescription::setBettingType(const MarketBettingType& bettingType) {
     this->bettingType = bettingType;
 }
 
-const BoolJsonMember& MarketDescription::getTurnInPlayEnabled() const {
+const bool MarketDescription::getTurnInPlayEnabled() const {
     return turnInPlayEnabled;
 }
-void MarketDescription::setTurnInPlayEnabled(const BoolJsonMember& turnInPlayEnabled) {
+void MarketDescription::setTurnInPlayEnabled(const bool turnInPlayEnabled) {
     this->turnInPlayEnabled = turnInPlayEnabled;
 }
 
@@ -218,10 +208,10 @@ void MarketDescription::setMarketBaseRate(const double marketBaseRate) {
     this->marketBaseRate = marketBaseRate;
 }
 
-const BoolJsonMember& MarketDescription::getDiscountAllowed() const {
+const bool MarketDescription::getDiscountAllowed() const {
     return discountAllowed;
 }
-void MarketDescription::setDiscountAllowed(const BoolJsonMember& discountAllowed) {
+void MarketDescription::setDiscountAllowed(const bool discountAllowed) {
     this->discountAllowed = discountAllowed;
 }
 
@@ -239,10 +229,10 @@ void MarketDescription::setRules(const std::string& rules) {
     this->rules = rules;
 }
 
-const BoolJsonMember& MarketDescription::getRulesHasDate() const {
+const Optional<bool>& MarketDescription::getRulesHasDate() const {
     return rulesHasDate;
 }
-void MarketDescription::setRulesHasDate(const BoolJsonMember& rulesHasDate) {
+void MarketDescription::setRulesHasDate(const Optional<bool>& rulesHasDate) {
     this->rulesHasDate = rulesHasDate;
 }
 

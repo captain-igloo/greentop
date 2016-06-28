@@ -8,8 +8,8 @@ namespace greentop {
 
 PriceProjection::PriceProjection(const std::set<PriceData>& priceData,
     const ExBestOffersOverrides& exBestOffersOverrides,
-    const BoolJsonMember& virtualise,
-    const BoolJsonMember& rolloverStakes) :
+    const Optional<bool>& virtualise,
+    const Optional<bool>& rolloverStakes) :
     priceData(priceData),
     exBestOffersOverrides(exBestOffersOverrides),
     virtualise(virtualise),
@@ -71,17 +71,17 @@ void PriceProjection::setExBestOffersOverrides(const ExBestOffersOverrides& exBe
     this->exBestOffersOverrides = exBestOffersOverrides;
 }
 
-const BoolJsonMember& PriceProjection::getVirtualise() const {
+const Optional<bool>& PriceProjection::getVirtualise() const {
     return virtualise;
 }
-void PriceProjection::setVirtualise(const BoolJsonMember& virtualise) {
+void PriceProjection::setVirtualise(const Optional<bool>& virtualise) {
     this->virtualise = virtualise;
 }
 
-const BoolJsonMember& PriceProjection::getRolloverStakes() const {
+const Optional<bool>& PriceProjection::getRolloverStakes() const {
     return rolloverStakes;
 }
-void PriceProjection::setRolloverStakes(const BoolJsonMember& rolloverStakes) {
+void PriceProjection::setRolloverStakes(const Optional<bool>& rolloverStakes) {
     this->rolloverStakes = rolloverStakes;
 }
 

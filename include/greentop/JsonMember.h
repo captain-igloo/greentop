@@ -1,7 +1,6 @@
 /**
  * Copyright 2015 Colin Doig.  Distributed under the MIT license.
  */
-
 #ifndef JSONMEMBER_H
 #define JSONMEMBER_H
 
@@ -19,7 +18,6 @@ class JsonMember {
         virtual void fromJson(const Json::Value& json) = 0;
         virtual Json::Value toJson() const = 0;
         virtual std::string toString() const;
-        virtual ~JsonMember();
 
     protected:
         bool valid;

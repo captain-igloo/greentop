@@ -8,8 +8,8 @@
 #include <json/json.h>
 #include <set>
 
-#include "greentop/BoolJsonMember.h"
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 #include "greentop/betting/ExBestOffersOverrides.h"
 #include "greentop/enum/PriceData.h"
 
@@ -20,8 +20,8 @@ class PriceProjection : public JsonMember {
 
         PriceProjection(const std::set<PriceData>& priceData = std::set<PriceData>(),
             const ExBestOffersOverrides& exBestOffersOverrides = ExBestOffersOverrides(),
-            const BoolJsonMember& virtualise = BoolJsonMember(),
-            const BoolJsonMember& rolloverStakes = BoolJsonMember());
+            const Optional<bool>& virtualise = Optional<bool>(),
+            const Optional<bool>& rolloverStakes = Optional<bool>());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -35,18 +35,18 @@ class PriceProjection : public JsonMember {
         const ExBestOffersOverrides& getExBestOffersOverrides() const;
         void setExBestOffersOverrides(const ExBestOffersOverrides& exBestOffersOverrides);
 
-        const BoolJsonMember& getVirtualise() const;
-        void setVirtualise(const BoolJsonMember& virtualise);
+        const Optional<bool>& getVirtualise() const;
+        void setVirtualise(const Optional<bool>& virtualise);
 
-        const BoolJsonMember& getRolloverStakes() const;
-        void setRolloverStakes(const BoolJsonMember& rolloverStakes);
+        const Optional<bool>& getRolloverStakes() const;
+        void setRolloverStakes(const Optional<bool>& rolloverStakes);
 
 
     private:
         std::set<PriceData> priceData;
         ExBestOffersOverrides exBestOffersOverrides;
-        BoolJsonMember virtualise;
-        BoolJsonMember rolloverStakes;
+        Optional<bool> virtualise;
+        Optional<bool> rolloverStakes;
 };
 
 }

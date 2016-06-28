@@ -8,7 +8,6 @@
 #include <json/json.h>
 #include <vector>
 
-#include "greentop/BoolJsonMember.h"
 #include "greentop/JsonResponse.h"
 #include "greentop/betting/ClearedOrderSummary.h"
 
@@ -19,7 +18,7 @@ class ClearedOrderSummaryReport : public JsonResponse {
         ClearedOrderSummaryReport();
 
         ClearedOrderSummaryReport(const std::vector<ClearedOrderSummary>& clearedOrders,
-            const BoolJsonMember& moreAvailable);
+            const bool moreAvailable);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -30,13 +29,13 @@ class ClearedOrderSummaryReport : public JsonResponse {
         const std::vector<ClearedOrderSummary>& getClearedOrders() const;
         void setClearedOrders(const std::vector<ClearedOrderSummary>& clearedOrders);
 
-        const BoolJsonMember& getMoreAvailable() const;
-        void setMoreAvailable(const BoolJsonMember& moreAvailable);
+        const bool getMoreAvailable() const;
+        void setMoreAvailable(const bool moreAvailable);
 
 
     private:
         std::vector<ClearedOrderSummary> clearedOrders;
-        BoolJsonMember moreAvailable;
+        bool moreAvailable;
 };
 
 }

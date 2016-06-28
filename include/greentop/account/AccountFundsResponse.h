@@ -8,17 +8,18 @@
 #include <json/json.h>
 
 #include "greentop/JsonResponse.h"
+#include "greentop/Optional.h"
 
 namespace greentop {
 
 class AccountFundsResponse : public JsonResponse {
     public:
 
-        AccountFundsResponse(const double availableToBetBalance = -1,
-            const double exposure = -1,
-            const double retainedCommission = -1,
-            const double exposureLimit = -1,
-            const double discountRate = -1,
+        AccountFundsResponse(const Optional<double>& availableToBetBalance = Optional<double>(),
+            const Optional<double>& exposure = Optional<double>(),
+            const Optional<double>& retainedCommission = Optional<double>(),
+            const Optional<double>& exposureLimit = Optional<double>(),
+            const Optional<double>& discountRate = Optional<double>(),
             const uint64_t pointsBalance = 0);
 
         virtual void fromJson(const Json::Value& json);
@@ -27,31 +28,31 @@ class AccountFundsResponse : public JsonResponse {
 
         virtual bool isValid() const;
 
-        const double getAvailableToBetBalance() const;
-        void setAvailableToBetBalance(const double availableToBetBalance);
+        const Optional<double>& getAvailableToBetBalance() const;
+        void setAvailableToBetBalance(const Optional<double>& availableToBetBalance);
 
-        const double getExposure() const;
-        void setExposure(const double exposure);
+        const Optional<double>& getExposure() const;
+        void setExposure(const Optional<double>& exposure);
 
-        const double getRetainedCommission() const;
-        void setRetainedCommission(const double retainedCommission);
+        const Optional<double>& getRetainedCommission() const;
+        void setRetainedCommission(const Optional<double>& retainedCommission);
 
-        const double getExposureLimit() const;
-        void setExposureLimit(const double exposureLimit);
+        const Optional<double>& getExposureLimit() const;
+        void setExposureLimit(const Optional<double>& exposureLimit);
 
-        const double getDiscountRate() const;
-        void setDiscountRate(const double discountRate);
+        const Optional<double>& getDiscountRate() const;
+        void setDiscountRate(const Optional<double>& discountRate);
 
         const uint64_t getPointsBalance() const;
         void setPointsBalance(const uint64_t pointsBalance);
 
 
     private:
-        double availableToBetBalance;
-        double exposure;
-        double retainedCommission;
-        double exposureLimit;
-        double discountRate;
+        Optional<double> availableToBetBalance;
+        Optional<double> exposure;
+        Optional<double> retainedCommission;
+        Optional<double> exposureLimit;
+        Optional<double> discountRate;
         uint64_t pointsBalance;
 };
 

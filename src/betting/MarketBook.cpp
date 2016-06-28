@@ -5,24 +5,24 @@
 #include "greentop/betting/MarketBook.h"
 
 namespace greentop {
-MarketBook::MarketBook()  : betDelay(-1), numberOfWinners(-1), numberOfRunners(-1), numberOfActiveRunners(-1), totalMatched(-1), totalAvailable(-1), version(0){
+MarketBook::MarketBook()  : isMarketDataDelayed(0), betDelay(-1), numberOfWinners(-1), numberOfRunners(-1), numberOfActiveRunners(-1), version(0){
 }
 
 MarketBook::MarketBook(const std::string& marketId,
-    const BoolJsonMember& isMarketDataDelayed,
+    const bool isMarketDataDelayed,
     const MarketStatus& status,
     const int betDelay,
-    const BoolJsonMember& bspReconciled,
-    const BoolJsonMember& complete,
-    const BoolJsonMember& inplay,
+    const Optional<bool>& bspReconciled,
+    const Optional<bool>& complete,
+    const Optional<bool>& inplay,
     const int numberOfWinners,
     const int numberOfRunners,
     const int numberOfActiveRunners,
     const std::tm& lastMatchTime,
-    const double totalMatched,
-    const double totalAvailable,
-    const BoolJsonMember& crossMatching,
-    const BoolJsonMember& runnersVoidable,
+    const Optional<double>& totalMatched,
+    const Optional<double>& totalAvailable,
+    const Optional<bool>& crossMatching,
+    const Optional<bool>& runnersVoidable,
     const uint64_t version,
     const std::vector<Runner>& runners) :
     marketId(marketId),
@@ -49,7 +49,7 @@ void MarketBook::fromJson(const Json::Value& json) {
         marketId = json["marketId"].asString();
     }
     if (json.isMember("isMarketDataDelayed")) {
-        isMarketDataDelayed.fromJson(json["isMarketDataDelayed"]);
+        isMarketDataDelayed = json["isMarketDataDelayed"].asBool();
     }
     if (json.isMember("status")) {
         status = json["status"].asString();
@@ -79,10 +79,10 @@ void MarketBook::fromJson(const Json::Value& json) {
         strptime(json["lastMatchTime"].asString().c_str(), "%Y-%m-%dT%H:%M:%S.000Z", &lastMatchTime);
     }
     if (json.isMember("totalMatched")) {
-        totalMatched = json["totalMatched"].asDouble();
+        totalMatched.fromJson(json["totalMatched"]);
     }
     if (json.isMember("totalAvailable")) {
-        totalAvailable = json["totalAvailable"].asDouble();
+        totalAvailable.fromJson(json["totalAvailable"]);
     }
     if (json.isMember("crossMatching")) {
         crossMatching.fromJson(json["crossMatching"]);
@@ -107,9 +107,7 @@ Json::Value MarketBook::toJson() const {
     if (marketId != "") {
         json["marketId"] = marketId;
     }
-    if (isMarketDataDelayed.isValid()) {
-        json["isMarketDataDelayed"] = isMarketDataDelayed.toJson();
-    }
+    json["isMarketDataDelayed"] = isMarketDataDelayed;
     if (status.isValid()) {
         json["status"] = status.getValue();
     }
@@ -139,11 +137,11 @@ Json::Value MarketBook::toJson() const {
         strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &lastMatchTime);
         json["lastMatchTime"] = std::string(buffer);
     }
-    if (totalMatched >= 0) {
-        json["totalMatched"] = totalMatched;
+    if (totalMatched.isValid()) {
+        json["totalMatched"] = totalMatched.toJson();
     }
-    if (totalAvailable >= 0) {
-        json["totalAvailable"] = totalAvailable;
+    if (totalAvailable.isValid()) {
+        json["totalAvailable"] = totalAvailable.toJson();
     }
     if (crossMatching.isValid()) {
         json["crossMatching"] = crossMatching.toJson();
@@ -163,7 +161,7 @@ Json::Value MarketBook::toJson() const {
 }
 
 bool MarketBook::isValid() const {
-    return marketId != "" && isMarketDataDelayed.isValid();
+    return marketId != "" && true;
 }
 
 const std::string& MarketBook::getMarketId() const {
@@ -173,10 +171,10 @@ void MarketBook::setMarketId(const std::string& marketId) {
     this->marketId = marketId;
 }
 
-const BoolJsonMember& MarketBook::getIsMarketDataDelayed() const {
+const bool MarketBook::getIsMarketDataDelayed() const {
     return isMarketDataDelayed;
 }
-void MarketBook::setIsMarketDataDelayed(const BoolJsonMember& isMarketDataDelayed) {
+void MarketBook::setIsMarketDataDelayed(const bool isMarketDataDelayed) {
     this->isMarketDataDelayed = isMarketDataDelayed;
 }
 
@@ -194,24 +192,24 @@ void MarketBook::setBetDelay(const int betDelay) {
     this->betDelay = betDelay;
 }
 
-const BoolJsonMember& MarketBook::getBspReconciled() const {
+const Optional<bool>& MarketBook::getBspReconciled() const {
     return bspReconciled;
 }
-void MarketBook::setBspReconciled(const BoolJsonMember& bspReconciled) {
+void MarketBook::setBspReconciled(const Optional<bool>& bspReconciled) {
     this->bspReconciled = bspReconciled;
 }
 
-const BoolJsonMember& MarketBook::getComplete() const {
+const Optional<bool>& MarketBook::getComplete() const {
     return complete;
 }
-void MarketBook::setComplete(const BoolJsonMember& complete) {
+void MarketBook::setComplete(const Optional<bool>& complete) {
     this->complete = complete;
 }
 
-const BoolJsonMember& MarketBook::getInplay() const {
+const Optional<bool>& MarketBook::getInplay() const {
     return inplay;
 }
-void MarketBook::setInplay(const BoolJsonMember& inplay) {
+void MarketBook::setInplay(const Optional<bool>& inplay) {
     this->inplay = inplay;
 }
 
@@ -243,31 +241,31 @@ void MarketBook::setLastMatchTime(const std::tm& lastMatchTime) {
     this->lastMatchTime = lastMatchTime;
 }
 
-const double MarketBook::getTotalMatched() const {
+const Optional<double>& MarketBook::getTotalMatched() const {
     return totalMatched;
 }
-void MarketBook::setTotalMatched(const double totalMatched) {
+void MarketBook::setTotalMatched(const Optional<double>& totalMatched) {
     this->totalMatched = totalMatched;
 }
 
-const double MarketBook::getTotalAvailable() const {
+const Optional<double>& MarketBook::getTotalAvailable() const {
     return totalAvailable;
 }
-void MarketBook::setTotalAvailable(const double totalAvailable) {
+void MarketBook::setTotalAvailable(const Optional<double>& totalAvailable) {
     this->totalAvailable = totalAvailable;
 }
 
-const BoolJsonMember& MarketBook::getCrossMatching() const {
+const Optional<bool>& MarketBook::getCrossMatching() const {
     return crossMatching;
 }
-void MarketBook::setCrossMatching(const BoolJsonMember& crossMatching) {
+void MarketBook::setCrossMatching(const Optional<bool>& crossMatching) {
     this->crossMatching = crossMatching;
 }
 
-const BoolJsonMember& MarketBook::getRunnersVoidable() const {
+const Optional<bool>& MarketBook::getRunnersVoidable() const {
     return runnersVoidable;
 }
-void MarketBook::setRunnersVoidable(const BoolJsonMember& runnersVoidable) {
+void MarketBook::setRunnersVoidable(const Optional<bool>& runnersVoidable) {
     this->runnersVoidable = runnersVoidable;
 }
 

@@ -8,7 +8,6 @@
 #include <json/json.h>
 #include <string>
 
-#include "greentop/BoolJsonMember.h"
 #include "greentop/JsonMember.h"
 
 namespace greentop {
@@ -21,10 +20,10 @@ class DeveloperAppVersion : public JsonMember {
             const uint64_t versionId,
             const std::string& version,
             const std::string& applicationKey,
-            const BoolJsonMember& delayData,
-            const BoolJsonMember& subscriptionRequired,
-            const BoolJsonMember& ownerManaged,
-            const BoolJsonMember& active);
+            const bool delayData,
+            const bool subscriptionRequired,
+            const bool ownerManaged,
+            const bool active);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -44,17 +43,17 @@ class DeveloperAppVersion : public JsonMember {
         const std::string& getApplicationKey() const;
         void setApplicationKey(const std::string& applicationKey);
 
-        const BoolJsonMember& getDelayData() const;
-        void setDelayData(const BoolJsonMember& delayData);
+        const bool getDelayData() const;
+        void setDelayData(const bool delayData);
 
-        const BoolJsonMember& getSubscriptionRequired() const;
-        void setSubscriptionRequired(const BoolJsonMember& subscriptionRequired);
+        const bool getSubscriptionRequired() const;
+        void setSubscriptionRequired(const bool subscriptionRequired);
 
-        const BoolJsonMember& getOwnerManaged() const;
-        void setOwnerManaged(const BoolJsonMember& ownerManaged);
+        const bool getOwnerManaged() const;
+        void setOwnerManaged(const bool ownerManaged);
 
-        const BoolJsonMember& getActive() const;
-        void setActive(const BoolJsonMember& active);
+        const bool getActive() const;
+        void setActive(const bool active);
 
 
     private:
@@ -62,10 +61,10 @@ class DeveloperAppVersion : public JsonMember {
         uint64_t versionId;
         std::string version;
         std::string applicationKey;
-        BoolJsonMember delayData;
-        BoolJsonMember subscriptionRequired;
-        BoolJsonMember ownerManaged;
-        BoolJsonMember active;
+        bool delayData;
+        bool subscriptionRequired;
+        bool ownerManaged;
+        bool active;
 };
 
 }

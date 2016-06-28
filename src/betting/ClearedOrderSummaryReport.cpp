@@ -5,11 +5,11 @@
 #include "greentop/betting/ClearedOrderSummaryReport.h"
 
 namespace greentop {
-ClearedOrderSummaryReport::ClearedOrderSummaryReport() {
+ClearedOrderSummaryReport::ClearedOrderSummaryReport()  : moreAvailable(0){
 }
 
 ClearedOrderSummaryReport::ClearedOrderSummaryReport(const std::vector<ClearedOrderSummary>& clearedOrders,
-    const BoolJsonMember& moreAvailable) :
+    const bool moreAvailable) :
     clearedOrders(clearedOrders),
     moreAvailable(moreAvailable) {
 }
@@ -24,7 +24,7 @@ void ClearedOrderSummaryReport::fromJson(const Json::Value& json) {
             };
         }
         if (json.isMember("moreAvailable")) {
-            moreAvailable.fromJson(json["moreAvailable"]);
+            moreAvailable = json["moreAvailable"].asBool();
         }
     }
 }
@@ -36,14 +36,12 @@ Json::Value ClearedOrderSummaryReport::toJson() const {
             json["clearedOrders"].append(clearedOrders[i].toJson());
         };
     }
-    if (moreAvailable.isValid()) {
-        json["moreAvailable"] = moreAvailable.toJson();
-    }
+    json["moreAvailable"] = moreAvailable;
     return json;
 }
 
 bool ClearedOrderSummaryReport::isValid() const {
-    return clearedOrders.size() > 0 && moreAvailable.isValid();
+    return clearedOrders.size() > 0 && true;
 }
 
 const std::vector<ClearedOrderSummary>& ClearedOrderSummaryReport::getClearedOrders() const {
@@ -53,10 +51,10 @@ void ClearedOrderSummaryReport::setClearedOrders(const std::vector<ClearedOrderS
     this->clearedOrders = clearedOrders;
 }
 
-const BoolJsonMember& ClearedOrderSummaryReport::getMoreAvailable() const {
+const bool ClearedOrderSummaryReport::getMoreAvailable() const {
     return moreAvailable;
 }
-void ClearedOrderSummaryReport::setMoreAvailable(const BoolJsonMember& moreAvailable) {
+void ClearedOrderSummaryReport::setMoreAvailable(const bool moreAvailable) {
     this->moreAvailable = moreAvailable;
 }
 

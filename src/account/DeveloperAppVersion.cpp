@@ -5,17 +5,17 @@
 #include "greentop/account/DeveloperAppVersion.h"
 
 namespace greentop {
-DeveloperAppVersion::DeveloperAppVersion()  : versionId(0){
+DeveloperAppVersion::DeveloperAppVersion()  : versionId(0), delayData(0), subscriptionRequired(0), ownerManaged(0), active(0){
 }
 
 DeveloperAppVersion::DeveloperAppVersion(const std::string& owner,
     const uint64_t versionId,
     const std::string& version,
     const std::string& applicationKey,
-    const BoolJsonMember& delayData,
-    const BoolJsonMember& subscriptionRequired,
-    const BoolJsonMember& ownerManaged,
-    const BoolJsonMember& active) :
+    const bool delayData,
+    const bool subscriptionRequired,
+    const bool ownerManaged,
+    const bool active) :
     owner(owner),
     versionId(versionId),
     version(version),
@@ -40,16 +40,16 @@ void DeveloperAppVersion::fromJson(const Json::Value& json) {
         applicationKey = json["applicationKey"].asString();
     }
     if (json.isMember("delayData")) {
-        delayData.fromJson(json["delayData"]);
+        delayData = json["delayData"].asBool();
     }
     if (json.isMember("subscriptionRequired")) {
-        subscriptionRequired.fromJson(json["subscriptionRequired"]);
+        subscriptionRequired = json["subscriptionRequired"].asBool();
     }
     if (json.isMember("ownerManaged")) {
-        ownerManaged.fromJson(json["ownerManaged"]);
+        ownerManaged = json["ownerManaged"].asBool();
     }
     if (json.isMember("active")) {
-        active.fromJson(json["active"]);
+        active = json["active"].asBool();
     }
 }
 
@@ -67,23 +67,15 @@ Json::Value DeveloperAppVersion::toJson() const {
     if (applicationKey != "") {
         json["applicationKey"] = applicationKey;
     }
-    if (delayData.isValid()) {
-        json["delayData"] = delayData.toJson();
-    }
-    if (subscriptionRequired.isValid()) {
-        json["subscriptionRequired"] = subscriptionRequired.toJson();
-    }
-    if (ownerManaged.isValid()) {
-        json["ownerManaged"] = ownerManaged.toJson();
-    }
-    if (active.isValid()) {
-        json["active"] = active.toJson();
-    }
+    json["delayData"] = delayData;
+    json["subscriptionRequired"] = subscriptionRequired;
+    json["ownerManaged"] = ownerManaged;
+    json["active"] = active;
     return json;
 }
 
 bool DeveloperAppVersion::isValid() const {
-    return owner != "" && versionId > 0 && version != "" && applicationKey != "" && delayData.isValid() && subscriptionRequired.isValid() && ownerManaged.isValid() && active.isValid();
+    return owner != "" && versionId > 0 && version != "" && applicationKey != "" && true && true && true && true;
 }
 
 const std::string& DeveloperAppVersion::getOwner() const {
@@ -114,31 +106,31 @@ void DeveloperAppVersion::setApplicationKey(const std::string& applicationKey) {
     this->applicationKey = applicationKey;
 }
 
-const BoolJsonMember& DeveloperAppVersion::getDelayData() const {
+const bool DeveloperAppVersion::getDelayData() const {
     return delayData;
 }
-void DeveloperAppVersion::setDelayData(const BoolJsonMember& delayData) {
+void DeveloperAppVersion::setDelayData(const bool delayData) {
     this->delayData = delayData;
 }
 
-const BoolJsonMember& DeveloperAppVersion::getSubscriptionRequired() const {
+const bool DeveloperAppVersion::getSubscriptionRequired() const {
     return subscriptionRequired;
 }
-void DeveloperAppVersion::setSubscriptionRequired(const BoolJsonMember& subscriptionRequired) {
+void DeveloperAppVersion::setSubscriptionRequired(const bool subscriptionRequired) {
     this->subscriptionRequired = subscriptionRequired;
 }
 
-const BoolJsonMember& DeveloperAppVersion::getOwnerManaged() const {
+const bool DeveloperAppVersion::getOwnerManaged() const {
     return ownerManaged;
 }
-void DeveloperAppVersion::setOwnerManaged(const BoolJsonMember& ownerManaged) {
+void DeveloperAppVersion::setOwnerManaged(const bool ownerManaged) {
     this->ownerManaged = ownerManaged;
 }
 
-const BoolJsonMember& DeveloperAppVersion::getActive() const {
+const bool DeveloperAppVersion::getActive() const {
     return active;
 }
-void DeveloperAppVersion::setActive(const BoolJsonMember& active) {
+void DeveloperAppVersion::setActive(const bool active) {
     this->active = active;
 }
 

@@ -9,12 +9,12 @@ namespace greentop {
 ExBestOffersOverrides::ExBestOffersOverrides(const int bestPricesDepth,
     const RollupModel& rollupModel,
     const int rollupLimit,
-    const double rollupLiabiityThreshold,
+    const Optional<double>& rollupLiabilityThreshold,
     const int rollupLiabiityFactor) :
     bestPricesDepth(bestPricesDepth),
     rollupModel(rollupModel),
     rollupLimit(rollupLimit),
-    rollupLiabiityThreshold(rollupLiabiityThreshold),
+    rollupLiabilityThreshold(rollupLiabilityThreshold),
     rollupLiabiityFactor(rollupLiabiityFactor) {
 }
 
@@ -28,8 +28,8 @@ void ExBestOffersOverrides::fromJson(const Json::Value& json) {
     if (json.isMember("rollupLimit")) {
         rollupLimit = json["rollupLimit"].asInt();
     }
-    if (json.isMember("rollupLiabiityThreshold")) {
-        rollupLiabiityThreshold = json["rollupLiabiityThreshold"].asDouble();
+    if (json.isMember("rollupLiabilityThreshold")) {
+        rollupLiabilityThreshold.fromJson(json["rollupLiabilityThreshold"]);
     }
     if (json.isMember("rollupLiabiityFactor")) {
         rollupLiabiityFactor = json["rollupLiabiityFactor"].asInt();
@@ -47,8 +47,8 @@ Json::Value ExBestOffersOverrides::toJson() const {
     if (rollupLimit >= 0) {
         json["rollupLimit"] = rollupLimit;
     }
-    if (rollupLiabiityThreshold >= 0) {
-        json["rollupLiabiityThreshold"] = rollupLiabiityThreshold;
+    if (rollupLiabilityThreshold.isValid()) {
+        json["rollupLiabilityThreshold"] = rollupLiabilityThreshold.toJson();
     }
     if (rollupLiabiityFactor >= 0) {
         json["rollupLiabiityFactor"] = rollupLiabiityFactor;
@@ -81,11 +81,11 @@ void ExBestOffersOverrides::setRollupLimit(const int rollupLimit) {
     this->rollupLimit = rollupLimit;
 }
 
-const double ExBestOffersOverrides::getRollupLiabiityThreshold() const {
-    return rollupLiabiityThreshold;
+const Optional<double>& ExBestOffersOverrides::getRollupLiabilityThreshold() const {
+    return rollupLiabilityThreshold;
 }
-void ExBestOffersOverrides::setRollupLiabiityThreshold(const double rollupLiabiityThreshold) {
-    this->rollupLiabiityThreshold = rollupLiabiityThreshold;
+void ExBestOffersOverrides::setRollupLiabilityThreshold(const Optional<double>& rollupLiabilityThreshold) {
+    this->rollupLiabilityThreshold = rollupLiabilityThreshold;
 }
 
 const int ExBestOffersOverrides::getRollupLiabiityFactor() const {

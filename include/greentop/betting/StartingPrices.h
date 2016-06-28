@@ -9,6 +9,7 @@
 #include <vector>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 #include "greentop/betting/PriceSize.h"
 
 namespace greentop {
@@ -16,11 +17,11 @@ namespace greentop {
 class StartingPrices : public JsonMember {
     public:
 
-        StartingPrices(const double nearPrice = -1,
-            const double farPrice = -1,
+        StartingPrices(const Optional<double>& nearPrice = Optional<double>(),
+            const Optional<double>& farPrice = Optional<double>(),
             const std::vector<PriceSize>& backStakeTaken = std::vector<PriceSize>(),
             const std::vector<PriceSize>& layLiabilityTaken = std::vector<PriceSize>(),
-            const double actualSP = -1);
+            const Optional<double>& actualSP = Optional<double>());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -28,11 +29,11 @@ class StartingPrices : public JsonMember {
 
         virtual bool isValid() const;
 
-        const double getNearPrice() const;
-        void setNearPrice(const double nearPrice);
+        const Optional<double>& getNearPrice() const;
+        void setNearPrice(const Optional<double>& nearPrice);
 
-        const double getFarPrice() const;
-        void setFarPrice(const double farPrice);
+        const Optional<double>& getFarPrice() const;
+        void setFarPrice(const Optional<double>& farPrice);
 
         const std::vector<PriceSize>& getBackStakeTaken() const;
         void setBackStakeTaken(const std::vector<PriceSize>& backStakeTaken);
@@ -40,16 +41,16 @@ class StartingPrices : public JsonMember {
         const std::vector<PriceSize>& getLayLiabilityTaken() const;
         void setLayLiabilityTaken(const std::vector<PriceSize>& layLiabilityTaken);
 
-        const double getActualSP() const;
-        void setActualSP(const double actualSP);
+        const Optional<double>& getActualSP() const;
+        void setActualSP(const Optional<double>& actualSP);
 
 
     private:
-        double nearPrice;
-        double farPrice;
+        Optional<double> nearPrice;
+        Optional<double> farPrice;
         std::vector<PriceSize> backStakeTaken;
         std::vector<PriceSize> layLiabilityTaken;
-        double actualSP;
+        Optional<double> actualSP;
 };
 
 }

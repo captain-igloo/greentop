@@ -10,6 +10,7 @@
 #include <vector>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 #include "greentop/betting/ExchangePrices.h"
 #include "greentop/betting/Match.h"
 #include "greentop/betting/Order.h"
@@ -26,8 +27,8 @@ class Runner : public JsonMember {
             const double handicap,
             const RunnerStatus& status,
             const double adjustmentFactor,
-            const double lastPriceTraded = -1,
-            const double totalMatched = -1,
+            const Optional<double>& lastPriceTraded = Optional<double>(),
+            const Optional<double>& totalMatched = Optional<double>(),
             const std::tm& removalDate = std::tm(),
             const StartingPrices& sp = StartingPrices(),
             const ExchangePrices& ex = ExchangePrices(),
@@ -52,11 +53,11 @@ class Runner : public JsonMember {
         const double getAdjustmentFactor() const;
         void setAdjustmentFactor(const double adjustmentFactor);
 
-        const double getLastPriceTraded() const;
-        void setLastPriceTraded(const double lastPriceTraded);
+        const Optional<double>& getLastPriceTraded() const;
+        void setLastPriceTraded(const Optional<double>& lastPriceTraded);
 
-        const double getTotalMatched() const;
-        void setTotalMatched(const double totalMatched);
+        const Optional<double>& getTotalMatched() const;
+        void setTotalMatched(const Optional<double>& totalMatched);
 
         const std::tm& getRemovalDate() const;
         void setRemovalDate(const std::tm& removalDate);
@@ -79,8 +80,8 @@ class Runner : public JsonMember {
         double handicap;
         RunnerStatus status;
         double adjustmentFactor;
-        double lastPriceTraded;
-        double totalMatched;
+        Optional<double> lastPriceTraded;
+        Optional<double> totalMatched;
         std::tm removalDate;
         StartingPrices sp;
         ExchangePrices ex;

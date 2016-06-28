@@ -19,9 +19,6 @@ std::string JsonMember::toString() const {
     return writer.write(toJson());
 }
 
-JsonMember::~JsonMember() {
-}
-
 }
 
 std::ostream& operator<<(std::ostream& os, const greentop::JsonMember& jm) {

@@ -5,12 +5,12 @@
 #include "greentop/betting/RunnerId.h"
 
 namespace greentop {
-RunnerId::RunnerId()  : handicap(-1){
+RunnerId::RunnerId()  : selectionId(0){
 }
 
 RunnerId::RunnerId(const std::string& marketId,
-    const std::string& selectionId,
-    const double handicap) :
+    const uint64_t selectionId,
+    const Optional<double>& handicap) :
     marketId(marketId),
     selectionId(selectionId),
     handicap(handicap) {
@@ -21,10 +21,10 @@ void RunnerId::fromJson(const Json::Value& json) {
         marketId = json["marketId"].asString();
     }
     if (json.isMember("selectionId")) {
-        selectionId = json["selectionId"].asString();
+        selectionId = json["selectionId"].asUInt64();
     }
     if (json.isMember("handicap")) {
-        handicap = json["handicap"].asDouble();
+        handicap.fromJson(json["handicap"]);
     }
 }
 
@@ -33,17 +33,17 @@ Json::Value RunnerId::toJson() const {
     if (marketId != "") {
         json["marketId"] = marketId;
     }
-    if (selectionId != "") {
+    if (selectionId > 0) {
         json["selectionId"] = selectionId;
     }
-    if (handicap >= 0) {
-        json["handicap"] = handicap;
+    if (handicap.isValid()) {
+        json["handicap"] = handicap.toJson();
     }
     return json;
 }
 
 bool RunnerId::isValid() const {
-    return marketId != "" && selectionId != "";
+    return marketId != "" && selectionId > 0;
 }
 
 const std::string& RunnerId::getMarketId() const {
@@ -53,17 +53,17 @@ void RunnerId::setMarketId(const std::string& marketId) {
     this->marketId = marketId;
 }
 
-const std::string& RunnerId::getSelectionId() const {
+const uint64_t RunnerId::getSelectionId() const {
     return selectionId;
 }
-void RunnerId::setSelectionId(const std::string& selectionId) {
+void RunnerId::setSelectionId(const uint64_t selectionId) {
     this->selectionId = selectionId;
 }
 
-const double RunnerId::getHandicap() const {
+const Optional<double>& RunnerId::getHandicap() const {
     return handicap;
 }
-void RunnerId::setHandicap(const double handicap) {
+void RunnerId::setHandicap(const Optional<double>& handicap) {
     this->handicap = handicap;
 }
 

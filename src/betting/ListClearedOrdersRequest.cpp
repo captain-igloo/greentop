@@ -17,7 +17,7 @@ ListClearedOrdersRequest::ListClearedOrdersRequest(const BetStatus& betStatus,
     const Side& side,
     const TimeRange& settledDateRange,
     const GroupBy& groupBy,
-    const BoolJsonMember& includeItemDescription,
+    const Optional<bool>& includeItemDescription,
     const std::string& locale,
     const uint64_t fromRecord,
     const uint64_t recordCount) :
@@ -211,10 +211,10 @@ void ListClearedOrdersRequest::setGroupBy(const GroupBy& groupBy) {
     this->groupBy = groupBy;
 }
 
-const BoolJsonMember& ListClearedOrdersRequest::getIncludeItemDescription() const {
+const Optional<bool>& ListClearedOrdersRequest::getIncludeItemDescription() const {
     return includeItemDescription;
 }
-void ListClearedOrdersRequest::setIncludeItemDescription(const BoolJsonMember& includeItemDescription) {
+void ListClearedOrdersRequest::setIncludeItemDescription(const Optional<bool>& includeItemDescription) {
     this->includeItemDescription = includeItemDescription;
 }
 

@@ -9,9 +9,9 @@ ListMarketProfitAndLossRequest::ListMarketProfitAndLossRequest() {
 }
 
 ListMarketProfitAndLossRequest::ListMarketProfitAndLossRequest(const std::set<std::string>& marketIds,
-    const BoolJsonMember& includeSettledBets,
-    const BoolJsonMember& includeBspBets,
-    const BoolJsonMember& netOfCommission) :
+    const Optional<bool>& includeSettledBets,
+    const Optional<bool>& includeBspBets,
+    const Optional<bool>& netOfCommission) :
     marketIds(marketIds),
     includeSettledBets(includeSettledBets),
     includeBspBets(includeBspBets),
@@ -65,24 +65,24 @@ void ListMarketProfitAndLossRequest::setMarketIds(const std::set<std::string>& m
     this->marketIds = marketIds;
 }
 
-const BoolJsonMember& ListMarketProfitAndLossRequest::getIncludeSettledBets() const {
+const Optional<bool>& ListMarketProfitAndLossRequest::getIncludeSettledBets() const {
     return includeSettledBets;
 }
-void ListMarketProfitAndLossRequest::setIncludeSettledBets(const BoolJsonMember& includeSettledBets) {
+void ListMarketProfitAndLossRequest::setIncludeSettledBets(const Optional<bool>& includeSettledBets) {
     this->includeSettledBets = includeSettledBets;
 }
 
-const BoolJsonMember& ListMarketProfitAndLossRequest::getIncludeBspBets() const {
+const Optional<bool>& ListMarketProfitAndLossRequest::getIncludeBspBets() const {
     return includeBspBets;
 }
-void ListMarketProfitAndLossRequest::setIncludeBspBets(const BoolJsonMember& includeBspBets) {
+void ListMarketProfitAndLossRequest::setIncludeBspBets(const Optional<bool>& includeBspBets) {
     this->includeBspBets = includeBspBets;
 }
 
-const BoolJsonMember& ListMarketProfitAndLossRequest::getNetOfCommission() const {
+const Optional<bool>& ListMarketProfitAndLossRequest::getNetOfCommission() const {
     return netOfCommission;
 }
-void ListMarketProfitAndLossRequest::setNetOfCommission(const BoolJsonMember& netOfCommission) {
+void ListMarketProfitAndLossRequest::setNetOfCommission(const Optional<bool>& netOfCommission) {
     this->netOfCommission = netOfCommission;
 }
 

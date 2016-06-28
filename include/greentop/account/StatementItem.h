@@ -10,6 +10,7 @@
 #include <string>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 #include "greentop/account/StatementLegacyData.h"
 #include "greentop/enum/ItemClass.h"
 
@@ -20,8 +21,8 @@ class StatementItem : public JsonMember {
 
         StatementItem(const std::string& refId = std::string(),
             const std::tm& itemDate = std::tm(),
-            const double amount = -1,
-            const double balance = -1,
+            const Optional<double>& amount = Optional<double>(),
+            const Optional<double>& balance = Optional<double>(),
             const ItemClass& itemClass = ItemClass(),
             const std::map<std::string,std::string>& itemClassData = std::map<std::string,std::string>(),
             const StatementLegacyData& legacyData = StatementLegacyData());
@@ -38,11 +39,11 @@ class StatementItem : public JsonMember {
         const std::tm& getItemDate() const;
         void setItemDate(const std::tm& itemDate);
 
-        const double getAmount() const;
-        void setAmount(const double amount);
+        const Optional<double>& getAmount() const;
+        void setAmount(const Optional<double>& amount);
 
-        const double getBalance() const;
-        void setBalance(const double balance);
+        const Optional<double>& getBalance() const;
+        void setBalance(const Optional<double>& balance);
 
         const ItemClass& getItemClass() const;
         void setItemClass(const ItemClass& itemClass);
@@ -57,8 +58,8 @@ class StatementItem : public JsonMember {
     private:
         std::string refId;
         std::tm itemDate;
-        double amount;
-        double balance;
+        Optional<double> amount;
+        Optional<double> balance;
         ItemClass itemClass;
         std::map<std::string,std::string> itemClassData;
         StatementLegacyData legacyData;

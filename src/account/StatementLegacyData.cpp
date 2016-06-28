@@ -6,15 +6,15 @@
 
 namespace greentop {
 
-StatementLegacyData::StatementLegacyData(const double avgPrice,
-    const double betSize,
+StatementLegacyData::StatementLegacyData(const Optional<double>& avgPrice,
+    const Optional<double>& betSize,
     const std::string& betType,
     const std::string& betCategoryType,
     const std::string& commissionRate,
     const uint64_t eventId,
     const uint64_t eventTypeId,
     const std::string& fullMarketName,
-    const double grossBetAmount,
+    const Optional<double>& grossBetAmount,
     const std::string& marketName,
     const std::string& marketType,
     const std::tm& placedDate,
@@ -46,10 +46,10 @@ StatementLegacyData::StatementLegacyData(const double avgPrice,
 
 void StatementLegacyData::fromJson(const Json::Value& json) {
     if (json.isMember("avgPrice")) {
-        avgPrice = json["avgPrice"].asDouble();
+        avgPrice.fromJson(json["avgPrice"]);
     }
     if (json.isMember("betSize")) {
-        betSize = json["betSize"].asDouble();
+        betSize.fromJson(json["betSize"]);
     }
     if (json.isMember("betType")) {
         betType = json["betType"].asString();
@@ -70,7 +70,7 @@ void StatementLegacyData::fromJson(const Json::Value& json) {
         fullMarketName = json["fullMarketName"].asString();
     }
     if (json.isMember("grossBetAmount")) {
-        grossBetAmount = json["grossBetAmount"].asDouble();
+        grossBetAmount.fromJson(json["grossBetAmount"]);
     }
     if (json.isMember("marketName")) {
         marketName = json["marketName"].asString();
@@ -103,11 +103,11 @@ void StatementLegacyData::fromJson(const Json::Value& json) {
 
 Json::Value StatementLegacyData::toJson() const {
     Json::Value json(Json::objectValue);
-    if (avgPrice >= 0) {
-        json["avgPrice"] = avgPrice;
+    if (avgPrice.isValid()) {
+        json["avgPrice"] = avgPrice.toJson();
     }
-    if (betSize >= 0) {
-        json["betSize"] = betSize;
+    if (betSize.isValid()) {
+        json["betSize"] = betSize.toJson();
     }
     if (betType != "") {
         json["betType"] = betType;
@@ -127,8 +127,8 @@ Json::Value StatementLegacyData::toJson() const {
     if (fullMarketName != "") {
         json["fullMarketName"] = fullMarketName;
     }
-    if (grossBetAmount >= 0) {
-        json["grossBetAmount"] = grossBetAmount;
+    if (grossBetAmount.isValid()) {
+        json["grossBetAmount"] = grossBetAmount.toJson();
     }
     if (marketName != "") {
         json["marketName"] = marketName;
@@ -168,17 +168,17 @@ bool StatementLegacyData::isValid() const {
     return true;
 }
 
-const double StatementLegacyData::getAvgPrice() const {
+const Optional<double>& StatementLegacyData::getAvgPrice() const {
     return avgPrice;
 }
-void StatementLegacyData::setAvgPrice(const double avgPrice) {
+void StatementLegacyData::setAvgPrice(const Optional<double>& avgPrice) {
     this->avgPrice = avgPrice;
 }
 
-const double StatementLegacyData::getBetSize() const {
+const Optional<double>& StatementLegacyData::getBetSize() const {
     return betSize;
 }
-void StatementLegacyData::setBetSize(const double betSize) {
+void StatementLegacyData::setBetSize(const Optional<double>& betSize) {
     this->betSize = betSize;
 }
 
@@ -224,10 +224,10 @@ void StatementLegacyData::setFullMarketName(const std::string& fullMarketName) {
     this->fullMarketName = fullMarketName;
 }
 
-const double StatementLegacyData::getGrossBetAmount() const {
+const Optional<double>& StatementLegacyData::getGrossBetAmount() const {
     return grossBetAmount;
 }
-void StatementLegacyData::setGrossBetAmount(const double grossBetAmount) {
+void StatementLegacyData::setGrossBetAmount(const Optional<double>& grossBetAmount) {
     this->grossBetAmount = grossBetAmount;
 }
 

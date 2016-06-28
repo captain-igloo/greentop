@@ -25,17 +25,13 @@ void PriceSize::fromJson(const Json::Value& json) {
 
 Json::Value PriceSize::toJson() const {
     Json::Value json(Json::objectValue);
-    if (price >= 0) {
-        json["price"] = price;
-    }
-    if (size >= 0) {
-        json["size"] = size;
-    }
+    json["price"] = price;
+    json["size"] = size;
     return json;
 }
 
 bool PriceSize::isValid() const {
-    return price >= 0 && size >= 0;
+    return true && true;
 }
 
 const double PriceSize::getPrice() const {

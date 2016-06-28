@@ -8,8 +8,8 @@
 #include <json/json.h>
 #include <vector>
 
-#include "greentop/BoolJsonMember.h"
 #include "greentop/JsonResponse.h"
+#include "greentop/Optional.h"
 #include "greentop/account/StatementItem.h"
 
 namespace greentop {
@@ -18,7 +18,7 @@ class AccountStatementReport : public JsonResponse {
     public:
 
         AccountStatementReport(const std::vector<StatementItem>& accountStatement = std::vector<StatementItem>(),
-            const BoolJsonMember& moreAvailable = BoolJsonMember());
+            const Optional<bool>& moreAvailable = Optional<bool>());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -29,13 +29,13 @@ class AccountStatementReport : public JsonResponse {
         const std::vector<StatementItem>& getAccountStatement() const;
         void setAccountStatement(const std::vector<StatementItem>& accountStatement);
 
-        const BoolJsonMember& getMoreAvailable() const;
-        void setMoreAvailable(const BoolJsonMember& moreAvailable);
+        const Optional<bool>& getMoreAvailable() const;
+        void setMoreAvailable(const Optional<bool>& moreAvailable);
 
 
     private:
         std::vector<StatementItem> accountStatement;
-        BoolJsonMember moreAvailable;
+        Optional<bool> moreAvailable;
 };
 
 }

@@ -7,7 +7,7 @@
 namespace greentop {
 
 CurrencyRate::CurrencyRate(const std::string& currencyCode,
-    const double rate) :
+    const Optional<double>& rate) :
     currencyCode(currencyCode),
     rate(rate) {
 }
@@ -17,7 +17,7 @@ void CurrencyRate::fromJson(const Json::Value& json) {
         currencyCode = json["currencyCode"].asString();
     }
     if (json.isMember("rate")) {
-        rate = json["rate"].asDouble();
+        rate.fromJson(json["rate"]);
     }
 }
 
@@ -26,8 +26,8 @@ Json::Value CurrencyRate::toJson() const {
     if (currencyCode != "") {
         json["currencyCode"] = currencyCode;
     }
-    if (rate >= 0) {
-        json["rate"] = rate;
+    if (rate.isValid()) {
+        json["rate"] = rate.toJson();
     }
     return json;
 }
@@ -43,10 +43,10 @@ void CurrencyRate::setCurrencyCode(const std::string& currencyCode) {
     this->currencyCode = currencyCode;
 }
 
-const double CurrencyRate::getRate() const {
+const Optional<double>& CurrencyRate::getRate() const {
     return rate;
 }
-void CurrencyRate::setRate(const double rate) {
+void CurrencyRate::setRate(const Optional<double>& rate) {
     this->rate = rate;
 }
 

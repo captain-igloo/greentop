@@ -10,8 +10,8 @@
 #include <string>
 #include <vector>
 
-#include "greentop/BoolJsonMember.h"
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 #include "greentop/betting/Runner.h"
 #include "greentop/enum/MarketStatus.h"
 
@@ -22,20 +22,20 @@ class MarketBook : public JsonMember {
         MarketBook();
 
         MarketBook(const std::string& marketId,
-            const BoolJsonMember& isMarketDataDelayed,
+            const bool isMarketDataDelayed,
             const MarketStatus& status = MarketStatus(),
             const int betDelay = -1,
-            const BoolJsonMember& bspReconciled = BoolJsonMember(),
-            const BoolJsonMember& complete = BoolJsonMember(),
-            const BoolJsonMember& inplay = BoolJsonMember(),
+            const Optional<bool>& bspReconciled = Optional<bool>(),
+            const Optional<bool>& complete = Optional<bool>(),
+            const Optional<bool>& inplay = Optional<bool>(),
             const int numberOfWinners = -1,
             const int numberOfRunners = -1,
             const int numberOfActiveRunners = -1,
             const std::tm& lastMatchTime = std::tm(),
-            const double totalMatched = -1,
-            const double totalAvailable = -1,
-            const BoolJsonMember& crossMatching = BoolJsonMember(),
-            const BoolJsonMember& runnersVoidable = BoolJsonMember(),
+            const Optional<double>& totalMatched = Optional<double>(),
+            const Optional<double>& totalAvailable = Optional<double>(),
+            const Optional<bool>& crossMatching = Optional<bool>(),
+            const Optional<bool>& runnersVoidable = Optional<bool>(),
             const uint64_t version = 0,
             const std::vector<Runner>& runners = std::vector<Runner>());
 
@@ -48,8 +48,8 @@ class MarketBook : public JsonMember {
         const std::string& getMarketId() const;
         void setMarketId(const std::string& marketId);
 
-        const BoolJsonMember& getIsMarketDataDelayed() const;
-        void setIsMarketDataDelayed(const BoolJsonMember& isMarketDataDelayed);
+        const bool getIsMarketDataDelayed() const;
+        void setIsMarketDataDelayed(const bool isMarketDataDelayed);
 
         const MarketStatus& getStatus() const;
         void setStatus(const MarketStatus& status);
@@ -57,14 +57,14 @@ class MarketBook : public JsonMember {
         const int getBetDelay() const;
         void setBetDelay(const int betDelay);
 
-        const BoolJsonMember& getBspReconciled() const;
-        void setBspReconciled(const BoolJsonMember& bspReconciled);
+        const Optional<bool>& getBspReconciled() const;
+        void setBspReconciled(const Optional<bool>& bspReconciled);
 
-        const BoolJsonMember& getComplete() const;
-        void setComplete(const BoolJsonMember& complete);
+        const Optional<bool>& getComplete() const;
+        void setComplete(const Optional<bool>& complete);
 
-        const BoolJsonMember& getInplay() const;
-        void setInplay(const BoolJsonMember& inplay);
+        const Optional<bool>& getInplay() const;
+        void setInplay(const Optional<bool>& inplay);
 
         const int getNumberOfWinners() const;
         void setNumberOfWinners(const int numberOfWinners);
@@ -78,17 +78,17 @@ class MarketBook : public JsonMember {
         const std::tm& getLastMatchTime() const;
         void setLastMatchTime(const std::tm& lastMatchTime);
 
-        const double getTotalMatched() const;
-        void setTotalMatched(const double totalMatched);
+        const Optional<double>& getTotalMatched() const;
+        void setTotalMatched(const Optional<double>& totalMatched);
 
-        const double getTotalAvailable() const;
-        void setTotalAvailable(const double totalAvailable);
+        const Optional<double>& getTotalAvailable() const;
+        void setTotalAvailable(const Optional<double>& totalAvailable);
 
-        const BoolJsonMember& getCrossMatching() const;
-        void setCrossMatching(const BoolJsonMember& crossMatching);
+        const Optional<bool>& getCrossMatching() const;
+        void setCrossMatching(const Optional<bool>& crossMatching);
 
-        const BoolJsonMember& getRunnersVoidable() const;
-        void setRunnersVoidable(const BoolJsonMember& runnersVoidable);
+        const Optional<bool>& getRunnersVoidable() const;
+        void setRunnersVoidable(const Optional<bool>& runnersVoidable);
 
         const uint64_t getVersion() const;
         void setVersion(const uint64_t version);
@@ -99,20 +99,20 @@ class MarketBook : public JsonMember {
 
     private:
         std::string marketId;
-        BoolJsonMember isMarketDataDelayed;
+        bool isMarketDataDelayed;
         MarketStatus status;
         int betDelay;
-        BoolJsonMember bspReconciled;
-        BoolJsonMember complete;
-        BoolJsonMember inplay;
+        Optional<bool> bspReconciled;
+        Optional<bool> complete;
+        Optional<bool> inplay;
         int numberOfWinners;
         int numberOfRunners;
         int numberOfActiveRunners;
         std::tm lastMatchTime;
-        double totalMatched;
-        double totalAvailable;
-        BoolJsonMember crossMatching;
-        BoolJsonMember runnersVoidable;
+        Optional<double> totalMatched;
+        Optional<double> totalAvailable;
+        Optional<bool> crossMatching;
+        Optional<bool> runnersVoidable;
         uint64_t version;
         std::vector<Runner> runners;
 };

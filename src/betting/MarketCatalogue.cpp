@@ -5,14 +5,14 @@
 #include "greentop/betting/MarketCatalogue.h"
 
 namespace greentop {
-MarketCatalogue::MarketCatalogue()  : totalMatched(-1){
+MarketCatalogue::MarketCatalogue() {
 }
 
 MarketCatalogue::MarketCatalogue(const std::string& marketId,
     const std::string& marketName,
     const std::tm& marketStartTime,
     const MarketDescription& description,
-    const double totalMatched,
+    const Optional<double>& totalMatched,
     const std::vector<RunnerCatalog>& runners,
     const EventType& eventType,
     const Competition& competition,
@@ -42,7 +42,7 @@ void MarketCatalogue::fromJson(const Json::Value& json) {
         description.fromJson(json["description"]);
     }
     if (json.isMember("totalMatched")) {
-        totalMatched = json["totalMatched"].asDouble();
+        totalMatched.fromJson(json["totalMatched"]);
     }
     if (json.isMember("runners")) {
         for (unsigned i = 0; i < json["runners"].size(); ++i) {
@@ -78,8 +78,8 @@ Json::Value MarketCatalogue::toJson() const {
     if (description.isValid()) {
         json["description"] = description.toJson();
     }
-    if (totalMatched >= 0) {
-        json["totalMatched"] = totalMatched;
+    if (totalMatched.isValid()) {
+        json["totalMatched"] = totalMatched.toJson();
     }
     if (runners.size() > 0) {
         for (unsigned i = 0; i < runners.size(); ++i) {
@@ -130,10 +130,10 @@ void MarketCatalogue::setDescription(const MarketDescription& description) {
     this->description = description;
 }
 
-const double MarketCatalogue::getTotalMatched() const {
+const Optional<double>& MarketCatalogue::getTotalMatched() const {
     return totalMatched;
 }
-void MarketCatalogue::setTotalMatched(const double totalMatched) {
+void MarketCatalogue::setTotalMatched(const Optional<double>& totalMatched) {
     this->totalMatched = totalMatched;
 }
 

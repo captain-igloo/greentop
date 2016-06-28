@@ -9,6 +9,7 @@
 #include <string>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 
 namespace greentop {
 
@@ -16,7 +17,7 @@ class CurrencyRate : public JsonMember {
     public:
 
         CurrencyRate(const std::string& currencyCode = std::string(),
-            const double rate = -1);
+            const Optional<double>& rate = Optional<double>());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -27,13 +28,13 @@ class CurrencyRate : public JsonMember {
         const std::string& getCurrencyCode() const;
         void setCurrencyCode(const std::string& currencyCode);
 
-        const double getRate() const;
-        void setRate(const double rate);
+        const Optional<double>& getRate() const;
+        void setRate(const Optional<double>& rate);
 
 
     private:
         std::string currencyCode;
-        double rate;
+        Optional<double> rate;
 };
 
 }

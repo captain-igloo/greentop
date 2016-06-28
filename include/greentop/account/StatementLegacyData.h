@@ -10,21 +10,22 @@
 #include <string>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 
 namespace greentop {
 
 class StatementLegacyData : public JsonMember {
     public:
 
-        StatementLegacyData(const double avgPrice = -1,
-            const double betSize = -1,
+        StatementLegacyData(const Optional<double>& avgPrice = Optional<double>(),
+            const Optional<double>& betSize = Optional<double>(),
             const std::string& betType = std::string(),
             const std::string& betCategoryType = std::string(),
             const std::string& commissionRate = std::string(),
             const uint64_t eventId = 0,
             const uint64_t eventTypeId = 0,
             const std::string& fullMarketName = std::string(),
-            const double grossBetAmount = -1,
+            const Optional<double>& grossBetAmount = Optional<double>(),
             const std::string& marketName = std::string(),
             const std::string& marketType = std::string(),
             const std::tm& placedDate = std::tm(),
@@ -41,11 +42,11 @@ class StatementLegacyData : public JsonMember {
 
         virtual bool isValid() const;
 
-        const double getAvgPrice() const;
-        void setAvgPrice(const double avgPrice);
+        const Optional<double>& getAvgPrice() const;
+        void setAvgPrice(const Optional<double>& avgPrice);
 
-        const double getBetSize() const;
-        void setBetSize(const double betSize);
+        const Optional<double>& getBetSize() const;
+        void setBetSize(const Optional<double>& betSize);
 
         const std::string& getBetType() const;
         void setBetType(const std::string& betType);
@@ -65,8 +66,8 @@ class StatementLegacyData : public JsonMember {
         const std::string& getFullMarketName() const;
         void setFullMarketName(const std::string& fullMarketName);
 
-        const double getGrossBetAmount() const;
-        void setGrossBetAmount(const double grossBetAmount);
+        const Optional<double>& getGrossBetAmount() const;
+        void setGrossBetAmount(const Optional<double>& grossBetAmount);
 
         const std::string& getMarketName() const;
         void setMarketName(const std::string& marketName);
@@ -97,15 +98,15 @@ class StatementLegacyData : public JsonMember {
 
 
     private:
-        double avgPrice;
-        double betSize;
+        Optional<double> avgPrice;
+        Optional<double> betSize;
         std::string betType;
         std::string betCategoryType;
         std::string commissionRate;
         uint64_t eventId;
         uint64_t eventTypeId;
         std::string fullMarketName;
-        double grossBetAmount;
+        Optional<double> grossBetAmount;
         std::string marketName;
         std::string marketType;
         std::tm placedDate;

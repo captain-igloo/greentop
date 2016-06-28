@@ -9,8 +9,8 @@
 #include <json/json.h>
 #include <string>
 
-#include "greentop/BoolJsonMember.h"
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 #include "greentop/enum/MarketBettingType.h"
 
 namespace greentop {
@@ -19,20 +19,20 @@ class MarketDescription : public JsonMember {
     public:
         MarketDescription();
 
-        MarketDescription(const BoolJsonMember& persistenceEnabled,
-            const BoolJsonMember& bspMarket,
+        MarketDescription(const bool persistenceEnabled,
+            const bool bspMarket,
             const std::tm& marketTime,
             const std::tm& suspendTime,
-            const std::tm& settleTime,
-            const MarketBettingType& bettingType,
-            const BoolJsonMember& turnInPlayEnabled,
-            const std::string& marketType,
-            const std::string& regulator,
-            const double marketBaseRate,
-            const BoolJsonMember& discountAllowed,
+            const std::tm& settleTime = std::tm(),
+            const MarketBettingType& bettingType = MarketBettingType(),
+            const bool turnInPlayEnabled = false,
+            const std::string& marketType = std::string(),
+            const std::string& regulator = std::string(),
+            const double marketBaseRate = -1,
+            const bool discountAllowed = false,
             const std::string& wallet = std::string(),
             const std::string& rules = std::string(),
-            const BoolJsonMember& rulesHasDate = BoolJsonMember(),
+            const Optional<bool>& rulesHasDate = Optional<bool>(),
             const std::string& clarifications = std::string());
 
         virtual void fromJson(const Json::Value& json);
@@ -41,11 +41,11 @@ class MarketDescription : public JsonMember {
 
         virtual bool isValid() const;
 
-        const BoolJsonMember& getPersistenceEnabled() const;
-        void setPersistenceEnabled(const BoolJsonMember& persistenceEnabled);
+        const bool getPersistenceEnabled() const;
+        void setPersistenceEnabled(const bool persistenceEnabled);
 
-        const BoolJsonMember& getBspMarket() const;
-        void setBspMarket(const BoolJsonMember& bspMarket);
+        const bool getBspMarket() const;
+        void setBspMarket(const bool bspMarket);
 
         const std::tm& getMarketTime() const;
         void setMarketTime(const std::tm& marketTime);
@@ -59,8 +59,8 @@ class MarketDescription : public JsonMember {
         const MarketBettingType& getBettingType() const;
         void setBettingType(const MarketBettingType& bettingType);
 
-        const BoolJsonMember& getTurnInPlayEnabled() const;
-        void setTurnInPlayEnabled(const BoolJsonMember& turnInPlayEnabled);
+        const bool getTurnInPlayEnabled() const;
+        void setTurnInPlayEnabled(const bool turnInPlayEnabled);
 
         const std::string& getMarketType() const;
         void setMarketType(const std::string& marketType);
@@ -71,8 +71,8 @@ class MarketDescription : public JsonMember {
         const double getMarketBaseRate() const;
         void setMarketBaseRate(const double marketBaseRate);
 
-        const BoolJsonMember& getDiscountAllowed() const;
-        void setDiscountAllowed(const BoolJsonMember& discountAllowed);
+        const bool getDiscountAllowed() const;
+        void setDiscountAllowed(const bool discountAllowed);
 
         const std::string& getWallet() const;
         void setWallet(const std::string& wallet);
@@ -80,28 +80,28 @@ class MarketDescription : public JsonMember {
         const std::string& getRules() const;
         void setRules(const std::string& rules);
 
-        const BoolJsonMember& getRulesHasDate() const;
-        void setRulesHasDate(const BoolJsonMember& rulesHasDate);
+        const Optional<bool>& getRulesHasDate() const;
+        void setRulesHasDate(const Optional<bool>& rulesHasDate);
 
         const std::string& getClarifications() const;
         void setClarifications(const std::string& clarifications);
 
 
     private:
-        BoolJsonMember persistenceEnabled;
-        BoolJsonMember bspMarket;
+        bool persistenceEnabled;
+        bool bspMarket;
         std::tm marketTime;
         std::tm suspendTime;
         std::tm settleTime;
         MarketBettingType bettingType;
-        BoolJsonMember turnInPlayEnabled;
+        bool turnInPlayEnabled;
         std::string marketType;
         std::string regulator;
         double marketBaseRate;
-        BoolJsonMember discountAllowed;
+        bool discountAllowed;
         std::string wallet;
         std::string rules;
-        BoolJsonMember rulesHasDate;
+        Optional<bool> rulesHasDate;
         std::string clarifications;
 };
 

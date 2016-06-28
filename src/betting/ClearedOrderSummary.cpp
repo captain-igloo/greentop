@@ -10,22 +10,22 @@ ClearedOrderSummary::ClearedOrderSummary(const std::string& eventTypeId,
     const std::string& eventId,
     const std::string& marketId,
     const uint64_t selectionId,
-    const double handicap,
+    const Optional<double>& handicap,
     const std::string& betId,
     const std::tm& placedDate,
     const PersistenceType& persistenceType,
     const OrderType& orderType,
     const Side& side,
     const ItemDescription& itemDescription,
-    const double priceRequested,
+    const Optional<double>& priceRequested,
     const std::tm& settledDate,
     const uint64_t betCount,
-    const double commission,
-    const double priceMatched,
-    const BoolJsonMember& priceReduced,
-    const double sizeSettled,
-    const double profit,
-    const double sizeCancelled) :
+    const Optional<double>& commission,
+    const Optional<double>& priceMatched,
+    const Optional<bool>& priceReduced,
+    const Optional<double>& sizeSettled,
+    const Optional<double>& profit,
+    const Optional<double>& sizeCancelled) :
     eventTypeId(eventTypeId),
     eventId(eventId),
     marketId(marketId),
@@ -62,7 +62,7 @@ void ClearedOrderSummary::fromJson(const Json::Value& json) {
         selectionId = json["selectionId"].asUInt64();
     }
     if (json.isMember("handicap")) {
-        handicap = json["handicap"].asDouble();
+        handicap.fromJson(json["handicap"]);
     }
     if (json.isMember("betId")) {
         betId = json["betId"].asString();
@@ -83,7 +83,7 @@ void ClearedOrderSummary::fromJson(const Json::Value& json) {
         itemDescription.fromJson(json["itemDescription"]);
     }
     if (json.isMember("priceRequested")) {
-        priceRequested = json["priceRequested"].asDouble();
+        priceRequested.fromJson(json["priceRequested"]);
     }
     if (json.isMember("settledDate")) {
         strptime(json["settledDate"].asString().c_str(), "%Y-%m-%dT%H:%M:%S.000Z", &settledDate);
@@ -92,22 +92,22 @@ void ClearedOrderSummary::fromJson(const Json::Value& json) {
         betCount = json["betCount"].asUInt64();
     }
     if (json.isMember("commission")) {
-        commission = json["commission"].asDouble();
+        commission.fromJson(json["commission"]);
     }
     if (json.isMember("priceMatched")) {
-        priceMatched = json["priceMatched"].asDouble();
+        priceMatched.fromJson(json["priceMatched"]);
     }
     if (json.isMember("priceReduced")) {
         priceReduced.fromJson(json["priceReduced"]);
     }
     if (json.isMember("sizeSettled")) {
-        sizeSettled = json["sizeSettled"].asDouble();
+        sizeSettled.fromJson(json["sizeSettled"]);
     }
     if (json.isMember("profit")) {
-        profit = json["profit"].asDouble();
+        profit.fromJson(json["profit"]);
     }
     if (json.isMember("sizeCancelled")) {
-        sizeCancelled = json["sizeCancelled"].asDouble();
+        sizeCancelled.fromJson(json["sizeCancelled"]);
     }
 }
 
@@ -125,8 +125,8 @@ Json::Value ClearedOrderSummary::toJson() const {
     if (selectionId > 0) {
         json["selectionId"] = selectionId;
     }
-    if (handicap >= 0) {
-        json["handicap"] = handicap;
+    if (handicap.isValid()) {
+        json["handicap"] = handicap.toJson();
     }
     if (betId != "") {
         json["betId"] = betId;
@@ -148,8 +148,8 @@ Json::Value ClearedOrderSummary::toJson() const {
     if (itemDescription.isValid()) {
         json["itemDescription"] = itemDescription.toJson();
     }
-    if (priceRequested >= 0) {
-        json["priceRequested"] = priceRequested;
+    if (priceRequested.isValid()) {
+        json["priceRequested"] = priceRequested.toJson();
     }
     if (settledDate.tm_year > 0) {
         char buffer[25];
@@ -159,23 +159,23 @@ Json::Value ClearedOrderSummary::toJson() const {
     if (betCount > 0) {
         json["betCount"] = betCount;
     }
-    if (commission >= 0) {
-        json["commission"] = commission;
+    if (commission.isValid()) {
+        json["commission"] = commission.toJson();
     }
-    if (priceMatched >= 0) {
-        json["priceMatched"] = priceMatched;
+    if (priceMatched.isValid()) {
+        json["priceMatched"] = priceMatched.toJson();
     }
     if (priceReduced.isValid()) {
         json["priceReduced"] = priceReduced.toJson();
     }
-    if (sizeSettled >= 0) {
-        json["sizeSettled"] = sizeSettled;
+    if (sizeSettled.isValid()) {
+        json["sizeSettled"] = sizeSettled.toJson();
     }
-    if (profit >= 0) {
-        json["profit"] = profit;
+    if (profit.isValid()) {
+        json["profit"] = profit.toJson();
     }
-    if (sizeCancelled >= 0) {
-        json["sizeCancelled"] = sizeCancelled;
+    if (sizeCancelled.isValid()) {
+        json["sizeCancelled"] = sizeCancelled.toJson();
     }
     return json;
 }
@@ -212,10 +212,10 @@ void ClearedOrderSummary::setSelectionId(const uint64_t selectionId) {
     this->selectionId = selectionId;
 }
 
-const double ClearedOrderSummary::getHandicap() const {
+const Optional<double>& ClearedOrderSummary::getHandicap() const {
     return handicap;
 }
-void ClearedOrderSummary::setHandicap(const double handicap) {
+void ClearedOrderSummary::setHandicap(const Optional<double>& handicap) {
     this->handicap = handicap;
 }
 
@@ -261,10 +261,10 @@ void ClearedOrderSummary::setItemDescription(const ItemDescription& itemDescript
     this->itemDescription = itemDescription;
 }
 
-const double ClearedOrderSummary::getPriceRequested() const {
+const Optional<double>& ClearedOrderSummary::getPriceRequested() const {
     return priceRequested;
 }
-void ClearedOrderSummary::setPriceRequested(const double priceRequested) {
+void ClearedOrderSummary::setPriceRequested(const Optional<double>& priceRequested) {
     this->priceRequested = priceRequested;
 }
 
@@ -282,45 +282,45 @@ void ClearedOrderSummary::setBetCount(const uint64_t betCount) {
     this->betCount = betCount;
 }
 
-const double ClearedOrderSummary::getCommission() const {
+const Optional<double>& ClearedOrderSummary::getCommission() const {
     return commission;
 }
-void ClearedOrderSummary::setCommission(const double commission) {
+void ClearedOrderSummary::setCommission(const Optional<double>& commission) {
     this->commission = commission;
 }
 
-const double ClearedOrderSummary::getPriceMatched() const {
+const Optional<double>& ClearedOrderSummary::getPriceMatched() const {
     return priceMatched;
 }
-void ClearedOrderSummary::setPriceMatched(const double priceMatched) {
+void ClearedOrderSummary::setPriceMatched(const Optional<double>& priceMatched) {
     this->priceMatched = priceMatched;
 }
 
-const BoolJsonMember& ClearedOrderSummary::getPriceReduced() const {
+const Optional<bool>& ClearedOrderSummary::getPriceReduced() const {
     return priceReduced;
 }
-void ClearedOrderSummary::setPriceReduced(const BoolJsonMember& priceReduced) {
+void ClearedOrderSummary::setPriceReduced(const Optional<bool>& priceReduced) {
     this->priceReduced = priceReduced;
 }
 
-const double ClearedOrderSummary::getSizeSettled() const {
+const Optional<double>& ClearedOrderSummary::getSizeSettled() const {
     return sizeSettled;
 }
-void ClearedOrderSummary::setSizeSettled(const double sizeSettled) {
+void ClearedOrderSummary::setSizeSettled(const Optional<double>& sizeSettled) {
     this->sizeSettled = sizeSettled;
 }
 
-const double ClearedOrderSummary::getProfit() const {
+const Optional<double>& ClearedOrderSummary::getProfit() const {
     return profit;
 }
-void ClearedOrderSummary::setProfit(const double profit) {
+void ClearedOrderSummary::setProfit(const Optional<double>& profit) {
     this->profit = profit;
 }
 
-const double ClearedOrderSummary::getSizeCancelled() const {
+const Optional<double>& ClearedOrderSummary::getSizeCancelled() const {
     return sizeCancelled;
 }
-void ClearedOrderSummary::setSizeCancelled(const double sizeCancelled) {
+void ClearedOrderSummary::setSizeCancelled(const Optional<double>& sizeCancelled) {
     this->sizeCancelled = sizeCancelled;
 }
 

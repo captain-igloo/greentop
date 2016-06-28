@@ -9,6 +9,7 @@
 #include <string>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 
 namespace greentop {
 
@@ -17,8 +18,8 @@ class RunnerId : public JsonMember {
         RunnerId();
 
         RunnerId(const std::string& marketId,
-            const std::string& selectionId,
-            const double handicap = -1);
+            const uint64_t selectionId,
+            const Optional<double>& handicap = Optional<double>());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -29,17 +30,17 @@ class RunnerId : public JsonMember {
         const std::string& getMarketId() const;
         void setMarketId(const std::string& marketId);
 
-        const std::string& getSelectionId() const;
-        void setSelectionId(const std::string& selectionId);
+        const uint64_t getSelectionId() const;
+        void setSelectionId(const uint64_t selectionId);
 
-        const double getHandicap() const;
-        void setHandicap(const double handicap);
+        const Optional<double>& getHandicap() const;
+        void setHandicap(const Optional<double>& handicap);
 
 
     private:
         std::string marketId;
-        std::string selectionId;
-        double handicap;
+        uint64_t selectionId;
+        Optional<double> handicap;
 };
 
 }

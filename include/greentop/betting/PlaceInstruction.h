@@ -8,6 +8,7 @@
 #include <json/json.h>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 #include "greentop/betting/LimitOnCloseOrder.h"
 #include "greentop/betting/LimitOrder.h"
 #include "greentop/betting/MarketOnCloseOrder.h"
@@ -22,7 +23,7 @@ class PlaceInstruction : public JsonMember {
 
         PlaceInstruction(const OrderType& orderType,
             const uint64_t selectionId,
-            const double handicap = -1,
+            const Optional<double>& handicap = Optional<double>(),
             const Side& side = Side(),
             const LimitOrder& limitOrder = LimitOrder(),
             const LimitOnCloseOrder& limitOnCloseOrder = LimitOnCloseOrder(),
@@ -40,8 +41,8 @@ class PlaceInstruction : public JsonMember {
         const uint64_t getSelectionId() const;
         void setSelectionId(const uint64_t selectionId);
 
-        const double getHandicap() const;
-        void setHandicap(const double handicap);
+        const Optional<double>& getHandicap() const;
+        void setHandicap(const Optional<double>& handicap);
 
         const Side& getSide() const;
         void setSide(const Side& side);
@@ -59,7 +60,7 @@ class PlaceInstruction : public JsonMember {
     private:
         OrderType orderType;
         uint64_t selectionId;
-        double handicap;
+        Optional<double> handicap;
         Side side;
         LimitOrder limitOrder;
         LimitOnCloseOrder limitOnCloseOrder;

@@ -10,6 +10,7 @@
 #include <string>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 #include "greentop/betting/PlaceInstruction.h"
 #include "greentop/enum/InstructionReportErrorCode.h"
 #include "greentop/enum/InstructionReportStatus.h"
@@ -25,8 +26,8 @@ class PlaceInstructionReport : public JsonMember {
             const PlaceInstruction& instruction = PlaceInstruction(),
             const std::string& betId = std::string(),
             const std::tm& placedDate = std::tm(),
-            const double averagePriceMatched = -1,
-            const double sizeMatched = -1);
+            const Optional<double>& averagePriceMatched = Optional<double>(),
+            const Optional<double>& sizeMatched = Optional<double>());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -49,11 +50,11 @@ class PlaceInstructionReport : public JsonMember {
         const std::tm& getPlacedDate() const;
         void setPlacedDate(const std::tm& placedDate);
 
-        const double getAveragePriceMatched() const;
-        void setAveragePriceMatched(const double averagePriceMatched);
+        const Optional<double>& getAveragePriceMatched() const;
+        void setAveragePriceMatched(const Optional<double>& averagePriceMatched);
 
-        const double getSizeMatched() const;
-        void setSizeMatched(const double sizeMatched);
+        const Optional<double>& getSizeMatched() const;
+        void setSizeMatched(const Optional<double>& sizeMatched);
 
 
     private:
@@ -62,8 +63,8 @@ class PlaceInstructionReport : public JsonMember {
         PlaceInstruction instruction;
         std::string betId;
         std::tm placedDate;
-        double averagePriceMatched;
-        double sizeMatched;
+        Optional<double> averagePriceMatched;
+        Optional<double> sizeMatched;
 };
 
 }

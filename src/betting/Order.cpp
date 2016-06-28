@@ -5,7 +5,7 @@
 #include "greentop/betting/Order.h"
 
 namespace greentop {
-Order::Order()  : price(-1), size(-1), bspLiability(-1), avgPriceMatched(-1), sizeMatched(-1), sizeRemaining(-1), sizeLapsed(-1), sizeCancelled(-1), sizeVoided(-1){
+Order::Order()  : price(-1), size(-1), bspLiability(-1){
 }
 
 Order::Order(const std::string& betId,
@@ -17,12 +17,12 @@ Order::Order(const std::string& betId,
     const double size,
     const double bspLiability,
     const std::tm& placedDate,
-    const double avgPriceMatched,
-    const double sizeMatched,
-    const double sizeRemaining,
-    const double sizeLapsed,
-    const double sizeCancelled,
-    const double sizeVoided) :
+    const Optional<double>& avgPriceMatched,
+    const Optional<double>& sizeMatched,
+    const Optional<double>& sizeRemaining,
+    const Optional<double>& sizeLapsed,
+    const Optional<double>& sizeCancelled,
+    const Optional<double>& sizeVoided) :
     betId(betId),
     orderType(orderType),
     status(status),
@@ -69,22 +69,22 @@ void Order::fromJson(const Json::Value& json) {
         strptime(json["placedDate"].asString().c_str(), "%Y-%m-%dT%H:%M:%S.000Z", &placedDate);
     }
     if (json.isMember("avgPriceMatched")) {
-        avgPriceMatched = json["avgPriceMatched"].asDouble();
+        avgPriceMatched.fromJson(json["avgPriceMatched"]);
     }
     if (json.isMember("sizeMatched")) {
-        sizeMatched = json["sizeMatched"].asDouble();
+        sizeMatched.fromJson(json["sizeMatched"]);
     }
     if (json.isMember("sizeRemaining")) {
-        sizeRemaining = json["sizeRemaining"].asDouble();
+        sizeRemaining.fromJson(json["sizeRemaining"]);
     }
     if (json.isMember("sizeLapsed")) {
-        sizeLapsed = json["sizeLapsed"].asDouble();
+        sizeLapsed.fromJson(json["sizeLapsed"]);
     }
     if (json.isMember("sizeCancelled")) {
-        sizeCancelled = json["sizeCancelled"].asDouble();
+        sizeCancelled.fromJson(json["sizeCancelled"]);
     }
     if (json.isMember("sizeVoided")) {
-        sizeVoided = json["sizeVoided"].asDouble();
+        sizeVoided.fromJson(json["sizeVoided"]);
     }
 }
 
@@ -105,43 +105,37 @@ Json::Value Order::toJson() const {
     if (side.isValid()) {
         json["side"] = side.getValue();
     }
-    if (price >= 0) {
-        json["price"] = price;
-    }
-    if (size >= 0) {
-        json["size"] = size;
-    }
-    if (bspLiability >= 0) {
-        json["bspLiability"] = bspLiability;
-    }
+    json["price"] = price;
+    json["size"] = size;
+    json["bspLiability"] = bspLiability;
     if (placedDate.tm_year > 0) {
         char buffer[25];
         strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &placedDate);
         json["placedDate"] = std::string(buffer);
     }
-    if (avgPriceMatched >= 0) {
-        json["avgPriceMatched"] = avgPriceMatched;
+    if (avgPriceMatched.isValid()) {
+        json["avgPriceMatched"] = avgPriceMatched.toJson();
     }
-    if (sizeMatched >= 0) {
-        json["sizeMatched"] = sizeMatched;
+    if (sizeMatched.isValid()) {
+        json["sizeMatched"] = sizeMatched.toJson();
     }
-    if (sizeRemaining >= 0) {
-        json["sizeRemaining"] = sizeRemaining;
+    if (sizeRemaining.isValid()) {
+        json["sizeRemaining"] = sizeRemaining.toJson();
     }
-    if (sizeLapsed >= 0) {
-        json["sizeLapsed"] = sizeLapsed;
+    if (sizeLapsed.isValid()) {
+        json["sizeLapsed"] = sizeLapsed.toJson();
     }
-    if (sizeCancelled >= 0) {
-        json["sizeCancelled"] = sizeCancelled;
+    if (sizeCancelled.isValid()) {
+        json["sizeCancelled"] = sizeCancelled.toJson();
     }
-    if (sizeVoided >= 0) {
-        json["sizeVoided"] = sizeVoided;
+    if (sizeVoided.isValid()) {
+        json["sizeVoided"] = sizeVoided.toJson();
     }
     return json;
 }
 
 bool Order::isValid() const {
-    return betId != "" && orderType.isValid() && status.isValid() && persistenceType.isValid() && side.isValid() && price >= 0 && size >= 0 && bspLiability >= 0 && placedDate.tm_year > 0;
+    return betId != "" && orderType.isValid() && status.isValid() && persistenceType.isValid() && side.isValid() && true && true && true && placedDate.tm_year > 0;
 }
 
 const std::string& Order::getBetId() const {
@@ -207,45 +201,45 @@ void Order::setPlacedDate(const std::tm& placedDate) {
     this->placedDate = placedDate;
 }
 
-const double Order::getAvgPriceMatched() const {
+const Optional<double>& Order::getAvgPriceMatched() const {
     return avgPriceMatched;
 }
-void Order::setAvgPriceMatched(const double avgPriceMatched) {
+void Order::setAvgPriceMatched(const Optional<double>& avgPriceMatched) {
     this->avgPriceMatched = avgPriceMatched;
 }
 
-const double Order::getSizeMatched() const {
+const Optional<double>& Order::getSizeMatched() const {
     return sizeMatched;
 }
-void Order::setSizeMatched(const double sizeMatched) {
+void Order::setSizeMatched(const Optional<double>& sizeMatched) {
     this->sizeMatched = sizeMatched;
 }
 
-const double Order::getSizeRemaining() const {
+const Optional<double>& Order::getSizeRemaining() const {
     return sizeRemaining;
 }
-void Order::setSizeRemaining(const double sizeRemaining) {
+void Order::setSizeRemaining(const Optional<double>& sizeRemaining) {
     this->sizeRemaining = sizeRemaining;
 }
 
-const double Order::getSizeLapsed() const {
+const Optional<double>& Order::getSizeLapsed() const {
     return sizeLapsed;
 }
-void Order::setSizeLapsed(const double sizeLapsed) {
+void Order::setSizeLapsed(const Optional<double>& sizeLapsed) {
     this->sizeLapsed = sizeLapsed;
 }
 
-const double Order::getSizeCancelled() const {
+const Optional<double>& Order::getSizeCancelled() const {
     return sizeCancelled;
 }
-void Order::setSizeCancelled(const double sizeCancelled) {
+void Order::setSizeCancelled(const Optional<double>& sizeCancelled) {
     this->sizeCancelled = sizeCancelled;
 }
 
-const double Order::getSizeVoided() const {
+const Optional<double>& Order::getSizeVoided() const {
     return sizeVoided;
 }
-void Order::setSizeVoided(const double sizeVoided) {
+void Order::setSizeVoided(const Optional<double>& sizeVoided) {
     this->sizeVoided = sizeVoided;
 }
 

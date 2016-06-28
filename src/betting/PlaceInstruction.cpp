@@ -5,12 +5,12 @@
 #include "greentop/betting/PlaceInstruction.h"
 
 namespace greentop {
-PlaceInstruction::PlaceInstruction()  : selectionId(0), handicap(-1){
+PlaceInstruction::PlaceInstruction()  : selectionId(0){
 }
 
 PlaceInstruction::PlaceInstruction(const OrderType& orderType,
     const uint64_t selectionId,
-    const double handicap,
+    const Optional<double>& handicap,
     const Side& side,
     const LimitOrder& limitOrder,
     const LimitOnCloseOrder& limitOnCloseOrder,
@@ -32,7 +32,7 @@ void PlaceInstruction::fromJson(const Json::Value& json) {
         selectionId = json["selectionId"].asUInt64();
     }
     if (json.isMember("handicap")) {
-        handicap = json["handicap"].asDouble();
+        handicap.fromJson(json["handicap"]);
     }
     if (json.isMember("side")) {
         side = json["side"].asString();
@@ -56,8 +56,8 @@ Json::Value PlaceInstruction::toJson() const {
     if (selectionId > 0) {
         json["selectionId"] = selectionId;
     }
-    if (handicap >= 0) {
-        json["handicap"] = handicap;
+    if (handicap.isValid()) {
+        json["handicap"] = handicap.toJson();
     }
     if (side.isValid()) {
         json["side"] = side.getValue();
@@ -92,10 +92,10 @@ void PlaceInstruction::setSelectionId(const uint64_t selectionId) {
     this->selectionId = selectionId;
 }
 
-const double PlaceInstruction::getHandicap() const {
+const Optional<double>& PlaceInstruction::getHandicap() const {
     return handicap;
 }
-void PlaceInstruction::setHandicap(const double handicap) {
+void PlaceInstruction::setHandicap(const Optional<double>& handicap) {
     this->handicap = handicap;
 }
 

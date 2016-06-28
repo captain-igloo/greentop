@@ -6,9 +6,9 @@
 
 namespace greentop {
 
-RunnerProfitAndLoss::RunnerProfitAndLoss(const double selectionId,
-    const double ifWin,
-    const double ifLose) :
+RunnerProfitAndLoss::RunnerProfitAndLoss(const uint64_t selectionId,
+    const Optional<double>& ifWin,
+    const Optional<double>& ifLose) :
     selectionId(selectionId),
     ifWin(ifWin),
     ifLose(ifLose) {
@@ -16,26 +16,26 @@ RunnerProfitAndLoss::RunnerProfitAndLoss(const double selectionId,
 
 void RunnerProfitAndLoss::fromJson(const Json::Value& json) {
     if (json.isMember("selectionId")) {
-        selectionId = json["selectionId"].asDouble();
+        selectionId = json["selectionId"].asUInt64();
     }
     if (json.isMember("ifWin")) {
-        ifWin = json["ifWin"].asDouble();
+        ifWin.fromJson(json["ifWin"]);
     }
     if (json.isMember("ifLose")) {
-        ifLose = json["ifLose"].asDouble();
+        ifLose.fromJson(json["ifLose"]);
     }
 }
 
 Json::Value RunnerProfitAndLoss::toJson() const {
     Json::Value json(Json::objectValue);
-    if (selectionId >= 0) {
+    if (selectionId > 0) {
         json["selectionId"] = selectionId;
     }
-    if (ifWin >= 0) {
-        json["ifWin"] = ifWin;
+    if (ifWin.isValid()) {
+        json["ifWin"] = ifWin.toJson();
     }
-    if (ifLose >= 0) {
-        json["ifLose"] = ifLose;
+    if (ifLose.isValid()) {
+        json["ifLose"] = ifLose.toJson();
     }
     return json;
 }
@@ -44,24 +44,24 @@ bool RunnerProfitAndLoss::isValid() const {
     return true;
 }
 
-const double RunnerProfitAndLoss::getSelectionId() const {
+const uint64_t RunnerProfitAndLoss::getSelectionId() const {
     return selectionId;
 }
-void RunnerProfitAndLoss::setSelectionId(const double selectionId) {
+void RunnerProfitAndLoss::setSelectionId(const uint64_t selectionId) {
     this->selectionId = selectionId;
 }
 
-const double RunnerProfitAndLoss::getIfWin() const {
+const Optional<double>& RunnerProfitAndLoss::getIfWin() const {
     return ifWin;
 }
-void RunnerProfitAndLoss::setIfWin(const double ifWin) {
+void RunnerProfitAndLoss::setIfWin(const Optional<double>& ifWin) {
     this->ifWin = ifWin;
 }
 
-const double RunnerProfitAndLoss::getIfLose() const {
+const Optional<double>& RunnerProfitAndLoss::getIfLose() const {
     return ifLose;
 }
-void RunnerProfitAndLoss::setIfLose(const double ifLose) {
+void RunnerProfitAndLoss::setIfLose(const Optional<double>& ifLose) {
     this->ifLose = ifLose;
 }
 

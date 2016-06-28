@@ -5,11 +5,11 @@
 #include "greentop/betting/CancelInstruction.h"
 
 namespace greentop {
-CancelInstruction::CancelInstruction()  : sizeReduction(-1){
+CancelInstruction::CancelInstruction() {
 }
 
 CancelInstruction::CancelInstruction(const std::string& betId,
-    const double sizeReduction) :
+    const Optional<double>& sizeReduction) :
     betId(betId),
     sizeReduction(sizeReduction) {
 }
@@ -19,7 +19,7 @@ void CancelInstruction::fromJson(const Json::Value& json) {
         betId = json["betId"].asString();
     }
     if (json.isMember("sizeReduction")) {
-        sizeReduction = json["sizeReduction"].asDouble();
+        sizeReduction.fromJson(json["sizeReduction"]);
     }
 }
 
@@ -28,8 +28,8 @@ Json::Value CancelInstruction::toJson() const {
     if (betId != "") {
         json["betId"] = betId;
     }
-    if (sizeReduction >= 0) {
-        json["sizeReduction"] = sizeReduction;
+    if (sizeReduction.isValid()) {
+        json["sizeReduction"] = sizeReduction.toJson();
     }
     return json;
 }
@@ -45,10 +45,10 @@ void CancelInstruction::setBetId(const std::string& betId) {
     this->betId = betId;
 }
 
-const double CancelInstruction::getSizeReduction() const {
+const Optional<double>& CancelInstruction::getSizeReduction() const {
     return sizeReduction;
 }
-void CancelInstruction::setSizeReduction(const double sizeReduction) {
+void CancelInstruction::setSizeReduction(const Optional<double>& sizeReduction) {
     this->sizeReduction = sizeReduction;
 }
 

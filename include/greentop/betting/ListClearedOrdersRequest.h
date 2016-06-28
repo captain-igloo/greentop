@@ -9,8 +9,8 @@
 #include <string>
 #include <vector>
 
-#include "greentop/BoolJsonMember.h"
 #include "greentop/JsonRequest.h"
+#include "greentop/Optional.h"
 #include "greentop/betting/RunnerId.h"
 #include "greentop/betting/TimeRange.h"
 #include "greentop/enum/BetStatus.h"
@@ -32,7 +32,7 @@ class ListClearedOrdersRequest : public JsonRequest {
             const Side& side = Side(),
             const TimeRange& settledDateRange = TimeRange(),
             const GroupBy& groupBy = GroupBy(),
-            const BoolJsonMember& includeItemDescription = BoolJsonMember(),
+            const Optional<bool>& includeItemDescription = Optional<bool>(),
             const std::string& locale = std::string(),
             const uint64_t fromRecord = 0,
             const uint64_t recordCount = 0);
@@ -70,8 +70,8 @@ class ListClearedOrdersRequest : public JsonRequest {
         const GroupBy& getGroupBy() const;
         void setGroupBy(const GroupBy& groupBy);
 
-        const BoolJsonMember& getIncludeItemDescription() const;
-        void setIncludeItemDescription(const BoolJsonMember& includeItemDescription);
+        const Optional<bool>& getIncludeItemDescription() const;
+        void setIncludeItemDescription(const Optional<bool>& includeItemDescription);
 
         const std::string& getLocale() const;
         void setLocale(const std::string& locale);
@@ -93,7 +93,7 @@ class ListClearedOrdersRequest : public JsonRequest {
         Side side;
         TimeRange settledDateRange;
         GroupBy groupBy;
-        BoolJsonMember includeItemDescription;
+        Optional<bool> includeItemDescription;
         std::string locale;
         uint64_t fromRecord;
         uint64_t recordCount;

@@ -8,6 +8,7 @@
 #include <json/json.h>
 
 #include "greentop/JsonRequest.h"
+#include "greentop/Optional.h"
 #include "greentop/enum/Wallet.h"
 
 namespace greentop {
@@ -17,7 +18,7 @@ class TransferFundsRequest : public JsonRequest {
 
         TransferFundsRequest(const Wallet& from = Wallet(),
             const Wallet& to = Wallet(),
-            const double amount = -1);
+            const Optional<double>& amount = Optional<double>());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -31,14 +32,14 @@ class TransferFundsRequest : public JsonRequest {
         const Wallet& getTo() const;
         void setTo(const Wallet& to);
 
-        const double getAmount() const;
-        void setAmount(const double amount);
+        const Optional<double>& getAmount() const;
+        void setAmount(const Optional<double>& amount);
 
 
     private:
         Wallet from;
         Wallet to;
-        double amount;
+        Optional<double> amount;
 };
 
 }

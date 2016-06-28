@@ -9,8 +9,8 @@
 #include <set>
 #include <string>
 
-#include "greentop/BoolJsonMember.h"
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 #include "greentop/betting/TimeRange.h"
 #include "greentop/enum/MarketBettingType.h"
 #include "greentop/enum/OrderStatus.h"
@@ -27,9 +27,9 @@ class MarketFilter : public JsonMember {
             const std::set<std::string>& competitionIds = std::set<std::string>(),
             const std::set<std::string>& marketIds = std::set<std::string>(),
             const std::set<std::string>& venues = std::set<std::string>(),
-            const BoolJsonMember& bspOnly = BoolJsonMember(),
-            const BoolJsonMember& turnInPlayEnabled = BoolJsonMember(),
-            const BoolJsonMember& inPlayOnly = BoolJsonMember(),
+            const Optional<bool>& bspOnly = Optional<bool>(),
+            const Optional<bool>& turnInPlayEnabled = Optional<bool>(),
+            const Optional<bool>& inPlayOnly = Optional<bool>(),
             const std::set<MarketBettingType>& marketBettingTypes = std::set<MarketBettingType>(),
             const std::set<std::string>& marketCountries = std::set<std::string>(),
             const std::set<std::string>& marketTypeCodes = std::set<std::string>(),
@@ -63,14 +63,14 @@ class MarketFilter : public JsonMember {
         const std::set<std::string>& getVenues() const;
         void setVenues(const std::set<std::string>& venues);
 
-        const BoolJsonMember& getBspOnly() const;
-        void setBspOnly(const BoolJsonMember& bspOnly);
+        const Optional<bool>& getBspOnly() const;
+        void setBspOnly(const Optional<bool>& bspOnly);
 
-        const BoolJsonMember& getTurnInPlayEnabled() const;
-        void setTurnInPlayEnabled(const BoolJsonMember& turnInPlayEnabled);
+        const Optional<bool>& getTurnInPlayEnabled() const;
+        void setTurnInPlayEnabled(const Optional<bool>& turnInPlayEnabled);
 
-        const BoolJsonMember& getInPlayOnly() const;
-        void setInPlayOnly(const BoolJsonMember& inPlayOnly);
+        const Optional<bool>& getInPlayOnly() const;
+        void setInPlayOnly(const Optional<bool>& inPlayOnly);
 
         const std::set<MarketBettingType>& getMarketBettingTypes() const;
         void setMarketBettingTypes(const std::set<MarketBettingType>& marketBettingTypes);
@@ -96,9 +96,9 @@ class MarketFilter : public JsonMember {
         std::set<std::string> competitionIds;
         std::set<std::string> marketIds;
         std::set<std::string> venues;
-        BoolJsonMember bspOnly;
-        BoolJsonMember turnInPlayEnabled;
-        BoolJsonMember inPlayOnly;
+        Optional<bool> bspOnly;
+        Optional<bool> turnInPlayEnabled;
+        Optional<bool> inPlayOnly;
         std::set<MarketBettingType> marketBettingTypes;
         std::set<std::string> marketCountries;
         std::set<std::string> marketTypeCodes;

@@ -5,11 +5,11 @@
 #include "greentop/betting/CurrentOrderSummaryReport.h"
 
 namespace greentop {
-CurrentOrderSummaryReport::CurrentOrderSummaryReport() {
+CurrentOrderSummaryReport::CurrentOrderSummaryReport()  : moreAvailable(0){
 }
 
 CurrentOrderSummaryReport::CurrentOrderSummaryReport(const std::vector<CurrentOrderSummary>& currentOrders,
-    const BoolJsonMember& moreAvailable) :
+    const bool moreAvailable) :
     currentOrders(currentOrders),
     moreAvailable(moreAvailable) {
 }
@@ -24,7 +24,7 @@ void CurrentOrderSummaryReport::fromJson(const Json::Value& json) {
             };
         }
         if (json.isMember("moreAvailable")) {
-            moreAvailable.fromJson(json["moreAvailable"]);
+            moreAvailable = json["moreAvailable"].asBool();
         }
     }
 }
@@ -36,14 +36,12 @@ Json::Value CurrentOrderSummaryReport::toJson() const {
             json["currentOrders"].append(currentOrders[i].toJson());
         };
     }
-    if (moreAvailable.isValid()) {
-        json["moreAvailable"] = moreAvailable.toJson();
-    }
+    json["moreAvailable"] = moreAvailable;
     return json;
 }
 
 bool CurrentOrderSummaryReport::isValid() const {
-    return currentOrders.size() > 0 && moreAvailable.isValid();
+    return currentOrders.size() > 0 && true;
 }
 
 const std::vector<CurrentOrderSummary>& CurrentOrderSummaryReport::getCurrentOrders() const {
@@ -53,10 +51,10 @@ void CurrentOrderSummaryReport::setCurrentOrders(const std::vector<CurrentOrderS
     this->currentOrders = currentOrders;
 }
 
-const BoolJsonMember& CurrentOrderSummaryReport::getMoreAvailable() const {
+const bool CurrentOrderSummaryReport::getMoreAvailable() const {
     return moreAvailable;
 }
-void CurrentOrderSummaryReport::setMoreAvailable(const BoolJsonMember& moreAvailable) {
+void CurrentOrderSummaryReport::setMoreAvailable(const bool moreAvailable) {
     this->moreAvailable = moreAvailable;
 }
 

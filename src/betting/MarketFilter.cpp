@@ -13,9 +13,9 @@ MarketFilter::MarketFilter(const std::string& textQuery,
     const std::set<std::string>& competitionIds,
     const std::set<std::string>& marketIds,
     const std::set<std::string>& venues,
-    const BoolJsonMember& bspOnly,
-    const BoolJsonMember& turnInPlayEnabled,
-    const BoolJsonMember& inPlayOnly,
+    const Optional<bool>& bspOnly,
+    const Optional<bool>& turnInPlayEnabled,
+    const Optional<bool>& inPlayOnly,
     const std::set<MarketBettingType>& marketBettingTypes,
     const std::set<std::string>& marketCountries,
     const std::set<std::string>& marketTypeCodes,
@@ -231,24 +231,24 @@ void MarketFilter::setVenues(const std::set<std::string>& venues) {
     this->venues = venues;
 }
 
-const BoolJsonMember& MarketFilter::getBspOnly() const {
+const Optional<bool>& MarketFilter::getBspOnly() const {
     return bspOnly;
 }
-void MarketFilter::setBspOnly(const BoolJsonMember& bspOnly) {
+void MarketFilter::setBspOnly(const Optional<bool>& bspOnly) {
     this->bspOnly = bspOnly;
 }
 
-const BoolJsonMember& MarketFilter::getTurnInPlayEnabled() const {
+const Optional<bool>& MarketFilter::getTurnInPlayEnabled() const {
     return turnInPlayEnabled;
 }
-void MarketFilter::setTurnInPlayEnabled(const BoolJsonMember& turnInPlayEnabled) {
+void MarketFilter::setTurnInPlayEnabled(const Optional<bool>& turnInPlayEnabled) {
     this->turnInPlayEnabled = turnInPlayEnabled;
 }
 
-const BoolJsonMember& MarketFilter::getInPlayOnly() const {
+const Optional<bool>& MarketFilter::getInPlayOnly() const {
     return inPlayOnly;
 }
-void MarketFilter::setInPlayOnly(const BoolJsonMember& inPlayOnly) {
+void MarketFilter::setInPlayOnly(const Optional<bool>& inPlayOnly) {
     this->inPlayOnly = inPlayOnly;
 }
 

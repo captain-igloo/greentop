@@ -7,7 +7,7 @@
 namespace greentop {
 
 AccountStatementReport::AccountStatementReport(const std::vector<StatementItem>& accountStatement,
-    const BoolJsonMember& moreAvailable) :
+    const Optional<bool>& moreAvailable) :
     accountStatement(accountStatement),
     moreAvailable(moreAvailable) {
 }
@@ -51,10 +51,10 @@ void AccountStatementReport::setAccountStatement(const std::vector<StatementItem
     this->accountStatement = accountStatement;
 }
 
-const BoolJsonMember& AccountStatementReport::getMoreAvailable() const {
+const Optional<bool>& AccountStatementReport::getMoreAvailable() const {
     return moreAvailable;
 }
-void AccountStatementReport::setMoreAvailable(const BoolJsonMember& moreAvailable) {
+void AccountStatementReport::setMoreAvailable(const Optional<bool>& moreAvailable) {
     this->moreAvailable = moreAvailable;
 }
 

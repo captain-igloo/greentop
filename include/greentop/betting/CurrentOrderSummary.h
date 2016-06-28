@@ -10,6 +10,7 @@
 #include <string>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 #include "greentop/betting/PriceSize.h"
 #include "greentop/enum/OrderStatus.h"
 #include "greentop/enum/OrderType.h"
@@ -34,12 +35,12 @@ class CurrentOrderSummary : public JsonMember {
             const OrderType& orderType,
             const std::tm& placedDate,
             const std::tm& matchedDate,
-            const double averagePriceMatched = -1,
-            const double sizeMatched = -1,
-            const double sizeRemaining = -1,
-            const double sizeLapsed = -1,
-            const double sizeCancelled = -1,
-            const double sizeVoided = -1,
+            const Optional<double>& averagePriceMatched = Optional<double>(),
+            const Optional<double>& sizeMatched = Optional<double>(),
+            const Optional<double>& sizeRemaining = Optional<double>(),
+            const Optional<double>& sizeLapsed = Optional<double>(),
+            const Optional<double>& sizeCancelled = Optional<double>(),
+            const Optional<double>& sizeVoided = Optional<double>(),
             const std::string& regulatorAuthCode = std::string(),
             const std::string& regulatorCode = std::string());
 
@@ -85,23 +86,23 @@ class CurrentOrderSummary : public JsonMember {
         const std::tm& getMatchedDate() const;
         void setMatchedDate(const std::tm& matchedDate);
 
-        const double getAveragePriceMatched() const;
-        void setAveragePriceMatched(const double averagePriceMatched);
+        const Optional<double>& getAveragePriceMatched() const;
+        void setAveragePriceMatched(const Optional<double>& averagePriceMatched);
 
-        const double getSizeMatched() const;
-        void setSizeMatched(const double sizeMatched);
+        const Optional<double>& getSizeMatched() const;
+        void setSizeMatched(const Optional<double>& sizeMatched);
 
-        const double getSizeRemaining() const;
-        void setSizeRemaining(const double sizeRemaining);
+        const Optional<double>& getSizeRemaining() const;
+        void setSizeRemaining(const Optional<double>& sizeRemaining);
 
-        const double getSizeLapsed() const;
-        void setSizeLapsed(const double sizeLapsed);
+        const Optional<double>& getSizeLapsed() const;
+        void setSizeLapsed(const Optional<double>& sizeLapsed);
 
-        const double getSizeCancelled() const;
-        void setSizeCancelled(const double sizeCancelled);
+        const Optional<double>& getSizeCancelled() const;
+        void setSizeCancelled(const Optional<double>& sizeCancelled);
 
-        const double getSizeVoided() const;
-        void setSizeVoided(const double sizeVoided);
+        const Optional<double>& getSizeVoided() const;
+        void setSizeVoided(const Optional<double>& sizeVoided);
 
         const std::string& getRegulatorAuthCode() const;
         void setRegulatorAuthCode(const std::string& regulatorAuthCode);
@@ -123,12 +124,12 @@ class CurrentOrderSummary : public JsonMember {
         OrderType orderType;
         std::tm placedDate;
         std::tm matchedDate;
-        double averagePriceMatched;
-        double sizeMatched;
-        double sizeRemaining;
-        double sizeLapsed;
-        double sizeCancelled;
-        double sizeVoided;
+        Optional<double> averagePriceMatched;
+        Optional<double> sizeMatched;
+        Optional<double> sizeRemaining;
+        Optional<double> sizeLapsed;
+        Optional<double> sizeCancelled;
+        Optional<double> sizeVoided;
         std::string regulatorAuthCode;
         std::string regulatorCode;
 };

@@ -28,14 +28,12 @@ Json::Value ReplaceInstruction::toJson() const {
     if (betId != "") {
         json["betId"] = betId;
     }
-    if (newPrice >= 0) {
-        json["newPrice"] = newPrice;
-    }
+    json["newPrice"] = newPrice;
     return json;
 }
 
 bool ReplaceInstruction::isValid() const {
-    return betId != "" && newPrice >= 0;
+    return betId != "" && true;
 }
 
 const std::string& ReplaceInstruction::getBetId() const {

@@ -49,9 +49,7 @@ Json::Value CancelInstructionReport::toJson() const {
     if (instruction.isValid()) {
         json["instruction"] = instruction.toJson();
     }
-    if (sizeCancelled >= 0) {
-        json["sizeCancelled"] = sizeCancelled;
-    }
+    json["sizeCancelled"] = sizeCancelled;
     if (cancelledDate.tm_year > 0) {
         char buffer[25];
         strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &cancelledDate);
@@ -61,7 +59,7 @@ Json::Value CancelInstructionReport::toJson() const {
 }
 
 bool CancelInstructionReport::isValid() const {
-    return status.isValid() && sizeCancelled >= 0;
+    return status.isValid() && true;
 }
 
 const InstructionReportStatus& CancelInstructionReport::getStatus() const {

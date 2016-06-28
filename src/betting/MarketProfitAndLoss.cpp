@@ -7,7 +7,7 @@
 namespace greentop {
 
 MarketProfitAndLoss::MarketProfitAndLoss(const std::string& marketId,
-    const double commissionApplied,
+    const Optional<double>& commissionApplied,
     const std::vector<RunnerProfitAndLoss>& profitAndLosses) :
     marketId(marketId),
     commissionApplied(commissionApplied),
@@ -19,7 +19,7 @@ void MarketProfitAndLoss::fromJson(const Json::Value& json) {
         marketId = json["marketId"].asString();
     }
     if (json.isMember("commissionApplied")) {
-        commissionApplied = json["commissionApplied"].asDouble();
+        commissionApplied.fromJson(json["commissionApplied"]);
     }
     if (json.isMember("profitAndLosses")) {
         for (unsigned i = 0; i < json["profitAndLosses"].size(); ++i) {
@@ -35,8 +35,8 @@ Json::Value MarketProfitAndLoss::toJson() const {
     if (marketId != "") {
         json["marketId"] = marketId;
     }
-    if (commissionApplied >= 0) {
-        json["commissionApplied"] = commissionApplied;
+    if (commissionApplied.isValid()) {
+        json["commissionApplied"] = commissionApplied.toJson();
     }
     if (profitAndLosses.size() > 0) {
         for (unsigned i = 0; i < profitAndLosses.size(); ++i) {
@@ -57,10 +57,10 @@ void MarketProfitAndLoss::setMarketId(const std::string& marketId) {
     this->marketId = marketId;
 }
 
-const double MarketProfitAndLoss::getCommissionApplied() const {
+const Optional<double>& MarketProfitAndLoss::getCommissionApplied() const {
     return commissionApplied;
 }
-void MarketProfitAndLoss::setCommissionApplied(const double commissionApplied) {
+void MarketProfitAndLoss::setCommissionApplied(const Optional<double>& commissionApplied) {
     this->commissionApplied = commissionApplied;
 }
 

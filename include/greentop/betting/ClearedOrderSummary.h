@@ -9,8 +9,8 @@
 #include <json/json.h>
 #include <string>
 
-#include "greentop/BoolJsonMember.h"
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 #include "greentop/betting/ItemDescription.h"
 #include "greentop/enum/OrderType.h"
 #include "greentop/enum/PersistenceType.h"
@@ -25,22 +25,22 @@ class ClearedOrderSummary : public JsonMember {
             const std::string& eventId = std::string(),
             const std::string& marketId = std::string(),
             const uint64_t selectionId = 0,
-            const double handicap = -1,
+            const Optional<double>& handicap = Optional<double>(),
             const std::string& betId = std::string(),
             const std::tm& placedDate = std::tm(),
             const PersistenceType& persistenceType = PersistenceType(),
             const OrderType& orderType = OrderType(),
             const Side& side = Side(),
             const ItemDescription& itemDescription = ItemDescription(),
-            const double priceRequested = -1,
+            const Optional<double>& priceRequested = Optional<double>(),
             const std::tm& settledDate = std::tm(),
             const uint64_t betCount = 0,
-            const double commission = -1,
-            const double priceMatched = -1,
-            const BoolJsonMember& priceReduced = BoolJsonMember(),
-            const double sizeSettled = -1,
-            const double profit = -1,
-            const double sizeCancelled = -1);
+            const Optional<double>& commission = Optional<double>(),
+            const Optional<double>& priceMatched = Optional<double>(),
+            const Optional<bool>& priceReduced = Optional<bool>(),
+            const Optional<double>& sizeSettled = Optional<double>(),
+            const Optional<double>& profit = Optional<double>(),
+            const Optional<double>& sizeCancelled = Optional<double>());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -60,8 +60,8 @@ class ClearedOrderSummary : public JsonMember {
         const uint64_t getSelectionId() const;
         void setSelectionId(const uint64_t selectionId);
 
-        const double getHandicap() const;
-        void setHandicap(const double handicap);
+        const Optional<double>& getHandicap() const;
+        void setHandicap(const Optional<double>& handicap);
 
         const std::string& getBetId() const;
         void setBetId(const std::string& betId);
@@ -81,8 +81,8 @@ class ClearedOrderSummary : public JsonMember {
         const ItemDescription& getItemDescription() const;
         void setItemDescription(const ItemDescription& itemDescription);
 
-        const double getPriceRequested() const;
-        void setPriceRequested(const double priceRequested);
+        const Optional<double>& getPriceRequested() const;
+        void setPriceRequested(const Optional<double>& priceRequested);
 
         const std::tm& getSettledDate() const;
         void setSettledDate(const std::tm& settledDate);
@@ -90,23 +90,23 @@ class ClearedOrderSummary : public JsonMember {
         const uint64_t getBetCount() const;
         void setBetCount(const uint64_t betCount);
 
-        const double getCommission() const;
-        void setCommission(const double commission);
+        const Optional<double>& getCommission() const;
+        void setCommission(const Optional<double>& commission);
 
-        const double getPriceMatched() const;
-        void setPriceMatched(const double priceMatched);
+        const Optional<double>& getPriceMatched() const;
+        void setPriceMatched(const Optional<double>& priceMatched);
 
-        const BoolJsonMember& getPriceReduced() const;
-        void setPriceReduced(const BoolJsonMember& priceReduced);
+        const Optional<bool>& getPriceReduced() const;
+        void setPriceReduced(const Optional<bool>& priceReduced);
 
-        const double getSizeSettled() const;
-        void setSizeSettled(const double sizeSettled);
+        const Optional<double>& getSizeSettled() const;
+        void setSizeSettled(const Optional<double>& sizeSettled);
 
-        const double getProfit() const;
-        void setProfit(const double profit);
+        const Optional<double>& getProfit() const;
+        void setProfit(const Optional<double>& profit);
 
-        const double getSizeCancelled() const;
-        void setSizeCancelled(const double sizeCancelled);
+        const Optional<double>& getSizeCancelled() const;
+        void setSizeCancelled(const Optional<double>& sizeCancelled);
 
 
     private:
@@ -114,22 +114,22 @@ class ClearedOrderSummary : public JsonMember {
         std::string eventId;
         std::string marketId;
         uint64_t selectionId;
-        double handicap;
+        Optional<double> handicap;
         std::string betId;
         std::tm placedDate;
         PersistenceType persistenceType;
         OrderType orderType;
         Side side;
         ItemDescription itemDescription;
-        double priceRequested;
+        Optional<double> priceRequested;
         std::tm settledDate;
         uint64_t betCount;
-        double commission;
-        double priceMatched;
-        BoolJsonMember priceReduced;
-        double sizeSettled;
-        double profit;
-        double sizeCancelled;
+        Optional<double> commission;
+        Optional<double> priceMatched;
+        Optional<bool> priceReduced;
+        Optional<double> sizeSettled;
+        Optional<double> profit;
+        Optional<double> sizeCancelled;
 };
 
 }

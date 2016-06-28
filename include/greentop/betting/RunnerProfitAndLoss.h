@@ -8,15 +8,16 @@
 #include <json/json.h>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 
 namespace greentop {
 
 class RunnerProfitAndLoss : public JsonMember {
     public:
 
-        RunnerProfitAndLoss(const double selectionId = -1,
-            const double ifWin = -1,
-            const double ifLose = -1);
+        RunnerProfitAndLoss(const uint64_t selectionId = 0,
+            const Optional<double>& ifWin = Optional<double>(),
+            const Optional<double>& ifLose = Optional<double>());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -24,20 +25,20 @@ class RunnerProfitAndLoss : public JsonMember {
 
         virtual bool isValid() const;
 
-        const double getSelectionId() const;
-        void setSelectionId(const double selectionId);
+        const uint64_t getSelectionId() const;
+        void setSelectionId(const uint64_t selectionId);
 
-        const double getIfWin() const;
-        void setIfWin(const double ifWin);
+        const Optional<double>& getIfWin() const;
+        void setIfWin(const Optional<double>& ifWin);
 
-        const double getIfLose() const;
-        void setIfLose(const double ifLose);
+        const Optional<double>& getIfLose() const;
+        void setIfLose(const Optional<double>& ifLose);
 
 
     private:
-        double selectionId;
-        double ifWin;
-        double ifLose;
+        uint64_t selectionId;
+        Optional<double> ifWin;
+        Optional<double> ifLose;
 };
 
 }

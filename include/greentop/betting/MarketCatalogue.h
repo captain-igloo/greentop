@@ -11,6 +11,7 @@
 #include <vector>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 #include "greentop/betting/Competition.h"
 #include "greentop/betting/Event.h"
 #include "greentop/betting/EventType.h"
@@ -27,7 +28,7 @@ class MarketCatalogue : public JsonMember {
             const std::string& marketName,
             const std::tm& marketStartTime = std::tm(),
             const MarketDescription& description = MarketDescription(),
-            const double totalMatched = -1,
+            const Optional<double>& totalMatched = Optional<double>(),
             const std::vector<RunnerCatalog>& runners = std::vector<RunnerCatalog>(),
             const EventType& eventType = EventType(),
             const Competition& competition = Competition(),
@@ -51,8 +52,8 @@ class MarketCatalogue : public JsonMember {
         const MarketDescription& getDescription() const;
         void setDescription(const MarketDescription& description);
 
-        const double getTotalMatched() const;
-        void setTotalMatched(const double totalMatched);
+        const Optional<double>& getTotalMatched() const;
+        void setTotalMatched(const Optional<double>& totalMatched);
 
         const std::vector<RunnerCatalog>& getRunners() const;
         void setRunners(const std::vector<RunnerCatalog>& runners);
@@ -72,7 +73,7 @@ class MarketCatalogue : public JsonMember {
         std::string marketName;
         std::tm marketStartTime;
         MarketDescription description;
-        double totalMatched;
+        Optional<double> totalMatched;
         std::vector<RunnerCatalog> runners;
         EventType eventType;
         Competition competition;

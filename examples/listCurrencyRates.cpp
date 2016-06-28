@@ -12,7 +12,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    ExchangeApi::Exchange exchange = ExchangeApi::Exchange::UK;
+    Exchange exchange = Exchange::UK;
 
     ExchangeApi exchangeApi(argv[1]);
 

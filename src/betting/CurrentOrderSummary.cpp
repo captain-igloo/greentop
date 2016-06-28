@@ -5,7 +5,7 @@
 #include "greentop/betting/CurrentOrderSummary.h"
 
 namespace greentop {
-CurrentOrderSummary::CurrentOrderSummary()  : selectionId(0), handicap(-1), bspLiability(-1), averagePriceMatched(-1), sizeMatched(-1), sizeRemaining(-1), sizeLapsed(-1), sizeCancelled(-1), sizeVoided(-1){
+CurrentOrderSummary::CurrentOrderSummary()  : selectionId(0), handicap(-1), bspLiability(-1){
 }
 
 CurrentOrderSummary::CurrentOrderSummary(const std::string& betId,
@@ -20,12 +20,12 @@ CurrentOrderSummary::CurrentOrderSummary(const std::string& betId,
     const OrderType& orderType,
     const std::tm& placedDate,
     const std::tm& matchedDate,
-    const double averagePriceMatched,
-    const double sizeMatched,
-    const double sizeRemaining,
-    const double sizeLapsed,
-    const double sizeCancelled,
-    const double sizeVoided,
+    const Optional<double>& averagePriceMatched,
+    const Optional<double>& sizeMatched,
+    const Optional<double>& sizeRemaining,
+    const Optional<double>& sizeLapsed,
+    const Optional<double>& sizeCancelled,
+    const Optional<double>& sizeVoided,
     const std::string& regulatorAuthCode,
     const std::string& regulatorCode) :
     betId(betId),
@@ -88,22 +88,22 @@ void CurrentOrderSummary::fromJson(const Json::Value& json) {
         strptime(json["matchedDate"].asString().c_str(), "%Y-%m-%dT%H:%M:%S.000Z", &matchedDate);
     }
     if (json.isMember("averagePriceMatched")) {
-        averagePriceMatched = json["averagePriceMatched"].asDouble();
+        averagePriceMatched.fromJson(json["averagePriceMatched"]);
     }
     if (json.isMember("sizeMatched")) {
-        sizeMatched = json["sizeMatched"].asDouble();
+        sizeMatched.fromJson(json["sizeMatched"]);
     }
     if (json.isMember("sizeRemaining")) {
-        sizeRemaining = json["sizeRemaining"].asDouble();
+        sizeRemaining.fromJson(json["sizeRemaining"]);
     }
     if (json.isMember("sizeLapsed")) {
-        sizeLapsed = json["sizeLapsed"].asDouble();
+        sizeLapsed.fromJson(json["sizeLapsed"]);
     }
     if (json.isMember("sizeCancelled")) {
-        sizeCancelled = json["sizeCancelled"].asDouble();
+        sizeCancelled.fromJson(json["sizeCancelled"]);
     }
     if (json.isMember("sizeVoided")) {
-        sizeVoided = json["sizeVoided"].asDouble();
+        sizeVoided.fromJson(json["sizeVoided"]);
     }
     if (json.isMember("regulatorAuthCode")) {
         regulatorAuthCode = json["regulatorAuthCode"].asString();
@@ -124,15 +124,11 @@ Json::Value CurrentOrderSummary::toJson() const {
     if (selectionId > 0) {
         json["selectionId"] = selectionId;
     }
-    if (handicap >= 0) {
-        json["handicap"] = handicap;
-    }
+    json["handicap"] = handicap;
     if (priceSize.isValid()) {
         json["priceSize"] = priceSize.toJson();
     }
-    if (bspLiability >= 0) {
-        json["bspLiability"] = bspLiability;
-    }
+    json["bspLiability"] = bspLiability;
     if (side.isValid()) {
         json["side"] = side.getValue();
     }
@@ -155,23 +151,23 @@ Json::Value CurrentOrderSummary::toJson() const {
         strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &matchedDate);
         json["matchedDate"] = std::string(buffer);
     }
-    if (averagePriceMatched >= 0) {
-        json["averagePriceMatched"] = averagePriceMatched;
+    if (averagePriceMatched.isValid()) {
+        json["averagePriceMatched"] = averagePriceMatched.toJson();
     }
-    if (sizeMatched >= 0) {
-        json["sizeMatched"] = sizeMatched;
+    if (sizeMatched.isValid()) {
+        json["sizeMatched"] = sizeMatched.toJson();
     }
-    if (sizeRemaining >= 0) {
-        json["sizeRemaining"] = sizeRemaining;
+    if (sizeRemaining.isValid()) {
+        json["sizeRemaining"] = sizeRemaining.toJson();
     }
-    if (sizeLapsed >= 0) {
-        json["sizeLapsed"] = sizeLapsed;
+    if (sizeLapsed.isValid()) {
+        json["sizeLapsed"] = sizeLapsed.toJson();
     }
-    if (sizeCancelled >= 0) {
-        json["sizeCancelled"] = sizeCancelled;
+    if (sizeCancelled.isValid()) {
+        json["sizeCancelled"] = sizeCancelled.toJson();
     }
-    if (sizeVoided >= 0) {
-        json["sizeVoided"] = sizeVoided;
+    if (sizeVoided.isValid()) {
+        json["sizeVoided"] = sizeVoided.toJson();
     }
     if (regulatorAuthCode != "") {
         json["regulatorAuthCode"] = regulatorAuthCode;
@@ -183,7 +179,7 @@ Json::Value CurrentOrderSummary::toJson() const {
 }
 
 bool CurrentOrderSummary::isValid() const {
-    return betId != "" && marketId != "" && selectionId > 0 && handicap >= 0 && priceSize.isValid() && bspLiability >= 0 && side.isValid() && status.isValid() && persistenceType.isValid() && orderType.isValid() && placedDate.tm_year > 0 && matchedDate.tm_year > 0;
+    return betId != "" && marketId != "" && selectionId > 0 && true && priceSize.isValid() && true && side.isValid() && status.isValid() && persistenceType.isValid() && orderType.isValid() && placedDate.tm_year > 0 && matchedDate.tm_year > 0;
 }
 
 const std::string& CurrentOrderSummary::getBetId() const {
@@ -270,45 +266,45 @@ void CurrentOrderSummary::setMatchedDate(const std::tm& matchedDate) {
     this->matchedDate = matchedDate;
 }
 
-const double CurrentOrderSummary::getAveragePriceMatched() const {
+const Optional<double>& CurrentOrderSummary::getAveragePriceMatched() const {
     return averagePriceMatched;
 }
-void CurrentOrderSummary::setAveragePriceMatched(const double averagePriceMatched) {
+void CurrentOrderSummary::setAveragePriceMatched(const Optional<double>& averagePriceMatched) {
     this->averagePriceMatched = averagePriceMatched;
 }
 
-const double CurrentOrderSummary::getSizeMatched() const {
+const Optional<double>& CurrentOrderSummary::getSizeMatched() const {
     return sizeMatched;
 }
-void CurrentOrderSummary::setSizeMatched(const double sizeMatched) {
+void CurrentOrderSummary::setSizeMatched(const Optional<double>& sizeMatched) {
     this->sizeMatched = sizeMatched;
 }
 
-const double CurrentOrderSummary::getSizeRemaining() const {
+const Optional<double>& CurrentOrderSummary::getSizeRemaining() const {
     return sizeRemaining;
 }
-void CurrentOrderSummary::setSizeRemaining(const double sizeRemaining) {
+void CurrentOrderSummary::setSizeRemaining(const Optional<double>& sizeRemaining) {
     this->sizeRemaining = sizeRemaining;
 }
 
-const double CurrentOrderSummary::getSizeLapsed() const {
+const Optional<double>& CurrentOrderSummary::getSizeLapsed() const {
     return sizeLapsed;
 }
-void CurrentOrderSummary::setSizeLapsed(const double sizeLapsed) {
+void CurrentOrderSummary::setSizeLapsed(const Optional<double>& sizeLapsed) {
     this->sizeLapsed = sizeLapsed;
 }
 
-const double CurrentOrderSummary::getSizeCancelled() const {
+const Optional<double>& CurrentOrderSummary::getSizeCancelled() const {
     return sizeCancelled;
 }
-void CurrentOrderSummary::setSizeCancelled(const double sizeCancelled) {
+void CurrentOrderSummary::setSizeCancelled(const Optional<double>& sizeCancelled) {
     this->sizeCancelled = sizeCancelled;
 }
 
-const double CurrentOrderSummary::getSizeVoided() const {
+const Optional<double>& CurrentOrderSummary::getSizeVoided() const {
     return sizeVoided;
 }
-void CurrentOrderSummary::setSizeVoided(const double sizeVoided) {
+void CurrentOrderSummary::setSizeVoided(const Optional<double>& sizeVoided) {
     this->sizeVoided = sizeVoided;
 }
 

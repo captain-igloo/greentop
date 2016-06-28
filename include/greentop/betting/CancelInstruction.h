@@ -9,6 +9,7 @@
 #include <string>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 
 namespace greentop {
 
@@ -17,7 +18,7 @@ class CancelInstruction : public JsonMember {
         CancelInstruction();
 
         CancelInstruction(const std::string& betId,
-            const double sizeReduction = -1);
+            const Optional<double>& sizeReduction = Optional<double>());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -28,13 +29,13 @@ class CancelInstruction : public JsonMember {
         const std::string& getBetId() const;
         void setBetId(const std::string& betId);
 
-        const double getSizeReduction() const;
-        void setSizeReduction(const double sizeReduction);
+        const Optional<double>& getSizeReduction() const;
+        void setSizeReduction(const Optional<double>& sizeReduction);
 
 
     private:
         std::string betId;
-        double sizeReduction;
+        Optional<double> sizeReduction;
 };
 
 }

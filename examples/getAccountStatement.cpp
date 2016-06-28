@@ -11,7 +11,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    ExchangeApi::Exchange exchange = ExchangeApi::Exchange::UK;
+    Exchange exchange = Exchange::UK;
 
     ExchangeApi exchangeApi(argv[1]);
 
@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
 
                 for (unsigned i = 0; i < items.size(); ++i) {
                     StatementItem item = items[i];
-                    
+
                     StatementLegacyData legacyData = item.getLegacyData();
 
                     std::cout << legacyData.getMarketName() << " / " << legacyData.getSelectionName() <<

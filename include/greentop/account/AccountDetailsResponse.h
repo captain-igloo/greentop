@@ -9,6 +9,7 @@
 #include <string>
 
 #include "greentop/JsonResponse.h"
+#include "greentop/Optional.h"
 
 namespace greentop {
 
@@ -21,7 +22,7 @@ class AccountDetailsResponse : public JsonResponse {
             const std::string& localeCode = std::string(),
             const std::string& region = std::string(),
             const std::string& timezone = std::string(),
-            const double discountRate = -1,
+            const Optional<double>& discountRate = Optional<double>(),
             const uint64_t pointsBalance = 0);
 
         virtual void fromJson(const Json::Value& json);
@@ -48,8 +49,8 @@ class AccountDetailsResponse : public JsonResponse {
         const std::string& getTimezone() const;
         void setTimezone(const std::string& timezone);
 
-        const double getDiscountRate() const;
-        void setDiscountRate(const double discountRate);
+        const Optional<double>& getDiscountRate() const;
+        void setDiscountRate(const Optional<double>& discountRate);
 
         const uint64_t getPointsBalance() const;
         void setPointsBalance(const uint64_t pointsBalance);
@@ -62,7 +63,7 @@ class AccountDetailsResponse : public JsonResponse {
         std::string localeCode;
         std::string region;
         std::string timezone;
-        double discountRate;
+        Optional<double> discountRate;
         uint64_t pointsBalance;
 };
 

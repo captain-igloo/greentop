@@ -20,14 +20,12 @@ void MarketOnCloseOrder::fromJson(const Json::Value& json) {
 
 Json::Value MarketOnCloseOrder::toJson() const {
     Json::Value json(Json::objectValue);
-    if (liability >= 0) {
-        json["liability"] = liability;
-    }
+    json["liability"] = liability;
     return json;
 }
 
 bool MarketOnCloseOrder::isValid() const {
-    return liability >= 0;
+    return true;
 }
 
 const double MarketOnCloseOrder::getLiability() const {

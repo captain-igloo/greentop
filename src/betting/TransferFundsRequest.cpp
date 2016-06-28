@@ -8,7 +8,7 @@ namespace greentop {
 
 TransferFundsRequest::TransferFundsRequest(const Wallet& from,
     const Wallet& to,
-    const double amount) :
+    const Optional<double>& amount) :
     from(from),
     to(to),
     amount(amount) {
@@ -22,7 +22,7 @@ void TransferFundsRequest::fromJson(const Json::Value& json) {
         to = json["to"].asString();
     }
     if (json.isMember("amount")) {
-        amount = json["amount"].asDouble();
+        amount.fromJson(json["amount"]);
     }
 }
 
@@ -34,8 +34,8 @@ Json::Value TransferFundsRequest::toJson() const {
     if (to.isValid()) {
         json["to"] = to.getValue();
     }
-    if (amount >= 0) {
-        json["amount"] = amount;
+    if (amount.isValid()) {
+        json["amount"] = amount.toJson();
     }
     return json;
 }
@@ -58,10 +58,10 @@ void TransferFundsRequest::setTo(const Wallet& to) {
     this->to = to;
 }
 
-const double TransferFundsRequest::getAmount() const {
+const Optional<double>& TransferFundsRequest::getAmount() const {
     return amount;
 }
-void TransferFundsRequest::setAmount(const double amount) {
+void TransferFundsRequest::setAmount(const Optional<double>& amount) {
     this->amount = amount;
 }
 

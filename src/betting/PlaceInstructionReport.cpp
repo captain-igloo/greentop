@@ -5,7 +5,7 @@
 #include "greentop/betting/PlaceInstructionReport.h"
 
 namespace greentop {
-PlaceInstructionReport::PlaceInstructionReport()  : averagePriceMatched(-1), sizeMatched(-1){
+PlaceInstructionReport::PlaceInstructionReport() {
 }
 
 PlaceInstructionReport::PlaceInstructionReport(const InstructionReportStatus& status,
@@ -13,8 +13,8 @@ PlaceInstructionReport::PlaceInstructionReport(const InstructionReportStatus& st
     const PlaceInstruction& instruction,
     const std::string& betId,
     const std::tm& placedDate,
-    const double averagePriceMatched,
-    const double sizeMatched) :
+    const Optional<double>& averagePriceMatched,
+    const Optional<double>& sizeMatched) :
     status(status),
     errorCode(errorCode),
     instruction(instruction),
@@ -41,10 +41,10 @@ void PlaceInstructionReport::fromJson(const Json::Value& json) {
         strptime(json["placedDate"].asString().c_str(), "%Y-%m-%dT%H:%M:%S.000Z", &placedDate);
     }
     if (json.isMember("averagePriceMatched")) {
-        averagePriceMatched = json["averagePriceMatched"].asDouble();
+        averagePriceMatched.fromJson(json["averagePriceMatched"]);
     }
     if (json.isMember("sizeMatched")) {
-        sizeMatched = json["sizeMatched"].asDouble();
+        sizeMatched.fromJson(json["sizeMatched"]);
     }
 }
 
@@ -67,11 +67,11 @@ Json::Value PlaceInstructionReport::toJson() const {
         strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &placedDate);
         json["placedDate"] = std::string(buffer);
     }
-    if (averagePriceMatched >= 0) {
-        json["averagePriceMatched"] = averagePriceMatched;
+    if (averagePriceMatched.isValid()) {
+        json["averagePriceMatched"] = averagePriceMatched.toJson();
     }
-    if (sizeMatched >= 0) {
-        json["sizeMatched"] = sizeMatched;
+    if (sizeMatched.isValid()) {
+        json["sizeMatched"] = sizeMatched.toJson();
     }
     return json;
 }
@@ -115,17 +115,17 @@ void PlaceInstructionReport::setPlacedDate(const std::tm& placedDate) {
     this->placedDate = placedDate;
 }
 
-const double PlaceInstructionReport::getAveragePriceMatched() const {
+const Optional<double>& PlaceInstructionReport::getAveragePriceMatched() const {
     return averagePriceMatched;
 }
-void PlaceInstructionReport::setAveragePriceMatched(const double averagePriceMatched) {
+void PlaceInstructionReport::setAveragePriceMatched(const Optional<double>& averagePriceMatched) {
     this->averagePriceMatched = averagePriceMatched;
 }
 
-const double PlaceInstructionReport::getSizeMatched() const {
+const Optional<double>& PlaceInstructionReport::getSizeMatched() const {
     return sizeMatched;
 }
-void PlaceInstructionReport::setSizeMatched(const double sizeMatched) {
+void PlaceInstructionReport::setSizeMatched(const Optional<double>& sizeMatched) {
     this->sizeMatched = sizeMatched;
 }
 

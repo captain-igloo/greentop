@@ -9,8 +9,8 @@
 #include <set>
 #include <string>
 
-#include "greentop/BoolJsonMember.h"
 #include "greentop/JsonRequest.h"
+#include "greentop/Optional.h"
 
 namespace greentop {
 
@@ -19,9 +19,9 @@ class ListMarketProfitAndLossRequest : public JsonRequest {
         ListMarketProfitAndLossRequest();
 
         ListMarketProfitAndLossRequest(const std::set<std::string>& marketIds,
-            const BoolJsonMember& includeSettledBets = BoolJsonMember(),
-            const BoolJsonMember& includeBspBets = BoolJsonMember(),
-            const BoolJsonMember& netOfCommission = BoolJsonMember());
+            const Optional<bool>& includeSettledBets = Optional<bool>(),
+            const Optional<bool>& includeBspBets = Optional<bool>(),
+            const Optional<bool>& netOfCommission = Optional<bool>());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -32,21 +32,21 @@ class ListMarketProfitAndLossRequest : public JsonRequest {
         const std::set<std::string>& getMarketIds() const;
         void setMarketIds(const std::set<std::string>& marketIds);
 
-        const BoolJsonMember& getIncludeSettledBets() const;
-        void setIncludeSettledBets(const BoolJsonMember& includeSettledBets);
+        const Optional<bool>& getIncludeSettledBets() const;
+        void setIncludeSettledBets(const Optional<bool>& includeSettledBets);
 
-        const BoolJsonMember& getIncludeBspBets() const;
-        void setIncludeBspBets(const BoolJsonMember& includeBspBets);
+        const Optional<bool>& getIncludeBspBets() const;
+        void setIncludeBspBets(const Optional<bool>& includeBspBets);
 
-        const BoolJsonMember& getNetOfCommission() const;
-        void setNetOfCommission(const BoolJsonMember& netOfCommission);
+        const Optional<bool>& getNetOfCommission() const;
+        void setNetOfCommission(const Optional<bool>& netOfCommission);
 
 
     private:
         std::set<std::string> marketIds;
-        BoolJsonMember includeSettledBets;
-        BoolJsonMember includeBspBets;
-        BoolJsonMember netOfCommission;
+        Optional<bool> includeSettledBets;
+        Optional<bool> includeBspBets;
+        Optional<bool> netOfCommission;
 };
 
 }

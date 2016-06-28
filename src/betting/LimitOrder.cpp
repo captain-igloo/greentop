@@ -30,12 +30,8 @@ void LimitOrder::fromJson(const Json::Value& json) {
 
 Json::Value LimitOrder::toJson() const {
     Json::Value json(Json::objectValue);
-    if (size >= 0) {
-        json["size"] = size;
-    }
-    if (price >= 0) {
-        json["price"] = price;
-    }
+    json["size"] = size;
+    json["price"] = price;
     if (persistenceType.isValid()) {
         json["persistenceType"] = persistenceType.getValue();
     }
@@ -43,7 +39,7 @@ Json::Value LimitOrder::toJson() const {
 }
 
 bool LimitOrder::isValid() const {
-    return size >= 0 && price >= 0 && persistenceType.isValid();
+    return true && true && persistenceType.isValid();
 }
 
 const double LimitOrder::getSize() const {

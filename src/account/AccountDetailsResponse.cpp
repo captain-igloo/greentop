@@ -12,7 +12,7 @@ AccountDetailsResponse::AccountDetailsResponse(const std::string& currencyCode,
     const std::string& localeCode,
     const std::string& region,
     const std::string& timezone,
-    const double discountRate,
+    const Optional<double>& discountRate,
     const uint64_t pointsBalance) :
     currencyCode(currencyCode),
     firstName(firstName),
@@ -45,7 +45,7 @@ void AccountDetailsResponse::fromJson(const Json::Value& json) {
             timezone = json["timezone"].asString();
         }
         if (json.isMember("discountRate")) {
-            discountRate = json["discountRate"].asDouble();
+            discountRate.fromJson(json["discountRate"]);
         }
         if (json.isMember("pointsBalance")) {
             pointsBalance = json["pointsBalance"].asUInt64();
@@ -73,8 +73,8 @@ Json::Value AccountDetailsResponse::toJson() const {
     if (timezone != "") {
         json["timezone"] = timezone;
     }
-    if (discountRate >= 0) {
-        json["discountRate"] = discountRate;
+    if (discountRate.isValid()) {
+        json["discountRate"] = discountRate.toJson();
     }
     if (pointsBalance > 0) {
         json["pointsBalance"] = pointsBalance;
@@ -128,10 +128,10 @@ void AccountDetailsResponse::setTimezone(const std::string& timezone) {
     this->timezone = timezone;
 }
 
-const double AccountDetailsResponse::getDiscountRate() const {
+const Optional<double>& AccountDetailsResponse::getDiscountRate() const {
     return discountRate;
 }
-void AccountDetailsResponse::setDiscountRate(const double discountRate) {
+void AccountDetailsResponse::setDiscountRate(const Optional<double>& discountRate) {
     this->discountRate = discountRate;
 }
 

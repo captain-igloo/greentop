@@ -5,15 +5,15 @@
 #include "greentop/betting/Runner.h"
 
 namespace greentop {
-Runner::Runner()  : selectionId(0), handicap(-1), adjustmentFactor(-1), lastPriceTraded(-1), totalMatched(-1){
+Runner::Runner()  : selectionId(0), handicap(-1), adjustmentFactor(-1){
 }
 
 Runner::Runner(const uint64_t selectionId,
     const double handicap,
     const RunnerStatus& status,
     const double adjustmentFactor,
-    const double lastPriceTraded,
-    const double totalMatched,
+    const Optional<double>& lastPriceTraded,
+    const Optional<double>& totalMatched,
     const std::tm& removalDate,
     const StartingPrices& sp,
     const ExchangePrices& ex,
@@ -46,10 +46,10 @@ void Runner::fromJson(const Json::Value& json) {
         adjustmentFactor = json["adjustmentFactor"].asDouble();
     }
     if (json.isMember("lastPriceTraded")) {
-        lastPriceTraded = json["lastPriceTraded"].asDouble();
+        lastPriceTraded.fromJson(json["lastPriceTraded"]);
     }
     if (json.isMember("totalMatched")) {
-        totalMatched = json["totalMatched"].asDouble();
+        totalMatched.fromJson(json["totalMatched"]);
     }
     if (json.isMember("removalDate")) {
         strptime(json["removalDate"].asString().c_str(), "%Y-%m-%dT%H:%M:%S.000Z", &removalDate);
@@ -81,20 +81,16 @@ Json::Value Runner::toJson() const {
     if (selectionId > 0) {
         json["selectionId"] = selectionId;
     }
-    if (handicap >= 0) {
-        json["handicap"] = handicap;
-    }
+    json["handicap"] = handicap;
     if (status.isValid()) {
         json["status"] = status.getValue();
     }
-    if (adjustmentFactor >= 0) {
-        json["adjustmentFactor"] = adjustmentFactor;
+    json["adjustmentFactor"] = adjustmentFactor;
+    if (lastPriceTraded.isValid()) {
+        json["lastPriceTraded"] = lastPriceTraded.toJson();
     }
-    if (lastPriceTraded >= 0) {
-        json["lastPriceTraded"] = lastPriceTraded;
-    }
-    if (totalMatched >= 0) {
-        json["totalMatched"] = totalMatched;
+    if (totalMatched.isValid()) {
+        json["totalMatched"] = totalMatched.toJson();
     }
     if (removalDate.tm_year > 0) {
         char buffer[25];
@@ -121,7 +117,7 @@ Json::Value Runner::toJson() const {
 }
 
 bool Runner::isValid() const {
-    return selectionId > 0 && handicap >= 0 && status.isValid() && adjustmentFactor >= 0;
+    return selectionId > 0 && true && status.isValid() && true;
 }
 
 const uint64_t Runner::getSelectionId() const {
@@ -152,17 +148,17 @@ void Runner::setAdjustmentFactor(const double adjustmentFactor) {
     this->adjustmentFactor = adjustmentFactor;
 }
 
-const double Runner::getLastPriceTraded() const {
+const Optional<double>& Runner::getLastPriceTraded() const {
     return lastPriceTraded;
 }
-void Runner::setLastPriceTraded(const double lastPriceTraded) {
+void Runner::setLastPriceTraded(const Optional<double>& lastPriceTraded) {
     this->lastPriceTraded = lastPriceTraded;
 }
 
-const double Runner::getTotalMatched() const {
+const Optional<double>& Runner::getTotalMatched() const {
     return totalMatched;
 }
-void Runner::setTotalMatched(const double totalMatched) {
+void Runner::setTotalMatched(const Optional<double>& totalMatched) {
     this->totalMatched = totalMatched;
 }
 

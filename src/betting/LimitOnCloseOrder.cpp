@@ -25,17 +25,13 @@ void LimitOnCloseOrder::fromJson(const Json::Value& json) {
 
 Json::Value LimitOnCloseOrder::toJson() const {
     Json::Value json(Json::objectValue);
-    if (liability >= 0) {
-        json["liability"] = liability;
-    }
-    if (price >= 0) {
-        json["price"] = price;
-    }
+    json["liability"] = liability;
+    json["price"] = price;
     return json;
 }
 
 bool LimitOnCloseOrder::isValid() const {
-    return liability >= 0 && price >= 0;
+    return true && true;
 }
 
 const double LimitOnCloseOrder::getLiability() const {

@@ -6,11 +6,11 @@
 
 namespace greentop {
 
-StartingPrices::StartingPrices(const double nearPrice,
-    const double farPrice,
+StartingPrices::StartingPrices(const Optional<double>& nearPrice,
+    const Optional<double>& farPrice,
     const std::vector<PriceSize>& backStakeTaken,
     const std::vector<PriceSize>& layLiabilityTaken,
-    const double actualSP) :
+    const Optional<double>& actualSP) :
     nearPrice(nearPrice),
     farPrice(farPrice),
     backStakeTaken(backStakeTaken),
@@ -20,10 +20,10 @@ StartingPrices::StartingPrices(const double nearPrice,
 
 void StartingPrices::fromJson(const Json::Value& json) {
     if (json.isMember("nearPrice")) {
-        nearPrice = json["nearPrice"].asDouble();
+        nearPrice.fromJson(json["nearPrice"]);
     }
     if (json.isMember("farPrice")) {
-        farPrice = json["farPrice"].asDouble();
+        farPrice.fromJson(json["farPrice"]);
     }
     if (json.isMember("backStakeTaken")) {
         for (unsigned i = 0; i < json["backStakeTaken"].size(); ++i) {
@@ -40,17 +40,17 @@ void StartingPrices::fromJson(const Json::Value& json) {
             };
     }
     if (json.isMember("actualSP")) {
-        actualSP = json["actualSP"].asDouble();
+        actualSP.fromJson(json["actualSP"]);
     }
 }
 
 Json::Value StartingPrices::toJson() const {
     Json::Value json(Json::objectValue);
-    if (nearPrice >= 0) {
-        json["nearPrice"] = nearPrice;
+    if (nearPrice.isValid()) {
+        json["nearPrice"] = nearPrice.toJson();
     }
-    if (farPrice >= 0) {
-        json["farPrice"] = farPrice;
+    if (farPrice.isValid()) {
+        json["farPrice"] = farPrice.toJson();
     }
     if (backStakeTaken.size() > 0) {
         for (unsigned i = 0; i < backStakeTaken.size(); ++i) {
@@ -62,8 +62,8 @@ Json::Value StartingPrices::toJson() const {
             json["layLiabilityTaken"].append(layLiabilityTaken[i].toJson());
         };
     }
-    if (actualSP >= 0) {
-        json["actualSP"] = actualSP;
+    if (actualSP.isValid()) {
+        json["actualSP"] = actualSP.toJson();
     }
     return json;
 }
@@ -72,17 +72,17 @@ bool StartingPrices::isValid() const {
     return true;
 }
 
-const double StartingPrices::getNearPrice() const {
+const Optional<double>& StartingPrices::getNearPrice() const {
     return nearPrice;
 }
-void StartingPrices::setNearPrice(const double nearPrice) {
+void StartingPrices::setNearPrice(const Optional<double>& nearPrice) {
     this->nearPrice = nearPrice;
 }
 
-const double StartingPrices::getFarPrice() const {
+const Optional<double>& StartingPrices::getFarPrice() const {
     return farPrice;
 }
-void StartingPrices::setFarPrice(const double farPrice) {
+void StartingPrices::setFarPrice(const Optional<double>& farPrice) {
     this->farPrice = farPrice;
 }
 
@@ -100,10 +100,10 @@ void StartingPrices::setLayLiabilityTaken(const std::vector<PriceSize>& layLiabi
     this->layLiabilityTaken = layLiabilityTaken;
 }
 
-const double StartingPrices::getActualSP() const {
+const Optional<double>& StartingPrices::getActualSP() const {
     return actualSP;
 }
-void StartingPrices::setActualSP(const double actualSP) {
+void StartingPrices::setActualSP(const Optional<double>& actualSP) {
     this->actualSP = actualSP;
 }
 

@@ -6,11 +6,11 @@
 
 namespace greentop {
 
-AccountFundsResponse::AccountFundsResponse(const double availableToBetBalance,
-    const double exposure,
-    const double retainedCommission,
-    const double exposureLimit,
-    const double discountRate,
+AccountFundsResponse::AccountFundsResponse(const Optional<double>& availableToBetBalance,
+    const Optional<double>& exposure,
+    const Optional<double>& retainedCommission,
+    const Optional<double>& exposureLimit,
+    const Optional<double>& discountRate,
     const uint64_t pointsBalance) :
     availableToBetBalance(availableToBetBalance),
     exposure(exposure),
@@ -23,19 +23,19 @@ AccountFundsResponse::AccountFundsResponse(const double availableToBetBalance,
 void AccountFundsResponse::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
         if (json.isMember("availableToBetBalance")) {
-            availableToBetBalance = json["availableToBetBalance"].asDouble();
+            availableToBetBalance.fromJson(json["availableToBetBalance"]);
         }
         if (json.isMember("exposure")) {
-            exposure = json["exposure"].asDouble();
+            exposure.fromJson(json["exposure"]);
         }
         if (json.isMember("retainedCommission")) {
-            retainedCommission = json["retainedCommission"].asDouble();
+            retainedCommission.fromJson(json["retainedCommission"]);
         }
         if (json.isMember("exposureLimit")) {
-            exposureLimit = json["exposureLimit"].asDouble();
+            exposureLimit.fromJson(json["exposureLimit"]);
         }
         if (json.isMember("discountRate")) {
-            discountRate = json["discountRate"].asDouble();
+            discountRate.fromJson(json["discountRate"]);
         }
         if (json.isMember("pointsBalance")) {
             pointsBalance = json["pointsBalance"].asUInt64();
@@ -45,20 +45,20 @@ void AccountFundsResponse::fromJson(const Json::Value& json) {
 
 Json::Value AccountFundsResponse::toJson() const {
     Json::Value json(Json::objectValue);
-    if (availableToBetBalance >= 0) {
-        json["availableToBetBalance"] = availableToBetBalance;
+    if (availableToBetBalance.isValid()) {
+        json["availableToBetBalance"] = availableToBetBalance.toJson();
     }
-    if (exposure >= 0) {
-        json["exposure"] = exposure;
+    if (exposure.isValid()) {
+        json["exposure"] = exposure.toJson();
     }
-    if (retainedCommission >= 0) {
-        json["retainedCommission"] = retainedCommission;
+    if (retainedCommission.isValid()) {
+        json["retainedCommission"] = retainedCommission.toJson();
     }
-    if (exposureLimit >= 0) {
-        json["exposureLimit"] = exposureLimit;
+    if (exposureLimit.isValid()) {
+        json["exposureLimit"] = exposureLimit.toJson();
     }
-    if (discountRate >= 0) {
-        json["discountRate"] = discountRate;
+    if (discountRate.isValid()) {
+        json["discountRate"] = discountRate.toJson();
     }
     if (pointsBalance > 0) {
         json["pointsBalance"] = pointsBalance;
@@ -70,38 +70,38 @@ bool AccountFundsResponse::isValid() const {
     return true;
 }
 
-const double AccountFundsResponse::getAvailableToBetBalance() const {
+const Optional<double>& AccountFundsResponse::getAvailableToBetBalance() const {
     return availableToBetBalance;
 }
-void AccountFundsResponse::setAvailableToBetBalance(const double availableToBetBalance) {
+void AccountFundsResponse::setAvailableToBetBalance(const Optional<double>& availableToBetBalance) {
     this->availableToBetBalance = availableToBetBalance;
 }
 
-const double AccountFundsResponse::getExposure() const {
+const Optional<double>& AccountFundsResponse::getExposure() const {
     return exposure;
 }
-void AccountFundsResponse::setExposure(const double exposure) {
+void AccountFundsResponse::setExposure(const Optional<double>& exposure) {
     this->exposure = exposure;
 }
 
-const double AccountFundsResponse::getRetainedCommission() const {
+const Optional<double>& AccountFundsResponse::getRetainedCommission() const {
     return retainedCommission;
 }
-void AccountFundsResponse::setRetainedCommission(const double retainedCommission) {
+void AccountFundsResponse::setRetainedCommission(const Optional<double>& retainedCommission) {
     this->retainedCommission = retainedCommission;
 }
 
-const double AccountFundsResponse::getExposureLimit() const {
+const Optional<double>& AccountFundsResponse::getExposureLimit() const {
     return exposureLimit;
 }
-void AccountFundsResponse::setExposureLimit(const double exposureLimit) {
+void AccountFundsResponse::setExposureLimit(const Optional<double>& exposureLimit) {
     this->exposureLimit = exposureLimit;
 }
 
-const double AccountFundsResponse::getDiscountRate() const {
+const Optional<double>& AccountFundsResponse::getDiscountRate() const {
     return discountRate;
 }
-void AccountFundsResponse::setDiscountRate(const double discountRate) {
+void AccountFundsResponse::setDiscountRate(const Optional<double>& discountRate) {
     this->discountRate = discountRate;
 }
 

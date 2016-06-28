@@ -10,6 +10,7 @@
 #include <string>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 #include "greentop/enum/OrderStatus.h"
 #include "greentop/enum/OrderType.h"
 #include "greentop/enum/PersistenceType.h"
@@ -30,12 +31,12 @@ class Order : public JsonMember {
             const double size,
             const double bspLiability,
             const std::tm& placedDate,
-            const double avgPriceMatched = -1,
-            const double sizeMatched = -1,
-            const double sizeRemaining = -1,
-            const double sizeLapsed = -1,
-            const double sizeCancelled = -1,
-            const double sizeVoided = -1);
+            const Optional<double>& avgPriceMatched = Optional<double>(),
+            const Optional<double>& sizeMatched = Optional<double>(),
+            const Optional<double>& sizeRemaining = Optional<double>(),
+            const Optional<double>& sizeLapsed = Optional<double>(),
+            const Optional<double>& sizeCancelled = Optional<double>(),
+            const Optional<double>& sizeVoided = Optional<double>());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -70,23 +71,23 @@ class Order : public JsonMember {
         const std::tm& getPlacedDate() const;
         void setPlacedDate(const std::tm& placedDate);
 
-        const double getAvgPriceMatched() const;
-        void setAvgPriceMatched(const double avgPriceMatched);
+        const Optional<double>& getAvgPriceMatched() const;
+        void setAvgPriceMatched(const Optional<double>& avgPriceMatched);
 
-        const double getSizeMatched() const;
-        void setSizeMatched(const double sizeMatched);
+        const Optional<double>& getSizeMatched() const;
+        void setSizeMatched(const Optional<double>& sizeMatched);
 
-        const double getSizeRemaining() const;
-        void setSizeRemaining(const double sizeRemaining);
+        const Optional<double>& getSizeRemaining() const;
+        void setSizeRemaining(const Optional<double>& sizeRemaining);
 
-        const double getSizeLapsed() const;
-        void setSizeLapsed(const double sizeLapsed);
+        const Optional<double>& getSizeLapsed() const;
+        void setSizeLapsed(const Optional<double>& sizeLapsed);
 
-        const double getSizeCancelled() const;
-        void setSizeCancelled(const double sizeCancelled);
+        const Optional<double>& getSizeCancelled() const;
+        void setSizeCancelled(const Optional<double>& sizeCancelled);
 
-        const double getSizeVoided() const;
-        void setSizeVoided(const double sizeVoided);
+        const Optional<double>& getSizeVoided() const;
+        void setSizeVoided(const Optional<double>& sizeVoided);
 
 
     private:
@@ -99,12 +100,12 @@ class Order : public JsonMember {
         double size;
         double bspLiability;
         std::tm placedDate;
-        double avgPriceMatched;
-        double sizeMatched;
-        double sizeRemaining;
-        double sizeLapsed;
-        double sizeCancelled;
-        double sizeVoided;
+        Optional<double> avgPriceMatched;
+        Optional<double> sizeMatched;
+        Optional<double> sizeRemaining;
+        Optional<double> sizeLapsed;
+        Optional<double> sizeCancelled;
+        Optional<double> sizeVoided;
 };
 
 }

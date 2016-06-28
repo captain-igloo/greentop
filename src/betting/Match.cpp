@@ -52,12 +52,8 @@ Json::Value Match::toJson() const {
     if (side.isValid()) {
         json["side"] = side.getValue();
     }
-    if (price >= 0) {
-        json["price"] = price;
-    }
-    if (size >= 0) {
-        json["size"] = size;
-    }
+    json["price"] = price;
+    json["size"] = size;
     if (matchDate.tm_year > 0) {
         char buffer[25];
         strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &matchDate);
@@ -67,7 +63,7 @@ Json::Value Match::toJson() const {
 }
 
 bool Match::isValid() const {
-    return side.isValid() && price >= 0 && size >= 0;
+    return side.isValid() && true && true;
 }
 
 const std::string& Match::getBetId() const {

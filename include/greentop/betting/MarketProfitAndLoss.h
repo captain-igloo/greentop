@@ -10,6 +10,7 @@
 #include <vector>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 #include "greentop/betting/RunnerProfitAndLoss.h"
 
 namespace greentop {
@@ -18,7 +19,7 @@ class MarketProfitAndLoss : public JsonMember {
     public:
 
         MarketProfitAndLoss(const std::string& marketId = std::string(),
-            const double commissionApplied = -1,
+            const Optional<double>& commissionApplied = Optional<double>(),
             const std::vector<RunnerProfitAndLoss>& profitAndLosses = std::vector<RunnerProfitAndLoss>());
 
         virtual void fromJson(const Json::Value& json);
@@ -30,8 +31,8 @@ class MarketProfitAndLoss : public JsonMember {
         const std::string& getMarketId() const;
         void setMarketId(const std::string& marketId);
 
-        const double getCommissionApplied() const;
-        void setCommissionApplied(const double commissionApplied);
+        const Optional<double>& getCommissionApplied() const;
+        void setCommissionApplied(const Optional<double>& commissionApplied);
 
         const std::vector<RunnerProfitAndLoss>& getProfitAndLosses() const;
         void setProfitAndLosses(const std::vector<RunnerProfitAndLoss>& profitAndLosses);
@@ -39,7 +40,7 @@ class MarketProfitAndLoss : public JsonMember {
 
     private:
         std::string marketId;
-        double commissionApplied;
+        Optional<double> commissionApplied;
         std::vector<RunnerProfitAndLoss> profitAndLosses;
 };
 

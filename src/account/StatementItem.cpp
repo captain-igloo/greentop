@@ -8,8 +8,8 @@ namespace greentop {
 
 StatementItem::StatementItem(const std::string& refId,
     const std::tm& itemDate,
-    const double amount,
-    const double balance,
+    const Optional<double>& amount,
+    const Optional<double>& balance,
     const ItemClass& itemClass,
     const std::map<std::string,std::string>& itemClassData,
     const StatementLegacyData& legacyData) :
@@ -30,10 +30,10 @@ void StatementItem::fromJson(const Json::Value& json) {
         strptime(json["itemDate"].asString().c_str(), "%Y-%m-%dT%H:%M:%S.000Z", &itemDate);
     }
     if (json.isMember("amount")) {
-        amount = json["amount"].asDouble();
+        amount.fromJson(json["amount"]);
     }
     if (json.isMember("balance")) {
-        balance = json["balance"].asDouble();
+        balance.fromJson(json["balance"]);
     }
     if (json.isMember("itemClass")) {
         itemClass = json["itemClass"].asString();
@@ -58,11 +58,11 @@ Json::Value StatementItem::toJson() const {
         strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &itemDate);
         json["itemDate"] = std::string(buffer);
     }
-    if (amount >= 0) {
-        json["amount"] = amount;
+    if (amount.isValid()) {
+        json["amount"] = amount.toJson();
     }
-    if (balance >= 0) {
-        json["balance"] = balance;
+    if (balance.isValid()) {
+        json["balance"] = balance.toJson();
     }
     if (itemClass.isValid()) {
         json["itemClass"] = itemClass.getValue();
@@ -97,17 +97,17 @@ void StatementItem::setItemDate(const std::tm& itemDate) {
     this->itemDate = itemDate;
 }
 
-const double StatementItem::getAmount() const {
+const Optional<double>& StatementItem::getAmount() const {
     return amount;
 }
-void StatementItem::setAmount(const double amount) {
+void StatementItem::setAmount(const Optional<double>& amount) {
     this->amount = amount;
 }
 
-const double StatementItem::getBalance() const {
+const Optional<double>& StatementItem::getBalance() const {
     return balance;
 }
-void StatementItem::setBalance(const double balance) {
+void StatementItem::setBalance(const Optional<double>& balance) {
     this->balance = balance;
 }
 

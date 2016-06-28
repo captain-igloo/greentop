@@ -41,9 +41,7 @@ Json::Value RunnerCatalog::toJson() const {
     if (runnerName != "") {
         json["runnerName"] = runnerName;
     }
-    if (handicap >= 0) {
-        json["handicap"] = handicap;
-    }
+    json["handicap"] = handicap;
     if (sortPriority >= 0) {
         json["sortPriority"] = sortPriority;
     }
@@ -51,7 +49,7 @@ Json::Value RunnerCatalog::toJson() const {
 }
 
 bool RunnerCatalog::isValid() const {
-    return selectionId > 0 && runnerName != "" && handicap >= 0 && sortPriority >= 0;
+    return selectionId > 0 && runnerName != "" && true && sortPriority >= 0;
 }
 
 const uint64_t RunnerCatalog::getSelectionId() const {
