@@ -10,6 +10,7 @@
 #include <string>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Time.h"
 #include "greentop/enum/SubscriptionStatus.h"
 
 namespace greentop {

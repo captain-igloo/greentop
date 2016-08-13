@@ -9,6 +9,7 @@
 #include <json/json.h>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Time.h"
 #include "greentop/betting/CancelInstruction.h"
 #include "greentop/enum/InstructionReportErrorCode.h"
 #include "greentop/enum/InstructionReportStatus.h"

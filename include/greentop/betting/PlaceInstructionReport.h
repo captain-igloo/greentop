@@ -11,6 +11,7 @@
 
 #include "greentop/JsonMember.h"
 #include "greentop/Optional.h"
+#include "greentop/Time.h"
 #include "greentop/betting/PlaceInstruction.h"
 #include "greentop/enum/InstructionReportErrorCode.h"
 #include "greentop/enum/InstructionReportStatus.h"

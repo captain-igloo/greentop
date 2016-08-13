@@ -11,6 +11,7 @@
 
 #include "greentop/JsonMember.h"
 #include "greentop/Optional.h"
+#include "greentop/Time.h"
 #include "greentop/enum/OrderStatus.h"
 #include "greentop/enum/OrderType.h"
 #include "greentop/enum/PersistenceType.h"

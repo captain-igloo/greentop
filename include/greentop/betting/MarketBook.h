@@ -12,6 +12,7 @@
 
 #include "greentop/JsonMember.h"
 #include "greentop/Optional.h"
+#include "greentop/Time.h"
 #include "greentop/betting/Runner.h"
 #include "greentop/enum/MarketStatus.h"
 

@@ -8,6 +8,14 @@
 #include "greentop/menu/Menu.h"
 #include "greentop/menu/Node.h"
 
+#ifdef __linux__ 
+#include <time.h>
+#elif _WIN32
+#include "greentop/Time.h"
+#else
+#error Platform not supported
+#endif
+
 namespace greentop {
 namespace menu {
 

@@ -11,6 +11,7 @@
 
 #include "greentop/JsonMember.h"
 #include "greentop/Optional.h"
+#include "greentop/Time.h"
 #include "greentop/betting/ExchangePrices.h"
 #include "greentop/betting/Match.h"
 #include "greentop/betting/Order.h"
