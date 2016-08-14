@@ -4,6 +4,8 @@
 #ifndef OPTIONAL_H
 #define OPTIONAL_H
 
+#include <stdexcept>
+
 #include "greentop/JsonMember.h"
 
 namespace greentop {
