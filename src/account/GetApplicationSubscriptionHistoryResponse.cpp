@@ -1,44 +1,47 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/GetApplicationSubscriptionHistoryResponse.h"
 
 namespace greentop {
 
-GetApplicationSubscriptionHistoryResponse::GetApplicationSubscriptionHistoryResponse(const std::vector<SubscriptionHistory>& subscriptionHistories) :
-    subscriptionHistories(subscriptionHistories) {
+GetApplicationSubscriptionHistoryResponse::GetApplicationSubscriptionHistoryResponse() {
+}
+
+GetApplicationSubscriptionHistoryResponse::GetApplicationSubscriptionHistoryResponse(const std::vector<SubscriptionHistory>& subscriptionHistorys) :
+    subscriptionHistorys(subscriptionHistorys) {
 }
 
 void GetApplicationSubscriptionHistoryResponse::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
         for (unsigned i = 0; i < json.size(); ++i) {
-            SubscriptionHistory subscriptionHistorie;
-            subscriptionHistorie.fromJson(json[i]);
-            subscriptionHistories.push_back(subscriptionHistorie);
-        };
+            SubscriptionHistory subscriptionHistory;
+            subscriptionHistory.fromJson(json[i]);
+            subscriptionHistorys.push_back(subscriptionHistory);
+        }
     }
 }
 
 Json::Value GetApplicationSubscriptionHistoryResponse::toJson() const {
     Json::Value json(Json::arrayValue);
-    if (subscriptionHistories.size() > 0) {
-        for (unsigned i = 0; i < subscriptionHistories.size(); ++i) {
-            json.append(subscriptionHistories[i].toJson());
-        };
+    if (subscriptionHistorys.size() > 0) {
+        for (unsigned i = 0; i < subscriptionHistorys.size(); ++i) {
+            json.append(subscriptionHistorys[i].toJson());
+        }
     }
     return json;
 }
 
 bool GetApplicationSubscriptionHistoryResponse::isValid() const {
-    return true;
+    return subscriptionHistorys.size() > 0;
 }
 
-const std::vector<SubscriptionHistory>& GetApplicationSubscriptionHistoryResponse::getSubscriptionHistories() const {
-    return subscriptionHistories;
+const std::vector<SubscriptionHistory>& GetApplicationSubscriptionHistoryResponse::getSubscriptionHistorys() const {
+    return subscriptionHistorys;
 }
-void GetApplicationSubscriptionHistoryResponse::setSubscriptionHistories(const std::vector<SubscriptionHistory>& subscriptionHistories) {
-    this->subscriptionHistories = subscriptionHistories;
+void GetApplicationSubscriptionHistoryResponse::setSubscriptionHistorys(const std::vector<SubscriptionHistory>& subscriptionHistorys) {
+    this->subscriptionHistorys = subscriptionHistorys;
 }
 
 

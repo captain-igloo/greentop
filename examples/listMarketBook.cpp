@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
 
     if (exchangeApi.login(argv[2], argv[3])) {
 
-        std::set<std::string> marketIds = {argv[4]};
+        std::vector<std::string> marketIds = {argv[4]};
         std::set<PriceData> priceData = {PriceData::EX_BEST_OFFERS};
         PriceProjection priceProjection(priceData);
         OrderProjection orderProjection(OrderProjection::EXECUTABLE);

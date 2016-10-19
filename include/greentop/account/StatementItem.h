@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef STATEMENTITEM_H
@@ -13,7 +13,7 @@
 #include "greentop/Optional.h"
 #include "greentop/Time.h"
 #include "greentop/account/StatementLegacyData.h"
-#include "greentop/enum/ItemClass.h"
+#include "greentop/account/enum/ItemClass.h"
 
 namespace greentop {
 
@@ -25,7 +25,7 @@ class StatementItem : public JsonMember {
             const Optional<double>& amount = Optional<double>(),
             const Optional<double>& balance = Optional<double>(),
             const ItemClass& itemClass = ItemClass(),
-            const std::map<std::string,std::string>& itemClassData = std::map<std::string,std::string>(),
+            const std::map<std::string, std::string> itemClassData = std::map<std::string, std::string>(),
             const StatementLegacyData& legacyData = StatementLegacyData());
 
         virtual void fromJson(const Json::Value& json);
@@ -49,8 +49,8 @@ class StatementItem : public JsonMember {
         const ItemClass& getItemClass() const;
         void setItemClass(const ItemClass& itemClass);
 
-        const std::map<std::string,std::string>& getItemClassData() const;
-        void setItemClassData(const std::map<std::string,std::string>& itemClassData);
+        const std::map<std::string, std::string>& getItemClassData() const;
+        void setItemClassData(const std::map<std::string, std::string>& itemClassData);
 
         const StatementLegacyData& getLegacyData() const;
         void setLegacyData(const StatementLegacyData& legacyData);
@@ -62,7 +62,7 @@ class StatementItem : public JsonMember {
         Optional<double> amount;
         Optional<double> balance;
         ItemClass itemClass;
-        std::map<std::string,std::string> itemClassData;
+        std::map<std::string, std::string> itemClassData;
         StatementLegacyData legacyData;
 };
 

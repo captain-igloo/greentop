@@ -1,10 +1,11 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/AccountDetailsResponse.h"
 
 namespace greentop {
+
 
 AccountDetailsResponse::AccountDetailsResponse(const std::string& currencyCode,
     const std::string& firstName,
@@ -13,7 +14,8 @@ AccountDetailsResponse::AccountDetailsResponse(const std::string& currencyCode,
     const std::string& region,
     const std::string& timezone,
     const Optional<double>& discountRate,
-    const uint64_t pointsBalance) :
+    const Optional<int32_t>& pointsBalance,
+    const std::string& countryCode) :
     currencyCode(currencyCode),
     firstName(firstName),
     lastName(lastName),
@@ -21,34 +23,47 @@ AccountDetailsResponse::AccountDetailsResponse(const std::string& currencyCode,
     region(region),
     timezone(timezone),
     discountRate(discountRate),
-    pointsBalance(pointsBalance) {
+    pointsBalance(pointsBalance),
+    countryCode(countryCode) {
 }
 
 void AccountDetailsResponse::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
         if (json.isMember("currencyCode")) {
             currencyCode = json["currencyCode"].asString();
+;
         }
         if (json.isMember("firstName")) {
             firstName = json["firstName"].asString();
+;
         }
         if (json.isMember("lastName")) {
             lastName = json["lastName"].asString();
+;
         }
         if (json.isMember("localeCode")) {
             localeCode = json["localeCode"].asString();
+;
         }
         if (json.isMember("region")) {
             region = json["region"].asString();
+;
         }
         if (json.isMember("timezone")) {
             timezone = json["timezone"].asString();
+;
         }
         if (json.isMember("discountRate")) {
-            discountRate.fromJson(json["discountRate"]);
+            discountRate = json["discountRate"].asDouble();
+;
         }
         if (json.isMember("pointsBalance")) {
-            pointsBalance = json["pointsBalance"].asUInt64();
+            pointsBalance = json["pointsBalance"].asInt();
+;
+        }
+        if (json.isMember("countryCode")) {
+            countryCode = json["countryCode"].asString();
+;
         }
     }
 }
@@ -76,8 +91,11 @@ Json::Value AccountDetailsResponse::toJson() const {
     if (discountRate.isValid()) {
         json["discountRate"] = discountRate.toJson();
     }
-    if (pointsBalance > 0) {
-        json["pointsBalance"] = pointsBalance;
+    if (pointsBalance.isValid()) {
+        json["pointsBalance"] = pointsBalance.toJson();
+    }
+    if (countryCode != "") {
+        json["countryCode"] = countryCode;
     }
     return json;
 }
@@ -135,11 +153,18 @@ void AccountDetailsResponse::setDiscountRate(const Optional<double>& discountRat
     this->discountRate = discountRate;
 }
 
-const uint64_t AccountDetailsResponse::getPointsBalance() const {
+const Optional<int32_t>& AccountDetailsResponse::getPointsBalance() const {
     return pointsBalance;
 }
-void AccountDetailsResponse::setPointsBalance(const uint64_t pointsBalance) {
+void AccountDetailsResponse::setPointsBalance(const Optional<int32_t>& pointsBalance) {
     this->pointsBalance = pointsBalance;
+}
+
+const std::string& AccountDetailsResponse::getCountryCode() const {
+    return countryCode;
+}
+void AccountDetailsResponse::setCountryCode(const std::string& countryCode) {
+    this->countryCode = countryCode;
 }
 
 

@@ -1,10 +1,11 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/SubscriptionHistory.h"
 
 namespace greentop {
+
 SubscriptionHistory::SubscriptionHistory() {
 }
 
@@ -14,7 +15,7 @@ SubscriptionHistory::SubscriptionHistory(const std::string& subscriptionToken,
     const std::tm& createdDateTime,
     const std::tm& activationDateTime,
     const std::tm& cancellationDateTime,
-    const SubscriptionStatus& subscriptionStatus,
+    const std::string& subscriptionStatus,
     const std::string& clientReference) :
     subscriptionToken(subscriptionToken),
     expiryDateTime(expiryDateTime),
@@ -83,8 +84,8 @@ Json::Value SubscriptionHistory::toJson() const {
         strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &cancellationDateTime);
         json["cancellationDateTime"] = std::string(buffer);
     }
-    if (subscriptionStatus.isValid()) {
-        json["subscriptionStatus"] = subscriptionStatus.getValue();
+    if (subscriptionStatus != "") {
+        json["subscriptionStatus"] = subscriptionStatus;
     }
     if (clientReference != "") {
         json["clientReference"] = clientReference;
@@ -138,10 +139,10 @@ void SubscriptionHistory::setCancellationDateTime(const std::tm& cancellationDat
     this->cancellationDateTime = cancellationDateTime;
 }
 
-const SubscriptionStatus& SubscriptionHistory::getSubscriptionStatus() const {
+const std::string& SubscriptionHistory::getSubscriptionStatus() const {
     return subscriptionStatus;
 }
-void SubscriptionHistory::setSubscriptionStatus(const SubscriptionStatus& subscriptionStatus) {
+void SubscriptionHistory::setSubscriptionStatus(const std::string& subscriptionStatus) {
     this->subscriptionStatus = subscriptionStatus;
 }
 

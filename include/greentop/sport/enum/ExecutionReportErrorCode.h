@@ -1,0 +1,70 @@
+/**
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ */
+
+#ifndef EXECUTIONREPORTERRORCODE_H
+#define EXECUTIONREPORTERRORCODE_H
+
+#include <stdexcept>
+#include <string>
+
+#include "greentop/Enum.h"
+
+namespace greentop {
+
+class ExecutionReportErrorCode : public Enum<ExecutionReportErrorCode> {
+
+    public:
+
+        /** The matcher's not healthy */
+        static const std::string ERROR_IN_MATCHER;
+        /** The order itself has been accepted, but at least one (possibly all) actions have generated
+         errors */
+        static const std::string PROCESSED_WITH_ERRORS;
+        /** There is an error with an action that has caused the entire order to be rejected */
+        static const std::string BET_ACTION_ERROR;
+        /** Order rejected due to the account's status (suspended, inactive, dup cards) */
+        static const std::string INVALID_ACCOUNT_STATE;
+        /** Order rejected due to the account's wallet's status */
+        static const std::string INVALID_WALLET_STATUS;
+        /** Account has exceeded its exposure limit or available to bet limit */
+        static const std::string INSUFFICIENT_FUNDS;
+        /** The account has exceed the self imposed loss limit */
+        static const std::string LOSS_LIMIT_EXCEEDED;
+        /** Market is suspended */
+        static const std::string MARKET_SUSPENDED;
+        /** Market is not open for betting, either inactive, suspended or closed */
+        static const std::string MARKET_NOT_OPEN_FOR_BETTING;
+        /** duplicate customer referece data submitted */
+        static const std::string DUPLICATE_TRANSACTION;
+        /** Order cannot be accepted by the matcher due to the combination of actions. For example, bets being
+         edited are not
+         on the same market, or order includes both edits and placement */
+        static const std::string INVALID_ORDER;
+        /** Market doesn't exist */
+        static const std::string INVALID_MARKET_ID;
+        /** Business rules do not allow order to be placed */
+        static const std::string PERMISSION_DENIED;
+        /** duplicate bet ids found */
+        static const std::string DUPLICATE_BETIDS;
+        /** Order hasn't been passed to matcher as system detected there will be no state change */
+        static const std::string NO_ACTION_REQUIRED;
+        /** The requested service is unavailable */
+        static const std::string SERVICE_UNAVAILABLE;
+        /** The regulator rejected the order */
+        static const std::string REJECTED_BY_REGULATOR;
+
+        ExecutionReportErrorCode();
+
+        ExecutionReportErrorCode(const std::string& v);
+
+        bool operator<(const ExecutionReportErrorCode& other) const;
+
+        bool operator==(const ExecutionReportErrorCode& other) const;
+
+        bool operator!=(const ExecutionReportErrorCode& other) const;
+};
+
+}
+
+#endif // EXECUTIONREPORTERRORCODE_H

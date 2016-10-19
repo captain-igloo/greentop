@@ -1,11 +1,12 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef ACCOUNTFUNDSRESPONSE_H
 #define ACCOUNTFUNDSRESPONSE_H
 
 #include <json/json.h>
+#include <string>
 
 #include "greentop/JsonResponse.h"
 #include "greentop/Optional.h"
@@ -20,7 +21,8 @@ class AccountFundsResponse : public JsonResponse {
             const Optional<double>& retainedCommission = Optional<double>(),
             const Optional<double>& exposureLimit = Optional<double>(),
             const Optional<double>& discountRate = Optional<double>(),
-            const uint64_t pointsBalance = 0);
+            const Optional<int32_t>& pointsBalance = Optional<int32_t>(),
+            const std::string& wallet = std::string());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -43,8 +45,11 @@ class AccountFundsResponse : public JsonResponse {
         const Optional<double>& getDiscountRate() const;
         void setDiscountRate(const Optional<double>& discountRate);
 
-        const uint64_t getPointsBalance() const;
-        void setPointsBalance(const uint64_t pointsBalance);
+        const Optional<int32_t>& getPointsBalance() const;
+        void setPointsBalance(const Optional<int32_t>& pointsBalance);
+
+        const std::string& getWallet() const;
+        void setWallet(const std::string& wallet);
 
 
     private:
@@ -53,7 +58,8 @@ class AccountFundsResponse : public JsonResponse {
         Optional<double> retainedCommission;
         Optional<double> exposureLimit;
         Optional<double> discountRate;
-        uint64_t pointsBalance;
+        Optional<int32_t> pointsBalance;
+        std::string wallet;
 };
 
 }

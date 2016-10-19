@@ -1,14 +1,15 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/heartbeat/HeartbeatRequest.h"
 
 namespace greentop {
-HeartbeatRequest::HeartbeatRequest()  : preferredTimeoutSeconds(-1){
+
+HeartbeatRequest::HeartbeatRequest() {
 }
 
-HeartbeatRequest::HeartbeatRequest(const int preferredTimeoutSeconds) :
+HeartbeatRequest::HeartbeatRequest(const int32_t preferredTimeoutSeconds) :
     preferredTimeoutSeconds(preferredTimeoutSeconds) {
 }
 
@@ -20,20 +21,18 @@ void HeartbeatRequest::fromJson(const Json::Value& json) {
 
 Json::Value HeartbeatRequest::toJson() const {
     Json::Value json(Json::objectValue);
-    if (preferredTimeoutSeconds >= 0) {
-        json["preferredTimeoutSeconds"] = preferredTimeoutSeconds;
-    }
+    json["preferredTimeoutSeconds"] = preferredTimeoutSeconds;
     return json;
 }
 
 bool HeartbeatRequest::isValid() const {
-    return preferredTimeoutSeconds >= 0;
+    return true;
 }
 
-const int HeartbeatRequest::getPreferredTimeoutSeconds() const {
+const int32_t HeartbeatRequest::getPreferredTimeoutSeconds() const {
     return preferredTimeoutSeconds;
 }
-void HeartbeatRequest::setPreferredTimeoutSeconds(const int preferredTimeoutSeconds) {
+void HeartbeatRequest::setPreferredTimeoutSeconds(const int32_t preferredTimeoutSeconds) {
     this->preferredTimeoutSeconds = preferredTimeoutSeconds;
 }
 

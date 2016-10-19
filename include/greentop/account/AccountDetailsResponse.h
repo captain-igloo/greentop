@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef ACCOUNTDETAILSRESPONSE_H
@@ -23,7 +23,8 @@ class AccountDetailsResponse : public JsonResponse {
             const std::string& region = std::string(),
             const std::string& timezone = std::string(),
             const Optional<double>& discountRate = Optional<double>(),
-            const uint64_t pointsBalance = 0);
+            const Optional<int32_t>& pointsBalance = Optional<int32_t>(),
+            const std::string& countryCode = std::string());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -52,8 +53,11 @@ class AccountDetailsResponse : public JsonResponse {
         const Optional<double>& getDiscountRate() const;
         void setDiscountRate(const Optional<double>& discountRate);
 
-        const uint64_t getPointsBalance() const;
-        void setPointsBalance(const uint64_t pointsBalance);
+        const Optional<int32_t>& getPointsBalance() const;
+        void setPointsBalance(const Optional<int32_t>& pointsBalance);
+
+        const std::string& getCountryCode() const;
+        void setCountryCode(const std::string& countryCode);
 
 
     private:
@@ -64,7 +68,8 @@ class AccountDetailsResponse : public JsonResponse {
         std::string region;
         std::string timezone;
         Optional<double> discountRate;
-        uint64_t pointsBalance;
+        Optional<int32_t> pointsBalance;
+        std::string countryCode;
 };
 
 }

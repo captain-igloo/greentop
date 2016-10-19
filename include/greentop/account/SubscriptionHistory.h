@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef SUBSCRIPTIONHISTORY_H
@@ -11,7 +11,6 @@
 
 #include "greentop/JsonMember.h"
 #include "greentop/Time.h"
-#include "greentop/enum/SubscriptionStatus.h"
 
 namespace greentop {
 
@@ -25,7 +24,7 @@ class SubscriptionHistory : public JsonMember {
             const std::tm& createdDateTime = std::tm(),
             const std::tm& activationDateTime = std::tm(),
             const std::tm& cancellationDateTime = std::tm(),
-            const SubscriptionStatus& subscriptionStatus = SubscriptionStatus(),
+            const std::string& subscriptionStatus = std::string(),
             const std::string& clientReference = std::string());
 
         virtual void fromJson(const Json::Value& json);
@@ -52,8 +51,8 @@ class SubscriptionHistory : public JsonMember {
         const std::tm& getCancellationDateTime() const;
         void setCancellationDateTime(const std::tm& cancellationDateTime);
 
-        const SubscriptionStatus& getSubscriptionStatus() const;
-        void setSubscriptionStatus(const SubscriptionStatus& subscriptionStatus);
+        const std::string& getSubscriptionStatus() const;
+        void setSubscriptionStatus(const std::string& subscriptionStatus);
 
         const std::string& getClientReference() const;
         void setClientReference(const std::string& clientReference);
@@ -66,7 +65,7 @@ class SubscriptionHistory : public JsonMember {
         std::tm createdDateTime;
         std::tm activationDateTime;
         std::tm cancellationDateTime;
-        SubscriptionStatus subscriptionStatus;
+        std::string subscriptionStatus;
         std::string clientReference;
 };
 

@@ -1,0 +1,117 @@
+/**
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ */
+
+#ifndef MARKETDESCRIPTION_H
+#define MARKETDESCRIPTION_H
+
+#include <ctime>
+#include <json/json.h>
+#include <string>
+
+#include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
+#include "greentop/Time.h"
+
+namespace greentop {
+
+class MarketDescription : public JsonMember {
+    public:
+        MarketDescription();
+
+        MarketDescription(const bool persistenceEnabled,
+            const bool bspMarket,
+            const std::tm& marketTime,
+            const std::tm& suspendTime,
+            const std::tm& settleTime = std::tm(),
+            const std::string& bettingType = std::string(),
+            const Optional<bool>& turnInPlayEnabled = Optional<bool>(),
+            const std::string& marketType = std::string(),
+            const std::string& regulator = std::string(),
+            const Optional<double>& marketBaseRate = Optional<double>(),
+            const Optional<bool>& discountAllowed = Optional<bool>(),
+            const std::string& wallet = std::string(),
+            const std::string& rules = std::string(),
+            const Optional<bool>& rulesHasDate = Optional<bool>(),
+            const std::string& clarifications = std::string(),
+            const Optional<double>& eachWayDivisor = Optional<double>());
+
+        virtual void fromJson(const Json::Value& json);
+
+        virtual Json::Value toJson() const;
+
+        virtual bool isValid() const;
+
+        const bool getPersistenceEnabled() const;
+        void setPersistenceEnabled(const bool persistenceEnabled);
+
+        const bool getBspMarket() const;
+        void setBspMarket(const bool bspMarket);
+
+        const std::tm& getMarketTime() const;
+        void setMarketTime(const std::tm& marketTime);
+
+        const std::tm& getSuspendTime() const;
+        void setSuspendTime(const std::tm& suspendTime);
+
+        const std::tm& getSettleTime() const;
+        void setSettleTime(const std::tm& settleTime);
+
+        const std::string& getBettingType() const;
+        void setBettingType(const std::string& bettingType);
+
+        const Optional<bool>& getTurnInPlayEnabled() const;
+        void setTurnInPlayEnabled(const Optional<bool>& turnInPlayEnabled);
+
+        const std::string& getMarketType() const;
+        void setMarketType(const std::string& marketType);
+
+        const std::string& getRegulator() const;
+        void setRegulator(const std::string& regulator);
+
+        const Optional<double>& getMarketBaseRate() const;
+        void setMarketBaseRate(const Optional<double>& marketBaseRate);
+
+        const Optional<bool>& getDiscountAllowed() const;
+        void setDiscountAllowed(const Optional<bool>& discountAllowed);
+
+        const std::string& getWallet() const;
+        void setWallet(const std::string& wallet);
+
+        const std::string& getRules() const;
+        void setRules(const std::string& rules);
+
+        const Optional<bool>& getRulesHasDate() const;
+        void setRulesHasDate(const Optional<bool>& rulesHasDate);
+
+        const std::string& getClarifications() const;
+        void setClarifications(const std::string& clarifications);
+
+        const Optional<double>& getEachWayDivisor() const;
+        void setEachWayDivisor(const Optional<double>& eachWayDivisor);
+
+
+    private:
+        bool persistenceEnabled;
+        bool bspMarket;
+        std::tm marketTime;
+        std::tm suspendTime;
+        std::tm settleTime;
+        std::string bettingType;
+        Optional<bool> turnInPlayEnabled;
+        std::string marketType;
+        std::string regulator;
+        Optional<double> marketBaseRate;
+        Optional<bool> discountAllowed;
+        std::string wallet;
+        std::string rules;
+        Optional<bool> rulesHasDate;
+        std::string clarifications;
+        Optional<double> eachWayDivisor;
+};
+
+}
+
+#endif // MARKETDESCRIPTION_H
+
+

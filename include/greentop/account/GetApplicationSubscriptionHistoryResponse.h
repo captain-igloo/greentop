@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef GETAPPLICATIONSUBSCRIPTIONHISTORYRESPONSE_H
@@ -15,8 +15,9 @@ namespace greentop {
 
 class GetApplicationSubscriptionHistoryResponse : public JsonResponse {
     public:
+        GetApplicationSubscriptionHistoryResponse();
 
-        GetApplicationSubscriptionHistoryResponse(const std::vector<SubscriptionHistory>& subscriptionHistories = std::vector<SubscriptionHistory>());
+        GetApplicationSubscriptionHistoryResponse(const std::vector<SubscriptionHistory>& subscriptionHistorys);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -24,12 +25,12 @@ class GetApplicationSubscriptionHistoryResponse : public JsonResponse {
 
         virtual bool isValid() const;
 
-        const std::vector<SubscriptionHistory>& getSubscriptionHistories() const;
-        void setSubscriptionHistories(const std::vector<SubscriptionHistory>& subscriptionHistories);
+        const std::vector<SubscriptionHistory>& getSubscriptionHistorys() const;
+        void setSubscriptionHistorys(const std::vector<SubscriptionHistory>& subscriptionHistorys);
 
 
     private:
-        std::vector<SubscriptionHistory> subscriptionHistories;
+        std::vector<SubscriptionHistory> subscriptionHistorys;
 };
 
 }

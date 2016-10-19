@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef DEVELOPERAPP_H
@@ -19,7 +19,7 @@ class DeveloperApp : public JsonResponse {
         DeveloperApp();
 
         DeveloperApp(const std::string& appName,
-            const uint64_t appId,
+            const int64_t appId,
             const std::vector<DeveloperAppVersion>& appVersions);
 
         virtual void fromJson(const Json::Value& json);
@@ -31,8 +31,8 @@ class DeveloperApp : public JsonResponse {
         const std::string& getAppName() const;
         void setAppName(const std::string& appName);
 
-        const uint64_t getAppId() const;
-        void setAppId(const uint64_t appId);
+        const int64_t getAppId() const;
+        void setAppId(const int64_t appId);
 
         const std::vector<DeveloperAppVersion>& getAppVersions() const;
         void setAppVersions(const std::vector<DeveloperAppVersion>& appVersions);
@@ -40,7 +40,7 @@ class DeveloperApp : public JsonResponse {
 
     private:
         std::string appName;
-        uint64_t appId;
+        int64_t appId;
         std::vector<DeveloperAppVersion> appVersions;
 };
 

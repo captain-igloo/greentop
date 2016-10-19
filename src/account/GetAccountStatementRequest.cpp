@@ -1,14 +1,15 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/GetAccountStatementRequest.h"
 
 namespace greentop {
 
+
 GetAccountStatementRequest::GetAccountStatementRequest(const std::string& locale,
-    const int fromRecord,
-    const int recordCount,
+    const Optional<int32_t>& fromRecord,
+    const Optional<int32_t>& recordCount,
     const TimeRange& itemDateRange,
     const IncludeItem& includeItem,
     const Wallet& wallet) :
@@ -46,11 +47,11 @@ Json::Value GetAccountStatementRequest::toJson() const {
     if (locale != "") {
         json["locale"] = locale;
     }
-    if (fromRecord >= 0) {
-        json["fromRecord"] = fromRecord;
+    if (fromRecord.isValid()) {
+        json["fromRecord"] = fromRecord.toJson();
     }
-    if (recordCount >= 0) {
-        json["recordCount"] = recordCount;
+    if (recordCount.isValid()) {
+        json["recordCount"] = recordCount.toJson();
     }
     if (itemDateRange.isValid()) {
         json["itemDateRange"] = itemDateRange.toJson();
@@ -75,17 +76,17 @@ void GetAccountStatementRequest::setLocale(const std::string& locale) {
     this->locale = locale;
 }
 
-const int GetAccountStatementRequest::getFromRecord() const {
+const Optional<int32_t>& GetAccountStatementRequest::getFromRecord() const {
     return fromRecord;
 }
-void GetAccountStatementRequest::setFromRecord(const int fromRecord) {
+void GetAccountStatementRequest::setFromRecord(const Optional<int32_t>& fromRecord) {
     this->fromRecord = fromRecord;
 }
 
-const int GetAccountStatementRequest::getRecordCount() const {
+const Optional<int32_t>& GetAccountStatementRequest::getRecordCount() const {
     return recordCount;
 }
-void GetAccountStatementRequest::setRecordCount(const int recordCount) {
+void GetAccountStatementRequest::setRecordCount(const Optional<int32_t>& recordCount) {
     this->recordCount = recordCount;
 }
 

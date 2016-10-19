@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef STATEMENTLEGACYDATA_H
@@ -23,18 +23,18 @@ class StatementLegacyData : public JsonMember {
             const std::string& betType = std::string(),
             const std::string& betCategoryType = std::string(),
             const std::string& commissionRate = std::string(),
-            const uint64_t eventId = 0,
-            const uint64_t eventTypeId = 0,
+            const Optional<int64_t>& eventId = Optional<int64_t>(),
+            const Optional<int64_t>& eventTypeId = Optional<int64_t>(),
             const std::string& fullMarketName = std::string(),
             const Optional<double>& grossBetAmount = Optional<double>(),
             const std::string& marketName = std::string(),
             const std::string& marketType = std::string(),
             const std::tm& placedDate = std::tm(),
-            const uint64_t selectionId = 0,
+            const Optional<int64_t>& selectionId = Optional<int64_t>(),
             const std::string& selectionName = std::string(),
             const std::tm& startDate = std::tm(),
             const std::string& transactionType = std::string(),
-            const uint64_t transactionId = 0,
+            const Optional<int64_t>& transactionId = Optional<int64_t>(),
             const std::string& winLose = std::string());
 
         virtual void fromJson(const Json::Value& json);
@@ -58,11 +58,11 @@ class StatementLegacyData : public JsonMember {
         const std::string& getCommissionRate() const;
         void setCommissionRate(const std::string& commissionRate);
 
-        const uint64_t getEventId() const;
-        void setEventId(const uint64_t eventId);
+        const Optional<int64_t>& getEventId() const;
+        void setEventId(const Optional<int64_t>& eventId);
 
-        const uint64_t getEventTypeId() const;
-        void setEventTypeId(const uint64_t eventTypeId);
+        const Optional<int64_t>& getEventTypeId() const;
+        void setEventTypeId(const Optional<int64_t>& eventTypeId);
 
         const std::string& getFullMarketName() const;
         void setFullMarketName(const std::string& fullMarketName);
@@ -79,8 +79,8 @@ class StatementLegacyData : public JsonMember {
         const std::tm& getPlacedDate() const;
         void setPlacedDate(const std::tm& placedDate);
 
-        const uint64_t getSelectionId() const;
-        void setSelectionId(const uint64_t selectionId);
+        const Optional<int64_t>& getSelectionId() const;
+        void setSelectionId(const Optional<int64_t>& selectionId);
 
         const std::string& getSelectionName() const;
         void setSelectionName(const std::string& selectionName);
@@ -91,8 +91,8 @@ class StatementLegacyData : public JsonMember {
         const std::string& getTransactionType() const;
         void setTransactionType(const std::string& transactionType);
 
-        const uint64_t getTransactionId() const;
-        void setTransactionId(const uint64_t transactionId);
+        const Optional<int64_t>& getTransactionId() const;
+        void setTransactionId(const Optional<int64_t>& transactionId);
 
         const std::string& getWinLose() const;
         void setWinLose(const std::string& winLose);
@@ -104,18 +104,18 @@ class StatementLegacyData : public JsonMember {
         std::string betType;
         std::string betCategoryType;
         std::string commissionRate;
-        uint64_t eventId;
-        uint64_t eventTypeId;
+        Optional<int64_t> eventId;
+        Optional<int64_t> eventTypeId;
         std::string fullMarketName;
         Optional<double> grossBetAmount;
         std::string marketName;
         std::string marketType;
         std::tm placedDate;
-        uint64_t selectionId;
+        Optional<int64_t> selectionId;
         std::string selectionName;
         std::tm startDate;
         std::string transactionType;
-        uint64_t transactionId;
+        Optional<int64_t> transactionId;
         std::string winLose;
 };
 

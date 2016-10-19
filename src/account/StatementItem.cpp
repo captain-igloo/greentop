@@ -1,17 +1,18 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/StatementItem.h"
 
 namespace greentop {
 
+
 StatementItem::StatementItem(const std::string& refId,
     const std::tm& itemDate,
     const Optional<double>& amount,
     const Optional<double>& balance,
     const ItemClass& itemClass,
-    const std::map<std::string,std::string>& itemClassData,
+    const std::map<std::string, std::string> itemClassData,
     const StatementLegacyData& legacyData) :
     refId(refId),
     itemDate(itemDate),
@@ -30,18 +31,16 @@ void StatementItem::fromJson(const Json::Value& json) {
         strptime(json["itemDate"].asString().c_str(), "%Y-%m-%dT%H:%M:%S.000Z", &itemDate);
     }
     if (json.isMember("amount")) {
-        amount.fromJson(json["amount"]);
+        amount = json["amount"].asDouble();
     }
     if (json.isMember("balance")) {
-        balance.fromJson(json["balance"]);
+        balance = json["balance"].asDouble();
     }
     if (json.isMember("itemClass")) {
         itemClass = json["itemClass"].asString();
     }
     if (json.isMember("itemClassData")) {
-        for (std::string const& key : json["itemClassData"].getMemberNames()) {
-            itemClassData[key] = json["itemClassData"][key].asString();
-        };
+        // FIXME
     }
     if (json.isMember("legacyData")) {
         legacyData.fromJson(json["legacyData"]);
@@ -68,10 +67,7 @@ Json::Value StatementItem::toJson() const {
         json["itemClass"] = itemClass.getValue();
     }
     if (itemClassData.size() > 0) {
-        std::map<std::string, std::string>::const_iterator it;
-        for (it = itemClassData.begin(); it != itemClassData.end(); ++it) {
-            json["itemClassData"][it->first] = it->second;
-        };
+        // FIXME
     }
     if (legacyData.isValid()) {
         json["legacyData"] = legacyData.toJson();
@@ -80,7 +76,7 @@ Json::Value StatementItem::toJson() const {
 }
 
 bool StatementItem::isValid() const {
-    return true;
+    return itemDate.tm_year > 0;
 }
 
 const std::string& StatementItem::getRefId() const {
@@ -118,10 +114,10 @@ void StatementItem::setItemClass(const ItemClass& itemClass) {
     this->itemClass = itemClass;
 }
 
-const std::map<std::string,std::string>& StatementItem::getItemClassData() const {
+const std::map<std::string, std::string>& StatementItem::getItemClassData() const {
     return itemClassData;
 }
-void StatementItem::setItemClassData(const std::map<std::string,std::string>& itemClassData) {
+void StatementItem::setItemClassData(const std::map<std::string, std::string>& itemClassData) {
     this->itemClassData = itemClassData;
 }
 

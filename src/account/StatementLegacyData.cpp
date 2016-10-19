@@ -1,28 +1,29 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/StatementLegacyData.h"
 
 namespace greentop {
 
+
 StatementLegacyData::StatementLegacyData(const Optional<double>& avgPrice,
     const Optional<double>& betSize,
     const std::string& betType,
     const std::string& betCategoryType,
     const std::string& commissionRate,
-    const uint64_t eventId,
-    const uint64_t eventTypeId,
+    const Optional<int64_t>& eventId,
+    const Optional<int64_t>& eventTypeId,
     const std::string& fullMarketName,
     const Optional<double>& grossBetAmount,
     const std::string& marketName,
     const std::string& marketType,
     const std::tm& placedDate,
-    const uint64_t selectionId,
+    const Optional<int64_t>& selectionId,
     const std::string& selectionName,
     const std::tm& startDate,
     const std::string& transactionType,
-    const uint64_t transactionId,
+    const Optional<int64_t>& transactionId,
     const std::string& winLose) :
     avgPrice(avgPrice),
     betSize(betSize),
@@ -46,10 +47,10 @@ StatementLegacyData::StatementLegacyData(const Optional<double>& avgPrice,
 
 void StatementLegacyData::fromJson(const Json::Value& json) {
     if (json.isMember("avgPrice")) {
-        avgPrice.fromJson(json["avgPrice"]);
+        avgPrice = json["avgPrice"].asDouble();
     }
     if (json.isMember("betSize")) {
-        betSize.fromJson(json["betSize"]);
+        betSize = json["betSize"].asDouble();
     }
     if (json.isMember("betType")) {
         betType = json["betType"].asString();
@@ -61,16 +62,16 @@ void StatementLegacyData::fromJson(const Json::Value& json) {
         commissionRate = json["commissionRate"].asString();
     }
     if (json.isMember("eventId")) {
-        eventId = json["eventId"].asUInt64();
+        eventId = json["eventId"].asInt64();
     }
     if (json.isMember("eventTypeId")) {
-        eventTypeId = json["eventTypeId"].asUInt64();
+        eventTypeId = json["eventTypeId"].asInt64();
     }
     if (json.isMember("fullMarketName")) {
         fullMarketName = json["fullMarketName"].asString();
     }
     if (json.isMember("grossBetAmount")) {
-        grossBetAmount.fromJson(json["grossBetAmount"]);
+        grossBetAmount = json["grossBetAmount"].asDouble();
     }
     if (json.isMember("marketName")) {
         marketName = json["marketName"].asString();
@@ -82,7 +83,7 @@ void StatementLegacyData::fromJson(const Json::Value& json) {
         strptime(json["placedDate"].asString().c_str(), "%Y-%m-%dT%H:%M:%S.000Z", &placedDate);
     }
     if (json.isMember("selectionId")) {
-        selectionId = json["selectionId"].asUInt64();
+        selectionId = json["selectionId"].asInt64();
     }
     if (json.isMember("selectionName")) {
         selectionName = json["selectionName"].asString();
@@ -94,7 +95,7 @@ void StatementLegacyData::fromJson(const Json::Value& json) {
         transactionType = json["transactionType"].asString();
     }
     if (json.isMember("transactionId")) {
-        transactionId = json["transactionId"].asUInt64();
+        transactionId = json["transactionId"].asInt64();
     }
     if (json.isMember("winLose")) {
         winLose = json["winLose"].asString();
@@ -118,11 +119,11 @@ Json::Value StatementLegacyData::toJson() const {
     if (commissionRate != "") {
         json["commissionRate"] = commissionRate;
     }
-    if (eventId > 0) {
-        json["eventId"] = eventId;
+    if (eventId.isValid()) {
+        json["eventId"] = eventId.toJson();
     }
-    if (eventTypeId > 0) {
-        json["eventTypeId"] = eventTypeId;
+    if (eventTypeId.isValid()) {
+        json["eventTypeId"] = eventTypeId.toJson();
     }
     if (fullMarketName != "") {
         json["fullMarketName"] = fullMarketName;
@@ -141,8 +142,8 @@ Json::Value StatementLegacyData::toJson() const {
         strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &placedDate);
         json["placedDate"] = std::string(buffer);
     }
-    if (selectionId > 0) {
-        json["selectionId"] = selectionId;
+    if (selectionId.isValid()) {
+        json["selectionId"] = selectionId.toJson();
     }
     if (selectionName != "") {
         json["selectionName"] = selectionName;
@@ -155,8 +156,8 @@ Json::Value StatementLegacyData::toJson() const {
     if (transactionType != "") {
         json["transactionType"] = transactionType;
     }
-    if (transactionId > 0) {
-        json["transactionId"] = transactionId;
+    if (transactionId.isValid()) {
+        json["transactionId"] = transactionId.toJson();
     }
     if (winLose != "") {
         json["winLose"] = winLose;
@@ -203,17 +204,17 @@ void StatementLegacyData::setCommissionRate(const std::string& commissionRate) {
     this->commissionRate = commissionRate;
 }
 
-const uint64_t StatementLegacyData::getEventId() const {
+const Optional<int64_t>& StatementLegacyData::getEventId() const {
     return eventId;
 }
-void StatementLegacyData::setEventId(const uint64_t eventId) {
+void StatementLegacyData::setEventId(const Optional<int64_t>& eventId) {
     this->eventId = eventId;
 }
 
-const uint64_t StatementLegacyData::getEventTypeId() const {
+const Optional<int64_t>& StatementLegacyData::getEventTypeId() const {
     return eventTypeId;
 }
-void StatementLegacyData::setEventTypeId(const uint64_t eventTypeId) {
+void StatementLegacyData::setEventTypeId(const Optional<int64_t>& eventTypeId) {
     this->eventTypeId = eventTypeId;
 }
 
@@ -252,10 +253,10 @@ void StatementLegacyData::setPlacedDate(const std::tm& placedDate) {
     this->placedDate = placedDate;
 }
 
-const uint64_t StatementLegacyData::getSelectionId() const {
+const Optional<int64_t>& StatementLegacyData::getSelectionId() const {
     return selectionId;
 }
-void StatementLegacyData::setSelectionId(const uint64_t selectionId) {
+void StatementLegacyData::setSelectionId(const Optional<int64_t>& selectionId) {
     this->selectionId = selectionId;
 }
 
@@ -280,10 +281,10 @@ void StatementLegacyData::setTransactionType(const std::string& transactionType)
     this->transactionType = transactionType;
 }
 
-const uint64_t StatementLegacyData::getTransactionId() const {
+const Optional<int64_t>& StatementLegacyData::getTransactionId() const {
     return transactionId;
 }
-void StatementLegacyData::setTransactionId(const uint64_t transactionId) {
+void StatementLegacyData::setTransactionId(const Optional<int64_t>& transactionId) {
     this->transactionId = transactionId;
 }
 

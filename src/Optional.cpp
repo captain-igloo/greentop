@@ -24,7 +24,7 @@ void Optional<int>::fromJson(const Json::Value& json) {
 }
 
 template<>
-void Optional<uint64_t>::fromJson(const Json::Value& json) {
+void Optional<int64_t>::fromJson(const Json::Value& json) {
     value = json.asUInt64();
     valid = true;
 }

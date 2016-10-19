@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef GETDEVELOPERAPPKEYSRESPONSE_H
@@ -17,7 +17,7 @@ class GetDeveloperAppKeysResponse : public JsonResponse {
     public:
         GetDeveloperAppKeysResponse();
 
-        GetDeveloperAppKeysResponse(const std::vector<DeveloperApp>& developerAppKeys);
+        GetDeveloperAppKeysResponse(const std::vector<DeveloperApp>& developerApps);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -25,12 +25,12 @@ class GetDeveloperAppKeysResponse : public JsonResponse {
 
         virtual bool isValid() const;
 
-        const std::vector<DeveloperApp>& getDeveloperAppKeys() const;
-        void setDeveloperAppKeys(const std::vector<DeveloperApp>& developerAppKeys);
+        const std::vector<DeveloperApp>& getDeveloperApps() const;
+        void setDeveloperApps(const std::vector<DeveloperApp>& developerApps);
 
 
     private:
-        std::vector<DeveloperApp> developerAppKeys;
+        std::vector<DeveloperApp> developerApps;
 };
 
 }

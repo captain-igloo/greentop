@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef DEVELOPERAPPVERSION_H
@@ -9,6 +9,7 @@
 #include <string>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 
 namespace greentop {
 
@@ -17,13 +18,13 @@ class DeveloperAppVersion : public JsonMember {
         DeveloperAppVersion();
 
         DeveloperAppVersion(const std::string& owner,
-            const uint64_t versionId,
+            const int64_t versionId,
             const std::string& version,
             const std::string& applicationKey,
-            const bool delayData,
-            const bool subscriptionRequired,
-            const bool ownerManaged,
-            const bool active);
+            const Optional<bool>& delayData = Optional<bool>(),
+            const Optional<bool>& subscriptionRequired = Optional<bool>(),
+            const Optional<bool>& ownerManaged = Optional<bool>(),
+            const Optional<bool>& active = Optional<bool>());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -34,8 +35,8 @@ class DeveloperAppVersion : public JsonMember {
         const std::string& getOwner() const;
         void setOwner(const std::string& owner);
 
-        const uint64_t getVersionId() const;
-        void setVersionId(const uint64_t versionId);
+        const int64_t getVersionId() const;
+        void setVersionId(const int64_t versionId);
 
         const std::string& getVersion() const;
         void setVersion(const std::string& version);
@@ -43,28 +44,28 @@ class DeveloperAppVersion : public JsonMember {
         const std::string& getApplicationKey() const;
         void setApplicationKey(const std::string& applicationKey);
 
-        const bool getDelayData() const;
-        void setDelayData(const bool delayData);
+        const Optional<bool>& getDelayData() const;
+        void setDelayData(const Optional<bool>& delayData);
 
-        const bool getSubscriptionRequired() const;
-        void setSubscriptionRequired(const bool subscriptionRequired);
+        const Optional<bool>& getSubscriptionRequired() const;
+        void setSubscriptionRequired(const Optional<bool>& subscriptionRequired);
 
-        const bool getOwnerManaged() const;
-        void setOwnerManaged(const bool ownerManaged);
+        const Optional<bool>& getOwnerManaged() const;
+        void setOwnerManaged(const Optional<bool>& ownerManaged);
 
-        const bool getActive() const;
-        void setActive(const bool active);
+        const Optional<bool>& getActive() const;
+        void setActive(const Optional<bool>& active);
 
 
     private:
         std::string owner;
-        uint64_t versionId;
+        int64_t versionId;
         std::string version;
         std::string applicationKey;
-        bool delayData;
-        bool subscriptionRequired;
-        bool ownerManaged;
-        bool active;
+        Optional<bool> delayData;
+        Optional<bool> subscriptionRequired;
+        Optional<bool> ownerManaged;
+        Optional<bool> active;
 };
 
 }

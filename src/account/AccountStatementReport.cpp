@@ -1,13 +1,16 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/AccountStatementReport.h"
 
 namespace greentop {
 
+AccountStatementReport::AccountStatementReport() : moreAvailable(false) {
+}
+
 AccountStatementReport::AccountStatementReport(const std::vector<StatementItem>& accountStatement,
-    const Optional<bool>& moreAvailable) :
+    const bool moreAvailable) :
     accountStatement(accountStatement),
     moreAvailable(moreAvailable) {
 }
@@ -16,13 +19,15 @@ void AccountStatementReport::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
         if (json.isMember("accountStatement")) {
             for (unsigned i = 0; i < json["accountStatement"].size(); ++i) {
-                StatementItem statementItem;
-                statementItem.fromJson(json["accountStatement"][i]);
-                accountStatement.push_back(statementItem);
-            };
+            StatementItem statementItem;
+            statementItem.fromJson(json["accountStatement"][i]);
+            accountStatement.push_back(statementItem);
+        }
+;
         }
         if (json.isMember("moreAvailable")) {
-            moreAvailable.fromJson(json["moreAvailable"]);
+            moreAvailable = json["moreAvailable"].asBool();
+;
         }
     }
 }
@@ -32,16 +37,14 @@ Json::Value AccountStatementReport::toJson() const {
     if (accountStatement.size() > 0) {
         for (unsigned i = 0; i < accountStatement.size(); ++i) {
             json["accountStatement"].append(accountStatement[i].toJson());
-        };
+        }
     }
-    if (moreAvailable.isValid()) {
-        json["moreAvailable"] = moreAvailable.toJson();
-    }
+    json["moreAvailable"] = moreAvailable;
     return json;
 }
 
 bool AccountStatementReport::isValid() const {
-    return true;
+    return accountStatement.size() > 0;
 }
 
 const std::vector<StatementItem>& AccountStatementReport::getAccountStatement() const {
@@ -51,10 +54,10 @@ void AccountStatementReport::setAccountStatement(const std::vector<StatementItem
     this->accountStatement = accountStatement;
 }
 
-const Optional<bool>& AccountStatementReport::getMoreAvailable() const {
+const bool AccountStatementReport::getMoreAvailable() const {
     return moreAvailable;
 }
-void AccountStatementReport::setMoreAvailable(const Optional<bool>& moreAvailable) {
+void AccountStatementReport::setMoreAvailable(const bool moreAvailable) {
     this->moreAvailable = moreAvailable;
 }
 

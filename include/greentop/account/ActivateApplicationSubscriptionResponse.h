@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef ACTIVATEAPPLICATIONSUBSCRIPTIONRESPONSE_H
@@ -8,7 +8,7 @@
 #include <json/json.h>
 
 #include "greentop/JsonResponse.h"
-#include "greentop/enum/Status.h"
+#include "greentop/account/enum/Status.h"
 
 namespace greentop {
 

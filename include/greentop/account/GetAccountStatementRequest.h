@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef GETACCOUNTSTATEMENTREQUEST_H
@@ -9,9 +9,10 @@
 #include <string>
 
 #include "greentop/JsonRequest.h"
-#include "greentop/betting/TimeRange.h"
-#include "greentop/enum/IncludeItem.h"
-#include "greentop/enum/Wallet.h"
+#include "greentop/Optional.h"
+#include "greentop/account/enum/IncludeItem.h"
+#include "greentop/account/enum/Wallet.h"
+#include "greentop/common/TimeRange.h"
 
 namespace greentop {
 
@@ -19,8 +20,8 @@ class GetAccountStatementRequest : public JsonRequest {
     public:
 
         GetAccountStatementRequest(const std::string& locale = std::string(),
-            const int fromRecord = -1,
-            const int recordCount = -1,
+            const Optional<int32_t>& fromRecord = Optional<int32_t>(),
+            const Optional<int32_t>& recordCount = Optional<int32_t>(),
             const TimeRange& itemDateRange = TimeRange(),
             const IncludeItem& includeItem = IncludeItem(),
             const Wallet& wallet = Wallet());
@@ -34,11 +35,11 @@ class GetAccountStatementRequest : public JsonRequest {
         const std::string& getLocale() const;
         void setLocale(const std::string& locale);
 
-        const int getFromRecord() const;
-        void setFromRecord(const int fromRecord);
+        const Optional<int32_t>& getFromRecord() const;
+        void setFromRecord(const Optional<int32_t>& fromRecord);
 
-        const int getRecordCount() const;
-        void setRecordCount(const int recordCount);
+        const Optional<int32_t>& getRecordCount() const;
+        void setRecordCount(const Optional<int32_t>& recordCount);
 
         const TimeRange& getItemDateRange() const;
         void setItemDateRange(const TimeRange& itemDateRange);
@@ -52,8 +53,8 @@ class GetAccountStatementRequest : public JsonRequest {
 
     private:
         std::string locale;
-        int fromRecord;
-        int recordCount;
+        Optional<int32_t> fromRecord;
+        Optional<int32_t> recordCount;
         TimeRange itemDateRange;
         IncludeItem includeItem;
         Wallet wallet;

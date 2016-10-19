@@ -1,10 +1,11 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/GetApplicationSubscriptionHistoryRequest.h"
 
 namespace greentop {
+
 
 GetApplicationSubscriptionHistoryRequest::GetApplicationSubscriptionHistoryRequest(const std::string& vendorClientId,
     const std::string& applicationKey) :

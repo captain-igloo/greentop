@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef ACCOUNTSTATEMENTREPORT_H
@@ -9,16 +9,16 @@
 #include <vector>
 
 #include "greentop/JsonResponse.h"
-#include "greentop/Optional.h"
 #include "greentop/account/StatementItem.h"
 
 namespace greentop {
 
 class AccountStatementReport : public JsonResponse {
     public:
+        AccountStatementReport();
 
-        AccountStatementReport(const std::vector<StatementItem>& accountStatement = std::vector<StatementItem>(),
-            const Optional<bool>& moreAvailable = Optional<bool>());
+        AccountStatementReport(const std::vector<StatementItem>& accountStatement,
+            const bool moreAvailable);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -29,13 +29,13 @@ class AccountStatementReport : public JsonResponse {
         const std::vector<StatementItem>& getAccountStatement() const;
         void setAccountStatement(const std::vector<StatementItem>& accountStatement);
 
-        const Optional<bool>& getMoreAvailable() const;
-        void setMoreAvailable(const Optional<bool>& moreAvailable);
+        const bool getMoreAvailable() const;
+        void setMoreAvailable(const bool moreAvailable);
 
 
     private:
         std::vector<StatementItem> accountStatement;
-        Optional<bool> moreAvailable;
+        bool moreAvailable;
 };
 
 }

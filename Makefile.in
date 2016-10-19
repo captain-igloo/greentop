@@ -1,7 +1,7 @@
 PREFIX=@prefix@
 CXX=@CXX@
 
-SUBDIRS := account betting enum heartbeat menu curl
+SUBDIRS := account common curl heartbeat menu sport
 SRC := src
 OBJ := obj
 INC := include/greentop
@@ -12,8 +12,8 @@ INC_DIRS := $(addprefix $(INC)/,$(SUBDIRS))
 LIB := lib
 LIBGREENTOP := $(LIB)/libgreentop.so
 
-OBJS := $(patsubst %.cpp,%.o,$(subst $(SRC),$(OBJ),$(wildcard $(SRC)/*.cpp) $(wildcard $(SRC)/*/*.cpp)))
-HEADERS := $(wildcard $(INC)/*.h) $(wildcard $(INC)/*/*.h)
+OBJS := $(patsubst %.cpp,%.o,$(subst $(SRC),$(OBJ),$(wildcard $(SRC)/*.cpp) $(wildcard $(SRC)/*/*.cpp) $(wildcard $(SRC)/*/*/*.cpp)))
+HEADERS := $(wildcard $(INC)/*.h) $(wildcard $(INC)/*/*.h) $(wildcard $(INC)/*/*/*.h)
 
 define make-goal
 $1/%.o: $(subst $(OBJ),$(SRC),$1)/%.cpp | $1
@@ -36,10 +36,11 @@ install: all
 	install -d $(DESTDIR)$(PREFIX)/lib
 	install $(LIBGREENTOP) $(DESTDIR)$(PREFIX)/lib
 	$(foreach var,$(INC_DIRS),install -d $(DESTDIR)$(PREFIX)/$(var);)
+	$(foreach var,$(INC_DIRS),install -d $(DESTDIR)$(PREFIX)/$(var)/enum;)
 	$(foreach var,$(HEADERS),install $(var) $(DESTDIR)$(PREFIX)/$(var);)
 
 $(LIB) $(OBJ_DIRS):
-	mkdir -p $@
+	mkdir -p $@/enum
 
 -include $(OBJS:.o=.d)
 

@@ -1,21 +1,22 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/DeveloperAppVersion.h"
 
 namespace greentop {
-DeveloperAppVersion::DeveloperAppVersion()  : versionId(0), delayData(0), subscriptionRequired(0), ownerManaged(0), active(0){
+
+DeveloperAppVersion::DeveloperAppVersion() : versionId(-1) {
 }
 
 DeveloperAppVersion::DeveloperAppVersion(const std::string& owner,
-    const uint64_t versionId,
+    const int64_t versionId,
     const std::string& version,
     const std::string& applicationKey,
-    const bool delayData,
-    const bool subscriptionRequired,
-    const bool ownerManaged,
-    const bool active) :
+    const Optional<bool>& delayData,
+    const Optional<bool>& subscriptionRequired,
+    const Optional<bool>& ownerManaged,
+    const Optional<bool>& active) :
     owner(owner),
     versionId(versionId),
     version(version),
@@ -31,7 +32,7 @@ void DeveloperAppVersion::fromJson(const Json::Value& json) {
         owner = json["owner"].asString();
     }
     if (json.isMember("versionId")) {
-        versionId = json["versionId"].asUInt64();
+        versionId = json["versionId"].asInt64();
     }
     if (json.isMember("version")) {
         version = json["version"].asString();
@@ -58,24 +59,30 @@ Json::Value DeveloperAppVersion::toJson() const {
     if (owner != "") {
         json["owner"] = owner;
     }
-    if (versionId > 0) {
-        json["versionId"] = versionId;
-    }
+    json["versionId"] = versionId;
     if (version != "") {
         json["version"] = version;
     }
     if (applicationKey != "") {
         json["applicationKey"] = applicationKey;
     }
-    json["delayData"] = delayData;
-    json["subscriptionRequired"] = subscriptionRequired;
-    json["ownerManaged"] = ownerManaged;
-    json["active"] = active;
+    if (delayData.isValid()) {
+        json["delayData"] = delayData.toJson();
+    }
+    if (subscriptionRequired.isValid()) {
+        json["subscriptionRequired"] = subscriptionRequired.toJson();
+    }
+    if (ownerManaged.isValid()) {
+        json["ownerManaged"] = ownerManaged.toJson();
+    }
+    if (active.isValid()) {
+        json["active"] = active.toJson();
+    }
     return json;
 }
 
 bool DeveloperAppVersion::isValid() const {
-    return owner != "" && versionId > 0 && version != "" && applicationKey != "" && true && true && true && true;
+    return owner != "" && version != "" && applicationKey != "" && subscriptionRequired.isValid() && ownerManaged.isValid() && active.isValid();
 }
 
 const std::string& DeveloperAppVersion::getOwner() const {
@@ -85,10 +92,10 @@ void DeveloperAppVersion::setOwner(const std::string& owner) {
     this->owner = owner;
 }
 
-const uint64_t DeveloperAppVersion::getVersionId() const {
+const int64_t DeveloperAppVersion::getVersionId() const {
     return versionId;
 }
-void DeveloperAppVersion::setVersionId(const uint64_t versionId) {
+void DeveloperAppVersion::setVersionId(const int64_t versionId) {
     this->versionId = versionId;
 }
 
@@ -106,31 +113,31 @@ void DeveloperAppVersion::setApplicationKey(const std::string& applicationKey) {
     this->applicationKey = applicationKey;
 }
 
-const bool DeveloperAppVersion::getDelayData() const {
+const Optional<bool>& DeveloperAppVersion::getDelayData() const {
     return delayData;
 }
-void DeveloperAppVersion::setDelayData(const bool delayData) {
+void DeveloperAppVersion::setDelayData(const Optional<bool>& delayData) {
     this->delayData = delayData;
 }
 
-const bool DeveloperAppVersion::getSubscriptionRequired() const {
+const Optional<bool>& DeveloperAppVersion::getSubscriptionRequired() const {
     return subscriptionRequired;
 }
-void DeveloperAppVersion::setSubscriptionRequired(const bool subscriptionRequired) {
+void DeveloperAppVersion::setSubscriptionRequired(const Optional<bool>& subscriptionRequired) {
     this->subscriptionRequired = subscriptionRequired;
 }
 
-const bool DeveloperAppVersion::getOwnerManaged() const {
+const Optional<bool>& DeveloperAppVersion::getOwnerManaged() const {
     return ownerManaged;
 }
-void DeveloperAppVersion::setOwnerManaged(const bool ownerManaged) {
+void DeveloperAppVersion::setOwnerManaged(const Optional<bool>& ownerManaged) {
     this->ownerManaged = ownerManaged;
 }
 
-const bool DeveloperAppVersion::getActive() const {
+const Optional<bool>& DeveloperAppVersion::getActive() const {
     return active;
 }
-void DeveloperAppVersion::setActive(const bool active) {
+void DeveloperAppVersion::setActive(const Optional<bool>& active) {
     this->active = active;
 }
 

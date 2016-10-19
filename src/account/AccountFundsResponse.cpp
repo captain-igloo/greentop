@@ -1,44 +1,57 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2016 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/AccountFundsResponse.h"
 
 namespace greentop {
 
+
 AccountFundsResponse::AccountFundsResponse(const Optional<double>& availableToBetBalance,
     const Optional<double>& exposure,
     const Optional<double>& retainedCommission,
     const Optional<double>& exposureLimit,
     const Optional<double>& discountRate,
-    const uint64_t pointsBalance) :
+    const Optional<int32_t>& pointsBalance,
+    const std::string& wallet) :
     availableToBetBalance(availableToBetBalance),
     exposure(exposure),
     retainedCommission(retainedCommission),
     exposureLimit(exposureLimit),
     discountRate(discountRate),
-    pointsBalance(pointsBalance) {
+    pointsBalance(pointsBalance),
+    wallet(wallet) {
 }
 
 void AccountFundsResponse::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
         if (json.isMember("availableToBetBalance")) {
-            availableToBetBalance.fromJson(json["availableToBetBalance"]);
+            availableToBetBalance = json["availableToBetBalance"].asDouble();
+;
         }
         if (json.isMember("exposure")) {
-            exposure.fromJson(json["exposure"]);
+            exposure = json["exposure"].asDouble();
+;
         }
         if (json.isMember("retainedCommission")) {
-            retainedCommission.fromJson(json["retainedCommission"]);
+            retainedCommission = json["retainedCommission"].asDouble();
+;
         }
         if (json.isMember("exposureLimit")) {
-            exposureLimit.fromJson(json["exposureLimit"]);
+            exposureLimit = json["exposureLimit"].asDouble();
+;
         }
         if (json.isMember("discountRate")) {
-            discountRate.fromJson(json["discountRate"]);
+            discountRate = json["discountRate"].asDouble();
+;
         }
         if (json.isMember("pointsBalance")) {
-            pointsBalance = json["pointsBalance"].asUInt64();
+            pointsBalance = json["pointsBalance"].asInt();
+;
+        }
+        if (json.isMember("wallet")) {
+            wallet = json["wallet"].asString();
+;
         }
     }
 }
@@ -60,8 +73,11 @@ Json::Value AccountFundsResponse::toJson() const {
     if (discountRate.isValid()) {
         json["discountRate"] = discountRate.toJson();
     }
-    if (pointsBalance > 0) {
-        json["pointsBalance"] = pointsBalance;
+    if (pointsBalance.isValid()) {
+        json["pointsBalance"] = pointsBalance.toJson();
+    }
+    if (wallet != "") {
+        json["wallet"] = wallet;
     }
     return json;
 }
@@ -105,11 +121,18 @@ void AccountFundsResponse::setDiscountRate(const Optional<double>& discountRate)
     this->discountRate = discountRate;
 }
 
-const uint64_t AccountFundsResponse::getPointsBalance() const {
+const Optional<int32_t>& AccountFundsResponse::getPointsBalance() const {
     return pointsBalance;
 }
-void AccountFundsResponse::setPointsBalance(const uint64_t pointsBalance) {
+void AccountFundsResponse::setPointsBalance(const Optional<int32_t>& pointsBalance) {
     this->pointsBalance = pointsBalance;
+}
+
+const std::string& AccountFundsResponse::getWallet() const {
+    return wallet;
+}
+void AccountFundsResponse::setWallet(const std::string& wallet) {
+    this->wallet = wallet;
 }
 
 
