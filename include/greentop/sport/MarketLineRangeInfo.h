@@ -12,6 +12,9 @@
 
 namespace greentop {
 
+/**
+ * Market Line and Range Info
+ */
 class MarketLineRangeInfo : public JsonMember {
     public:
         MarketLineRangeInfo();
@@ -41,9 +44,21 @@ class MarketLineRangeInfo : public JsonMember {
 
 
     private:
+        /**
+         * maxPrice
+         */
         double maxUnitValue;
+        /**
+         * minPrice
+         */
         double minUnitValue;
+        /**
+         * interval
+         */
         double interval;
+        /**
+         * unit
+         */
         std::string marketUnit;
 };
 

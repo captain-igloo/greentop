@@ -12,6 +12,9 @@
 
 namespace greentop {
 
+/**
+ * Competition
+ */
 class Competition : public JsonMember {
     public:
 
@@ -32,7 +35,13 @@ class Competition : public JsonMember {
 
 
     private:
+        /**
+         * id
+         */
         std::string id;
+        /**
+         * name
+         */
         std::string name;
 };
 

@@ -29,6 +29,9 @@ class CancelApplicationSubscriptionRequest : public JsonRequest {
 
 
     private:
+        /**
+         * Subscription token to cancel
+         */
         std::string subscriptionToken;
 };
 

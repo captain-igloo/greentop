@@ -85,18 +85,64 @@ class ListClearedOrdersRequest : public JsonRequest {
 
 
     private:
+        /**
+         * Restricts the results to the specified status.
+         */
         BetStatus betStatus;
+        /**
+         * Optionally restricts the results to the specified Event Type IDs.
+         */
         std::set<std::string> eventTypeIds;
+        /**
+         * Optionally restricts the results to the specified Event IDs.
+         */
         std::set<std::string> eventIds;
+        /**
+         * Optionally restricts the results to the specified market IDs.
+         */
         std::set<std::string> marketIds;
+        /**
+         * Optionally restricts the results to the specified Runners.
+         */
         std::vector<RunnerId> runnerIds;
+        /**
+         * Optionally restricts the results to the specified bet IDs.
+         */
         std::set<std::string> betIds;
+        /**
+         * Optionally restricts the results to the specified side.
+         */
         Side side;
+        /**
+         * Optionally restricts the results to be from/to the specified settled date. This date is
+         * inclusive, i.e. if an order was placed on exactly this date (to the millisecond) then it
+         * will be included in the results. If the from is later than the to, no results will be
+         * returned.
+         */
         TimeRange settledDateRange;
+        /**
+         * How to aggregate the lines, if not supplied then the lowest level is returned, i.e. bet
+         * by bet This is only applicable to SETTLED BetStatus.
+         */
         GroupBy groupBy;
+        /**
+         * If true then an ItemDescription object is included in the response.
+         */
         Optional<bool> includeItemDescription;
+        /**
+         * The language used for the itemDescription. If not specified, the customer account
+         * default is returned.
+         */
         std::string locale;
+        /**
+         * Specifies the first record that will be returned. Records start at index zero.
+         */
         Optional<int32_t> fromRecord;
+        /**
+         * Specifies how many records will be returned, from the index position 'fromRecord'. Note
+         * that there is a page size limit of 1000. A value of zero indicates that you would like
+         * all records (including and from 'fromRecord') up to the limit.
+         */
         Optional<int32_t> recordCount;
 };
 

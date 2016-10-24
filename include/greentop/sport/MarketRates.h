@@ -11,6 +11,9 @@
 
 namespace greentop {
 
+/**
+ * Market Rates
+ */
 class MarketRates : public JsonMember {
     public:
         MarketRates();
@@ -32,7 +35,13 @@ class MarketRates : public JsonMember {
 
 
     private:
+        /**
+         * marketBaseRate
+         */
         double marketBaseRate;
+        /**
+         * discountAllowed
+         */
         bool discountAllowed;
 };
 

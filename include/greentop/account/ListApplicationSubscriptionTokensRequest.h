@@ -28,6 +28,9 @@ class ListApplicationSubscriptionTokensRequest : public JsonRequest {
 
 
     private:
+        /**
+         * Optionally filter response by Subscription status of the token
+         */
         SubscriptionStatus subscriptionStatus;
 };
 

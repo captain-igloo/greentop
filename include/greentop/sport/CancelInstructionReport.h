@@ -49,8 +49,17 @@ class CancelInstructionReport : public JsonMember {
 
 
     private:
+        /**
+         * whether the command succeeded or failed
+         */
         std::string status;
+        /**
+         * cause of failure, or null if command succeeds
+         */
         std::string errorCode;
+        /**
+         * The instruction that was requested
+         */
         CancelInstruction instruction;
         Optional<double> sizeCancelled;
         std::tm cancelledDate;

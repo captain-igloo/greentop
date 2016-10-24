@@ -19,6 +19,9 @@
 
 namespace greentop {
 
+/**
+ * Summary of a current order.
+ */
 class CurrentOrderSummary : public JsonMember {
     public:
         CurrentOrderSummary();
@@ -112,25 +115,87 @@ class CurrentOrderSummary : public JsonMember {
 
 
     private:
+        /**
+         * The bet ID of the original place order.
+         */
         std::string betId;
+        /**
+         * The market id the order is for.
+         */
         std::string marketId;
+        /**
+         * The selection id the order is for.
+         */
         int64_t selectionId;
+        /**
+         * The handicap of the bet.
+         */
         double handicap;
+        /**
+         * The price and size of the bet.
+         */
         PriceSize priceSize;
+        /**
+         * Not to be confused with size. This is the liability of a given BSP bet.
+         */
         double bspLiability;
+        /**
+         * BACK/LAY
+         */
         Side side;
+        /**
+         * Either EXECUTABLE (an unmatched amount remains) or EXECUTION_COMPLETE (no unmatched
+         * amount remains).
+         */
         std::string status;
+        /**
+         * What to do with the order at turn-in-play.
+         */
         PersistenceType persistenceType;
+        /**
+         * BSP Order type.
+         */
         OrderType orderType;
+        /**
+         * The date, to the second, the bet was placed.
+         */
         std::tm placedDate;
+        /**
+         * The date, to the second, of the last matched bet fragment (where applicable).
+         */
         std::tm matchedDate;
+        /**
+         * The average price matched at. Voided match fragments are removed from this average
+         * calculation.
+         */
         Optional<double> averagePriceMatched;
+        /**
+         * The current amount of this bet that was matched.
+         */
         Optional<double> sizeMatched;
+        /**
+         * The current amount of this bet that is unmatched.
+         */
         Optional<double> sizeRemaining;
+        /**
+         * The current amount of this bet that was lapsed.
+         */
         Optional<double> sizeLapsed;
+        /**
+         * The current amount of this bet that was cancelled.
+         */
         Optional<double> sizeCancelled;
+        /**
+         * The current amount of this bet that was voided.
+         */
         Optional<double> sizeVoided;
+        /**
+         * The regulator authorisation code.
+         */
         std::string regulatorAuthCode;
+        /**
+         * The regulator Code.
+         */
         std::string regulatorCode;
 };
 

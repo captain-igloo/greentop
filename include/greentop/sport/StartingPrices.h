@@ -14,6 +14,9 @@
 
 namespace greentop {
 
+/**
+ * Information about the Betfair Starting Price. Only available in BSP markets
+ */
 class StartingPrices : public JsonMember {
     public:
 
@@ -46,10 +49,23 @@ class StartingPrices : public JsonMember {
 
 
     private:
+        /**
+         * What the starting price would be if the market was reconciled now taking into account
+         * the SP bets as well as unmatched exchange bets on the same selection in the exchange.
+         */
         Optional<double> nearPrice;
+        /**
+         * What the starting price would be if the market was reconciled now taking into account
+         * only the currently place SP bets. The Far Price is not as complicated but not as
+         * accurate and only accounts for money on the exchange at SP.
+         */
         Optional<double> farPrice;
         std::vector<PriceSize> backStakeTaken;
         std::vector<PriceSize> layLiabilityTaken;
+        /**
+         * The final BSP price for this runner. Only available for a BSP market that has been
+         * reconciled.
+         */
         Optional<double> actualSP;
 };
 

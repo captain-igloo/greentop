@@ -28,6 +28,9 @@ class ListCurrencyRatesRequest : public JsonRequest {
 
 
     private:
+        /**
+         * The currency from which the rates are computed. GBP is used if no value is passed
+         */
         std::string fromCurrency;
 };
 

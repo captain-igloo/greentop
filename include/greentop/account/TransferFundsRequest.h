@@ -37,8 +37,17 @@ class TransferFundsRequest : public JsonRequest {
 
 
     private:
+        /**
+         * Source wallet
+         */
         Wallet from;
+        /**
+         * Destination wallet
+         */
         Wallet to;
+        /**
+         * Amount to transfer
+         */
         double amount;
 };
 

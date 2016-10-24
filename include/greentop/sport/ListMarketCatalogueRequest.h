@@ -50,10 +50,27 @@ class ListMarketCatalogueRequest : public JsonRequest {
 
 
     private:
+        /**
+         * The filter to select desired markets. All markets that match the criteria in the filter
+         * are selected.
+         */
         MarketFilter filter;
+        /**
+         * The type and amount of data returned about the market.
+         */
         std::set<MarketProjection> marketProjection;
+        /**
+         * The order of the results. Will default to RANK if not passed
+         */
         MarketSort sort;
+        /**
+         * limit on the total number of results returned, must be greater than 0 and less than or
+         * equal to 1000
+         */
         Optional<int32_t> maxResults;
+        /**
+         * The language used for the response. If not specified, the default is returned.
+         */
         std::string locale;
 };
 

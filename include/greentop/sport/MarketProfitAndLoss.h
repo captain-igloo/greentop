@@ -15,6 +15,9 @@
 
 namespace greentop {
 
+/**
+ * Profit and loss in a market
+ */
 class MarketProfitAndLoss : public JsonMember {
     public:
 
@@ -39,8 +42,18 @@ class MarketProfitAndLoss : public JsonMember {
 
 
     private:
+        /**
+         * The unique identifier for the market
+         */
         std::string marketId;
+        /**
+         * The commission rate applied to P&L values. Only returned if netOfCommision option is
+         * requested
+         */
         Optional<double> commissionApplied;
+        /**
+         * Calculated profit and loss data.
+         */
         std::vector<RunnerProfitAndLoss> profitAndLosses;
 };
 

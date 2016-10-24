@@ -13,6 +13,9 @@
 
 namespace greentop {
 
+/**
+ * TimeRange Result
+ */
 class TimeRangeResult : public JsonMember {
     public:
 
@@ -33,7 +36,13 @@ class TimeRangeResult : public JsonMember {
 
 
     private:
+        /**
+         * TimeRange
+         */
         TimeRange timeRange;
+        /**
+         * Count of markets associated with this TimeRange
+         */
         Optional<int32_t> marketCount;
 };
 

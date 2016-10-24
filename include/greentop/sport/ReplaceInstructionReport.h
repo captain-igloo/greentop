@@ -43,9 +43,21 @@ class ReplaceInstructionReport : public JsonMember {
 
 
     private:
+        /**
+         * whether the command succeeded or failed
+         */
         std::string status;
+        /**
+         * cause of failure, or null if command succeeds
+         */
         std::string errorCode;
+        /**
+         * Cancelation report for the original order
+         */
         CancelInstructionReport cancelInstructionReport;
+        /**
+         * Placement report for the new order
+         */
         PlaceInstructionReport placeInstructionReport;
 };
 

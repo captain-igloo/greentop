@@ -92,19 +92,60 @@ class Order : public JsonMember {
 
     private:
         std::string betId;
+        /**
+         * BSP Order type.
+         */
         OrderType orderType;
+        /**
+         * Either EXECUTABLE (an unmatched amount remains) or EXECUTION_COMPLETE (no unmatched
+         * amount remains).
+         */
         std::string status;
+        /**
+         * What to do with the order at turn-in-play
+         */
         PersistenceType persistenceType;
         Side side;
+        /**
+         * The price of the bet.
+         */
         double price;
+        /**
+         * The size of the bet.
+         */
         double size;
+        /**
+         * Not to be confused with size. This is the liability of a given BSP bet.
+         */
         double bspLiability;
+        /**
+         * The date, to the second, the bet was placed.
+         */
         std::tm placedDate;
+        /**
+         * The average price matched at. Voided match fragments are removed from this average
+         * calculation.
+         */
         Optional<double> avgPriceMatched;
+        /**
+         * The current amount of this bet that was matched.
+         */
         Optional<double> sizeMatched;
+        /**
+         * The current amount of this bet that is unmatched.
+         */
         Optional<double> sizeRemaining;
+        /**
+         * The current amount of this bet that was lapsed.
+         */
         Optional<double> sizeLapsed;
+        /**
+         * The current amount of this bet that was cancelled.
+         */
         Optional<double> sizeCancelled;
+        /**
+         * The current amount of this bet that was voided.
+         */
         Optional<double> sizeVoided;
 };
 

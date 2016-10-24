@@ -17,6 +17,9 @@
 
 namespace greentop {
 
+/**
+ * Instruction to place a new order
+ */
 class PlaceInstruction : public JsonMember {
     public:
         PlaceInstruction();
@@ -59,8 +62,17 @@ class PlaceInstruction : public JsonMember {
 
     private:
         OrderType orderType;
+        /**
+         * The selection_id.
+         */
         int64_t selectionId;
+        /**
+         * The handicap applied to the selection, if on an asian-style market.
+         */
         Optional<double> handicap;
+        /**
+         * Back or Lay
+         */
         Side side;
         LimitOrder limitOrder;
         LimitOnCloseOrder limitOnCloseOrder;

@@ -14,6 +14,9 @@
 
 namespace greentop {
 
+/**
+ * Market definition
+ */
 class MarketState : public JsonMember {
     public:
         MarketState();
@@ -63,14 +66,38 @@ class MarketState : public JsonMember {
 
 
     private:
+        /**
+         * marketStatus
+         */
         std::string status;
+        /**
+         * betDelay
+         */
         int32_t betDelay;
+        /**
+         * bspReconciled
+         */
         bool bspReconciled;
+        /**
+         * complete
+         */
         bool complete;
+        /**
+         * inplay
+         */
         bool inplay;
+        /**
+         * numberActiveOfRunners
+         */
         int32_t numberOfActiveRunners;
+        /**
+         * lastMatchTime
+         */
         std::tm lastMatchTime;
         double totalMatched;
+        /**
+         * Zero for closed markets
+         */
         double totalAvailable;
 };
 

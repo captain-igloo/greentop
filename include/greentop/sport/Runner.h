@@ -20,6 +20,9 @@
 
 namespace greentop {
 
+/**
+ * The dynamic data about runners in a market
+ */
 class Runner : public JsonMember {
     public:
         Runner();
@@ -77,16 +80,49 @@ class Runner : public JsonMember {
 
 
     private:
+        /**
+         * The unique id of the runner (selection)
+         */
         int64_t selectionId;
+        /**
+         * The handicap
+         */
         double handicap;
+        /**
+         * The status of the selection (i.e., ACTIVE, REMOVED, WINNER, LOSER)
+         */
         std::string status;
+        /**
+         * The adjustment factor applied if the selection is removed
+         */
         double adjustmentFactor;
+        /**
+         * The price of the most recent bet matched on this selection
+         */
         Optional<double> lastPriceTraded;
+        /**
+         * The total amount matched on this runner. This value is truncated at 2dp.
+         */
         Optional<double> totalMatched;
+        /**
+         * If date and time the runner was removed
+         */
         std::tm removalDate;
+        /**
+         * The BSP related prices for this runner
+         */
         StartingPrices sp;
+        /**
+         * The Exchange prices available for this runner
+         */
         ExchangePrices ex;
+        /**
+         * List of orders in the market
+         */
         std::vector<Order> orders;
+        /**
+         * List of matches (i.e, orders that have been fully or partially executed)
+         */
         std::vector<Match> matches;
 };
 

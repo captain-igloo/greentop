@@ -29,6 +29,9 @@ class CreateDeveloperAppKeysRequest : public JsonRequest {
 
 
     private:
+        /**
+         * A Display name for the application.
+         */
         std::string appName;
 };
 

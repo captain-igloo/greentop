@@ -13,6 +13,9 @@
 
 namespace greentop {
 
+/**
+ * Response for Account details.
+ */
 class AccountDetailsResponse : public JsonResponse {
     public:
 
@@ -61,14 +64,41 @@ class AccountDetailsResponse : public JsonResponse {
 
 
     private:
+        /**
+         * Default user currency Code.
+         */
         std::string currencyCode;
+        /**
+         * First Name.
+         */
         std::string firstName;
+        /**
+         * Last Name.
+         */
         std::string lastName;
+        /**
+         * Locale Code.
+         */
         std::string localeCode;
+        /**
+         * Region.
+         */
         std::string region;
+        /**
+         * User Time Zone.
+         */
         std::string timezone;
+        /**
+         * User Discount Rate.
+         */
         Optional<double> discountRate;
+        /**
+         * The Betfair points balance.
+         */
         Optional<int32_t> pointsBalance;
+        /**
+         * Country Code.
+         */
         std::string countryCode;
 };
 

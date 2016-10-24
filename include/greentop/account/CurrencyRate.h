@@ -13,6 +13,9 @@
 
 namespace greentop {
 
+/**
+ * Currency rate
+ */
 class CurrencyRate : public JsonMember {
     public:
 
@@ -33,7 +36,13 @@ class CurrencyRate : public JsonMember {
 
 
     private:
+        /**
+         * Three letter ISO 4217 code
+         */
         std::string currencyCode;
+        /**
+         * Exchange rate for the currency specified in the request
+         */
         Optional<double> rate;
 };
 

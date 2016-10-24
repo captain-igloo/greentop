@@ -13,6 +13,9 @@
 
 namespace greentop {
 
+/**
+ * A container representing search results.
+ */
 class ClearedOrderSummaryReport : public JsonResponse {
     public:
         ClearedOrderSummaryReport();
@@ -34,7 +37,16 @@ class ClearedOrderSummaryReport : public JsonResponse {
 
 
     private:
+        /**
+         * The list of cleared orders returned by your query. This will be a valid list (i.e. empty
+         * or non-empty but never 'null').
+         */
         std::vector<ClearedOrderSummary> clearedOrders;
+        /**
+         * Indicates whether there are further result items beyond this page. Note that underlying
+         * data is highly time-dependent and the subsequent search orders query might return an
+         * empty result.
+         */
         bool moreAvailable;
 };
 

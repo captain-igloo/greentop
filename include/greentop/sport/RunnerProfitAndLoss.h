@@ -12,6 +12,9 @@
 
 namespace greentop {
 
+/**
+ * Profit and loss if selection is wins or loses
+ */
 class RunnerProfitAndLoss : public JsonMember {
     public:
 
@@ -40,9 +43,23 @@ class RunnerProfitAndLoss : public JsonMember {
 
 
     private:
+        /**
+         * The unique identifier for the selection
+         */
         Optional<int64_t> selectionId;
+        /**
+         * Profit and loss for the market if this selection is the winner
+         */
         Optional<double> ifWin;
+        /**
+         * Profit and loss for the market if this selection is the loser. Only returned for
+         * multi-winner odds markets.
+         */
         Optional<double> ifLose;
+        /**
+         * Profit and loss for the market if this selection is placed. Only returned for EACH_WAY
+         * markets.
+         */
         Optional<double> ifPlace;
 };
 

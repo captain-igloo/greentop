@@ -14,6 +14,9 @@
 
 namespace greentop {
 
+/**
+ * Subscription token information
+ */
 class SubscriptionTokenInfo : public JsonMember {
     public:
         SubscriptionTokenInfo();
@@ -51,11 +54,29 @@ class SubscriptionTokenInfo : public JsonMember {
 
 
     private:
+        /**
+         * Subscription token
+         */
         std::string subscriptionToken;
+        /**
+         * Subscription Activated date
+         */
         std::tm activatedDateTime;
+        /**
+         * Subscription Expiry date
+         */
         std::tm expiryDateTime;
+        /**
+         * Subscription Expired date
+         */
         std::tm expiredDateTime;
+        /**
+         * Subscription Cancelled date
+         */
         std::tm cancellationDateTime;
+        /**
+         * Subscription status
+         */
         std::string subscriptionStatus;
 };
 

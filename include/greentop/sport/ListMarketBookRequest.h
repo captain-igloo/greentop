@@ -53,11 +53,30 @@ class ListMarketBookRequest : public JsonRequest {
 
 
     private:
+        /**
+         * One or more market ids. The number of markets returned depends on the amount of data you
+         * request via the price projection.
+         */
         std::vector<std::string> marketIds;
+        /**
+         * The projection of price data you want to receive in the response.
+         */
         PriceProjection priceProjection;
+        /**
+         * The orders you want to receive in the response.
+         */
         OrderProjection orderProjection;
+        /**
+         * If you ask for orders, specifies the representation of matches.
+         */
         MatchProjection matchProjection;
+        /**
+         * A Betfair standard currency code. If not specified, the default currency code is used.
+         */
         std::string currencyCode;
+        /**
+         * The language used for the response. If not specified, the default is returned.
+         */
         std::string locale;
 };
 

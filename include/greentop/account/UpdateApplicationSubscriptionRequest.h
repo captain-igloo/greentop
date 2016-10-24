@@ -33,7 +33,14 @@ class UpdateApplicationSubscriptionRequest : public JsonRequest {
 
 
     private:
+        /**
+         * The vendor client id for which to update the subscription for
+         */
         std::string vendorClientId;
+        /**
+         * How many days the subscription should last. Expiry time will be rounded up to midnight
+         * on the date of expiry.
+         */
         int32_t subscriptionLength;
 };
 

@@ -13,6 +13,9 @@
 
 namespace greentop {
 
+/**
+ * Instruction to update LIMIT bet's persistence of an order that do not affect exposure
+ */
 class UpdateInstruction : public JsonMember {
     public:
         UpdateInstruction();
@@ -35,6 +38,9 @@ class UpdateInstruction : public JsonMember {
 
     private:
         std::string betId;
+        /**
+         * The new persistence type to update this bet to
+         */
         PersistenceType newPersistenceType;
 };
 

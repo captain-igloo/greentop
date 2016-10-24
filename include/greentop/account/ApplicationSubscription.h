@@ -14,6 +14,9 @@
 
 namespace greentop {
 
+/**
+ * Application subscription details
+ */
 class ApplicationSubscription : public JsonMember {
     public:
         ApplicationSubscription();
@@ -63,14 +66,41 @@ class ApplicationSubscription : public JsonMember {
 
 
     private:
+        /**
+         * Application key identifier
+         */
         std::string subscriptionToken;
+        /**
+         * Subscription Expiry date
+         */
         std::tm expiryDateTime;
+        /**
+         * Subscription Expired date
+         */
         std::tm expiredDateTime;
+        /**
+         * Subscription Create date
+         */
         std::tm createdDateTime;
+        /**
+         * Subscription Activation date
+         */
         std::tm activationDateTime;
+        /**
+         * Subscription Cancelled date
+         */
         std::tm cancellationDateTime;
+        /**
+         * Subscription status
+         */
         std::string subscriptionStatus;
+        /**
+         * Client reference
+         */
         std::string clientReference;
+        /**
+         * Vendor client Id
+         */
         std::string vendorClientId;
 };
 

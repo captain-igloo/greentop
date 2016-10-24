@@ -13,6 +13,9 @@
 
 namespace greentop {
 
+/**
+ * TimeRange
+ */
 class TimeRange : public JsonMember {
     public:
 
@@ -33,7 +36,13 @@ class TimeRange : public JsonMember {
 
 
     private:
+        /**
+         * from, format: ISO 8601)
+         */
         std::tm from;
+        /**
+         * to, format: ISO 8601
+         */
         std::tm to;
 };
 

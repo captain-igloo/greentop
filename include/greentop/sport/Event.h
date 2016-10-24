@@ -14,6 +14,9 @@
 
 namespace greentop {
 
+/**
+ * Event
+ */
 class Event : public JsonMember {
     public:
 
@@ -50,11 +53,29 @@ class Event : public JsonMember {
 
 
     private:
+        /**
+         * The unique id for the event
+         */
         std::string id;
+        /**
+         * The name of the event
+         */
         std::string name;
+        /**
+         * countryCode
+         */
         std::string countryCode;
+        /**
+         * timezone
+         */
         std::string timezone;
+        /**
+         * venue
+         */
         std::string venue;
+        /**
+         * openDate
+         */
         std::tm openDate;
 };
 

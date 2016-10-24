@@ -13,6 +13,9 @@
 
 namespace greentop {
 
+/**
+ * Describes a version of an external application
+ */
 class DeveloperAppVersion : public JsonMember {
     public:
         DeveloperAppVersion();
@@ -58,13 +61,39 @@ class DeveloperAppVersion : public JsonMember {
 
 
     private:
+        /**
+         * The sportex user who owns the specific version of the application
+         */
         std::string owner;
+        /**
+         * The unique Id of the application version
+         */
         int64_t versionId;
+        /**
+         * The version identifier string such as 1.0, 2.0. Unique for a given application.
+         */
         std::string version;
+        /**
+         * The unqiue application key associated with this application version
+         */
         std::string applicationKey;
+        /**
+         * Indicates whether the data exposed by platform services as seen by this application key
+         * is delayed or realtime.
+         */
         Optional<bool> delayData;
+        /**
+         * Indicates whether the application version needs explicit subscription
+         */
         Optional<bool> subscriptionRequired;
+        /**
+         * Indicates whether the application version needs explicit management by producers. A
+         * value of false indicates, this is a version meant for developer use.
+         */
         Optional<bool> ownerManaged;
+        /**
+         * Indicates whether the application version is currently active
+         */
         Optional<bool> active;
 };
 

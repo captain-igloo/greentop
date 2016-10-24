@@ -38,8 +38,19 @@ class CancelOrdersRequest : public JsonRequest {
 
 
     private:
+        /**
+         * If not supplied all bets are cancelled
+         */
         std::string marketId;
+        /**
+         * All instructions need to be on the same market. If not supplied all bets on the market
+         * (if market id is passed) are fully cancelled
+         */
         std::vector<CancelInstruction> instructions;
+        /**
+         * Optional parameter allowing the client to pass a unique string (upto 32 chars) that is
+         * used to de-dupe mistaken re-submitions.
+         */
         std::string customerRef;
 };
 

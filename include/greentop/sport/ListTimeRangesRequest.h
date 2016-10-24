@@ -34,7 +34,15 @@ class ListTimeRangesRequest : public JsonRequest {
 
 
     private:
+        /**
+         * The filter to select desired markets. All markets that match the criteria in the filter
+         * are selected.
+         */
         MarketFilter filter;
+        /**
+         * The granularity of time periods that correspond to markets selected by the market
+         * filter.
+         */
         TimeGranularity granularity;
 };
 

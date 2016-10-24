@@ -14,6 +14,9 @@
 
 namespace greentop {
 
+/**
+ * Describes developer/vendor specific application
+ */
 class DeveloperApp : public JsonResponse {
     public:
         DeveloperApp();
@@ -39,8 +42,17 @@ class DeveloperApp : public JsonResponse {
 
 
     private:
+        /**
+         * The unique name of the application
+         */
         std::string appName;
+        /**
+         * A unique id of this application
+         */
         int64_t appId;
+        /**
+         * The application versions (including application keys)
+         */
         std::vector<DeveloperAppVersion> appVersions;
 };
 

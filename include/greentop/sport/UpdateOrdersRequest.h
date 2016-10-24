@@ -39,8 +39,15 @@ class UpdateOrdersRequest : public JsonRequest {
 
 
     private:
+        /**
+         * The market id these orders are to be placed on
+         */
         std::string marketId;
         std::vector<UpdateInstruction> instructions;
+        /**
+         * Optional parameter allowing the client to pass a unique string (up to 32 chars) that is
+         * used to de-dupe mistaken re-submissions.
+         */
         std::string customerRef;
 };
 

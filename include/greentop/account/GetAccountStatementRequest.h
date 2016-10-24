@@ -52,11 +52,37 @@ class GetAccountStatementRequest : public JsonRequest {
 
 
     private:
+        /**
+         * The language to be used where applicable. If not specified, the customer account default
+         * is returned.
+         */
         std::string locale;
+        /**
+         * Specifies the first record that will be returned. Records start at index zero. If not
+         * specified then it will default to 0.
+         */
         Optional<int32_t> fromRecord;
+        /**
+         * Specifies the maximum number of records to be returned. Note that there is a page size
+         * limit of 100. If not specified then it will default to the page limit size.
+         */
         Optional<int32_t> recordCount;
+        /**
+         * Return items with an itemDate within this date range. Both from and to date times are
+         * inclusive. If from is not specified then the oldest available items will be in range. If
+         * to is not specified then the latest items will be in range. nb. This itemDataRange is
+         * currently only applied when includeItem is set to ALL or not specified, else items are
+         * NOT bound by itemDate.
+         */
         TimeRange itemDateRange;
+        /**
+         * Which items to include, if not specified then defaults to ALL.
+         */
         IncludeItem includeItem;
+        /**
+         * Which wallet to return statementItems for. If unspecified then the UK wallet will be
+         * selected
+         */
         Wallet wallet;
 };
 

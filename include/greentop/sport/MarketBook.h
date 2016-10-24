@@ -17,6 +17,9 @@
 
 namespace greentop {
 
+/**
+ * The dynamic data in a market
+ */
 class MarketBook : public JsonMember {
     public:
         MarketBook();
@@ -98,22 +101,75 @@ class MarketBook : public JsonMember {
 
 
     private:
+        /**
+         * The unique identifier for the market
+         */
         std::string marketId;
+        /**
+         * True if the data returned by listMarketBook will be delayed. The data may be delayed
+         * because you are not logged in with a funded account or you are using an Application Key
+         * that does not allow up to date data.
+         */
         bool isMarketDataDelayed;
+        /**
+         * The status of the market, for example ACTIVE, SUSPENDED, SETTLED, etc.
+         */
         std::string status;
+        /**
+         * The number of seconds an order is held until it is submitted into the market. Orders are
+         * usually delayed when the market is in-play
+         */
         Optional<int32_t> betDelay;
+        /**
+         * True if the market starting price has been reconciled
+         */
         Optional<bool> bspReconciled;
         Optional<bool> complete;
+        /**
+         * True if the market is currently in play
+         */
         Optional<bool> inplay;
+        /**
+         * The number of selections that could be settled as winners
+         */
         Optional<int32_t> numberOfWinners;
+        /**
+         * The number of runners in the market
+         */
         Optional<int32_t> numberOfRunners;
+        /**
+         * The number of runners that are currently active. An active runner is a selection
+         * available for betting
+         */
         Optional<int32_t> numberOfActiveRunners;
+        /**
+         * The most recent time an order was executed
+         */
         std::tm lastMatchTime;
+        /**
+         * The total amount matched. This value is truncated at 2dp.
+         */
         Optional<double> totalMatched;
+        /**
+         * The total amount of orders that remain unmatched. This value is truncated at 2dp.
+         */
         Optional<double> totalAvailable;
+        /**
+         * True if cross matching is enabled for this market.
+         */
         Optional<bool> crossMatching;
+        /**
+         * True if runners in the market can be voided
+         */
         Optional<bool> runnersVoidable;
+        /**
+         * The version of the market. The version increments whenever the market status changes,
+         * for example, turning in-play, or suspended when a goal score.
+         */
         Optional<int64_t> version;
+        /**
+         * Information about the runners (selections) in the market.
+         */
         std::vector<Runner> runners;
 };
 

@@ -12,6 +12,9 @@
 
 namespace greentop {
 
+/**
+ * Market version
+ */
 class MarketVersion : public JsonMember {
     public:
 
@@ -28,6 +31,9 @@ class MarketVersion : public JsonMember {
 
 
     private:
+        /**
+         * A non-monotonically increasing number indicating market changes
+         */
         Optional<int64_t> version;
 };
 

@@ -13,6 +13,9 @@
 
 namespace greentop {
 
+/**
+ * This object contains the unique identifier for a runner
+ */
 class RunnerId : public JsonMember {
     public:
         RunnerId();
@@ -38,8 +41,18 @@ class RunnerId : public JsonMember {
 
 
     private:
+        /**
+         * The id of the market bet on
+         */
         std::string marketId;
+        /**
+         * The id of the selection bet on
+         */
         int64_t selectionId;
+        /**
+         * The handicap associated with the runner in case of asian handicap markets, null
+         * otherwise.
+         */
         Optional<double> handicap;
 };
 

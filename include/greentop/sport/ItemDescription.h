@@ -15,6 +15,10 @@
 
 namespace greentop {
 
+/**
+ * This object contains some text which may be useful to render a betting history view. It offers no
+ * long-term warranty as to the correctness of the text.
+ */
 class ItemDescription : public JsonMember {
     public:
 
@@ -59,13 +63,43 @@ class ItemDescription : public JsonMember {
 
 
     private:
+        /**
+         * The event type name, translated into the requested locale. Available at EVENT_TYPE
+         * groupBy or lower.
+         */
         std::string eventTypeDesc;
+        /**
+         * The eventName, or openDate + venue, translated into the requested locale. Available at
+         * EVENT groupBy or lower.
+         */
         std::string eventDesc;
+        /**
+         * The market name or racing market type ("Win", "To Be Placed (2 places)", "To Be Placed
+         * (5 places)" etc) translated into the requested locale. Available at MARKET groupBy or
+         * lower.
+         */
         std::string marketDesc;
+        /**
+         * The market type
+         */
         std::string marketType;
+        /**
+         * The start time of the market (in ISO-8601 format, not translated). Available at MARKET
+         * groupBy or lower.
+         */
         std::tm marketStartTime;
+        /**
+         * The runner name, maybe including the handicap, translated into the requested locale.
+         * Available at BET groupBy.
+         */
         std::string runnerDesc;
+        /**
+         * The numberOfWinners on a market. Available at BET groupBy.
+         */
         Optional<int32_t> numberOfWinners;
+        /**
+         * The odds divisor applicable to EachWay markets
+         */
         Optional<double> eachWayDivisor;
 };
 

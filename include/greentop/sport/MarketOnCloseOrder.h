@@ -11,6 +11,9 @@
 
 namespace greentop {
 
+/**
+ * Place a new MARKET_ON_CLOSE bet
+ */
 class MarketOnCloseOrder : public JsonMember {
     public:
         MarketOnCloseOrder();
@@ -28,6 +31,9 @@ class MarketOnCloseOrder : public JsonMember {
 
 
     private:
+        /**
+         * The size of the bet.
+         */
         double liability;
 };
 

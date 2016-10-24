@@ -38,8 +38,17 @@ class UpdateInstructionReport : public JsonMember {
 
 
     private:
+        /**
+         * whether the command succeeded or failed
+         */
         std::string status;
+        /**
+         * cause of failure, or null if command succeeds
+         */
         std::string errorCode;
+        /**
+         * The instruction that was requested
+         */
         UpdateInstruction instruction;
 };
 

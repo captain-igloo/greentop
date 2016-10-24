@@ -13,6 +13,9 @@
 
 namespace greentop {
 
+/**
+ * Market Licence
+ */
 class MarketLicence : public JsonMember {
     public:
         MarketLicence();
@@ -42,9 +45,21 @@ class MarketLicence : public JsonMember {
 
 
     private:
+        /**
+         * The wallet from which funds will be taken when betting on this market
+         */
         std::string wallet;
+        /**
+         * The rules for this market
+         */
         std::string rules;
+        /**
+         * The market's start date and time are relevant to the rules.
+         */
         Optional<bool> rulesHasDate;
+        /**
+         * Clarifications to the rules for the market
+         */
         std::string clarifications;
 };
 

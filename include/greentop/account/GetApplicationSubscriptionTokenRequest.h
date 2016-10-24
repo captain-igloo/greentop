@@ -33,7 +33,14 @@ class GetApplicationSubscriptionTokenRequest : public JsonRequest {
 
 
     private:
+        /**
+         * How many days the subscription should last. Open ended if value not supplied. Expiry
+         * time will be rounded up to midnight on the date of expiry.
+         */
         Optional<int32_t> subscriptionLength;
+        /**
+         * Any client reference for this subscription token request.
+         */
         std::string clientReference;
 };
 

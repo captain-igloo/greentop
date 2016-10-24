@@ -16,6 +16,10 @@
 
 namespace greentop {
 
+/**
+ * An individual bet Match, or rollup by price or avg price. Rollup depends on the requested
+ * MatchProjection
+ */
 class Match : public JsonMember {
     public:
 
@@ -52,11 +56,26 @@ class Match : public JsonMember {
 
 
     private:
+        /**
+         * Only present if no rollup
+         */
         std::string betId;
+        /**
+         * Only present if no rollup
+         */
         std::string matchId;
         Side side;
+        /**
+         * Either actual match price or avg match price depending on rollup.
+         */
         Optional<double> price;
+        /**
+         * Size matched at in this fragment, or at this price or avg price depending on rollup
+         */
         Optional<double> Size;
+        /**
+         * Only present if no rollup
+         */
         std::tm matchDate;
 };
 

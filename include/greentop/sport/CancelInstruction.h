@@ -13,6 +13,9 @@
 
 namespace greentop {
 
+/**
+ * Instruction to fully or partially cancel an order (only applies to LIMIT orders)
+ */
 class CancelInstruction : public JsonMember {
     public:
         CancelInstruction();
@@ -35,6 +38,9 @@ class CancelInstruction : public JsonMember {
 
     private:
         std::string betId;
+        /**
+         * If supplied then this is a partial cancel
+         */
         Optional<double> sizeReduction;
 };
 

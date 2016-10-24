@@ -11,6 +11,9 @@
 
 namespace greentop {
 
+/**
+ * Place a new LIMIT_ON_CLOSE bet
+ */
 class LimitOnCloseOrder : public JsonMember {
     public:
         LimitOnCloseOrder();
@@ -32,7 +35,13 @@ class LimitOnCloseOrder : public JsonMember {
 
 
     private:
+        /**
+         * The size of the bet.
+         */
         double liability;
+        /**
+         * The limit price of the bet if LOC
+         */
         double price;
 };
 

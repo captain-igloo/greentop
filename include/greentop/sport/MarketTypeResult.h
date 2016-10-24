@@ -13,6 +13,9 @@
 
 namespace greentop {
 
+/**
+ * MarketType Result
+ */
 class MarketTypeResult : public JsonMember {
     public:
 
@@ -33,7 +36,13 @@ class MarketTypeResult : public JsonMember {
 
 
     private:
+        /**
+         * Market Type
+         */
         std::string marketType;
+        /**
+         * Count of markets associated with this marketType
+         */
         Optional<int32_t> marketCount;
 };
 

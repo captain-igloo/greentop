@@ -28,6 +28,21 @@ class HeartbeatRequest : public JsonRequest {
 
 
     private:
+        /**
+         * Maximum period in seconds that may elapse (without a subsequent heartbeat request),
+         * before a cancellation request is automatically submitted on your behalf. Passing 0 will
+         * result in your heartbeat being unregistered (or ignored if you have no current heartbeat
+         * registered). You will still get an actionPerformed value returned when passing 0, so
+         * this may be used to determine if any action was performed since your last heartbeat,
+         * without actually registering a new heartbeat. Passing a negative value will result in an
+         * error being returned, INVALID_INPUT_DATA. Any errors while registering your heartbeat
+         * will result in a error being returned, UNEXPECTED_ERROR. Passing a value that is less
+         * than the minimum timeout will result in your heartbeat adopting the minimum timeout.
+         * Passing a value that is greater than the maximum timeout will result in your heartbeat
+         * adopting the maximum timeout. The minimum and maximum timeouts are subject to change, so
+         * your client should utilise the returned actualTimeoutSeconds to set an appropriate
+         * frequency for your subsequent heartbeat requests.
+         */
         int32_t preferredTimeoutSeconds;
 };
 

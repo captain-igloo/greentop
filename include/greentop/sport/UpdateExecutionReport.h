@@ -46,9 +46,15 @@ class UpdateExecutionReport : public JsonResponse {
 
 
     private:
+        /**
+         * Echo of the customerRef if passed.
+         */
         std::string customerRef;
         std::string status;
         std::string errorCode;
+        /**
+         * Echo of marketId passed
+         */
         std::string marketId;
         std::vector<UpdateInstructionReport> instructionReports;
 };

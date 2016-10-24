@@ -12,6 +12,9 @@
 
 namespace greentop {
 
+/**
+ * Transfer operation response
+ */
 class TransferResponse : public JsonResponse {
     public:
         TransferResponse();
@@ -29,6 +32,10 @@ class TransferResponse : public JsonResponse {
 
 
     private:
+        /**
+         * The id of the transfer transaction that will be used in tracking the transfers between
+         * the wallets
+         */
         std::string transactionId;
 };
 

@@ -13,6 +13,9 @@
 
 namespace greentop {
 
+/**
+ * A container representing search results.
+ */
 class AccountStatementReport : public JsonResponse {
     public:
         AccountStatementReport();
@@ -34,7 +37,13 @@ class AccountStatementReport : public JsonResponse {
 
 
     private:
+        /**
+         * The list of statement items returned by your request.
+         */
         std::vector<StatementItem> accountStatement;
+        /**
+         * Indicates whether there are further result items beyond this page.
+         */
         bool moreAvailable;
 };
 

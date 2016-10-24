@@ -14,6 +14,9 @@
 
 namespace greentop {
 
+/**
+ * Competition Result
+ */
 class CompetitionResult : public JsonMember {
     public:
 
@@ -38,8 +41,17 @@ class CompetitionResult : public JsonMember {
 
 
     private:
+        /**
+         * Competition
+         */
         Competition competition;
+        /**
+         * Count of markets associated with this competition
+         */
         Optional<int32_t> marketCount;
+        /**
+         * Region in which this competition is happening
+         */
         std::string competitionRegion;
 };
 

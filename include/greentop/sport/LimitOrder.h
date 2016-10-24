@@ -12,6 +12,9 @@
 
 namespace greentop {
 
+/**
+ * Place a new LIMIT order (simple exchange bet for immediate execution)
+ */
 class LimitOrder : public JsonMember {
     public:
         LimitOrder();
@@ -37,8 +40,17 @@ class LimitOrder : public JsonMember {
 
 
     private:
+        /**
+         * The size of the bet.
+         */
         double size;
+        /**
+         * The limit price
+         */
         double price;
+        /**
+         * What to do with the order at turn-in-play
+         */
         PersistenceType persistenceType;
 };
 

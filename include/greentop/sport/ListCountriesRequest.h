@@ -34,7 +34,14 @@ class ListCountriesRequest : public JsonRequest {
 
 
     private:
+        /**
+         * The filter to select desired markets. All markets that match the criteria in the filter
+         * are selected.
+         */
         MarketFilter filter;
+        /**
+         * The language used for the response. If not specified, the default is returned.
+         */
         std::string locale;
 };
 

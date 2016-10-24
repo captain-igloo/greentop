@@ -12,6 +12,9 @@
 
 namespace greentop {
 
+/**
+ * Response from heartbeat operation
+ */
 class HeartbeatReport : public JsonResponse {
     public:
         HeartbeatReport();
@@ -33,7 +36,14 @@ class HeartbeatReport : public JsonResponse {
 
 
     private:
+        /**
+         * The action performed since your last heartbeat request.
+         */
         ActionPerformed actionPerformed;
+        /**
+         * The actual timeout applied to your heartbeat request, see timeout request parameter
+         * description for details.
+         */
         int32_t actualTimeoutSeconds;
 };
 

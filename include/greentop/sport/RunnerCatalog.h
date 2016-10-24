@@ -12,6 +12,9 @@
 
 namespace greentop {
 
+/**
+ * Information about the Runners (selections) in a market
+ */
 class RunnerCatalog : public JsonMember {
     public:
         RunnerCatalog();
@@ -45,10 +48,25 @@ class RunnerCatalog : public JsonMember {
 
 
     private:
+        /**
+         * The unique id for the selection.
+         */
         int64_t selectionId;
+        /**
+         * The name of the runner
+         */
         std::string runnerName;
+        /**
+         * The handicap
+         */
         double handicap;
+        /**
+         * The sort priority of this runner
+         */
         int32_t sortPriority;
+        /**
+         * Metadata associated with the runner
+         */
         std::map<std::string, std::string> metadata;
 };
 

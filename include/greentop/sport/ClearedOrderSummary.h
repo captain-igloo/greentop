@@ -19,6 +19,9 @@
 
 namespace greentop {
 
+/**
+ * Summary of a cleared order.
+ */
 class ClearedOrderSummary : public JsonMember {
     public:
 
@@ -119,27 +122,110 @@ class ClearedOrderSummary : public JsonMember {
 
 
     private:
+        /**
+         * The id of the event type bet on. Available at EVENT_TYPE groupBy level or lower.
+         */
         std::string eventTypeId;
+        /**
+         * The id of the event bet on. Available at EVENT groupBy level or lower.
+         */
         std::string eventId;
+        /**
+         * The id of the market bet on. Available at MARKET groupBy level or lower.
+         */
         std::string marketId;
+        /**
+         * The id of the selection bet on. Available at RUNNER groupBy level or lower.
+         */
         Optional<int64_t> selectionId;
+        /**
+         * The id of the market bet on. Available at MARKET groupBy level or lower.
+         */
         Optional<double> handicap;
+        /**
+         * The id of the bet. Available at BET groupBy level.
+         */
         std::string betId;
+        /**
+         * The date the bet order was placed by the customer. Only available at BET groupBy level.
+         */
         std::tm placedDate;
+        /**
+         * The turn in play persistence state of the order at bet placement time. This field will
+         * be empty or omitted on true SP bets. Only available at BET groupBy level.
+         */
         PersistenceType persistenceType;
+        /**
+         * The type of bet (e.g standard limited-liability Exchange bet (LIMIT), a standard BSP bet
+         * (MARKET_ON_CLOSE), or a minimum-accepted-price BSP bet (LIMIT_ON_CLOSE)). If the bet has
+         * a OrderType of MARKET_ON_CLOSE and a persistenceType of MARKET_ON_CLOSE then it is a bet
+         * which has transitioned from LIMIT to MARKET_ON_CLOSE. Only available at BET groupBy
+         * level.
+         */
         OrderType orderType;
+        /**
+         * Whether the bet was a back or lay bet. Available at SIDE groupBy level or lower.
+         */
         Side side;
+        /**
+         * A container for all the anciliary data and localised text valid for this Item
+         */
         ItemDescription itemDescription;
+        /**
+         * The settlement outcome of the bet. Tri-state (WIN/LOSE/PLACE) to account for Each Way
+         * bets where the place portion of the bet won but the win portion lost. The profit/loss
+         * amount in this case could be positive or negative depending on the price matched at.
+         * Only available at BET groupBy level.
+         */
         std::string betOutcome;
+        /**
+         * The average requested price across all settled bet orders under this Item. Available at
+         * SIDE groupBy level or lower.
+         */
         Optional<double> priceRequested;
+        /**
+         * The date and time the bet order was settled by Betfair. Available at SIDE groupBy level
+         * or lower.
+         */
         std::tm settledDate;
+        /**
+         * The date and time the last bet order was matched by Betfair. Available on Settled orders
+         * only.
+         */
         std::tm lastMatchedDate;
+        /**
+         * The number of actual bets within this grouping (will be 1 for BET groupBy)
+         */
         Optional<int32_t> betCount;
+        /**
+         * The cumulative amount of commission paid by the customer across all bets under this
+         * Item, in the account currency. Available at EXCHANGE, EVENT_TYPE, EVENT and MARKET level
+         * groupings only.
+         */
         Optional<double> commission;
+        /**
+         * The average matched price across all settled bets or bet fragments under this Item.
+         * Available at SIDE groupBy level or lower.
+         */
         Optional<double> priceMatched;
+        /**
+         * If true, then the matched price was affected by a reduction factor due to of a runner
+         * removal from this Horse Racing market.
+         */
         Optional<bool> priceReduced;
+        /**
+         * The cumulative bet size that was settled as matched or voided under this Item, in the
+         * account currency. Available at SIDE groupBy level or lower.
+         */
         Optional<double> sizeSettled;
+        /**
+         * The profit or loss (negative profit) gained on this line, in the account currency
+         */
         Optional<double> profit;
+        /**
+         * The amount of the bet that was available to be matched, before cancellation or lapsing,
+         * in the account currency
+         */
         Optional<double> sizeCancelled;
 };
 

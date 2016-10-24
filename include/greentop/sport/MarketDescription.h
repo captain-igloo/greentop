@@ -15,6 +15,9 @@
 
 namespace greentop {
 
+/**
+ * Market definition
+ */
 class MarketDescription : public JsonMember {
     public:
         MarketDescription();
@@ -92,14 +95,41 @@ class MarketDescription : public JsonMember {
 
 
     private:
+        /**
+         * persistenceMarket
+         */
         bool persistenceEnabled;
+        /**
+         * bspMarket
+         */
         bool bspMarket;
+        /**
+         * marketTime
+         */
         std::tm marketTime;
+        /**
+         * marketSuspendTime
+         */
         std::tm suspendTime;
+        /**
+         * settled time
+         */
         std::tm settleTime;
+        /**
+         * bettingType
+         */
         std::string bettingType;
+        /**
+         * canTurnInPlay
+         */
         Optional<bool> turnInPlayEnabled;
+        /**
+         * market base type
+         */
         std::string marketType;
+        /**
+         * the market regulator
+         */
         std::string regulator;
         Optional<double> marketBaseRate;
         Optional<bool> discountAllowed;
@@ -107,6 +137,9 @@ class MarketDescription : public JsonMember {
         std::string rules;
         Optional<bool> rulesHasDate;
         std::string clarifications;
+        /**
+         * Each Way Divisor for E/W markets
+         */
         Optional<double> eachWayDivisor;
 };
 

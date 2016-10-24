@@ -29,6 +29,9 @@ class ActivateApplicationSubscriptionRequest : public JsonRequest {
 
 
     private:
+        /**
+         * Subscription token for activation
+         */
         std::string subscriptionToken;
 };
 

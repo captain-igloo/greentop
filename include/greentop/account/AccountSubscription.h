@@ -14,6 +14,9 @@
 
 namespace greentop {
 
+/**
+ * Application subscription details
+ */
 class AccountSubscription : public JsonMember {
     public:
         AccountSubscription();
@@ -39,8 +42,17 @@ class AccountSubscription : public JsonMember {
 
 
     private:
+        /**
+         * Lis t of subscription token details
+         */
         std::vector<SubscriptionTokenInfo> subscriptionTokens;
+        /**
+         * Application name
+         */
         std::string applicationName;
+        /**
+         * Application version Id
+         */
         std::string applicationVersionId;
 };
 

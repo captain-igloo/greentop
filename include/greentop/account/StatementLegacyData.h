@@ -15,6 +15,9 @@
 
 namespace greentop {
 
+/**
+ * Summary of a cleared order.
+ */
 class StatementLegacyData : public JsonMember {
     public:
 

@@ -13,6 +13,9 @@
 
 namespace greentop {
 
+/**
+ * Response for retrieving available to bet.
+ */
 class AccountFundsResponse : public JsonResponse {
     public:
 
@@ -53,12 +56,33 @@ class AccountFundsResponse : public JsonResponse {
 
 
     private:
+        /**
+         * Amount available to bet.
+         */
         Optional<double> availableToBetBalance;
+        /**
+         * Current exposure.
+         */
         Optional<double> exposure;
+        /**
+         * Sum of retained commission.
+         */
         Optional<double> retainedCommission;
+        /**
+         * Exposure limit.
+         */
         Optional<double> exposureLimit;
+        /**
+         * User Discount Rate.
+         */
         Optional<double> discountRate;
+        /**
+         * The Betfair points balance.
+         */
         Optional<int32_t> pointsBalance;
+        /**
+         * The Betfair wallet name.
+         */
         std::string wallet;
 };
 

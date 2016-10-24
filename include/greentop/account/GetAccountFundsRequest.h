@@ -28,6 +28,9 @@ class GetAccountFundsRequest : public JsonRequest {
 
 
     private:
+        /**
+         * Name of the wallet in question.
+         */
         Wallet wallet;
 };
 

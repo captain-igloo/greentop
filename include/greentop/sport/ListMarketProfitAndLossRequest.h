@@ -42,9 +42,23 @@ class ListMarketProfitAndLossRequest : public JsonRequest {
 
 
     private:
+        /**
+         * List of markets to calculate profit and loss
+         */
         std::set<std::string> marketIds;
+        /**
+         * Option to include settled bets (partially settled markets only). Defaults to false if
+         * not specified.
+         */
         Optional<bool> includeSettledBets;
+        /**
+         * Option to include BSP bets. Defaults to false if not specified.
+         */
         Optional<bool> includeBspBets;
+        /**
+         * Option to return profit and loss net of users current commission rate for this market
+         * including any special tariffs. Defaults to false if not specified.
+         */
         Optional<bool> netOfCommission;
 };
 

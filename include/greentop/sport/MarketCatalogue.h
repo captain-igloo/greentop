@@ -21,6 +21,9 @@
 
 namespace greentop {
 
+/**
+ * Information about a market
+ */
 class MarketCatalogue : public JsonMember {
     public:
         MarketCatalogue();
@@ -70,14 +73,43 @@ class MarketCatalogue : public JsonMember {
 
 
     private:
+        /**
+         * The unique identifier for the market
+         */
         std::string marketId;
+        /**
+         * The name of the market
+         */
         std::string marketName;
+        /**
+         * The time this market starts at, only returned when the MARKET_START_TIME enum is passed
+         * in the marketProjections
+         */
         std::tm marketStartTime;
+        /**
+         * Details about the market
+         */
         MarketDescription description;
+        /**
+         * The total amount of money matched on the market. This value is truncated at 2dp.
+         */
         Optional<double> totalMatched;
+        /**
+         * The runners (selections) contained in the market
+         */
         std::vector<RunnerCatalog> runners;
+        /**
+         * The Event Type the market is contained within
+         */
         EventType eventType;
+        /**
+         * The competition the market is contained within. Usually only applies to Football
+         * competitions
+         */
         Competition competition;
+        /**
+         * The event the market is contained within
+         */
         Event event;
 };
 

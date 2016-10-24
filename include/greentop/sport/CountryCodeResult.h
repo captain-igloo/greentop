@@ -13,6 +13,9 @@
 
 namespace greentop {
 
+/**
+ * CountryCode Result
+ */
 class CountryCodeResult : public JsonMember {
     public:
 
@@ -33,7 +36,13 @@ class CountryCodeResult : public JsonMember {
 
 
     private:
+        /**
+         * Country Code
+         */
         std::string countryCode;
+        /**
+         * Count of markets associated with this Country Code
+         */
         Optional<int32_t> marketCount;
 };
 

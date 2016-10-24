@@ -13,6 +13,9 @@
 
 namespace greentop {
 
+/**
+ * EventType Result
+ */
 class EventTypeResult : public JsonMember {
     public:
 
@@ -33,7 +36,13 @@ class EventTypeResult : public JsonMember {
 
 
     private:
+        /**
+         * EventType
+         */
         EventType eventType;
+        /**
+         * Count of markets associated with this eventType
+         */
         Optional<int32_t> marketCount;
 };
 

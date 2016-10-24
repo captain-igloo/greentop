@@ -17,6 +17,9 @@
 
 namespace greentop {
 
+/**
+ * Summary of a cleared order.
+ */
 class StatementItem : public JsonMember {
     public:
 
@@ -57,12 +60,38 @@ class StatementItem : public JsonMember {
 
 
     private:
+        /**
+         * An external reference, eg. equivalent to betId in the case of an exchange bet statement
+         * item.
+         */
         std::string refId;
+        /**
+         * The date and time of the statement item, eg. equivalent to settledData for an exchange
+         * bet statement item. (in ISO-8601 format, not translated)
+         */
         std::tm itemDate;
+        /**
+         * The amount of money the balance is adjusted by
+         */
         Optional<double> amount;
+        /**
+         * Account balance.
+         */
         Optional<double> balance;
+        /**
+         * Class of statement item. This value will determine which set of keys will be included in
+         * itemClassData
+         */
         ItemClass itemClass;
+        /**
+         * Key value pairs describing the current statement item. The set of keys will be
+         * determined by the itemClass
+         */
         std::map<std::string, std::string> itemClassData;
+        /**
+         * Set of fields originally returned from APIv6. Provided to facilitate migration from
+         * APIv6 to API-NG, and ultimately onto itemClass and itemClassData
+         */
         StatementLegacyData legacyData;
 };
 

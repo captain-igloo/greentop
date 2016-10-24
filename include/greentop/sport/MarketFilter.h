@@ -89,20 +89,75 @@ class MarketFilter : public JsonMember {
 
 
     private:
+        /**
+         * Restrict markets by any text associated with the market such as the Name, Event,
+         * Competition, etc. You can include a wildcard (*) character as long as it is not the
+         * first character.
+         */
         std::string textQuery;
+        /**
+         * Restrict markets by the Exchange where the market operates. Note: This is not currently
+         * in use and only entities for the current exchange will be returned.
+         */
         std::set<std::string> exchangeIds;
+        /**
+         * Restrict markets by event type associated with the market. (i.e., Football, Hockey, etc)
+         */
         std::set<std::string> eventTypeIds;
+        /**
+         * Restrict markets by the event id associated with the market.
+         */
         std::set<std::string> eventIds;
+        /**
+         * Restrict markets by the competitions associated with the market.
+         */
         std::set<std::string> competitionIds;
+        /**
+         * Restrict markets by the market id associated with the market.
+         */
         std::set<std::string> marketIds;
+        /**
+         * Restrict markets by the venue associated with the market. Currently only Horse Racing
+         * markets have venues.
+         */
         std::set<std::string> venues;
+        /**
+         * Restrict to bsp markets only, if True or non-bsp markets if False. If not specified then
+         * returns both BSP and non-BSP markets
+         */
         Optional<bool> bspOnly;
+        /**
+         * Restrict to markets that will turn in play if True or will not turn in play if false. If
+         * not specified, returns both.
+         */
         Optional<bool> turnInPlayEnabled;
+        /**
+         * Restrict to markets that will turn in play if True or will not turn in play if false. If
+         * not specified, returns both.
+         */
         Optional<bool> inPlayOnly;
+        /**
+         * Restrict to markets that match the betting type of the market (i.e. Odds, Asian Handicap
+         * Singles, or Asian Handicap Doubles
+         */
         std::set<MarketBettingType> marketBettingTypes;
+        /**
+         * Restrict to markets that are in the specified country or countries
+         */
         std::set<std::string> marketCountries;
+        /**
+         * Restrict to markets that match the type of the market (i.e., MATCH_ODDS,
+         * HALF_TIME_SCORE). You should use this instead of relying on the market name as the
+         * market type codes are the same in all locales
+         */
         std::set<std::string> marketTypeCodes;
+        /**
+         * Restrict to markets with a market start time before or after the specified date
+         */
         TimeRange marketStartTime;
+        /**
+         * Restrict to markets that I have one or more orders in these status.
+         */
         std::set<OrderStatus> withOrders;
 };
 

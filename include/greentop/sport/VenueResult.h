@@ -13,6 +13,9 @@
 
 namespace greentop {
 
+/**
+ * Venue Result
+ */
 class VenueResult : public JsonMember {
     public:
 
@@ -33,7 +36,13 @@ class VenueResult : public JsonMember {
 
 
     private:
+        /**
+         * Venue
+         */
         std::string venue;
+        /**
+         * Count of markets associated with this Venue
+         */
         Optional<int32_t> marketCount;
 };
 

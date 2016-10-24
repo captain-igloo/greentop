@@ -12,6 +12,9 @@
 
 namespace greentop {
 
+/**
+ * EventType
+ */
 class EventType : public JsonMember {
     public:
 
@@ -32,7 +35,13 @@ class EventType : public JsonMember {
 
 
     private:
+        /**
+         * id
+         */
         std::string id;
+        /**
+         * name
+         */
         std::string name;
 };
 

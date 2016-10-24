@@ -16,6 +16,9 @@
 
 namespace greentop {
 
+/**
+ * Response to a PlaceInstruction
+ */
 class PlaceInstructionReport : public JsonMember {
     public:
         PlaceInstructionReport();
@@ -57,9 +60,21 @@ class PlaceInstructionReport : public JsonMember {
 
 
     private:
+        /**
+         * whether the command succeeded or failed
+         */
         std::string status;
+        /**
+         * cause of failure, or null if command succeeds
+         */
         std::string errorCode;
+        /**
+         * The instruction that was requested
+         */
         PlaceInstruction instruction;
+        /**
+         * The bet ID of the new bet. May be null on failure.
+         */
         std::string betId;
         std::tm placedDate;
         Optional<double> averagePriceMatched;
