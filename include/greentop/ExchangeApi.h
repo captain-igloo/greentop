@@ -85,15 +85,24 @@ class ExchangeApi {
 
     public:
 
+        static const std::string LOGIN_END_POINT_GLOBAL;
+        static const std::string LOGIN_END_POINT_ITALY;
+        static const std::string LOGIN_END_POINT_SPAIN;
+        static const std::string LOGIN_END_POINT_ROMANIA;
+
         enum class Api {ACCOUNT, BETTING, HEARTBEAT};
 
         ExchangeApi(const std::string& applicationKey = "");
 
-        bool login(std::string username, std::string password);
+        void setLoginEndPoint(const std::string& loginEndPoint);
+
+        bool login(const std::string& username, const std::string& password);
 
         void logout();
 
         void setApplicationKey(const std::string& appKey);
+
+        void setSsoid(const std::string& ssoid);
 
         void refreshMenu(const std::string& cacheFilename = "");
 
@@ -105,7 +114,7 @@ class ExchangeApi {
          */
         ListEventTypesResponse listEventTypes(const Exchange exchange,
             const ListEventTypesRequest& request) const;
-        
+
         /**
          * Returns a list of Competitions (i.e., World Cup 2013) associated with the markets
          * selected by the MarketFilter. Currently only Football markets have an associated
@@ -135,7 +144,7 @@ class ExchangeApi {
          */
         ListMarketTypesResponse listMarketTypes(const Exchange exchange,
             const ListMarketTypesRequest& request) const;
-            
+
         /**
          * Returns a list of Countries associated with the markets selected by the MarketFilter.
          */
@@ -164,7 +173,7 @@ class ExchangeApi {
          */
         ListMarketBookResponse listMarketBook(const Exchange exchange,
             const ListMarketBookRequest& request) const;
-            
+
         /**
          * Returns a list of your current orders. Optionally you can filter and sort your current
          * orders using the various parameters, setting none of the parameters will return all of
@@ -206,14 +215,14 @@ class ExchangeApi {
          * See ReplaceInstruction.
          */
         ReplaceExecutionReport replaceOrders(const Exchange exchange,
-            const ReplaceOrdersRequest& request) const;            
+            const ReplaceOrdersRequest& request) const;
 
         /**
          * Update non-exposure changing fields.
          */
         UpdateExecutionReport updateOrders(const Exchange exchange,
             const UpdateOrdersRequest& request) const;
-            
+
         /**
          * Retrieve profit and loss for a given list of markets. The values are calculated using
          * matched bets and optionally settled bets. Only odds markets are implemented, markets of
@@ -232,7 +241,7 @@ class ExchangeApi {
          * Get all application keys owned by the given developer/vendor.
          */
         GetDeveloperAppKeysResponse getDeveloperAppKeys(const Exchange exchange) const;
-            
+
         /**
          * Get available to bet amount.
          */
@@ -244,7 +253,7 @@ class ExchangeApi {
          */
         TransferResponse transferFunds(const Exchange exchange,
             const TransferFundsRequest& request) const;
-                        
+
         /**
          * Get Account details.
          */
@@ -254,7 +263,7 @@ class ExchangeApi {
          * Get vendor client id for customer account.
          */
         GetVendorClientIdResponse getVendorClientId(const Exchange exchange) const;
-        
+
         /**
          * Returns the newly generate subscription token.
          */
@@ -266,19 +275,19 @@ class ExchangeApi {
          */
         ActivateApplicationSubscriptionResponse activateApplicationSubscription(const Exchange exchange,
             const ActivateApplicationSubscriptionRequest& request) const;
-        
+
         /**
          * Cancel application subscription.
          */
         CancelApplicationSubscriptionResponse cancelApplicationSubscription(const Exchange exchange,
             const CancelApplicationSubscriptionRequest& request) const;
-        
+
         /**
          * Update an application subscription with a new expiry date.
          */
         UpdateApplicationSubscriptionResponse updateApplicationSubscription(const Exchange exchange,
             const UpdateApplicationSubscriptionRequest& request) const;
-        
+
         /**
          * List of subscription tokens for an application.
          */
@@ -313,20 +322,20 @@ class ExchangeApi {
          * This heartbeat operation is provided to help customers have their positions managed
          * automatically in the event of their API clients losing connectivity with the Betfair
          * API.
-         * 
+         *
          * If a heartbeat request is not received within a prescribed time period, then Betfair
          * will attempt to cancel all 'LIMIT' type bets for the given customer on the given
          * exchange.
-         * 
+         *
          * There is no guarantee that this service will result in all bets being cancelled as
          * there are a number of circumstances where bets are unable to be cancelled. Manual
          * intervention is strongly advised in the event of a loss of connectivity to ensure that
          * positions are correctly managed.
-         * 
+         *
          * If this service becomes unavailable for any reason, then your heartbeat will be
          * unregistered automatically to avoid bets being inadvertently cancelled upon resumption
          * of service. You should manage your position manually until the service is resumed.
-         * 
+         *
          * Heartbeat data may also be lost in the unlikely event of  nodes failing within the
          * cluster, which may result in your position not being managed until a subsequent
          * heartbeat request is received.
@@ -337,11 +346,10 @@ class ExchangeApi {
         ~ExchangeApi();
 
     private:
-
-        static const std::string LOGIN_END_POINT;
         static const std::string HOST_UK;
         static const std::string HOST_AUS;
 
+        std::string loginEndPoint;
         std::string ssoid;
         std::string applicationKey;
         menu::Menu menu;

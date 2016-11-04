@@ -2,6 +2,7 @@
  * Copyright 2015 Colin Doig.  Distributed under the MIT license.
  */
 
+#include <iostream>
 #include <curl/curl.h>
 #include <fstream>
 #include <memory>
@@ -13,7 +14,11 @@
 
 namespace greentop {
 
-const std::string ExchangeApi::LOGIN_END_POINT = "https://identitysso.betfair.com/api/login";
+const std::string ExchangeApi::LOGIN_END_POINT_GLOBAL = "https://identitysso.betfair.com/api/login";
+const std::string ExchangeApi::LOGIN_END_POINT_ITALY = "https://identitysso.betfair.it/api/login";
+const std::string ExchangeApi::LOGIN_END_POINT_SPAIN = "https://identitysso.betfair.es/api/login";
+const std::string ExchangeApi::LOGIN_END_POINT_ROMANIA = "https://identitysso.betfair.ro/api/login";
+
 const std::string ExchangeApi::HOST_UK = "https://api.betfair.com";
 const std::string ExchangeApi::HOST_AUS = "https://api-au.betfair.com";
 
@@ -32,28 +37,39 @@ ExchangeApi::ExchangeApi(const std::string& applicationKey) {
     curl_global_init(CURL_GLOBAL_ALL);
     ssoid = "";
     this->applicationKey = applicationKey;
+    // use global end point by default
+    loginEndPoint = LOGIN_END_POINT_GLOBAL;
 }
 
-bool ExchangeApi::login(std::string username, std::string password) {
+void ExchangeApi::setLoginEndPoint(const std::string& loginEndPoint) {
+    this->loginEndPoint = loginEndPoint;
+}
 
+bool ExchangeApi::login(const std::string& username, const std::string& password) {
     bool success = false;
 
     std::unique_ptr<CURL, void(*)(CURL*)> curl(curl_easy_init(), curl_easy_cleanup);
 
     if (curl.get()) {
-        curl_easy_setopt(curl.get(), CURLOPT_URL, LOGIN_END_POINT.c_str());
+        curl_easy_setopt(curl.get(), CURLOPT_URL, loginEndPoint.c_str());
         curl_easy_setopt(curl.get(), CURLOPT_USE_SSL, CURLUSESSL_ALL);
-        curl_easy_setopt(curl.get(), CURLOPT_COOKIE, "loggedIn=false; expires=Sun, 17-Jan-2038 19:14:07 GMT; path=/; domain=.betfair.com");
 
-        std::string postFields = "username=" + username + "&password=" + password +
-            "&login=true&redirectMethod=POST&product=" + applicationKey
-            + "&url=https://www.betfair.com/";
+        SList chunk;
+        std::string header = "Accept: application/json";
+        chunk.append(header);
+        header = "X-Application: " + applicationKey;
+        chunk.append(header);
+        header = "Content-Type: application/x-www-form-urlencoded";
+        chunk.append(header);
+        curl_easy_setopt(curl.get(), CURLOPT_HTTPHEADER, chunk.get());
 
+        std::string postFields = "username=" + username + "&password=" + password;
         curl_easy_setopt(curl.get(), CURLOPT_POSTFIELDS, postFields.c_str());
+
         curl_easy_setopt(curl.get(), CURLOPT_WRITEFUNCTION, writeToStream);
         std::stringstream result;
         curl_easy_setopt(curl.get(), CURLOPT_WRITEDATA, &result);
-        curl_easy_setopt(curl.get(), CURLOPT_COOKIEFILE, "");
+
         curl_easy_setopt(curl.get(), CURLOPT_NOSIGNAL, 1);
         char errorBuffer[CURL_ERROR_SIZE];
         curl_easy_setopt(curl.get(), CURLOPT_ERRORBUFFER, errorBuffer);
@@ -61,31 +77,19 @@ bool ExchangeApi::login(std::string username, std::string password) {
         CURLcode curlResult = curl_easy_perform(curl.get());
 
         if (curlResult == CURLE_OK) {
+            Json::Value json;
+            result >> json;
 
-            curl_slist* slist;
-            curl_easy_getinfo(curl.get(), CURLINFO_COOKIELIST, &slist);
-            SList cookies(slist);
-
-            while (cookies.get()) {
-                HttpCookie cookie(cookies.get()->data);
-                cookies.set(cookies.get()->next);
-
-                if (cookie.name == "ssoid") {
-                    ssoid = cookie.value;
-                } else if (cookie.name == "loggedIn" && cookie.value == "true") {
-                    success = true;
-                }
-
+            if (json["status"].asString() == "SUCCESS") {
+                ssoid = json["token"].asString();
+                success = true;
             }
-
         } else {
             throw std::runtime_error(errorBuffer);
         }
-
     }
 
     return success;
-
 }
 
 void ExchangeApi::logout() {
@@ -94,6 +98,10 @@ void ExchangeApi::logout() {
 
 void ExchangeApi::setApplicationKey(const std::string& appKey) {
     applicationKey = appKey;
+}
+
+void ExchangeApi::setSsoid(const std::string& ssoid) {
+    this->ssoid = ssoid;
 }
 
 void ExchangeApi::refreshMenu(const std::string& cacheFilename) {
@@ -345,7 +353,7 @@ ExchangeApi::cancelApplicationSubscription(const Exchange exchange,
     performRequest(exchange, Api::ACCOUNT, "cancelApplicationSubscription", request, response);
     return response;
 }
-        
+
 UpdateApplicationSubscriptionResponse
 ExchangeApi::updateApplicationSubscription(const Exchange exchange,
         const UpdateApplicationSubscriptionRequest& request) const {
@@ -353,7 +361,7 @@ ExchangeApi::updateApplicationSubscription(const Exchange exchange,
     performRequest(exchange, Api::ACCOUNT, "updateApplicationSubscription", request, response);
     return response;
 }
-        
+
 ListApplicationSubscriptionTokensResponse
 ExchangeApi::listApplicationSubscriptionTokens(const Exchange exchange,
         const ListApplicationSubscriptionTokensRequest& request) const {
