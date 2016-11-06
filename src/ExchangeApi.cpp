@@ -19,6 +19,8 @@ const std::string ExchangeApi::LOGIN_END_POINT_ITALY = "https://identitysso.betf
 const std::string ExchangeApi::LOGIN_END_POINT_SPAIN = "https://identitysso.betfair.es/api/login";
 const std::string ExchangeApi::LOGIN_END_POINT_ROMANIA = "https://identitysso.betfair.ro/api/login";
 
+const std::string ExchangeApi::LOGIN_END_POINT_GLOBAL_CERT = "https://identitysso.betfair.com/api/certlogin";
+
 const std::string ExchangeApi::HOST_UK = "https://api.betfair.com";
 const std::string ExchangeApi::HOST_AUS = "https://api-au.betfair.com";
 
@@ -39,29 +41,50 @@ ExchangeApi::ExchangeApi(const std::string& applicationKey) {
     this->applicationKey = applicationKey;
     // use global end point by default
     loginEndPoint = LOGIN_END_POINT_GLOBAL;
+    loginEndPointCert = LOGIN_END_POINT_GLOBAL_CERT;
 }
 
 void ExchangeApi::setLoginEndPoint(const std::string& loginEndPoint) {
     this->loginEndPoint = loginEndPoint;
 }
 
-bool ExchangeApi::login(const std::string& username, const std::string& password) {
+bool ExchangeApi::login(const std::string& username, const std::string& password,
+    const std::string& certFilename, const std::string& keyFilename) {
+
     bool success = false;
+    bool loginWithCert = false;
+    std::string endPoint = loginEndPoint;
+    std::string xApplicationHeader = applicationKey;
+    std::string statusKey = "status";
+    std::string tokenKey = "token";
+
+    if (certFilename != "" && keyFilename != "") {
+        loginWithCert = true;
+        endPoint = loginEndPointCert;
+        xApplicationHeader = "greentop";
+        statusKey = "loginStatus";
+        tokenKey = "sessionToken";
+    }
 
     std::unique_ptr<CURL, void(*)(CURL*)> curl(curl_easy_init(), curl_easy_cleanup);
 
     if (curl.get()) {
-        curl_easy_setopt(curl.get(), CURLOPT_URL, loginEndPoint.c_str());
+        curl_easy_setopt(curl.get(), CURLOPT_URL, endPoint.c_str());
         curl_easy_setopt(curl.get(), CURLOPT_USE_SSL, CURLUSESSL_ALL);
 
         SList chunk;
         std::string header = "Accept: application/json";
         chunk.append(header);
-        header = "X-Application: " + applicationKey;
+        header = "X-Application: " + xApplicationHeader;
         chunk.append(header);
         header = "Content-Type: application/x-www-form-urlencoded";
         chunk.append(header);
         curl_easy_setopt(curl.get(), CURLOPT_HTTPHEADER, chunk.get());
+
+        if (loginWithCert) {
+            curl_easy_setopt(curl.get(), CURLOPT_SSLCERT, certFilename.c_str());
+            curl_easy_setopt(curl.get(), CURLOPT_SSLKEY, keyFilename.c_str());
+        }
 
         std::string postFields = "username=" + username + "&password=" + password;
         curl_easy_setopt(curl.get(), CURLOPT_POSTFIELDS, postFields.c_str());
@@ -80,16 +103,18 @@ bool ExchangeApi::login(const std::string& username, const std::string& password
             Json::Value json;
             result >> json;
 
-            if (json["status"].asString() == "SUCCESS") {
-                ssoid = json["token"].asString();
+            if (json[statusKey].asString() == "SUCCESS") {
+                ssoid = json[tokenKey].asString();
                 success = true;
             }
         } else {
             throw std::runtime_error(errorBuffer);
         }
+
     }
 
     return success;
+
 }
 
 void ExchangeApi::logout() {

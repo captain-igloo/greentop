@@ -89,6 +89,7 @@ class ExchangeApi {
         static const std::string LOGIN_END_POINT_ITALY;
         static const std::string LOGIN_END_POINT_SPAIN;
         static const std::string LOGIN_END_POINT_ROMANIA;
+        static const std::string LOGIN_END_POINT_GLOBAL_CERT;
 
         enum class Api {ACCOUNT, BETTING, HEARTBEAT};
 
@@ -96,7 +97,8 @@ class ExchangeApi {
 
         void setLoginEndPoint(const std::string& loginEndPoint);
 
-        bool login(const std::string& username, const std::string& password);
+        bool login(const std::string& username, const std::string& password,
+            const std::string& certFilename = "", const std::string& keyFilename = "");
 
         void logout();
 
@@ -350,6 +352,7 @@ class ExchangeApi {
         static const std::string HOST_AUS;
 
         std::string loginEndPoint;
+        std::string loginEndPointCert;
         std::string ssoid;
         std::string applicationKey;
         menu::Menu menu;
