@@ -38,6 +38,7 @@ class Node {
         const std::tm& getMarketStartTime() const;
         bool hasParent() const;
         const Node& getParent() const;
+        bool hasChild(const Node& childNode) const;
 
     private:
         Menu* menu;

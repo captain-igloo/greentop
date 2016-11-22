@@ -17,8 +17,8 @@ HEADERS := $(wildcard $(INC)/*.h) $(wildcard $(INC)/*/*.h) $(wildcard $(INC)/*/*
 
 define make-goal
 $1/%.o: $(subst $(OBJ),$(SRC),$1)/%.cpp | $1
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -Wall -fexceptions  -std=c++0x -g -I./include -c $$< -o $$@
-	$(CXX) -MM -MT $$@ -I./include $$< > $$(subst .cpp,.d,$$(subst $$(SRC),$$(OBJ),$$<))
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -Wall -fexceptions -std=c++11 -g -I./include -c $$< -o $$@
+	$(CXX) -std=c++11 -MM -MT $$@ -I./include $$< > $$(subst .cpp,.d,$$(subst $$(SRC),$$(OBJ),$$<))
 endef
 
 .PHONY: all

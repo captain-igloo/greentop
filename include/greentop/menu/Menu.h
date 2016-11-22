@@ -7,8 +7,10 @@
 
 #include <json/json.h>
 #include <list>
+#include <set>
 
 #include "greentop/menu/Node.h"
+#include "greentop/LRUCache.h"
 
 namespace greentop {
 namespace menu {
@@ -35,11 +37,14 @@ class Menu {
 
         const Node& getRootNode() const;
 
+        bool hasChild(const Node& parentNode, const Node& childNode);
+
     protected:
     private:
         Node root;
         std::map<std::string, std::list<Node> > children;
         std::map<std::string, Node*> parents;
+        LRUCache<std::string, std::set<std::string>> childrenCache;
 
         const std::string makeNodeId(const Node& node) const;
         void addParent(Node* parentNode);

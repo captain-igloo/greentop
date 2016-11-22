@@ -1,7 +1,6 @@
 /**
  * Copyright 2015 Colin Doig.  Distributed under the MIT license.
  */
-
 #include <sstream>
 
 #include "greentop/menu/Menu.h"
@@ -9,7 +8,7 @@
 namespace greentop {
 namespace menu {
 
-Menu::Menu() : root(this) {
+Menu::Menu() : root(this), childrenCache(100) {
     children[makeNodeId(root)] = std::list<Node>();
 }
 
@@ -25,7 +24,7 @@ void Menu::fromJson(const Json::Value& json) {
     parents.clear();
     root.fromJson(json);
     addParent(&root);
-
+    childrenCache.clear();
 }
 
 const std::string Menu::makeNodeId(const Node& node) const {
@@ -43,7 +42,6 @@ void Menu::addChild(const Node& parentNode, const Node& childNode) {
     children[parentNodeId].push_back(childNode);
 
     addParent(&children[parentNodeId].back());
-
 }
 
 void Menu::addParent(Node* parentNode) {
@@ -72,6 +70,24 @@ const std::list<Node>& Menu::getChildren(const Node& node) const {
 const Node& Menu::getRootNode() const {
     return root;
 }
+
+bool Menu::hasChild(const Node& parentNode, const Node& childNode) {
+    std::string parentNodeId = makeNodeId(parentNode);
+    std::string childNodeId = makeNodeId(childNode);
+
+    if (!childrenCache.exists(parentNodeId)) {
+        std::set<std::string> childrenIds;
+        for (auto it = parentNode.getChildren().begin(); it != parentNode.getChildren().end(); ++it) {
+            childrenIds.insert(makeNodeId(*it));
+        }
+        childrenCache.put(parentNodeId, childrenIds);
+    }
+
+    std::set<std::string> childrenIds = childrenCache.get(parentNodeId);
+
+    return childrenIds.find(childNodeId) != childrenIds.end();
+}
+
 
 }
 }

@@ -8,7 +8,7 @@
 #include "greentop/menu/Menu.h"
 #include "greentop/menu/Node.h"
 
-#ifdef __linux__ 
+#ifdef __linux__
 #include <time.h>
 #elif _WIN32
 #include "greentop/Time.h"
@@ -123,6 +123,10 @@ bool Node::hasParent() const {
 
 const Node& Node::getParent() const {
     return menu->getParent(*this);
+}
+
+bool Node::hasChild(const Node& childNode) const {
+    return menu->hasChild(*this, childNode);
 }
 
 }
