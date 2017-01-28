@@ -13,6 +13,9 @@
 #include "greentop/Optional.h"
 #include "greentop/Time.h"
 #include "greentop/sport/PlaceInstruction.h"
+#include "greentop/sport/enum/InstructionReportErrorCode.h"
+#include "greentop/sport/enum/InstructionReportStatus.h"
+#include "greentop/sport/enum/OrderStatus.h"
 
 namespace greentop {
 
@@ -23,8 +26,9 @@ class PlaceInstructionReport : public JsonMember {
     public:
         PlaceInstructionReport();
 
-        PlaceInstructionReport(const std::string& status,
-            const std::string& errorCode = std::string(),
+        PlaceInstructionReport(const InstructionReportStatus& status,
+            const InstructionReportErrorCode& errorCode = InstructionReportErrorCode(),
+            const OrderStatus& orderStatus = OrderStatus(),
             const PlaceInstruction& instruction = PlaceInstruction(),
             const std::string& betId = std::string(),
             const std::tm& placedDate = std::tm(),
@@ -37,11 +41,14 @@ class PlaceInstructionReport : public JsonMember {
 
         virtual bool isValid() const;
 
-        const std::string& getStatus() const;
-        void setStatus(const std::string& status);
+        const InstructionReportStatus& getStatus() const;
+        void setStatus(const InstructionReportStatus& status);
 
-        const std::string& getErrorCode() const;
-        void setErrorCode(const std::string& errorCode);
+        const InstructionReportErrorCode& getErrorCode() const;
+        void setErrorCode(const InstructionReportErrorCode& errorCode);
+
+        const OrderStatus& getOrderStatus() const;
+        void setOrderStatus(const OrderStatus& orderStatus);
 
         const PlaceInstruction& getInstruction() const;
         void setInstruction(const PlaceInstruction& instruction);
@@ -63,21 +70,36 @@ class PlaceInstructionReport : public JsonMember {
         /**
          * whether the command succeeded or failed
          */
-        std::string status;
+        InstructionReportStatus status;
         /**
          * cause of failure, or null if command succeeds
          */
-        std::string errorCode;
+        InstructionReportErrorCode errorCode;
+        /**
+         * The status of the order, if the instruction succeeded. If the instruction was
+         * unsuccessful, no value is provided.
+         */
+        OrderStatus orderStatus;
         /**
          * The instruction that was requested
          */
         PlaceInstruction instruction;
         /**
-         * The bet ID of the new bet. May be null on failure.
+         * The bet ID of the new bet. Will be null on failure or if order was placed
+         * asynchronously.
          */
         std::string betId;
+        /**
+         * Will be null if order was placed asynchronously
+         */
         std::tm placedDate;
+        /**
+         * Will be null if order was placed asynchronously
+         */
         Optional<double> averagePriceMatched;
+        /**
+         * Will be null if order was placed asynchronously
+         */
         Optional<double> sizeMatched;
 };
 

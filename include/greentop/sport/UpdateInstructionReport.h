@@ -6,10 +6,11 @@
 #define UPDATEINSTRUCTIONREPORT_H
 
 #include <json/json.h>
-#include <string>
 
 #include "greentop/JsonMember.h"
 #include "greentop/sport/UpdateInstruction.h"
+#include "greentop/sport/enum/InstructionReportErrorCode.h"
+#include "greentop/sport/enum/InstructionReportStatus.h"
 
 namespace greentop {
 
@@ -17,8 +18,8 @@ class UpdateInstructionReport : public JsonMember {
     public:
         UpdateInstructionReport();
 
-        UpdateInstructionReport(const std::string& status,
-            const std::string& errorCode = std::string(),
+        UpdateInstructionReport(const InstructionReportStatus& status,
+            const InstructionReportErrorCode& errorCode = InstructionReportErrorCode(),
             const UpdateInstruction& instruction = UpdateInstruction());
 
         virtual void fromJson(const Json::Value& json);
@@ -27,11 +28,11 @@ class UpdateInstructionReport : public JsonMember {
 
         virtual bool isValid() const;
 
-        const std::string& getStatus() const;
-        void setStatus(const std::string& status);
+        const InstructionReportStatus& getStatus() const;
+        void setStatus(const InstructionReportStatus& status);
 
-        const std::string& getErrorCode() const;
-        void setErrorCode(const std::string& errorCode);
+        const InstructionReportErrorCode& getErrorCode() const;
+        void setErrorCode(const InstructionReportErrorCode& errorCode);
 
         const UpdateInstruction& getInstruction() const;
         void setInstruction(const UpdateInstruction& instruction);
@@ -41,11 +42,11 @@ class UpdateInstructionReport : public JsonMember {
         /**
          * whether the command succeeded or failed
          */
-        std::string status;
+        InstructionReportStatus status;
         /**
          * cause of failure, or null if command succeeds
          */
-        std::string errorCode;
+        InstructionReportErrorCode errorCode;
         /**
          * The instruction that was requested
          */

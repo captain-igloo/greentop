@@ -43,7 +43,7 @@ class AccountSubscription : public JsonMember {
 
     private:
         /**
-         * Lis t of subscription token details
+         * List of subscription token details
          */
         std::vector<SubscriptionTokenInfo> subscriptionTokens;
         /**

@@ -13,6 +13,7 @@
 #include "greentop/Optional.h"
 #include "greentop/Time.h"
 #include "greentop/sport/PriceSize.h"
+#include "greentop/sport/enum/OrderStatus.h"
 #include "greentop/sport/enum/OrderType.h"
 #include "greentop/sport/enum/PersistenceType.h"
 #include "greentop/sport/enum/Side.h"
@@ -33,7 +34,7 @@ class CurrentOrderSummary : public JsonMember {
             const PriceSize& priceSize,
             const double bspLiability,
             const Side& side,
-            const std::string& status,
+            const OrderStatus& status,
             const PersistenceType& persistenceType,
             const OrderType& orderType,
             const std::tm& placedDate,
@@ -45,7 +46,9 @@ class CurrentOrderSummary : public JsonMember {
             const Optional<double>& sizeCancelled = Optional<double>(),
             const Optional<double>& sizeVoided = Optional<double>(),
             const std::string& regulatorAuthCode = std::string(),
-            const std::string& regulatorCode = std::string());
+            const std::string& regulatorCode = std::string(),
+            const std::string& customerOrderRef = std::string(),
+            const std::string& customerStrategyRef = std::string());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -74,8 +77,8 @@ class CurrentOrderSummary : public JsonMember {
         const Side& getSide() const;
         void setSide(const Side& side);
 
-        const std::string& getStatus() const;
-        void setStatus(const std::string& status);
+        const OrderStatus& getStatus() const;
+        void setStatus(const OrderStatus& status);
 
         const PersistenceType& getPersistenceType() const;
         void setPersistenceType(const PersistenceType& persistenceType);
@@ -113,6 +116,12 @@ class CurrentOrderSummary : public JsonMember {
         const std::string& getRegulatorCode() const;
         void setRegulatorCode(const std::string& regulatorCode);
 
+        const std::string& getCustomerOrderRef() const;
+        void setCustomerOrderRef(const std::string& customerOrderRef);
+
+        const std::string& getCustomerStrategyRef() const;
+        void setCustomerStrategyRef(const std::string& customerStrategyRef);
+
 
     private:
         /**
@@ -147,7 +156,7 @@ class CurrentOrderSummary : public JsonMember {
          * Either EXECUTABLE (an unmatched amount remains) or EXECUTION_COMPLETE (no unmatched
          * amount remains).
          */
-        std::string status;
+        OrderStatus status;
         /**
          * What to do with the order at turn-in-play.
          */
@@ -197,6 +206,14 @@ class CurrentOrderSummary : public JsonMember {
          * The regulator Code.
          */
         std::string regulatorCode;
+        /**
+         * The order reference defined by the customer for this bet
+         */
+        std::string customerOrderRef;
+        /**
+         * The strategy reference defined by the customer for this bet
+         */
+        std::string customerStrategyRef;
 };
 
 }

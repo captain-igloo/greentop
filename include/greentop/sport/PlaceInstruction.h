@@ -6,6 +6,7 @@
 #define PLACEINSTRUCTION_H
 
 #include <json/json.h>
+#include <string>
 
 #include "greentop/JsonMember.h"
 #include "greentop/Optional.h"
@@ -30,7 +31,8 @@ class PlaceInstruction : public JsonMember {
             const Side& side = Side(),
             const LimitOrder& limitOrder = LimitOrder(),
             const LimitOnCloseOrder& limitOnCloseOrder = LimitOnCloseOrder(),
-            const MarketOnCloseOrder& marketOnCloseOrder = MarketOnCloseOrder());
+            const MarketOnCloseOrder& marketOnCloseOrder = MarketOnCloseOrder(),
+            const std::string& customerOrderRef = std::string());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -59,6 +61,9 @@ class PlaceInstruction : public JsonMember {
         const MarketOnCloseOrder& getMarketOnCloseOrder() const;
         void setMarketOnCloseOrder(const MarketOnCloseOrder& marketOnCloseOrder);
 
+        const std::string& getCustomerOrderRef() const;
+        void setCustomerOrderRef(const std::string& customerOrderRef);
+
 
     private:
         OrderType orderType;
@@ -77,6 +82,13 @@ class PlaceInstruction : public JsonMember {
         LimitOrder limitOrder;
         LimitOnCloseOrder limitOnCloseOrder;
         MarketOnCloseOrder marketOnCloseOrder;
+        /**
+         * An optional reference the customer can set to identify instructions and it will be
+         * returned on order change messages via the stream API. No validation will be done on
+         * uniqueness and the string is limited to 32 characters. If an empty string is provided it
+         * will be treated as null.
+         */
+        std::string customerOrderRef;
 };
 
 }

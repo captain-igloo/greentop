@@ -16,7 +16,9 @@ DeveloperAppVersion::DeveloperAppVersion(const std::string& owner,
     const Optional<bool>& delayData,
     const Optional<bool>& subscriptionRequired,
     const Optional<bool>& ownerManaged,
-    const Optional<bool>& active) :
+    const Optional<bool>& active,
+    const std::string& vendorId,
+    const std::string& vendorSecret) :
     owner(owner),
     versionId(versionId),
     version(version),
@@ -24,7 +26,9 @@ DeveloperAppVersion::DeveloperAppVersion(const std::string& owner,
     delayData(delayData),
     subscriptionRequired(subscriptionRequired),
     ownerManaged(ownerManaged),
-    active(active) {
+    active(active),
+    vendorId(vendorId),
+    vendorSecret(vendorSecret) {
 }
 
 void DeveloperAppVersion::fromJson(const Json::Value& json) {
@@ -52,6 +56,12 @@ void DeveloperAppVersion::fromJson(const Json::Value& json) {
     if (json.isMember("active")) {
         active = json["active"].asBool();
     }
+    if (json.isMember("vendorId")) {
+        vendorId = json["vendorId"].asString();
+    }
+    if (json.isMember("vendorSecret")) {
+        vendorSecret = json["vendorSecret"].asString();
+    }
 }
 
 Json::Value DeveloperAppVersion::toJson() const {
@@ -77,6 +87,12 @@ Json::Value DeveloperAppVersion::toJson() const {
     }
     if (active.isValid()) {
         json["active"] = active.toJson();
+    }
+    if (vendorId != "") {
+        json["vendorId"] = vendorId;
+    }
+    if (vendorSecret != "") {
+        json["vendorSecret"] = vendorSecret;
     }
     return json;
 }
@@ -139,6 +155,20 @@ const Optional<bool>& DeveloperAppVersion::getActive() const {
 }
 void DeveloperAppVersion::setActive(const Optional<bool>& active) {
     this->active = active;
+}
+
+const std::string& DeveloperAppVersion::getVendorId() const {
+    return vendorId;
+}
+void DeveloperAppVersion::setVendorId(const std::string& vendorId) {
+    this->vendorId = vendorId;
+}
+
+const std::string& DeveloperAppVersion::getVendorSecret() const {
+    return vendorSecret;
+}
+void DeveloperAppVersion::setVendorSecret(const std::string& vendorSecret) {
+    this->vendorSecret = vendorSecret;
 }
 
 

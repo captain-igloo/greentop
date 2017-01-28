@@ -8,8 +8,8 @@ namespace greentop {
 
 
 CancelExecutionReport::CancelExecutionReport(const std::string& customerRef,
-    const std::string& status,
-    const std::string& errorCode,
+    const ExecutionReportStatus& status,
+    const ExecutionReportErrorCode& errorCode,
     const std::string& marketId,
     const std::vector<CancelInstructionReport>& instructionReports) :
     customerRef(customerRef),
@@ -53,11 +53,11 @@ Json::Value CancelExecutionReport::toJson() const {
     if (customerRef != "") {
         json["customerRef"] = customerRef;
     }
-    if (status != "") {
-        json["status"] = status;
+    if (status.isValid()) {
+        json["status"] = status.getValue();
     }
-    if (errorCode != "") {
-        json["errorCode"] = errorCode;
+    if (errorCode.isValid()) {
+        json["errorCode"] = errorCode.getValue();
     }
     json["marketId"] = marketId;
     if (instructionReports.size() > 0) {
@@ -69,7 +69,7 @@ Json::Value CancelExecutionReport::toJson() const {
 }
 
 bool CancelExecutionReport::isValid() const {
-    return status != "";
+    return status.isValid();
 }
 
 const std::string& CancelExecutionReport::getCustomerRef() const {
@@ -79,17 +79,17 @@ void CancelExecutionReport::setCustomerRef(const std::string& customerRef) {
     this->customerRef = customerRef;
 }
 
-const std::string& CancelExecutionReport::getStatus() const {
+const ExecutionReportStatus& CancelExecutionReport::getStatus() const {
     return status;
 }
-void CancelExecutionReport::setStatus(const std::string& status) {
+void CancelExecutionReport::setStatus(const ExecutionReportStatus& status) {
     this->status = status;
 }
 
-const std::string& CancelExecutionReport::getErrorCode() const {
+const ExecutionReportErrorCode& CancelExecutionReport::getErrorCode() const {
     return errorCode;
 }
-void CancelExecutionReport::setErrorCode(const std::string& errorCode) {
+void CancelExecutionReport::setErrorCode(const ExecutionReportErrorCode& errorCode) {
     this->errorCode = errorCode;
 }
 

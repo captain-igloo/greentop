@@ -11,10 +11,16 @@ PlaceOrdersRequest::PlaceOrdersRequest() {
 
 PlaceOrdersRequest::PlaceOrdersRequest(const std::string& marketId,
     const std::vector<PlaceInstruction>& instructions,
-    const std::string& customerRef) :
+    const std::string& customerRef,
+    const MarketVersion& marketVersion,
+    const std::string& customerStrategyRef,
+    const Optional<bool>& async) :
     marketId(marketId),
     instructions(instructions),
-    customerRef(customerRef) {
+    customerRef(customerRef),
+    marketVersion(marketVersion),
+    customerStrategyRef(customerStrategyRef),
+    async(async) {
 }
 
 void PlaceOrdersRequest::fromJson(const Json::Value& json) {
@@ -31,6 +37,15 @@ void PlaceOrdersRequest::fromJson(const Json::Value& json) {
     if (json.isMember("customerRef")) {
         customerRef = json["customerRef"].asString();
     }
+    if (json.isMember("marketVersion")) {
+        marketVersion.fromJson(json["marketVersion"]);
+    }
+    if (json.isMember("customerStrategyRef")) {
+        customerStrategyRef = json["customerStrategyRef"].asString();
+    }
+    if (json.isMember("async")) {
+        async = json["async"].asBool();
+    }
 }
 
 Json::Value PlaceOrdersRequest::toJson() const {
@@ -43,6 +58,15 @@ Json::Value PlaceOrdersRequest::toJson() const {
     }
     if (customerRef != "") {
         json["customerRef"] = customerRef;
+    }
+    if (marketVersion.isValid()) {
+        json["marketVersion"] = marketVersion.toJson();
+    }
+    if (customerStrategyRef != "") {
+        json["customerStrategyRef"] = customerStrategyRef;
+    }
+    if (async.isValid()) {
+        json["async"] = async.toJson();
     }
     return json;
 }
@@ -70,6 +94,27 @@ const std::string& PlaceOrdersRequest::getCustomerRef() const {
 }
 void PlaceOrdersRequest::setCustomerRef(const std::string& customerRef) {
     this->customerRef = customerRef;
+}
+
+const MarketVersion& PlaceOrdersRequest::getMarketVersion() const {
+    return marketVersion;
+}
+void PlaceOrdersRequest::setMarketVersion(const MarketVersion& marketVersion) {
+    this->marketVersion = marketVersion;
+}
+
+const std::string& PlaceOrdersRequest::getCustomerStrategyRef() const {
+    return customerStrategyRef;
+}
+void PlaceOrdersRequest::setCustomerStrategyRef(const std::string& customerStrategyRef) {
+    this->customerStrategyRef = customerStrategyRef;
+}
+
+const Optional<bool>& PlaceOrdersRequest::getAsync() const {
+    return async;
+}
+void PlaceOrdersRequest::setAsync(const Optional<bool>& async) {
+    this->async = async;
 }
 
 

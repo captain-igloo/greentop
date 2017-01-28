@@ -11,7 +11,7 @@ MarketBook::MarketBook() : isMarketDataDelayed(false) {
 
 MarketBook::MarketBook(const std::string& marketId,
     const bool isMarketDataDelayed,
-    const std::string& status,
+    const MarketStatus& status,
     const Optional<int32_t>& betDelay,
     const Optional<bool>& bspReconciled,
     const Optional<bool>& complete,
@@ -109,8 +109,8 @@ Json::Value MarketBook::toJson() const {
         json["marketId"] = marketId;
     }
     json["isMarketDataDelayed"] = isMarketDataDelayed;
-    if (status != "") {
-        json["status"] = status;
+    if (status.isValid()) {
+        json["status"] = status.getValue();
     }
     if (betDelay.isValid()) {
         json["betDelay"] = betDelay.toJson();
@@ -179,10 +179,10 @@ void MarketBook::setIsMarketDataDelayed(const bool isMarketDataDelayed) {
     this->isMarketDataDelayed = isMarketDataDelayed;
 }
 
-const std::string& MarketBook::getStatus() const {
+const MarketStatus& MarketBook::getStatus() const {
     return status;
 }
-void MarketBook::setStatus(const std::string& status) {
+void MarketBook::setStatus(const MarketStatus& status) {
     this->status = status;
 }
 

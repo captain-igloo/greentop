@@ -15,6 +15,8 @@ ListClearedOrdersRequest::ListClearedOrdersRequest(const BetStatus& betStatus,
     const std::set<std::string>& marketIds,
     const std::vector<RunnerId>& runnerIds,
     const std::set<std::string>& betIds,
+    const std::set<std::string>& customerOrderRefs,
+    const std::set<std::string>& customerStrategyRefs,
     const Side& side,
     const TimeRange& settledDateRange,
     const GroupBy& groupBy,
@@ -28,6 +30,8 @@ ListClearedOrdersRequest::ListClearedOrdersRequest(const BetStatus& betStatus,
     marketIds(marketIds),
     runnerIds(runnerIds),
     betIds(betIds),
+    customerOrderRefs(customerOrderRefs),
+    customerStrategyRefs(customerStrategyRefs),
     side(side),
     settledDateRange(settledDateRange),
     groupBy(groupBy),
@@ -66,6 +70,16 @@ void ListClearedOrdersRequest::fromJson(const Json::Value& json) {
     if (json.isMember("betIds")) {
         for (unsigned i = 0; i < json["betIds"].size(); ++i) {
             betIds.insert(json["betIds"][i].asString());
+        }
+    }
+    if (json.isMember("customerOrderRefs")) {
+        for (unsigned i = 0; i < json["customerOrderRefs"].size(); ++i) {
+            customerOrderRefs.insert(json["customerOrderRefs"][i].asString());
+        }
+    }
+    if (json.isMember("customerStrategyRefs")) {
+        for (unsigned i = 0; i < json["customerStrategyRefs"].size(); ++i) {
+            customerStrategyRefs.insert(json["customerStrategyRefs"][i].asString());
         }
     }
     if (json.isMember("side")) {
@@ -119,6 +133,16 @@ Json::Value ListClearedOrdersRequest::toJson() const {
     if (betIds.size() > 0) {
         for (std::set<std::string>::const_iterator it = betIds.begin(); it != betIds.end(); ++it) {
             json["betIds"].append(*it);
+        }
+    }
+    if (customerOrderRefs.size() > 0) {
+        for (std::set<std::string>::const_iterator it = customerOrderRefs.begin(); it != customerOrderRefs.end(); ++it) {
+            json["customerOrderRefs"].append(*it);
+        }
+    }
+    if (customerStrategyRefs.size() > 0) {
+        for (std::set<std::string>::const_iterator it = customerStrategyRefs.begin(); it != customerStrategyRefs.end(); ++it) {
+            json["customerStrategyRefs"].append(*it);
         }
     }
     if (side.isValid()) {
@@ -189,6 +213,20 @@ const std::set<std::string>& ListClearedOrdersRequest::getBetIds() const {
 }
 void ListClearedOrdersRequest::setBetIds(const std::set<std::string>& betIds) {
     this->betIds = betIds;
+}
+
+const std::set<std::string>& ListClearedOrdersRequest::getCustomerOrderRefs() const {
+    return customerOrderRefs;
+}
+void ListClearedOrdersRequest::setCustomerOrderRefs(const std::set<std::string>& customerOrderRefs) {
+    this->customerOrderRefs = customerOrderRefs;
+}
+
+const std::set<std::string>& ListClearedOrdersRequest::getCustomerStrategyRefs() const {
+    return customerStrategyRefs;
+}
+void ListClearedOrdersRequest::setCustomerStrategyRefs(const std::set<std::string>& customerStrategyRefs) {
+    this->customerStrategyRefs = customerStrategyRefs;
 }
 
 const Side& ListClearedOrdersRequest::getSide() const {

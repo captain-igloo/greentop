@@ -6,10 +6,12 @@
 #define LISTMARKETBOOKREQUEST_H
 
 #include <json/json.h>
+#include <set>
 #include <string>
 #include <vector>
 
 #include "greentop/JsonRequest.h"
+#include "greentop/Optional.h"
 #include "greentop/sport/PriceProjection.h"
 #include "greentop/sport/enum/MatchProjection.h"
 #include "greentop/sport/enum/OrderProjection.h"
@@ -24,6 +26,9 @@ class ListMarketBookRequest : public JsonRequest {
             const PriceProjection& priceProjection = PriceProjection(),
             const OrderProjection& orderProjection = OrderProjection(),
             const MatchProjection& matchProjection = MatchProjection(),
+            const Optional<bool>& includeOverallPosition = Optional<bool>(),
+            const Optional<bool>& partitionMatchedByStrategyRef = Optional<bool>(),
+            const std::set<std::string>& customerStrategyRefs = std::set<std::string>(),
             const std::string& currencyCode = std::string(),
             const std::string& locale = std::string());
 
@@ -44,6 +49,15 @@ class ListMarketBookRequest : public JsonRequest {
 
         const MatchProjection& getMatchProjection() const;
         void setMatchProjection(const MatchProjection& matchProjection);
+
+        const Optional<bool>& getIncludeOverallPosition() const;
+        void setIncludeOverallPosition(const Optional<bool>& includeOverallPosition);
+
+        const Optional<bool>& getPartitionMatchedByStrategyRef() const;
+        void setPartitionMatchedByStrategyRef(const Optional<bool>& partitionMatchedByStrategyRef);
+
+        const std::set<std::string>& getCustomerStrategyRefs() const;
+        void setCustomerStrategyRefs(const std::set<std::string>& customerStrategyRefs);
 
         const std::string& getCurrencyCode() const;
         void setCurrencyCode(const std::string& currencyCode);
@@ -70,6 +84,24 @@ class ListMarketBookRequest : public JsonRequest {
          * If you ask for orders, specifies the representation of matches.
          */
         MatchProjection matchProjection;
+        /**
+         * If you ask for orders, returns matches for each selection. Defaults to true if
+         * unspecified.
+         */
+        Optional<bool> includeOverallPosition;
+        /**
+         * If you ask for orders, returns the breakdown of matches by strategy for each selection.
+         * Groups matches with no strategy in an empty string bucket. Defaults to false if
+         * unspecified.
+         */
+        Optional<bool> partitionMatchedByStrategyRef;
+        /**
+         * If you ask for orders, restricts the results to orders matching any of the specified set
+         * of customer defined strategies. Also filters which matches by strategy for runners are
+         * returned, if partitionMatchedByStrategyRef is true. An empty set will be treated as if
+         * the parameter has been omitted (or null passed).
+         */
+        std::set<std::string> customerStrategyRefs;
         /**
          * A Betfair standard currency code. If not specified, the default currency code is used.
          */

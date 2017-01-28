@@ -11,7 +11,7 @@ Order::Order() : price(-1), size(-1), bspLiability(-1) {
 
 Order::Order(const std::string& betId,
     const OrderType& orderType,
-    const std::string& status,
+    const OrderStatus& status,
     const PersistenceType& persistenceType,
     const Side& side,
     const double price,
@@ -23,7 +23,9 @@ Order::Order(const std::string& betId,
     const Optional<double>& sizeRemaining,
     const Optional<double>& sizeLapsed,
     const Optional<double>& sizeCancelled,
-    const Optional<double>& sizeVoided) :
+    const Optional<double>& sizeVoided,
+    const std::string& customerOrderRef,
+    const std::string& customerStrategyRef) :
     betId(betId),
     orderType(orderType),
     status(status),
@@ -38,7 +40,9 @@ Order::Order(const std::string& betId,
     sizeRemaining(sizeRemaining),
     sizeLapsed(sizeLapsed),
     sizeCancelled(sizeCancelled),
-    sizeVoided(sizeVoided) {
+    sizeVoided(sizeVoided),
+    customerOrderRef(customerOrderRef),
+    customerStrategyRef(customerStrategyRef) {
 }
 
 void Order::fromJson(const Json::Value& json) {
@@ -87,6 +91,12 @@ void Order::fromJson(const Json::Value& json) {
     if (json.isMember("sizeVoided")) {
         sizeVoided = json["sizeVoided"].asDouble();
     }
+    if (json.isMember("customerOrderRef")) {
+        customerOrderRef = json["customerOrderRef"].asString();
+    }
+    if (json.isMember("customerStrategyRef")) {
+        customerStrategyRef = json["customerStrategyRef"].asString();
+    }
 }
 
 Json::Value Order::toJson() const {
@@ -95,8 +105,8 @@ Json::Value Order::toJson() const {
     if (orderType.isValid()) {
         json["orderType"] = orderType.getValue();
     }
-    if (status != "") {
-        json["status"] = status;
+    if (status.isValid()) {
+        json["status"] = status.getValue();
     }
     if (persistenceType.isValid()) {
         json["persistenceType"] = persistenceType.getValue();
@@ -130,11 +140,13 @@ Json::Value Order::toJson() const {
     if (sizeVoided.isValid()) {
         json["sizeVoided"] = sizeVoided.toJson();
     }
+    json["customerOrderRef"] = customerOrderRef;
+    json["customerStrategyRef"] = customerStrategyRef;
     return json;
 }
 
 bool Order::isValid() const {
-    return orderType.isValid() && status != "" && persistenceType.isValid() && side.isValid() && placedDate.tm_year > 0;
+    return orderType.isValid() && status.isValid() && persistenceType.isValid() && side.isValid() && placedDate.tm_year > 0;
 }
 
 const std::string& Order::getBetId() const {
@@ -151,10 +163,10 @@ void Order::setOrderType(const OrderType& orderType) {
     this->orderType = orderType;
 }
 
-const std::string& Order::getStatus() const {
+const OrderStatus& Order::getStatus() const {
     return status;
 }
-void Order::setStatus(const std::string& status) {
+void Order::setStatus(const OrderStatus& status) {
     this->status = status;
 }
 
@@ -240,6 +252,20 @@ const Optional<double>& Order::getSizeVoided() const {
 }
 void Order::setSizeVoided(const Optional<double>& sizeVoided) {
     this->sizeVoided = sizeVoided;
+}
+
+const std::string& Order::getCustomerOrderRef() const {
+    return customerOrderRef;
+}
+void Order::setCustomerOrderRef(const std::string& customerOrderRef) {
+    this->customerOrderRef = customerOrderRef;
+}
+
+const std::string& Order::getCustomerStrategyRef() const {
+    return customerStrategyRef;
+}
+void Order::setCustomerStrategyRef(const std::string& customerStrategyRef) {
+    this->customerStrategyRef = customerStrategyRef;
 }
 
 

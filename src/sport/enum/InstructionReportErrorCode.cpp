@@ -28,6 +28,8 @@ const std::string InstructionReportErrorCode::INVALID_BET_ID = "INVALID_BET_ID";
 const std::string InstructionReportErrorCode::CANCELLED_NOT_PLACED = "CANCELLED_NOT_PLACED";
 const std::string InstructionReportErrorCode::RELATED_ACTION_FAILED = "RELATED_ACTION_FAILED";
 const std::string InstructionReportErrorCode::NO_ACTION_REQUIRED = "NO_ACTION_REQUIRED";
+const std::string InstructionReportErrorCode::INVALID_MIN_FILL_SIZE = "INVALID_MIN_FILL_SIZE";
+const std::string InstructionReportErrorCode::INVALID_CUSTOMER_ORDER_REF = "INVALID_CUSTOMER_ORDER_REF";
 
 InstructionReportErrorCode::InstructionReportErrorCode() {
     valid = false;
@@ -54,7 +56,9 @@ InstructionReportErrorCode::InstructionReportErrorCode(const std::string& v) {
         v != INVALID_BET_ID &&
         v != CANCELLED_NOT_PLACED &&
         v != RELATED_ACTION_FAILED &&
-        v != NO_ACTION_REQUIRED) {
+        v != NO_ACTION_REQUIRED &&
+        v != INVALID_MIN_FILL_SIZE &&
+        v != INVALID_CUSTOMER_ORDER_REF) {
         throw std::invalid_argument("Invalid InstructionReportErrorCode: " + v);
     }
 

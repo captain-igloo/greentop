@@ -7,7 +7,6 @@
 
 #include <ctime>
 #include <json/json.h>
-#include <string>
 #include <vector>
 
 #include "greentop/JsonMember.h"
@@ -15,8 +14,10 @@
 #include "greentop/Time.h"
 #include "greentop/sport/ExchangePrices.h"
 #include "greentop/sport/Match.h"
+#include "greentop/sport/Matches.h"
 #include "greentop/sport/Order.h"
 #include "greentop/sport/StartingPrices.h"
+#include "greentop/sport/enum/RunnerStatus.h"
 
 namespace greentop {
 
@@ -29,7 +30,7 @@ class Runner : public JsonMember {
 
         Runner(const int64_t selectionId,
             const double handicap,
-            const std::string& status,
+            const RunnerStatus& status,
             const double adjustmentFactor,
             const Optional<double>& lastPriceTraded = Optional<double>(),
             const Optional<double>& totalMatched = Optional<double>(),
@@ -37,7 +38,8 @@ class Runner : public JsonMember {
             const StartingPrices& sp = StartingPrices(),
             const ExchangePrices& ex = ExchangePrices(),
             const std::vector<Order>& orders = std::vector<Order>(),
-            const std::vector<Match>& matches = std::vector<Match>());
+            const std::vector<Match>& matches = std::vector<Match>(),
+            const std::map<std::string, Matches> matchesByStrategy = std::map<std::string, Matches>());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -51,8 +53,8 @@ class Runner : public JsonMember {
         const double getHandicap() const;
         void setHandicap(const double handicap);
 
-        const std::string& getStatus() const;
-        void setStatus(const std::string& status);
+        const RunnerStatus& getStatus() const;
+        void setStatus(const RunnerStatus& status);
 
         const double getAdjustmentFactor() const;
         void setAdjustmentFactor(const double adjustmentFactor);
@@ -78,6 +80,9 @@ class Runner : public JsonMember {
         const std::vector<Match>& getMatches() const;
         void setMatches(const std::vector<Match>& matches);
 
+        const std::map<std::string, Matches>& getMatchesByStrategy() const;
+        void setMatchesByStrategy(const std::map<std::string, Matches>& matchesByStrategy);
+
 
     private:
         /**
@@ -91,7 +96,7 @@ class Runner : public JsonMember {
         /**
          * The status of the selection (i.e., ACTIVE, REMOVED, WINNER, LOSER)
          */
-        std::string status;
+        RunnerStatus status;
         /**
          * The adjustment factor applied if the selection is removed
          */
@@ -124,6 +129,10 @@ class Runner : public JsonMember {
          * List of matches (i.e, orders that have been fully or partially executed)
          */
         std::vector<Match> matches;
+        /**
+         * List of matches keyed by strategy, ordered by matched data
+         */
+        std::map<std::string, Matches> matchesByStrategy;
 };
 
 }

@@ -13,6 +13,7 @@ const std::string RunnerStatus::WINNER = "WINNER";
 const std::string RunnerStatus::LOSER = "LOSER";
 const std::string RunnerStatus::REMOVED_VACANT = "REMOVED_VACANT";
 const std::string RunnerStatus::REMOVED = "REMOVED";
+const std::string RunnerStatus::PLACED = "PLACED";
 
 RunnerStatus::RunnerStatus() {
     valid = false;
@@ -24,7 +25,8 @@ RunnerStatus::RunnerStatus(const std::string& v) {
         v != WINNER &&
         v != LOSER &&
         v != REMOVED_VACANT &&
-        v != REMOVED) {
+        v != REMOVED &&
+        v != PLACED) {
         throw std::invalid_argument("Invalid RunnerStatus: " + v);
     }
 

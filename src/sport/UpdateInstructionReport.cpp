@@ -9,8 +9,8 @@ namespace greentop {
 UpdateInstructionReport::UpdateInstructionReport() {
 }
 
-UpdateInstructionReport::UpdateInstructionReport(const std::string& status,
-    const std::string& errorCode,
+UpdateInstructionReport::UpdateInstructionReport(const InstructionReportStatus& status,
+    const InstructionReportErrorCode& errorCode,
     const UpdateInstruction& instruction) :
     status(status),
     errorCode(errorCode),
@@ -31,11 +31,11 @@ void UpdateInstructionReport::fromJson(const Json::Value& json) {
 
 Json::Value UpdateInstructionReport::toJson() const {
     Json::Value json(Json::objectValue);
-    if (status != "") {
-        json["status"] = status;
+    if (status.isValid()) {
+        json["status"] = status.getValue();
     }
-    if (errorCode != "") {
-        json["errorCode"] = errorCode;
+    if (errorCode.isValid()) {
+        json["errorCode"] = errorCode.getValue();
     }
     if (instruction.isValid()) {
         json["instruction"] = instruction.toJson();
@@ -44,20 +44,20 @@ Json::Value UpdateInstructionReport::toJson() const {
 }
 
 bool UpdateInstructionReport::isValid() const {
-    return status != "" && instruction.isValid();
+    return status.isValid() && instruction.isValid();
 }
 
-const std::string& UpdateInstructionReport::getStatus() const {
+const InstructionReportStatus& UpdateInstructionReport::getStatus() const {
     return status;
 }
-void UpdateInstructionReport::setStatus(const std::string& status) {
+void UpdateInstructionReport::setStatus(const InstructionReportStatus& status) {
     this->status = status;
 }
 
-const std::string& UpdateInstructionReport::getErrorCode() const {
+const InstructionReportErrorCode& UpdateInstructionReport::getErrorCode() const {
     return errorCode;
 }
-void UpdateInstructionReport::setErrorCode(const std::string& errorCode) {
+void UpdateInstructionReport::setErrorCode(const InstructionReportErrorCode& errorCode) {
     this->errorCode = errorCode;
 }
 

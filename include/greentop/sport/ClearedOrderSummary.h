@@ -46,7 +46,9 @@ class ClearedOrderSummary : public JsonMember {
             const Optional<bool>& priceReduced = Optional<bool>(),
             const Optional<double>& sizeSettled = Optional<double>(),
             const Optional<double>& profit = Optional<double>(),
-            const Optional<double>& sizeCancelled = Optional<double>());
+            const Optional<double>& sizeCancelled = Optional<double>(),
+            const std::string& customerOrderRef = std::string(),
+            const std::string& customerStrategyRef = std::string());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -119,6 +121,12 @@ class ClearedOrderSummary : public JsonMember {
 
         const Optional<double>& getSizeCancelled() const;
         void setSizeCancelled(const Optional<double>& sizeCancelled);
+
+        const std::string& getCustomerOrderRef() const;
+        void setCustomerOrderRef(const std::string& customerOrderRef);
+
+        const std::string& getCustomerStrategyRef() const;
+        void setCustomerStrategyRef(const std::string& customerStrategyRef);
 
 
     private:
@@ -227,6 +235,14 @@ class ClearedOrderSummary : public JsonMember {
          * in the account currency
          */
         Optional<double> sizeCancelled;
+        /**
+         * The order reference defined by the customer for the bet order
+         */
+        std::string customerOrderRef;
+        /**
+         * The strategy reference defined by the customer for the bet order
+         */
+        std::string customerStrategyRef;
 };
 
 }

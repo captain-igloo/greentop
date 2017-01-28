@@ -15,14 +15,16 @@ PlaceInstruction::PlaceInstruction(const OrderType& orderType,
     const Side& side,
     const LimitOrder& limitOrder,
     const LimitOnCloseOrder& limitOnCloseOrder,
-    const MarketOnCloseOrder& marketOnCloseOrder) :
+    const MarketOnCloseOrder& marketOnCloseOrder,
+    const std::string& customerOrderRef) :
     orderType(orderType),
     selectionId(selectionId),
     handicap(handicap),
     side(side),
     limitOrder(limitOrder),
     limitOnCloseOrder(limitOnCloseOrder),
-    marketOnCloseOrder(marketOnCloseOrder) {
+    marketOnCloseOrder(marketOnCloseOrder),
+    customerOrderRef(customerOrderRef) {
 }
 
 void PlaceInstruction::fromJson(const Json::Value& json) {
@@ -47,6 +49,9 @@ void PlaceInstruction::fromJson(const Json::Value& json) {
     if (json.isMember("marketOnCloseOrder")) {
         marketOnCloseOrder.fromJson(json["marketOnCloseOrder"]);
     }
+    if (json.isMember("customerOrderRef")) {
+        customerOrderRef = json["customerOrderRef"].asString();
+    }
 }
 
 Json::Value PlaceInstruction::toJson() const {
@@ -69,6 +74,9 @@ Json::Value PlaceInstruction::toJson() const {
     }
     if (marketOnCloseOrder.isValid()) {
         json["marketOnCloseOrder"] = marketOnCloseOrder.toJson();
+    }
+    if (customerOrderRef != "") {
+        json["customerOrderRef"] = customerOrderRef;
     }
     return json;
 }
@@ -124,6 +132,13 @@ const MarketOnCloseOrder& PlaceInstruction::getMarketOnCloseOrder() const {
 }
 void PlaceInstruction::setMarketOnCloseOrder(const MarketOnCloseOrder& marketOnCloseOrder) {
     this->marketOnCloseOrder = marketOnCloseOrder;
+}
+
+const std::string& PlaceInstruction::getCustomerOrderRef() const {
+    return customerOrderRef;
+}
+void PlaceInstruction::setCustomerOrderRef(const std::string& customerOrderRef) {
+    this->customerOrderRef = customerOrderRef;
 }
 
 

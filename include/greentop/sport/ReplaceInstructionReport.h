@@ -6,11 +6,12 @@
 #define REPLACEINSTRUCTIONREPORT_H
 
 #include <json/json.h>
-#include <string>
 
 #include "greentop/JsonMember.h"
 #include "greentop/sport/CancelInstructionReport.h"
 #include "greentop/sport/PlaceInstructionReport.h"
+#include "greentop/sport/enum/InstructionReportErrorCode.h"
+#include "greentop/sport/enum/InstructionReportStatus.h"
 
 namespace greentop {
 
@@ -18,8 +19,8 @@ class ReplaceInstructionReport : public JsonMember {
     public:
         ReplaceInstructionReport();
 
-        ReplaceInstructionReport(const std::string& status,
-            const std::string& errorCode = std::string(),
+        ReplaceInstructionReport(const InstructionReportStatus& status,
+            const InstructionReportErrorCode& errorCode = InstructionReportErrorCode(),
             const CancelInstructionReport& cancelInstructionReport = CancelInstructionReport(),
             const PlaceInstructionReport& placeInstructionReport = PlaceInstructionReport());
 
@@ -29,11 +30,11 @@ class ReplaceInstructionReport : public JsonMember {
 
         virtual bool isValid() const;
 
-        const std::string& getStatus() const;
-        void setStatus(const std::string& status);
+        const InstructionReportStatus& getStatus() const;
+        void setStatus(const InstructionReportStatus& status);
 
-        const std::string& getErrorCode() const;
-        void setErrorCode(const std::string& errorCode);
+        const InstructionReportErrorCode& getErrorCode() const;
+        void setErrorCode(const InstructionReportErrorCode& errorCode);
 
         const CancelInstructionReport& getCancelInstructionReport() const;
         void setCancelInstructionReport(const CancelInstructionReport& cancelInstructionReport);
@@ -46,11 +47,11 @@ class ReplaceInstructionReport : public JsonMember {
         /**
          * whether the command succeeded or failed
          */
-        std::string status;
+        InstructionReportStatus status;
         /**
          * cause of failure, or null if command succeeds
          */
-        std::string errorCode;
+        InstructionReportErrorCode errorCode;
         /**
          * Cancelation report for the original order
          */

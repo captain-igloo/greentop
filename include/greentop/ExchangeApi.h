@@ -15,27 +15,40 @@
 #include "greentop/account/AccountStatementReport.h"
 #include "greentop/account/ActivateApplicationSubscriptionRequest.h"
 #include "greentop/account/ActivateApplicationSubscriptionResponse.h"
+#include "greentop/account/AuthorisationResponse.h"
 #include "greentop/account/CancelApplicationSubscriptionRequest.h"
 #include "greentop/account/CancelApplicationSubscriptionResponse.h"
 #include "greentop/account/CreateDeveloperAppKeysRequest.h"
 #include "greentop/account/DeveloperApp.h"
 #include "greentop/account/GetAccountFundsRequest.h"
 #include "greentop/account/GetAccountStatementRequest.h"
+#include "greentop/account/GetAffiliateRelationRequest.h"
+#include "greentop/account/GetAffiliateRelationResponse.h"
 #include "greentop/account/GetApplicationSubscriptionHistoryRequest.h"
 #include "greentop/account/GetApplicationSubscriptionHistoryResponse.h"
 #include "greentop/account/GetApplicationSubscriptionTokenRequest.h"
 #include "greentop/account/GetApplicationSubscriptionTokenResponse.h"
+#include "greentop/account/GetAuthorisationCodeRequest.h"
 #include "greentop/account/GetDeveloperAppKeysResponse.h"
 #include "greentop/account/GetVendorClientIdResponse.h"
+#include "greentop/account/GetVendorDetailsRequest.h"
+#include "greentop/account/IsAccountSubscribedToWebAppRequest.h"
+#include "greentop/account/IsAccountSubscribedToWebAppResponse.h"
 #include "greentop/account/ListAccountSubscriptionTokensResponse.h"
 #include "greentop/account/ListApplicationSubscriptionTokensRequest.h"
 #include "greentop/account/ListApplicationSubscriptionTokensResponse.h"
+#include "greentop/account/ListAuthorizedWebAppsResponse.h"
 #include "greentop/account/ListCurrencyRatesRequest.h"
 #include "greentop/account/ListCurrencyRatesResponse.h"
+#include "greentop/account/RevokeAccessToWebAppRequest.h"
+#include "greentop/account/RevokeAccessToWebAppResponse.h"
+#include "greentop/account/TokenRequest.h"
 #include "greentop/account/TransferFundsRequest.h"
 #include "greentop/account/TransferResponse.h"
 #include "greentop/account/UpdateApplicationSubscriptionRequest.h"
 #include "greentop/account/UpdateApplicationSubscriptionResponse.h"
+#include "greentop/account/VendorAccessTokenInfo.h"
+#include "greentop/account/VendorDetails.h"
 
 #include "greentop/heartbeat/HeartbeatRequest.h"
 #include "greentop/heartbeat/HeartbeatReport.h"
@@ -319,6 +332,47 @@ class ExchangeApi {
          */
         ListCurrencyRatesResponse listCurrencyRates(const Exchange exchange,
             const ListCurrencyRatesRequest& listCurrencyRatesRequest) const;
+
+        /**
+         * Generate auth code for web vendor, used to get vendor session.
+         */
+        AuthorisationResponse getAuthorisationCode(const Exchange exchange,
+            const GetAuthorisationCodeRequest& request) const;
+
+        /**
+         * Generate web vendor session based on a standard session identifiable by auth code, vendor secret and app
+         * key.
+         */
+        VendorAccessTokenInfo token(const Exchange exchange, const TokenRequest& request) const;
+
+        /**
+         * Return details about a vendor from its identifier. Response includes Vendor Name and URL.
+         */
+        VendorDetails getVendorDetails(const Exchange exchange, const GetVendorDetailsRequest& request) const;
+
+        /**
+         * Remove the link between an account and a vendor web app. This will remove the refreshToken for this
+         * user-vendor pair subscription.
+         */
+        RevokeAccessToWebAppResponse revokeAccessToWebApp(const Exchange exchange,
+            const RevokeAccessToWebAppRequest& request) const;
+
+        /**
+         * Retrieve all vendors applications currently subscribed to by the user making the request.
+         */
+        ListAuthorizedWebAppsResponse listAuthorizedWebApps(const Exchange exchange) const;
+
+        /**
+         * Return whether an account has authorised a web app.
+         */
+        IsAccountSubscribedToWebAppResponse isAccountSubscribedToWebApp(const Exchange exchange,
+            const IsAccountSubscribedToWebAppRequest& request) const;
+
+        /**
+         * Return relation between a list of users and an affiliate.
+         */
+        GetAffiliateRelationResponse getAffiliateRelation(const Exchange exchange,
+            const GetAffiliateRelationRequest& request) const;
 
         /**
          * This heartbeat operation is provided to help customers have their positions managed

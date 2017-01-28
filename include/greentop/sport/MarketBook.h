@@ -14,6 +14,7 @@
 #include "greentop/Optional.h"
 #include "greentop/Time.h"
 #include "greentop/sport/Runner.h"
+#include "greentop/sport/enum/MarketStatus.h"
 
 namespace greentop {
 
@@ -26,7 +27,7 @@ class MarketBook : public JsonMember {
 
         MarketBook(const std::string& marketId,
             const bool isMarketDataDelayed,
-            const std::string& status = std::string(),
+            const MarketStatus& status = MarketStatus(),
             const Optional<int32_t>& betDelay = Optional<int32_t>(),
             const Optional<bool>& bspReconciled = Optional<bool>(),
             const Optional<bool>& complete = Optional<bool>(),
@@ -54,8 +55,8 @@ class MarketBook : public JsonMember {
         const bool getIsMarketDataDelayed() const;
         void setIsMarketDataDelayed(const bool isMarketDataDelayed);
 
-        const std::string& getStatus() const;
-        void setStatus(const std::string& status);
+        const MarketStatus& getStatus() const;
+        void setStatus(const MarketStatus& status);
 
         const Optional<int32_t>& getBetDelay() const;
         void setBetDelay(const Optional<int32_t>& betDelay);
@@ -114,7 +115,7 @@ class MarketBook : public JsonMember {
         /**
          * The status of the market, for example ACTIVE, SUSPENDED, SETTLED, etc.
          */
-        std::string status;
+        MarketStatus status;
         /**
          * The number of seconds an order is held until it is submitted into the market. Orders are
          * usually delayed when the market is in-play

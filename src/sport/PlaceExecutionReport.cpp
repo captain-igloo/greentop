@@ -8,8 +8,8 @@ namespace greentop {
 
 
 PlaceExecutionReport::PlaceExecutionReport(const std::string& customerRef,
-    const std::string& status,
-    const std::string& errorCode,
+    const ExecutionReportStatus& status,
+    const ExecutionReportErrorCode& errorCode,
     const std::string& marketId,
     const std::vector<PlaceInstructionReport>& instructionReports) :
     customerRef(customerRef),
@@ -53,11 +53,11 @@ Json::Value PlaceExecutionReport::toJson() const {
     if (customerRef != "") {
         json["customerRef"] = customerRef;
     }
-    if (status != "") {
-        json["status"] = status;
+    if (status.isValid()) {
+        json["status"] = status.getValue();
     }
-    if (errorCode != "") {
-        json["errorCode"] = errorCode;
+    if (errorCode.isValid()) {
+        json["errorCode"] = errorCode.getValue();
     }
     json["marketId"] = marketId;
     if (instructionReports.size() > 0) {
@@ -69,7 +69,7 @@ Json::Value PlaceExecutionReport::toJson() const {
 }
 
 bool PlaceExecutionReport::isValid() const {
-    return status != "";
+    return status.isValid();
 }
 
 const std::string& PlaceExecutionReport::getCustomerRef() const {
@@ -79,17 +79,17 @@ void PlaceExecutionReport::setCustomerRef(const std::string& customerRef) {
     this->customerRef = customerRef;
 }
 
-const std::string& PlaceExecutionReport::getStatus() const {
+const ExecutionReportStatus& PlaceExecutionReport::getStatus() const {
     return status;
 }
-void PlaceExecutionReport::setStatus(const std::string& status) {
+void PlaceExecutionReport::setStatus(const ExecutionReportStatus& status) {
     this->status = status;
 }
 
-const std::string& PlaceExecutionReport::getErrorCode() const {
+const ExecutionReportErrorCode& PlaceExecutionReport::getErrorCode() const {
     return errorCode;
 }
-void PlaceExecutionReport::setErrorCode(const std::string& errorCode) {
+void PlaceExecutionReport::setErrorCode(const ExecutionReportErrorCode& errorCode) {
     this->errorCode = errorCode;
 }
 

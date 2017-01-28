@@ -9,8 +9,8 @@ namespace greentop {
 CancelInstructionReport::CancelInstructionReport() {
 }
 
-CancelInstructionReport::CancelInstructionReport(const std::string& status,
-    const std::string& errorCode,
+CancelInstructionReport::CancelInstructionReport(const InstructionReportStatus& status,
+    const InstructionReportErrorCode& errorCode,
     const CancelInstruction& instruction,
     const Optional<double>& sizeCancelled,
     const std::tm& cancelledDate) :
@@ -41,11 +41,11 @@ void CancelInstructionReport::fromJson(const Json::Value& json) {
 
 Json::Value CancelInstructionReport::toJson() const {
     Json::Value json(Json::objectValue);
-    if (status != "") {
-        json["status"] = status;
+    if (status.isValid()) {
+        json["status"] = status.getValue();
     }
-    if (errorCode != "") {
-        json["errorCode"] = errorCode;
+    if (errorCode.isValid()) {
+        json["errorCode"] = errorCode.getValue();
     }
     if (instruction.isValid()) {
         json["instruction"] = instruction.toJson();
@@ -62,20 +62,20 @@ Json::Value CancelInstructionReport::toJson() const {
 }
 
 bool CancelInstructionReport::isValid() const {
-    return status != "" && sizeCancelled.isValid() && cancelledDate.tm_year > 0;
+    return status.isValid() && sizeCancelled.isValid() && cancelledDate.tm_year > 0;
 }
 
-const std::string& CancelInstructionReport::getStatus() const {
+const InstructionReportStatus& CancelInstructionReport::getStatus() const {
     return status;
 }
-void CancelInstructionReport::setStatus(const std::string& status) {
+void CancelInstructionReport::setStatus(const InstructionReportStatus& status) {
     this->status = status;
 }
 
-const std::string& CancelInstructionReport::getErrorCode() const {
+const InstructionReportErrorCode& CancelInstructionReport::getErrorCode() const {
     return errorCode;
 }
-void CancelInstructionReport::setErrorCode(const std::string& errorCode) {
+void CancelInstructionReport::setErrorCode(const InstructionReportErrorCode& errorCode) {
     this->errorCode = errorCode;
 }
 

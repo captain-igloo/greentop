@@ -10,6 +10,8 @@ namespace greentop {
 ListCurrentOrdersRequest::ListCurrentOrdersRequest(const std::set<std::string>& betIds,
     const std::set<std::string>& marketIds,
     const OrderProjection& orderProjection,
+    const std::set<std::string>& customerOrderRefs,
+    const std::set<std::string>& customerStrategyRefs,
     const TimeRange& placedDateRange,
     const TimeRange& dateRange,
     const OrderBy& orderBy,
@@ -19,6 +21,8 @@ ListCurrentOrdersRequest::ListCurrentOrdersRequest(const std::set<std::string>& 
     betIds(betIds),
     marketIds(marketIds),
     orderProjection(orderProjection),
+    customerOrderRefs(customerOrderRefs),
+    customerStrategyRefs(customerStrategyRefs),
     placedDateRange(placedDateRange),
     dateRange(dateRange),
     orderBy(orderBy),
@@ -40,6 +44,16 @@ void ListCurrentOrdersRequest::fromJson(const Json::Value& json) {
     }
     if (json.isMember("orderProjection")) {
         orderProjection = json["orderProjection"].asString();
+    }
+    if (json.isMember("customerOrderRefs")) {
+        for (unsigned i = 0; i < json["customerOrderRefs"].size(); ++i) {
+            customerOrderRefs.insert(json["customerOrderRefs"][i].asString());
+        }
+    }
+    if (json.isMember("customerStrategyRefs")) {
+        for (unsigned i = 0; i < json["customerStrategyRefs"].size(); ++i) {
+            customerStrategyRefs.insert(json["customerStrategyRefs"][i].asString());
+        }
     }
     if (json.isMember("placedDateRange")) {
         placedDateRange.fromJson(json["placedDateRange"]);
@@ -75,6 +89,16 @@ Json::Value ListCurrentOrdersRequest::toJson() const {
     }
     if (orderProjection.isValid()) {
         json["orderProjection"] = orderProjection.getValue();
+    }
+    if (customerOrderRefs.size() > 0) {
+        for (std::set<std::string>::const_iterator it = customerOrderRefs.begin(); it != customerOrderRefs.end(); ++it) {
+            json["customerOrderRefs"].append(*it);
+        }
+    }
+    if (customerStrategyRefs.size() > 0) {
+        for (std::set<std::string>::const_iterator it = customerStrategyRefs.begin(); it != customerStrategyRefs.end(); ++it) {
+            json["customerStrategyRefs"].append(*it);
+        }
     }
     if (placedDateRange.isValid()) {
         json["placedDateRange"] = placedDateRange.toJson();
@@ -120,6 +144,20 @@ const OrderProjection& ListCurrentOrdersRequest::getOrderProjection() const {
 }
 void ListCurrentOrdersRequest::setOrderProjection(const OrderProjection& orderProjection) {
     this->orderProjection = orderProjection;
+}
+
+const std::set<std::string>& ListCurrentOrdersRequest::getCustomerOrderRefs() const {
+    return customerOrderRefs;
+}
+void ListCurrentOrdersRequest::setCustomerOrderRefs(const std::set<std::string>& customerOrderRefs) {
+    this->customerOrderRefs = customerOrderRefs;
+}
+
+const std::set<std::string>& ListCurrentOrdersRequest::getCustomerStrategyRefs() const {
+    return customerStrategyRefs;
+}
+void ListCurrentOrdersRequest::setCustomerStrategyRefs(const std::set<std::string>& customerStrategyRefs) {
+    this->customerStrategyRefs = customerStrategyRefs;
 }
 
 const TimeRange& ListCurrentOrdersRequest::getPlacedDateRange() const {

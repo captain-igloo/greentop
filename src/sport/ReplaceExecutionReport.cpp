@@ -8,8 +8,8 @@ namespace greentop {
 
 
 ReplaceExecutionReport::ReplaceExecutionReport(const std::string& customerRef,
-    const std::string& status,
-    const std::string& errorCode,
+    const ExecutionReportStatus& status,
+    const ExecutionReportErrorCode& errorCode,
     const std::string& marketId,
     const std::vector<ReplaceInstructionReport>& instructionReports) :
     customerRef(customerRef),
@@ -53,11 +53,11 @@ Json::Value ReplaceExecutionReport::toJson() const {
     if (customerRef != "") {
         json["customerRef"] = customerRef;
     }
-    if (status != "") {
-        json["status"] = status;
+    if (status.isValid()) {
+        json["status"] = status.getValue();
     }
-    if (errorCode != "") {
-        json["errorCode"] = errorCode;
+    if (errorCode.isValid()) {
+        json["errorCode"] = errorCode.getValue();
     }
     json["marketId"] = marketId;
     if (instructionReports.size() > 0) {
@@ -69,7 +69,7 @@ Json::Value ReplaceExecutionReport::toJson() const {
 }
 
 bool ReplaceExecutionReport::isValid() const {
-    return status != "";
+    return status.isValid();
 }
 
 const std::string& ReplaceExecutionReport::getCustomerRef() const {
@@ -79,17 +79,17 @@ void ReplaceExecutionReport::setCustomerRef(const std::string& customerRef) {
     this->customerRef = customerRef;
 }
 
-const std::string& ReplaceExecutionReport::getStatus() const {
+const ExecutionReportStatus& ReplaceExecutionReport::getStatus() const {
     return status;
 }
-void ReplaceExecutionReport::setStatus(const std::string& status) {
+void ReplaceExecutionReport::setStatus(const ExecutionReportStatus& status) {
     this->status = status;
 }
 
-const std::string& ReplaceExecutionReport::getErrorCode() const {
+const ExecutionReportErrorCode& ReplaceExecutionReport::getErrorCode() const {
     return errorCode;
 }
-void ReplaceExecutionReport::setErrorCode(const std::string& errorCode) {
+void ReplaceExecutionReport::setErrorCode(const ExecutionReportErrorCode& errorCode) {
     this->errorCode = errorCode;
 }
 

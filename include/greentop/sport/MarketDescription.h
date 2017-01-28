@@ -12,6 +12,7 @@
 #include "greentop/JsonMember.h"
 #include "greentop/Optional.h"
 #include "greentop/Time.h"
+#include "greentop/sport/enum/MarketBettingType.h"
 
 namespace greentop {
 
@@ -27,7 +28,7 @@ class MarketDescription : public JsonMember {
             const std::tm& marketTime,
             const std::tm& suspendTime,
             const std::tm& settleTime = std::tm(),
-            const std::string& bettingType = std::string(),
+            const MarketBettingType& bettingType = MarketBettingType(),
             const Optional<bool>& turnInPlayEnabled = Optional<bool>(),
             const std::string& marketType = std::string(),
             const std::string& regulator = std::string(),
@@ -60,8 +61,8 @@ class MarketDescription : public JsonMember {
         const std::tm& getSettleTime() const;
         void setSettleTime(const std::tm& settleTime);
 
-        const std::string& getBettingType() const;
-        void setBettingType(const std::string& bettingType);
+        const MarketBettingType& getBettingType() const;
+        void setBettingType(const MarketBettingType& bettingType);
 
         const Optional<bool>& getTurnInPlayEnabled() const;
         void setTurnInPlayEnabled(const Optional<bool>& turnInPlayEnabled);
@@ -118,7 +119,7 @@ class MarketDescription : public JsonMember {
         /**
          * bettingType
          */
-        std::string bettingType;
+        MarketBettingType bettingType;
         /**
          * canTurnInPlay
          */

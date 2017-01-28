@@ -16,7 +16,7 @@ CurrentOrderSummary::CurrentOrderSummary(const std::string& betId,
     const PriceSize& priceSize,
     const double bspLiability,
     const Side& side,
-    const std::string& status,
+    const OrderStatus& status,
     const PersistenceType& persistenceType,
     const OrderType& orderType,
     const std::tm& placedDate,
@@ -28,7 +28,9 @@ CurrentOrderSummary::CurrentOrderSummary(const std::string& betId,
     const Optional<double>& sizeCancelled,
     const Optional<double>& sizeVoided,
     const std::string& regulatorAuthCode,
-    const std::string& regulatorCode) :
+    const std::string& regulatorCode,
+    const std::string& customerOrderRef,
+    const std::string& customerStrategyRef) :
     betId(betId),
     marketId(marketId),
     selectionId(selectionId),
@@ -48,7 +50,9 @@ CurrentOrderSummary::CurrentOrderSummary(const std::string& betId,
     sizeCancelled(sizeCancelled),
     sizeVoided(sizeVoided),
     regulatorAuthCode(regulatorAuthCode),
-    regulatorCode(regulatorCode) {
+    regulatorCode(regulatorCode),
+    customerOrderRef(customerOrderRef),
+    customerStrategyRef(customerStrategyRef) {
 }
 
 void CurrentOrderSummary::fromJson(const Json::Value& json) {
@@ -112,6 +116,12 @@ void CurrentOrderSummary::fromJson(const Json::Value& json) {
     if (json.isMember("regulatorCode")) {
         regulatorCode = json["regulatorCode"].asString();
     }
+    if (json.isMember("customerOrderRef")) {
+        customerOrderRef = json["customerOrderRef"].asString();
+    }
+    if (json.isMember("customerStrategyRef")) {
+        customerStrategyRef = json["customerStrategyRef"].asString();
+    }
 }
 
 Json::Value CurrentOrderSummary::toJson() const {
@@ -127,8 +137,8 @@ Json::Value CurrentOrderSummary::toJson() const {
     if (side.isValid()) {
         json["side"] = side.getValue();
     }
-    if (status != "") {
-        json["status"] = status;
+    if (status.isValid()) {
+        json["status"] = status.getValue();
     }
     if (persistenceType.isValid()) {
         json["persistenceType"] = persistenceType.getValue();
@@ -170,11 +180,17 @@ Json::Value CurrentOrderSummary::toJson() const {
     if (regulatorCode != "") {
         json["regulatorCode"] = regulatorCode;
     }
+    if (customerOrderRef != "") {
+        json["customerOrderRef"] = customerOrderRef;
+    }
+    if (customerStrategyRef != "") {
+        json["customerStrategyRef"] = customerStrategyRef;
+    }
     return json;
 }
 
 bool CurrentOrderSummary::isValid() const {
-    return priceSize.isValid() && side.isValid() && status != "" && persistenceType.isValid() && orderType.isValid() && placedDate.tm_year > 0 && matchedDate.tm_year > 0;
+    return priceSize.isValid() && side.isValid() && status.isValid() && persistenceType.isValid() && orderType.isValid() && placedDate.tm_year > 0 && matchedDate.tm_year > 0;
 }
 
 const std::string& CurrentOrderSummary::getBetId() const {
@@ -226,10 +242,10 @@ void CurrentOrderSummary::setSide(const Side& side) {
     this->side = side;
 }
 
-const std::string& CurrentOrderSummary::getStatus() const {
+const OrderStatus& CurrentOrderSummary::getStatus() const {
     return status;
 }
-void CurrentOrderSummary::setStatus(const std::string& status) {
+void CurrentOrderSummary::setStatus(const OrderStatus& status) {
     this->status = status;
 }
 
@@ -315,6 +331,20 @@ const std::string& CurrentOrderSummary::getRegulatorCode() const {
 }
 void CurrentOrderSummary::setRegulatorCode(const std::string& regulatorCode) {
     this->regulatorCode = regulatorCode;
+}
+
+const std::string& CurrentOrderSummary::getCustomerOrderRef() const {
+    return customerOrderRef;
+}
+void CurrentOrderSummary::setCustomerOrderRef(const std::string& customerOrderRef) {
+    this->customerOrderRef = customerOrderRef;
+}
+
+const std::string& CurrentOrderSummary::getCustomerStrategyRef() const {
+    return customerStrategyRef;
+}
+void CurrentOrderSummary::setCustomerStrategyRef(const std::string& customerStrategyRef) {
+    this->customerStrategyRef = customerStrategyRef;
 }
 
 

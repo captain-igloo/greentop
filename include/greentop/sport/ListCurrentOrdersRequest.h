@@ -23,6 +23,8 @@ class ListCurrentOrdersRequest : public JsonRequest {
         ListCurrentOrdersRequest(const std::set<std::string>& betIds = std::set<std::string>(),
             const std::set<std::string>& marketIds = std::set<std::string>(),
             const OrderProjection& orderProjection = OrderProjection(),
+            const std::set<std::string>& customerOrderRefs = std::set<std::string>(),
+            const std::set<std::string>& customerStrategyRefs = std::set<std::string>(),
             const TimeRange& placedDateRange = TimeRange(),
             const TimeRange& dateRange = TimeRange(),
             const OrderBy& orderBy = OrderBy(),
@@ -44,6 +46,12 @@ class ListCurrentOrdersRequest : public JsonRequest {
 
         const OrderProjection& getOrderProjection() const;
         void setOrderProjection(const OrderProjection& orderProjection);
+
+        const std::set<std::string>& getCustomerOrderRefs() const;
+        void setCustomerOrderRefs(const std::set<std::string>& customerOrderRefs);
+
+        const std::set<std::string>& getCustomerStrategyRefs() const;
+        void setCustomerStrategyRefs(const std::set<std::string>& customerStrategyRefs);
 
         const TimeRange& getPlacedDateRange() const;
         void setPlacedDateRange(const TimeRange& placedDateRange);
@@ -77,6 +85,14 @@ class ListCurrentOrdersRequest : public JsonRequest {
          * Optionally restricts the results to the specified order status.
          */
         OrderProjection orderProjection;
+        /**
+         * Optionally restricts the results to the specified customer order references.
+         */
+        std::set<std::string> customerOrderRefs;
+        /**
+         * Optionally restricts the results to the specified customer strategy references.
+         */
+        std::set<std::string> customerStrategyRefs;
         /**
          * @Deprecated use dateRange instead. Optionally restricts the results to be from/to the
          * specified placed date. This date is inclusive, i.e. if an order was placed on exactly

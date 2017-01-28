@@ -27,7 +27,9 @@ class DeveloperAppVersion : public JsonMember {
             const Optional<bool>& delayData = Optional<bool>(),
             const Optional<bool>& subscriptionRequired = Optional<bool>(),
             const Optional<bool>& ownerManaged = Optional<bool>(),
-            const Optional<bool>& active = Optional<bool>());
+            const Optional<bool>& active = Optional<bool>(),
+            const std::string& vendorId = std::string(),
+            const std::string& vendorSecret = std::string());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -58,6 +60,12 @@ class DeveloperAppVersion : public JsonMember {
 
         const Optional<bool>& getActive() const;
         void setActive(const Optional<bool>& active);
+
+        const std::string& getVendorId() const;
+        void setVendorId(const std::string& vendorId);
+
+        const std::string& getVendorSecret() const;
+        void setVendorSecret(const std::string& vendorSecret);
 
 
     private:
@@ -95,6 +103,16 @@ class DeveloperAppVersion : public JsonMember {
          * Indicates whether the application version is currently active
          */
         Optional<bool> active;
+        /**
+         * Public unique string provided to the Vendor that they can use to pass to the Betfair API
+         * in order to identify themselves.
+         */
+        std::string vendorId;
+        /**
+         * Private unique string provided to the Vendor that they pass with certain calls to
+         * confirm their identity. Linked to a particular App Key.
+         */
+        std::string vendorSecret;
 };
 
 }

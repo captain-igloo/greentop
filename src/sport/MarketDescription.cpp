@@ -14,7 +14,7 @@ MarketDescription::MarketDescription(const bool persistenceEnabled,
     const std::tm& marketTime,
     const std::tm& suspendTime,
     const std::tm& settleTime,
-    const std::string& bettingType,
+    const MarketBettingType& bettingType,
     const Optional<bool>& turnInPlayEnabled,
     const std::string& marketType,
     const std::string& regulator,
@@ -113,8 +113,8 @@ Json::Value MarketDescription::toJson() const {
         strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &settleTime);
         json["settleTime"] = std::string(buffer);
     }
-    if (bettingType != "") {
-        json["bettingType"] = bettingType;
+    if (bettingType.isValid()) {
+        json["bettingType"] = bettingType.getValue();
     }
     if (turnInPlayEnabled.isValid()) {
         json["turnInPlayEnabled"] = turnInPlayEnabled.toJson();
@@ -150,7 +150,7 @@ Json::Value MarketDescription::toJson() const {
 }
 
 bool MarketDescription::isValid() const {
-    return marketTime.tm_year > 0 && suspendTime.tm_year > 0 && bettingType != "" && turnInPlayEnabled.isValid() && marketType != "" && regulator != "" && marketBaseRate.isValid() && discountAllowed.isValid();
+    return marketTime.tm_year > 0 && suspendTime.tm_year > 0 && bettingType.isValid() && turnInPlayEnabled.isValid() && marketType != "" && regulator != "" && marketBaseRate.isValid() && discountAllowed.isValid();
 }
 
 const bool MarketDescription::getPersistenceEnabled() const {
@@ -188,10 +188,10 @@ void MarketDescription::setSettleTime(const std::tm& settleTime) {
     this->settleTime = settleTime;
 }
 
-const std::string& MarketDescription::getBettingType() const {
+const MarketBettingType& MarketDescription::getBettingType() const {
     return bettingType;
 }
-void MarketDescription::setBettingType(const std::string& bettingType) {
+void MarketDescription::setBettingType(const MarketBettingType& bettingType) {
     this->bettingType = bettingType;
 }
 

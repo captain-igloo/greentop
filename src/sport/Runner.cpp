@@ -11,7 +11,7 @@ Runner::Runner() : selectionId(-1), handicap(-1), adjustmentFactor(-1) {
 
 Runner::Runner(const int64_t selectionId,
     const double handicap,
-    const std::string& status,
+    const RunnerStatus& status,
     const double adjustmentFactor,
     const Optional<double>& lastPriceTraded,
     const Optional<double>& totalMatched,
@@ -19,7 +19,8 @@ Runner::Runner(const int64_t selectionId,
     const StartingPrices& sp,
     const ExchangePrices& ex,
     const std::vector<Order>& orders,
-    const std::vector<Match>& matches) :
+    const std::vector<Match>& matches,
+    const std::map<std::string, Matches> matchesByStrategy) :
     selectionId(selectionId),
     handicap(handicap),
     status(status),
@@ -30,7 +31,8 @@ Runner::Runner(const int64_t selectionId,
     sp(sp),
     ex(ex),
     orders(orders),
-    matches(matches) {
+    matches(matches),
+    matchesByStrategy(matchesByStrategy) {
 }
 
 void Runner::fromJson(const Json::Value& json) {
@@ -75,14 +77,17 @@ void Runner::fromJson(const Json::Value& json) {
             matches.push_back(matche);
         }
     }
+    if (json.isMember("matchesByStrategy")) {
+        // FIXME
+    }
 }
 
 Json::Value Runner::toJson() const {
     Json::Value json(Json::objectValue);
     json["selectionId"] = selectionId;
     json["handicap"] = handicap;
-    if (status != "") {
-        json["status"] = status;
+    if (status.isValid()) {
+        json["status"] = status.getValue();
     }
     json["adjustmentFactor"] = adjustmentFactor;
     if (lastPriceTraded.isValid()) {
@@ -112,11 +117,14 @@ Json::Value Runner::toJson() const {
             json["matches"].append(matches[i].toJson());
         }
     }
+    if (matchesByStrategy.size() > 0) {
+        // FIXME
+    }
     return json;
 }
 
 bool Runner::isValid() const {
-    return status != "";
+    return status.isValid();
 }
 
 const int64_t Runner::getSelectionId() const {
@@ -133,10 +141,10 @@ void Runner::setHandicap(const double handicap) {
     this->handicap = handicap;
 }
 
-const std::string& Runner::getStatus() const {
+const RunnerStatus& Runner::getStatus() const {
     return status;
 }
-void Runner::setStatus(const std::string& status) {
+void Runner::setStatus(const RunnerStatus& status) {
     this->status = status;
 }
 
@@ -194,6 +202,13 @@ const std::vector<Match>& Runner::getMatches() const {
 }
 void Runner::setMatches(const std::vector<Match>& matches) {
     this->matches = matches;
+}
+
+const std::map<std::string, Matches>& Runner::getMatchesByStrategy() const {
+    return matchesByStrategy;
+}
+void Runner::setMatchesByStrategy(const std::map<std::string, Matches>& matchesByStrategy) {
+    this->matchesByStrategy = matchesByStrategy;
 }
 
 

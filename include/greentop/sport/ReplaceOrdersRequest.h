@@ -10,6 +10,8 @@
 #include <vector>
 
 #include "greentop/JsonRequest.h"
+#include "greentop/Optional.h"
+#include "greentop/sport/MarketVersion.h"
 #include "greentop/sport/ReplaceInstruction.h"
 
 namespace greentop {
@@ -20,7 +22,9 @@ class ReplaceOrdersRequest : public JsonRequest {
 
         ReplaceOrdersRequest(const std::string& marketId,
             const std::vector<ReplaceInstruction>& instructions,
-            const std::string& customerRef = std::string());
+            const std::string& customerRef = std::string(),
+            const MarketVersion& marketVersion = MarketVersion(),
+            const Optional<bool>& async = Optional<bool>());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -37,6 +41,12 @@ class ReplaceOrdersRequest : public JsonRequest {
         const std::string& getCustomerRef() const;
         void setCustomerRef(const std::string& customerRef);
 
+        const MarketVersion& getMarketVersion() const;
+        void setMarketVersion(const MarketVersion& marketVersion);
+
+        const Optional<bool>& getAsync() const;
+        void setAsync(const Optional<bool>& async);
+
 
     private:
         /**
@@ -49,6 +59,19 @@ class ReplaceOrdersRequest : public JsonRequest {
          * used to de-dupe mistaken re-submissions.
          */
         std::string customerRef;
+        /**
+         * Optional parameter allowing the client to specify which version of the market the orders
+         * should be placed on. Useful when a customer doesn't want to bet in play and is worried
+         * that their bet might arrive after the market has turned in play.
+         */
+        MarketVersion marketVersion;
+        /**
+         * An optional flag (not setting equates to false) which specifies if the orders should be
+         * replaced asynchronously. Orders can be tracked via the Exchange Stream API or the API-NG
+         * by providing a customerOrderRef for each replace order. Not available for MOC or LOC
+         * bets.
+         */
+        Optional<bool> async;
 };
 
 }

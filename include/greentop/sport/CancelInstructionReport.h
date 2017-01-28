@@ -7,12 +7,13 @@
 
 #include <ctime>
 #include <json/json.h>
-#include <string>
 
 #include "greentop/JsonMember.h"
 #include "greentop/Optional.h"
 #include "greentop/Time.h"
 #include "greentop/sport/CancelInstruction.h"
+#include "greentop/sport/enum/InstructionReportErrorCode.h"
+#include "greentop/sport/enum/InstructionReportStatus.h"
 
 namespace greentop {
 
@@ -20,8 +21,8 @@ class CancelInstructionReport : public JsonMember {
     public:
         CancelInstructionReport();
 
-        CancelInstructionReport(const std::string& status,
-            const std::string& errorCode = std::string(),
+        CancelInstructionReport(const InstructionReportStatus& status,
+            const InstructionReportErrorCode& errorCode = InstructionReportErrorCode(),
             const CancelInstruction& instruction = CancelInstruction(),
             const Optional<double>& sizeCancelled = Optional<double>(),
             const std::tm& cancelledDate = std::tm());
@@ -32,11 +33,11 @@ class CancelInstructionReport : public JsonMember {
 
         virtual bool isValid() const;
 
-        const std::string& getStatus() const;
-        void setStatus(const std::string& status);
+        const InstructionReportStatus& getStatus() const;
+        void setStatus(const InstructionReportStatus& status);
 
-        const std::string& getErrorCode() const;
-        void setErrorCode(const std::string& errorCode);
+        const InstructionReportErrorCode& getErrorCode() const;
+        void setErrorCode(const InstructionReportErrorCode& errorCode);
 
         const CancelInstruction& getInstruction() const;
         void setInstruction(const CancelInstruction& instruction);
@@ -52,11 +53,11 @@ class CancelInstructionReport : public JsonMember {
         /**
          * whether the command succeeded or failed
          */
-        std::string status;
+        InstructionReportStatus status;
         /**
          * cause of failure, or null if command succeeds
          */
-        std::string errorCode;
+        InstructionReportErrorCode errorCode;
         /**
          * The instruction that was requested
          */

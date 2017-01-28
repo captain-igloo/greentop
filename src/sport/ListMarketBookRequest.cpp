@@ -13,12 +13,18 @@ ListMarketBookRequest::ListMarketBookRequest(const std::vector<std::string>& mar
     const PriceProjection& priceProjection,
     const OrderProjection& orderProjection,
     const MatchProjection& matchProjection,
+    const Optional<bool>& includeOverallPosition,
+    const Optional<bool>& partitionMatchedByStrategyRef,
+    const std::set<std::string>& customerStrategyRefs,
     const std::string& currencyCode,
     const std::string& locale) :
     marketIds(marketIds),
     priceProjection(priceProjection),
     orderProjection(orderProjection),
     matchProjection(matchProjection),
+    includeOverallPosition(includeOverallPosition),
+    partitionMatchedByStrategyRef(partitionMatchedByStrategyRef),
+    customerStrategyRefs(customerStrategyRefs),
     currencyCode(currencyCode),
     locale(locale) {
 }
@@ -37,6 +43,17 @@ void ListMarketBookRequest::fromJson(const Json::Value& json) {
     }
     if (json.isMember("matchProjection")) {
         matchProjection = json["matchProjection"].asString();
+    }
+    if (json.isMember("includeOverallPosition")) {
+        includeOverallPosition = json["includeOverallPosition"].asBool();
+    }
+    if (json.isMember("partitionMatchedByStrategyRef")) {
+        partitionMatchedByStrategyRef = json["partitionMatchedByStrategyRef"].asBool();
+    }
+    if (json.isMember("customerStrategyRefs")) {
+        for (unsigned i = 0; i < json["customerStrategyRefs"].size(); ++i) {
+            customerStrategyRefs.insert(json["customerStrategyRefs"][i].asString());
+        }
     }
     if (json.isMember("currencyCode")) {
         currencyCode = json["currencyCode"].asString();
@@ -61,6 +78,17 @@ Json::Value ListMarketBookRequest::toJson() const {
     }
     if (matchProjection.isValid()) {
         json["matchProjection"] = matchProjection.getValue();
+    }
+    if (includeOverallPosition.isValid()) {
+        json["includeOverallPosition"] = includeOverallPosition.toJson();
+    }
+    if (partitionMatchedByStrategyRef.isValid()) {
+        json["partitionMatchedByStrategyRef"] = partitionMatchedByStrategyRef.toJson();
+    }
+    if (customerStrategyRefs.size() > 0) {
+        for (std::set<std::string>::const_iterator it = customerStrategyRefs.begin(); it != customerStrategyRefs.end(); ++it) {
+            json["customerStrategyRefs"].append(*it);
+        }
     }
     if (currencyCode != "") {
         json["currencyCode"] = currencyCode;
@@ -101,6 +129,27 @@ const MatchProjection& ListMarketBookRequest::getMatchProjection() const {
 }
 void ListMarketBookRequest::setMatchProjection(const MatchProjection& matchProjection) {
     this->matchProjection = matchProjection;
+}
+
+const Optional<bool>& ListMarketBookRequest::getIncludeOverallPosition() const {
+    return includeOverallPosition;
+}
+void ListMarketBookRequest::setIncludeOverallPosition(const Optional<bool>& includeOverallPosition) {
+    this->includeOverallPosition = includeOverallPosition;
+}
+
+const Optional<bool>& ListMarketBookRequest::getPartitionMatchedByStrategyRef() const {
+    return partitionMatchedByStrategyRef;
+}
+void ListMarketBookRequest::setPartitionMatchedByStrategyRef(const Optional<bool>& partitionMatchedByStrategyRef) {
+    this->partitionMatchedByStrategyRef = partitionMatchedByStrategyRef;
+}
+
+const std::set<std::string>& ListMarketBookRequest::getCustomerStrategyRefs() const {
+    return customerStrategyRefs;
+}
+void ListMarketBookRequest::setCustomerStrategyRefs(const std::set<std::string>& customerStrategyRefs) {
+    this->customerStrategyRefs = customerStrategyRefs;
 }
 
 const std::string& ListMarketBookRequest::getCurrencyCode() const {

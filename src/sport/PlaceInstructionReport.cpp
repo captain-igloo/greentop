@@ -9,8 +9,9 @@ namespace greentop {
 PlaceInstructionReport::PlaceInstructionReport() {
 }
 
-PlaceInstructionReport::PlaceInstructionReport(const std::string& status,
-    const std::string& errorCode,
+PlaceInstructionReport::PlaceInstructionReport(const InstructionReportStatus& status,
+    const InstructionReportErrorCode& errorCode,
+    const OrderStatus& orderStatus,
     const PlaceInstruction& instruction,
     const std::string& betId,
     const std::tm& placedDate,
@@ -18,6 +19,7 @@ PlaceInstructionReport::PlaceInstructionReport(const std::string& status,
     const Optional<double>& sizeMatched) :
     status(status),
     errorCode(errorCode),
+    orderStatus(orderStatus),
     instruction(instruction),
     betId(betId),
     placedDate(placedDate),
@@ -31,6 +33,9 @@ void PlaceInstructionReport::fromJson(const Json::Value& json) {
     }
     if (json.isMember("errorCode")) {
         errorCode = json["errorCode"].asString();
+    }
+    if (json.isMember("orderStatus")) {
+        orderStatus = json["orderStatus"].asString();
     }
     if (json.isMember("instruction")) {
         instruction.fromJson(json["instruction"]);
@@ -51,11 +56,14 @@ void PlaceInstructionReport::fromJson(const Json::Value& json) {
 
 Json::Value PlaceInstructionReport::toJson() const {
     Json::Value json(Json::objectValue);
-    if (status != "") {
-        json["status"] = status;
+    if (status.isValid()) {
+        json["status"] = status.getValue();
     }
-    if (errorCode != "") {
-        json["errorCode"] = errorCode;
+    if (errorCode.isValid()) {
+        json["errorCode"] = errorCode.getValue();
+    }
+    if (orderStatus.isValid()) {
+        json["orderStatus"] = orderStatus.getValue();
     }
     if (instruction.isValid()) {
         json["instruction"] = instruction.toJson();
@@ -78,21 +86,28 @@ Json::Value PlaceInstructionReport::toJson() const {
 }
 
 bool PlaceInstructionReport::isValid() const {
-    return status != "" && instruction.isValid();
+    return status.isValid() && instruction.isValid();
 }
 
-const std::string& PlaceInstructionReport::getStatus() const {
+const InstructionReportStatus& PlaceInstructionReport::getStatus() const {
     return status;
 }
-void PlaceInstructionReport::setStatus(const std::string& status) {
+void PlaceInstructionReport::setStatus(const InstructionReportStatus& status) {
     this->status = status;
 }
 
-const std::string& PlaceInstructionReport::getErrorCode() const {
+const InstructionReportErrorCode& PlaceInstructionReport::getErrorCode() const {
     return errorCode;
 }
-void PlaceInstructionReport::setErrorCode(const std::string& errorCode) {
+void PlaceInstructionReport::setErrorCode(const InstructionReportErrorCode& errorCode) {
     this->errorCode = errorCode;
+}
+
+const OrderStatus& PlaceInstructionReport::getOrderStatus() const {
+    return orderStatus;
+}
+void PlaceInstructionReport::setOrderStatus(const OrderStatus& orderStatus) {
+    this->orderStatus = orderStatus;
 }
 
 const PlaceInstruction& PlaceInstructionReport::getInstruction() const {

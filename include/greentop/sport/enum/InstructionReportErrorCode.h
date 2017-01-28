@@ -62,6 +62,11 @@ class InstructionReportErrorCode : public Enum<InstructionReportErrorCode> {
         /** the action does not result in any state change. eg changing a persistence to it's current
          value */
         static const std::string NO_ACTION_REQUIRED;
+        /** The minFillSize must be greater than zero and less than or equal to the order's size.
+         The minFillSize cannot be less than the minimum bet size for your currency */
+        static const std::string INVALID_MIN_FILL_SIZE;
+        /** The supplied customer order reference is too long. */
+        static const std::string INVALID_CUSTOMER_ORDER_REF;
 
         InstructionReportErrorCode();
 

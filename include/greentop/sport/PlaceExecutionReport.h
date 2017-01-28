@@ -11,6 +11,8 @@
 
 #include "greentop/JsonResponse.h"
 #include "greentop/sport/PlaceInstructionReport.h"
+#include "greentop/sport/enum/ExecutionReportErrorCode.h"
+#include "greentop/sport/enum/ExecutionReportStatus.h"
 
 namespace greentop {
 
@@ -18,8 +20,8 @@ class PlaceExecutionReport : public JsonResponse {
     public:
 
         PlaceExecutionReport(const std::string& customerRef = std::string(),
-            const std::string& status = std::string(),
-            const std::string& errorCode = std::string(),
+            const ExecutionReportStatus& status = ExecutionReportStatus(),
+            const ExecutionReportErrorCode& errorCode = ExecutionReportErrorCode(),
             const std::string& marketId = std::string(),
             const std::vector<PlaceInstructionReport>& instructionReports = std::vector<PlaceInstructionReport>());
 
@@ -32,11 +34,11 @@ class PlaceExecutionReport : public JsonResponse {
         const std::string& getCustomerRef() const;
         void setCustomerRef(const std::string& customerRef);
 
-        const std::string& getStatus() const;
-        void setStatus(const std::string& status);
+        const ExecutionReportStatus& getStatus() const;
+        void setStatus(const ExecutionReportStatus& status);
 
-        const std::string& getErrorCode() const;
-        void setErrorCode(const std::string& errorCode);
+        const ExecutionReportErrorCode& getErrorCode() const;
+        void setErrorCode(const ExecutionReportErrorCode& errorCode);
 
         const std::string& getMarketId() const;
         void setMarketId(const std::string& marketId);
@@ -50,8 +52,8 @@ class PlaceExecutionReport : public JsonResponse {
          * Echo of the customerRef if passed.
          */
         std::string customerRef;
-        std::string status;
-        std::string errorCode;
+        ExecutionReportStatus status;
+        ExecutionReportErrorCode errorCode;
         /**
          * Echo of marketId passed
          */

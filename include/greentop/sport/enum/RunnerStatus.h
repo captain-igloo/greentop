@@ -26,6 +26,8 @@ class RunnerStatus : public Enum<RunnerStatus> {
         static const std::string REMOVED_VACANT;
         /** REMOVED */
         static const std::string REMOVED;
+        /** PLACED */
+        static const std::string PLACED;
 
         RunnerStatus();
 

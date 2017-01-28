@@ -34,6 +34,9 @@ class GroupBy : public Enum<GroupBy> {
         /** The P&L, commission paid, side and regulatory information etc, about each individual
          bet order */
         static const std::string BET;
+        /** A roll up of settled P&L and the number of bet orders, on a specified strategy across
+         the Betfair Exchange */
+        static const std::string STRATEGY;
 
         GroupBy();
 

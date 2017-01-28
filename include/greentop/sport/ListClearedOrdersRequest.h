@@ -30,6 +30,8 @@ class ListClearedOrdersRequest : public JsonRequest {
             const std::set<std::string>& marketIds = std::set<std::string>(),
             const std::vector<RunnerId>& runnerIds = std::vector<RunnerId>(),
             const std::set<std::string>& betIds = std::set<std::string>(),
+            const std::set<std::string>& customerOrderRefs = std::set<std::string>(),
+            const std::set<std::string>& customerStrategyRefs = std::set<std::string>(),
             const Side& side = Side(),
             const TimeRange& settledDateRange = TimeRange(),
             const GroupBy& groupBy = GroupBy(),
@@ -61,6 +63,12 @@ class ListClearedOrdersRequest : public JsonRequest {
 
         const std::set<std::string>& getBetIds() const;
         void setBetIds(const std::set<std::string>& betIds);
+
+        const std::set<std::string>& getCustomerOrderRefs() const;
+        void setCustomerOrderRefs(const std::set<std::string>& customerOrderRefs);
+
+        const std::set<std::string>& getCustomerStrategyRefs() const;
+        void setCustomerStrategyRefs(const std::set<std::string>& customerStrategyRefs);
 
         const Side& getSide() const;
         void setSide(const Side& side);
@@ -109,6 +117,14 @@ class ListClearedOrdersRequest : public JsonRequest {
          * Optionally restricts the results to the specified bet IDs.
          */
         std::set<std::string> betIds;
+        /**
+         * Optionally restricts the results to the specified customer order references.
+         */
+        std::set<std::string> customerOrderRefs;
+        /**
+         * Optionally restricts the results to the specified customer strategy references.
+         */
+        std::set<std::string> customerStrategyRefs;
         /**
          * Optionally restricts the results to the specified side.
          */

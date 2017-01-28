@@ -427,6 +427,57 @@ ExchangeApi::listCurrencyRates(const Exchange exchange,
     return response;
 }
 
+AuthorisationResponse
+ExchangeApi::getAuthorisationCode(const Exchange exchange, const GetAuthorisationCodeRequest& request) const {
+    AuthorisationResponse response;
+    performRequest(exchange, Api::ACCOUNT, "getAuthorisationCode", request, response);
+    return response;
+}
+
+VendorAccessTokenInfo
+ExchangeApi::token(const Exchange exchange, const TokenRequest& request) const {
+    VendorAccessTokenInfo response;
+    performRequest(exchange, Api::ACCOUNT, "token", request, response);
+    return response;
+}
+
+VendorDetails
+ExchangeApi::getVendorDetails(const Exchange exchange, const GetVendorDetailsRequest& request) const {
+    VendorDetails response;
+    performRequest(exchange, Api::ACCOUNT, "getVendorDetails", request, response);
+    return response;
+}
+
+RevokeAccessToWebAppResponse
+ExchangeApi::revokeAccessToWebApp(const Exchange exchange, const RevokeAccessToWebAppRequest& request) const {
+    RevokeAccessToWebAppResponse response;
+    performRequest(exchange, Api::ACCOUNT, "revokeAccessToWebApp", request, response);
+    return response;
+}
+
+ListAuthorizedWebAppsResponse
+ExchangeApi::listAuthorizedWebApps(const Exchange exchange) const {
+    DummyRequest request;
+    ListAuthorizedWebAppsResponse response;
+    performRequest(exchange, Api::ACCOUNT, "listAuthorizedWebApps", request, response);
+    return response;
+}
+
+IsAccountSubscribedToWebAppResponse
+ExchangeApi::isAccountSubscribedToWebApp(const Exchange exchange,
+        const IsAccountSubscribedToWebAppRequest& request) const {
+    IsAccountSubscribedToWebAppResponse response;
+    performRequest(exchange, Api::ACCOUNT, "listAuthorizedWebApps", request, response);
+    return response;
+}
+
+GetAffiliateRelationResponse
+ExchangeApi::getAffiliateRelation(const Exchange exchange, const GetAffiliateRelationRequest& request) const {
+    GetAffiliateRelationResponse response;
+    performRequest(exchange, Api::ACCOUNT, "getAffiliateRelation", request, response);
+    return response;
+}
+
 HeartbeatReport
 ExchangeApi::heartbeat(const Exchange exchange,
         const HeartbeatRequest& request) const {

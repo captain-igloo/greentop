@@ -8,8 +8,10 @@
 
 namespace greentop {
 
+const std::string OrderStatus::PENDING = "PENDING";
 const std::string OrderStatus::EXECUTION_COMPLETE = "EXECUTION_COMPLETE";
 const std::string OrderStatus::EXECUTABLE = "EXECUTABLE";
+const std::string OrderStatus::EXPIRED = "EXPIRED";
 
 OrderStatus::OrderStatus() {
     valid = false;
@@ -17,8 +19,10 @@ OrderStatus::OrderStatus() {
 
 OrderStatus::OrderStatus(const std::string& v) {
 
-    if (v != EXECUTION_COMPLETE &&
-        v != EXECUTABLE) {
+    if (v != PENDING &&
+        v != EXECUTION_COMPLETE &&
+        v != EXECUTABLE &&
+        v != EXPIRED) {
         throw std::invalid_argument("Invalid OrderStatus: " + v);
     }
 

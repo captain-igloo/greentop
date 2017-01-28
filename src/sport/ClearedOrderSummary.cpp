@@ -28,7 +28,9 @@ ClearedOrderSummary::ClearedOrderSummary(const std::string& eventTypeId,
     const Optional<bool>& priceReduced,
     const Optional<double>& sizeSettled,
     const Optional<double>& profit,
-    const Optional<double>& sizeCancelled) :
+    const Optional<double>& sizeCancelled,
+    const std::string& customerOrderRef,
+    const std::string& customerStrategyRef) :
     eventTypeId(eventTypeId),
     eventId(eventId),
     marketId(marketId),
@@ -50,7 +52,9 @@ ClearedOrderSummary::ClearedOrderSummary(const std::string& eventTypeId,
     priceReduced(priceReduced),
     sizeSettled(sizeSettled),
     profit(profit),
-    sizeCancelled(sizeCancelled) {
+    sizeCancelled(sizeCancelled),
+    customerOrderRef(customerOrderRef),
+    customerStrategyRef(customerStrategyRef) {
 }
 
 void ClearedOrderSummary::fromJson(const Json::Value& json) {
@@ -120,6 +124,12 @@ void ClearedOrderSummary::fromJson(const Json::Value& json) {
     if (json.isMember("sizeCancelled")) {
         sizeCancelled = json["sizeCancelled"].asDouble();
     }
+    if (json.isMember("customerOrderRef")) {
+        customerOrderRef = json["customerOrderRef"].asString();
+    }
+    if (json.isMember("customerStrategyRef")) {
+        customerStrategyRef = json["customerStrategyRef"].asString();
+    }
 }
 
 Json::Value ClearedOrderSummary::toJson() const {
@@ -187,6 +197,12 @@ Json::Value ClearedOrderSummary::toJson() const {
     }
     if (sizeCancelled.isValid()) {
         json["sizeCancelled"] = sizeCancelled.toJson();
+    }
+    if (customerOrderRef != "") {
+        json["customerOrderRef"] = customerOrderRef;
+    }
+    if (customerStrategyRef != "") {
+        json["customerStrategyRef"] = customerStrategyRef;
     }
     return json;
 }
@@ -347,6 +363,20 @@ const Optional<double>& ClearedOrderSummary::getSizeCancelled() const {
 }
 void ClearedOrderSummary::setSizeCancelled(const Optional<double>& sizeCancelled) {
     this->sizeCancelled = sizeCancelled;
+}
+
+const std::string& ClearedOrderSummary::getCustomerOrderRef() const {
+    return customerOrderRef;
+}
+void ClearedOrderSummary::setCustomerOrderRef(const std::string& customerOrderRef) {
+    this->customerOrderRef = customerOrderRef;
+}
+
+const std::string& ClearedOrderSummary::getCustomerStrategyRef() const {
+    return customerStrategyRef;
+}
+void ClearedOrderSummary::setCustomerStrategyRef(const std::string& customerStrategyRef) {
+    this->customerStrategyRef = customerStrategyRef;
 }
 
 
