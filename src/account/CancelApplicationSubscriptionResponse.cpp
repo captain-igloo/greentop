@@ -23,7 +23,7 @@ void CancelApplicationSubscriptionResponse::fromJson(const Json::Value& json) {
 }
 
 Json::Value CancelApplicationSubscriptionResponse::toJson() const {
-    Json::Value json(Json::arrayValue);
+    Json::Value json(Json::objectValue);
     if (status.isValid()) {
         json["status"] = status.getValue();
     }
