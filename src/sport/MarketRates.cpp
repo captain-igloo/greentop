@@ -6,7 +6,7 @@
 
 namespace greentop {
 
-MarketRates::MarketRates() : marketBaseRate(-1), discountAllowed(false) {
+MarketRates::MarketRates() {
 }
 
 MarketRates::MarketRates(const double marketBaseRate,
@@ -26,13 +26,17 @@ void MarketRates::fromJson(const Json::Value& json) {
 
 Json::Value MarketRates::toJson() const {
     Json::Value json(Json::objectValue);
-    json["marketBaseRate"] = marketBaseRate;
-    json["discountAllowed"] = discountAllowed;
+    if (marketBaseRate.isValid()) {
+        json["marketBaseRate"] = marketBaseRate.toJson();
+    }
+    if (discountAllowed.isValid()) {
+        json["discountAllowed"] = discountAllowed.toJson();
+    }
     return json;
 }
 
 bool MarketRates::isValid() const {
-    return true;
+    return marketBaseRate.isValid() && discountAllowed.isValid();
 }
 
 const double MarketRates::getMarketBaseRate() const {

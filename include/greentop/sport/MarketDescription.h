@@ -99,11 +99,11 @@ class MarketDescription : public JsonMember {
         /**
          * persistenceMarket
          */
-        bool persistenceEnabled;
+        Optional<bool> persistenceEnabled;
         /**
          * bspMarket
          */
-        bool bspMarket;
+        Optional<bool> bspMarket;
         /**
          * marketTime
          */

@@ -21,12 +21,14 @@ void HeartbeatRequest::fromJson(const Json::Value& json) {
 
 Json::Value HeartbeatRequest::toJson() const {
     Json::Value json(Json::objectValue);
-    json["preferredTimeoutSeconds"] = preferredTimeoutSeconds;
+    if (preferredTimeoutSeconds.isValid()) {
+        json["preferredTimeoutSeconds"] = preferredTimeoutSeconds.toJson();
+    }
     return json;
 }
 
 bool HeartbeatRequest::isValid() const {
-    return true;
+    return preferredTimeoutSeconds.isValid();
 }
 
 const int32_t HeartbeatRequest::getPreferredTimeoutSeconds() const {

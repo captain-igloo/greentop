@@ -6,7 +6,7 @@
 
 namespace greentop {
 
-MarketLineRangeInfo::MarketLineRangeInfo() : maxUnitValue(-1), minUnitValue(-1), interval(-1) {
+MarketLineRangeInfo::MarketLineRangeInfo() {
 }
 
 MarketLineRangeInfo::MarketLineRangeInfo(const double maxUnitValue,
@@ -36,9 +36,15 @@ void MarketLineRangeInfo::fromJson(const Json::Value& json) {
 
 Json::Value MarketLineRangeInfo::toJson() const {
     Json::Value json(Json::objectValue);
-    json["maxUnitValue"] = maxUnitValue;
-    json["minUnitValue"] = minUnitValue;
-    json["interval"] = interval;
+    if (maxUnitValue.isValid()) {
+        json["maxUnitValue"] = maxUnitValue.toJson();
+    }
+    if (minUnitValue.isValid()) {
+        json["minUnitValue"] = minUnitValue.toJson();
+    }
+    if (interval.isValid()) {
+        json["interval"] = interval.toJson();
+    }
     if (marketUnit != "") {
         json["marketUnit"] = marketUnit;
     }
@@ -46,7 +52,7 @@ Json::Value MarketLineRangeInfo::toJson() const {
 }
 
 bool MarketLineRangeInfo::isValid() const {
-    return marketUnit != "";
+    return maxUnitValue.isValid() && minUnitValue.isValid() && interval.isValid() && marketUnit != "";
 }
 
 const double MarketLineRangeInfo::getMaxUnitValue() const {

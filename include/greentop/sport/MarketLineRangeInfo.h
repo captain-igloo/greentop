@@ -9,6 +9,7 @@
 #include <string>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 
 namespace greentop {
 
@@ -47,15 +48,15 @@ class MarketLineRangeInfo : public JsonMember {
         /**
          * maxPrice
          */
-        double maxUnitValue;
+        Optional<double> maxUnitValue;
         /**
          * minPrice
          */
-        double minUnitValue;
+        Optional<double> minUnitValue;
         /**
          * interval
          */
-        double interval;
+        Optional<double> interval;
         /**
          * unit
          */

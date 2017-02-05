@@ -29,12 +29,14 @@ Json::Value UpdateApplicationSubscriptionRequest::toJson() const {
     if (vendorClientId != "") {
         json["vendorClientId"] = vendorClientId;
     }
-    json["subscriptionLength"] = subscriptionLength;
+    if (subscriptionLength.isValid()) {
+        json["subscriptionLength"] = subscriptionLength.toJson();
+    }
     return json;
 }
 
 bool UpdateApplicationSubscriptionRequest::isValid() const {
-    return vendorClientId != "";
+    return vendorClientId != "" && subscriptionLength.isValid();
 }
 
 const std::string& UpdateApplicationSubscriptionRequest::getVendorClientId() const {

@@ -6,7 +6,7 @@
 
 namespace greentop {
 
-ClearedOrderSummaryReport::ClearedOrderSummaryReport() : moreAvailable(false) {
+ClearedOrderSummaryReport::ClearedOrderSummaryReport() {
 }
 
 ClearedOrderSummaryReport::ClearedOrderSummaryReport(const std::vector<ClearedOrderSummary>& clearedOrders,
@@ -39,12 +39,14 @@ Json::Value ClearedOrderSummaryReport::toJson() const {
             json["clearedOrders"].append(clearedOrders[i].toJson());
         }
     }
-    json["moreAvailable"] = moreAvailable;
+    if (moreAvailable.isValid()) {
+        json["moreAvailable"] = moreAvailable.toJson();
+    }
     return json;
 }
 
 bool ClearedOrderSummaryReport::isValid() const {
-    return clearedOrders.size() > 0;
+    return clearedOrders.size() > 0 && moreAvailable.isValid();
 }
 
 const std::vector<ClearedOrderSummary>& ClearedOrderSummaryReport::getClearedOrders() const {

@@ -6,7 +6,7 @@
 
 namespace greentop {
 
-RunnerCatalog::RunnerCatalog() : selectionId(-1), handicap(-1), sortPriority(-1) {
+RunnerCatalog::RunnerCatalog() : selectionId(-1) {
 }
 
 RunnerCatalog::RunnerCatalog(const int64_t selectionId,
@@ -45,8 +45,12 @@ Json::Value RunnerCatalog::toJson() const {
     if (runnerName != "") {
         json["runnerName"] = runnerName;
     }
-    json["handicap"] = handicap;
-    json["sortPriority"] = sortPriority;
+    if (handicap.isValid()) {
+        json["handicap"] = handicap.toJson();
+    }
+    if (sortPriority.isValid()) {
+        json["sortPriority"] = sortPriority.toJson();
+    }
     if (metadata.size() > 0) {
         // FIXME
     }
@@ -54,7 +58,7 @@ Json::Value RunnerCatalog::toJson() const {
 }
 
 bool RunnerCatalog::isValid() const {
-    return runnerName != "";
+    return runnerName != "" && handicap.isValid() && sortPriority.isValid();
 }
 
 const int64_t RunnerCatalog::getSelectionId() const {

@@ -92,7 +92,7 @@ class Runner : public JsonMember {
         /**
          * The handicap
          */
-        double handicap;
+        Optional<double> handicap;
         /**
          * The status of the selection (i.e., ACTIVE, REMOVED, WINNER, LOSER)
          */
@@ -100,7 +100,7 @@ class Runner : public JsonMember {
         /**
          * The adjustment factor applied if the selection is removed
          */
-        double adjustmentFactor;
+        Optional<double> adjustmentFactor;
         /**
          * The price of the most recent bet matched on this selection
          */

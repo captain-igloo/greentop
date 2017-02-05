@@ -111,7 +111,7 @@ class MarketBook : public JsonMember {
          * because you are not logged in with a funded account or you are using an Application Key
          * that does not allow up to date data.
          */
-        bool isMarketDataDelayed;
+        Optional<bool> isMarketDataDelayed;
         /**
          * The status of the market, for example ACTIVE, SUSPENDED, SETTLED, etc.
          */

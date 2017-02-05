@@ -6,7 +6,7 @@
 
 namespace greentop {
 
-DeveloperAppVersion::DeveloperAppVersion() : versionId(-1) {
+DeveloperAppVersion::DeveloperAppVersion() {
 }
 
 DeveloperAppVersion::DeveloperAppVersion(const std::string& owner,
@@ -69,7 +69,9 @@ Json::Value DeveloperAppVersion::toJson() const {
     if (owner != "") {
         json["owner"] = owner;
     }
-    json["versionId"] = versionId;
+    if (versionId.isValid()) {
+        json["versionId"] = versionId.toJson();
+    }
     if (version != "") {
         json["version"] = version;
     }
@@ -98,7 +100,7 @@ Json::Value DeveloperAppVersion::toJson() const {
 }
 
 bool DeveloperAppVersion::isValid() const {
-    return owner != "" && version != "" && applicationKey != "" && subscriptionRequired.isValid() && ownerManaged.isValid() && active.isValid();
+    return owner != "" && versionId.isValid() && version != "" && applicationKey != "" && subscriptionRequired.isValid() && ownerManaged.isValid() && active.isValid();
 }
 
 const std::string& DeveloperAppVersion::getOwner() const {

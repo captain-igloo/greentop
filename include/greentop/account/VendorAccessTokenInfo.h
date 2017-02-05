@@ -9,6 +9,7 @@
 #include <string>
 
 #include "greentop/JsonResponse.h"
+#include "greentop/Optional.h"
 #include "greentop/account/ApplicationSubscription.h"
 #include "greentop/account/enum/TokenType.h"
 
@@ -62,7 +63,7 @@ class VendorAccessTokenInfo : public JsonResponse {
         /**
          * How long until the token expires
          */
-        int64_t expires_in;
+        Optional<int64_t> expires_in;
         /**
          * Token used to refresh the session token in future
          */

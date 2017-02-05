@@ -6,7 +6,7 @@
 
 namespace greentop {
 
-Runner::Runner() : selectionId(-1), handicap(-1), adjustmentFactor(-1) {
+Runner::Runner() : selectionId(-1) {
 }
 
 Runner::Runner(const int64_t selectionId,
@@ -85,11 +85,15 @@ void Runner::fromJson(const Json::Value& json) {
 Json::Value Runner::toJson() const {
     Json::Value json(Json::objectValue);
     json["selectionId"] = selectionId;
-    json["handicap"] = handicap;
+    if (handicap.isValid()) {
+        json["handicap"] = handicap.toJson();
+    }
     if (status.isValid()) {
         json["status"] = status.getValue();
     }
-    json["adjustmentFactor"] = adjustmentFactor;
+    if (adjustmentFactor.isValid()) {
+        json["adjustmentFactor"] = adjustmentFactor.toJson();
+    }
     if (lastPriceTraded.isValid()) {
         json["lastPriceTraded"] = lastPriceTraded.toJson();
     }
@@ -124,7 +128,7 @@ Json::Value Runner::toJson() const {
 }
 
 bool Runner::isValid() const {
-    return status.isValid();
+    return handicap.isValid() && status.isValid() && adjustmentFactor.isValid();
 }
 
 const int64_t Runner::getSelectionId() const {

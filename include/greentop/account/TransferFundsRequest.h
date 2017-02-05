@@ -8,6 +8,7 @@
 #include <json/json.h>
 
 #include "greentop/JsonRequest.h"
+#include "greentop/Optional.h"
 #include "greentop/account/enum/Wallet.h"
 
 namespace greentop {
@@ -48,7 +49,7 @@ class TransferFundsRequest : public JsonRequest {
         /**
          * Amount to transfer
          */
-        double amount;
+        Optional<double> amount;
 };
 
 }

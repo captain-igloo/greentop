@@ -37,12 +37,14 @@ Json::Value TransferFundsRequest::toJson() const {
     if (to.isValid()) {
         json["to"] = to.getValue();
     }
-    json["amount"] = amount;
+    if (amount.isValid()) {
+        json["amount"] = amount.toJson();
+    }
     return json;
 }
 
 bool TransferFundsRequest::isValid() const {
-    return from.isValid() && to.isValid();
+    return from.isValid() && to.isValid() && amount.isValid();
 }
 
 const Wallet& TransferFundsRequest::getFrom() const {

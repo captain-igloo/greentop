@@ -9,6 +9,7 @@
 #include <vector>
 
 #include "greentop/JsonResponse.h"
+#include "greentop/Optional.h"
 #include "greentop/sport/ClearedOrderSummary.h"
 
 namespace greentop {
@@ -47,7 +48,7 @@ class ClearedOrderSummaryReport : public JsonResponse {
          * data is highly time-dependent and the subsequent search orders query might return an
          * empty result.
          */
-        bool moreAvailable;
+        Optional<bool> moreAvailable;
 };
 
 }

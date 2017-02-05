@@ -6,7 +6,7 @@
 
 namespace greentop {
 
-DeveloperApp::DeveloperApp() : appId(-1) {
+DeveloperApp::DeveloperApp() {
 }
 
 DeveloperApp::DeveloperApp(const std::string& appName,
@@ -43,7 +43,9 @@ Json::Value DeveloperApp::toJson() const {
     if (appName != "") {
         json["appName"] = appName;
     }
-    json["appId"] = appId;
+    if (appId.isValid()) {
+        json["appId"] = appId.toJson();
+    }
     if (appVersions.size() > 0) {
         for (unsigned i = 0; i < appVersions.size(); ++i) {
             json["appVersions"].append(appVersions[i].toJson());
@@ -53,7 +55,7 @@ Json::Value DeveloperApp::toJson() const {
 }
 
 bool DeveloperApp::isValid() const {
-    return appName != "" && appVersions.size() > 0;
+    return appName != "" && appId.isValid() && appVersions.size() > 0;
 }
 
 const std::string& DeveloperApp::getAppName() const {

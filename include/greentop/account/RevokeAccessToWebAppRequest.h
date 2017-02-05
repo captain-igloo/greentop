@@ -8,6 +8,7 @@
 #include <json/json.h>
 
 #include "greentop/JsonRequest.h"
+#include "greentop/Optional.h"
 
 namespace greentop {
 
@@ -31,7 +32,7 @@ class RevokeAccessToWebAppRequest : public JsonRequest {
         /**
          * The id of the vendor to revoke access for
          */
-        int64_t vendorId;
+        Optional<int64_t> vendorId;
 };
 
 }
