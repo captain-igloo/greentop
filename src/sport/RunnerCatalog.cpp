@@ -35,7 +35,11 @@ void RunnerCatalog::fromJson(const Json::Value& json) {
         sortPriority = json["sortPriority"].asInt();
     }
     if (json.isMember("metadata")) {
-        // FIXME
+        for (Json::ValueIterator itr = json["metadata"].begin(); itr != json["metadata"].end(); ++itr) {
+            std::string value;
+            value = (*itr).asString();
+            metadata[itr.key().asString()] = value;
+        }
     }
 }
 
@@ -52,7 +56,10 @@ Json::Value RunnerCatalog::toJson() const {
         json["sortPriority"] = sortPriority.toJson();
     }
     if (metadata.size() > 0) {
-        // FIXME
+        json["metadata"] = Json::objectValue;
+        for (std::map<std::string, std::string>::const_iterator it = metadata.begin(); it != metadata.end(); ++it) {
+            json["metadata"][it->first] = it->second;
+        }
     }
     return json;
 }

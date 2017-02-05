@@ -78,7 +78,11 @@ void Runner::fromJson(const Json::Value& json) {
         }
     }
     if (json.isMember("matchesByStrategy")) {
-        // FIXME
+        for (Json::ValueIterator itr = json["matchesByStrategy"].begin(); itr != json["matchesByStrategy"].end(); ++itr) {
+            Matches value;
+            value.fromJson(*itr);
+            matchesByStrategy[itr.key().asString()] = value;
+        }
     }
 }
 
@@ -122,7 +126,10 @@ Json::Value Runner::toJson() const {
         }
     }
     if (matchesByStrategy.size() > 0) {
-        // FIXME
+        json["matchesByStrategy"] = Json::objectValue;
+        for (std::map<std::string, Matches>::const_iterator it = matchesByStrategy.begin(); it != matchesByStrategy.end(); ++it) {
+            json["matchesByStrategy"][it->first] = it->second.toJson();
+        }
     }
     return json;
 }
