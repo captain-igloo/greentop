@@ -76,7 +76,7 @@ class DeveloperAppVersion : public JsonMember {
         /**
          * The unique Id of the application version
          */
-        int64_t versionId;
+        Optional<int64_t> versionId;
         /**
          * The version identifier string such as 1.0, 2.0. Unique for a given application.
          */

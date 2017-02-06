@@ -23,13 +23,15 @@ void IsAccountSubscribedToWebAppResponse::fromJson(const Json::Value& json) {
 }
 
 Json::Value IsAccountSubscribedToWebAppResponse::toJson() const {
-    Json::Value json(Json::arrayValue);
-    json["isAccountSubscribedToWebApp"] = isAccountSubscribedToWebApp;
+    Json::Value json(Json::objectValue);
+    if (isAccountSubscribedToWebApp.isValid()) {
+        json["isAccountSubscribedToWebApp"] = isAccountSubscribedToWebApp.toJson();
+    }
     return json;
 }
 
 bool IsAccountSubscribedToWebAppResponse::isValid() const {
-    return true;
+    return isAccountSubscribedToWebApp.isValid();
 }
 
 const bool IsAccountSubscribedToWebAppResponse::getIsAccountSubscribedToWebApp() const {

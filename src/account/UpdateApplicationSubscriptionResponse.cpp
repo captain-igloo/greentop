@@ -23,7 +23,7 @@ void UpdateApplicationSubscriptionResponse::fromJson(const Json::Value& json) {
 }
 
 Json::Value UpdateApplicationSubscriptionResponse::toJson() const {
-    Json::Value json(Json::arrayValue);
+    Json::Value json(Json::objectValue);
     if (subscriptionToken != "") {
         json["subscriptionToken"] = subscriptionToken;
     }

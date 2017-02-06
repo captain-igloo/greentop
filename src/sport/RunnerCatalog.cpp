@@ -6,7 +6,7 @@
 
 namespace greentop {
 
-RunnerCatalog::RunnerCatalog() : selectionId(-1), handicap(-1), sortPriority(-1) {
+RunnerCatalog::RunnerCatalog() : selectionId(-1) {
 }
 
 RunnerCatalog::RunnerCatalog(const int64_t selectionId,
@@ -35,7 +35,11 @@ void RunnerCatalog::fromJson(const Json::Value& json) {
         sortPriority = json["sortPriority"].asInt();
     }
     if (json.isMember("metadata")) {
-        // FIXME
+        for (Json::ValueIterator itr = json["metadata"].begin(); itr != json["metadata"].end(); ++itr) {
+            std::string value;
+            value = (*itr).asString();
+            metadata[itr.key().asString()] = value;
+        }
     }
 }
 
@@ -45,16 +49,23 @@ Json::Value RunnerCatalog::toJson() const {
     if (runnerName != "") {
         json["runnerName"] = runnerName;
     }
-    json["handicap"] = handicap;
-    json["sortPriority"] = sortPriority;
+    if (handicap.isValid()) {
+        json["handicap"] = handicap.toJson();
+    }
+    if (sortPriority.isValid()) {
+        json["sortPriority"] = sortPriority.toJson();
+    }
     if (metadata.size() > 0) {
-        // FIXME
+        json["metadata"] = Json::objectValue;
+        for (std::map<std::string, std::string>::const_iterator it = metadata.begin(); it != metadata.end(); ++it) {
+            json["metadata"][it->first] = it->second;
+        }
     }
     return json;
 }
 
 bool RunnerCatalog::isValid() const {
-    return runnerName != "";
+    return runnerName != "" && handicap.isValid() && sortPriority.isValid();
 }
 
 const int64_t RunnerCatalog::getSelectionId() const {

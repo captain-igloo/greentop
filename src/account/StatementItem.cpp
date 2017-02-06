@@ -40,7 +40,11 @@ void StatementItem::fromJson(const Json::Value& json) {
         itemClass = json["itemClass"].asString();
     }
     if (json.isMember("itemClassData")) {
-        // FIXME
+        for (Json::ValueIterator itr = json["itemClassData"].begin(); itr != json["itemClassData"].end(); ++itr) {
+            std::string value;
+            value = (*itr).asString();
+            itemClassData[itr.key().asString()] = value;
+        }
     }
     if (json.isMember("legacyData")) {
         legacyData.fromJson(json["legacyData"]);
@@ -67,7 +71,10 @@ Json::Value StatementItem::toJson() const {
         json["itemClass"] = itemClass.getValue();
     }
     if (itemClassData.size() > 0) {
-        // FIXME
+        json["itemClassData"] = Json::objectValue;
+        for (std::map<std::string, std::string>::const_iterator it = itemClassData.begin(); it != itemClassData.end(); ++it) {
+            json["itemClassData"][it->first] = it->second;
+        }
     }
     if (legacyData.isValid()) {
         json["legacyData"] = legacyData.toJson();

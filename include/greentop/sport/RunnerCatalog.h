@@ -9,6 +9,7 @@
 #include <string>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 
 namespace greentop {
 
@@ -59,11 +60,11 @@ class RunnerCatalog : public JsonMember {
         /**
          * The handicap
          */
-        double handicap;
+        Optional<double> handicap;
         /**
          * The sort priority of this runner
          */
-        int32_t sortPriority;
+        Optional<int32_t> sortPriority;
         /**
          * Metadata associated with the runner
          */

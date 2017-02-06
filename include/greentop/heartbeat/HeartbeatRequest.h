@@ -8,6 +8,7 @@
 #include <json/json.h>
 
 #include "greentop/JsonRequest.h"
+#include "greentop/Optional.h"
 
 namespace greentop {
 
@@ -43,7 +44,7 @@ class HeartbeatRequest : public JsonRequest {
          * your client should utilise the returned actualTimeoutSeconds to set an appropriate
          * frequency for your subsequent heartbeat requests.
          */
-        int32_t preferredTimeoutSeconds;
+        Optional<int32_t> preferredTimeoutSeconds;
 };
 
 }

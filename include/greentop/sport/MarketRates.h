@@ -8,6 +8,7 @@
 #include <json/json.h>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 
 namespace greentop {
 
@@ -38,11 +39,11 @@ class MarketRates : public JsonMember {
         /**
          * marketBaseRate
          */
-        double marketBaseRate;
+        Optional<double> marketBaseRate;
         /**
          * discountAllowed
          */
-        bool discountAllowed;
+        Optional<bool> discountAllowed;
 };
 
 }

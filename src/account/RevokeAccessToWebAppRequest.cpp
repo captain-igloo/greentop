@@ -21,12 +21,14 @@ void RevokeAccessToWebAppRequest::fromJson(const Json::Value& json) {
 
 Json::Value RevokeAccessToWebAppRequest::toJson() const {
     Json::Value json(Json::objectValue);
-    json["vendorId"] = vendorId;
+    if (vendorId.isValid()) {
+        json["vendorId"] = vendorId.toJson();
+    }
     return json;
 }
 
 bool RevokeAccessToWebAppRequest::isValid() const {
-    return true;
+    return vendorId.isValid();
 }
 
 const int64_t RevokeAccessToWebAppRequest::getVendorId() const {

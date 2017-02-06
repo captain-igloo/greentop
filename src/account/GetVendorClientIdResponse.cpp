@@ -23,7 +23,7 @@ void GetVendorClientIdResponse::fromJson(const Json::Value& json) {
 }
 
 Json::Value GetVendorClientIdResponse::toJson() const {
-    Json::Value json(Json::arrayValue);
+    Json::Value json(Json::objectValue);
     if (vendorClientId != "") {
         json["vendorClientId"] = vendorClientId;
     }

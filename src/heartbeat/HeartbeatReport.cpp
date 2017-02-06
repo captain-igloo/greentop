@@ -6,7 +6,7 @@
 
 namespace greentop {
 
-HeartbeatReport::HeartbeatReport() : actualTimeoutSeconds(-1) {
+HeartbeatReport::HeartbeatReport() {
 }
 
 HeartbeatReport::HeartbeatReport(const ActionPerformed& actionPerformed,
@@ -33,12 +33,14 @@ Json::Value HeartbeatReport::toJson() const {
     if (actionPerformed.isValid()) {
         json["actionPerformed"] = actionPerformed.getValue();
     }
-    json["actualTimeoutSeconds"] = actualTimeoutSeconds;
+    if (actualTimeoutSeconds.isValid()) {
+        json["actualTimeoutSeconds"] = actualTimeoutSeconds.toJson();
+    }
     return json;
 }
 
 bool HeartbeatReport::isValid() const {
-    return actionPerformed.isValid();
+    return actionPerformed.isValid() && actualTimeoutSeconds.isValid();
 }
 
 const ActionPerformed& HeartbeatReport::getActionPerformed() const {

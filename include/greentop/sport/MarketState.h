@@ -10,6 +10,7 @@
 #include <string>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 #include "greentop/Time.h"
 
 namespace greentop {
@@ -73,23 +74,23 @@ class MarketState : public JsonMember {
         /**
          * betDelay
          */
-        int32_t betDelay;
+        Optional<int32_t> betDelay;
         /**
          * bspReconciled
          */
-        bool bspReconciled;
+        Optional<bool> bspReconciled;
         /**
          * complete
          */
-        bool complete;
+        Optional<bool> complete;
         /**
          * inplay
          */
-        bool inplay;
+        Optional<bool> inplay;
         /**
          * numberActiveOfRunners
          */
-        int32_t numberOfActiveRunners;
+        Optional<int32_t> numberOfActiveRunners;
         /**
          * lastMatchTime
          */

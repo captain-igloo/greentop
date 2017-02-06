@@ -6,7 +6,7 @@
 
 namespace greentop {
 
-MarketBook::MarketBook() : isMarketDataDelayed(false) {
+MarketBook::MarketBook() {
 }
 
 MarketBook::MarketBook(const std::string& marketId,
@@ -108,7 +108,9 @@ Json::Value MarketBook::toJson() const {
     if (marketId != "") {
         json["marketId"] = marketId;
     }
-    json["isMarketDataDelayed"] = isMarketDataDelayed;
+    if (isMarketDataDelayed.isValid()) {
+        json["isMarketDataDelayed"] = isMarketDataDelayed.toJson();
+    }
     if (status.isValid()) {
         json["status"] = status.getValue();
     }
@@ -162,7 +164,7 @@ Json::Value MarketBook::toJson() const {
 }
 
 bool MarketBook::isValid() const {
-    return marketId != "";
+    return marketId != "" && isMarketDataDelayed.isValid();
 }
 
 const std::string& MarketBook::getMarketId() const {

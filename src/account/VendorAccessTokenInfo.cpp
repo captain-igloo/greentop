@@ -6,7 +6,7 @@
 
 namespace greentop {
 
-VendorAccessTokenInfo::VendorAccessTokenInfo() : expires_in(-1) {
+VendorAccessTokenInfo::VendorAccessTokenInfo() {
 }
 
 VendorAccessTokenInfo::VendorAccessTokenInfo(const std::string& access_token,
@@ -54,7 +54,9 @@ Json::Value VendorAccessTokenInfo::toJson() const {
     if (token_type.isValid()) {
         json["token_type"] = token_type.getValue();
     }
-    json["expires_in"] = expires_in;
+    if (expires_in.isValid()) {
+        json["expires_in"] = expires_in.toJson();
+    }
     if (refresh_token != "") {
         json["refresh_token"] = refresh_token;
     }
@@ -65,7 +67,7 @@ Json::Value VendorAccessTokenInfo::toJson() const {
 }
 
 bool VendorAccessTokenInfo::isValid() const {
-    return access_token != "" && token_type.isValid() && refresh_token != "" && application_subscription.isValid();
+    return access_token != "" && token_type.isValid() && expires_in.isValid() && refresh_token != "" && application_subscription.isValid();
 }
 
 const std::string& VendorAccessTokenInfo::getAccess_token() const {

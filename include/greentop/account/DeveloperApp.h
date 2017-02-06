@@ -10,6 +10,7 @@
 #include <vector>
 
 #include "greentop/JsonResponse.h"
+#include "greentop/Optional.h"
 #include "greentop/account/DeveloperAppVersion.h"
 
 namespace greentop {
@@ -49,7 +50,7 @@ class DeveloperApp : public JsonResponse {
         /**
          * A unique id of this application
          */
-        int64_t appId;
+        Optional<int64_t> appId;
         /**
          * The application versions (including application keys)
          */

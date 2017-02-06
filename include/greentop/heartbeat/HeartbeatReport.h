@@ -8,6 +8,7 @@
 #include <json/json.h>
 
 #include "greentop/JsonResponse.h"
+#include "greentop/Optional.h"
 #include "greentop/heartbeat/enum/ActionPerformed.h"
 
 namespace greentop {
@@ -44,7 +45,7 @@ class HeartbeatReport : public JsonResponse {
          * The actual timeout applied to your heartbeat request, see timeout request parameter
          * description for details.
          */
-        int32_t actualTimeoutSeconds;
+        Optional<int32_t> actualTimeoutSeconds;
 };
 
 }

@@ -23,7 +23,7 @@ void RevokeAccessToWebAppResponse::fromJson(const Json::Value& json) {
 }
 
 Json::Value RevokeAccessToWebAppResponse::toJson() const {
-    Json::Value json(Json::arrayValue);
+    Json::Value json(Json::objectValue);
     if (status.isValid()) {
         json["status"] = status.getValue();
     }

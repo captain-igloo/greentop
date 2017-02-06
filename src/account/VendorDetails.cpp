@@ -6,7 +6,7 @@
 
 namespace greentop {
 
-VendorDetails::VendorDetails() : appVersionId(-1) {
+VendorDetails::VendorDetails() {
 }
 
 VendorDetails::VendorDetails(const int64_t appVersionId,
@@ -36,7 +36,9 @@ void VendorDetails::fromJson(const Json::Value& json) {
 
 Json::Value VendorDetails::toJson() const {
     Json::Value json(Json::objectValue);
-    json["appVersionId"] = appVersionId;
+    if (appVersionId.isValid()) {
+        json["appVersionId"] = appVersionId.toJson();
+    }
     if (vendorName != "") {
         json["vendorName"] = vendorName;
     }
@@ -47,7 +49,7 @@ Json::Value VendorDetails::toJson() const {
 }
 
 bool VendorDetails::isValid() const {
-    return vendorName != "";
+    return appVersionId.isValid() && vendorName != "";
 }
 
 const int64_t VendorDetails::getAppVersionId() const {

@@ -6,7 +6,7 @@
 
 namespace greentop {
 
-MarketState::MarketState() : betDelay(-1), bspReconciled(false), complete(false), inplay(false), numberOfActiveRunners(-1), totalMatched(-1), totalAvailable(-1) {
+MarketState::MarketState() : totalMatched(-1), totalAvailable(-1) {
 }
 
 MarketState::MarketState(const std::string& status,
@@ -64,11 +64,21 @@ Json::Value MarketState::toJson() const {
     if (status != "") {
         json["status"] = status;
     }
-    json["betDelay"] = betDelay;
-    json["bspReconciled"] = bspReconciled;
-    json["complete"] = complete;
-    json["inplay"] = inplay;
-    json["numberOfActiveRunners"] = numberOfActiveRunners;
+    if (betDelay.isValid()) {
+        json["betDelay"] = betDelay.toJson();
+    }
+    if (bspReconciled.isValid()) {
+        json["bspReconciled"] = bspReconciled.toJson();
+    }
+    if (complete.isValid()) {
+        json["complete"] = complete.toJson();
+    }
+    if (inplay.isValid()) {
+        json["inplay"] = inplay.toJson();
+    }
+    if (numberOfActiveRunners.isValid()) {
+        json["numberOfActiveRunners"] = numberOfActiveRunners.toJson();
+    }
     if (lastMatchTime.tm_year > 0) {
         char buffer[25];
         strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &lastMatchTime);
@@ -80,7 +90,7 @@ Json::Value MarketState::toJson() const {
 }
 
 bool MarketState::isValid() const {
-    return status != "" && lastMatchTime.tm_year > 0;
+    return status != "" && betDelay.isValid() && bspReconciled.isValid() && complete.isValid() && inplay.isValid() && numberOfActiveRunners.isValid() && lastMatchTime.tm_year > 0;
 }
 
 const std::string& MarketState::getStatus() const {

@@ -6,7 +6,7 @@
 
 namespace greentop {
 
-Runner::Runner() : selectionId(-1), handicap(-1), adjustmentFactor(-1) {
+Runner::Runner() : selectionId(-1) {
 }
 
 Runner::Runner(const int64_t selectionId,
@@ -78,18 +78,26 @@ void Runner::fromJson(const Json::Value& json) {
         }
     }
     if (json.isMember("matchesByStrategy")) {
-        // FIXME
+        for (Json::ValueIterator itr = json["matchesByStrategy"].begin(); itr != json["matchesByStrategy"].end(); ++itr) {
+            Matches value;
+            value.fromJson(*itr);
+            matchesByStrategy[itr.key().asString()] = value;
+        }
     }
 }
 
 Json::Value Runner::toJson() const {
     Json::Value json(Json::objectValue);
     json["selectionId"] = selectionId;
-    json["handicap"] = handicap;
+    if (handicap.isValid()) {
+        json["handicap"] = handicap.toJson();
+    }
     if (status.isValid()) {
         json["status"] = status.getValue();
     }
-    json["adjustmentFactor"] = adjustmentFactor;
+    if (adjustmentFactor.isValid()) {
+        json["adjustmentFactor"] = adjustmentFactor.toJson();
+    }
     if (lastPriceTraded.isValid()) {
         json["lastPriceTraded"] = lastPriceTraded.toJson();
     }
@@ -118,13 +126,16 @@ Json::Value Runner::toJson() const {
         }
     }
     if (matchesByStrategy.size() > 0) {
-        // FIXME
+        json["matchesByStrategy"] = Json::objectValue;
+        for (std::map<std::string, Matches>::const_iterator it = matchesByStrategy.begin(); it != matchesByStrategy.end(); ++it) {
+            json["matchesByStrategy"][it->first] = it->second.toJson();
+        }
     }
     return json;
 }
 
 bool Runner::isValid() const {
-    return status.isValid();
+    return handicap.isValid() && status.isValid() && adjustmentFactor.isValid();
 }
 
 const int64_t Runner::getSelectionId() const {

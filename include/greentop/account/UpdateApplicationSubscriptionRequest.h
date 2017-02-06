@@ -9,6 +9,7 @@
 #include <string>
 
 #include "greentop/JsonRequest.h"
+#include "greentop/Optional.h"
 
 namespace greentop {
 
@@ -41,7 +42,7 @@ class UpdateApplicationSubscriptionRequest : public JsonRequest {
          * How many days the subscription should last. Expiry time will be rounded up to midnight
          * on the date of expiry.
          */
-        int32_t subscriptionLength;
+        Optional<int32_t> subscriptionLength;
 };
 
 }

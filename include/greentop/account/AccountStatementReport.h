@@ -9,6 +9,7 @@
 #include <vector>
 
 #include "greentop/JsonResponse.h"
+#include "greentop/Optional.h"
 #include "greentop/account/StatementItem.h"
 
 namespace greentop {
@@ -44,7 +45,7 @@ class AccountStatementReport : public JsonResponse {
         /**
          * Indicates whether there are further result items beyond this page.
          */
-        bool moreAvailable;
+        Optional<bool> moreAvailable;
 };
 
 }

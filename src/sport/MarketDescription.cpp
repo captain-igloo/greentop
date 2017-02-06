@@ -6,7 +6,7 @@
 
 namespace greentop {
 
-MarketDescription::MarketDescription() : persistenceEnabled(false), bspMarket(false) {
+MarketDescription::MarketDescription() {
 }
 
 MarketDescription::MarketDescription(const bool persistenceEnabled,
@@ -96,8 +96,12 @@ void MarketDescription::fromJson(const Json::Value& json) {
 
 Json::Value MarketDescription::toJson() const {
     Json::Value json(Json::objectValue);
-    json["persistenceEnabled"] = persistenceEnabled;
-    json["bspMarket"] = bspMarket;
+    if (persistenceEnabled.isValid()) {
+        json["persistenceEnabled"] = persistenceEnabled.toJson();
+    }
+    if (bspMarket.isValid()) {
+        json["bspMarket"] = bspMarket.toJson();
+    }
     if (marketTime.tm_year > 0) {
         char buffer[25];
         strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &marketTime);
@@ -150,7 +154,7 @@ Json::Value MarketDescription::toJson() const {
 }
 
 bool MarketDescription::isValid() const {
-    return marketTime.tm_year > 0 && suspendTime.tm_year > 0 && bettingType.isValid() && turnInPlayEnabled.isValid() && marketType != "" && regulator != "" && marketBaseRate.isValid() && discountAllowed.isValid();
+    return persistenceEnabled.isValid() && bspMarket.isValid() && marketTime.tm_year > 0 && suspendTime.tm_year > 0 && bettingType.isValid() && turnInPlayEnabled.isValid() && marketType != "" && regulator != "" && marketBaseRate.isValid() && discountAllowed.isValid();
 }
 
 const bool MarketDescription::getPersistenceEnabled() const {

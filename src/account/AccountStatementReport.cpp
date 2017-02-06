@@ -6,7 +6,7 @@
 
 namespace greentop {
 
-AccountStatementReport::AccountStatementReport() : moreAvailable(false) {
+AccountStatementReport::AccountStatementReport() {
 }
 
 AccountStatementReport::AccountStatementReport(const std::vector<StatementItem>& accountStatement,
@@ -39,12 +39,14 @@ Json::Value AccountStatementReport::toJson() const {
             json["accountStatement"].append(accountStatement[i].toJson());
         }
     }
-    json["moreAvailable"] = moreAvailable;
+    if (moreAvailable.isValid()) {
+        json["moreAvailable"] = moreAvailable.toJson();
+    }
     return json;
 }
 
 bool AccountStatementReport::isValid() const {
-    return accountStatement.size() > 0;
+    return accountStatement.size() > 0 && moreAvailable.isValid();
 }
 
 const std::vector<StatementItem>& AccountStatementReport::getAccountStatement() const {

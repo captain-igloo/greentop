@@ -9,6 +9,7 @@
 #include <string>
 
 #include "greentop/JsonResponse.h"
+#include "greentop/Optional.h"
 
 namespace greentop {
 
@@ -43,7 +44,7 @@ class VendorDetails : public JsonResponse {
         /**
          * Internal id of the application
          */
-        int64_t appVersionId;
+        Optional<int64_t> appVersionId;
         /**
          * Vendor name
          */

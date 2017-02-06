@@ -8,6 +8,7 @@
 #include <json/json.h>
 
 #include "greentop/JsonResponse.h"
+#include "greentop/Optional.h"
 
 namespace greentop {
 
@@ -28,7 +29,7 @@ class IsAccountSubscribedToWebAppResponse : public JsonResponse {
 
 
     private:
-        bool isAccountSubscribedToWebApp;
+        Optional<bool> isAccountSubscribedToWebApp;
 };
 
 }
