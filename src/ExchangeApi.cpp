@@ -10,7 +10,6 @@
 
 #include "greentop/DummyRequest.h"
 #include "greentop/ExchangeApi.h"
-#include "greentop/HttpCookie.h"
 
 namespace greentop {
 

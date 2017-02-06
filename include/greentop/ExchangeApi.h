@@ -97,30 +97,77 @@ namespace greentop {
 class ExchangeApi {
 
     public:
-
+        /** The login end point for the global exchange. */
         static const std::string LOGIN_END_POINT_GLOBAL;
+        /** The login end point for the Italian exchange. */
         static const std::string LOGIN_END_POINT_ITALY;
+        /** The login end point for the Spanish exchange. */
         static const std::string LOGIN_END_POINT_SPAIN;
+        /** The login end point for the Romanian exchange. */
         static const std::string LOGIN_END_POINT_ROMANIA;
+        /** The certificate login end point. */
         static const std::string LOGIN_END_POINT_GLOBAL_CERT;
-
+        /** There are three APIs - "account", "betting", and "heartbeat". */
         enum class Api {ACCOUNT, BETTING, HEARTBEAT};
 
+        /**
+         * Constructor.
+         *
+         * @param applicationKey The user's application key.  It is required by all operations except login,
+         *        createDeveloperAppKeys and getDeveloperAppKeys.
+         */
         ExchangeApi(const std::string& applicationKey = "");
 
+        /**
+         * Sets the login end point to use.
+         *
+         * @param loginEndPoint The login end point to use.
+         */
         void setLoginEndPoint(const std::string& loginEndPoint);
 
+        /**
+         * Log in either with a certificate or without.
+         *
+         * @param username The betfair username.
+         * @param password The betfair password.
+         * @param certFilename The certificate filename.  If provided, keyFilename should be provided as well.
+         * @param keyFilename The key filename.
+         */
         bool login(const std::string& username, const std::string& password,
             const std::string& certFilename = "", const std::string& keyFilename = "");
 
+        /**
+         * Log out by throwing away the SSO token.
+         */
         void logout();
 
+        /**
+         * Sets the application key.
+         *
+         * @param appKey The application key.
+         */
         void setApplicationKey(const std::string& appKey);
 
+        /**
+         * Sets the SSO token.  Useful if log in has happened independently of greentop, eg using the interactive
+         * login.
+         *
+         * @param ssoid The SSO token.
+         */
         void setSsoid(const std::string& ssoid);
 
+        /**
+         * Refresh the menu.  If the cache filename is provided, the menu JSON is saved to this file.
+         *
+         * @param cacheFilename The cache filename.
+         */
         void refreshMenu(const std::string& cacheFilename = "");
 
+        /**
+         * Gets the menu.
+         *
+         * @return The menu.
+         */
         menu::Menu& getMenu();
 
         /**
