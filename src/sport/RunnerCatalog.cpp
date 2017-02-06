@@ -35,7 +35,7 @@ void RunnerCatalog::fromJson(const Json::Value& json) {
         sortPriority = json["sortPriority"].asInt();
     }
     if (json.isMember("metadata")) {
-        for (Json::ValueIterator itr = json["metadata"].begin(); itr != json["metadata"].end(); ++itr) {
+        for (Json::ValueConstIterator itr = json["metadata"].begin(); itr != json["metadata"].end(); ++itr) {
             std::string value;
             value = (*itr).asString();
             metadata[itr.key().asString()] = value;

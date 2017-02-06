@@ -78,7 +78,7 @@ void Runner::fromJson(const Json::Value& json) {
         }
     }
     if (json.isMember("matchesByStrategy")) {
-        for (Json::ValueIterator itr = json["matchesByStrategy"].begin(); itr != json["matchesByStrategy"].end(); ++itr) {
+        for (Json::ValueConstIterator itr = json["matchesByStrategy"].begin(); itr != json["matchesByStrategy"].end(); ++itr) {
             Matches value;
             value.fromJson(*itr);
             matchesByStrategy[itr.key().asString()] = value;
