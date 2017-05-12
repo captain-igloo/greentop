@@ -128,7 +128,8 @@ void ExchangeApi::setSsoid(const std::string& ssoid) {
     this->ssoid = ssoid;
 }
 
-void ExchangeApi::refreshMenu(const std::string& cacheFilename) {
+bool ExchangeApi::refreshMenu(const std::string& cacheFilename) {
+    bool refreshResult = false;
 
     std::unique_ptr<CURL, void(*)(CURL*)> curl(curl_easy_init(), curl_easy_cleanup);
 
@@ -166,12 +167,16 @@ void ExchangeApi::refreshMenu(const std::string& cacheFilename) {
 
             Json::Value json;
             result >> json;
-            menu.fromJson(json);
+            if (json.isMember("children")) {
+                menu.fromJson(json);
+                refreshResult = true;
+            } // else error, might not be logged in.
 
         } else {
             throw std::runtime_error(errorBuffer);
         }
     }
+    return refreshResult;
 }
 
 menu::Menu& ExchangeApi::getMenu() {
