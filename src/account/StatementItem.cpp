@@ -40,7 +40,7 @@ void StatementItem::fromJson(const Json::Value& json) {
         itemClass = json["itemClass"].asString();
     }
     if (json.isMember("itemClassData")) {
-        for (Json::ValueIterator itr = json["itemClassData"].begin(); itr != json["itemClassData"].end(); ++itr) {
+        for (Json::ValueConstIterator itr = json["itemClassData"].begin(); itr != json["itemClassData"].end(); ++itr) {
             std::string value;
             value = (*itr).asString();
             itemClassData[itr.key().asString()] = value;
