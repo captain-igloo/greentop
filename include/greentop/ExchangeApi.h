@@ -162,8 +162,9 @@ class ExchangeApi {
          * Refresh the menu.  If the cache filename is provided, the menu JSON is saved to this file.
          *
          * @param cacheFilename The cache filename.
+         * @return True if the menu has been refreshed successfully else false.
          */
-        void refreshMenu(const std::string& cacheFilename = "");
+        bool refreshMenu(const std::string& cacheFilename = "");
 
         /**
          * Gets the menu.
