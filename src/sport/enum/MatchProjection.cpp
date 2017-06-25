@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -14,16 +14,14 @@ const std::string MatchProjection::ROLLED_UP_BY_AVG_PRICE = "ROLLED_UP_BY_AVG_PR
 
 MatchProjection::MatchProjection() {
     valid = false;
-};
+}
 
 MatchProjection::MatchProjection(const std::string& v) {
-
     if (v != NO_ROLLUP &&
         v != ROLLED_UP_BY_PRICE &&
         v != ROLLED_UP_BY_AVG_PRICE) {
         throw std::invalid_argument("Invalid MatchProjection: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -41,4 +39,3 @@ bool MatchProjection::operator!=(const MatchProjection& other) const {
 }
 
 }
-

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef HEARTBEATREQUEST_H
@@ -16,7 +16,7 @@ class HeartbeatRequest : public JsonRequest {
     public:
         HeartbeatRequest();
 
-        HeartbeatRequest(const int32_t preferredTimeoutSeconds);
+        HeartbeatRequest(const Optional<int32_t>& preferredTimeoutSeconds);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -24,8 +24,8 @@ class HeartbeatRequest : public JsonRequest {
 
         virtual bool isValid() const;
 
-        const int32_t getPreferredTimeoutSeconds() const;
-        void setPreferredTimeoutSeconds(const int32_t preferredTimeoutSeconds);
+        const Optional<int32_t>& getPreferredTimeoutSeconds() const;
+        void setPreferredTimeoutSeconds(const Optional<int32_t>& preferredTimeoutSeconds);
 
 
     private:
@@ -50,5 +50,3 @@ class HeartbeatRequest : public JsonRequest {
 }
 
 #endif // HEARTBEATREQUEST_H
-
-

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -17,10 +17,9 @@ const std::string MarketSort::LAST_TO_START = "LAST_TO_START";
 
 MarketSort::MarketSort() {
     valid = false;
-};
+}
 
 MarketSort::MarketSort(const std::string& v) {
-
     if (v != MINIMUM_TRADED &&
         v != MAXIMUM_TRADED &&
         v != MINIMUM_AVAILABLE &&
@@ -29,7 +28,6 @@ MarketSort::MarketSort(const std::string& v) {
         v != LAST_TO_START) {
         throw std::invalid_argument("Invalid MarketSort: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -47,4 +45,3 @@ bool MarketSort::operator!=(const MarketSort& other) const {
 }
 
 }
-

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/ClearedOrderSummaryReport.h"
@@ -10,7 +10,7 @@ ClearedOrderSummaryReport::ClearedOrderSummaryReport() {
 }
 
 ClearedOrderSummaryReport::ClearedOrderSummaryReport(const std::vector<ClearedOrderSummary>& clearedOrders,
-    const bool moreAvailable) :
+    const Optional<bool>& moreAvailable) :
     clearedOrders(clearedOrders),
     moreAvailable(moreAvailable) {
 }
@@ -23,11 +23,9 @@ void ClearedOrderSummaryReport::fromJson(const Json::Value& json) {
             clearedOrder.fromJson(json["clearedOrders"][i]);
             clearedOrders.push_back(clearedOrder);
         }
-;
         }
         if (json.isMember("moreAvailable")) {
             moreAvailable = json["moreAvailable"].asBool();
-;
         }
     }
 }
@@ -56,10 +54,10 @@ void ClearedOrderSummaryReport::setClearedOrders(const std::vector<ClearedOrderS
     this->clearedOrders = clearedOrders;
 }
 
-const bool ClearedOrderSummaryReport::getMoreAvailable() const {
+const Optional<bool>& ClearedOrderSummaryReport::getMoreAvailable() const {
     return moreAvailable;
 }
-void ClearedOrderSummaryReport::setMoreAvailable(const bool moreAvailable) {
+void ClearedOrderSummaryReport::setMoreAvailable(const Optional<bool>& moreAvailable) {
     this->moreAvailable = moreAvailable;
 }
 

@@ -1,18 +1,18 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/Runner.h"
 
 namespace greentop {
 
-Runner::Runner() : selectionId(-1) {
+Runner::Runner() {
 }
 
-Runner::Runner(const int64_t selectionId,
-    const double handicap,
+Runner::Runner(const Optional<int64_t>& selectionId,
+    const Optional<double>& handicap,
     const RunnerStatus& status,
-    const double adjustmentFactor,
+    const Optional<double>& adjustmentFactor,
     const Optional<double>& lastPriceTraded,
     const Optional<double>& totalMatched,
     const std::tm& removalDate,
@@ -88,7 +88,9 @@ void Runner::fromJson(const Json::Value& json) {
 
 Json::Value Runner::toJson() const {
     Json::Value json(Json::objectValue);
-    json["selectionId"] = selectionId;
+    if (selectionId.isValid()) {
+        json["selectionId"] = selectionId.toJson();
+    }
     if (handicap.isValid()) {
         json["handicap"] = handicap.toJson();
     }
@@ -130,25 +132,26 @@ Json::Value Runner::toJson() const {
         for (std::map<std::string, Matches>::const_iterator it = matchesByStrategy.begin(); it != matchesByStrategy.end(); ++it) {
             json["matchesByStrategy"][it->first] = it->second.toJson();
         }
+
     }
     return json;
 }
 
 bool Runner::isValid() const {
-    return handicap.isValid() && status.isValid() && adjustmentFactor.isValid();
+    return selectionId.isValid() && handicap.isValid() && status.isValid() && adjustmentFactor.isValid();
 }
 
-const int64_t Runner::getSelectionId() const {
+const Optional<int64_t>& Runner::getSelectionId() const {
     return selectionId;
 }
-void Runner::setSelectionId(const int64_t selectionId) {
+void Runner::setSelectionId(const Optional<int64_t>& selectionId) {
     this->selectionId = selectionId;
 }
 
-const double Runner::getHandicap() const {
+const Optional<double>& Runner::getHandicap() const {
     return handicap;
 }
-void Runner::setHandicap(const double handicap) {
+void Runner::setHandicap(const Optional<double>& handicap) {
     this->handicap = handicap;
 }
 
@@ -159,10 +162,10 @@ void Runner::setStatus(const RunnerStatus& status) {
     this->status = status;
 }
 
-const double Runner::getAdjustmentFactor() const {
+const Optional<double>& Runner::getAdjustmentFactor() const {
     return adjustmentFactor;
 }
-void Runner::setAdjustmentFactor(const double adjustmentFactor) {
+void Runner::setAdjustmentFactor(const Optional<double>& adjustmentFactor) {
     this->adjustmentFactor = adjustmentFactor;
 }
 

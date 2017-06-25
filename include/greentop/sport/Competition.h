@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef COMPETITION_H
@@ -11,7 +11,6 @@
 #include "greentop/JsonMember.h"
 
 namespace greentop {
-
 /**
  * Competition
  */
@@ -48,5 +47,3 @@ class Competition : public JsonMember {
 }
 
 #endif // COMPETITION_H
-
-

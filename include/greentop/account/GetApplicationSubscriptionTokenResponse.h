@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef GETAPPLICATIONSUBSCRIPTIONTOKENRESPONSE_H
@@ -29,11 +29,10 @@ class GetApplicationSubscriptionTokenResponse : public JsonResponse {
 
 
     private:
+
         std::string subscriptionToken;
 };
 
 }
 
 #endif // GETAPPLICATIONSUBSCRIPTIONTOKENRESPONSE_H
-
-

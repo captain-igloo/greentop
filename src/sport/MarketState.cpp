@@ -1,23 +1,23 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/MarketState.h"
 
 namespace greentop {
 
-MarketState::MarketState() : totalMatched(-1), totalAvailable(-1) {
+MarketState::MarketState() {
 }
 
 MarketState::MarketState(const std::string& status,
-    const int32_t betDelay,
-    const bool bspReconciled,
-    const bool complete,
-    const bool inplay,
-    const int32_t numberOfActiveRunners,
+    const Optional<int32_t>& betDelay,
+    const Optional<bool>& bspReconciled,
+    const Optional<bool>& complete,
+    const Optional<bool>& inplay,
+    const Optional<int32_t>& numberOfActiveRunners,
     const std::tm& lastMatchTime,
-    const double totalMatched,
-    const double totalAvailable) :
+    const Optional<double>& totalMatched,
+    const Optional<double>& totalAvailable) :
     status(status),
     betDelay(betDelay),
     bspReconciled(bspReconciled),
@@ -84,13 +84,17 @@ Json::Value MarketState::toJson() const {
         strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &lastMatchTime);
         json["lastMatchTime"] = std::string(buffer);
     }
-    json["totalMatched"] = totalMatched;
-    json["totalAvailable"] = totalAvailable;
+    if (totalMatched.isValid()) {
+        json["totalMatched"] = totalMatched.toJson();
+    }
+    if (totalAvailable.isValid()) {
+        json["totalAvailable"] = totalAvailable.toJson();
+    }
     return json;
 }
 
 bool MarketState::isValid() const {
-    return status != "" && betDelay.isValid() && bspReconciled.isValid() && complete.isValid() && inplay.isValid() && numberOfActiveRunners.isValid() && lastMatchTime.tm_year > 0;
+    return status != "" && betDelay.isValid() && bspReconciled.isValid() && complete.isValid() && inplay.isValid() && numberOfActiveRunners.isValid() && lastMatchTime.tm_year > 0 && totalMatched.isValid() && totalAvailable.isValid();
 }
 
 const std::string& MarketState::getStatus() const {
@@ -100,38 +104,38 @@ void MarketState::setStatus(const std::string& status) {
     this->status = status;
 }
 
-const int32_t MarketState::getBetDelay() const {
+const Optional<int32_t>& MarketState::getBetDelay() const {
     return betDelay;
 }
-void MarketState::setBetDelay(const int32_t betDelay) {
+void MarketState::setBetDelay(const Optional<int32_t>& betDelay) {
     this->betDelay = betDelay;
 }
 
-const bool MarketState::getBspReconciled() const {
+const Optional<bool>& MarketState::getBspReconciled() const {
     return bspReconciled;
 }
-void MarketState::setBspReconciled(const bool bspReconciled) {
+void MarketState::setBspReconciled(const Optional<bool>& bspReconciled) {
     this->bspReconciled = bspReconciled;
 }
 
-const bool MarketState::getComplete() const {
+const Optional<bool>& MarketState::getComplete() const {
     return complete;
 }
-void MarketState::setComplete(const bool complete) {
+void MarketState::setComplete(const Optional<bool>& complete) {
     this->complete = complete;
 }
 
-const bool MarketState::getInplay() const {
+const Optional<bool>& MarketState::getInplay() const {
     return inplay;
 }
-void MarketState::setInplay(const bool inplay) {
+void MarketState::setInplay(const Optional<bool>& inplay) {
     this->inplay = inplay;
 }
 
-const int32_t MarketState::getNumberOfActiveRunners() const {
+const Optional<int32_t>& MarketState::getNumberOfActiveRunners() const {
     return numberOfActiveRunners;
 }
-void MarketState::setNumberOfActiveRunners(const int32_t numberOfActiveRunners) {
+void MarketState::setNumberOfActiveRunners(const Optional<int32_t>& numberOfActiveRunners) {
     this->numberOfActiveRunners = numberOfActiveRunners;
 }
 
@@ -142,17 +146,17 @@ void MarketState::setLastMatchTime(const std::tm& lastMatchTime) {
     this->lastMatchTime = lastMatchTime;
 }
 
-const double MarketState::getTotalMatched() const {
+const Optional<double>& MarketState::getTotalMatched() const {
     return totalMatched;
 }
-void MarketState::setTotalMatched(const double totalMatched) {
+void MarketState::setTotalMatched(const Optional<double>& totalMatched) {
     this->totalMatched = totalMatched;
 }
 
-const double MarketState::getTotalAvailable() const {
+const Optional<double>& MarketState::getTotalAvailable() const {
     return totalAvailable;
 }
-void MarketState::setTotalAvailable(const double totalAvailable) {
+void MarketState::setTotalAvailable(const Optional<double>& totalAvailable) {
     this->totalAvailable = totalAvailable;
 }
 

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef ITEMCLASS_H
@@ -16,9 +16,11 @@ class ItemClass : public Enum<ItemClass> {
 
     public:
 
-        /** Statement item not mapped to a specific class. All values will be concatenated into a
-         single key/value pair.
-         The key will be 'unknownStatementItem' and the value will be a comma separated string. */
+        /**
+         * Statement item not mapped to a specific class. All values will be concatenated into a
+         * single key/value pair. The key will be 'unknownStatementItem' and the value will be a
+         * comma separated string.
+         */
         static const std::string UNKNOWN;
 
         ItemClass();

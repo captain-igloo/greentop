@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef LIMITORDER_H
@@ -14,7 +14,6 @@
 #include "greentop/sport/enum/TimeInForce.h"
 
 namespace greentop {
-
 /**
  * Place a new LIMIT order (simple exchange bet for immediate execution)
  */
@@ -63,7 +62,9 @@ class LimitOrder : public JsonMember {
          */
         Optional<double> size;
         /**
-         * The limit price
+         * The limit price. For LINE markets, the price at which the bet is settled and struck will
+         * always be 2.0 (Evens). On these bets, the Price field is used to indicate the line value
+         * which is being bought or sold.
          */
         Optional<double> price;
         /**
@@ -74,7 +75,9 @@ class LimitOrder : public JsonMember {
         /**
          * The type of TimeInForce value to use. This value takes precedence over any
          * PersistenceType value chosen. If this attribute is populated along with the
-         * PersistenceType field, then the PersistenceType will be ignored.
+         * PersistenceType field, then the PersistenceType will be ignored. TimeInForce bets are
+         * valid for LINE markets however Volume Weighted Average Price (VWAP) functionality is
+         * disabled.
          */
         TimeInForce timeInForce;
         /**
@@ -88,10 +91,10 @@ class LimitOrder : public JsonMember {
         Optional<double> minFillSize;
         /**
          * An optional field to allow betting to a targeted PAYOUT or BACKERS_PROFIT. It is illegal
-         * to specify both a Size and BetTargetType Matching provides best execution at the
-         * requested price or better up to the payout or profit. If the bet is not matched
-         * completely and immediately, the remaining portion enters the unmatched pool of bets on
-         * the exchange
+         * to specify both a Size and BetTargetType For line markets, BetTargetType bets are
+         * invalid. Matching provides best execution at the requested price or better up to the
+         * payout or profit. If the bet is not matched completely and immediately, the remaining
+         * portion enters the unmatched pool of bets on the exchange
          */
         BetTargetType betTargetType;
         /**
@@ -105,5 +108,3 @@ class LimitOrder : public JsonMember {
 }
 
 #endif // LIMITORDER_H
-
-

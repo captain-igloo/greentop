@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef RUNNERCATALOG_H
@@ -12,7 +12,6 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
-
 /**
  * Information about the Runners (selections) in a market
  */
@@ -20,10 +19,10 @@ class RunnerCatalog : public JsonMember {
     public:
         RunnerCatalog();
 
-        RunnerCatalog(const int64_t selectionId,
+        RunnerCatalog(const Optional<int64_t>& selectionId,
             const std::string& runnerName,
-            const double handicap,
-            const int32_t sortPriority,
+            const Optional<double>& handicap,
+            const Optional<int32_t>& sortPriority,
             const std::map<std::string, std::string> metadata = std::map<std::string, std::string>());
 
         virtual void fromJson(const Json::Value& json);
@@ -32,17 +31,17 @@ class RunnerCatalog : public JsonMember {
 
         virtual bool isValid() const;
 
-        const int64_t getSelectionId() const;
-        void setSelectionId(const int64_t selectionId);
+        const Optional<int64_t>& getSelectionId() const;
+        void setSelectionId(const Optional<int64_t>& selectionId);
 
         const std::string& getRunnerName() const;
         void setRunnerName(const std::string& runnerName);
 
-        const double getHandicap() const;
-        void setHandicap(const double handicap);
+        const Optional<double>& getHandicap() const;
+        void setHandicap(const Optional<double>& handicap);
 
-        const int32_t getSortPriority() const;
-        void setSortPriority(const int32_t sortPriority);
+        const Optional<int32_t>& getSortPriority() const;
+        void setSortPriority(const Optional<int32_t>& sortPriority);
 
         const std::map<std::string, std::string>& getMetadata() const;
         void setMetadata(const std::map<std::string, std::string>& metadata);
@@ -52,7 +51,7 @@ class RunnerCatalog : public JsonMember {
         /**
          * The unique id for the selection.
          */
-        int64_t selectionId;
+        Optional<int64_t> selectionId;
         /**
          * The name of the runner
          */
@@ -74,5 +73,3 @@ class RunnerCatalog : public JsonMember {
 }
 
 #endif // RUNNERCATALOG_H
-
-

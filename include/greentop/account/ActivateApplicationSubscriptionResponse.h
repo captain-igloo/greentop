@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef ACTIVATEAPPLICATIONSUBSCRIPTIONRESPONSE_H
@@ -29,11 +29,10 @@ class ActivateApplicationSubscriptionResponse : public JsonResponse {
 
 
     private:
+
         Status status;
 };
 
 }
 
 #endif // ACTIVATEAPPLICATIONSUBSCRIPTIONRESPONSE_H
-
-

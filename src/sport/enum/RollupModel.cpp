@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -15,17 +15,15 @@ const std::string RollupModel::NONE = "NONE";
 
 RollupModel::RollupModel() {
     valid = false;
-};
+}
 
 RollupModel::RollupModel(const std::string& v) {
-
     if (v != STAKE &&
         v != PAYOUT &&
         v != MANAGED_LIABILITY &&
         v != NONE) {
         throw std::invalid_argument("Invalid RollupModel: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -43,4 +41,3 @@ bool RollupModel::operator!=(const RollupModel& other) const {
 }
 
 }
-

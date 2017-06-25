@@ -1,16 +1,16 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/LimitOnCloseOrder.h"
 
 namespace greentop {
 
-LimitOnCloseOrder::LimitOnCloseOrder() : liability(-1), price(-1) {
+LimitOnCloseOrder::LimitOnCloseOrder() {
 }
 
-LimitOnCloseOrder::LimitOnCloseOrder(const double liability,
-    const double price) :
+LimitOnCloseOrder::LimitOnCloseOrder(const Optional<double>& liability,
+    const Optional<double>& price) :
     liability(liability),
     price(price) {
 }
@@ -26,26 +26,30 @@ void LimitOnCloseOrder::fromJson(const Json::Value& json) {
 
 Json::Value LimitOnCloseOrder::toJson() const {
     Json::Value json(Json::objectValue);
-    json["liability"] = liability;
-    json["price"] = price;
+    if (liability.isValid()) {
+        json["liability"] = liability.toJson();
+    }
+    if (price.isValid()) {
+        json["price"] = price.toJson();
+    }
     return json;
 }
 
 bool LimitOnCloseOrder::isValid() const {
-    return true;
+    return liability.isValid() && price.isValid();
 }
 
-const double LimitOnCloseOrder::getLiability() const {
+const Optional<double>& LimitOnCloseOrder::getLiability() const {
     return liability;
 }
-void LimitOnCloseOrder::setLiability(const double liability) {
+void LimitOnCloseOrder::setLiability(const Optional<double>& liability) {
     this->liability = liability;
 }
 
-const double LimitOnCloseOrder::getPrice() const {
+const Optional<double>& LimitOnCloseOrder::getPrice() const {
     return price;
 }
-void LimitOnCloseOrder::setPrice(const double price) {
+void LimitOnCloseOrder::setPrice(const Optional<double>& price) {
     this->price = price;
 }
 

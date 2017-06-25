@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/IsAccountSubscribedToWebAppResponse.h"
@@ -9,21 +9,18 @@ namespace greentop {
 IsAccountSubscribedToWebAppResponse::IsAccountSubscribedToWebAppResponse() {
 }
 
-IsAccountSubscribedToWebAppResponse::IsAccountSubscribedToWebAppResponse(const bool isAccountSubscribedToWebApp) :
+IsAccountSubscribedToWebAppResponse::IsAccountSubscribedToWebAppResponse(const Optional<bool>& isAccountSubscribedToWebApp) :
     isAccountSubscribedToWebApp(isAccountSubscribedToWebApp) {
 }
 
 void IsAccountSubscribedToWebAppResponse::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
-        if (json.isMember("isAccountSubscribedToWebApp")) {
-            isAccountSubscribedToWebApp = json["isAccountSubscribedToWebApp"].asBool();
-;
-        }
+        isAccountSubscribedToWebApp = json["isAccountSubscribedToWebApp"].asBool();
     }
 }
 
 Json::Value IsAccountSubscribedToWebAppResponse::toJson() const {
-    Json::Value json(Json::objectValue);
+    Json::Value json(Json::arrayValue);
     if (isAccountSubscribedToWebApp.isValid()) {
         json["isAccountSubscribedToWebApp"] = isAccountSubscribedToWebApp.toJson();
     }
@@ -34,10 +31,10 @@ bool IsAccountSubscribedToWebAppResponse::isValid() const {
     return isAccountSubscribedToWebApp.isValid();
 }
 
-const bool IsAccountSubscribedToWebAppResponse::getIsAccountSubscribedToWebApp() const {
+const Optional<bool>& IsAccountSubscribedToWebAppResponse::getIsAccountSubscribedToWebApp() const {
     return isAccountSubscribedToWebApp;
 }
-void IsAccountSubscribedToWebAppResponse::setIsAccountSubscribedToWebApp(const bool isAccountSubscribedToWebApp) {
+void IsAccountSubscribedToWebAppResponse::setIsAccountSubscribedToWebApp(const Optional<bool>& isAccountSubscribedToWebApp) {
     this->isAccountSubscribedToWebApp = isAccountSubscribedToWebApp;
 }
 

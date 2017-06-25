@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef RUNNERSTATUS_H
@@ -16,17 +16,27 @@ class RunnerStatus : public Enum<RunnerStatus> {
 
     public:
 
-        /** ACTIVE */
+        /**
+         * ACTIVE
+         */
         static const std::string ACTIVE;
-        /** WINNER */
+        /**
+         * WINNER
+         */
         static const std::string WINNER;
-        /** LOSER */
+        /**
+         * LOSER
+         */
         static const std::string LOSER;
-        /**  */
+
         static const std::string REMOVED_VACANT;
-        /** REMOVED */
+        /**
+         * REMOVED
+         */
         static const std::string REMOVED;
-        /** PLACED */
+        /**
+         * PLACED
+         */
         static const std::string PLACED;
 
         RunnerStatus();

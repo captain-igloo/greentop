@@ -1,20 +1,20 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/CurrentOrderSummary.h"
 
 namespace greentop {
 
-CurrentOrderSummary::CurrentOrderSummary() : selectionId(-1), handicap(-1), bspLiability(-1) {
+CurrentOrderSummary::CurrentOrderSummary() {
 }
 
 CurrentOrderSummary::CurrentOrderSummary(const std::string& betId,
     const std::string& marketId,
-    const int64_t selectionId,
-    const double handicap,
+    const Optional<int64_t>& selectionId,
+    const Optional<double>& handicap,
     const PriceSize& priceSize,
-    const double bspLiability,
+    const Optional<double>& bspLiability,
     const Side& side,
     const OrderStatus& status,
     const PersistenceType& persistenceType,
@@ -126,14 +126,24 @@ void CurrentOrderSummary::fromJson(const Json::Value& json) {
 
 Json::Value CurrentOrderSummary::toJson() const {
     Json::Value json(Json::objectValue);
-    json["betId"] = betId;
-    json["marketId"] = marketId;
-    json["selectionId"] = selectionId;
-    json["handicap"] = handicap;
+    if (betId != "") {
+        json["betId"] = betId;
+    }
+    if (marketId != "") {
+        json["marketId"] = marketId;
+    }
+    if (selectionId.isValid()) {
+        json["selectionId"] = selectionId.toJson();
+    }
+    if (handicap.isValid()) {
+        json["handicap"] = handicap.toJson();
+    }
     if (priceSize.isValid()) {
         json["priceSize"] = priceSize.toJson();
     }
-    json["bspLiability"] = bspLiability;
+    if (bspLiability.isValid()) {
+        json["bspLiability"] = bspLiability.toJson();
+    }
     if (side.isValid()) {
         json["side"] = side.getValue();
     }
@@ -190,7 +200,7 @@ Json::Value CurrentOrderSummary::toJson() const {
 }
 
 bool CurrentOrderSummary::isValid() const {
-    return priceSize.isValid() && side.isValid() && status.isValid() && persistenceType.isValid() && orderType.isValid() && placedDate.tm_year > 0 && matchedDate.tm_year > 0;
+    return betId != "" && marketId != "" && selectionId.isValid() && handicap.isValid() && priceSize.isValid() && bspLiability.isValid() && side.isValid() && status.isValid() && persistenceType.isValid() && orderType.isValid() && placedDate.tm_year > 0 && matchedDate.tm_year > 0;
 }
 
 const std::string& CurrentOrderSummary::getBetId() const {
@@ -207,17 +217,17 @@ void CurrentOrderSummary::setMarketId(const std::string& marketId) {
     this->marketId = marketId;
 }
 
-const int64_t CurrentOrderSummary::getSelectionId() const {
+const Optional<int64_t>& CurrentOrderSummary::getSelectionId() const {
     return selectionId;
 }
-void CurrentOrderSummary::setSelectionId(const int64_t selectionId) {
+void CurrentOrderSummary::setSelectionId(const Optional<int64_t>& selectionId) {
     this->selectionId = selectionId;
 }
 
-const double CurrentOrderSummary::getHandicap() const {
+const Optional<double>& CurrentOrderSummary::getHandicap() const {
     return handicap;
 }
-void CurrentOrderSummary::setHandicap(const double handicap) {
+void CurrentOrderSummary::setHandicap(const Optional<double>& handicap) {
     this->handicap = handicap;
 }
 
@@ -228,10 +238,10 @@ void CurrentOrderSummary::setPriceSize(const PriceSize& priceSize) {
     this->priceSize = priceSize;
 }
 
-const double CurrentOrderSummary::getBspLiability() const {
+const Optional<double>& CurrentOrderSummary::getBspLiability() const {
     return bspLiability;
 }
-void CurrentOrderSummary::setBspLiability(const double bspLiability) {
+void CurrentOrderSummary::setBspLiability(const Optional<double>& bspLiability) {
     this->bspLiability = bspLiability;
 }
 

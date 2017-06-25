@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef MARKETCATALOGUE_H
@@ -20,7 +20,6 @@
 #include "greentop/sport/RunnerCatalog.h"
 
 namespace greentop {
-
 /**
  * Information about a market
  */
@@ -116,5 +115,3 @@ class MarketCatalogue : public JsonMember {
 }
 
 #endif // MARKETCATALOGUE_H
-
-

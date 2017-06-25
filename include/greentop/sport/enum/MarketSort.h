@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef MARKETSORT_H
@@ -16,17 +16,29 @@ class MarketSort : public Enum<MarketSort> {
 
     public:
 
-        /** Minimum traded volume */
+        /**
+         * Minimum traded volume
+         */
         static const std::string MINIMUM_TRADED;
-        /** Maximum traded volume */
+        /**
+         * Maximum traded volume
+         */
         static const std::string MAXIMUM_TRADED;
-        /** Minimum available to match */
+        /**
+         * Minimum available to match
+         */
         static const std::string MINIMUM_AVAILABLE;
-        /** Maximum available to match */
+        /**
+         * Maximum available to match
+         */
         static const std::string MAXIMUM_AVAILABLE;
-        /** The closest markets based on their expected start time */
+        /**
+         * The closest markets based on their expected start time
+         */
         static const std::string FIRST_TO_START;
-        /** The most distant markets based on their expected start time */
+        /**
+         * The most distant markets based on their expected start time
+         */
         static const std::string LAST_TO_START;
 
         MarketSort();

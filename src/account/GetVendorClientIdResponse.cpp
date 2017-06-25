@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/GetVendorClientIdResponse.h"
@@ -15,15 +15,12 @@ GetVendorClientIdResponse::GetVendorClientIdResponse(const std::string& vendorCl
 
 void GetVendorClientIdResponse::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
-        if (json.isMember("vendorClientId")) {
-            vendorClientId = json["vendorClientId"].asString();
-;
-        }
+        vendorClientId = json["vendorClientId"].asString();
     }
 }
 
 Json::Value GetVendorClientIdResponse::toJson() const {
-    Json::Value json(Json::objectValue);
+    Json::Value json(Json::arrayValue);
     if (vendorClientId != "") {
         json["vendorClientId"] = vendorClientId;
     }

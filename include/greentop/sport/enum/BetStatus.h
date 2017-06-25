@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef BETSTATUS_H
@@ -16,13 +16,22 @@ class BetStatus : public Enum<BetStatus> {
 
     public:
 
-        /** A matched bet that was settled normally */
+        /**
+         * A matched bet that was settled normally
+         */
         static const std::string SETTLED;
-        /** A matched bet that was subsequently voided by Betfair, before, during or after settlement */
+        /**
+         * A matched bet that was subsequently voided by Betfair, before, during or after
+         * settlement
+         */
         static const std::string VOIDED;
-        /** Unmatched bet that was cancelled by Betfair (for example at turn in play). */
+        /**
+         * Unmatched bet that was cancelled by Betfair (for example at turn in play).
+         */
         static const std::string LAPSED;
-        /** Unmatched bet that was cancelled by an explicit customer action. */
+        /**
+         * Unmatched bet that was cancelled by an explicit customer action.
+         */
         static const std::string CANCELLED;
 
         BetStatus();

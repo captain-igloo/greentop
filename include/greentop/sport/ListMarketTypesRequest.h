@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef LISTMARKETTYPESREQUEST_H
@@ -48,5 +48,3 @@ class ListMarketTypesRequest : public JsonRequest {
 }
 
 #endif // LISTMARKETTYPESREQUEST_H
-
-

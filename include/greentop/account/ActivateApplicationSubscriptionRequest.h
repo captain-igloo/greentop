@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef ACTIVATEAPPLICATIONSUBSCRIPTIONREQUEST_H
@@ -38,5 +38,3 @@ class ActivateApplicationSubscriptionRequest : public JsonRequest {
 }
 
 #endif // ACTIVATEAPPLICATIONSUBSCRIPTIONREQUEST_H
-
-

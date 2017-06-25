@@ -1,16 +1,16 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/PlaceInstruction.h"
 
 namespace greentop {
 
-PlaceInstruction::PlaceInstruction() : selectionId(-1) {
+PlaceInstruction::PlaceInstruction() {
 }
 
 PlaceInstruction::PlaceInstruction(const OrderType& orderType,
-    const int64_t selectionId,
+    const Optional<int64_t>& selectionId,
     const Optional<double>& handicap,
     const Side& side,
     const LimitOrder& limitOrder,
@@ -59,7 +59,9 @@ Json::Value PlaceInstruction::toJson() const {
     if (orderType.isValid()) {
         json["orderType"] = orderType.getValue();
     }
-    json["selectionId"] = selectionId;
+    if (selectionId.isValid()) {
+        json["selectionId"] = selectionId.toJson();
+    }
     if (handicap.isValid()) {
         json["handicap"] = handicap.toJson();
     }
@@ -82,7 +84,7 @@ Json::Value PlaceInstruction::toJson() const {
 }
 
 bool PlaceInstruction::isValid() const {
-    return orderType.isValid() && side.isValid();
+    return orderType.isValid() && selectionId.isValid() && side.isValid();
 }
 
 const OrderType& PlaceInstruction::getOrderType() const {
@@ -92,10 +94,10 @@ void PlaceInstruction::setOrderType(const OrderType& orderType) {
     this->orderType = orderType;
 }
 
-const int64_t PlaceInstruction::getSelectionId() const {
+const Optional<int64_t>& PlaceInstruction::getSelectionId() const {
     return selectionId;
 }
-void PlaceInstruction::setSelectionId(const int64_t selectionId) {
+void PlaceInstruction::setSelectionId(const Optional<int64_t>& selectionId) {
     this->selectionId = selectionId;
 }
 

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef PLACEORDERSREQUEST_H
@@ -57,6 +57,7 @@ class PlaceOrdersRequest : public JsonRequest {
          * The market id these orders are to be placed on
          */
         std::string marketId;
+
         std::vector<PlaceInstruction> instructions;
         /**
          * Optional parameter allowing the client to pass a unique string (up to 32 chars) that is
@@ -90,5 +91,3 @@ class PlaceOrdersRequest : public JsonRequest {
 }
 
 #endif // PLACEORDERSREQUEST_H
-
-

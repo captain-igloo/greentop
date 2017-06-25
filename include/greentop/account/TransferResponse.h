@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef TRANSFERRESPONSE_H
@@ -11,7 +11,6 @@
 #include "greentop/JsonResponse.h"
 
 namespace greentop {
-
 /**
  * Transfer operation response
  */
@@ -42,5 +41,3 @@ class TransferResponse : public JsonResponse {
 }
 
 #endif // TRANSFERRESPONSE_H
-
-

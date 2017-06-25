@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef MARKETFILTER_H
@@ -138,7 +138,7 @@ class MarketFilter : public JsonMember {
         Optional<bool> inPlayOnly;
         /**
          * Restrict to markets that match the betting type of the market (i.e. Odds, Asian Handicap
-         * Singles, or Asian Handicap Doubles
+         * Singles, Asian Handicap Doubles or Line)
          */
         std::set<MarketBettingType> marketBettingTypes;
         /**
@@ -164,5 +164,3 @@ class MarketFilter : public JsonMember {
 }
 
 #endif // MARKETFILTER_H
-
-

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef PERSISTENCETYPE_H
@@ -16,11 +16,17 @@ class PersistenceType : public Enum<PersistenceType> {
 
     public:
 
-        /** Lapse the order at turn-in-play */
+        /**
+         * Lapse the order at turn-in-play
+         */
         static const std::string LAPSE;
-        /** Persist the order to in-play */
+        /**
+         * Persist the order to in-play
+         */
         static const std::string PERSIST;
-        /** Put the order into the auction (SP) at turn-in-play */
+        /**
+         * Put the order into the auction (SP) at turn-in-play
+         */
         static const std::string MARKET_ON_CLOSE;
 
         PersistenceType();

@@ -1,16 +1,16 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/PriceSize.h"
 
 namespace greentop {
 
-PriceSize::PriceSize() : price(-1), size(-1) {
+PriceSize::PriceSize() {
 }
 
-PriceSize::PriceSize(const double price,
-    const double size) :
+PriceSize::PriceSize(const Optional<double>& price,
+    const Optional<double>& size) :
     price(price),
     size(size) {
 }
@@ -26,26 +26,30 @@ void PriceSize::fromJson(const Json::Value& json) {
 
 Json::Value PriceSize::toJson() const {
     Json::Value json(Json::objectValue);
-    json["price"] = price;
-    json["size"] = size;
+    if (price.isValid()) {
+        json["price"] = price.toJson();
+    }
+    if (size.isValid()) {
+        json["size"] = size.toJson();
+    }
     return json;
 }
 
 bool PriceSize::isValid() const {
-    return true;
+    return price.isValid() && size.isValid();
 }
 
-const double PriceSize::getPrice() const {
+const Optional<double>& PriceSize::getPrice() const {
     return price;
 }
-void PriceSize::setPrice(const double price) {
+void PriceSize::setPrice(const Optional<double>& price) {
     this->price = price;
 }
 
-const double PriceSize::getSize() const {
+const Optional<double>& PriceSize::getSize() const {
     return size;
 }
-void PriceSize::setSize(const double size) {
+void PriceSize::setSize(const Optional<double>& size) {
     this->size = size;
 }
 

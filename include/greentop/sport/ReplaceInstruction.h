@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef REPLACEINSTRUCTION_H
@@ -9,9 +9,9 @@
 #include <string>
 
 #include "greentop/JsonMember.h"
+#include "greentop/Optional.h"
 
 namespace greentop {
-
 /**
  * Instruction to replace a LIMIT or LIMIT_ON_CLOSE order at a new price. Original order will be
  * cancelled and a new order placed at the new price for the remaining stake.
@@ -21,7 +21,7 @@ class ReplaceInstruction : public JsonMember {
         ReplaceInstruction();
 
         ReplaceInstruction(const std::string& betId,
-            const double newPrice);
+            const Optional<double>& newPrice);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -32,20 +32,19 @@ class ReplaceInstruction : public JsonMember {
         const std::string& getBetId() const;
         void setBetId(const std::string& betId);
 
-        const double getNewPrice() const;
-        void setNewPrice(const double newPrice);
+        const Optional<double>& getNewPrice() const;
+        void setNewPrice(const Optional<double>& newPrice);
 
 
     private:
+
         std::string betId;
         /**
          * The price to replace the bet at
          */
-        double newPrice;
+        Optional<double> newPrice;
 };
 
 }
 
 #endif // REPLACEINSTRUCTION_H
-
-

@@ -75,6 +75,8 @@
 #include "greentop/sport/ListMarketProfitAndLossResponse.h"
 #include "greentop/sport/ListMarketTypesRequest.h"
 #include "greentop/sport/ListMarketTypesResponse.h"
+#include "greentop/sport/ListRunnerBookRequest.h"
+#include "greentop/sport/ListRunnerBookResponse.h"
 #include "greentop/sport/ListTimeRangesRequest.h"
 #include "greentop/sport/ListTimeRangesResponse.h"
 #include "greentop/sport/ListVenuesRequest.h"
@@ -235,6 +237,14 @@ class ExchangeApi {
          */
         ListMarketBookResponse listMarketBook(const Exchange exchange,
             const ListMarketBookRequest& request) const;
+
+        /**
+         * Returns a list of dynamic data about a market and a specified runner. Dynamic data
+         * includes prices, the status of the market, the status of selections, the traded volume,
+         * and the status of any orders you have placed in the market.
+         */
+        ListRunnerBookResponse listRunnerBook(const Exchange exchange,
+            const ListRunnerBookRequest& request) const;
 
         /**
          * Returns a list of your current orders. Optionally you can filter and sort your current

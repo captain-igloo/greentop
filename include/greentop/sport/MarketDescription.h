@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef MARKETDESCRIPTION_H
@@ -12,10 +12,10 @@
 #include "greentop/JsonMember.h"
 #include "greentop/Optional.h"
 #include "greentop/Time.h"
+#include "greentop/sport/MarketLineRangeInfo.h"
 #include "greentop/sport/enum/MarketBettingType.h"
 
 namespace greentop {
-
 /**
  * Market definition
  */
@@ -23,8 +23,8 @@ class MarketDescription : public JsonMember {
     public:
         MarketDescription();
 
-        MarketDescription(const bool persistenceEnabled,
-            const bool bspMarket,
+        MarketDescription(const Optional<bool>& persistenceEnabled,
+            const Optional<bool>& bspMarket,
             const std::tm& marketTime,
             const std::tm& suspendTime,
             const std::tm& settleTime = std::tm(),
@@ -38,7 +38,8 @@ class MarketDescription : public JsonMember {
             const std::string& rules = std::string(),
             const Optional<bool>& rulesHasDate = Optional<bool>(),
             const std::string& clarifications = std::string(),
-            const Optional<double>& eachWayDivisor = Optional<double>());
+            const Optional<double>& eachWayDivisor = Optional<double>(),
+            const MarketLineRangeInfo& lineRangeInfo = MarketLineRangeInfo());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -46,11 +47,11 @@ class MarketDescription : public JsonMember {
 
         virtual bool isValid() const;
 
-        const bool getPersistenceEnabled() const;
-        void setPersistenceEnabled(const bool persistenceEnabled);
+        const Optional<bool>& getPersistenceEnabled() const;
+        void setPersistenceEnabled(const Optional<bool>& persistenceEnabled);
 
-        const bool getBspMarket() const;
-        void setBspMarket(const bool bspMarket);
+        const Optional<bool>& getBspMarket() const;
+        void setBspMarket(const Optional<bool>& bspMarket);
 
         const std::tm& getMarketTime() const;
         void setMarketTime(const std::tm& marketTime);
@@ -94,6 +95,9 @@ class MarketDescription : public JsonMember {
         const Optional<double>& getEachWayDivisor() const;
         void setEachWayDivisor(const Optional<double>& eachWayDivisor);
 
+        const MarketLineRangeInfo& getLineRangeInfo() const;
+        void setLineRangeInfo(const MarketLineRangeInfo& lineRangeInfo);
+
 
     private:
         /**
@@ -132,20 +136,28 @@ class MarketDescription : public JsonMember {
          * the market regulator
          */
         std::string regulator;
+
         Optional<double> marketBaseRate;
+
         Optional<bool> discountAllowed;
+
         std::string wallet;
+
         std::string rules;
+
         Optional<bool> rulesHasDate;
+
         std::string clarifications;
         /**
          * Each Way Divisor for E/W markets
          */
         Optional<double> eachWayDivisor;
+        /**
+         * Line range info for line markets
+         */
+        MarketLineRangeInfo lineRangeInfo;
 };
 
 }
 
 #endif // MARKETDESCRIPTION_H
-
-

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef HEARTBEATREPORT_H
@@ -12,7 +12,6 @@
 #include "greentop/heartbeat/enum/ActionPerformed.h"
 
 namespace greentop {
-
 /**
  * Response from heartbeat operation
  */
@@ -21,7 +20,7 @@ class HeartbeatReport : public JsonResponse {
         HeartbeatReport();
 
         HeartbeatReport(const ActionPerformed& actionPerformed,
-            const int32_t actualTimeoutSeconds);
+            const Optional<int32_t>& actualTimeoutSeconds);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -32,8 +31,8 @@ class HeartbeatReport : public JsonResponse {
         const ActionPerformed& getActionPerformed() const;
         void setActionPerformed(const ActionPerformed& actionPerformed);
 
-        const int32_t getActualTimeoutSeconds() const;
-        void setActualTimeoutSeconds(const int32_t actualTimeoutSeconds);
+        const Optional<int32_t>& getActualTimeoutSeconds() const;
+        void setActualTimeoutSeconds(const Optional<int32_t>& actualTimeoutSeconds);
 
 
     private:
@@ -51,5 +50,3 @@ class HeartbeatReport : public JsonResponse {
 }
 
 #endif // HEARTBEATREPORT_H
-
-

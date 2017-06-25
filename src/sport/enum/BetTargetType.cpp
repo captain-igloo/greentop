@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -13,15 +13,13 @@ const std::string BetTargetType::BACKERS_PROFIT = "BACKERS_PROFIT";
 
 BetTargetType::BetTargetType() {
     valid = false;
-};
+}
 
 BetTargetType::BetTargetType(const std::string& v) {
-
     if (v != PAYOUT &&
         v != BACKERS_PROFIT) {
         throw std::invalid_argument("Invalid BetTargetType: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -39,4 +37,3 @@ bool BetTargetType::operator!=(const BetTargetType& other) const {
 }
 
 }
-

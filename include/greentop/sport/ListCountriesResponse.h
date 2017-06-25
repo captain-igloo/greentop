@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef LISTCOUNTRIESRESPONSE_H
@@ -30,11 +30,10 @@ class ListCountriesResponse : public JsonResponse {
 
 
     private:
+
         std::vector<CountryCodeResult> countryCodeResults;
 };
 
 }
 
 #endif // LISTCOUNTRIESRESPONSE_H
-
-

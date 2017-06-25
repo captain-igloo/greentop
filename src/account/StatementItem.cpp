@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/StatementItem.h"
@@ -75,6 +75,7 @@ Json::Value StatementItem::toJson() const {
         for (std::map<std::string, std::string>::const_iterator it = itemClassData.begin(); it != itemClassData.end(); ++it) {
             json["itemClassData"][it->first] = it->second;
         }
+
     }
     if (legacyData.isValid()) {
         json["legacyData"] = legacyData.toJson();

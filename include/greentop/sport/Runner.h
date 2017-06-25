@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef RUNNER_H
@@ -20,7 +20,6 @@
 #include "greentop/sport/enum/RunnerStatus.h"
 
 namespace greentop {
-
 /**
  * The dynamic data about runners in a market
  */
@@ -28,10 +27,10 @@ class Runner : public JsonMember {
     public:
         Runner();
 
-        Runner(const int64_t selectionId,
-            const double handicap,
+        Runner(const Optional<int64_t>& selectionId,
+            const Optional<double>& handicap,
             const RunnerStatus& status,
-            const double adjustmentFactor,
+            const Optional<double>& adjustmentFactor,
             const Optional<double>& lastPriceTraded = Optional<double>(),
             const Optional<double>& totalMatched = Optional<double>(),
             const std::tm& removalDate = std::tm(),
@@ -47,17 +46,17 @@ class Runner : public JsonMember {
 
         virtual bool isValid() const;
 
-        const int64_t getSelectionId() const;
-        void setSelectionId(const int64_t selectionId);
+        const Optional<int64_t>& getSelectionId() const;
+        void setSelectionId(const Optional<int64_t>& selectionId);
 
-        const double getHandicap() const;
-        void setHandicap(const double handicap);
+        const Optional<double>& getHandicap() const;
+        void setHandicap(const Optional<double>& handicap);
 
         const RunnerStatus& getStatus() const;
         void setStatus(const RunnerStatus& status);
 
-        const double getAdjustmentFactor() const;
-        void setAdjustmentFactor(const double adjustmentFactor);
+        const Optional<double>& getAdjustmentFactor() const;
+        void setAdjustmentFactor(const Optional<double>& adjustmentFactor);
 
         const Optional<double>& getLastPriceTraded() const;
         void setLastPriceTraded(const Optional<double>& lastPriceTraded);
@@ -88,7 +87,7 @@ class Runner : public JsonMember {
         /**
          * The unique id of the runner (selection)
          */
-        int64_t selectionId;
+        Optional<int64_t> selectionId;
         /**
          * The handicap
          */
@@ -138,5 +137,3 @@ class Runner : public JsonMember {
 }
 
 #endif // RUNNER_H
-
-

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef AFFILIATERELATIONSTATUS_H
@@ -16,11 +16,17 @@ class AffiliateRelationStatus : public Enum<AffiliateRelationStatus> {
 
     public:
 
-        /** Provided vendor client ID is not valid */
+        /**
+         * Provided vendor client ID is not valid
+         */
         static const std::string INVALID_USER;
-        /** Vendor client ID valid and affiliated */
+        /**
+         * Vendor client ID valid and affiliated
+         */
         static const std::string AFFILIATED;
-        /** Vendor client ID valid but not affiliated */
+        /**
+         * Vendor client ID valid but not affiliated
+         */
         static const std::string NOT_AFFILIATED;
 
         AffiliateRelationStatus();

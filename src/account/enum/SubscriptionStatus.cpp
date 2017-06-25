@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -16,10 +16,9 @@ const std::string SubscriptionStatus::EXPIRED = "EXPIRED";
 
 SubscriptionStatus::SubscriptionStatus() {
     valid = false;
-};
+}
 
 SubscriptionStatus::SubscriptionStatus(const std::string& v) {
-
     if (v != ALL &&
         v != ACTIVATED &&
         v != UNACTIVATED &&
@@ -27,7 +26,6 @@ SubscriptionStatus::SubscriptionStatus(const std::string& v) {
         v != EXPIRED) {
         throw std::invalid_argument("Invalid SubscriptionStatus: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -45,4 +43,3 @@ bool SubscriptionStatus::operator!=(const SubscriptionStatus& other) const {
 }
 
 }
-

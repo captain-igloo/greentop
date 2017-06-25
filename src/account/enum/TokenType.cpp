@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -12,14 +12,12 @@ const std::string TokenType::BEARER = "BEARER";
 
 TokenType::TokenType() {
     valid = false;
-};
+}
 
 TokenType::TokenType(const std::string& v) {
-
     if (v != BEARER) {
         throw std::invalid_argument("Invalid TokenType: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -37,4 +35,3 @@ bool TokenType::operator!=(const TokenType& other) const {
 }
 
 }
-

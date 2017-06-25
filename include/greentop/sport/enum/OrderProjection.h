@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef ORDERPROJECTION_H
@@ -16,11 +16,11 @@ class OrderProjection : public Enum<OrderProjection> {
 
     public:
 
-        /**  */
+
         static const std::string ALL;
-        /**  */
+
         static const std::string EXECUTABLE;
-        /**  */
+
         static const std::string EXECUTION_COMPLETE;
 
         OrderProjection();

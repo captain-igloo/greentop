@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef MATCHPROJECTION_H
@@ -16,11 +16,11 @@ class MatchProjection : public Enum<MatchProjection> {
 
     public:
 
-        /**  */
+
         static const std::string NO_ROLLUP;
-        /**  */
+
         static const std::string ROLLED_UP_BY_PRICE;
-        /**  */
+
         static const std::string ROLLED_UP_BY_AVG_PRICE;
 
         MatchProjection();

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -14,16 +14,14 @@ const std::string AffiliateRelationStatus::NOT_AFFILIATED = "NOT_AFFILIATED";
 
 AffiliateRelationStatus::AffiliateRelationStatus() {
     valid = false;
-};
+}
 
 AffiliateRelationStatus::AffiliateRelationStatus(const std::string& v) {
-
     if (v != INVALID_USER &&
         v != AFFILIATED &&
         v != NOT_AFFILIATED) {
         throw std::invalid_argument("Invalid AffiliateRelationStatus: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -41,4 +39,3 @@ bool AffiliateRelationStatus::operator!=(const AffiliateRelationStatus& other) c
 }
 
 }
-

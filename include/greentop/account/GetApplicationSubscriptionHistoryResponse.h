@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef GETAPPLICATIONSUBSCRIPTIONHISTORYRESPONSE_H
@@ -30,11 +30,10 @@ class GetApplicationSubscriptionHistoryResponse : public JsonResponse {
 
 
     private:
+
         std::vector<SubscriptionHistory> subscriptionHistorys;
 };
 
 }
 
 #endif // GETAPPLICATIONSUBSCRIPTIONHISTORYRESPONSE_H
-
-

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -17,10 +17,9 @@ const std::string ActionPerformed::CANCELLATION_STATUS_UNKNOWN = "CANCELLATION_S
 
 ActionPerformed::ActionPerformed() {
     valid = false;
-};
+}
 
 ActionPerformed::ActionPerformed(const std::string& v) {
-
     if (v != NONE &&
         v != CANCELLATION_REQUEST_SUBMITTED &&
         v != ALL_BETS_CANCELLED &&
@@ -29,7 +28,6 @@ ActionPerformed::ActionPerformed(const std::string& v) {
         v != CANCELLATION_STATUS_UNKNOWN) {
         throw std::invalid_argument("Invalid ActionPerformed: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -47,4 +45,3 @@ bool ActionPerformed::operator!=(const ActionPerformed& other) const {
 }
 
 }
-

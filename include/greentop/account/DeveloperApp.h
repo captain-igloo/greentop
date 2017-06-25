@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef DEVELOPERAPP_H
@@ -14,7 +14,6 @@
 #include "greentop/account/DeveloperAppVersion.h"
 
 namespace greentop {
-
 /**
  * Describes developer/vendor specific application
  */
@@ -23,7 +22,7 @@ class DeveloperApp : public JsonResponse {
         DeveloperApp();
 
         DeveloperApp(const std::string& appName,
-            const int64_t appId,
+            const Optional<int64_t>& appId,
             const std::vector<DeveloperAppVersion>& appVersions);
 
         virtual void fromJson(const Json::Value& json);
@@ -35,8 +34,8 @@ class DeveloperApp : public JsonResponse {
         const std::string& getAppName() const;
         void setAppName(const std::string& appName);
 
-        const int64_t getAppId() const;
-        void setAppId(const int64_t appId);
+        const Optional<int64_t>& getAppId() const;
+        void setAppId(const Optional<int64_t>& appId);
 
         const std::vector<DeveloperAppVersion>& getAppVersions() const;
         void setAppVersions(const std::vector<DeveloperAppVersion>& appVersions);
@@ -60,5 +59,3 @@ class DeveloperApp : public JsonResponse {
 }
 
 #endif // DEVELOPERAPP_H
-
-

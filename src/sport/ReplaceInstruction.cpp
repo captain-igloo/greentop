@@ -1,16 +1,16 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/ReplaceInstruction.h"
 
 namespace greentop {
 
-ReplaceInstruction::ReplaceInstruction() : newPrice(-1) {
+ReplaceInstruction::ReplaceInstruction() {
 }
 
 ReplaceInstruction::ReplaceInstruction(const std::string& betId,
-    const double newPrice) :
+    const Optional<double>& newPrice) :
     betId(betId),
     newPrice(newPrice) {
 }
@@ -29,12 +29,14 @@ Json::Value ReplaceInstruction::toJson() const {
     if (betId != "") {
         json["betId"] = betId;
     }
-    json["newPrice"] = newPrice;
+    if (newPrice.isValid()) {
+        json["newPrice"] = newPrice.toJson();
+    }
     return json;
 }
 
 bool ReplaceInstruction::isValid() const {
-    return betId != "";
+    return betId != "" && newPrice.isValid();
 }
 
 const std::string& ReplaceInstruction::getBetId() const {
@@ -44,10 +46,10 @@ void ReplaceInstruction::setBetId(const std::string& betId) {
     this->betId = betId;
 }
 
-const double ReplaceInstruction::getNewPrice() const {
+const Optional<double>& ReplaceInstruction::getNewPrice() const {
     return newPrice;
 }
-void ReplaceInstruction::setNewPrice(const double newPrice) {
+void ReplaceInstruction::setNewPrice(const Optional<double>& newPrice) {
     this->newPrice = newPrice;
 }
 

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef STARTINGPRICES_H
@@ -13,7 +13,6 @@
 #include "greentop/sport/PriceSize.h"
 
 namespace greentop {
-
 /**
  * Information about the Betfair Starting Price. Only available in BSP markets
  */
@@ -60,7 +59,9 @@ class StartingPrices : public JsonMember {
          * accurate and only accounts for money on the exchange at SP.
          */
         Optional<double> farPrice;
+
         std::vector<PriceSize> backStakeTaken;
+
         std::vector<PriceSize> layLiabilityTaken;
         /**
          * The final BSP price for this runner. Only available for a BSP market that has been
@@ -72,5 +73,3 @@ class StartingPrices : public JsonMember {
 }
 
 #endif // STARTINGPRICES_H
-
-

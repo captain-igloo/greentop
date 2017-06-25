@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef TIMEINFORCE_H
@@ -16,7 +16,11 @@ class TimeInForce : public Enum<TimeInForce> {
 
     public:
 
-        /** Execute the transaction immediately and completely (filled to size or between minFillSize and size) or not at all (cancelled) */
+        /**
+         * Execute the transaction immediately and completely (filled to size or between
+         * minFillSize and size) or not at all (cancelled). For LINE markets Volume Weighted
+         * Average Price (VWAP) functionality is disabled.
+         */
         static const std::string FILL_OR_KILL;
 
         TimeInForce();

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef EXECUTIONREPORTERRORCODE_H
@@ -16,43 +16,93 @@ class ExecutionReportErrorCode : public Enum<ExecutionReportErrorCode> {
 
     public:
 
-        /** The matcher's not healthy */
+        /**
+         * The matcher's not healthy
+         */
         static const std::string ERROR_IN_MATCHER;
-        /** The order itself has been accepted, but at least one (possibly all) actions have generated
-         errors */
+        /**
+         * The order itself has been accepted, but at least one (possibly all) actions have
+         * generated errors
+         */
         static const std::string PROCESSED_WITH_ERRORS;
-        /** There is an error with an action that has caused the entire order to be rejected */
+        /**
+         * There is an error with an action that has caused the entire order to be rejected
+         */
         static const std::string BET_ACTION_ERROR;
-        /** Order rejected due to the account's status (suspended, inactive, dup cards) */
+        /**
+         * Order rejected due to the account's status (suspended, inactive, dup cards)
+         */
         static const std::string INVALID_ACCOUNT_STATE;
-        /** Order rejected due to the account's wallet's status */
+        /**
+         * Order rejected due to the account's wallet's status
+         */
         static const std::string INVALID_WALLET_STATUS;
-        /** Account has exceeded its exposure limit or available to bet limit */
+        /**
+         * Account has exceeded its exposure limit or available to bet limit
+         */
         static const std::string INSUFFICIENT_FUNDS;
-        /** The account has exceed the self imposed loss limit */
+        /**
+         * The account has exceed the self imposed loss limit
+         */
         static const std::string LOSS_LIMIT_EXCEEDED;
-        /** Market is suspended */
+        /**
+         * Market is suspended
+         */
         static const std::string MARKET_SUSPENDED;
-        /** Market is not open for betting, either inactive, suspended or closed */
+        /**
+         * Market is not open for betting, either inactive, suspended or closed
+         */
         static const std::string MARKET_NOT_OPEN_FOR_BETTING;
-        /** duplicate customer referece data submitted */
+        /**
+         * duplicate customer referece data submitted
+         */
         static const std::string DUPLICATE_TRANSACTION;
-        /** Order cannot be accepted by the matcher due to the combination of actions. For example, bets being
-         edited are not
-         on the same market, or order includes both edits and placement */
+        /**
+         * Order cannot be accepted by the matcher due to the combination of actions. For example,
+         * bets being edited are not on the same market, or order includes both edits and placement
+         */
         static const std::string INVALID_ORDER;
-        /** Market doesn't exist */
+        /**
+         * Market doesn't exist
+         */
         static const std::string INVALID_MARKET_ID;
-        /** Business rules do not allow order to be placed */
+        /**
+         * Business rules do not allow order to be placed
+         */
         static const std::string PERMISSION_DENIED;
-        /** duplicate bet ids found */
+        /**
+         * duplicate bet ids found
+         */
         static const std::string DUPLICATE_BETIDS;
-        /** Order hasn't been passed to matcher as system detected there will be no state change */
+        /**
+         * Order hasn't been passed to matcher as system detected there will be no state change
+         */
         static const std::string NO_ACTION_REQUIRED;
-        /** The requested service is unavailable */
+        /**
+         * The requested service is unavailable
+         */
         static const std::string SERVICE_UNAVAILABLE;
-        /** The regulator rejected the order */
+        /**
+         * The regulator rejected the order
+         */
         static const std::string REJECTED_BY_REGULATOR;
+        /**
+         * A specific error code that relates to Spanish Exchange markets only which indicates that
+         * the bet placed contravenes the Spanish regulatory rules relating to loss chasing.
+         */
+        static const std::string NO_CHASING;
+        /**
+         * The underlying regulator service is not available.
+         */
+        static const std::string REGULATOR_IS_NOT_AVAILABLE;
+        /**
+         * The amount of orders exceeded the maximum amount allowed to be executed
+         */
+        static const std::string TOO_MANY_INSTRUCTIONS;
+        /**
+         * The supplied market version is invalid. Max length allowed for market version is 12.
+         */
+        static const std::string INVALID_MARKET_VERSION;
 
         ExecutionReportErrorCode();
 

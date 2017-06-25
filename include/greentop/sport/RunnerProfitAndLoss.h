@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef RUNNERPROFITANDLOSS_H
@@ -11,7 +11,6 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
-
 /**
  * Profit and loss if selection is wins or loses
  */
@@ -66,5 +65,3 @@ class RunnerProfitAndLoss : public JsonMember {
 }
 
 #endif // RUNNERPROFITANDLOSS_H
-
-

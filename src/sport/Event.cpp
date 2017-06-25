@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/Event.h"
@@ -44,11 +44,15 @@ void Event::fromJson(const Json::Value& json) {
 
 Json::Value Event::toJson() const {
     Json::Value json(Json::objectValue);
-    json["id"] = id;
+    if (id != "") {
+        json["id"] = id;
+    }
     if (name != "") {
         json["name"] = name;
     }
-    json["countryCode"] = countryCode;
+    if (countryCode != "") {
+        json["countryCode"] = countryCode;
+    }
     if (timezone != "") {
         json["timezone"] = timezone;
     }

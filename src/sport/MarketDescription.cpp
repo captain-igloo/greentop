@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/MarketDescription.h"
@@ -9,8 +9,8 @@ namespace greentop {
 MarketDescription::MarketDescription() {
 }
 
-MarketDescription::MarketDescription(const bool persistenceEnabled,
-    const bool bspMarket,
+MarketDescription::MarketDescription(const Optional<bool>& persistenceEnabled,
+    const Optional<bool>& bspMarket,
     const std::tm& marketTime,
     const std::tm& suspendTime,
     const std::tm& settleTime,
@@ -24,7 +24,8 @@ MarketDescription::MarketDescription(const bool persistenceEnabled,
     const std::string& rules,
     const Optional<bool>& rulesHasDate,
     const std::string& clarifications,
-    const Optional<double>& eachWayDivisor) :
+    const Optional<double>& eachWayDivisor,
+    const MarketLineRangeInfo& lineRangeInfo) :
     persistenceEnabled(persistenceEnabled),
     bspMarket(bspMarket),
     marketTime(marketTime),
@@ -40,7 +41,8 @@ MarketDescription::MarketDescription(const bool persistenceEnabled,
     rules(rules),
     rulesHasDate(rulesHasDate),
     clarifications(clarifications),
-    eachWayDivisor(eachWayDivisor) {
+    eachWayDivisor(eachWayDivisor),
+    lineRangeInfo(lineRangeInfo) {
 }
 
 void MarketDescription::fromJson(const Json::Value& json) {
@@ -91,6 +93,9 @@ void MarketDescription::fromJson(const Json::Value& json) {
     }
     if (json.isMember("eachWayDivisor")) {
         eachWayDivisor = json["eachWayDivisor"].asDouble();
+    }
+    if (json.isMember("lineRangeInfo")) {
+        lineRangeInfo.fromJson(json["lineRangeInfo"]);
     }
 }
 
@@ -150,6 +155,9 @@ Json::Value MarketDescription::toJson() const {
     if (eachWayDivisor.isValid()) {
         json["eachWayDivisor"] = eachWayDivisor.toJson();
     }
+    if (lineRangeInfo.isValid()) {
+        json["lineRangeInfo"] = lineRangeInfo.toJson();
+    }
     return json;
 }
 
@@ -157,17 +165,17 @@ bool MarketDescription::isValid() const {
     return persistenceEnabled.isValid() && bspMarket.isValid() && marketTime.tm_year > 0 && suspendTime.tm_year > 0 && bettingType.isValid() && turnInPlayEnabled.isValid() && marketType != "" && regulator != "" && marketBaseRate.isValid() && discountAllowed.isValid();
 }
 
-const bool MarketDescription::getPersistenceEnabled() const {
+const Optional<bool>& MarketDescription::getPersistenceEnabled() const {
     return persistenceEnabled;
 }
-void MarketDescription::setPersistenceEnabled(const bool persistenceEnabled) {
+void MarketDescription::setPersistenceEnabled(const Optional<bool>& persistenceEnabled) {
     this->persistenceEnabled = persistenceEnabled;
 }
 
-const bool MarketDescription::getBspMarket() const {
+const Optional<bool>& MarketDescription::getBspMarket() const {
     return bspMarket;
 }
-void MarketDescription::setBspMarket(const bool bspMarket) {
+void MarketDescription::setBspMarket(const Optional<bool>& bspMarket) {
     this->bspMarket = bspMarket;
 }
 
@@ -267,6 +275,13 @@ const Optional<double>& MarketDescription::getEachWayDivisor() const {
 }
 void MarketDescription::setEachWayDivisor(const Optional<double>& eachWayDivisor) {
     this->eachWayDivisor = eachWayDivisor;
+}
+
+const MarketLineRangeInfo& MarketDescription::getLineRangeInfo() const {
+    return lineRangeInfo;
+}
+void MarketDescription::setLineRangeInfo(const MarketLineRangeInfo& lineRangeInfo) {
+    this->lineRangeInfo = lineRangeInfo;
 }
 
 

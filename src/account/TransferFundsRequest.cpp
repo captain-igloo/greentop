@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/TransferFundsRequest.h"
@@ -11,7 +11,7 @@ TransferFundsRequest::TransferFundsRequest() {
 
 TransferFundsRequest::TransferFundsRequest(const Wallet& from,
     const Wallet& to,
-    const double amount) :
+    const Optional<double>& amount) :
     from(from),
     to(to),
     amount(amount) {
@@ -61,10 +61,10 @@ void TransferFundsRequest::setTo(const Wallet& to) {
     this->to = to;
 }
 
-const double TransferFundsRequest::getAmount() const {
+const Optional<double>& TransferFundsRequest::getAmount() const {
     return amount;
 }
-void TransferFundsRequest::setAmount(const double amount) {
+void TransferFundsRequest::setAmount(const Optional<double>& amount) {
     this->amount = amount;
 }
 

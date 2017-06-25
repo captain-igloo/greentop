@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef ISACCOUNTSUBSCRIBEDTOWEBAPPRESPONSE_H
@@ -16,7 +16,7 @@ class IsAccountSubscribedToWebAppResponse : public JsonResponse {
     public:
         IsAccountSubscribedToWebAppResponse();
 
-        IsAccountSubscribedToWebAppResponse(const bool isAccountSubscribedToWebApp);
+        IsAccountSubscribedToWebAppResponse(const Optional<bool>& isAccountSubscribedToWebApp);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -24,16 +24,15 @@ class IsAccountSubscribedToWebAppResponse : public JsonResponse {
 
         virtual bool isValid() const;
 
-        const bool getIsAccountSubscribedToWebApp() const;
-        void setIsAccountSubscribedToWebApp(const bool isAccountSubscribedToWebApp);
+        const Optional<bool>& getIsAccountSubscribedToWebApp() const;
+        void setIsAccountSubscribedToWebApp(const Optional<bool>& isAccountSubscribedToWebApp);
 
 
     private:
+
         Optional<bool> isAccountSubscribedToWebApp;
 };
 
 }
 
 #endif // ISACCOUNTSUBSCRIBEDTOWEBAPPRESPONSE_H
-
-

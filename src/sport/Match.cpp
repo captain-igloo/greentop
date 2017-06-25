@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/Match.h"
@@ -44,8 +44,12 @@ void Match::fromJson(const Json::Value& json) {
 
 Json::Value Match::toJson() const {
     Json::Value json(Json::objectValue);
-    json["betId"] = betId;
-    json["matchId"] = matchId;
+    if (betId != "") {
+        json["betId"] = betId;
+    }
+    if (matchId != "") {
+        json["matchId"] = matchId;
+    }
     if (side.isValid()) {
         json["side"] = side.getValue();
     }

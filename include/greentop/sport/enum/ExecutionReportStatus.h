@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef EXECUTIONREPORTSTATUS_H
@@ -16,13 +16,13 @@ class ExecutionReportStatus : public Enum<ExecutionReportStatus> {
 
     public:
 
-        /**  */
+
         static const std::string SUCCESS;
-        /**  */
+
         static const std::string FAILURE;
-        /**  */
+
         static const std::string PROCESSED_WITH_ERRORS;
-        /**  */
+
         static const std::string TIMEOUT;
 
         ExecutionReportStatus();

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -13,15 +13,13 @@ const std::string GrantType::REFRESH_TOKEN = "REFRESH_TOKEN";
 
 GrantType::GrantType() {
     valid = false;
-};
+}
 
 GrantType::GrantType(const std::string& v) {
-
     if (v != AUTHORIZATION_CODE &&
         v != REFRESH_TOKEN) {
         throw std::invalid_argument("Invalid GrantType: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -39,4 +37,3 @@ bool GrantType::operator!=(const GrantType& other) const {
 }
 
 }
-

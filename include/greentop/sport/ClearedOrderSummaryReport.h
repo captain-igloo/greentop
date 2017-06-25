@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef CLEAREDORDERSUMMARYREPORT_H
@@ -13,7 +13,6 @@
 #include "greentop/sport/ClearedOrderSummary.h"
 
 namespace greentop {
-
 /**
  * A container representing search results.
  */
@@ -22,7 +21,7 @@ class ClearedOrderSummaryReport : public JsonResponse {
         ClearedOrderSummaryReport();
 
         ClearedOrderSummaryReport(const std::vector<ClearedOrderSummary>& clearedOrders,
-            const bool moreAvailable);
+            const Optional<bool>& moreAvailable);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -33,8 +32,8 @@ class ClearedOrderSummaryReport : public JsonResponse {
         const std::vector<ClearedOrderSummary>& getClearedOrders() const;
         void setClearedOrders(const std::vector<ClearedOrderSummary>& clearedOrders);
 
-        const bool getMoreAvailable() const;
-        void setMoreAvailable(const bool moreAvailable);
+        const Optional<bool>& getMoreAvailable() const;
+        void setMoreAvailable(const Optional<bool>& moreAvailable);
 
 
     private:
@@ -54,5 +53,3 @@ class ClearedOrderSummaryReport : public JsonResponse {
 }
 
 #endif // CLEAREDORDERSUMMARYREPORT_H
-
-

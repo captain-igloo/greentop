@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef LISTMARKETBOOKRESPONSE_H
@@ -30,11 +30,10 @@ class ListMarketBookResponse : public JsonResponse {
 
 
     private:
+
         std::vector<MarketBook> marketBooks;
 };
 
 }
 
 #endif // LISTMARKETBOOKRESPONSE_H
-
-

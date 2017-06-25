@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef PLACEINSTRUCTION_H
@@ -17,7 +17,6 @@
 #include "greentop/sport/enum/Side.h"
 
 namespace greentop {
-
 /**
  * Instruction to place a new order
  */
@@ -26,7 +25,7 @@ class PlaceInstruction : public JsonMember {
         PlaceInstruction();
 
         PlaceInstruction(const OrderType& orderType,
-            const int64_t selectionId,
+            const Optional<int64_t>& selectionId,
             const Optional<double>& handicap = Optional<double>(),
             const Side& side = Side(),
             const LimitOrder& limitOrder = LimitOrder(),
@@ -43,8 +42,8 @@ class PlaceInstruction : public JsonMember {
         const OrderType& getOrderType() const;
         void setOrderType(const OrderType& orderType);
 
-        const int64_t getSelectionId() const;
-        void setSelectionId(const int64_t selectionId);
+        const Optional<int64_t>& getSelectionId() const;
+        void setSelectionId(const Optional<int64_t>& selectionId);
 
         const Optional<double>& getHandicap() const;
         void setHandicap(const Optional<double>& handicap);
@@ -66,11 +65,12 @@ class PlaceInstruction : public JsonMember {
 
 
     private:
+
         OrderType orderType;
         /**
          * The selection_id.
          */
-        int64_t selectionId;
+        Optional<int64_t> selectionId;
         /**
          * The handicap applied to the selection, if on an asian-style market.
          */
@@ -79,8 +79,11 @@ class PlaceInstruction : public JsonMember {
          * Back or Lay
          */
         Side side;
+
         LimitOrder limitOrder;
+
         LimitOnCloseOrder limitOnCloseOrder;
+
         MarketOnCloseOrder marketOnCloseOrder;
         /**
          * An optional reference the customer can set to identify instructions and it will be
@@ -94,5 +97,3 @@ class PlaceInstruction : public JsonMember {
 }
 
 #endif // PLACEINSTRUCTION_H
-
-

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -18,10 +18,9 @@ const std::string MarketProjection::RUNNER_METADATA = "RUNNER_METADATA";
 
 MarketProjection::MarketProjection() {
     valid = false;
-};
+}
 
 MarketProjection::MarketProjection(const std::string& v) {
-
     if (v != COMPETITION &&
         v != EVENT &&
         v != EVENT_TYPE &&
@@ -31,7 +30,6 @@ MarketProjection::MarketProjection(const std::string& v) {
         v != RUNNER_METADATA) {
         throw std::invalid_argument("Invalid MarketProjection: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -49,4 +47,3 @@ bool MarketProjection::operator!=(const MarketProjection& other) const {
 }
 
 }
-

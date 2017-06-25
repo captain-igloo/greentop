@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef AFFILIATERELATION_H
@@ -12,7 +12,6 @@
 #include "greentop/account/enum/AffiliateRelationStatus.h"
 
 namespace greentop {
-
 /**
  * Wrapper object containing affiliate relation details
  */
@@ -50,5 +49,3 @@ class AffiliateRelation : public JsonMember {
 }
 
 #endif // AFFILIATERELATION_H
-
-

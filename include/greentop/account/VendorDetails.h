@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef VENDORDETAILS_H
@@ -12,7 +12,6 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
-
 /**
  * Wrapper object containing vendor name and redirect url
  */
@@ -20,7 +19,7 @@ class VendorDetails : public JsonResponse {
     public:
         VendorDetails();
 
-        VendorDetails(const int64_t appVersionId,
+        VendorDetails(const Optional<int64_t>& appVersionId,
             const std::string& vendorName,
             const std::string& redirectUrl = std::string());
 
@@ -30,8 +29,8 @@ class VendorDetails : public JsonResponse {
 
         virtual bool isValid() const;
 
-        const int64_t getAppVersionId() const;
-        void setAppVersionId(const int64_t appVersionId);
+        const Optional<int64_t>& getAppVersionId() const;
+        void setAppVersionId(const Optional<int64_t>& appVersionId);
 
         const std::string& getVendorName() const;
         void setVendorName(const std::string& vendorName);
@@ -58,5 +57,3 @@ class VendorDetails : public JsonResponse {
 }
 
 #endif // VENDORDETAILS_H
-
-

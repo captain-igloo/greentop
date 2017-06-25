@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -15,17 +15,15 @@ const std::string ExecutionReportStatus::TIMEOUT = "TIMEOUT";
 
 ExecutionReportStatus::ExecutionReportStatus() {
     valid = false;
-};
+}
 
 ExecutionReportStatus::ExecutionReportStatus(const std::string& v) {
-
     if (v != SUCCESS &&
         v != FAILURE &&
         v != PROCESSED_WITH_ERRORS &&
         v != TIMEOUT) {
         throw std::invalid_argument("Invalid ExecutionReportStatus: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -43,4 +41,3 @@ bool ExecutionReportStatus::operator!=(const ExecutionReportStatus& other) const
 }
 
 }
-

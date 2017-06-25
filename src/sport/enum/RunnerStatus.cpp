@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -17,10 +17,9 @@ const std::string RunnerStatus::PLACED = "PLACED";
 
 RunnerStatus::RunnerStatus() {
     valid = false;
-};
+}
 
 RunnerStatus::RunnerStatus(const std::string& v) {
-
     if (v != ACTIVE &&
         v != WINNER &&
         v != LOSER &&
@@ -29,7 +28,6 @@ RunnerStatus::RunnerStatus(const std::string& v) {
         v != PLACED) {
         throw std::invalid_argument("Invalid RunnerStatus: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -47,4 +45,3 @@ bool RunnerStatus::operator!=(const RunnerStatus& other) const {
 }
 
 }
-

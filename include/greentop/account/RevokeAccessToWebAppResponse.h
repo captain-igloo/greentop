@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef REVOKEACCESSTOWEBAPPRESPONSE_H
@@ -29,11 +29,10 @@ class RevokeAccessToWebAppResponse : public JsonResponse {
 
 
     private:
+
         Status status;
 };
 
 }
 
 #endif // REVOKEACCESSTOWEBAPPRESPONSE_H
-
-

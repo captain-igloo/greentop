@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/ClearedOrderSummary.h"
@@ -134,16 +134,24 @@ void ClearedOrderSummary::fromJson(const Json::Value& json) {
 
 Json::Value ClearedOrderSummary::toJson() const {
     Json::Value json(Json::objectValue);
-    json["eventTypeId"] = eventTypeId;
-    json["eventId"] = eventId;
-    json["marketId"] = marketId;
+    if (eventTypeId != "") {
+        json["eventTypeId"] = eventTypeId;
+    }
+    if (eventId != "") {
+        json["eventId"] = eventId;
+    }
+    if (marketId != "") {
+        json["marketId"] = marketId;
+    }
     if (selectionId.isValid()) {
         json["selectionId"] = selectionId.toJson();
     }
     if (handicap.isValid()) {
         json["handicap"] = handicap.toJson();
     }
-    json["betId"] = betId;
+    if (betId != "") {
+        json["betId"] = betId;
+    }
     if (placedDate.tm_year > 0) {
         char buffer[25];
         strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &placedDate);

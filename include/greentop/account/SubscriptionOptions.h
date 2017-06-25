@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef SUBSCRIPTIONOPTIONS_H
@@ -12,7 +12,6 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
-
 /**
  * Wrapper object containing details of how a subscription should be created
  */
@@ -59,5 +58,3 @@ class SubscriptionOptions : public JsonMember {
 }
 
 #endif // SUBSCRIPTIONOPTIONS_H
-
-

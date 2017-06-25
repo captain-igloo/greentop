@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef MARKETPROFITANDLOSS_H
@@ -14,7 +14,6 @@
 #include "greentop/sport/RunnerProfitAndLoss.h"
 
 namespace greentop {
-
 /**
  * Profit and loss in a market
  */
@@ -60,5 +59,3 @@ class MarketProfitAndLoss : public JsonMember {
 }
 
 #endif // MARKETPROFITANDLOSS_H
-
-

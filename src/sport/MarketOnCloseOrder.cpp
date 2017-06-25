@@ -1,15 +1,15 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/MarketOnCloseOrder.h"
 
 namespace greentop {
 
-MarketOnCloseOrder::MarketOnCloseOrder() : liability(-1) {
+MarketOnCloseOrder::MarketOnCloseOrder() {
 }
 
-MarketOnCloseOrder::MarketOnCloseOrder(const double liability) :
+MarketOnCloseOrder::MarketOnCloseOrder(const Optional<double>& liability) :
     liability(liability) {
 }
 
@@ -21,18 +21,20 @@ void MarketOnCloseOrder::fromJson(const Json::Value& json) {
 
 Json::Value MarketOnCloseOrder::toJson() const {
     Json::Value json(Json::objectValue);
-    json["liability"] = liability;
+    if (liability.isValid()) {
+        json["liability"] = liability.toJson();
+    }
     return json;
 }
 
 bool MarketOnCloseOrder::isValid() const {
-    return true;
+    return liability.isValid();
 }
 
-const double MarketOnCloseOrder::getLiability() const {
+const Optional<double>& MarketOnCloseOrder::getLiability() const {
     return liability;
 }
-void MarketOnCloseOrder::setLiability(const double liability) {
+void MarketOnCloseOrder::setLiability(const Optional<double>& liability) {
     this->liability = liability;
 }
 

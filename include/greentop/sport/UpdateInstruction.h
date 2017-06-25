@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef UPDATEINSTRUCTION_H
@@ -12,7 +12,6 @@
 #include "greentop/sport/enum/PersistenceType.h"
 
 namespace greentop {
-
 /**
  * Instruction to update LIMIT bet's persistence of an order that do not affect exposure
  */
@@ -37,6 +36,7 @@ class UpdateInstruction : public JsonMember {
 
 
     private:
+
         std::string betId;
         /**
          * The new persistence type to update this bet to
@@ -47,5 +47,3 @@ class UpdateInstruction : public JsonMember {
 }
 
 #endif // UPDATEINSTRUCTION_H
-
-

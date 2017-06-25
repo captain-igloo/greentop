@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/DeveloperApp.h"
@@ -10,7 +10,7 @@ DeveloperApp::DeveloperApp() {
 }
 
 DeveloperApp::DeveloperApp(const std::string& appName,
-    const int64_t appId,
+    const Optional<int64_t>& appId,
     const std::vector<DeveloperAppVersion>& appVersions) :
     appName(appName),
     appId(appId),
@@ -21,11 +21,9 @@ void DeveloperApp::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
         if (json.isMember("appName")) {
             appName = json["appName"].asString();
-;
         }
         if (json.isMember("appId")) {
             appId = json["appId"].asInt64();
-;
         }
         if (json.isMember("appVersions")) {
             for (unsigned i = 0; i < json["appVersions"].size(); ++i) {
@@ -33,7 +31,6 @@ void DeveloperApp::fromJson(const Json::Value& json) {
             appVersion.fromJson(json["appVersions"][i]);
             appVersions.push_back(appVersion);
         }
-;
         }
     }
 }
@@ -65,10 +62,10 @@ void DeveloperApp::setAppName(const std::string& appName) {
     this->appName = appName;
 }
 
-const int64_t DeveloperApp::getAppId() const {
+const Optional<int64_t>& DeveloperApp::getAppId() const {
     return appId;
 }
-void DeveloperApp::setAppId(const int64_t appId) {
+void DeveloperApp::setAppId(const Optional<int64_t>& appId) {
     this->appId = appId;
 }
 

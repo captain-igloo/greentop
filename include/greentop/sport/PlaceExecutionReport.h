@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef PLACEEXECUTIONREPORT_H
@@ -52,17 +52,18 @@ class PlaceExecutionReport : public JsonResponse {
          * Echo of the customerRef if passed.
          */
         std::string customerRef;
+
         ExecutionReportStatus status;
+
         ExecutionReportErrorCode errorCode;
         /**
          * Echo of marketId passed
          */
         std::string marketId;
+
         std::vector<PlaceInstructionReport> instructionReports;
 };
 
 }
 
 #endif // PLACEEXECUTIONREPORT_H
-
-

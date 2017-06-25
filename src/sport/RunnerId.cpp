@@ -1,16 +1,16 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/RunnerId.h"
 
 namespace greentop {
 
-RunnerId::RunnerId() : selectionId(-1) {
+RunnerId::RunnerId() {
 }
 
 RunnerId::RunnerId(const std::string& marketId,
-    const int64_t selectionId,
+    const Optional<int64_t>& selectionId,
     const Optional<double>& handicap) :
     marketId(marketId),
     selectionId(selectionId),
@@ -31,8 +31,12 @@ void RunnerId::fromJson(const Json::Value& json) {
 
 Json::Value RunnerId::toJson() const {
     Json::Value json(Json::objectValue);
-    json["marketId"] = marketId;
-    json["selectionId"] = selectionId;
+    if (marketId != "") {
+        json["marketId"] = marketId;
+    }
+    if (selectionId.isValid()) {
+        json["selectionId"] = selectionId.toJson();
+    }
     if (handicap.isValid()) {
         json["handicap"] = handicap.toJson();
     }
@@ -40,7 +44,7 @@ Json::Value RunnerId::toJson() const {
 }
 
 bool RunnerId::isValid() const {
-    return true;
+    return marketId != "" && selectionId.isValid();
 }
 
 const std::string& RunnerId::getMarketId() const {
@@ -50,10 +54,10 @@ void RunnerId::setMarketId(const std::string& marketId) {
     this->marketId = marketId;
 }
 
-const int64_t RunnerId::getSelectionId() const {
+const Optional<int64_t>& RunnerId::getSelectionId() const {
     return selectionId;
 }
-void RunnerId::setSelectionId(const int64_t selectionId) {
+void RunnerId::setSelectionId(const Optional<int64_t>& selectionId) {
     this->selectionId = selectionId;
 }
 

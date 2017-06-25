@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef RUNNERID_H
@@ -12,7 +12,6 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
-
 /**
  * This object contains the unique identifier for a runner
  */
@@ -21,7 +20,7 @@ class RunnerId : public JsonMember {
         RunnerId();
 
         RunnerId(const std::string& marketId,
-            const int64_t selectionId,
+            const Optional<int64_t>& selectionId,
             const Optional<double>& handicap = Optional<double>());
 
         virtual void fromJson(const Json::Value& json);
@@ -33,8 +32,8 @@ class RunnerId : public JsonMember {
         const std::string& getMarketId() const;
         void setMarketId(const std::string& marketId);
 
-        const int64_t getSelectionId() const;
-        void setSelectionId(const int64_t selectionId);
+        const Optional<int64_t>& getSelectionId() const;
+        void setSelectionId(const Optional<int64_t>& selectionId);
 
         const Optional<double>& getHandicap() const;
         void setHandicap(const Optional<double>& handicap);
@@ -48,7 +47,7 @@ class RunnerId : public JsonMember {
         /**
          * The id of the selection bet on
          */
-        int64_t selectionId;
+        Optional<int64_t> selectionId;
         /**
          * The handicap associated with the runner in case of asian handicap markets, null
          * otherwise.
@@ -59,5 +58,3 @@ class RunnerId : public JsonMember {
 }
 
 #endif // RUNNERID_H
-
-

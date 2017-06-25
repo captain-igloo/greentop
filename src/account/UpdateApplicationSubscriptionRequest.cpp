@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/UpdateApplicationSubscriptionRequest.h"
@@ -10,7 +10,7 @@ UpdateApplicationSubscriptionRequest::UpdateApplicationSubscriptionRequest() {
 }
 
 UpdateApplicationSubscriptionRequest::UpdateApplicationSubscriptionRequest(const std::string& vendorClientId,
-    const int32_t subscriptionLength) :
+    const Optional<int32_t>& subscriptionLength) :
     vendorClientId(vendorClientId),
     subscriptionLength(subscriptionLength) {
 }
@@ -46,10 +46,10 @@ void UpdateApplicationSubscriptionRequest::setVendorClientId(const std::string& 
     this->vendorClientId = vendorClientId;
 }
 
-const int32_t UpdateApplicationSubscriptionRequest::getSubscriptionLength() const {
+const Optional<int32_t>& UpdateApplicationSubscriptionRequest::getSubscriptionLength() const {
     return subscriptionLength;
 }
-void UpdateApplicationSubscriptionRequest::setSubscriptionLength(const int32_t subscriptionLength) {
+void UpdateApplicationSubscriptionRequest::setSubscriptionLength(const Optional<int32_t>& subscriptionLength) {
     this->subscriptionLength = subscriptionLength;
 }
 

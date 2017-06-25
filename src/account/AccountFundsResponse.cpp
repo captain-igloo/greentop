@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/AccountFundsResponse.h"
@@ -27,31 +27,24 @@ void AccountFundsResponse::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
         if (json.isMember("availableToBetBalance")) {
             availableToBetBalance = json["availableToBetBalance"].asDouble();
-;
         }
         if (json.isMember("exposure")) {
             exposure = json["exposure"].asDouble();
-;
         }
         if (json.isMember("retainedCommission")) {
             retainedCommission = json["retainedCommission"].asDouble();
-;
         }
         if (json.isMember("exposureLimit")) {
             exposureLimit = json["exposureLimit"].asDouble();
-;
         }
         if (json.isMember("discountRate")) {
             discountRate = json["discountRate"].asDouble();
-;
         }
         if (json.isMember("pointsBalance")) {
             pointsBalance = json["pointsBalance"].asInt();
-;
         }
         if (json.isMember("wallet")) {
             wallet = json["wallet"].asString();
-;
         }
     }
 }

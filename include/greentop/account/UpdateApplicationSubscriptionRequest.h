@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef UPDATEAPPLICATIONSUBSCRIPTIONREQUEST_H
@@ -18,7 +18,7 @@ class UpdateApplicationSubscriptionRequest : public JsonRequest {
         UpdateApplicationSubscriptionRequest();
 
         UpdateApplicationSubscriptionRequest(const std::string& vendorClientId,
-            const int32_t subscriptionLength);
+            const Optional<int32_t>& subscriptionLength);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -29,8 +29,8 @@ class UpdateApplicationSubscriptionRequest : public JsonRequest {
         const std::string& getVendorClientId() const;
         void setVendorClientId(const std::string& vendorClientId);
 
-        const int32_t getSubscriptionLength() const;
-        void setSubscriptionLength(const int32_t subscriptionLength);
+        const Optional<int32_t>& getSubscriptionLength() const;
+        void setSubscriptionLength(const Optional<int32_t>& subscriptionLength);
 
 
     private:
@@ -48,5 +48,3 @@ class UpdateApplicationSubscriptionRequest : public JsonRequest {
 }
 
 #endif // UPDATEAPPLICATIONSUBSCRIPTIONREQUEST_H
-
-

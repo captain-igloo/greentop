@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/MarketLineRangeInfo.h"
@@ -9,9 +9,9 @@ namespace greentop {
 MarketLineRangeInfo::MarketLineRangeInfo() {
 }
 
-MarketLineRangeInfo::MarketLineRangeInfo(const double maxUnitValue,
-    const double minUnitValue,
-    const double interval,
+MarketLineRangeInfo::MarketLineRangeInfo(const Optional<double>& maxUnitValue,
+    const Optional<double>& minUnitValue,
+    const Optional<double>& interval,
     const std::string& marketUnit) :
     maxUnitValue(maxUnitValue),
     minUnitValue(minUnitValue),
@@ -55,24 +55,24 @@ bool MarketLineRangeInfo::isValid() const {
     return maxUnitValue.isValid() && minUnitValue.isValid() && interval.isValid() && marketUnit != "";
 }
 
-const double MarketLineRangeInfo::getMaxUnitValue() const {
+const Optional<double>& MarketLineRangeInfo::getMaxUnitValue() const {
     return maxUnitValue;
 }
-void MarketLineRangeInfo::setMaxUnitValue(const double maxUnitValue) {
+void MarketLineRangeInfo::setMaxUnitValue(const Optional<double>& maxUnitValue) {
     this->maxUnitValue = maxUnitValue;
 }
 
-const double MarketLineRangeInfo::getMinUnitValue() const {
+const Optional<double>& MarketLineRangeInfo::getMinUnitValue() const {
     return minUnitValue;
 }
-void MarketLineRangeInfo::setMinUnitValue(const double minUnitValue) {
+void MarketLineRangeInfo::setMinUnitValue(const Optional<double>& minUnitValue) {
     this->minUnitValue = minUnitValue;
 }
 
-const double MarketLineRangeInfo::getInterval() const {
+const Optional<double>& MarketLineRangeInfo::getInterval() const {
     return interval;
 }
-void MarketLineRangeInfo::setInterval(const double interval) {
+void MarketLineRangeInfo::setInterval(const Optional<double>& interval) {
     this->interval = interval;
 }
 

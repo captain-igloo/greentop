@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef LISTMARKETPROFITANDLOSSREQUEST_H
@@ -65,5 +65,3 @@ class ListMarketProfitAndLossRequest : public JsonRequest {
 }
 
 #endif // LISTMARKETPROFITANDLOSSREQUEST_H
-
-

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef TOKENTYPE_H
@@ -16,7 +16,7 @@ class TokenType : public Enum<TokenType> {
 
     public:
 
-        /**  */
+
         static const std::string BEARER;
 
         TokenType();

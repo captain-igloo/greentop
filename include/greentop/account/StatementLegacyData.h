@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef STATEMENTLEGACYDATA_H
@@ -14,7 +14,6 @@
 #include "greentop/Time.h"
 
 namespace greentop {
-
 /**
  * Summary of a cleared order.
  */
@@ -102,28 +101,44 @@ class StatementLegacyData : public JsonMember {
 
 
     private:
+
         Optional<double> avgPrice;
+
         Optional<double> betSize;
+
         std::string betType;
+
         std::string betCategoryType;
+
         std::string commissionRate;
+
         Optional<int64_t> eventId;
+
         Optional<int64_t> eventTypeId;
+
         std::string fullMarketName;
+
         Optional<double> grossBetAmount;
+
         std::string marketName;
+
         std::string marketType;
+
         std::tm placedDate;
+
         Optional<int64_t> selectionId;
+
         std::string selectionName;
+
         std::tm startDate;
+
         std::string transactionType;
+
         Optional<int64_t> transactionId;
+
         std::string winLose;
 };
 
 }
 
 #endif // STATEMENTLEGACYDATA_H
-
-

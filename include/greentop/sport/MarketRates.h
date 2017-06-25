@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef MARKETRATES_H
@@ -11,7 +11,6 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
-
 /**
  * Market Rates
  */
@@ -19,8 +18,8 @@ class MarketRates : public JsonMember {
     public:
         MarketRates();
 
-        MarketRates(const double marketBaseRate,
-            const bool discountAllowed);
+        MarketRates(const Optional<double>& marketBaseRate,
+            const Optional<bool>& discountAllowed);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -28,11 +27,11 @@ class MarketRates : public JsonMember {
 
         virtual bool isValid() const;
 
-        const double getMarketBaseRate() const;
-        void setMarketBaseRate(const double marketBaseRate);
+        const Optional<double>& getMarketBaseRate() const;
+        void setMarketBaseRate(const Optional<double>& marketBaseRate);
 
-        const bool getDiscountAllowed() const;
-        void setDiscountAllowed(const bool discountAllowed);
+        const Optional<bool>& getDiscountAllowed() const;
+        void setDiscountAllowed(const Optional<bool>& discountAllowed);
 
 
     private:
@@ -49,5 +48,3 @@ class MarketRates : public JsonMember {
 }
 
 #endif // MARKETRATES_H
-
-

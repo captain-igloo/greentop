@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef SORTDIR_H
@@ -16,9 +16,13 @@ class SortDir : public Enum<SortDir> {
 
     public:
 
-        /** Order from earliest value to latest e.g. lowest betId is first in the results. */
+        /**
+         * Order from earliest value to latest e.g. lowest betId is first in the results.
+         */
         static const std::string EARLIEST_TO_LATEST;
-        /** Order from the latest value to the earliest e.g. highest betId is first in the results. */
+        /**
+         * Order from the latest value to the earliest e.g. highest betId is first in the results.
+         */
         static const std::string LATEST_TO_EARLIEST;
 
         SortDir();

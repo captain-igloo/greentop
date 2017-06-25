@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef LISTCOMPETITIONSREQUEST_H
@@ -48,5 +48,3 @@ class ListCompetitionsRequest : public JsonRequest {
 }
 
 #endif // LISTCOMPETITIONSREQUEST_H
-
-

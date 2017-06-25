@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/AccountStatementReport.h"
@@ -10,7 +10,7 @@ AccountStatementReport::AccountStatementReport() {
 }
 
 AccountStatementReport::AccountStatementReport(const std::vector<StatementItem>& accountStatement,
-    const bool moreAvailable) :
+    const Optional<bool>& moreAvailable) :
     accountStatement(accountStatement),
     moreAvailable(moreAvailable) {
 }
@@ -23,11 +23,9 @@ void AccountStatementReport::fromJson(const Json::Value& json) {
             statementItem.fromJson(json["accountStatement"][i]);
             accountStatement.push_back(statementItem);
         }
-;
         }
         if (json.isMember("moreAvailable")) {
             moreAvailable = json["moreAvailable"].asBool();
-;
         }
     }
 }
@@ -56,10 +54,10 @@ void AccountStatementReport::setAccountStatement(const std::vector<StatementItem
     this->accountStatement = accountStatement;
 }
 
-const bool AccountStatementReport::getMoreAvailable() const {
+const Optional<bool>& AccountStatementReport::getMoreAvailable() const {
     return moreAvailable;
 }
-void AccountStatementReport::setMoreAvailable(const bool moreAvailable) {
+void AccountStatementReport::setMoreAvailable(const Optional<bool>& moreAvailable) {
     this->moreAvailable = moreAvailable;
 }
 

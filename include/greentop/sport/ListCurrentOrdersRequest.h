@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef LISTCURRENTORDERSREQUEST_H
@@ -139,5 +139,3 @@ class ListCurrentOrdersRequest : public JsonRequest {
 }
 
 #endif // LISTCURRENTORDERSREQUEST_H
-
-

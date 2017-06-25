@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/DeveloperAppVersion.h"
@@ -10,7 +10,7 @@ DeveloperAppVersion::DeveloperAppVersion() {
 }
 
 DeveloperAppVersion::DeveloperAppVersion(const std::string& owner,
-    const int64_t versionId,
+    const Optional<int64_t>& versionId,
     const std::string& version,
     const std::string& applicationKey,
     const Optional<bool>& delayData,
@@ -110,10 +110,10 @@ void DeveloperAppVersion::setOwner(const std::string& owner) {
     this->owner = owner;
 }
 
-const int64_t DeveloperAppVersion::getVersionId() const {
+const Optional<int64_t>& DeveloperAppVersion::getVersionId() const {
     return versionId;
 }
-void DeveloperAppVersion::setVersionId(const int64_t versionId) {
+void DeveloperAppVersion::setVersionId(const Optional<int64_t>& versionId) {
     this->versionId = versionId;
 }
 

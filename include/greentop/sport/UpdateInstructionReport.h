@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef UPDATEINSTRUCTIONREPORT_H
@@ -56,5 +56,3 @@ class UpdateInstructionReport : public JsonMember {
 }
 
 #endif // UPDATEINSTRUCTIONREPORT_H
-
-

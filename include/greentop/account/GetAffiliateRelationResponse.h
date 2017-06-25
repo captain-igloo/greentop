@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef GETAFFILIATERELATIONRESPONSE_H
@@ -30,11 +30,10 @@ class GetAffiliateRelationResponse : public JsonResponse {
 
 
     private:
+
         std::vector<AffiliateRelation> affiliateRelations;
 };
 
 }
 
 #endif // GETAFFILIATERELATIONRESPONSE_H
-
-

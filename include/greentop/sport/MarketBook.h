@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef MARKETBOOK_H
@@ -17,7 +17,6 @@
 #include "greentop/sport/enum/MarketStatus.h"
 
 namespace greentop {
-
 /**
  * The dynamic data in a market
  */
@@ -26,7 +25,7 @@ class MarketBook : public JsonMember {
         MarketBook();
 
         MarketBook(const std::string& marketId,
-            const bool isMarketDataDelayed,
+            const Optional<bool>& isMarketDataDelayed,
             const MarketStatus& status = MarketStatus(),
             const Optional<int32_t>& betDelay = Optional<int32_t>(),
             const Optional<bool>& bspReconciled = Optional<bool>(),
@@ -52,8 +51,8 @@ class MarketBook : public JsonMember {
         const std::string& getMarketId() const;
         void setMarketId(const std::string& marketId);
 
-        const bool getIsMarketDataDelayed() const;
-        void setIsMarketDataDelayed(const bool isMarketDataDelayed);
+        const Optional<bool>& getIsMarketDataDelayed() const;
+        void setIsMarketDataDelayed(const Optional<bool>& isMarketDataDelayed);
 
         const MarketStatus& getStatus() const;
         void setStatus(const MarketStatus& status);
@@ -125,6 +124,7 @@ class MarketBook : public JsonMember {
          * True if the market starting price has been reconciled
          */
         Optional<bool> bspReconciled;
+
         Optional<bool> complete;
         /**
          * True if the market is currently in play
@@ -177,5 +177,3 @@ class MarketBook : public JsonMember {
 }
 
 #endif // MARKETBOOK_H
-
-

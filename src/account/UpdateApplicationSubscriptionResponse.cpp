@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/UpdateApplicationSubscriptionResponse.h"
@@ -15,15 +15,12 @@ UpdateApplicationSubscriptionResponse::UpdateApplicationSubscriptionResponse(con
 
 void UpdateApplicationSubscriptionResponse::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
-        if (json.isMember("subscriptionToken")) {
-            subscriptionToken = json["subscriptionToken"].asString();
-;
-        }
+        subscriptionToken = json["subscriptionToken"].asString();
     }
 }
 
 Json::Value UpdateApplicationSubscriptionResponse::toJson() const {
-    Json::Value json(Json::objectValue);
+    Json::Value json(Json::arrayValue);
     if (subscriptionToken != "") {
         json["subscriptionToken"] = subscriptionToken;
     }

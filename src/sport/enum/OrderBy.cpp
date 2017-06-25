@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -17,10 +17,9 @@ const std::string OrderBy::BY_SETTLED_TIME = "BY_SETTLED_TIME";
 
 OrderBy::OrderBy() {
     valid = false;
-};
+}
 
 OrderBy::OrderBy(const std::string& v) {
-
     if (v != BY_BET &&
         v != BY_MARKET &&
         v != BY_PLACE_TIME &&
@@ -29,7 +28,6 @@ OrderBy::OrderBy(const std::string& v) {
         v != BY_SETTLED_TIME) {
         throw std::invalid_argument("Invalid OrderBy: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -47,4 +45,3 @@ bool OrderBy::operator!=(const OrderBy& other) const {
 }
 
 }
-

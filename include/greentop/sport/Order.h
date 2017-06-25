@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef ORDER_H
@@ -28,9 +28,9 @@ class Order : public JsonMember {
             const OrderStatus& status,
             const PersistenceType& persistenceType,
             const Side& side,
-            const double price,
-            const double size,
-            const double bspLiability,
+            const Optional<double>& price,
+            const Optional<double>& size,
+            const Optional<double>& bspLiability,
             const std::tm& placedDate,
             const Optional<double>& avgPriceMatched = Optional<double>(),
             const Optional<double>& sizeMatched = Optional<double>(),
@@ -62,14 +62,14 @@ class Order : public JsonMember {
         const Side& getSide() const;
         void setSide(const Side& side);
 
-        const double getPrice() const;
-        void setPrice(const double price);
+        const Optional<double>& getPrice() const;
+        void setPrice(const Optional<double>& price);
 
-        const double getSize() const;
-        void setSize(const double size);
+        const Optional<double>& getSize() const;
+        void setSize(const Optional<double>& size);
 
-        const double getBspLiability() const;
-        void setBspLiability(const double bspLiability);
+        const Optional<double>& getBspLiability() const;
+        void setBspLiability(const Optional<double>& bspLiability);
 
         const std::tm& getPlacedDate() const;
         void setPlacedDate(const std::tm& placedDate);
@@ -100,6 +100,7 @@ class Order : public JsonMember {
 
 
     private:
+
         std::string betId;
         /**
          * BSP Order type.
@@ -114,26 +115,28 @@ class Order : public JsonMember {
          * What to do with the order at turn-in-play
          */
         PersistenceType persistenceType;
+
         Side side;
         /**
          * The price of the bet.
          */
-        double price;
+        Optional<double> price;
         /**
          * The size of the bet.
          */
-        double size;
+        Optional<double> size;
         /**
          * Not to be confused with size. This is the liability of a given BSP bet.
          */
-        double bspLiability;
+        Optional<double> bspLiability;
         /**
          * The date, to the second, the bet was placed.
          */
         std::tm placedDate;
         /**
          * The average price matched at. Voided match fragments are removed from this average
-         * calculation.
+         * calculation. This value is not meaningful for activity on LINE markets and is not
+         * guaranteed to be returned or maintained for these markets.
          */
         Optional<double> avgPriceMatched;
         /**
@@ -169,5 +172,3 @@ class Order : public JsonMember {
 }
 
 #endif // ORDER_H
-
-

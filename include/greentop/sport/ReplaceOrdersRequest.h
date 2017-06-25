@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef REPLACEORDERSREQUEST_H
@@ -53,6 +53,7 @@ class ReplaceOrdersRequest : public JsonRequest {
          * The market id these orders are to be placed on
          */
         std::string marketId;
+
         std::vector<ReplaceInstruction> instructions;
         /**
          * Optional parameter allowing the client to pass a unique string (up to 32 chars) that is
@@ -77,5 +78,3 @@ class ReplaceOrdersRequest : public JsonRequest {
 }
 
 #endif // REPLACEORDERSREQUEST_H
-
-

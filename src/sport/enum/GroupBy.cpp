@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -18,10 +18,9 @@ const std::string GroupBy::STRATEGY = "STRATEGY";
 
 GroupBy::GroupBy() {
     valid = false;
-};
+}
 
 GroupBy::GroupBy(const std::string& v) {
-
     if (v != EVENT_TYPE &&
         v != EVENT &&
         v != MARKET &&
@@ -31,7 +30,6 @@ GroupBy::GroupBy(const std::string& v) {
         v != STRATEGY) {
         throw std::invalid_argument("Invalid GroupBy: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -49,4 +47,3 @@ bool GroupBy::operator!=(const GroupBy& other) const {
 }
 
 }
-

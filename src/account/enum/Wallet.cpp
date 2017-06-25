@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -13,15 +13,13 @@ const std::string Wallet::AUSTRALIAN = "AUSTRALIAN";
 
 Wallet::Wallet() {
     valid = false;
-};
+}
 
 Wallet::Wallet(const std::string& v) {
-
     if (v != UK &&
         v != AUSTRALIAN) {
         throw std::invalid_argument("Invalid Wallet: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -39,4 +37,3 @@ bool Wallet::operator!=(const Wallet& other) const {
 }
 
 }
-

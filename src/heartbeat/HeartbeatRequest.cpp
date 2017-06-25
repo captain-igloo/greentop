@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/heartbeat/HeartbeatRequest.h"
@@ -9,7 +9,7 @@ namespace greentop {
 HeartbeatRequest::HeartbeatRequest() {
 }
 
-HeartbeatRequest::HeartbeatRequest(const int32_t preferredTimeoutSeconds) :
+HeartbeatRequest::HeartbeatRequest(const Optional<int32_t>& preferredTimeoutSeconds) :
     preferredTimeoutSeconds(preferredTimeoutSeconds) {
 }
 
@@ -31,10 +31,10 @@ bool HeartbeatRequest::isValid() const {
     return preferredTimeoutSeconds.isValid();
 }
 
-const int32_t HeartbeatRequest::getPreferredTimeoutSeconds() const {
+const Optional<int32_t>& HeartbeatRequest::getPreferredTimeoutSeconds() const {
     return preferredTimeoutSeconds;
 }
-void HeartbeatRequest::setPreferredTimeoutSeconds(const int32_t preferredTimeoutSeconds) {
+void HeartbeatRequest::setPreferredTimeoutSeconds(const Optional<int32_t>& preferredTimeoutSeconds) {
     this->preferredTimeoutSeconds = preferredTimeoutSeconds;
 }
 

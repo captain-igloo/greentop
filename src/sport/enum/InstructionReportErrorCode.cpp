@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -30,13 +30,17 @@ const std::string InstructionReportErrorCode::RELATED_ACTION_FAILED = "RELATED_A
 const std::string InstructionReportErrorCode::NO_ACTION_REQUIRED = "NO_ACTION_REQUIRED";
 const std::string InstructionReportErrorCode::INVALID_MIN_FILL_SIZE = "INVALID_MIN_FILL_SIZE";
 const std::string InstructionReportErrorCode::INVALID_CUSTOMER_ORDER_REF = "INVALID_CUSTOMER_ORDER_REF";
+const std::string InstructionReportErrorCode::TIME_IN_FORCE_CONFLICT = "TIME_IN_FORCE_CONFLICT";
+const std::string InstructionReportErrorCode::UNEXPECTED_PERSISTENCE_TYPE = "UNEXPECTED_PERSISTENCE_TYPE";
+const std::string InstructionReportErrorCode::INVALID_ORDER_TYPE = "INVALID_ORDER_TYPE";
+const std::string InstructionReportErrorCode::UNEXPECTED_MIN_FILL_SIZE = "UNEXPECTED_MIN_FILL_SIZE";
+const std::string InstructionReportErrorCode::INVALID_CUSTOMER_STRATEGY_REF = "INVALID_CUSTOMER_STRATEGY_REF";
 
 InstructionReportErrorCode::InstructionReportErrorCode() {
     valid = false;
-};
+}
 
 InstructionReportErrorCode::InstructionReportErrorCode(const std::string& v) {
-
     if (v != INVALID_BET_SIZE &&
         v != INVALID_RUNNER &&
         v != BET_TAKEN_OR_LAPSED &&
@@ -58,10 +62,14 @@ InstructionReportErrorCode::InstructionReportErrorCode(const std::string& v) {
         v != RELATED_ACTION_FAILED &&
         v != NO_ACTION_REQUIRED &&
         v != INVALID_MIN_FILL_SIZE &&
-        v != INVALID_CUSTOMER_ORDER_REF) {
+        v != INVALID_CUSTOMER_ORDER_REF &&
+        v != TIME_IN_FORCE_CONFLICT &&
+        v != UNEXPECTED_PERSISTENCE_TYPE &&
+        v != INVALID_ORDER_TYPE &&
+        v != UNEXPECTED_MIN_FILL_SIZE &&
+        v != INVALID_CUSTOMER_STRATEGY_REF) {
         throw std::invalid_argument("Invalid InstructionReportErrorCode: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -79,4 +87,3 @@ bool InstructionReportErrorCode::operator!=(const InstructionReportErrorCode& ot
 }
 
 }
-

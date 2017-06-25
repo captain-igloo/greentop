@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/RevokeAccessToWebAppResponse.h"
@@ -15,15 +15,12 @@ RevokeAccessToWebAppResponse::RevokeAccessToWebAppResponse(const Status& status)
 
 void RevokeAccessToWebAppResponse::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
-        if (json.isMember("status")) {
-            status = json["status"].asString();
-;
-        }
+        status = json["status"].asString();
     }
 }
 
 Json::Value RevokeAccessToWebAppResponse::toJson() const {
-    Json::Value json(Json::objectValue);
+    Json::Value json(Json::arrayValue);
     if (status.isValid()) {
         json["status"] = status.getValue();
     }

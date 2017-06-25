@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef PRICEDATA_H
@@ -16,15 +16,17 @@ class PriceData : public Enum<PriceData> {
 
     public:
 
-        /**  */
+
         static const std::string SP_AVAILABLE;
-        /**  */
+
         static const std::string SP_TRADED;
-        /**  */
+
         static const std::string EX_BEST_OFFERS;
-        /** EX_ALL_OFFERS trumps EX_BEST_OFFERS if both settings are present */
+        /**
+         * EX_ALL_OFFERS trumps EX_BEST_OFFERS if both settings are present
+         */
         static const std::string EX_ALL_OFFERS;
-        /**  */
+
         static const std::string EX_TRADED;
 
         PriceData();

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef CLEAREDORDERSUMMARY_H
@@ -18,7 +18,6 @@
 #include "greentop/sport/enum/Side.h"
 
 namespace greentop {
-
 /**
  * Summary of a cleared order.
  */
@@ -188,7 +187,7 @@ class ClearedOrderSummary : public JsonMember {
         std::string betOutcome;
         /**
          * The average requested price across all settled bet orders under this Item. Available at
-         * SIDE groupBy level or lower.
+         * SIDE groupBy level or lower. For Line markets this is the line position requested.
          */
         Optional<double> priceRequested;
         /**
@@ -213,7 +212,8 @@ class ClearedOrderSummary : public JsonMember {
         Optional<double> commission;
         /**
          * The average matched price across all settled bets or bet fragments under this Item.
-         * Available at SIDE groupBy level or lower.
+         * Available at SIDE groupBy level or lower. This value is not meaningful for activity on
+         * LINE markets and is not guaranteed to be returned or maintained for these markets.
          */
         Optional<double> priceMatched;
         /**
@@ -248,5 +248,3 @@ class ClearedOrderSummary : public JsonMember {
 }
 
 #endif // CLEAREDORDERSUMMARY_H
-
-

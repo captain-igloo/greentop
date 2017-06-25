@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef EXCHANGEPRICES_H
@@ -37,13 +37,14 @@ class ExchangePrices : public JsonMember {
 
 
     private:
+
         std::vector<PriceSize> availableToBack;
+
         std::vector<PriceSize> availableToLay;
+
         std::vector<PriceSize> tradedVolume;
 };
 
 }
 
 #endif // EXCHANGEPRICES_H
-
-

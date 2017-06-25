@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef LISTVENUESRESPONSE_H
@@ -30,11 +30,10 @@ class ListVenuesResponse : public JsonResponse {
 
 
     private:
+
         std::vector<VenueResult> venueResults;
 };
 
 }
 
 #endif // LISTVENUESRESPONSE_H
-
-

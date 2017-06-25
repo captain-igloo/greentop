@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef GETACCOUNTSTATEMENTREQUEST_H
@@ -89,5 +89,3 @@ class GetAccountStatementRequest : public JsonRequest {
 }
 
 #endif // GETACCOUNTSTATEMENTREQUEST_H
-
-

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef MARKETLICENCE_H
@@ -12,7 +12,6 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
-
 /**
  * Market Licence
  */
@@ -66,5 +65,3 @@ class MarketLicence : public JsonMember {
 }
 
 #endif // MARKETLICENCE_H
-
-

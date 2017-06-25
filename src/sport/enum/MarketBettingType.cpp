@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -17,10 +17,9 @@ const std::string MarketBettingType::FIXED_ODDS = "FIXED_ODDS";
 
 MarketBettingType::MarketBettingType() {
     valid = false;
-};
+}
 
 MarketBettingType::MarketBettingType(const std::string& v) {
-
     if (v != ODDS &&
         v != LINE &&
         v != RANGE &&
@@ -29,7 +28,6 @@ MarketBettingType::MarketBettingType(const std::string& v) {
         v != FIXED_ODDS) {
         throw std::invalid_argument("Invalid MarketBettingType: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -47,4 +45,3 @@ bool MarketBettingType::operator!=(const MarketBettingType& other) const {
 }
 
 }
-

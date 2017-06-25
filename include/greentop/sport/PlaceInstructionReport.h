@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef PLACEINSTRUCTIONREPORT_H
@@ -18,7 +18,6 @@
 #include "greentop/sport/enum/OrderStatus.h"
 
 namespace greentop {
-
 /**
  * Response to a PlaceInstruction
  */
@@ -94,7 +93,9 @@ class PlaceInstructionReport : public JsonMember {
          */
         std::tm placedDate;
         /**
-         * Will be null if order was placed asynchronously
+         * Will be null if order was placed asynchronously. This value is not meaningful for
+         * activity on LINE markets and is not guaranteed to be returned or maintained for these
+         * markets.
          */
         Optional<double> averagePriceMatched;
         /**
@@ -106,5 +107,3 @@ class PlaceInstructionReport : public JsonMember {
 }
 
 #endif // PLACEINSTRUCTIONREPORT_H
-
-

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef WALLET_H
@@ -16,9 +16,9 @@ class Wallet : public Enum<Wallet> {
 
     public:
 
-        /**  */
+
         static const std::string UK;
-        /**  */
+
         static const std::string AUSTRALIAN;
 
         Wallet();

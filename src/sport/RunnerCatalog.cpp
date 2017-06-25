@@ -1,18 +1,18 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/RunnerCatalog.h"
 
 namespace greentop {
 
-RunnerCatalog::RunnerCatalog() : selectionId(-1) {
+RunnerCatalog::RunnerCatalog() {
 }
 
-RunnerCatalog::RunnerCatalog(const int64_t selectionId,
+RunnerCatalog::RunnerCatalog(const Optional<int64_t>& selectionId,
     const std::string& runnerName,
-    const double handicap,
-    const int32_t sortPriority,
+    const Optional<double>& handicap,
+    const Optional<int32_t>& sortPriority,
     const std::map<std::string, std::string> metadata) :
     selectionId(selectionId),
     runnerName(runnerName),
@@ -45,7 +45,9 @@ void RunnerCatalog::fromJson(const Json::Value& json) {
 
 Json::Value RunnerCatalog::toJson() const {
     Json::Value json(Json::objectValue);
-    json["selectionId"] = selectionId;
+    if (selectionId.isValid()) {
+        json["selectionId"] = selectionId.toJson();
+    }
     if (runnerName != "") {
         json["runnerName"] = runnerName;
     }
@@ -60,18 +62,19 @@ Json::Value RunnerCatalog::toJson() const {
         for (std::map<std::string, std::string>::const_iterator it = metadata.begin(); it != metadata.end(); ++it) {
             json["metadata"][it->first] = it->second;
         }
+
     }
     return json;
 }
 
 bool RunnerCatalog::isValid() const {
-    return runnerName != "" && handicap.isValid() && sortPriority.isValid();
+    return selectionId.isValid() && runnerName != "" && handicap.isValid() && sortPriority.isValid();
 }
 
-const int64_t RunnerCatalog::getSelectionId() const {
+const Optional<int64_t>& RunnerCatalog::getSelectionId() const {
     return selectionId;
 }
-void RunnerCatalog::setSelectionId(const int64_t selectionId) {
+void RunnerCatalog::setSelectionId(const Optional<int64_t>& selectionId) {
     this->selectionId = selectionId;
 }
 
@@ -82,17 +85,17 @@ void RunnerCatalog::setRunnerName(const std::string& runnerName) {
     this->runnerName = runnerName;
 }
 
-const double RunnerCatalog::getHandicap() const {
+const Optional<double>& RunnerCatalog::getHandicap() const {
     return handicap;
 }
-void RunnerCatalog::setHandicap(const double handicap) {
+void RunnerCatalog::setHandicap(const Optional<double>& handicap) {
     this->handicap = handicap;
 }
 
-const int32_t RunnerCatalog::getSortPriority() const {
+const Optional<int32_t>& RunnerCatalog::getSortPriority() const {
     return sortPriority;
 }
-void RunnerCatalog::setSortPriority(const int32_t sortPriority) {
+void RunnerCatalog::setSortPriority(const Optional<int32_t>& sortPriority) {
     this->sortPriority = sortPriority;
 }
 

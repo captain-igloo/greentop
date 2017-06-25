@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef CREATEDEVELOPERAPPKEYSREQUEST_H
@@ -38,5 +38,3 @@ class CreateDeveloperAppKeysRequest : public JsonRequest {
 }
 
 #endif // CREATEDEVELOPERAPPKEYSREQUEST_H
-
-

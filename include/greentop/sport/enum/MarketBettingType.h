@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef MARKETBETTINGTYPE_H
@@ -16,19 +16,35 @@ class MarketBettingType : public Enum<MarketBettingType> {
 
     public:
 
-        /** Odds Market */
+        /**
+         * Odds Market
+         */
         static const std::string ODDS;
-        /** Line Market */
+        /**
+         * Line markets operate at even-money odds of 2.0. However, price for these markets refers
+         * to the line positions available as defined by the markets min-max range and interval
+         * steps. Customers either Buy a line (LAY bet, winning if outcome is greater than the
+         * taken line (price)) or Sell a line (BACK bet, winning if outcome is less than the taken
+         * line (price)). If settled outcome equals the taken line, stake is returned.
+         */
         static const std::string LINE;
-        /** Range Market */
+        /**
+         * Range Market
+         */
         static const std::string RANGE;
-        /** Asian Handicap Market */
+        /**
+         * Asian Handicap Market
+         */
         static const std::string ASIAN_HANDICAP_DOUBLE_LINE;
-        /** Asian Single Line Market */
+        /**
+         * Asian Single Line Market
+         */
         static const std::string ASIAN_HANDICAP_SINGLE_LINE;
-        /** Sportsbook Odds Market. This type is deprecated and will be removed
-         in future releases, when Sportsbook markets will be represented as ODDS market
-         but with a different product type. */
+        /**
+         * Sportsbook Odds Market. This type is deprecated and will be removed in future releases,
+         * when Sportsbook markets will be represented as ODDS market but with a different product
+         * type.
+         */
         static const std::string FIXED_ODDS;
 
         MarketBettingType();

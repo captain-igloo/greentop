@@ -250,6 +250,14 @@ ExchangeApi::listMarketBook(const Exchange exchange,
     return response;
 }
 
+ListRunnerBookResponse
+ExchangeApi::listRunnerBook(const Exchange exchange,
+        const ListRunnerBookRequest& request) const {
+    ListRunnerBookResponse response;
+    performRequest(exchange, Api::BETTING, "listRunnerBook", request, response);
+    return response;
+}
+
 CurrentOrderSummaryReport
 ExchangeApi::listCurrentOrders(const Exchange exchange,
         const ListCurrentOrdersRequest& request) const {

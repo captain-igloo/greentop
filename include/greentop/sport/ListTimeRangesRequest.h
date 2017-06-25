@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef LISTTIMERANGESREQUEST_H
@@ -49,5 +49,3 @@ class ListTimeRangesRequest : public JsonRequest {
 }
 
 #endif // LISTTIMERANGESREQUEST_H
-
-

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef INSTRUCTIONREPORTSTATUS_H
@@ -16,11 +16,11 @@ class InstructionReportStatus : public Enum<InstructionReportStatus> {
 
     public:
 
-        /**  */
+
         static const std::string SUCCESS;
-        /**  */
+
         static const std::string FAILURE;
-        /**  */
+
         static const std::string TIMEOUT;
 
         InstructionReportStatus();

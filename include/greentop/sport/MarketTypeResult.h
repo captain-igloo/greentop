@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef MARKETTYPERESULT_H
@@ -12,7 +12,6 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
-
 /**
  * MarketType Result
  */
@@ -49,5 +48,3 @@ class MarketTypeResult : public JsonMember {
 }
 
 #endif // MARKETTYPERESULT_H
-
-

@@ -1,10 +1,11 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef LISTMARKETBOOKREQUEST_H
 #define LISTMARKETBOOKREQUEST_H
 
+#include <ctime>
 #include <json/json.h>
 #include <set>
 #include <string>
@@ -12,6 +13,7 @@
 
 #include "greentop/JsonRequest.h"
 #include "greentop/Optional.h"
+#include "greentop/Time.h"
 #include "greentop/sport/PriceProjection.h"
 #include "greentop/sport/enum/MatchProjection.h"
 #include "greentop/sport/enum/OrderProjection.h"
@@ -30,7 +32,9 @@ class ListMarketBookRequest : public JsonRequest {
             const Optional<bool>& partitionMatchedByStrategyRef = Optional<bool>(),
             const std::set<std::string>& customerStrategyRefs = std::set<std::string>(),
             const std::string& currencyCode = std::string(),
-            const std::string& locale = std::string());
+            const std::string& locale = std::string(),
+            const std::tm& matchedSince = std::tm(),
+            const std::set<std::string>& betIds = std::set<std::string>());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -64,6 +68,12 @@ class ListMarketBookRequest : public JsonRequest {
 
         const std::string& getLocale() const;
         void setLocale(const std::string& locale);
+
+        const std::tm& getMatchedSince() const;
+        void setMatchedSince(const std::tm& matchedSince);
+
+        const std::set<std::string>& getBetIds() const;
+        void setBetIds(const std::set<std::string>& betIds);
 
 
     private:
@@ -110,10 +120,19 @@ class ListMarketBookRequest : public JsonRequest {
          * The language used for the response. If not specified, the default is returned.
          */
         std::string locale;
+        /**
+         * If you ask for orders, restricts the results to orders that have at least one fragment
+         * matched since the specified date (all matched fragments of such an order will be
+         * returned even if some were matched before the specified date). All EXECUTABLE orders
+         * will be returned regardless of matched date.
+         */
+        std::tm matchedSince;
+        /**
+         * If you ask for orders, restricts the results to orders with the specified bet IDs.
+         */
+        std::set<std::string> betIds;
 };
 
 }
 
 #endif // LISTMARKETBOOKREQUEST_H
-
-

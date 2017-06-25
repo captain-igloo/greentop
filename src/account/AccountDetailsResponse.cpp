@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/account/AccountDetailsResponse.h"
@@ -31,39 +31,30 @@ void AccountDetailsResponse::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
         if (json.isMember("currencyCode")) {
             currencyCode = json["currencyCode"].asString();
-;
         }
         if (json.isMember("firstName")) {
             firstName = json["firstName"].asString();
-;
         }
         if (json.isMember("lastName")) {
             lastName = json["lastName"].asString();
-;
         }
         if (json.isMember("localeCode")) {
             localeCode = json["localeCode"].asString();
-;
         }
         if (json.isMember("region")) {
             region = json["region"].asString();
-;
         }
         if (json.isMember("timezone")) {
             timezone = json["timezone"].asString();
-;
         }
         if (json.isMember("discountRate")) {
             discountRate = json["discountRate"].asDouble();
-;
         }
         if (json.isMember("pointsBalance")) {
             pointsBalance = json["pointsBalance"].asInt();
-;
         }
         if (json.isMember("countryCode")) {
             countryCode = json["countryCode"].asString();
-;
         }
     }
 }

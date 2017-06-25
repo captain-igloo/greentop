@@ -1,12 +1,12 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/Order.h"
 
 namespace greentop {
 
-Order::Order() : price(-1), size(-1), bspLiability(-1) {
+Order::Order() {
 }
 
 Order::Order(const std::string& betId,
@@ -14,9 +14,9 @@ Order::Order(const std::string& betId,
     const OrderStatus& status,
     const PersistenceType& persistenceType,
     const Side& side,
-    const double price,
-    const double size,
-    const double bspLiability,
+    const Optional<double>& price,
+    const Optional<double>& size,
+    const Optional<double>& bspLiability,
     const std::tm& placedDate,
     const Optional<double>& avgPriceMatched,
     const Optional<double>& sizeMatched,
@@ -101,7 +101,9 @@ void Order::fromJson(const Json::Value& json) {
 
 Json::Value Order::toJson() const {
     Json::Value json(Json::objectValue);
-    json["betId"] = betId;
+    if (betId != "") {
+        json["betId"] = betId;
+    }
     if (orderType.isValid()) {
         json["orderType"] = orderType.getValue();
     }
@@ -114,9 +116,15 @@ Json::Value Order::toJson() const {
     if (side.isValid()) {
         json["side"] = side.getValue();
     }
-    json["price"] = price;
-    json["size"] = size;
-    json["bspLiability"] = bspLiability;
+    if (price.isValid()) {
+        json["price"] = price.toJson();
+    }
+    if (size.isValid()) {
+        json["size"] = size.toJson();
+    }
+    if (bspLiability.isValid()) {
+        json["bspLiability"] = bspLiability.toJson();
+    }
     if (placedDate.tm_year > 0) {
         char buffer[25];
         strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &placedDate);
@@ -140,13 +148,17 @@ Json::Value Order::toJson() const {
     if (sizeVoided.isValid()) {
         json["sizeVoided"] = sizeVoided.toJson();
     }
-    json["customerOrderRef"] = customerOrderRef;
-    json["customerStrategyRef"] = customerStrategyRef;
+    if (customerOrderRef != "") {
+        json["customerOrderRef"] = customerOrderRef;
+    }
+    if (customerStrategyRef != "") {
+        json["customerStrategyRef"] = customerStrategyRef;
+    }
     return json;
 }
 
 bool Order::isValid() const {
-    return orderType.isValid() && status.isValid() && persistenceType.isValid() && side.isValid() && placedDate.tm_year > 0;
+    return betId != "" && orderType.isValid() && status.isValid() && persistenceType.isValid() && side.isValid() && price.isValid() && size.isValid() && bspLiability.isValid() && placedDate.tm_year > 0;
 }
 
 const std::string& Order::getBetId() const {
@@ -184,24 +196,24 @@ void Order::setSide(const Side& side) {
     this->side = side;
 }
 
-const double Order::getPrice() const {
+const Optional<double>& Order::getPrice() const {
     return price;
 }
-void Order::setPrice(const double price) {
+void Order::setPrice(const Optional<double>& price) {
     this->price = price;
 }
 
-const double Order::getSize() const {
+const Optional<double>& Order::getSize() const {
     return size;
 }
-void Order::setSize(const double size) {
+void Order::setSize(const Optional<double>& size) {
     this->size = size;
 }
 
-const double Order::getBspLiability() const {
+const Optional<double>& Order::getBspLiability() const {
     return bspLiability;
 }
-void Order::setBspLiability(const double bspLiability) {
+void Order::setBspLiability(const Optional<double>& bspLiability) {
     this->bspLiability = bspLiability;
 }
 

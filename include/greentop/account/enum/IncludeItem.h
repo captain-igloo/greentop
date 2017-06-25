@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef INCLUDEITEM_H
@@ -16,13 +16,13 @@ class IncludeItem : public Enum<IncludeItem> {
 
     public:
 
-        /**  */
+
         static const std::string ALL;
-        /**  */
+
         static const std::string EXCHANGE;
-        /**  */
+
         static const std::string POKER_ROOM;
-        /**  */
+
         static const std::string DEPOSITS_WITHDRAWALS;
 
         IncludeItem();

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef CURRENTORDERSUMMARYREPORT_H
@@ -13,7 +13,6 @@
 #include "greentop/sport/CurrentOrderSummary.h"
 
 namespace greentop {
-
 /**
  * A container representing search results.
  */
@@ -22,7 +21,7 @@ class CurrentOrderSummaryReport : public JsonResponse {
         CurrentOrderSummaryReport();
 
         CurrentOrderSummaryReport(const std::vector<CurrentOrderSummary>& currentOrders,
-            const bool moreAvailable);
+            const Optional<bool>& moreAvailable);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -33,8 +32,8 @@ class CurrentOrderSummaryReport : public JsonResponse {
         const std::vector<CurrentOrderSummary>& getCurrentOrders() const;
         void setCurrentOrders(const std::vector<CurrentOrderSummary>& currentOrders);
 
-        const bool getMoreAvailable() const;
-        void setMoreAvailable(const bool moreAvailable);
+        const Optional<bool>& getMoreAvailable() const;
+        void setMoreAvailable(const Optional<bool>& moreAvailable);
 
 
     private:
@@ -54,5 +53,3 @@ class CurrentOrderSummaryReport : public JsonResponse {
 }
 
 #endif // CURRENTORDERSUMMARYREPORT_H
-
-

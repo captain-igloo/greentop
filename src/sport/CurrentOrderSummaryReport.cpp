@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/CurrentOrderSummaryReport.h"
@@ -10,7 +10,7 @@ CurrentOrderSummaryReport::CurrentOrderSummaryReport() {
 }
 
 CurrentOrderSummaryReport::CurrentOrderSummaryReport(const std::vector<CurrentOrderSummary>& currentOrders,
-    const bool moreAvailable) :
+    const Optional<bool>& moreAvailable) :
     currentOrders(currentOrders),
     moreAvailable(moreAvailable) {
 }
@@ -23,11 +23,9 @@ void CurrentOrderSummaryReport::fromJson(const Json::Value& json) {
             currentOrder.fromJson(json["currentOrders"][i]);
             currentOrders.push_back(currentOrder);
         }
-;
         }
         if (json.isMember("moreAvailable")) {
             moreAvailable = json["moreAvailable"].asBool();
-;
         }
     }
 }
@@ -56,10 +54,10 @@ void CurrentOrderSummaryReport::setCurrentOrders(const std::vector<CurrentOrderS
     this->currentOrders = currentOrders;
 }
 
-const bool CurrentOrderSummaryReport::getMoreAvailable() const {
+const Optional<bool>& CurrentOrderSummaryReport::getMoreAvailable() const {
     return moreAvailable;
 }
-void CurrentOrderSummaryReport::setMoreAvailable(const bool moreAvailable) {
+void CurrentOrderSummaryReport::setMoreAvailable(const Optional<bool>& moreAvailable) {
     this->moreAvailable = moreAvailable;
 }
 

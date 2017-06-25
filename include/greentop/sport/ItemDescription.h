@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef ITEMDESCRIPTION_H
@@ -14,10 +14,9 @@
 #include "greentop/Time.h"
 
 namespace greentop {
-
 /**
- * This object contains some text which may be useful to render a betting history view. It offers no
- * long-term warranty as to the correctness of the text.
+ * This object contains some text which may be useful to render a betting history view. It offers
+ * no long-term warranty as to the correctness of the text.
  */
 class ItemDescription : public JsonMember {
     public:
@@ -106,5 +105,3 @@ class ItemDescription : public JsonMember {
 }
 
 #endif // ITEMDESCRIPTION_H
-
-

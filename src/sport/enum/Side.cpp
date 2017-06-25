@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -13,15 +13,13 @@ const std::string Side::LAY = "LAY";
 
 Side::Side() {
     valid = false;
-};
+}
 
 Side::Side(const std::string& v) {
-
     if (v != BACK &&
         v != LAY) {
         throw std::invalid_argument("Invalid Side: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -39,4 +37,3 @@ bool Side::operator!=(const Side& other) const {
 }
 
 }
-

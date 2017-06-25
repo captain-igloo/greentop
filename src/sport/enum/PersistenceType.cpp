@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -14,16 +14,14 @@ const std::string PersistenceType::MARKET_ON_CLOSE = "MARKET_ON_CLOSE";
 
 PersistenceType::PersistenceType() {
     valid = false;
-};
+}
 
 PersistenceType::PersistenceType(const std::string& v) {
-
     if (v != LAPSE &&
         v != PERSIST &&
         v != MARKET_ON_CLOSE) {
         throw std::invalid_argument("Invalid PersistenceType: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -41,4 +39,3 @@ bool PersistenceType::operator!=(const PersistenceType& other) const {
 }
 
 }
-

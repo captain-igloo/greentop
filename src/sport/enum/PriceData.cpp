@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -16,10 +16,9 @@ const std::string PriceData::EX_TRADED = "EX_TRADED";
 
 PriceData::PriceData() {
     valid = false;
-};
+}
 
 PriceData::PriceData(const std::string& v) {
-
     if (v != SP_AVAILABLE &&
         v != SP_TRADED &&
         v != EX_BEST_OFFERS &&
@@ -27,7 +26,6 @@ PriceData::PriceData(const std::string& v) {
         v != EX_TRADED) {
         throw std::invalid_argument("Invalid PriceData: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -45,4 +43,3 @@ bool PriceData::operator!=(const PriceData& other) const {
 }
 
 }
-

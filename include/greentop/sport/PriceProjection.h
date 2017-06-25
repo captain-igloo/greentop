@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef PRICEPROJECTION_H
@@ -14,7 +14,6 @@
 #include "greentop/sport/enum/PriceData.h"
 
 namespace greentop {
-
 /**
  * Selection criteria of the returning price data
  */
@@ -72,5 +71,3 @@ class PriceProjection : public JsonMember {
 }
 
 #endif // PRICEPROJECTION_H
-
-

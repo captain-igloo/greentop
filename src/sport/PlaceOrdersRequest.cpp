@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/PlaceOrdersRequest.h"
@@ -50,7 +50,9 @@ void PlaceOrdersRequest::fromJson(const Json::Value& json) {
 
 Json::Value PlaceOrdersRequest::toJson() const {
     Json::Value json(Json::objectValue);
-    json["marketId"] = marketId;
+    if (marketId != "") {
+        json["marketId"] = marketId;
+    }
     if (instructions.size() > 0) {
         for (unsigned i = 0; i < instructions.size(); ++i) {
             json["instructions"].append(instructions[i].toJson());
@@ -72,7 +74,7 @@ Json::Value PlaceOrdersRequest::toJson() const {
 }
 
 bool PlaceOrdersRequest::isValid() const {
-    return instructions.size() > 0;
+    return marketId != "" && instructions.size() > 0;
 }
 
 const std::string& PlaceOrdersRequest::getMarketId() const {

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef MARKETSTATE_H
@@ -14,7 +14,6 @@
 #include "greentop/Time.h"
 
 namespace greentop {
-
 /**
  * Market definition
  */
@@ -23,14 +22,14 @@ class MarketState : public JsonMember {
         MarketState();
 
         MarketState(const std::string& status,
-            const int32_t betDelay,
-            const bool bspReconciled,
-            const bool complete,
-            const bool inplay,
-            const int32_t numberOfActiveRunners,
+            const Optional<int32_t>& betDelay,
+            const Optional<bool>& bspReconciled,
+            const Optional<bool>& complete,
+            const Optional<bool>& inplay,
+            const Optional<int32_t>& numberOfActiveRunners,
             const std::tm& lastMatchTime,
-            const double totalMatched,
-            const double totalAvailable);
+            const Optional<double>& totalMatched,
+            const Optional<double>& totalAvailable);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -41,29 +40,29 @@ class MarketState : public JsonMember {
         const std::string& getStatus() const;
         void setStatus(const std::string& status);
 
-        const int32_t getBetDelay() const;
-        void setBetDelay(const int32_t betDelay);
+        const Optional<int32_t>& getBetDelay() const;
+        void setBetDelay(const Optional<int32_t>& betDelay);
 
-        const bool getBspReconciled() const;
-        void setBspReconciled(const bool bspReconciled);
+        const Optional<bool>& getBspReconciled() const;
+        void setBspReconciled(const Optional<bool>& bspReconciled);
 
-        const bool getComplete() const;
-        void setComplete(const bool complete);
+        const Optional<bool>& getComplete() const;
+        void setComplete(const Optional<bool>& complete);
 
-        const bool getInplay() const;
-        void setInplay(const bool inplay);
+        const Optional<bool>& getInplay() const;
+        void setInplay(const Optional<bool>& inplay);
 
-        const int32_t getNumberOfActiveRunners() const;
-        void setNumberOfActiveRunners(const int32_t numberOfActiveRunners);
+        const Optional<int32_t>& getNumberOfActiveRunners() const;
+        void setNumberOfActiveRunners(const Optional<int32_t>& numberOfActiveRunners);
 
         const std::tm& getLastMatchTime() const;
         void setLastMatchTime(const std::tm& lastMatchTime);
 
-        const double getTotalMatched() const;
-        void setTotalMatched(const double totalMatched);
+        const Optional<double>& getTotalMatched() const;
+        void setTotalMatched(const Optional<double>& totalMatched);
 
-        const double getTotalAvailable() const;
-        void setTotalAvailable(const double totalAvailable);
+        const Optional<double>& getTotalAvailable() const;
+        void setTotalAvailable(const Optional<double>& totalAvailable);
 
 
     private:
@@ -95,15 +94,14 @@ class MarketState : public JsonMember {
          * lastMatchTime
          */
         std::tm lastMatchTime;
-        double totalMatched;
+
+        Optional<double> totalMatched;
         /**
          * Zero for closed markets
          */
-        double totalAvailable;
+        Optional<double> totalAvailable;
 };
 
 }
 
 #endif // MARKETSTATE_H
-
-

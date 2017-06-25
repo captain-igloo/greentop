@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef AUTHORISATIONRESPONSE_H
@@ -11,7 +11,6 @@
 #include "greentop/JsonResponse.h"
 
 namespace greentop {
-
 /**
  * Wrapper object containing authorisation code and redirect URL for web vendors
  */
@@ -49,5 +48,3 @@ class AuthorisationResponse : public JsonResponse {
 }
 
 #endif // AUTHORISATIONRESPONSE_H
-
-

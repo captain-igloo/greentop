@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -25,13 +25,16 @@ const std::string ExecutionReportErrorCode::DUPLICATE_BETIDS = "DUPLICATE_BETIDS
 const std::string ExecutionReportErrorCode::NO_ACTION_REQUIRED = "NO_ACTION_REQUIRED";
 const std::string ExecutionReportErrorCode::SERVICE_UNAVAILABLE = "SERVICE_UNAVAILABLE";
 const std::string ExecutionReportErrorCode::REJECTED_BY_REGULATOR = "REJECTED_BY_REGULATOR";
+const std::string ExecutionReportErrorCode::NO_CHASING = "NO_CHASING";
+const std::string ExecutionReportErrorCode::REGULATOR_IS_NOT_AVAILABLE = "REGULATOR_IS_NOT_AVAILABLE";
+const std::string ExecutionReportErrorCode::TOO_MANY_INSTRUCTIONS = "TOO_MANY_INSTRUCTIONS";
+const std::string ExecutionReportErrorCode::INVALID_MARKET_VERSION = "INVALID_MARKET_VERSION";
 
 ExecutionReportErrorCode::ExecutionReportErrorCode() {
     valid = false;
-};
+}
 
 ExecutionReportErrorCode::ExecutionReportErrorCode(const std::string& v) {
-
     if (v != ERROR_IN_MATCHER &&
         v != PROCESSED_WITH_ERRORS &&
         v != BET_ACTION_ERROR &&
@@ -48,10 +51,13 @@ ExecutionReportErrorCode::ExecutionReportErrorCode(const std::string& v) {
         v != DUPLICATE_BETIDS &&
         v != NO_ACTION_REQUIRED &&
         v != SERVICE_UNAVAILABLE &&
-        v != REJECTED_BY_REGULATOR) {
+        v != REJECTED_BY_REGULATOR &&
+        v != NO_CHASING &&
+        v != REGULATOR_IS_NOT_AVAILABLE &&
+        v != TOO_MANY_INSTRUCTIONS &&
+        v != INVALID_MARKET_VERSION) {
         throw std::invalid_argument("Invalid ExecutionReportErrorCode: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -69,4 +75,3 @@ bool ExecutionReportErrorCode::operator!=(const ExecutionReportErrorCode& other)
 }
 
 }
-

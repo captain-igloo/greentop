@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef GROUPBY_H
@@ -16,26 +16,39 @@ class GroupBy : public Enum<GroupBy> {
 
     public:
 
-        /** A roll up of settled P&L, commission paid and number of bet orders, on a specified
-         event type */
+        /**
+         * A roll up of settled P&L, commission paid and number of bet orders, on a specified event
+         * type
+         */
         static const std::string EVENT_TYPE;
-        /** A roll up of settled P&L, commission paid and number of bet orders, on a specified
-         event */
+        /**
+         * A roll up of settled P&L, commission paid and number of bet orders, on a specified event
+         */
         static const std::string EVENT;
-        /** A roll up of settled P&L, commission paid and number of bet orders, on a specified
-         market */
+        /**
+         * A roll up of settled P&L, commission paid and number of bet orders, on a specified
+         * market
+         */
         static const std::string MARKET;
-        /** A roll up of settled P&L and the number of bet orders, on a specified runner within a
-         specified market */
+        /**
+         * A roll up of settled P&L and the number of bet orders, on a specified runner within a
+         * specified market
+         */
         static const std::string RUNNER;
-        /** An averaged roll up of settled P&L, and number of bets, on the specified side of a
-         specified selection within a specified market, that are either settled or voided */
+        /**
+         * An averaged roll up of settled P&L, and number of bets, on the specified side of a
+         * specified selection within a specified market, that are either settled or voided
+         */
         static const std::string SIDE;
-        /** The P&L, commission paid, side and regulatory information etc, about each individual
-         bet order */
+        /**
+         * The P&L, commission paid, side and regulatory information etc, about each individual bet
+         * order
+         */
         static const std::string BET;
-        /** A roll up of settled P&L and the number of bet orders, on a specified strategy across
-         the Betfair Exchange */
+        /**
+         * A roll up of settled P&L and the number of bet orders, on a specified strategy across
+         * the Betfair Exchange
+         */
         static const std::string STRATEGY;
 
         GroupBy();

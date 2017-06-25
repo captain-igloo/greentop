@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/MarketBook.h"
@@ -10,7 +10,7 @@ MarketBook::MarketBook() {
 }
 
 MarketBook::MarketBook(const std::string& marketId,
-    const bool isMarketDataDelayed,
+    const Optional<bool>& isMarketDataDelayed,
     const MarketStatus& status,
     const Optional<int32_t>& betDelay,
     const Optional<bool>& bspReconciled,
@@ -174,10 +174,10 @@ void MarketBook::setMarketId(const std::string& marketId) {
     this->marketId = marketId;
 }
 
-const bool MarketBook::getIsMarketDataDelayed() const {
+const Optional<bool>& MarketBook::getIsMarketDataDelayed() const {
     return isMarketDataDelayed;
 }
-void MarketBook::setIsMarketDataDelayed(const bool isMarketDataDelayed) {
+void MarketBook::setIsMarketDataDelayed(const Optional<bool>& isMarketDataDelayed) {
     this->isMarketDataDelayed = isMarketDataDelayed;
 }
 

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/MarketTypeResult.h"
@@ -24,7 +24,9 @@ void MarketTypeResult::fromJson(const Json::Value& json) {
 
 Json::Value MarketTypeResult::toJson() const {
     Json::Value json(Json::objectValue);
-    json["marketType"] = marketType;
+    if (marketType != "") {
+        json["marketType"] = marketType;
+    }
     if (marketCount.isValid()) {
         json["marketCount"] = marketCount.toJson();
     }

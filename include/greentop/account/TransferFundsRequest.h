@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef TRANSFERFUNDSREQUEST_H
@@ -19,7 +19,7 @@ class TransferFundsRequest : public JsonRequest {
 
         TransferFundsRequest(const Wallet& from,
             const Wallet& to,
-            const double amount);
+            const Optional<double>& amount);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -33,8 +33,8 @@ class TransferFundsRequest : public JsonRequest {
         const Wallet& getTo() const;
         void setTo(const Wallet& to);
 
-        const double getAmount() const;
-        void setAmount(const double amount);
+        const Optional<double>& getAmount() const;
+        void setAmount(const Optional<double>& amount);
 
 
     private:
@@ -55,5 +55,3 @@ class TransferFundsRequest : public JsonRequest {
 }
 
 #endif // TRANSFERFUNDSREQUEST_H
-
-

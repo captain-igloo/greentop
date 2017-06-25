@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef MARKETLINERANGEINFO_H
@@ -12,7 +12,6 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
-
 /**
  * Market Line and Range Info
  */
@@ -20,9 +19,9 @@ class MarketLineRangeInfo : public JsonMember {
     public:
         MarketLineRangeInfo();
 
-        MarketLineRangeInfo(const double maxUnitValue,
-            const double minUnitValue,
-            const double interval,
+        MarketLineRangeInfo(const Optional<double>& maxUnitValue,
+            const Optional<double>& minUnitValue,
+            const Optional<double>& interval,
             const std::string& marketUnit);
 
         virtual void fromJson(const Json::Value& json);
@@ -31,14 +30,14 @@ class MarketLineRangeInfo : public JsonMember {
 
         virtual bool isValid() const;
 
-        const double getMaxUnitValue() const;
-        void setMaxUnitValue(const double maxUnitValue);
+        const Optional<double>& getMaxUnitValue() const;
+        void setMaxUnitValue(const Optional<double>& maxUnitValue);
 
-        const double getMinUnitValue() const;
-        void setMinUnitValue(const double minUnitValue);
+        const Optional<double>& getMinUnitValue() const;
+        void setMinUnitValue(const Optional<double>& minUnitValue);
 
-        const double getInterval() const;
-        void setInterval(const double interval);
+        const Optional<double>& getInterval() const;
+        void setInterval(const Optional<double>& interval);
 
         const std::string& getMarketUnit() const;
         void setMarketUnit(const std::string& marketUnit);
@@ -46,19 +45,23 @@ class MarketLineRangeInfo : public JsonMember {
 
     private:
         /**
-         * maxPrice
+         * Maximum value for the outcome, in market units for this market (eg 100 runs)
          */
         Optional<double> maxUnitValue;
         /**
-         * minPrice
+         * Minimum value for the outcome, in market units for this market (eg 0 runs)
          */
         Optional<double> minUnitValue;
         /**
-         * interval
+         * The odds ladder on this market will be between the range of minUnitValue and
+         * maxUnitValue, in increments of the interval value e.g. If minUnitValue=10 runs,
+         * maxUnitValue=20 runs, interval=0.5 runs, then valid odds include 10, 10.5, 11, 11.5 up
+         * to 20 runs.
          */
         Optional<double> interval;
         /**
-         * unit
+         * The type of unit the lines are incremented in by the interval (e.g: runs, goals or
+         * seconds)
          */
         std::string marketUnit;
 };
@@ -66,5 +69,3 @@ class MarketLineRangeInfo : public JsonMember {
 }
 
 #endif // MARKETLINERANGEINFO_H
-
-

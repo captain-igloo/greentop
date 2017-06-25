@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/CountryCodeResult.h"
@@ -24,7 +24,9 @@ void CountryCodeResult::fromJson(const Json::Value& json) {
 
 Json::Value CountryCodeResult::toJson() const {
     Json::Value json(Json::objectValue);
-    json["countryCode"] = countryCode;
+    if (countryCode != "") {
+        json["countryCode"] = countryCode;
+    }
     if (marketCount.isValid()) {
         json["marketCount"] = marketCount.toJson();
     }

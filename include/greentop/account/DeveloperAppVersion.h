@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef DEVELOPERAPPVERSION_H
@@ -12,7 +12,6 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
-
 /**
  * Describes a version of an external application
  */
@@ -21,7 +20,7 @@ class DeveloperAppVersion : public JsonMember {
         DeveloperAppVersion();
 
         DeveloperAppVersion(const std::string& owner,
-            const int64_t versionId,
+            const Optional<int64_t>& versionId,
             const std::string& version,
             const std::string& applicationKey,
             const Optional<bool>& delayData = Optional<bool>(),
@@ -40,8 +39,8 @@ class DeveloperAppVersion : public JsonMember {
         const std::string& getOwner() const;
         void setOwner(const std::string& owner);
 
-        const int64_t getVersionId() const;
-        void setVersionId(const int64_t versionId);
+        const Optional<int64_t>& getVersionId() const;
+        void setVersionId(const Optional<int64_t>& versionId);
 
         const std::string& getVersion() const;
         void setVersion(const std::string& version);
@@ -118,5 +117,3 @@ class DeveloperAppVersion : public JsonMember {
 }
 
 #endif // DEVELOPERAPPVERSION_H
-
-

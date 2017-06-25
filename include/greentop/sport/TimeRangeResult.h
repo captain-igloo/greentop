@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef TIMERANGERESULT_H
@@ -12,7 +12,6 @@
 #include "greentop/common/TimeRange.h"
 
 namespace greentop {
-
 /**
  * TimeRange Result
  */
@@ -49,5 +48,3 @@ class TimeRangeResult : public JsonMember {
 }
 
 #endif // TIMERANGERESULT_H
-
-

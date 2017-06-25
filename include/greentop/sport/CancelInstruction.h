@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef CANCELINSTRUCTION_H
@@ -12,7 +12,6 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
-
 /**
  * Instruction to fully or partially cancel an order (only applies to LIMIT orders)
  */
@@ -37,6 +36,7 @@ class CancelInstruction : public JsonMember {
 
 
     private:
+
         std::string betId;
         /**
          * If supplied then this is a partial cancel
@@ -47,5 +47,3 @@ class CancelInstruction : public JsonMember {
 }
 
 #endif // CANCELINSTRUCTION_H
-
-

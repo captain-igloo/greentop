@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/EventType.h"
@@ -24,7 +24,9 @@ void EventType::fromJson(const Json::Value& json) {
 
 Json::Value EventType::toJson() const {
     Json::Value json(Json::objectValue);
-    json["id"] = id;
+    if (id != "") {
+        json["id"] = id;
+    }
     if (name != "") {
         json["name"] = name;
     }

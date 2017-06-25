@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef MARKETVERSION_H
@@ -11,7 +11,6 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
-
 /**
  * Market version
  */
@@ -40,5 +39,3 @@ class MarketVersion : public JsonMember {
 }
 
 #endif // MARKETVERSION_H
-
-

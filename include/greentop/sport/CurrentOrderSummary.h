@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef CURRENTORDERSUMMARY_H
@@ -19,7 +19,6 @@
 #include "greentop/sport/enum/Side.h"
 
 namespace greentop {
-
 /**
  * Summary of a current order.
  */
@@ -29,10 +28,10 @@ class CurrentOrderSummary : public JsonMember {
 
         CurrentOrderSummary(const std::string& betId,
             const std::string& marketId,
-            const int64_t selectionId,
-            const double handicap,
+            const Optional<int64_t>& selectionId,
+            const Optional<double>& handicap,
             const PriceSize& priceSize,
-            const double bspLiability,
+            const Optional<double>& bspLiability,
             const Side& side,
             const OrderStatus& status,
             const PersistenceType& persistenceType,
@@ -62,17 +61,17 @@ class CurrentOrderSummary : public JsonMember {
         const std::string& getMarketId() const;
         void setMarketId(const std::string& marketId);
 
-        const int64_t getSelectionId() const;
-        void setSelectionId(const int64_t selectionId);
+        const Optional<int64_t>& getSelectionId() const;
+        void setSelectionId(const Optional<int64_t>& selectionId);
 
-        const double getHandicap() const;
-        void setHandicap(const double handicap);
+        const Optional<double>& getHandicap() const;
+        void setHandicap(const Optional<double>& handicap);
 
         const PriceSize& getPriceSize() const;
         void setPriceSize(const PriceSize& priceSize);
 
-        const double getBspLiability() const;
-        void setBspLiability(const double bspLiability);
+        const Optional<double>& getBspLiability() const;
+        void setBspLiability(const Optional<double>& bspLiability);
 
         const Side& getSide() const;
         void setSide(const Side& side);
@@ -135,11 +134,11 @@ class CurrentOrderSummary : public JsonMember {
         /**
          * The selection id the order is for.
          */
-        int64_t selectionId;
+        Optional<int64_t> selectionId;
         /**
          * The handicap of the bet.
          */
-        double handicap;
+        Optional<double> handicap;
         /**
          * The price and size of the bet.
          */
@@ -147,7 +146,7 @@ class CurrentOrderSummary : public JsonMember {
         /**
          * Not to be confused with size. This is the liability of a given BSP bet.
          */
-        double bspLiability;
+        Optional<double> bspLiability;
         /**
          * BACK/LAY
          */
@@ -175,7 +174,8 @@ class CurrentOrderSummary : public JsonMember {
         std::tm matchedDate;
         /**
          * The average price matched at. Voided match fragments are removed from this average
-         * calculation.
+         * calculation. This value is not meaningful for activity on LINE markets and is not
+         * guaranteed to be returned or maintained for these markets.
          */
         Optional<double> averagePriceMatched;
         /**
@@ -219,5 +219,3 @@ class CurrentOrderSummary : public JsonMember {
 }
 
 #endif // CURRENTORDERSUMMARY_H
-
-

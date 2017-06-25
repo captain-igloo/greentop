@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -15,17 +15,15 @@ const std::string OrderStatus::EXPIRED = "EXPIRED";
 
 OrderStatus::OrderStatus() {
     valid = false;
-};
+}
 
 OrderStatus::OrderStatus(const std::string& v) {
-
     if (v != PENDING &&
         v != EXECUTION_COMPLETE &&
         v != EXECUTABLE &&
         v != EXPIRED) {
         throw std::invalid_argument("Invalid OrderStatus: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -43,4 +41,3 @@ bool OrderStatus::operator!=(const OrderStatus& other) const {
 }
 
 }
-

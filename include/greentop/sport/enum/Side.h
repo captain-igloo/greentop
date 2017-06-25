@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef SIDE_H
@@ -16,9 +16,17 @@ class Side : public Enum<Side> {
 
     public:
 
-        /** To back a team, horse or outcome is to bet on the selection to win. */
+        /**
+         * To back a team, horse or outcome is to bet on the selection to win. For Line markets a
+         * Back bet refers to a SELL line. A SELL line will win if the outcome is LESS THAN the
+         * taken line (price).
+         */
         static const std::string BACK;
-        /** To lay a team, horse, or outcome is to bet on the selection to lose. */
+        /**
+         * To lay a team, horse, or outcome is to bet on the selection to lose. For line markets a
+         * Lay bet refers to a BUY line. A BUY line will win if the outcome is MORE THAN the taken
+         * line (price).
+         */
         static const std::string LAY;
 
         Side();

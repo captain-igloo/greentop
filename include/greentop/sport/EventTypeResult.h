@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef EVENTTYPERESULT_H
@@ -12,7 +12,6 @@
 #include "greentop/sport/EventType.h"
 
 namespace greentop {
-
 /**
  * EventType Result
  */
@@ -49,5 +48,3 @@ class EventTypeResult : public JsonMember {
 }
 
 #endif // EVENTTYPERESULT_H
-
-

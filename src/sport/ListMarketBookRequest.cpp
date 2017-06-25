@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/ListMarketBookRequest.h"
@@ -17,7 +17,9 @@ ListMarketBookRequest::ListMarketBookRequest(const std::vector<std::string>& mar
     const Optional<bool>& partitionMatchedByStrategyRef,
     const std::set<std::string>& customerStrategyRefs,
     const std::string& currencyCode,
-    const std::string& locale) :
+    const std::string& locale,
+    const std::tm& matchedSince,
+    const std::set<std::string>& betIds) :
     marketIds(marketIds),
     priceProjection(priceProjection),
     orderProjection(orderProjection),
@@ -26,7 +28,9 @@ ListMarketBookRequest::ListMarketBookRequest(const std::vector<std::string>& mar
     partitionMatchedByStrategyRef(partitionMatchedByStrategyRef),
     customerStrategyRefs(customerStrategyRefs),
     currencyCode(currencyCode),
-    locale(locale) {
+    locale(locale),
+    matchedSince(matchedSince),
+    betIds(betIds) {
 }
 
 void ListMarketBookRequest::fromJson(const Json::Value& json) {
@@ -60,6 +64,14 @@ void ListMarketBookRequest::fromJson(const Json::Value& json) {
     }
     if (json.isMember("locale")) {
         locale = json["locale"].asString();
+    }
+    if (json.isMember("matchedSince")) {
+        strptime(json["matchedSince"].asString().c_str(), "%Y-%m-%dT%H:%M:%S.000Z", &matchedSince);
+    }
+    if (json.isMember("betIds")) {
+        for (unsigned i = 0; i < json["betIds"].size(); ++i) {
+            betIds.insert(json["betIds"][i].asString());
+        }
     }
 }
 
@@ -95,6 +107,16 @@ Json::Value ListMarketBookRequest::toJson() const {
     }
     if (locale != "") {
         json["locale"] = locale;
+    }
+    if (matchedSince.tm_year > 0) {
+        char buffer[25];
+        strftime(buffer, 25,"%Y-%m-%dT%H:%M:%S.000Z", &matchedSince);
+        json["matchedSince"] = std::string(buffer);
+    }
+    if (betIds.size() > 0) {
+        for (std::set<std::string>::const_iterator it = betIds.begin(); it != betIds.end(); ++it) {
+            json["betIds"].append(*it);
+        }
     }
     return json;
 }
@@ -164,6 +186,20 @@ const std::string& ListMarketBookRequest::getLocale() const {
 }
 void ListMarketBookRequest::setLocale(const std::string& locale) {
     this->locale = locale;
+}
+
+const std::tm& ListMarketBookRequest::getMatchedSince() const {
+    return matchedSince;
+}
+void ListMarketBookRequest::setMatchedSince(const std::tm& matchedSince) {
+    this->matchedSince = matchedSince;
+}
+
+const std::set<std::string>& ListMarketBookRequest::getBetIds() const {
+    return betIds;
+}
+void ListMarketBookRequest::setBetIds(const std::set<std::string>& betIds) {
+    this->betIds = betIds;
 }
 
 

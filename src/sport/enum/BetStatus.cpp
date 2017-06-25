@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 #include <stdexcept>
 
@@ -15,17 +15,15 @@ const std::string BetStatus::CANCELLED = "CANCELLED";
 
 BetStatus::BetStatus() {
     valid = false;
-};
+}
 
 BetStatus::BetStatus(const std::string& v) {
-
     if (v != SETTLED &&
         v != VOIDED &&
         v != LAPSED &&
         v != CANCELLED) {
         throw std::invalid_argument("Invalid BetStatus: " + v);
     }
-
     value = v;
     valid = true;
 }
@@ -43,4 +41,3 @@ bool BetStatus::operator!=(const BetStatus& other) const {
 }
 
 }
-

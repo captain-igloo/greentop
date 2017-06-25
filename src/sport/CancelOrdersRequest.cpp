@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/CancelOrdersRequest.h"
@@ -33,7 +33,9 @@ void CancelOrdersRequest::fromJson(const Json::Value& json) {
 
 Json::Value CancelOrdersRequest::toJson() const {
     Json::Value json(Json::objectValue);
-    json["marketId"] = marketId;
+    if (marketId != "") {
+        json["marketId"] = marketId;
+    }
     if (instructions.size() > 0) {
         for (unsigned i = 0; i < instructions.size(); ++i) {
             json["instructions"].append(instructions[i].toJson());

@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef LISTVENUESREQUEST_H
@@ -48,5 +48,3 @@ class ListVenuesRequest : public JsonRequest {
 }
 
 #endif // LISTVENUESREQUEST_H
-
-

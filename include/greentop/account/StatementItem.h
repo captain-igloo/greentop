@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef STATEMENTITEM_H
@@ -16,7 +16,6 @@
 #include "greentop/account/enum/ItemClass.h"
 
 namespace greentop {
-
 /**
  * Summary of a cleared order.
  */
@@ -98,5 +97,3 @@ class StatementItem : public JsonMember {
 }
 
 #endif // STATEMENTITEM_H
-
-

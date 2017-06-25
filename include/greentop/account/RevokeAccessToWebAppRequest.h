@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef REVOKEACCESSTOWEBAPPREQUEST_H
@@ -16,7 +16,7 @@ class RevokeAccessToWebAppRequest : public JsonRequest {
     public:
         RevokeAccessToWebAppRequest();
 
-        RevokeAccessToWebAppRequest(const int64_t vendorId);
+        RevokeAccessToWebAppRequest(const Optional<int64_t>& vendorId);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -24,8 +24,8 @@ class RevokeAccessToWebAppRequest : public JsonRequest {
 
         virtual bool isValid() const;
 
-        const int64_t getVendorId() const;
-        void setVendorId(const int64_t vendorId);
+        const Optional<int64_t>& getVendorId() const;
+        void setVendorId(const Optional<int64_t>& vendorId);
 
 
     private:
@@ -38,5 +38,3 @@ class RevokeAccessToWebAppRequest : public JsonRequest {
 }
 
 #endif // REVOKEACCESSTOWEBAPPREQUEST_H
-
-

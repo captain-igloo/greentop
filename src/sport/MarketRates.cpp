@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #include "greentop/sport/MarketRates.h"
@@ -9,8 +9,8 @@ namespace greentop {
 MarketRates::MarketRates() {
 }
 
-MarketRates::MarketRates(const double marketBaseRate,
-    const bool discountAllowed) :
+MarketRates::MarketRates(const Optional<double>& marketBaseRate,
+    const Optional<bool>& discountAllowed) :
     marketBaseRate(marketBaseRate),
     discountAllowed(discountAllowed) {
 }
@@ -39,17 +39,17 @@ bool MarketRates::isValid() const {
     return marketBaseRate.isValid() && discountAllowed.isValid();
 }
 
-const double MarketRates::getMarketBaseRate() const {
+const Optional<double>& MarketRates::getMarketBaseRate() const {
     return marketBaseRate;
 }
-void MarketRates::setMarketBaseRate(const double marketBaseRate) {
+void MarketRates::setMarketBaseRate(const Optional<double>& marketBaseRate) {
     this->marketBaseRate = marketBaseRate;
 }
 
-const bool MarketRates::getDiscountAllowed() const {
+const Optional<bool>& MarketRates::getDiscountAllowed() const {
     return discountAllowed;
 }
-void MarketRates::setDiscountAllowed(const bool discountAllowed) {
+void MarketRates::setDiscountAllowed(const Optional<bool>& discountAllowed) {
     this->discountAllowed = discountAllowed;
 }
 

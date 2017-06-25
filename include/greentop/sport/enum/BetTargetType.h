@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef BETTARGETTYPE_H
@@ -16,9 +16,15 @@ class BetTargetType : public Enum<BetTargetType> {
 
     public:
 
-        /** The total payout requested on a LimitOrder */
+        /**
+         * The total payout requested on a LimitOrder. BetTargetType bets are invalid for LINE
+         * markets.
+         */
         static const std::string PAYOUT;
-        /** The payout requested minus the calculated size at which this LimitOrder is to be placed */
+        /**
+         * The payout requested minus the calculated size at which this LimitOrder is to be placed.
+         * BetTargetType bets are invalid for LINE markets.
+         */
         static const std::string BACKERS_PROFIT;
 
         BetTargetType();

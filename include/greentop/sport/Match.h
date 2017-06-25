@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef MATCH_H
@@ -15,7 +15,6 @@
 #include "greentop/sport/enum/Side.h"
 
 namespace greentop {
-
 /**
  * An individual bet Match, or rollup by price or avg price. Rollup depends on the requested
  * MatchProjection
@@ -64,9 +63,12 @@ class Match : public JsonMember {
          * Only present if no rollup
          */
         std::string matchId;
+
         Side side;
         /**
-         * Either actual match price or avg match price depending on rollup.
+         * Either actual match price or avg match price depending on rollup. This value is not
+         * meaningful for activity on LINE markets and is not guaranteed to be returned or
+         * maintained for these markets.
          */
         Optional<double> price;
         /**
@@ -82,5 +84,3 @@ class Match : public JsonMember {
 }
 
 #endif // MATCH_H
-
-

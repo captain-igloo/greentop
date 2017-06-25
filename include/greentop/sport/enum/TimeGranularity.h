@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef TIMEGRANULARITY_H
@@ -16,11 +16,11 @@ class TimeGranularity : public Enum<TimeGranularity> {
 
     public:
 
-        /**  */
+
         static const std::string DAYS;
-        /**  */
+
         static const std::string HOURS;
-        /**  */
+
         static const std::string MINUTES;
 
         TimeGranularity();

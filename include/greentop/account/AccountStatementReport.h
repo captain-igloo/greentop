@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef ACCOUNTSTATEMENTREPORT_H
@@ -13,7 +13,6 @@
 #include "greentop/account/StatementItem.h"
 
 namespace greentop {
-
 /**
  * A container representing search results.
  */
@@ -22,7 +21,7 @@ class AccountStatementReport : public JsonResponse {
         AccountStatementReport();
 
         AccountStatementReport(const std::vector<StatementItem>& accountStatement,
-            const bool moreAvailable);
+            const Optional<bool>& moreAvailable);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -33,8 +32,8 @@ class AccountStatementReport : public JsonResponse {
         const std::vector<StatementItem>& getAccountStatement() const;
         void setAccountStatement(const std::vector<StatementItem>& accountStatement);
 
-        const bool getMoreAvailable() const;
-        void setMoreAvailable(const bool moreAvailable);
+        const Optional<bool>& getMoreAvailable() const;
+        void setMoreAvailable(const Optional<bool>& moreAvailable);
 
 
     private:
@@ -51,5 +50,3 @@ class AccountStatementReport : public JsonResponse {
 }
 
 #endif // ACCOUNTSTATEMENTREPORT_H
-
-
