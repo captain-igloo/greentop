@@ -11,8 +11,6 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    Exchange exchange = Exchange::AUS;
-
     ExchangeApi exchangeApi(argv[1]);
 
     if (exchangeApi.login(argv[2], argv[3])) {
@@ -25,7 +23,7 @@ int main(int argc, char* argv[]) {
 
         ListMarketBookRequest req(marketIds, priceProjection, orderProjection, matchProjection);
 
-        ListMarketBookResponse resp = exchangeApi.listMarketBook(exchange, req);
+        ListMarketBookResponse resp = exchangeApi.listMarketBook(req);
 
         if (resp.isSuccess()) {
 

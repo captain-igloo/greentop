@@ -12,15 +12,13 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    Exchange exchange = Exchange::UK;
-
     ExchangeApi exchangeApi(argv[1]);
 
     if (exchangeApi.login(argv[2], argv[3])) {
 
         ListCurrencyRatesRequest req("GBP");
 
-        ListCurrencyRatesResponse resp = exchangeApi.listCurrencyRates(exchange, req);
+        ListCurrencyRatesResponse resp = exchangeApi.listCurrencyRates(req);
 
         if (resp.isSuccess()) {
 

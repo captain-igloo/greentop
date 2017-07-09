@@ -11,8 +11,6 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    Exchange exchange = Exchange::UK;
-
     ExchangeApi exchangeApi(argv[1]);
 
     if (exchangeApi.login(argv[2], argv[3])) {
@@ -22,7 +20,7 @@ int main(int argc, char* argv[]) {
 
         if (gasr.isValid()) {
 
-            AccountStatementReport asr = exchangeApi.getAccountStatement(exchange, gasr);
+            AccountStatementReport asr = exchangeApi.getAccountStatement(gasr);
 
             if (asr.isSuccess()) {
 

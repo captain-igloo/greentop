@@ -21,7 +21,7 @@ const std::string ExchangeApi::LOGIN_END_POINT_ROMANIA = "https://identitysso.be
 const std::string ExchangeApi::LOGIN_END_POINT_GLOBAL_CERT = "https://identitysso.betfair.com/api/certlogin";
 
 const std::string ExchangeApi::HOST_UK = "https://api.betfair.com";
-const std::string ExchangeApi::HOST_AUS = "https://api-au.betfair.com";
+// const std::string ExchangeApi::HOST_AUS = "https://api-au.betfair.com";
 
 size_t writeToStream(char* buffer, size_t size, size_t nitems, std::ostream* stream) {
 
@@ -184,331 +184,301 @@ menu::Menu& ExchangeApi::getMenu() {
 }
 
 ListEventTypesResponse
-ExchangeApi::listEventTypes(const Exchange exchange,
-        const ListEventTypesRequest& request) const {
+ExchangeApi::listEventTypes(const ListEventTypesRequest& request) const {
     ListEventTypesResponse response;
-    performRequest(exchange, Api::BETTING, "listEventTypes", request, response);
+    performRequest(Api::BETTING, "listEventTypes", request, response);
     return response;
 }
 
 ListCompetitionsResponse
-ExchangeApi::listCompetitions(const Exchange exchange,
-        const ListCompetitionsRequest& request) const {
+ExchangeApi::listCompetitions(const ListCompetitionsRequest& request) const {
     ListCompetitionsResponse response;
-    performRequest(exchange, Api::BETTING, "listCompetitions", request, response);
+    performRequest(Api::BETTING, "listCompetitions", request, response);
     return response;
 }
 
 ListTimeRangesResponse
-ExchangeApi::listTimeRanges(const Exchange exchange,
-        const ListTimeRangesRequest& request) const {
+ExchangeApi::listTimeRanges(const ListTimeRangesRequest& request) const {
     ListTimeRangesResponse response;
-    performRequest(exchange, Api::BETTING, "listTimeRanges", request, response);
+    performRequest(Api::BETTING, "listTimeRanges", request, response);
     return response;
 }
 
 ListEventsResponse
-ExchangeApi::listEvents(const Exchange exchange,
-        const ListEventsRequest& request) const {
+ExchangeApi::listEvents(const ListEventsRequest& request) const {
     ListEventsResponse response;
-    performRequest(exchange, Api::BETTING, "listEvents", request, response);
+    performRequest(Api::BETTING, "listEvents", request, response);
     return response;
 }
 
 ListMarketTypesResponse
-ExchangeApi::listMarketTypes(const Exchange exchange,
-        const ListMarketTypesRequest& request) const {
+ExchangeApi::listMarketTypes(const ListMarketTypesRequest& request) const {
     ListMarketTypesResponse response;
-    performRequest(exchange, Api::BETTING, "listMarketTypes", request, response);
+    performRequest(Api::BETTING, "listMarketTypes", request, response);
     return response;
 }
 
 ListCountriesResponse
-ExchangeApi::listCountries(const Exchange exchange,
-        const ListCountriesRequest& request) const {
+ExchangeApi::listCountries(const ListCountriesRequest& request) const {
     ListCountriesResponse response;
-    performRequest(exchange, Api::BETTING, "listCountries", request, response);
+    performRequest(Api::BETTING, "listCountries", request, response);
     return response;
 }
 
 ListVenuesResponse
-ExchangeApi::listVenues(const Exchange exchange,
-        const ListVenuesRequest& request) const {
+ExchangeApi::listVenues(const ListVenuesRequest& request) const {
     ListVenuesResponse response;
-    performRequest(exchange, Api::BETTING, "listVenues", request, response);
+    performRequest(Api::BETTING, "listVenues", request, response);
     return response;
 }
 
 ListMarketCatalogueResponse
-ExchangeApi::listMarketCatalogue(const Exchange exchange,
-        const ListMarketCatalogueRequest& request) const {
+ExchangeApi::listMarketCatalogue(const ListMarketCatalogueRequest& request) const {
     ListMarketCatalogueResponse response;
-    performRequest(exchange, Api::BETTING, "listMarketCatalogue", request, response);
+    performRequest(Api::BETTING, "listMarketCatalogue", request, response);
     return response;
 }
 
 ListMarketBookResponse
-ExchangeApi::listMarketBook(const Exchange exchange,
-        const ListMarketBookRequest& request) const {
+ExchangeApi::listMarketBook(const ListMarketBookRequest& request) const {
     ListMarketBookResponse response;
-    performRequest(exchange, Api::BETTING, "listMarketBook", request, response);
+    performRequest(Api::BETTING, "listMarketBook", request, response);
     return response;
 }
 
 ListRunnerBookResponse
-ExchangeApi::listRunnerBook(const Exchange exchange,
-        const ListRunnerBookRequest& request) const {
+ExchangeApi::listRunnerBook(const ListRunnerBookRequest& request) const {
     ListRunnerBookResponse response;
-    performRequest(exchange, Api::BETTING, "listRunnerBook", request, response);
+    performRequest(Api::BETTING, "listRunnerBook", request, response);
     return response;
 }
 
 CurrentOrderSummaryReport
-ExchangeApi::listCurrentOrders(const Exchange exchange,
-        const ListCurrentOrdersRequest& request) const {
+ExchangeApi::listCurrentOrders(const ListCurrentOrdersRequest& request) const {
     CurrentOrderSummaryReport response;
-    performRequest(exchange, Api::BETTING, "listCurrentOrders", request, response);
+    performRequest(Api::BETTING, "listCurrentOrders", request, response);
     return response;
 }
 
 ClearedOrderSummaryReport
-ExchangeApi::listClearedOrders(const Exchange exchange,
-        const ListClearedOrdersRequest& request) const {
+ExchangeApi::listClearedOrders(const ListClearedOrdersRequest& request) const {
     ClearedOrderSummaryReport response;
-    performRequest(exchange, Api::BETTING, "listClearedOrders", request, response);
+    performRequest(Api::BETTING, "listClearedOrders", request, response);
     return response;
 }
 
 PlaceExecutionReport
-ExchangeApi::placeOrders(const Exchange exchange,
-        const PlaceOrdersRequest& request) const {
+ExchangeApi::placeOrders(const PlaceOrdersRequest& request) const {
     PlaceExecutionReport response;
-    performRequest(exchange, Api::BETTING, "placeOrders", request, response);
+    performRequest(Api::BETTING, "placeOrders", request, response);
     return response;
 }
 
 CancelExecutionReport
-ExchangeApi::cancelOrders(const Exchange exchange,
-        const CancelOrdersRequest& request) const {
+ExchangeApi::cancelOrders(const CancelOrdersRequest& request) const {
     CancelExecutionReport response;
-    performRequest(exchange, Api::BETTING, "cancelOrders", request, response);
+    performRequest(Api::BETTING, "cancelOrders", request, response);
     return response;
 }
 
 ReplaceExecutionReport
-ExchangeApi::replaceOrders(const Exchange exchange,
-        const ReplaceOrdersRequest& request) const {
+ExchangeApi::replaceOrders(const ReplaceOrdersRequest& request) const {
     ReplaceExecutionReport response;
-    performRequest(exchange, Api::BETTING, "replaceOrders", request, response);
+    performRequest(Api::BETTING, "replaceOrders", request, response);
     return response;
 }
 
 UpdateExecutionReport
-ExchangeApi::updateOrders(const Exchange exchange,
-        const UpdateOrdersRequest& request) const {
+ExchangeApi::updateOrders(const UpdateOrdersRequest& request) const {
     UpdateExecutionReport response;
-    performRequest(exchange, Api::BETTING, "updateOrders", request, response);
+    performRequest(Api::BETTING, "updateOrders", request, response);
     return response;
 }
 
 ListMarketProfitAndLossResponse
-ExchangeApi::listMarketProfitAndLoss(const Exchange exchange,
-        const ListMarketProfitAndLossRequest& request) const {
+ExchangeApi::listMarketProfitAndLoss(const ListMarketProfitAndLossRequest& request) const {
     ListMarketProfitAndLossResponse response;
-    performRequest(exchange, Api::BETTING, "listMarketProfitAndLoss", request, response);
+    performRequest(Api::BETTING, "listMarketProfitAndLoss", request, response);
     return response;
 }
 
 DeveloperApp
-ExchangeApi::createDeveloperAppKeys(const Exchange exchange,
-        const CreateDeveloperAppKeysRequest& request) const {
+ExchangeApi::createDeveloperAppKeys(const CreateDeveloperAppKeysRequest& request) const {
     DeveloperApp response;
-    performRequest(exchange, Api::ACCOUNT, "createDeveloperAppKeys", request, response);
+    performRequest(Api::ACCOUNT, "createDeveloperAppKeys", request, response);
     return response;
 }
 
 GetDeveloperAppKeysResponse
-ExchangeApi::getDeveloperAppKeys(const Exchange exchange) const {
+ExchangeApi::getDeveloperAppKeys() const {
     DummyRequest request;
     GetDeveloperAppKeysResponse response;
-    performRequest(exchange, Api::ACCOUNT, "getDeveloperAppKeys", request, response);
+    performRequest(Api::ACCOUNT, "getDeveloperAppKeys", request, response);
     return response;
 }
 
 AccountFundsResponse
-ExchangeApi::getAccountFunds(const Exchange exchange,
-        const GetAccountFundsRequest& request) const {
+ExchangeApi::getAccountFunds(const GetAccountFundsRequest& request) const {
     AccountFundsResponse response;
-    performRequest(exchange, Api::ACCOUNT, "getAccountFunds", request, response);
+    performRequest(Api::ACCOUNT, "getAccountFunds", request, response);
     return response;
 }
 
 TransferResponse
-ExchangeApi::transferFunds(const Exchange exchange,
-        const TransferFundsRequest& request) const {
+ExchangeApi::transferFunds(const TransferFundsRequest& request) const {
     TransferResponse response;
-    performRequest(exchange, Api::ACCOUNT, "transferFunds", request, response);
+    performRequest(Api::ACCOUNT, "transferFunds", request, response);
     return response;
 }
 
 AccountDetailsResponse
-ExchangeApi::getAccountDetails(const Exchange exchange) const {
+ExchangeApi::getAccountDetails() const {
     DummyRequest request;
     AccountDetailsResponse response;
-    performRequest(exchange, Api::ACCOUNT, "getAccountDetails", request, response);
+    performRequest(Api::ACCOUNT, "getAccountDetails", request, response);
     return response;
 }
 
 GetVendorClientIdResponse
-ExchangeApi::getVendorClientId(const Exchange exchange) const {
+ExchangeApi::getVendorClientId() const {
     DummyRequest request;
     GetVendorClientIdResponse response;
-    performRequest(exchange, Api::ACCOUNT, "getVendorClientId", request, response);
+    performRequest(Api::ACCOUNT, "getVendorClientId", request, response);
     return response;
 }
 
 GetApplicationSubscriptionTokenResponse
-ExchangeApi::getApplicationSubscriptionToken(const Exchange exchange,
-        const GetApplicationSubscriptionTokenRequest& request) const {
+ExchangeApi::getApplicationSubscriptionToken(const GetApplicationSubscriptionTokenRequest& request) const {
     GetApplicationSubscriptionTokenResponse response;
-    performRequest(exchange, Api::ACCOUNT, "getApplicationSubscriptionToken", request, response);
+    performRequest(Api::ACCOUNT, "getApplicationSubscriptionToken", request, response);
     return response;
 }
 
 ActivateApplicationSubscriptionResponse
-ExchangeApi::activateApplicationSubscription(const Exchange exchange,
-        const ActivateApplicationSubscriptionRequest& request) const {
+ExchangeApi::activateApplicationSubscription(const ActivateApplicationSubscriptionRequest& request) const {
     ActivateApplicationSubscriptionResponse response;
-    performRequest(exchange, Api::ACCOUNT, "activateApplicationSubscription", request, response);
+    performRequest(Api::ACCOUNT, "activateApplicationSubscription", request, response);
     return response;
 }
 
 CancelApplicationSubscriptionResponse
-ExchangeApi::cancelApplicationSubscription(const Exchange exchange,
-        const CancelApplicationSubscriptionRequest& request) const {
+ExchangeApi::cancelApplicationSubscription(const CancelApplicationSubscriptionRequest& request) const {
     CancelApplicationSubscriptionResponse response;
-    performRequest(exchange, Api::ACCOUNT, "cancelApplicationSubscription", request, response);
+    performRequest(Api::ACCOUNT, "cancelApplicationSubscription", request, response);
     return response;
 }
 
 UpdateApplicationSubscriptionResponse
-ExchangeApi::updateApplicationSubscription(const Exchange exchange,
-        const UpdateApplicationSubscriptionRequest& request) const {
+ExchangeApi::updateApplicationSubscription(const UpdateApplicationSubscriptionRequest& request) const {
     UpdateApplicationSubscriptionResponse response;
-    performRequest(exchange, Api::ACCOUNT, "updateApplicationSubscription", request, response);
+    performRequest(Api::ACCOUNT, "updateApplicationSubscription", request, response);
     return response;
 }
 
 ListApplicationSubscriptionTokensResponse
-ExchangeApi::listApplicationSubscriptionTokens(const Exchange exchange,
-        const ListApplicationSubscriptionTokensRequest& request) const {
+ExchangeApi::listApplicationSubscriptionTokens(const ListApplicationSubscriptionTokensRequest& request) const {
     ListApplicationSubscriptionTokensResponse response;
-    performRequest(exchange, Api::ACCOUNT, "listApplicationSubscriptionTokens", request, response);
+    performRequest(Api::ACCOUNT, "listApplicationSubscriptionTokens", request, response);
     return response;
 }
 
 ListAccountSubscriptionTokensResponse
-ExchangeApi::listAccountSubscriptionTokens(const Exchange exchange) const {
+ExchangeApi::listAccountSubscriptionTokens() const {
     DummyRequest request;
     ListAccountSubscriptionTokensResponse response;
-    performRequest(exchange, Api::ACCOUNT, "listAccountSubscriptionTokens", request, response);
+    performRequest(Api::ACCOUNT, "listAccountSubscriptionTokens", request, response);
     return response;
 }
 
 GetApplicationSubscriptionHistoryResponse
-ExchangeApi::getApplicationSubscriptionHistory(const Exchange exchange,
-        const GetApplicationSubscriptionHistoryRequest& request) const {
+ExchangeApi::getApplicationSubscriptionHistory(const GetApplicationSubscriptionHistoryRequest& request) const {
     GetApplicationSubscriptionHistoryResponse response;
-    performRequest(exchange, Api::ACCOUNT, "getApplicationSubscriptionHistory", request, response);
+    performRequest(Api::ACCOUNT, "getApplicationSubscriptionHistory", request, response);
     return response;
 }
 
 AccountStatementReport
-ExchangeApi::getAccountStatement(const Exchange exchange,
-        const GetAccountStatementRequest& request) const {
+ExchangeApi::getAccountStatement(const GetAccountStatementRequest& request) const {
     AccountStatementReport response;
-    performRequest(exchange, Api::ACCOUNT, "getAccountStatement", request, response);
+    performRequest(Api::ACCOUNT, "getAccountStatement", request, response);
     return response;
 }
 
 ListCurrencyRatesResponse
-ExchangeApi::listCurrencyRates(const Exchange exchange,
-        const ListCurrencyRatesRequest& request) const {
+ExchangeApi::listCurrencyRates(const ListCurrencyRatesRequest& request) const {
     ListCurrencyRatesResponse response;
-    performRequest(exchange, Api::ACCOUNT, "listCurrencyRates", request, response);
+    performRequest(Api::ACCOUNT, "listCurrencyRates", request, response);
     return response;
 }
 
 AuthorisationResponse
-ExchangeApi::getAuthorisationCode(const Exchange exchange, const GetAuthorisationCodeRequest& request) const {
+ExchangeApi::getAuthorisationCode(const GetAuthorisationCodeRequest& request) const {
     AuthorisationResponse response;
-    performRequest(exchange, Api::ACCOUNT, "getAuthorisationCode", request, response);
+    performRequest(Api::ACCOUNT, "getAuthorisationCode", request, response);
     return response;
 }
 
 VendorAccessTokenInfo
-ExchangeApi::token(const Exchange exchange, const TokenRequest& request) const {
+ExchangeApi::token(const TokenRequest& request) const {
     VendorAccessTokenInfo response;
-    performRequest(exchange, Api::ACCOUNT, "token", request, response);
+    performRequest(Api::ACCOUNT, "token", request, response);
     return response;
 }
 
 VendorDetails
-ExchangeApi::getVendorDetails(const Exchange exchange, const GetVendorDetailsRequest& request) const {
+ExchangeApi::getVendorDetails(const GetVendorDetailsRequest& request) const {
     VendorDetails response;
-    performRequest(exchange, Api::ACCOUNT, "getVendorDetails", request, response);
+    performRequest(Api::ACCOUNT, "getVendorDetails", request, response);
     return response;
 }
 
 RevokeAccessToWebAppResponse
-ExchangeApi::revokeAccessToWebApp(const Exchange exchange, const RevokeAccessToWebAppRequest& request) const {
+ExchangeApi::revokeAccessToWebApp(const RevokeAccessToWebAppRequest& request) const {
     RevokeAccessToWebAppResponse response;
-    performRequest(exchange, Api::ACCOUNT, "revokeAccessToWebApp", request, response);
+    performRequest(Api::ACCOUNT, "revokeAccessToWebApp", request, response);
     return response;
 }
 
 ListAuthorizedWebAppsResponse
-ExchangeApi::listAuthorizedWebApps(const Exchange exchange) const {
+ExchangeApi::listAuthorizedWebApps() const {
     DummyRequest request;
     ListAuthorizedWebAppsResponse response;
-    performRequest(exchange, Api::ACCOUNT, "listAuthorizedWebApps", request, response);
+    performRequest(Api::ACCOUNT, "listAuthorizedWebApps", request, response);
     return response;
 }
 
 IsAccountSubscribedToWebAppResponse
-ExchangeApi::isAccountSubscribedToWebApp(const Exchange exchange,
-        const IsAccountSubscribedToWebAppRequest& request) const {
+ExchangeApi::isAccountSubscribedToWebApp(const IsAccountSubscribedToWebAppRequest& request) const {
     IsAccountSubscribedToWebAppResponse response;
-    performRequest(exchange, Api::ACCOUNT, "listAuthorizedWebApps", request, response);
+    performRequest(Api::ACCOUNT, "listAuthorizedWebApps", request, response);
     return response;
 }
 
 GetAffiliateRelationResponse
-ExchangeApi::getAffiliateRelation(const Exchange exchange, const GetAffiliateRelationRequest& request) const {
+ExchangeApi::getAffiliateRelation(const GetAffiliateRelationRequest& request) const {
     GetAffiliateRelationResponse response;
-    performRequest(exchange, Api::ACCOUNT, "getAffiliateRelation", request, response);
+    performRequest(Api::ACCOUNT, "getAffiliateRelation", request, response);
     return response;
 }
 
 HeartbeatReport
-ExchangeApi::heartbeat(const Exchange exchange,
-        const HeartbeatRequest& request) const {
+ExchangeApi::heartbeat(const HeartbeatRequest& request) const {
     HeartbeatReport response;
-    performRequest(exchange, Api::HEARTBEAT, "heartbeat", request, response);
+    performRequest(Api::HEARTBEAT, "heartbeat", request, response);
     return response;
 }
 
-bool ExchangeApi::performRequest(const Exchange exchange,
-        const Api api,
+bool ExchangeApi::performRequest(const Api api,
         const std::string& method,
-        const JsonRequest& jsonRequest, JsonResponse& jsonResponse) const {
+        const JsonRequest& jsonRequest,
+        JsonResponse& jsonResponse) const {
 
     std::unique_ptr<CURL, void(*)(CURL*)> curl(curl_easy_init(), &curl_easy_cleanup);
 
     if (curl.get()) {
 
         SList headers;
-        initRequest(exchange, api, method, curl.get(), headers);
+        initRequest(api, method, curl.get(), headers);
 
         std::string request = jsonRequest.toString();
 
@@ -537,10 +507,9 @@ bool ExchangeApi::performRequest(const Exchange exchange,
     return false;
 }
 
-bool ExchangeApi::initRequest(const Exchange exchange, const Api api,
-        const std::string method, CURL* curl, SList& headers) const {
+bool ExchangeApi::initRequest(const Api api, const std::string method, CURL* curl, SList& headers) const {
 
-    curl_easy_setopt(curl, CURLOPT_URL, buildUri(exchange, api, method).c_str());
+    curl_easy_setopt(curl, CURLOPT_URL, buildUri(api, method).c_str());
     curl_easy_setopt(curl, CURLOPT_USE_SSL, CURLUSESSL_ALL);
     curl_easy_setopt(curl, CURLOPT_ACCEPT_ENCODING, "gzip");
     curl_easy_setopt(curl, CURLOPT_NOSIGNAL, 1);
@@ -556,7 +525,7 @@ bool ExchangeApi::initRequest(const Exchange exchange, const Api api,
     return true;
 }
 
-std::string ExchangeApi::buildUri(const Exchange exchange, const Api api, const std::string method) const {
+std::string ExchangeApi::buildUri(const Api api, const std::string method) const {
 
     std::string apiString;
     switch (api) {
@@ -573,15 +542,7 @@ std::string ExchangeApi::buildUri(const Exchange exchange, const Api api, const 
             throw std::runtime_error("invalid API");
     }
 
-    switch (exchange) {
-        case Exchange::UK:
-            return HOST_UK + "/exchange/" + apiString + "/rest/v1.0/" + method + "/";
-        case Exchange::AUS:
-            return HOST_AUS + "/exchange/" + apiString + "/rest/v1.0/" + method + "/";
-        default:
-            throw std::runtime_error("invalid exchange");
-    }
-
+    return HOST_UK + "/exchange/" + apiString + "/rest/v1.0/" + method + "/";
 }
 
 ExchangeApi::~ExchangeApi() {

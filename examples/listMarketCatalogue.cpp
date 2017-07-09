@@ -11,8 +11,6 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    Exchange exchange = Exchange::AUS;
-
     ExchangeApi exchangeApi(argv[1]);
 
     if (exchangeApi.login(argv[2], argv[3])) {
@@ -27,7 +25,7 @@ int main(int argc, char* argv[]) {
 
         if (req.isValid()) {
 
-            ListMarketCatalogueResponse resp = exchangeApi.listMarketCatalogue(exchange, req);
+            ListMarketCatalogueResponse resp = exchangeApi.listMarketCatalogue(req);
 
             if (resp.isSuccess()) {
 

@@ -177,75 +177,65 @@ class ExchangeApi {
          * Returns a list of Event Types (i.e. Sports) associated with the markets selected by the
          * MarketFilter.
          */
-        ListEventTypesResponse listEventTypes(const Exchange exchange,
-            const ListEventTypesRequest& request) const;
+        ListEventTypesResponse listEventTypes(const ListEventTypesRequest& request) const;
 
         /**
          * Returns a list of Competitions (i.e., World Cup 2013) associated with the markets
          * selected by the MarketFilter. Currently only Football markets have an associated
          * competition.
          */
-        ListCompetitionsResponse listCompetitions(const Exchange exchange,
-            const ListCompetitionsRequest& request) const;
+        ListCompetitionsResponse listCompetitions(const ListCompetitionsRequest& request) const;
 
         /**
          * Returns a list of time ranges in the granularity specified in the request (i.e. 3PM to
          * 4PM, Aug 14th to Aug 15th) associated with the markets selected by the MarketFilter.
          */
-        ListTimeRangesResponse listTimeRanges(const Exchange exchange,
-            const ListTimeRangesRequest& request) const;
+        ListTimeRangesResponse listTimeRanges(const ListTimeRangesRequest& request) const;
 
         /**
          * Returns a list of Events (i.e, Reading vs. Man United) associated with the markets
          * selected by the MarketFilter.
          */
-        ListEventsResponse listEvents(const Exchange exchange,
-            const ListEventsRequest& request) const;
+        ListEventsResponse listEvents(const ListEventsRequest& request) const;
 
         /**
          * Returns a list of market types (i.e. MATCH_ODDS, NEXT_GOAL) associated with the markets
          * selected by the MarketFilter. The market types are always the same, regardless of
          * locale.
          */
-        ListMarketTypesResponse listMarketTypes(const Exchange exchange,
-            const ListMarketTypesRequest& request) const;
+        ListMarketTypesResponse listMarketTypes(const ListMarketTypesRequest& request) const;
 
         /**
          * Returns a list of Countries associated with the markets selected by the MarketFilter.
          */
-        ListCountriesResponse listCountries(const Exchange exchange,
-            const ListCountriesRequest& request) const;
+        ListCountriesResponse listCountries(const ListCountriesRequest& request) const;
 
         /**
          * Returns a list of Venues (i.e. Cheltenham, Ascot) associated with the markets selected
          * by the MarketFilter. Currently, only Horse Racing markets are associated with a Venue.
          */
-        ListVenuesResponse listVenues(const Exchange exchange,
-            const ListVenuesRequest& request) const;
+        ListVenuesResponse listVenues(const ListVenuesRequest& request) const;
 
         /**
          * Returns a list of information about markets that does not change (or changes very
          * rarely). You use listMarketCatalogue to retrieve the name of the market, the names of
          * selections and other information about markets.
          */
-        ListMarketCatalogueResponse listMarketCatalogue(const Exchange exchange,
-            const ListMarketCatalogueRequest& request) const;
+        ListMarketCatalogueResponse listMarketCatalogue(const ListMarketCatalogueRequest& request) const;
 
         /**
          * Returns a list of dynamic data about markets. Dynamic data includes prices, the status
          * of the market, the status of selections, the traded volume, and the status of any orders
          * you have placed in the market.
          */
-        ListMarketBookResponse listMarketBook(const Exchange exchange,
-            const ListMarketBookRequest& request) const;
+        ListMarketBookResponse listMarketBook(const ListMarketBookRequest& request) const;
 
         /**
          * Returns a list of dynamic data about a market and a specified runner. Dynamic data
          * includes prices, the status of the market, the status of selections, the traded volume,
          * and the status of any orders you have placed in the market.
          */
-        ListRunnerBookResponse listRunnerBook(const Exchange exchange,
-            const ListRunnerBookRequest& request) const;
+        ListRunnerBookResponse listRunnerBook(const ListRunnerBookRequest& request) const;
 
         /**
          * Returns a list of your current orders. Optionally you can filter and sort your current
@@ -254,30 +244,26 @@ class ExchangeApi {
          * EARLIEST_TO_LATEST. To retrieve more than 1000 orders, you need to make use of the
          * fromRecord and recordCount parameters.
          */
-        CurrentOrderSummaryReport listCurrentOrders(const Exchange exchange,
-            const ListCurrentOrdersRequest& request) const;
+        CurrentOrderSummaryReport listCurrentOrders(const ListCurrentOrdersRequest& request) const;
 
         /**
          * Returns a List of bets based on the bet status, ordered by settled date.
          */
-        ClearedOrderSummaryReport listClearedOrders(const Exchange exchange,
-            const ListClearedOrdersRequest& request) const;
+        ClearedOrderSummaryReport listClearedOrders(const ListClearedOrdersRequest& request) const;
 
         /**
          * Place new orders into market. LIMIT orders below the minimum bet size are allowed if
          * there is an unmatched bet at the same price in the market. This operation is atomic in
          * that all orders will be placed or none will be placed.
          */
-        PlaceExecutionReport placeOrders(const Exchange exchange,
-            const PlaceOrdersRequest& request) const;
+        PlaceExecutionReport placeOrders(const PlaceOrdersRequest& request) const;
 
         /**
          * Cancel all bets OR cancel all bets on a market OR fully or partially cancel particular
          * orders on a market. Only LIMIT orders an be cancelled or partially cancelled once
          * placed.
          */
-        CancelExecutionReport cancelOrders(const Exchange exchange,
-            const CancelOrdersRequest& request) const;
+        CancelExecutionReport cancelOrders(const CancelOrdersRequest& request) const;
 
         /**
          * This operation is logically a bulk cancel followed by a bulk place. The cancel is
@@ -287,150 +273,132 @@ class ExchangeApi {
          * back.
          * See ReplaceInstruction.
          */
-        ReplaceExecutionReport replaceOrders(const Exchange exchange,
-            const ReplaceOrdersRequest& request) const;
+        ReplaceExecutionReport replaceOrders(const ReplaceOrdersRequest& request) const;
 
         /**
          * Update non-exposure changing fields.
          */
-        UpdateExecutionReport updateOrders(const Exchange exchange,
-            const UpdateOrdersRequest& request) const;
+        UpdateExecutionReport updateOrders(const UpdateOrdersRequest& request) const;
 
         /**
          * Retrieve profit and loss for a given list of markets. The values are calculated using
          * matched bets and optionally settled bets. Only odds markets are implemented, markets of
          * other types are silently ignored.
          */
-        ListMarketProfitAndLossResponse listMarketProfitAndLoss(const Exchange exchange,
-            const ListMarketProfitAndLossRequest& request) const;
+        ListMarketProfitAndLossResponse listMarketProfitAndLoss(const ListMarketProfitAndLossRequest& request) const;
 
         /**
          * Create 2 application keys for given user; one active and the other delayed.
          */
-        DeveloperApp createDeveloperAppKeys(const Exchange exchange,
-            const CreateDeveloperAppKeysRequest& request) const;
+        DeveloperApp createDeveloperAppKeys(const CreateDeveloperAppKeysRequest& request) const;
 
         /**
          * Get all application keys owned by the given developer/vendor.
          */
-        GetDeveloperAppKeysResponse getDeveloperAppKeys(const Exchange exchange) const;
+        GetDeveloperAppKeysResponse getDeveloperAppKeys() const;
 
         /**
          * Get available to bet amount.
          */
-        AccountFundsResponse getAccountFunds(const Exchange exchange,
-            const GetAccountFundsRequest& request) const;
+        AccountFundsResponse getAccountFunds(const GetAccountFundsRequest& request) const;
 
         /**
          * Transfer funds between wallets.
          */
-        TransferResponse transferFunds(const Exchange exchange,
-            const TransferFundsRequest& request) const;
+        TransferResponse transferFunds(const TransferFundsRequest& request) const;
 
         /**
          * Get Account details.
          */
-        AccountDetailsResponse getAccountDetails(const Exchange exchange) const;
+        AccountDetailsResponse getAccountDetails() const;
 
         /**
          * Get vendor client id for customer account.
          */
-        GetVendorClientIdResponse getVendorClientId(const Exchange exchange) const;
+        GetVendorClientIdResponse getVendorClientId() const;
 
         /**
          * Returns the newly generate subscription token.
          */
-        GetApplicationSubscriptionTokenResponse getApplicationSubscriptionToken(const Exchange exchange,
-            const GetApplicationSubscriptionTokenRequest& request) const;
+        GetApplicationSubscriptionTokenResponse getApplicationSubscriptionToken(const GetApplicationSubscriptionTokenRequest& request) const;
 
         /**
          * Activate the subscription token for the customer.
          */
-        ActivateApplicationSubscriptionResponse activateApplicationSubscription(const Exchange exchange,
-            const ActivateApplicationSubscriptionRequest& request) const;
+        ActivateApplicationSubscriptionResponse activateApplicationSubscription(const ActivateApplicationSubscriptionRequest& request) const;
 
         /**
          * Cancel application subscription.
          */
-        CancelApplicationSubscriptionResponse cancelApplicationSubscription(const Exchange exchange,
-            const CancelApplicationSubscriptionRequest& request) const;
+        CancelApplicationSubscriptionResponse cancelApplicationSubscription(const CancelApplicationSubscriptionRequest& request) const;
 
         /**
          * Update an application subscription with a new expiry date.
          */
-        UpdateApplicationSubscriptionResponse updateApplicationSubscription(const Exchange exchange,
-            const UpdateApplicationSubscriptionRequest& request) const;
+        UpdateApplicationSubscriptionResponse updateApplicationSubscription(const UpdateApplicationSubscriptionRequest& request) const;
 
         /**
          * List of subscription tokens for an application.
          */
-        ListApplicationSubscriptionTokensResponse listApplicationSubscriptionTokens(const Exchange exchange,
-            const ListApplicationSubscriptionTokensRequest& request) const;
+        ListApplicationSubscriptionTokensResponse listApplicationSubscriptionTokens(const ListApplicationSubscriptionTokensRequest& request) const;
 
         /**
          * List of subscription tokens associated with the account.
          */
-        ListAccountSubscriptionTokensResponse listAccountSubscriptionTokens(const Exchange exchange) const;
+        ListAccountSubscriptionTokensResponse listAccountSubscriptionTokens() const;
 
         /**
          * Identify all subscriptions, regardless of status, for a single client for a single
          * application key. The operation may be called by either the application key owner or a client.
          */
-        GetApplicationSubscriptionHistoryResponse getApplicationSubscriptionHistory(const Exchange exchange,
-            const GetApplicationSubscriptionHistoryRequest& request) const;
+        GetApplicationSubscriptionHistoryResponse getApplicationSubscriptionHistory(const GetApplicationSubscriptionHistoryRequest& request) const;
 
         /**
          * Get account statement.
          */
-        AccountStatementReport getAccountStatement(const Exchange exchange,
-            const GetAccountStatementRequest& request) const;
+        AccountStatementReport getAccountStatement(const GetAccountStatementRequest& request) const;
 
         /**
          * Returns a list of currency rates based on given currency.
          */
-        ListCurrencyRatesResponse listCurrencyRates(const Exchange exchange,
-            const ListCurrencyRatesRequest& listCurrencyRatesRequest) const;
+        ListCurrencyRatesResponse listCurrencyRates(const ListCurrencyRatesRequest& listCurrencyRatesRequest) const;
 
         /**
          * Generate auth code for web vendor, used to get vendor session.
          */
-        AuthorisationResponse getAuthorisationCode(const Exchange exchange,
-            const GetAuthorisationCodeRequest& request) const;
+        AuthorisationResponse getAuthorisationCode(const GetAuthorisationCodeRequest& request) const;
 
         /**
          * Generate web vendor session based on a standard session identifiable by auth code, vendor secret and app
          * key.
          */
-        VendorAccessTokenInfo token(const Exchange exchange, const TokenRequest& request) const;
+        VendorAccessTokenInfo token(const TokenRequest& request) const;
 
         /**
          * Return details about a vendor from its identifier. Response includes Vendor Name and URL.
          */
-        VendorDetails getVendorDetails(const Exchange exchange, const GetVendorDetailsRequest& request) const;
+        VendorDetails getVendorDetails(const GetVendorDetailsRequest& request) const;
 
         /**
          * Remove the link between an account and a vendor web app. This will remove the refreshToken for this
          * user-vendor pair subscription.
          */
-        RevokeAccessToWebAppResponse revokeAccessToWebApp(const Exchange exchange,
-            const RevokeAccessToWebAppRequest& request) const;
+        RevokeAccessToWebAppResponse revokeAccessToWebApp(const RevokeAccessToWebAppRequest& request) const;
 
         /**
          * Retrieve all vendors applications currently subscribed to by the user making the request.
          */
-        ListAuthorizedWebAppsResponse listAuthorizedWebApps(const Exchange exchange) const;
+        ListAuthorizedWebAppsResponse listAuthorizedWebApps() const;
 
         /**
          * Return whether an account has authorised a web app.
          */
-        IsAccountSubscribedToWebAppResponse isAccountSubscribedToWebApp(const Exchange exchange,
-            const IsAccountSubscribedToWebAppRequest& request) const;
+        IsAccountSubscribedToWebAppResponse isAccountSubscribedToWebApp(const IsAccountSubscribedToWebAppRequest& request) const;
 
         /**
          * Return relation between a list of users and an affiliate.
          */
-        GetAffiliateRelationResponse getAffiliateRelation(const Exchange exchange,
-            const GetAffiliateRelationRequest& request) const;
+        GetAffiliateRelationResponse getAffiliateRelation(const GetAffiliateRelationRequest& request) const;
 
         /**
          * This heartbeat operation is provided to help customers have their positions managed
@@ -454,14 +422,12 @@ class ExchangeApi {
          * cluster, which may result in your position not being managed until a subsequent
          * heartbeat request is received.
          */
-        HeartbeatReport heartbeat(const Exchange exchange,
-            const HeartbeatRequest& request) const;
+        HeartbeatReport heartbeat(const HeartbeatRequest& request) const;
 
         ~ExchangeApi();
 
     private:
         static const std::string HOST_UK;
-        static const std::string HOST_AUS;
 
         std::string loginEndPoint;
         std::string loginEndPointCert;
@@ -469,15 +435,15 @@ class ExchangeApi {
         std::string applicationKey;
         menu::Menu menu;
 
-        bool initRequest(const Exchange exchange, const Api api,
-            const std::string method, CURL* curl, SList& headers) const;
+        bool initRequest(const Api api, const std::string method, CURL* curl, SList& headers) const;
 
-        bool performRequest(const Exchange exchange,
+        bool performRequest(
             const Api api,
             const std::string& method, const JsonRequest& jsonRequest,
-            JsonResponse& jsonResponse) const;
+            JsonResponse& jsonResponse
+        ) const;
 
-        std::string buildUri(const Exchange exchange, const Api api, const std::string method) const;
+        std::string buildUri(const Api api, const std::string method) const;
 };
 
 }

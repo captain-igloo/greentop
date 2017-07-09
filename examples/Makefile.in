@@ -9,7 +9,6 @@ all:
 	$(CXX) -o getAccountStatement -std=c++0x -I../include -L../lib getAccountStatement.cpp -lgreentop -ljsoncpp -lcurl
 	$(CXX) -o listCurrencyRates -std=c++0x -I../include -L../lib listCurrencyRates.cpp -lgreentop -ljsoncpp -lcurl
 	$(CXX) -o listClearedOrders -std=c++0x -I../include -L../lib listClearedOrders.cpp -lgreentop -ljsoncpp -lcurl
-	$(CXX) -o transferFunds -std=c++0x -I../include -L../lib transferFunds.cpp -lgreentop -ljsoncpp -lcurl
 	$(CXX) -o refreshMenu -std=c++0x -I../include -L../lib refreshMenu.cpp -lgreentop -ljsoncpp -lcurl
 	$(CXX) -o login -std=c++0x -I../include -L../lib login.cpp -lgreentop -ljsoncpp -lcurl
 
