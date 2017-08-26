@@ -19,10 +19,10 @@ void ClearedOrderSummaryReport::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
         if (json.isMember("clearedOrders")) {
             for (unsigned i = 0; i < json["clearedOrders"].size(); ++i) {
-            ClearedOrderSummary clearedOrder;
-            clearedOrder.fromJson(json["clearedOrders"][i]);
-            clearedOrders.push_back(clearedOrder);
-        }
+                ClearedOrderSummary clearedOrder;
+                clearedOrder.fromJson(json["clearedOrders"][i]);
+                clearedOrders.push_back(clearedOrder);
+            }
         }
         if (json.isMember("moreAvailable")) {
             moreAvailable = json["moreAvailable"].asBool();

@@ -62,7 +62,6 @@ Json::Value RunnerCatalog::toJson() const {
         for (std::map<std::string, std::string>::const_iterator it = metadata.begin(); it != metadata.end(); ++it) {
             json["metadata"][it->first] = it->second;
         }
-
     }
     return json;
 }

@@ -27,10 +27,10 @@ void DeveloperApp::fromJson(const Json::Value& json) {
         }
         if (json.isMember("appVersions")) {
             for (unsigned i = 0; i < json["appVersions"].size(); ++i) {
-            DeveloperAppVersion appVersion;
-            appVersion.fromJson(json["appVersions"][i]);
-            appVersions.push_back(appVersion);
-        }
+                DeveloperAppVersion appVersion;
+                appVersion.fromJson(json["appVersions"][i]);
+                appVersions.push_back(appVersion);
+            }
         }
     }
 }

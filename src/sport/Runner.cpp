@@ -132,7 +132,6 @@ Json::Value Runner::toJson() const {
         for (std::map<std::string, Matches>::const_iterator it = matchesByStrategy.begin(); it != matchesByStrategy.end(); ++it) {
             json["matchesByStrategy"][it->first] = it->second.toJson();
         }
-
     }
     return json;
 }

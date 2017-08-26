@@ -35,10 +35,10 @@ void UpdateExecutionReport::fromJson(const Json::Value& json) {
         }
         if (json.isMember("instructionReports")) {
             for (unsigned i = 0; i < json["instructionReports"].size(); ++i) {
-            UpdateInstructionReport instructionReport;
-            instructionReport.fromJson(json["instructionReports"][i]);
-            instructionReports.push_back(instructionReport);
-        }
+                UpdateInstructionReport instructionReport;
+                instructionReport.fromJson(json["instructionReports"][i]);
+                instructionReports.push_back(instructionReport);
+            }
         }
     }
 }

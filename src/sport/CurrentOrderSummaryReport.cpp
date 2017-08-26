@@ -19,10 +19,10 @@ void CurrentOrderSummaryReport::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
         if (json.isMember("currentOrders")) {
             for (unsigned i = 0; i < json["currentOrders"].size(); ++i) {
-            CurrentOrderSummary currentOrder;
-            currentOrder.fromJson(json["currentOrders"][i]);
-            currentOrders.push_back(currentOrder);
-        }
+                CurrentOrderSummary currentOrder;
+                currentOrder.fromJson(json["currentOrders"][i]);
+                currentOrders.push_back(currentOrder);
+            }
         }
         if (json.isMember("moreAvailable")) {
             moreAvailable = json["moreAvailable"].asBool();

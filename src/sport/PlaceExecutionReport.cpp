@@ -35,10 +35,10 @@ void PlaceExecutionReport::fromJson(const Json::Value& json) {
         }
         if (json.isMember("instructionReports")) {
             for (unsigned i = 0; i < json["instructionReports"].size(); ++i) {
-            PlaceInstructionReport instructionReport;
-            instructionReport.fromJson(json["instructionReports"][i]);
-            instructionReports.push_back(instructionReport);
-        }
+                PlaceInstructionReport instructionReport;
+                instructionReport.fromJson(json["instructionReports"][i]);
+                instructionReports.push_back(instructionReport);
+            }
         }
     }
 }

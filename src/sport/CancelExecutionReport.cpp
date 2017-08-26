@@ -35,10 +35,10 @@ void CancelExecutionReport::fromJson(const Json::Value& json) {
         }
         if (json.isMember("instructionReports")) {
             for (unsigned i = 0; i < json["instructionReports"].size(); ++i) {
-            CancelInstructionReport instructionReport;
-            instructionReport.fromJson(json["instructionReports"][i]);
-            instructionReports.push_back(instructionReport);
-        }
+                CancelInstructionReport instructionReport;
+                instructionReport.fromJson(json["instructionReports"][i]);
+                instructionReports.push_back(instructionReport);
+            }
         }
     }
 }

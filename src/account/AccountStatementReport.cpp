@@ -19,10 +19,10 @@ void AccountStatementReport::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
         if (json.isMember("accountStatement")) {
             for (unsigned i = 0; i < json["accountStatement"].size(); ++i) {
-            StatementItem statementItem;
-            statementItem.fromJson(json["accountStatement"][i]);
-            accountStatement.push_back(statementItem);
-        }
+                StatementItem statementItem;
+                statementItem.fromJson(json["accountStatement"][i]);
+                accountStatement.push_back(statementItem);
+            }
         }
         if (json.isMember("moreAvailable")) {
             moreAvailable = json["moreAvailable"].asBool();
