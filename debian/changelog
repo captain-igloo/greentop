@@ -1,4 +1,4 @@
-libgreentop (0.7.0) trusty; urgency=medium
+libgreentop (0.7.0+trusty) trusty; urgency=medium
 
   * load menu from string now works with jsoncpp 0.6.0
 
