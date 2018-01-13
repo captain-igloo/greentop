@@ -3,6 +3,7 @@
  */
 
 #include <json/json.h>
+#include <sstream>
 #include <stdexcept>
 
 #include "greentop/menu/Menu.h"
@@ -26,10 +27,14 @@ Node::Node(Menu* menu) : menu(menu) {
 }
 
 void Node::fromJson(const Json::Value& json) {
-
     id = "";
     if (json.isMember("id")) {
-        id = json["id"].asString();
+        // id is sometimes a string, sometimes an integer.
+        if (json["id"].isInt()) {
+            id = std::to_string(json["id"].asInt64());
+        } else {
+            id = json["id"].asString();
+        }
     }
 
     name = "";
@@ -47,8 +52,13 @@ void Node::fromJson(const Json::Value& json) {
 
     numberOfWinners = 0;
     if (json.isMember("numberOfWinners")) {
-        std::string s = json["numberOfWinners"].asString();
-        numberOfWinners = atoi(s.c_str());
+        // according to docs this is a string, but it's actually an integer.  Handle both to be sure.
+        if (json["numberOfWinners"].isInt()) {
+            numberOfWinners = json["numberOfWinners"].asUInt();
+        } else {
+            std::string s = json["numberOfWinners"].asString();
+            numberOfWinners = atoi(s.c_str());
+        }
     }
 
     if (json.isMember("marketStartTime")) {

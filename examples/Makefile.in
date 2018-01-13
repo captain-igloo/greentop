@@ -1,16 +1,16 @@
 CXX=@CXX@
 
 all:
-	$(CXX) -o listEventTypes -std=c++0x -I../include -L../lib listEventTypes.cpp -lgreentop -ljsoncpp -lcurl
-	$(CXX) -o listCompetitions -std=c++0x -I../include -L../lib listCompetitions.cpp -lgreentop -ljsoncpp -lcurl
-	$(CXX) -o listEvents -std=c++0x -I../include -L../lib listEvents.cpp -lgreentop -ljsoncpp -lcurl
-	$(CXX) -o listMarketCatalogue -std=c++0x -I../include -L../lib listMarketCatalogue.cpp -lgreentop -ljsoncpp -lcurl
-	$(CXX) -o listMarketBook -std=c++0x -I../include -L../lib listMarketBook.cpp -lgreentop -ljsoncpp -lcurl
-	$(CXX) -o getAccountStatement -std=c++0x -I../include -L../lib getAccountStatement.cpp -lgreentop -ljsoncpp -lcurl
-	$(CXX) -o listCurrencyRates -std=c++0x -I../include -L../lib listCurrencyRates.cpp -lgreentop -ljsoncpp -lcurl
-	$(CXX) -o listClearedOrders -std=c++0x -I../include -L../lib listClearedOrders.cpp -lgreentop -ljsoncpp -lcurl
-	$(CXX) -o refreshMenu -std=c++0x -I../include -L../lib refreshMenu.cpp -lgreentop -ljsoncpp -lcurl
-	$(CXX) -o login -std=c++0x -I../include -L../lib login.cpp -lgreentop -ljsoncpp -lcurl
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o listEventTypes -std=c++0x -I../include -L../lib listEventTypes.cpp -lgreentop -ljsoncpp -lcurl
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o listCompetitions -std=c++0x -I../include -L../lib listCompetitions.cpp -lgreentop -ljsoncpp -lcurl
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o listEvents -std=c++0x -I../include -L../lib listEvents.cpp -lgreentop -ljsoncpp -lcurl
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o listMarketCatalogue -std=c++0x -I../include -L../lib listMarketCatalogue.cpp -lgreentop -ljsoncpp -lcurl
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o listMarketBook -std=c++0x -I../include -L../lib listMarketBook.cpp -lgreentop -ljsoncpp -lcurl
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o getAccountStatement -std=c++0x -I../include -L../lib getAccountStatement.cpp -lgreentop -ljsoncpp -lcurl
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o listCurrencyRates -std=c++0x -I../include -L../lib listCurrencyRates.cpp -lgreentop -ljsoncpp -lcurl
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o listClearedOrders -std=c++0x -I../include -L../lib listClearedOrders.cpp -lgreentop -ljsoncpp -lcurl
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o refreshMenu -std=c++0x -I../include -L../lib refreshMenu.cpp -lgreentop -ljsoncpp -lcurl
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o login -std=c++0x -I../include -L../lib login.cpp -lgreentop -ljsoncpp -lcurl
 
 clean:
 	rm listEventTypes listCompetitions listEvents listMarketCatalogue listMarketBook getAccountStatement listClearedOrders transferFunds refreshMenu login
