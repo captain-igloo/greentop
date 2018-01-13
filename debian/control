@@ -1,18 +1,18 @@
 Source: libgreentop
 Priority: extra
 Maintainer: Colin Doig <colindoig@gmail.com>
-Build-Depends: debhelper (>= 8.0.0), autotools-dev
+Build-Depends: debhelper (>= 8.0.0), autotools-dev, libjsoncpp-dev, libcurl4-openssl-dev
 Standards-Version: 3.9.2
 Section: libs
 
 Package: libgreentop-dev
 Architecture: any
-Depends: libgreentop (= ${binary:Version})
+Depends: libgreentop (= ${binary:Version}), libjsoncpp-dev, libcurl4-openssl-dev
 Description: Betfair API client (development)
  Use the Betfair API to read markets and prices, place bets, manage your account, and more.
 
 Package: libgreentop
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, libjsoncpp1, libcurl4-openssl-dev
 Description: Betfair API client (library)
  Use the Betfair API to read markets and prices, place bets, manage your account, and more.

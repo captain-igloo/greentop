@@ -36,16 +36,6 @@ class Optional : public JsonMember {
         }
 
         /**
-         * Converts to Json::Value.
-         *
-         * @return Json::Value.
-         */
-        virtual Json::Value toJson() const {
-            Json::Value json(value);
-            return json;
-        }
-
-        /**
          * Returns the value.
          *
          * @return T
@@ -72,6 +62,13 @@ class Optional : public JsonMember {
          * @param json The json to extract the value from.
          */
         virtual void fromJson(const Json::Value& json);
+
+        /**
+         * Converts to Json::Value.
+         *
+         * @return Json::Value.
+         */
+        virtual Json::Value toJson() const;
 
     private:
         T value;

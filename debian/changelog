@@ -1,4 +1,10 @@
-libgreentop (0.1-1) unstable; urgency=low
+libgreentop (0.6.0) xenial; urgency=medium
+
+  * compile with earlier versions of jsoncpp, build for ubuntu xenial.
+
+ -- Colin Doig <colind@ubuntu-xenial>  Sat, 13 Jan 2018 15:36:15 +1300
+
+libgreentop (0.1.0) unstable; urgency=low
 
   * Initial release
 
