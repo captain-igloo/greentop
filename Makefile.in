@@ -30,6 +30,7 @@ clean:
 	rm -f $(LIBGREENTOP)
 	rm -f $(OBJ)/*.o $(OBJ)/*.d
 	rm -f $(OBJ)/*/*.o $(OBJ)/*/*.d
+	rm -f $(OBJ)/*/*/*.o $(OBJ)/*/*/*.d
 
 .PHONY: install
 install: all
