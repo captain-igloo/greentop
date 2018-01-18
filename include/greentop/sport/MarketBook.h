@@ -13,6 +13,7 @@
 #include "greentop/JsonMember.h"
 #include "greentop/Optional.h"
 #include "greentop/Time.h"
+#include "greentop/sport/KeyLineDescription.h"
 #include "greentop/sport/Runner.h"
 #include "greentop/sport/enum/MarketStatus.h"
 
@@ -40,7 +41,8 @@ class MarketBook : public JsonMember {
             const Optional<bool>& crossMatching = Optional<bool>(),
             const Optional<bool>& runnersVoidable = Optional<bool>(),
             const Optional<int64_t>& version = Optional<int64_t>(),
-            const std::vector<Runner>& runners = std::vector<Runner>());
+            const std::vector<Runner>& runners = std::vector<Runner>(),
+            const KeyLineDescription& keyLineDescription = KeyLineDescription());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -98,6 +100,9 @@ class MarketBook : public JsonMember {
 
         const std::vector<Runner>& getRunners() const;
         void setRunners(const std::vector<Runner>& runners);
+
+        const KeyLineDescription& getKeyLineDescription() const;
+        void setKeyLineDescription(const KeyLineDescription& keyLineDescription);
 
 
     private:
@@ -172,6 +177,10 @@ class MarketBook : public JsonMember {
          * Information about the runners (selections) in the market.
          */
         std::vector<Runner> runners;
+        /**
+         * Description of a markets key line for valid market types
+         */
+        KeyLineDescription keyLineDescription;
 };
 
 }

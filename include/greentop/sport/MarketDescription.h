@@ -13,6 +13,7 @@
 #include "greentop/Optional.h"
 #include "greentop/Time.h"
 #include "greentop/sport/MarketLineRangeInfo.h"
+#include "greentop/sport/PriceLadderDescription.h"
 #include "greentop/sport/enum/MarketBettingType.h"
 
 namespace greentop {
@@ -39,7 +40,9 @@ class MarketDescription : public JsonMember {
             const Optional<bool>& rulesHasDate = Optional<bool>(),
             const std::string& clarifications = std::string(),
             const Optional<double>& eachWayDivisor = Optional<double>(),
-            const MarketLineRangeInfo& lineRangeInfo = MarketLineRangeInfo());
+            const MarketLineRangeInfo& lineRangeInfo = MarketLineRangeInfo(),
+            const std::string& raceType = std::string(),
+            const PriceLadderDescription& priceLadderDescription = PriceLadderDescription());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -98,6 +101,12 @@ class MarketDescription : public JsonMember {
         const MarketLineRangeInfo& getLineRangeInfo() const;
         void setLineRangeInfo(const MarketLineRangeInfo& lineRangeInfo);
 
+        const std::string& getRaceType() const;
+        void setRaceType(const std::string& raceType);
+
+        const PriceLadderDescription& getPriceLadderDescription() const;
+        void setPriceLadderDescription(const PriceLadderDescription& priceLadderDescription);
+
 
     private:
         /**
@@ -153,9 +162,17 @@ class MarketDescription : public JsonMember {
          */
         Optional<double> eachWayDivisor;
         /**
-         * Line range info for line markets
+         * Line range info for Line markets and some variants of Handicap markets
          */
         MarketLineRangeInfo lineRangeInfo;
+        /**
+         * An external identifier of a race type
+         */
+        std::string raceType;
+        /**
+         * Details about the price ladder in use for this market.
+         */
+        PriceLadderDescription priceLadderDescription;
 };
 
 }

@@ -34,7 +34,8 @@ class MarketFilter : public JsonMember {
             const std::set<std::string>& marketCountries = std::set<std::string>(),
             const std::set<std::string>& marketTypeCodes = std::set<std::string>(),
             const TimeRange& marketStartTime = TimeRange(),
-            const std::set<OrderStatus>& withOrders = std::set<OrderStatus>());
+            const std::set<OrderStatus>& withOrders = std::set<OrderStatus>(),
+            const std::set<std::string>& raceTypes = std::set<std::string>());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -86,6 +87,9 @@ class MarketFilter : public JsonMember {
 
         const std::set<OrderStatus>& getWithOrders() const;
         void setWithOrders(const std::set<OrderStatus>& withOrders);
+
+        const std::set<std::string>& getRaceTypes() const;
+        void setRaceTypes(const std::set<std::string>& raceTypes);
 
 
     private:
@@ -159,6 +163,10 @@ class MarketFilter : public JsonMember {
          * Restrict to markets that I have one or more orders in these status.
          */
         std::set<OrderStatus> withOrders;
+        /**
+         * Restrict by race type (i.e. Hurdle, Flat, Bumper, Harness, Chase)
+         */
+        std::set<std::string> raceTypes;
 };
 
 }

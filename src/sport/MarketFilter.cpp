@@ -21,7 +21,8 @@ MarketFilter::MarketFilter(const std::string& textQuery,
     const std::set<std::string>& marketCountries,
     const std::set<std::string>& marketTypeCodes,
     const TimeRange& marketStartTime,
-    const std::set<OrderStatus>& withOrders) :
+    const std::set<OrderStatus>& withOrders,
+    const std::set<std::string>& raceTypes) :
     textQuery(textQuery),
     exchangeIds(exchangeIds),
     eventTypeIds(eventTypeIds),
@@ -36,7 +37,8 @@ MarketFilter::MarketFilter(const std::string& textQuery,
     marketCountries(marketCountries),
     marketTypeCodes(marketTypeCodes),
     marketStartTime(marketStartTime),
-    withOrders(withOrders) {
+    withOrders(withOrders),
+    raceTypes(raceTypes) {
 }
 
 void MarketFilter::fromJson(const Json::Value& json) {
@@ -105,6 +107,11 @@ void MarketFilter::fromJson(const Json::Value& json) {
             withOrders.insert(json["withOrders"][i].asString());
         }
     }
+    if (json.isMember("raceTypes")) {
+        for (unsigned i = 0; i < json["raceTypes"].size(); ++i) {
+            raceTypes.insert(json["raceTypes"][i].asString());
+        }
+    }
 }
 
 Json::Value MarketFilter::toJson() const {
@@ -153,8 +160,8 @@ Json::Value MarketFilter::toJson() const {
     }
     if (marketBettingTypes.size() > 0) {
         for (std::set<MarketBettingType>::const_iterator it = marketBettingTypes.begin(); it != marketBettingTypes.end(); ++it) {
-            MarketBettingType marketBettingTypes(*it);
-            json["marketBettingTypes"].append(marketBettingTypes.getValue());
+            MarketBettingType mbt(*it);
+            json["marketBettingTypes"].append(mbt.getValue());
         }
     }
     if (marketCountries.size() > 0) {
@@ -172,8 +179,13 @@ Json::Value MarketFilter::toJson() const {
     }
     if (withOrders.size() > 0) {
         for (std::set<OrderStatus>::const_iterator it = withOrders.begin(); it != withOrders.end(); ++it) {
-            OrderStatus withOrders(*it);
-            json["withOrders"].append(withOrders.getValue());
+            OrderStatus wo(*it);
+            json["withOrders"].append(wo.getValue());
+        }
+    }
+    if (raceTypes.size() > 0) {
+        for (std::set<std::string>::const_iterator it = raceTypes.begin(); it != raceTypes.end(); ++it) {
+            json["raceTypes"].append(*it);
         }
     }
     return json;
@@ -286,6 +298,13 @@ const std::set<OrderStatus>& MarketFilter::getWithOrders() const {
 }
 void MarketFilter::setWithOrders(const std::set<OrderStatus>& withOrders) {
     this->withOrders = withOrders;
+}
+
+const std::set<std::string>& MarketFilter::getRaceTypes() const {
+    return raceTypes;
+}
+void MarketFilter::setRaceTypes(const std::set<std::string>& raceTypes) {
+    this->raceTypes = raceTypes;
 }
 
 

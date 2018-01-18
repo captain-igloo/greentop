@@ -17,7 +17,8 @@ MarketState::MarketState(const std::string& status,
     const Optional<int32_t>& numberOfActiveRunners,
     const std::tm& lastMatchTime,
     const Optional<double>& totalMatched,
-    const Optional<double>& totalAvailable) :
+    const Optional<double>& totalAvailable,
+    const KeyLineDescription& keyLineDescription) :
     status(status),
     betDelay(betDelay),
     bspReconciled(bspReconciled),
@@ -26,7 +27,8 @@ MarketState::MarketState(const std::string& status,
     numberOfActiveRunners(numberOfActiveRunners),
     lastMatchTime(lastMatchTime),
     totalMatched(totalMatched),
-    totalAvailable(totalAvailable) {
+    totalAvailable(totalAvailable),
+    keyLineDescription(keyLineDescription) {
 }
 
 void MarketState::fromJson(const Json::Value& json) {
@@ -56,6 +58,9 @@ void MarketState::fromJson(const Json::Value& json) {
     }
     if (json.isMember("totalAvailable")) {
         totalAvailable = json["totalAvailable"].asDouble();
+    }
+    if (json.isMember("keyLineDescription")) {
+        keyLineDescription.fromJson(json["keyLineDescription"]);
     }
 }
 
@@ -89,6 +94,9 @@ Json::Value MarketState::toJson() const {
     }
     if (totalAvailable.isValid()) {
         json["totalAvailable"] = totalAvailable.toJson();
+    }
+    if (keyLineDescription.isValid()) {
+        json["keyLineDescription"] = keyLineDescription.toJson();
     }
     return json;
 }
@@ -158,6 +166,13 @@ const Optional<double>& MarketState::getTotalAvailable() const {
 }
 void MarketState::setTotalAvailable(const Optional<double>& totalAvailable) {
     this->totalAvailable = totalAvailable;
+}
+
+const KeyLineDescription& MarketState::getKeyLineDescription() const {
+    return keyLineDescription;
+}
+void MarketState::setKeyLineDescription(const KeyLineDescription& keyLineDescription) {
+    this->keyLineDescription = keyLineDescription;
 }
 
 

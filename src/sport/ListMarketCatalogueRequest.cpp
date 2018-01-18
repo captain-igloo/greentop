@@ -48,8 +48,8 @@ Json::Value ListMarketCatalogueRequest::toJson() const {
     }
     if (marketProjection.size() > 0) {
         for (std::set<MarketProjection>::const_iterator it = marketProjection.begin(); it != marketProjection.end(); ++it) {
-            MarketProjection marketProjection(*it);
-            json["marketProjection"].append(marketProjection.getValue());
+            MarketProjection mp(*it);
+            json["marketProjection"].append(mp.getValue());
         }
     }
     if (sort.isValid()) {

@@ -25,7 +25,9 @@ MarketDescription::MarketDescription(const Optional<bool>& persistenceEnabled,
     const Optional<bool>& rulesHasDate,
     const std::string& clarifications,
     const Optional<double>& eachWayDivisor,
-    const MarketLineRangeInfo& lineRangeInfo) :
+    const MarketLineRangeInfo& lineRangeInfo,
+    const std::string& raceType,
+    const PriceLadderDescription& priceLadderDescription) :
     persistenceEnabled(persistenceEnabled),
     bspMarket(bspMarket),
     marketTime(marketTime),
@@ -42,7 +44,9 @@ MarketDescription::MarketDescription(const Optional<bool>& persistenceEnabled,
     rulesHasDate(rulesHasDate),
     clarifications(clarifications),
     eachWayDivisor(eachWayDivisor),
-    lineRangeInfo(lineRangeInfo) {
+    lineRangeInfo(lineRangeInfo),
+    raceType(raceType),
+    priceLadderDescription(priceLadderDescription) {
 }
 
 void MarketDescription::fromJson(const Json::Value& json) {
@@ -96,6 +100,12 @@ void MarketDescription::fromJson(const Json::Value& json) {
     }
     if (json.isMember("lineRangeInfo")) {
         lineRangeInfo.fromJson(json["lineRangeInfo"]);
+    }
+    if (json.isMember("raceType")) {
+        raceType = json["raceType"].asString();
+    }
+    if (json.isMember("priceLadderDescription")) {
+        priceLadderDescription.fromJson(json["priceLadderDescription"]);
     }
 }
 
@@ -157,6 +167,12 @@ Json::Value MarketDescription::toJson() const {
     }
     if (lineRangeInfo.isValid()) {
         json["lineRangeInfo"] = lineRangeInfo.toJson();
+    }
+    if (raceType != "") {
+        json["raceType"] = raceType;
+    }
+    if (priceLadderDescription.isValid()) {
+        json["priceLadderDescription"] = priceLadderDescription.toJson();
     }
     return json;
 }
@@ -282,6 +298,20 @@ const MarketLineRangeInfo& MarketDescription::getLineRangeInfo() const {
 }
 void MarketDescription::setLineRangeInfo(const MarketLineRangeInfo& lineRangeInfo) {
     this->lineRangeInfo = lineRangeInfo;
+}
+
+const std::string& MarketDescription::getRaceType() const {
+    return raceType;
+}
+void MarketDescription::setRaceType(const std::string& raceType) {
+    this->raceType = raceType;
+}
+
+const PriceLadderDescription& MarketDescription::getPriceLadderDescription() const {
+    return priceLadderDescription;
+}
+void MarketDescription::setPriceLadderDescription(const PriceLadderDescription& priceLadderDescription) {
+    this->priceLadderDescription = priceLadderDescription;
 }
 
 

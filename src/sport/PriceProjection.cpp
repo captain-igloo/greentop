@@ -38,8 +38,8 @@ Json::Value PriceProjection::toJson() const {
     Json::Value json(Json::objectValue);
     if (priceData.size() > 0) {
         for (std::set<PriceData>::const_iterator it = priceData.begin(); it != priceData.end(); ++it) {
-            PriceData priceData(*it);
-            json["priceData"].append(priceData.getValue());
+            PriceData pd(*it);
+            json["priceData"].append(pd.getValue());
         }
     }
     if (exBestOffersOverrides.isValid()) {

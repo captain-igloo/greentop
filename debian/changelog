@@ -1,3 +1,9 @@
+libgreentop (0.8.0+xenial) xenial; urgency=medium
+
+  * latest version of the betfair API.
+
+ -- Colin Doig <colindoig@gmail.com>  Thu, 18 Jan 2018 20:55:44 +1300
+
 libgreentop (0.7.0+xenial) xenial; urgency=medium
 
   * load menu from string now works with jsoncpp 0.6.0
