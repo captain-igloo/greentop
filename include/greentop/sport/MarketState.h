@@ -12,6 +12,7 @@
 #include "greentop/JsonMember.h"
 #include "greentop/Optional.h"
 #include "greentop/Time.h"
+#include "greentop/sport/KeyLineDescription.h"
 
 namespace greentop {
 /**
@@ -29,7 +30,8 @@ class MarketState : public JsonMember {
             const Optional<int32_t>& numberOfActiveRunners,
             const std::tm& lastMatchTime,
             const Optional<double>& totalMatched,
-            const Optional<double>& totalAvailable);
+            const Optional<double>& totalAvailable,
+            const KeyLineDescription& keyLineDescription = KeyLineDescription());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -63,6 +65,9 @@ class MarketState : public JsonMember {
 
         const Optional<double>& getTotalAvailable() const;
         void setTotalAvailable(const Optional<double>& totalAvailable);
+
+        const KeyLineDescription& getKeyLineDescription() const;
+        void setKeyLineDescription(const KeyLineDescription& keyLineDescription);
 
 
     private:
@@ -100,6 +105,10 @@ class MarketState : public JsonMember {
          * Zero for closed markets
          */
         Optional<double> totalAvailable;
+        /**
+         * Description of a markets key line for valid market types
+         */
+        KeyLineDescription keyLineDescription;
 };
 
 }

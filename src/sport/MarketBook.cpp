@@ -25,7 +25,8 @@ MarketBook::MarketBook(const std::string& marketId,
     const Optional<bool>& crossMatching,
     const Optional<bool>& runnersVoidable,
     const Optional<int64_t>& version,
-    const std::vector<Runner>& runners) :
+    const std::vector<Runner>& runners,
+    const KeyLineDescription& keyLineDescription) :
     marketId(marketId),
     isMarketDataDelayed(isMarketDataDelayed),
     status(status),
@@ -42,7 +43,8 @@ MarketBook::MarketBook(const std::string& marketId,
     crossMatching(crossMatching),
     runnersVoidable(runnersVoidable),
     version(version),
-    runners(runners) {
+    runners(runners),
+    keyLineDescription(keyLineDescription) {
 }
 
 void MarketBook::fromJson(const Json::Value& json) {
@@ -100,6 +102,9 @@ void MarketBook::fromJson(const Json::Value& json) {
             runner.fromJson(json["runners"][i]);
             runners.push_back(runner);
         }
+    }
+    if (json.isMember("keyLineDescription")) {
+        keyLineDescription.fromJson(json["keyLineDescription"]);
     }
 }
 
@@ -159,6 +164,9 @@ Json::Value MarketBook::toJson() const {
         for (unsigned i = 0; i < runners.size(); ++i) {
             json["runners"].append(runners[i].toJson());
         }
+    }
+    if (keyLineDescription.isValid()) {
+        json["keyLineDescription"] = keyLineDescription.toJson();
     }
     return json;
 }
@@ -284,6 +292,13 @@ const std::vector<Runner>& MarketBook::getRunners() const {
 }
 void MarketBook::setRunners(const std::vector<Runner>& runners) {
     this->runners = runners;
+}
+
+const KeyLineDescription& MarketBook::getKeyLineDescription() const {
+    return keyLineDescription;
+}
+void MarketBook::setKeyLineDescription(const KeyLineDescription& keyLineDescription) {
+    this->keyLineDescription = keyLineDescription;
 }
 
 

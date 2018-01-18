@@ -53,10 +53,10 @@ class MarketLineRangeInfo : public JsonMember {
          */
         Optional<double> minUnitValue;
         /**
-         * The odds ladder on this market will be between the range of minUnitValue and
-         * maxUnitValue, in increments of the interval value e.g. If minUnitValue=10 runs,
-         * maxUnitValue=20 runs, interval=0.5 runs, then valid odds include 10, 10.5, 11, 11.5 up
-         * to 20 runs.
+         * . For Handicap and Line markets, the lines available on this market will be between the
+         * range of minUnitValue and maxUnitValue, in increments of the interval value. e.g. If
+         * marketUnit is runs, minUnitValue=10, maxUnitValue=20 and interval=0.5, then valid lines
+         * include 10, 10.5, 11, 11.5 up to 20 runs.
          */
         Optional<double> interval;
         /**
