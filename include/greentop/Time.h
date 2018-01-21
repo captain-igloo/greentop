@@ -1,12 +1,14 @@
 /**
-* Copyright 2015 Colin Doig.  Distributed under the MIT license.
-*/
+ * Copyright 2018 Colin Doig.  Distributed under the MIT license.
+ */
 #ifndef TIME_H
 #define TIME_H
 
-#if defined _WIN32
+#if defined(__APPLE__) || defined(__linux__)
 #include <time.h>
+#elif defined _WIN32
 #include <iomanip>
+#include <locale>
 #include <sstream>
 
 static char* strptime(const char* s, const char* f, struct tm* tm) {
@@ -18,6 +20,8 @@ static char* strptime(const char* s, const char* f, struct tm* tm) {
     }
     return (char*)(s + input.tellg());
 }
-#endif // _WIN32
+#else
+#error Platform not supported
+#endif
 
 #endif // TIME_H
