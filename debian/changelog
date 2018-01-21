@@ -1,3 +1,9 @@
+libgreentop (0.8.1+trusty) trusty; urgency=medium
+
+  * OSX build.
+
+ -- Colin Doig <colind@colind-desktop>  Sun, 21 Jan 2018 15:11:54 +1300
+
 libgreentop (0.8.0+trusty) trusty; urgency=medium
 
   * latest version of the betfair API.

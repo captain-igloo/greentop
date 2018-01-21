@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2018 Colin Doig.  Distributed under the MIT license.
  */
 
 #include <json/json.h>
@@ -8,14 +8,7 @@
 
 #include "greentop/menu/Menu.h"
 #include "greentop/menu/Node.h"
-
-#ifdef __linux__
-#include <time.h>
-#elif _WIN32
 #include "greentop/Time.h"
-#else
-#error Platform not supported
-#endif
 
 namespace greentop {
 namespace menu {

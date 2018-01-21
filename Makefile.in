@@ -23,7 +23,7 @@ endef
 
 .PHONY: all
 all: $(OBJS) | $(LIB)
-	$(CXX) -shared $(OBJS) -o $(LIBGREENTOP)
+	$(CXX) -Wl,-undefined -Wl,dynamic_lookup -shared $(OBJS) -o $(LIBGREENTOP)
 
 .PHONY: clean
 clean:
