@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2018 Colin Doig.  Distributed under the MIT license.
  */
 
 #include <iostream>
@@ -128,7 +128,8 @@ void ExchangeApi::setSsoid(const std::string& ssoid) {
     this->ssoid = ssoid;
 }
 
-bool ExchangeApi::refreshMenu(const std::string& cacheFilename) {
+bool ExchangeApi::retrieveMenu(const std::string& cacheFilename) {
+    pendingMenuJson = Json::Value();
     bool refreshResult = false;
 
     std::unique_ptr<CURL, void(*)(CURL*)> curl(curl_easy_init(), curl_easy_cleanup);
@@ -165,10 +166,8 @@ bool ExchangeApi::refreshMenu(const std::string& cacheFilename) {
                 fs << result.str();
             }
 
-            Json::Value json;
-            result >> json;
-            if (json.isMember("children")) {
-                menu.fromJson(json);
+            result >> pendingMenuJson;
+            if (pendingMenuJson.isMember("children")) {
                 refreshResult = true;
             } // else error, might not be logged in.
 
@@ -177,6 +176,19 @@ bool ExchangeApi::refreshMenu(const std::string& cacheFilename) {
         }
     }
     return refreshResult;
+}
+
+bool ExchangeApi::parseMenu() {
+    if (pendingMenuJson.isMember("children")) {
+        menu.fromJson(pendingMenuJson);
+        pendingMenuJson = Json::Value();
+        return true;
+    }
+    return false;
+}
+
+bool ExchangeApi::refreshMenu(const std::string& cacheFilename) {
+    return retrieveMenu(cacheFilename) && parseMenu();
 }
 
 menu::Menu& ExchangeApi::getMenu() {

@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2018 Colin Doig.  Distributed under the MIT license.
  */
 
 #ifndef EXCHANGEAPI_H
@@ -157,6 +157,22 @@ class ExchangeApi {
          * @param ssoid The SSO token.
          */
         void setSsoid(const std::string& ssoid);
+
+        /**
+         * Retrieves the navigation menu from Betfair but does not parse it.  Call refreshMenu() to do both.  If
+         * the cache filename is provided, the menu JSON is saved to this file.
+         *
+         * @param cacheFilename The cache filename.
+         * @return True if the menu has been retrieved successfully else false.
+         */
+        bool retrieveMenu(const std::string& cacheFilename = "");
+
+        /**
+         * Parses the navigation menu JSON.  Call retrieveMenu() first or refreshMenu to do both.
+         *
+         * @return True if the menu has been successfully parsed else false.
+         */
+        bool parseMenu();
 
         /**
          * Refresh the menu.  If the cache filename is provided, the menu JSON is saved to this file.
@@ -434,6 +450,7 @@ class ExchangeApi {
         std::string ssoid;
         std::string applicationKey;
         menu::Menu menu;
+        Json::Value pendingMenuJson;
 
         bool initRequest(const Api api, const std::string method, CURL* curl, SList& headers) const;
 
