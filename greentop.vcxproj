@@ -64,17 +64,17 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\jsoncpp\include;..\curl-7.59.0\include;..\greentop\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\jsoncpp-1.8.4\include;..\curl-7.59.0\include;..\greentop\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\jsoncpp\include;..\curl-7.59.0\include;..\greentop\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\jsoncpp-1.8.4\include;..\curl-7.59.0\include;..\greentop\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>..\jsoncpp\include;..\curl-7.59.0\include;..\greentop\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\jsoncpp-1.8.4\include;..\curl-7.59.0\include;..\greentop\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>..\jsoncpp\include;..\curl-7.59.0\include;..\greentop\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\jsoncpp-1.8.4\include;..\curl-7.59.0\include;..\greentop\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

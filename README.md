@@ -23,19 +23,22 @@ Requirements
 * [jsoncpp](https://github.com/open-source-parsers/jsoncpp)
 * [libcurl](http://curl.haxx.se/libcurl/)
 
-Build
------
+Build (Linux)
+-------------
 
-export CPPFLAGS=-I/usr/include/jsoncpp
-
+```export CPPFLAGS=-I/usr/include/jsoncpp
 ./configure --prefix=/usr
-
 make
-
 make install
+```
 
-Ubuntu Installation
--------------------
+Build (Windows)
+---------------
+
+Instructions for building on Windows using Visual Studio can be found [here](https://github.com/captain-igloo/greentop/wiki/Build-(Windows)).
+
+Ubuntu Binaries
+---------------
 
 Binaries for Ubuntu are available at [https://launchpad.net/~captain-igloo/+archive/ubuntu/greenthumb](https://launchpad.net/~captain-igloo/+archive/ubuntu/greenthumb)
 
