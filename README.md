@@ -26,7 +26,8 @@ Requirements
 Build (Linux)
 -------------
 
-```export CPPFLAGS=-I/usr/include/jsoncpp
+```
+export CPPFLAGS=-I/usr/include/jsoncpp
 ./configure --prefix=/usr
 make
 make install
