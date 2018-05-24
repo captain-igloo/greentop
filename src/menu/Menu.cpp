@@ -14,8 +14,9 @@ Menu::Menu() : root(this), childrenCache(100) {
 
 void Menu::fromJson(const std::string& json) {
     Json::Value jsonValue;
-    Json::Reader reader;
-    reader.parse(json.c_str(), jsonValue);
+    std::stringstream ss;
+    ss << json;
+    ss >> jsonValue;
     fromJson(jsonValue);
 }
 
