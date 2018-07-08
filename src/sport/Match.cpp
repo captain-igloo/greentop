@@ -11,13 +11,13 @@ Match::Match(const std::string& betId,
     const std::string& matchId,
     const Side& side,
     const Optional<double>& price,
-    const Optional<double>& Size,
+    const Optional<double>& size,
     const std::tm& matchDate) :
     betId(betId),
     matchId(matchId),
     side(side),
     price(price),
-    Size(Size),
+    size(size),
     matchDate(matchDate) {
 }
 
@@ -34,8 +34,8 @@ void Match::fromJson(const Json::Value& json) {
     if (json.isMember("price")) {
         price = json["price"].asDouble();
     }
-    if (json.isMember("Size")) {
-        Size = json["Size"].asDouble();
+    if (json.isMember("size")) {
+        size = json["size"].asDouble();
     }
     if (json.isMember("matchDate")) {
         strptime(json["matchDate"].asString().c_str(), "%Y-%m-%dT%H:%M:%S.000Z", &matchDate);
@@ -56,8 +56,8 @@ Json::Value Match::toJson() const {
     if (price.isValid()) {
         json["price"] = price.toJson();
     }
-    if (Size.isValid()) {
-        json["Size"] = Size.toJson();
+    if (size.isValid()) {
+        json["size"] = size.toJson();
     }
     if (matchDate.tm_year > 0) {
         char buffer[25];
@@ -68,7 +68,7 @@ Json::Value Match::toJson() const {
 }
 
 bool Match::isValid() const {
-    return side.isValid() && price.isValid() && Size.isValid();
+    return side.isValid() && price.isValid() && size.isValid();
 }
 
 const std::string& Match::getBetId() const {
@@ -100,10 +100,10 @@ void Match::setPrice(const Optional<double>& price) {
 }
 
 const Optional<double>& Match::getSize() const {
-    return Size;
+    return size;
 }
-void Match::setSize(const Optional<double>& Size) {
-    this->Size = Size;
+void Match::setSize(const Optional<double>& size) {
+    this->size = size;
 }
 
 const std::tm& Match::getMatchDate() const {
