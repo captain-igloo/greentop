@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D359D602-2EB0-4F58-8304-DC76C1BC649A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\jsoncpp-1.8.4\include;..\curl-7.59.0\include;..\greentop\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\jsoncpp-1.8.4\include;..\curl-7.59.0\include;..\greentop\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>..\jsoncpp-1.8.4\include;..\curl-7.59.0\include;..\greentop\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>..\jsoncpp-1.8.4\include;..\curl-7.59.0\include;..\greentop\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\account\AccountDetailsResponse.cpp" />
+    <ClCompile Include="src\account\AccountFundsResponse.cpp" />
+    <ClCompile Include="src\account\AccountStatementReport.cpp" />
+    <ClCompile Include="src\account\AccountSubscription.cpp" />
+    <ClCompile Include="src\account\ActivateApplicationSubscriptionRequest.cpp" />
+    <ClCompile Include="src\account\ActivateApplicationSubscriptionResponse.cpp" />
+    <ClCompile Include="src\account\AffiliateRelation.cpp" />
+    <ClCompile Include="src\account\ApplicationSubscription.cpp" />
+    <ClCompile Include="src\account\AuthorisationResponse.cpp" />
+    <ClCompile Include="src\account\CancelApplicationSubscriptionRequest.cpp" />
+    <ClCompile Include="src\account\CancelApplicationSubscriptionResponse.cpp" />
+    <ClCompile Include="src\account\CreateDeveloperAppKeysRequest.cpp" />
+    <ClCompile Include="src\account\CurrencyRate.cpp" />
+    <ClCompile Include="src\account\DeveloperApp.cpp" />
+    <ClCompile Include="src\account\DeveloperAppVersion.cpp" />
+    <ClCompile Include="src\account\enum\AffiliateRelationStatus.cpp" />
+    <ClCompile Include="src\account\enum\GrantType.cpp" />
+    <ClCompile Include="src\account\enum\IncludeItem.cpp" />
+    <ClCompile Include="src\account\enum\ItemClass.cpp" />
+    <ClCompile Include="src\account\enum\Status.cpp" />
+    <ClCompile Include="src\account\enum\SubscriptionStatus.cpp" />
+    <ClCompile Include="src\account\enum\TokenType.cpp" />
+    <ClCompile Include="src\account\enum\Wallet.cpp" />
+    <ClCompile Include="src\account\GetAccountFundsRequest.cpp" />
+    <ClCompile Include="src\account\GetAccountStatementRequest.cpp" />
+    <ClCompile Include="src\account\GetAffiliateRelationRequest.cpp" />
+    <ClCompile Include="src\account\GetAffiliateRelationResponse.cpp" />
+    <ClCompile Include="src\account\GetApplicationSubscriptionHistoryRequest.cpp" />
+    <ClCompile Include="src\account\GetApplicationSubscriptionHistoryResponse.cpp" />
+    <ClCompile Include="src\account\GetApplicationSubscriptionTokenRequest.cpp" />
+    <ClCompile Include="src\account\GetApplicationSubscriptionTokenResponse.cpp" />
+    <ClCompile Include="src\account\GetAuthorisationCodeRequest.cpp" />
+    <ClCompile Include="src\account\GetDeveloperAppKeysResponse.cpp" />
+    <ClCompile Include="src\account\GetVendorClientIdResponse.cpp" />
+    <ClCompile Include="src\account\GetVendorDetailsRequest.cpp" />
+    <ClCompile Include="src\account\IsAccountSubscribedToWebAppRequest.cpp" />
+    <ClCompile Include="src\account\IsAccountSubscribedToWebAppResponse.cpp" />
+    <ClCompile Include="src\account\ListAccountSubscriptionTokensResponse.cpp" />
+    <ClCompile Include="src\account\ListApplicationSubscriptionTokensRequest.cpp" />
+    <ClCompile Include="src\account\ListApplicationSubscriptionTokensResponse.cpp" />
+    <ClCompile Include="src\account\ListAuthorizedWebAppsResponse.cpp" />
+    <ClCompile Include="src\account\ListCurrencyRatesRequest.cpp" />
+    <ClCompile Include="src\account\ListCurrencyRatesResponse.cpp" />
+    <ClCompile Include="src\account\RevokeAccessToWebAppRequest.cpp" />
+    <ClCompile Include="src\account\RevokeAccessToWebAppResponse.cpp" />
+    <ClCompile Include="src\account\StatementItem.cpp" />
+    <ClCompile Include="src\account\StatementLegacyData.cpp" />
+    <ClCompile Include="src\account\SubscriptionHistory.cpp" />
+    <ClCompile Include="src\account\SubscriptionOptions.cpp" />
+    <ClCompile Include="src\account\SubscriptionTokenInfo.cpp" />
+    <ClCompile Include="src\account\TokenRequest.cpp" />
+    <ClCompile Include="src\account\TransferFundsRequest.cpp" />
+    <ClCompile Include="src\account\TransferResponse.cpp" />
+    <ClCompile Include="src\account\UpdateApplicationSubscriptionRequest.cpp" />
+    <ClCompile Include="src\account\UpdateApplicationSubscriptionResponse.cpp" />
+    <ClCompile Include="src\account\VendorAccessTokenInfo.cpp" />
+    <ClCompile Include="src\account\VendorDetails.cpp" />
+    <ClCompile Include="src\common\TimeRange.cpp" />
+    <ClCompile Include="src\curl\SList.cpp" />
+    <ClCompile Include="src\DummyRequest.cpp" />
+    <ClCompile Include="src\ExchangeApi.cpp" />
+    <ClCompile Include="src\heartbeat\enum\ActionPerformed.cpp" />
+    <ClCompile Include="src\heartbeat\HeartbeatReport.cpp" />
+    <ClCompile Include="src\heartbeat\HeartbeatRequest.cpp" />
+    <ClCompile Include="src\JsonMember.cpp" />
+    <ClCompile Include="src\JsonResponse.cpp" />
+    <ClCompile Include="src\menu\Menu.cpp" />
+    <ClCompile Include="src\menu\Node.cpp" />
+    <ClCompile Include="src\Optional.cpp" />
+    <ClCompile Include="src\sport\CancelExecutionReport.cpp" />
+    <ClCompile Include="src\sport\CancelInstruction.cpp" />
+    <ClCompile Include="src\sport\CancelInstructionReport.cpp" />
+    <ClCompile Include="src\sport\CancelOrdersRequest.cpp" />
+    <ClCompile Include="src\sport\ClearedOrderSummary.cpp" />
+    <ClCompile Include="src\sport\ClearedOrderSummaryReport.cpp" />
+    <ClCompile Include="src\sport\Competition.cpp" />
+    <ClCompile Include="src\sport\CompetitionResult.cpp" />
+    <ClCompile Include="src\sport\CountryCodeResult.cpp" />
+    <ClCompile Include="src\sport\CurrentOrderSummary.cpp" />
+    <ClCompile Include="src\sport\CurrentOrderSummaryReport.cpp" />
+    <ClCompile Include="src\sport\enum\BetStatus.cpp" />
+    <ClCompile Include="src\sport\enum\BetTargetType.cpp" />
+    <ClCompile Include="src\sport\enum\ExecutionReportErrorCode.cpp" />
+    <ClCompile Include="src\sport\enum\ExecutionReportStatus.cpp" />
+    <ClCompile Include="src\sport\enum\GroupBy.cpp" />
+    <ClCompile Include="src\sport\enum\InstructionReportErrorCode.cpp" />
+    <ClCompile Include="src\sport\enum\InstructionReportStatus.cpp" />
+    <ClCompile Include="src\sport\enum\MarketBettingType.cpp" />
+    <ClCompile Include="src\sport\enum\MarketProjection.cpp" />
+    <ClCompile Include="src\sport\enum\MarketSort.cpp" />
+    <ClCompile Include="src\sport\enum\MarketStatus.cpp" />
+    <ClCompile Include="src\sport\enum\MatchProjection.cpp" />
+    <ClCompile Include="src\sport\enum\OrderBy.cpp" />
+    <ClCompile Include="src\sport\enum\OrderProjection.cpp" />
+    <ClCompile Include="src\sport\enum\OrderStatus.cpp" />
+    <ClCompile Include="src\sport\enum\OrderType.cpp" />
+    <ClCompile Include="src\sport\enum\PersistenceType.cpp" />
+    <ClCompile Include="src\sport\enum\PriceData.cpp" />
+    <ClCompile Include="src\sport\enum\PriceLadderType.cpp" />
+    <ClCompile Include="src\sport\enum\RollupModel.cpp" />
+    <ClCompile Include="src\sport\enum\RunnerStatus.cpp" />
+    <ClCompile Include="src\sport\enum\Side.cpp" />
+    <ClCompile Include="src\sport\enum\SortDir.cpp" />
+    <ClCompile Include="src\sport\enum\TimeGranularity.cpp" />
+    <ClCompile Include="src\sport\enum\TimeInForce.cpp" />
+    <ClCompile Include="src\sport\Event.cpp" />
+    <ClCompile Include="src\sport\EventResult.cpp" />
+    <ClCompile Include="src\sport\EventType.cpp" />
+    <ClCompile Include="src\sport\EventTypeResult.cpp" />
+    <ClCompile Include="src\sport\ExBestOffersOverrides.cpp" />
+    <ClCompile Include="src\sport\ExchangePrices.cpp" />
+    <ClCompile Include="src\sport\ItemDescription.cpp" />
+    <ClCompile Include="src\sport\KeyLineDescription.cpp" />
+    <ClCompile Include="src\sport\KeyLineSelection.cpp" />
+    <ClCompile Include="src\sport\LimitOnCloseOrder.cpp" />
+    <ClCompile Include="src\sport\LimitOrder.cpp" />
+    <ClCompile Include="src\sport\ListClearedOrdersRequest.cpp" />
+    <ClCompile Include="src\sport\ListCompetitionsRequest.cpp" />
+    <ClCompile Include="src\sport\ListCompetitionsResponse.cpp" />
+    <ClCompile Include="src\sport\ListCountriesRequest.cpp" />
+    <ClCompile Include="src\sport\ListCountriesResponse.cpp" />
+    <ClCompile Include="src\sport\ListCurrentOrdersRequest.cpp" />
+    <ClCompile Include="src\sport\ListEventsRequest.cpp" />
+    <ClCompile Include="src\sport\ListEventsResponse.cpp" />
+    <ClCompile Include="src\sport\ListEventTypesRequest.cpp" />
+    <ClCompile Include="src\sport\ListEventTypesResponse.cpp" />
+    <ClCompile Include="src\sport\ListMarketBookRequest.cpp" />
+    <ClCompile Include="src\sport\ListMarketBookResponse.cpp" />
+    <ClCompile Include="src\sport\ListMarketCatalogueRequest.cpp" />
+    <ClCompile Include="src\sport\ListMarketCatalogueResponse.cpp" />
+    <ClCompile Include="src\sport\ListMarketProfitAndLossRequest.cpp" />
+    <ClCompile Include="src\sport\ListMarketProfitAndLossResponse.cpp" />
+    <ClCompile Include="src\sport\ListMarketTypesRequest.cpp" />
+    <ClCompile Include="src\sport\ListMarketTypesResponse.cpp" />
+    <ClCompile Include="src\sport\ListRunnerBookRequest.cpp" />
+    <ClCompile Include="src\sport\ListRunnerBookResponse.cpp" />
+    <ClCompile Include="src\sport\ListTimeRangesRequest.cpp" />
+    <ClCompile Include="src\sport\ListTimeRangesResponse.cpp" />
+    <ClCompile Include="src\sport\ListVenuesRequest.cpp" />
+    <ClCompile Include="src\sport\ListVenuesResponse.cpp" />
+    <ClCompile Include="src\sport\MarketBook.cpp" />
+    <ClCompile Include="src\sport\MarketCatalogue.cpp" />
+    <ClCompile Include="src\sport\MarketDescription.cpp" />
+    <ClCompile Include="src\sport\MarketFilter.cpp" />
+    <ClCompile Include="src\sport\MarketLicence.cpp" />
+    <ClCompile Include="src\sport\MarketLineRangeInfo.cpp" />
+    <ClCompile Include="src\sport\MarketOnCloseOrder.cpp" />
+    <ClCompile Include="src\sport\MarketProfitAndLoss.cpp" />
+    <ClCompile Include="src\sport\MarketRates.cpp" />
+    <ClCompile Include="src\sport\MarketState.cpp" />
+    <ClCompile Include="src\sport\MarketTypeResult.cpp" />
+    <ClCompile Include="src\sport\MarketVersion.cpp" />
+    <ClCompile Include="src\sport\Match.cpp" />
+    <ClCompile Include="src\sport\Matches.cpp" />
+    <ClCompile Include="src\sport\Order.cpp" />
+    <ClCompile Include="src\sport\PlaceExecutionReport.cpp" />
+    <ClCompile Include="src\sport\PlaceInstruction.cpp" />
+    <ClCompile Include="src\sport\PlaceInstructionReport.cpp" />
+    <ClCompile Include="src\sport\PlaceOrdersRequest.cpp" />
+    <ClCompile Include="src\sport\PriceLadderDescription.cpp" />
+    <ClCompile Include="src\sport\PriceProjection.cpp" />
+    <ClCompile Include="src\sport\PriceSize.cpp" />
+    <ClCompile Include="src\sport\ReplaceExecutionReport.cpp" />
+    <ClCompile Include="src\sport\ReplaceInstruction.cpp" />
+    <ClCompile Include="src\sport\ReplaceInstructionReport.cpp" />
+    <ClCompile Include="src\sport\ReplaceOrdersRequest.cpp" />
+    <ClCompile Include="src\sport\Runner.cpp" />
+    <ClCompile Include="src\sport\RunnerCatalog.cpp" />
+    <ClCompile Include="src\sport\RunnerId.cpp" />
+    <ClCompile Include="src\sport\RunnerProfitAndLoss.cpp" />
+    <ClCompile Include="src\sport\StartingPrices.cpp" />
+    <ClCompile Include="src\sport\TimeRangeResult.cpp" />
+    <ClCompile Include="src\sport\UpdateExecutionReport.cpp" />
+    <ClCompile Include="src\sport\UpdateInstruction.cpp" />
+    <ClCompile Include="src\sport\UpdateInstructionReport.cpp" />
+    <ClCompile Include="src\sport\UpdateOrdersRequest.cpp" />
+    <ClCompile Include="src\sport\VenueResult.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\greentop\account\AccountDetailsResponse.h" />
+    <ClInclude Include="include\greentop\account\AccountFundsResponse.h" />
+    <ClInclude Include="include\greentop\account\AccountStatementReport.h" />
+    <ClInclude Include="include\greentop\account\AccountSubscription.h" />
+    <ClInclude Include="include\greentop\account\ActivateApplicationSubscriptionRequest.h" />
+    <ClInclude Include="include\greentop\account\ActivateApplicationSubscriptionResponse.h" />
+    <ClInclude Include="include\greentop\account\AffiliateRelation.h" />
+    <ClInclude Include="include\greentop\account\ApplicationSubscription.h" />
+    <ClInclude Include="include\greentop\account\AuthorisationResponse.h" />
+    <ClInclude Include="include\greentop\account\CancelApplicationSubscriptionRequest.h" />
+    <ClInclude Include="include\greentop\account\CancelApplicationSubscriptionResponse.h" />
+    <ClInclude Include="include\greentop\account\CreateDeveloperAppKeysRequest.h" />
+    <ClInclude Include="include\greentop\account\CurrencyRate.h" />
+    <ClInclude Include="include\greentop\account\DeveloperApp.h" />
+    <ClInclude Include="include\greentop\account\DeveloperAppVersion.h" />
+    <ClInclude Include="include\greentop\account\enum\AffiliateRelationStatus.h" />
+    <ClInclude Include="include\greentop\account\enum\GrantType.h" />
+    <ClInclude Include="include\greentop\account\enum\IncludeItem.h" />
+    <ClInclude Include="include\greentop\account\enum\ItemClass.h" />
+    <ClInclude Include="include\greentop\account\enum\Status.h" />
+    <ClInclude Include="include\greentop\account\enum\SubscriptionStatus.h" />
+    <ClInclude Include="include\greentop\account\enum\TokenType.h" />
+    <ClInclude Include="include\greentop\account\enum\Wallet.h" />
+    <ClInclude Include="include\greentop\account\GetAccountFundsRequest.h" />
+    <ClInclude Include="include\greentop\account\GetAccountStatementRequest.h" />
+    <ClInclude Include="include\greentop\account\GetAffiliateRelationRequest.h" />
+    <ClInclude Include="include\greentop\account\GetAffiliateRelationResponse.h" />
+    <ClInclude Include="include\greentop\account\GetApplicationSubscriptionHistoryRequest.h" />
+    <ClInclude Include="include\greentop\account\GetApplicationSubscriptionHistoryResponse.h" />
+    <ClInclude Include="include\greentop\account\GetApplicationSubscriptionTokenRequest.h" />
+    <ClInclude Include="include\greentop\account\GetApplicationSubscriptionTokenResponse.h" />
+    <ClInclude Include="include\greentop\account\GetAuthorisationCodeRequest.h" />
+    <ClInclude Include="include\greentop\account\GetDeveloperAppKeysResponse.h" />
+    <ClInclude Include="include\greentop\account\GetVendorClientIdResponse.h" />
+    <ClInclude Include="include\greentop\account\GetVendorDetailsRequest.h" />
+    <ClInclude Include="include\greentop\account\IsAccountSubscribedToWebAppRequest.h" />
+    <ClInclude Include="include\greentop\account\IsAccountSubscribedToWebAppResponse.h" />
+    <ClInclude Include="include\greentop\account\ListAccountSubscriptionTokensResponse.h" />
+    <ClInclude Include="include\greentop\account\ListApplicationSubscriptionTokensRequest.h" />
+    <ClInclude Include="include\greentop\account\ListApplicationSubscriptionTokensResponse.h" />
+    <ClInclude Include="include\greentop\account\ListAuthorizedWebAppsResponse.h" />
+    <ClInclude Include="include\greentop\account\ListCurrencyRatesRequest.h" />
+    <ClInclude Include="include\greentop\account\ListCurrencyRatesResponse.h" />
+    <ClInclude Include="include\greentop\account\RevokeAccessToWebAppRequest.h" />
+    <ClInclude Include="include\greentop\account\RevokeAccessToWebAppResponse.h" />
+    <ClInclude Include="include\greentop\account\StatementItem.h" />
+    <ClInclude Include="include\greentop\account\StatementLegacyData.h" />
+    <ClInclude Include="include\greentop\account\SubscriptionHistory.h" />
+    <ClInclude Include="include\greentop\account\SubscriptionOptions.h" />
+    <ClInclude Include="include\greentop\account\SubscriptionTokenInfo.h" />
+    <ClInclude Include="include\greentop\account\TokenRequest.h" />
+    <ClInclude Include="include\greentop\account\TransferFundsRequest.h" />
+    <ClInclude Include="include\greentop\account\TransferResponse.h" />
+    <ClInclude Include="include\greentop\account\UpdateApplicationSubscriptionRequest.h" />
+    <ClInclude Include="include\greentop\account\UpdateApplicationSubscriptionResponse.h" />
+    <ClInclude Include="include\greentop\account\VendorAccessTokenInfo.h" />
+    <ClInclude Include="include\greentop\account\VendorDetails.h" />
+    <ClInclude Include="include\greentop\common\TimeRange.h" />
+    <ClInclude Include="include\greentop\curl\SList.h" />
+    <ClInclude Include="include\greentop\DummyRequest.h" />
+    <ClInclude Include="include\greentop\Enum.h" />
+    <ClInclude Include="include\greentop\Exchange.h" />
+    <ClInclude Include="include\greentop\ExchangeApi.h" />
+    <ClInclude Include="include\greentop\heartbeat\enum\ActionPerformed.h" />
+    <ClInclude Include="include\greentop\heartbeat\HeartbeatReport.h" />
+    <ClInclude Include="include\greentop\heartbeat\HeartbeatRequest.h" />
+    <ClInclude Include="include\greentop\JsonMember.h" />
+    <ClInclude Include="include\greentop\JsonRequest.h" />
+    <ClInclude Include="include\greentop\JsonResponse.h" />
+    <ClInclude Include="include\greentop\LRUCache.h" />
+    <ClInclude Include="include\greentop\menu\Menu.h" />
+    <ClInclude Include="include\greentop\menu\Node.h" />
+    <ClInclude Include="include\greentop\Optional.h" />
+    <ClInclude Include="include\greentop\sport\CancelExecutionReport.h" />
+    <ClInclude Include="include\greentop\sport\CancelInstruction.h" />
+    <ClInclude Include="include\greentop\sport\CancelInstructionReport.h" />
+    <ClInclude Include="include\greentop\sport\CancelOrdersRequest.h" />
+    <ClInclude Include="include\greentop\sport\ClearedOrderSummary.h" />
+    <ClInclude Include="include\greentop\sport\ClearedOrderSummaryReport.h" />
+    <ClInclude Include="include\greentop\sport\Competition.h" />
+    <ClInclude Include="include\greentop\sport\CompetitionResult.h" />
+    <ClInclude Include="include\greentop\sport\CountryCodeResult.h" />
+    <ClInclude Include="include\greentop\sport\CurrentOrderSummary.h" />
+    <ClInclude Include="include\greentop\sport\CurrentOrderSummaryReport.h" />
+    <ClInclude Include="include\greentop\sport\enum\BetStatus.h" />
+    <ClInclude Include="include\greentop\sport\enum\BetTargetType.h" />
+    <ClInclude Include="include\greentop\sport\enum\ExecutionReportErrorCode.h" />
+    <ClInclude Include="include\greentop\sport\enum\ExecutionReportStatus.h" />
+    <ClInclude Include="include\greentop\sport\enum\GroupBy.h" />
+    <ClInclude Include="include\greentop\sport\enum\InstructionReportErrorCode.h" />
+    <ClInclude Include="include\greentop\sport\enum\InstructionReportStatus.h" />
+    <ClInclude Include="include\greentop\sport\enum\MarketBettingType.h" />
+    <ClInclude Include="include\greentop\sport\enum\MarketProjection.h" />
+    <ClInclude Include="include\greentop\sport\enum\MarketSort.h" />
+    <ClInclude Include="include\greentop\sport\enum\MarketStatus.h" />
+    <ClInclude Include="include\greentop\sport\enum\MatchProjection.h" />
+    <ClInclude Include="include\greentop\sport\enum\OrderBy.h" />
+    <ClInclude Include="include\greentop\sport\enum\OrderProjection.h" />
+    <ClInclude Include="include\greentop\sport\enum\OrderStatus.h" />
+    <ClInclude Include="include\greentop\sport\enum\OrderType.h" />
+    <ClInclude Include="include\greentop\sport\enum\PersistenceType.h" />
+    <ClInclude Include="include\greentop\sport\enum\PriceData.h" />
+    <ClInclude Include="include\greentop\sport\enum\PriceLadderType.h" />
+    <ClInclude Include="include\greentop\sport\enum\RollupModel.h" />
+    <ClInclude Include="include\greentop\sport\enum\RunnerStatus.h" />
+    <ClInclude Include="include\greentop\sport\enum\Side.h" />
+    <ClInclude Include="include\greentop\sport\enum\SortDir.h" />
+    <ClInclude Include="include\greentop\sport\enum\TimeGranularity.h" />
+    <ClInclude Include="include\greentop\sport\enum\TimeInForce.h" />
+    <ClInclude Include="include\greentop\sport\Event.h" />
+    <ClInclude Include="include\greentop\sport\EventResult.h" />
+    <ClInclude Include="include\greentop\sport\EventType.h" />
+    <ClInclude Include="include\greentop\sport\EventTypeResult.h" />
+    <ClInclude Include="include\greentop\sport\ExBestOffersOverrides.h" />
+    <ClInclude Include="include\greentop\sport\ExchangePrices.h" />
+    <ClInclude Include="include\greentop\sport\ItemDescription.h" />
+    <ClInclude Include="include\greentop\sport\KeyLineDescription.h" />
+    <ClInclude Include="include\greentop\sport\KeyLineSelection.h" />
+    <ClInclude Include="include\greentop\sport\LimitOnCloseOrder.h" />
+    <ClInclude Include="include\greentop\sport\LimitOrder.h" />
+    <ClInclude Include="include\greentop\sport\ListClearedOrdersRequest.h" />
+    <ClInclude Include="include\greentop\sport\ListCompetitionsRequest.h" />
+    <ClInclude Include="include\greentop\sport\ListCompetitionsResponse.h" />
+    <ClInclude Include="include\greentop\sport\ListCountriesRequest.h" />
+    <ClInclude Include="include\greentop\sport\ListCountriesResponse.h" />
+    <ClInclude Include="include\greentop\sport\ListCurrentOrdersRequest.h" />
+    <ClInclude Include="include\greentop\sport\ListEventsRequest.h" />
+    <ClInclude Include="include\greentop\sport\ListEventsResponse.h" />
+    <ClInclude Include="include\greentop\sport\ListEventTypesRequest.h" />
+    <ClInclude Include="include\greentop\sport\ListEventTypesResponse.h" />
+    <ClInclude Include="include\greentop\sport\ListMarketBookRequest.h" />
+    <ClInclude Include="include\greentop\sport\ListMarketBookResponse.h" />
+    <ClInclude Include="include\greentop\sport\ListMarketCatalogueRequest.h" />
+    <ClInclude Include="include\greentop\sport\ListMarketCatalogueResponse.h" />
+    <ClInclude Include="include\greentop\sport\ListMarketProfitAndLossRequest.h" />
+    <ClInclude Include="include\greentop\sport\ListMarketProfitAndLossResponse.h" />
+    <ClInclude Include="include\greentop\sport\ListMarketTypesRequest.h" />
+    <ClInclude Include="include\greentop\sport\ListMarketTypesResponse.h" />
+    <ClInclude Include="include\greentop\sport\ListRunnerBookRequest.h" />
+    <ClInclude Include="include\greentop\sport\ListRunnerBookResponse.h" />
+    <ClInclude Include="include\greentop\sport\ListTimeRangesRequest.h" />
+    <ClInclude Include="include\greentop\sport\ListTimeRangesResponse.h" />
+    <ClInclude Include="include\greentop\sport\ListVenuesRequest.h" />
+    <ClInclude Include="include\greentop\sport\ListVenuesResponse.h" />
+    <ClInclude Include="include\greentop\sport\MarketBook.h" />
+    <ClInclude Include="include\greentop\sport\MarketCatalogue.h" />
+    <ClInclude Include="include\greentop\sport\MarketDescription.h" />
+    <ClInclude Include="include\greentop\sport\MarketFilter.h" />
+    <ClInclude Include="include\greentop\sport\MarketLicence.h" />
+    <ClInclude Include="include\greentop\sport\MarketLineRangeInfo.h" />
+    <ClInclude Include="include\greentop\sport\MarketOnCloseOrder.h" />
+    <ClInclude Include="include\greentop\sport\MarketProfitAndLoss.h" />
+    <ClInclude Include="include\greentop\sport\MarketRates.h" />
+    <ClInclude Include="include\greentop\sport\MarketState.h" />
+    <ClInclude Include="include\greentop\sport\MarketTypeResult.h" />
+    <ClInclude Include="include\greentop\sport\MarketVersion.h" />
+    <ClInclude Include="include\greentop\sport\Match.h" />
+    <ClInclude Include="include\greentop\sport\Matches.h" />
+    <ClInclude Include="include\greentop\sport\Order.h" />
+    <ClInclude Include="include\greentop\sport\PlaceExecutionReport.h" />
+    <ClInclude Include="include\greentop\sport\PlaceInstruction.h" />
+    <ClInclude Include="include\greentop\sport\PlaceInstructionReport.h" />
+    <ClInclude Include="include\greentop\sport\PlaceOrdersRequest.h" />
+    <ClInclude Include="include\greentop\sport\PriceLadderDescription.h" />
+    <ClInclude Include="include\greentop\sport\PriceProjection.h" />
+    <ClInclude Include="include\greentop\sport\PriceSize.h" />
+    <ClInclude Include="include\greentop\sport\ReplaceExecutionReport.h" />
+    <ClInclude Include="include\greentop\sport\ReplaceInstruction.h" />
+    <ClInclude Include="include\greentop\sport\ReplaceInstructionReport.h" />
+    <ClInclude Include="include\greentop\sport\ReplaceOrdersRequest.h" />
+    <ClInclude Include="include\greentop\sport\Runner.h" />
+    <ClInclude Include="include\greentop\sport\RunnerCatalog.h" />
+    <ClInclude Include="include\greentop\sport\RunnerId.h" />
+    <ClInclude Include="include\greentop\sport\RunnerProfitAndLoss.h" />
+    <ClInclude Include="include\greentop\sport\StartingPrices.h" />
+    <ClInclude Include="include\greentop\sport\TimeRangeResult.h" />
+    <ClInclude Include="include\greentop\sport\UpdateExecutionReport.h" />
+    <ClInclude Include="include\greentop\sport\UpdateInstruction.h" />
+    <ClInclude Include="include\greentop\sport\UpdateInstructionReport.h" />
+    <ClInclude Include="include\greentop\sport\UpdateOrdersRequest.h" />
+    <ClInclude Include="include\greentop\sport\VenueResult.h" />
+    <ClInclude Include="include\greentop\Time.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

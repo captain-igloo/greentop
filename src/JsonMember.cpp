@@ -1,8 +1,17 @@
 /**
- * Copyright 2015 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2018 Colin Doig.  Distributed under the MIT license.
  */
-
+#include <memory>
+#include <sstream>
 #include "greentop/JsonMember.h"
+
+namespace {
+Json::StreamWriter* getJsonStreamWriter() {
+    Json::StreamWriterBuilder builder;
+    builder["indentation"] = "";
+    return builder.newStreamWriter();
+}
+}
 
 namespace greentop {
 
@@ -15,28 +24,24 @@ bool JsonMember::isValid() const {
 }
 
 std::string JsonMember::toString() const {
-    Json::FastWriter writer;
-    return writer.write(toJson());
+    std::unique_ptr<Json::StreamWriter> writer(getJsonStreamWriter());
+    std::ostringstream out;
+    writer->write(toJson(), &out);
+    return out.str();
 }
 
 }
 
 std::ostream& operator<<(std::ostream& os, const greentop::JsonMember& jm) {
-
-    Json::FastWriter writer;
-    os << writer.write(jm.toJson());
-
+    std::unique_ptr<Json::StreamWriter> writer(getJsonStreamWriter());
+    writer->write(jm.toJson(), &os);
     return os;
 }
 
 std::istream& operator>>(std::istream& is, greentop::JsonMember& jm) {
-
     Json::Value json;
-
     is >> json;
-
     jm.fromJson(json);
-
     return is;
 }
 

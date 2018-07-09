@@ -18,7 +18,7 @@ static char* strptime(const char* s, const char* f, struct tm* tm) {
     if (input.fail()) {
         return nullptr;
     }
-    return (char*)(s + input.tellg());
+    return (char*)(s + static_cast<int>(input.tellg()));
 }
 #else
 #error Platform not supported

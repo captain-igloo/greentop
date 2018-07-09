@@ -26,7 +26,7 @@ class Match : public JsonMember {
             const std::string& matchId = std::string(),
             const Side& side = Side(),
             const Optional<double>& price = Optional<double>(),
-            const Optional<double>& Size = Optional<double>(),
+            const Optional<double>& size = Optional<double>(),
             const std::tm& matchDate = std::tm());
 
         virtual void fromJson(const Json::Value& json);
@@ -48,7 +48,7 @@ class Match : public JsonMember {
         void setPrice(const Optional<double>& price);
 
         const Optional<double>& getSize() const;
-        void setSize(const Optional<double>& Size);
+        void setSize(const Optional<double>& size);
 
         const std::tm& getMatchDate() const;
         void setMatchDate(const std::tm& matchDate);
@@ -74,7 +74,7 @@ class Match : public JsonMember {
         /**
          * Size matched at in this fragment, or at this price or avg price depending on rollup
          */
-        Optional<double> Size;
+        Optional<double> size;
         /**
          * Only present if no rollup
          */
