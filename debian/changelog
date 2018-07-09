@@ -1,3 +1,9 @@
+libgreentop (0.10.0+trusty) trusty; urgency=medium
+
+  * correct mistake in betfair's xml
+
+ -- Colin Doig <colindoig@gmail.com>  Mon, 09 Jul 2018 20:27:02 +1200
+
 libgreentop (0.9.0+trusty) trusty; urgency=medium
 
   * Separate refreshMenu() into retrieveMenu() and parseMenu().
