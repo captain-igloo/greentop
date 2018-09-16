@@ -9,33 +9,33 @@ namespace greentop {
 UpdateApplicationSubscriptionResponse::UpdateApplicationSubscriptionResponse() {
 }
 
-UpdateApplicationSubscriptionResponse::UpdateApplicationSubscriptionResponse(const std::string& subscriptionToken) :
-    subscriptionToken(subscriptionToken) {
+UpdateApplicationSubscriptionResponse::UpdateApplicationSubscriptionResponse(const std::string& response) :
+    response(response) {
 }
 
 void UpdateApplicationSubscriptionResponse::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
-        subscriptionToken = json["subscriptionToken"].asString();
+        response = json.asString();
     }
 }
 
 Json::Value UpdateApplicationSubscriptionResponse::toJson() const {
-    Json::Value json(Json::arrayValue);
-    if (subscriptionToken != "") {
-        json["subscriptionToken"] = subscriptionToken;
+    Json::Value json(Json::stringValue);
+    if (response != "") {
+        json = response;
     }
     return json;
 }
 
 bool UpdateApplicationSubscriptionResponse::isValid() const {
-    return subscriptionToken != "";
+    return response != "";
 }
 
-const std::string& UpdateApplicationSubscriptionResponse::getSubscriptionToken() const {
-    return subscriptionToken;
+const std::string& UpdateApplicationSubscriptionResponse::getResponse() const {
+    return response;
 }
-void UpdateApplicationSubscriptionResponse::setSubscriptionToken(const std::string& subscriptionToken) {
-    this->subscriptionToken = subscriptionToken;
+void UpdateApplicationSubscriptionResponse::setResponse(const std::string& response) {
+    this->response = response;
 }
 
 

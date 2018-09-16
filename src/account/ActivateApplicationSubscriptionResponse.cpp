@@ -9,33 +9,33 @@ namespace greentop {
 ActivateApplicationSubscriptionResponse::ActivateApplicationSubscriptionResponse() {
 }
 
-ActivateApplicationSubscriptionResponse::ActivateApplicationSubscriptionResponse(const Status& status) :
-    status(status) {
+ActivateApplicationSubscriptionResponse::ActivateApplicationSubscriptionResponse(const Status& response) :
+    response(response) {
 }
 
 void ActivateApplicationSubscriptionResponse::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
-        status = json["status"].asString();
+        response = json.asString();
     }
 }
 
 Json::Value ActivateApplicationSubscriptionResponse::toJson() const {
-    Json::Value json(Json::arrayValue);
-    if (status.isValid()) {
-        json["status"] = status.getValue();
+    Json::Value json(Json::stringValue);
+    if (response.isValid()) {
+        json = response.getValue();
     }
     return json;
 }
 
 bool ActivateApplicationSubscriptionResponse::isValid() const {
-    return status.isValid();
+    return response.isValid();
 }
 
-const Status& ActivateApplicationSubscriptionResponse::getStatus() const {
-    return status;
+const Status& ActivateApplicationSubscriptionResponse::getResponse() const {
+    return response;
 }
-void ActivateApplicationSubscriptionResponse::setStatus(const Status& status) {
-    this->status = status;
+void ActivateApplicationSubscriptionResponse::setResponse(const Status& response) {
+    this->response = response;
 }
 
 

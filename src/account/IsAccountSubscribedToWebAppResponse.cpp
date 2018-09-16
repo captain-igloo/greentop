@@ -9,33 +9,33 @@ namespace greentop {
 IsAccountSubscribedToWebAppResponse::IsAccountSubscribedToWebAppResponse() {
 }
 
-IsAccountSubscribedToWebAppResponse::IsAccountSubscribedToWebAppResponse(const Optional<bool>& isAccountSubscribedToWebApp) :
-    isAccountSubscribedToWebApp(isAccountSubscribedToWebApp) {
+IsAccountSubscribedToWebAppResponse::IsAccountSubscribedToWebAppResponse(const Optional<bool>& response) :
+    response(response) {
 }
 
 void IsAccountSubscribedToWebAppResponse::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
-        isAccountSubscribedToWebApp = json["isAccountSubscribedToWebApp"].asBool();
+        response = json.asBool();
     }
 }
 
 Json::Value IsAccountSubscribedToWebAppResponse::toJson() const {
-    Json::Value json(Json::arrayValue);
-    if (isAccountSubscribedToWebApp.isValid()) {
-        json["isAccountSubscribedToWebApp"] = isAccountSubscribedToWebApp.toJson();
+    Json::Value json(Json::booleanValue);
+    if (response.isValid()) {
+        json = response.toJson();
     }
     return json;
 }
 
 bool IsAccountSubscribedToWebAppResponse::isValid() const {
-    return isAccountSubscribedToWebApp.isValid();
+    return response.isValid();
 }
 
-const Optional<bool>& IsAccountSubscribedToWebAppResponse::getIsAccountSubscribedToWebApp() const {
-    return isAccountSubscribedToWebApp;
+const Optional<bool>& IsAccountSubscribedToWebAppResponse::getResponse() const {
+    return response;
 }
-void IsAccountSubscribedToWebAppResponse::setIsAccountSubscribedToWebApp(const Optional<bool>& isAccountSubscribedToWebApp) {
-    this->isAccountSubscribedToWebApp = isAccountSubscribedToWebApp;
+void IsAccountSubscribedToWebAppResponse::setResponse(const Optional<bool>& response) {
+    this->response = response;
 }
 
 

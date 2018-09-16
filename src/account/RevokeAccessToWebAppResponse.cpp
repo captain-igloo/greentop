@@ -9,33 +9,33 @@ namespace greentop {
 RevokeAccessToWebAppResponse::RevokeAccessToWebAppResponse() {
 }
 
-RevokeAccessToWebAppResponse::RevokeAccessToWebAppResponse(const Status& status) :
-    status(status) {
+RevokeAccessToWebAppResponse::RevokeAccessToWebAppResponse(const Status& response) :
+    response(response) {
 }
 
 void RevokeAccessToWebAppResponse::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
-        status = json["status"].asString();
+        response = json.asString();
     }
 }
 
 Json::Value RevokeAccessToWebAppResponse::toJson() const {
-    Json::Value json(Json::arrayValue);
-    if (status.isValid()) {
-        json["status"] = status.getValue();
+    Json::Value json(Json::stringValue);
+    if (response.isValid()) {
+        json = response.getValue();
     }
     return json;
 }
 
 bool RevokeAccessToWebAppResponse::isValid() const {
-    return status.isValid();
+    return response.isValid();
 }
 
-const Status& RevokeAccessToWebAppResponse::getStatus() const {
-    return status;
+const Status& RevokeAccessToWebAppResponse::getResponse() const {
+    return response;
 }
-void RevokeAccessToWebAppResponse::setStatus(const Status& status) {
-    this->status = status;
+void RevokeAccessToWebAppResponse::setResponse(const Status& response) {
+    this->response = response;
 }
 
 

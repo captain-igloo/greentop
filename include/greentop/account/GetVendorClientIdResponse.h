@@ -16,7 +16,7 @@ class GetVendorClientIdResponse : public JsonResponse {
     public:
         GetVendorClientIdResponse();
 
-        GetVendorClientIdResponse(const std::string& vendorClientId);
+        GetVendorClientIdResponse(const std::string& response);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -24,13 +24,13 @@ class GetVendorClientIdResponse : public JsonResponse {
 
         virtual bool isValid() const;
 
-        const std::string& getVendorClientId() const;
-        void setVendorClientId(const std::string& vendorClientId);
+        const std::string& getResponse() const;
+        void setResponse(const std::string& response);
 
 
     private:
 
-        std::string vendorClientId;
+        std::string response;
 };
 
 }

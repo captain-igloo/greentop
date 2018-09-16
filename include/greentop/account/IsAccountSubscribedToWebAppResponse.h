@@ -16,7 +16,7 @@ class IsAccountSubscribedToWebAppResponse : public JsonResponse {
     public:
         IsAccountSubscribedToWebAppResponse();
 
-        IsAccountSubscribedToWebAppResponse(const Optional<bool>& isAccountSubscribedToWebApp);
+        IsAccountSubscribedToWebAppResponse(const Optional<bool>& response);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -24,13 +24,13 @@ class IsAccountSubscribedToWebAppResponse : public JsonResponse {
 
         virtual bool isValid() const;
 
-        const Optional<bool>& getIsAccountSubscribedToWebApp() const;
-        void setIsAccountSubscribedToWebApp(const Optional<bool>& isAccountSubscribedToWebApp);
+        const Optional<bool>& getResponse() const;
+        void setResponse(const Optional<bool>& response);
 
 
     private:
 
-        Optional<bool> isAccountSubscribedToWebApp;
+        Optional<bool> response;
 };
 
 }

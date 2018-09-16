@@ -9,33 +9,33 @@ namespace greentop {
 CancelApplicationSubscriptionResponse::CancelApplicationSubscriptionResponse() {
 }
 
-CancelApplicationSubscriptionResponse::CancelApplicationSubscriptionResponse(const Status& status) :
-    status(status) {
+CancelApplicationSubscriptionResponse::CancelApplicationSubscriptionResponse(const Status& response) :
+    response(response) {
 }
 
 void CancelApplicationSubscriptionResponse::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
-        status = json["status"].asString();
+        response = json.asString();
     }
 }
 
 Json::Value CancelApplicationSubscriptionResponse::toJson() const {
-    Json::Value json(Json::arrayValue);
-    if (status.isValid()) {
-        json["status"] = status.getValue();
+    Json::Value json(Json::stringValue);
+    if (response.isValid()) {
+        json = response.getValue();
     }
     return json;
 }
 
 bool CancelApplicationSubscriptionResponse::isValid() const {
-    return status.isValid();
+    return response.isValid();
 }
 
-const Status& CancelApplicationSubscriptionResponse::getStatus() const {
-    return status;
+const Status& CancelApplicationSubscriptionResponse::getResponse() const {
+    return response;
 }
-void CancelApplicationSubscriptionResponse::setStatus(const Status& status) {
-    this->status = status;
+void CancelApplicationSubscriptionResponse::setResponse(const Status& response) {
+    this->response = response;
 }
 
 

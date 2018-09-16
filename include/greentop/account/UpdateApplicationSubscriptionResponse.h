@@ -16,7 +16,7 @@ class UpdateApplicationSubscriptionResponse : public JsonResponse {
     public:
         UpdateApplicationSubscriptionResponse();
 
-        UpdateApplicationSubscriptionResponse(const std::string& subscriptionToken);
+        UpdateApplicationSubscriptionResponse(const std::string& response);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -24,13 +24,13 @@ class UpdateApplicationSubscriptionResponse : public JsonResponse {
 
         virtual bool isValid() const;
 
-        const std::string& getSubscriptionToken() const;
-        void setSubscriptionToken(const std::string& subscriptionToken);
+        const std::string& getResponse() const;
+        void setResponse(const std::string& response);
 
 
     private:
 
-        std::string subscriptionToken;
+        std::string response;
 };
 
 }

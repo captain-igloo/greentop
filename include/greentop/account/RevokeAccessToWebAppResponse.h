@@ -16,7 +16,7 @@ class RevokeAccessToWebAppResponse : public JsonResponse {
     public:
         RevokeAccessToWebAppResponse();
 
-        RevokeAccessToWebAppResponse(const Status& status);
+        RevokeAccessToWebAppResponse(const Status& response);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -24,13 +24,13 @@ class RevokeAccessToWebAppResponse : public JsonResponse {
 
         virtual bool isValid() const;
 
-        const Status& getStatus() const;
-        void setStatus(const Status& status);
+        const Status& getResponse() const;
+        void setResponse(const Status& response);
 
 
     private:
 
-        Status status;
+        Status response;
 };
 
 }

@@ -9,33 +9,33 @@ namespace greentop {
 GetVendorClientIdResponse::GetVendorClientIdResponse() {
 }
 
-GetVendorClientIdResponse::GetVendorClientIdResponse(const std::string& vendorClientId) :
-    vendorClientId(vendorClientId) {
+GetVendorClientIdResponse::GetVendorClientIdResponse(const std::string& response) :
+    response(response) {
 }
 
 void GetVendorClientIdResponse::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
-        vendorClientId = json["vendorClientId"].asString();
+        response = json.asString();
     }
 }
 
 Json::Value GetVendorClientIdResponse::toJson() const {
-    Json::Value json(Json::arrayValue);
-    if (vendorClientId != "") {
-        json["vendorClientId"] = vendorClientId;
+    Json::Value json(Json::stringValue);
+    if (response != "") {
+        json = response;
     }
     return json;
 }
 
 bool GetVendorClientIdResponse::isValid() const {
-    return vendorClientId != "";
+    return response != "";
 }
 
-const std::string& GetVendorClientIdResponse::getVendorClientId() const {
-    return vendorClientId;
+const std::string& GetVendorClientIdResponse::getResponse() const {
+    return response;
 }
-void GetVendorClientIdResponse::setVendorClientId(const std::string& vendorClientId) {
-    this->vendorClientId = vendorClientId;
+void GetVendorClientIdResponse::setResponse(const std::string& response) {
+    this->response = response;
 }
 
 
