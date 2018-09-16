@@ -1,34 +1,40 @@
-libgreentop (0.9.0+trusty) trusty; urgency=medium
+libgreentop (0.10.0+xenial) xenial; urgency=medium
+
+  * correct mistake in betfair's xml
+
+ -- Colin Doig <colindoig@gmail.com>  Mon, 09 Jul 2018 20:27:02 +1200
+
+libgreentop (0.9.0+xenial) xenial; urgency=medium
 
   * Separate refreshMenu() into retrieveMenu() and parseMenu().
 
  -- Colin Doig <colindoig@gmail.com>  Thu, 01 Feb 2018 18:28:56 +1300
 
-libgreentop (0.8.1+trusty) trusty; urgency=medium
+libgreentop (0.8.1+xenial) xenial; urgency=medium
 
   * OSX build.
 
  -- Colin Doig <colindoig@gmail.com>  Sun, 21 Jan 2018 15:11:54 +1300
 
-libgreentop (0.8.0+trusty) trusty; urgency=medium
+libgreentop (0.8.0+xenial) xenial; urgency=medium
 
   * latest version of the betfair API.
 
  -- Colin Doig <colindoig@gmail.com>  Thu, 18 Jan 2018 20:55:44 +1300
 
-libgreentop (0.7.0+trusty) trusty; urgency=medium
+libgreentop (0.7.0+xenial) xenial; urgency=medium
 
   * load menu from string now works with jsoncpp 0.6.0
 
  -- Colin Doig <colindoig@gmail.com>  Sun, 14 Jan 2018 12:41:12 +1300
 
-libgreentop (0.6.0) trusty; urgency=medium
+libgreentop (0.6.0) xenial; urgency=medium
 
   * compile with earlier versions of jsoncpp, build for ubuntu xenial.
 
  -- Colin Doig <colind@ubuntu-xenial>  Sat, 13 Jan 2018 15:36:15 +1300
 
-libgreentop (0.1.0) trusty; urgency=low
+libgreentop (0.1.0) xenial; urgency=low
 
   * Initial release
 
