@@ -103,6 +103,21 @@ class ExecutionReportErrorCode : public Enum<ExecutionReportErrorCode> {
          * The supplied market version is invalid. Max length allowed for market version is 12.
          */
         static const std::string INVALID_MARKET_VERSION;
+        /**
+         * Had the instructions been carried out, the account's self imposed event exposure limit
+         * would have been exceeded.
+         */
+        static const std::string EVENT_EXPOSURE_LIMIT_EXCEEDED;
+        /**
+         * Had the instructions been carried out, the account's self imposed matched event exposure
+         * limit would have been exceeded.
+         */
+        static const std::string EVENT_MATCHED_EXPOSURE_LIMIT_EXCEEDED;
+        /**
+         * Betting on this event is blocked due to exposure limit breach. unblockMarketGroup
+         * operation should be invoked to enable betting.
+         */
+        static const std::string EVENT_BLOCKED;
 
         ExecutionReportErrorCode();
 

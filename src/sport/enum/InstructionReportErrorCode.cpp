@@ -35,6 +35,7 @@ const std::string InstructionReportErrorCode::UNEXPECTED_PERSISTENCE_TYPE = "UNE
 const std::string InstructionReportErrorCode::INVALID_ORDER_TYPE = "INVALID_ORDER_TYPE";
 const std::string InstructionReportErrorCode::UNEXPECTED_MIN_FILL_SIZE = "UNEXPECTED_MIN_FILL_SIZE";
 const std::string InstructionReportErrorCode::INVALID_CUSTOMER_STRATEGY_REF = "INVALID_CUSTOMER_STRATEGY_REF";
+const std::string InstructionReportErrorCode::BET_LAPSED_PRICE_IMPROVEMENT_TOO_LARGE = "BET_LAPSED_PRICE_IMPROVEMENT_TOO_LARGE";
 
 InstructionReportErrorCode::InstructionReportErrorCode() {
     valid = false;
@@ -67,7 +68,8 @@ InstructionReportErrorCode::InstructionReportErrorCode(const std::string& v) {
         v != UNEXPECTED_PERSISTENCE_TYPE &&
         v != INVALID_ORDER_TYPE &&
         v != UNEXPECTED_MIN_FILL_SIZE &&
-        v != INVALID_CUSTOMER_STRATEGY_REF) {
+        v != INVALID_CUSTOMER_STRATEGY_REF &&
+        v != BET_LAPSED_PRICE_IMPROVEMENT_TOO_LARGE) {
         throw std::invalid_argument("Invalid InstructionReportErrorCode: " + v);
     }
     value = v;

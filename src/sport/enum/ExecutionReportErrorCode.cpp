@@ -29,6 +29,9 @@ const std::string ExecutionReportErrorCode::NO_CHASING = "NO_CHASING";
 const std::string ExecutionReportErrorCode::REGULATOR_IS_NOT_AVAILABLE = "REGULATOR_IS_NOT_AVAILABLE";
 const std::string ExecutionReportErrorCode::TOO_MANY_INSTRUCTIONS = "TOO_MANY_INSTRUCTIONS";
 const std::string ExecutionReportErrorCode::INVALID_MARKET_VERSION = "INVALID_MARKET_VERSION";
+const std::string ExecutionReportErrorCode::EVENT_EXPOSURE_LIMIT_EXCEEDED = "EVENT_EXPOSURE_LIMIT_EXCEEDED";
+const std::string ExecutionReportErrorCode::EVENT_MATCHED_EXPOSURE_LIMIT_EXCEEDED = "EVENT_MATCHED_EXPOSURE_LIMIT_EXCEEDED";
+const std::string ExecutionReportErrorCode::EVENT_BLOCKED = "EVENT_BLOCKED";
 
 ExecutionReportErrorCode::ExecutionReportErrorCode() {
     valid = false;
@@ -55,7 +58,10 @@ ExecutionReportErrorCode::ExecutionReportErrorCode(const std::string& v) {
         v != NO_CHASING &&
         v != REGULATOR_IS_NOT_AVAILABLE &&
         v != TOO_MANY_INSTRUCTIONS &&
-        v != INVALID_MARKET_VERSION) {
+        v != INVALID_MARKET_VERSION &&
+        v != EVENT_EXPOSURE_LIMIT_EXCEEDED &&
+        v != EVENT_MATCHED_EXPOSURE_LIMIT_EXCEEDED &&
+        v != EVENT_BLOCKED) {
         throw std::invalid_argument("Invalid ExecutionReportErrorCode: " + v);
     }
     value = v;

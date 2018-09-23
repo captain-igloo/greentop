@@ -136,6 +136,12 @@ class InstructionReportErrorCode : public Enum<InstructionReportErrorCode> {
          * The supplied customer strategy reference is too long.
          */
         static const std::string INVALID_CUSTOMER_STRATEGY_REF;
+        /**
+         * Your bet is lapsed. There is better odds than requested available in the market, but
+         * your preferences don't allow the system to match your bet against better odds. Change
+         * your betting preferences to accept better odds if you don't want to receive this error.
+         */
+        static const std::string BET_LAPSED_PRICE_IMPROVEMENT_TOO_LARGE;
 
         InstructionReportErrorCode();
 

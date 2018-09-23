@@ -314,6 +314,70 @@ ExchangeApi::listMarketProfitAndLoss(const ListMarketProfitAndLossRequest& reque
     return response;
 }
 
+SetDefaultExposureLimitForMarketGroupsResponse
+ExchangeApi::setDefaultExposureLimitForMarketGroups(const SetDefaultExposureLimitForMarketGroupsRequest& request) const {
+    SetDefaultExposureLimitForMarketGroupsResponse response;
+    performRequest(Api::BETTING, "setDefaultExposureLimitForMarketGroups", request, response);
+    return response;
+}
+
+SetExposureLimitForMarketGroupResponse
+ExchangeApi::setExposureLimitForMarketGroup(const SetExposureLimitForMarketGroupRequest& request) const {
+    SetExposureLimitForMarketGroupResponse response;
+    performRequest(Api::BETTING, "setExposureLimitForMarketGroup", request, response);
+    return response;
+}
+
+RemoveDefaultExposureLimitForMarketGroupsResponse
+ExchangeApi::removeDefaultExposureLimitForMarketGroups(const RemoveDefaultExposureLimitForMarketGroupsRequest& request) const {
+    RemoveDefaultExposureLimitForMarketGroupsResponse response;
+    performRequest(Api::BETTING, "removeDefaultExposureLimitForMarketGroups", request, response);
+    return response;
+}
+
+RemoveExposureLimitForMarketGroupResponse
+ExchangeApi::removeExposureLimitForMarketGroup(const RemoveExposureLimitForMarketGroupRequest& request) const {
+    RemoveExposureLimitForMarketGroupResponse response;
+    performRequest(Api::BETTING, "removeExposureLimitForMarketGroup", request, response);
+    return response;
+}
+
+ListExposureLimitsForMarketGroupsResponse
+ExchangeApi::listExposureLimitsForMarketGroups(const ListExposureLimitsForMarketGroupsRequest& request) const {
+    ListExposureLimitsForMarketGroupsResponse response;
+    performRequest(Api::BETTING, "listExposureLimitsForMarketGroups", request, response);
+    return response;
+}
+
+UnblockMarketGroupResponse
+ExchangeApi::unblockMarketGroup(const UnblockMarketGroupRequest& request) const {
+    UnblockMarketGroupResponse response;
+    performRequest(Api::BETTING, "unblockMarketGroup", request, response);
+    return response;
+}
+
+GetExposureReuseEnabledEventsResponse
+ExchangeApi::getExposureReuseEnabledEvents() const {
+    DummyRequest request;
+    GetExposureReuseEnabledEventsResponse response;
+    performRequest(Api::BETTING, "getExposureReuseEnabledEvents", request, response);
+    return response;
+}
+
+AddExposureReuseEnabledEventsResponse
+ExchangeApi::addExposureReuseEnabledEvents(const AddExposureReuseEnabledEventsRequest& request) const {
+    AddExposureReuseEnabledEventsResponse response;
+    performRequest(Api::BETTING, "addExposureReuseEnabledEvents", request, response);
+    return response;
+}
+
+RemoveExposureReuseEnabledEventsResponse
+ExchangeApi::removeExposureReuseEnabledEvents(const RemoveExposureReuseEnabledEventsRequest& request) const {
+    RemoveExposureReuseEnabledEventsResponse response;
+    performRequest(Api::BETTING, "removeExposureReuseEnabledEvents", request, response);
+    return response;
+}
+
 DeveloperApp
 ExchangeApi::createDeveloperAppKeys(const CreateDeveloperAppKeysRequest& request) const {
     DeveloperApp response;

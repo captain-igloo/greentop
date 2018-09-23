@@ -164,7 +164,7 @@ class MarketFilter : public JsonMember {
          */
         std::set<OrderStatus> withOrders;
         /**
-         * Restrict by race type (i.e. Hurdle, Flat, Bumper, Harness, Chase)
+         * Restrict by race type
          */
         std::set<std::string> raceTypes;
 };
