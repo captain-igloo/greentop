@@ -6,6 +6,7 @@
 #define EXCHANGEAPI_H
 
 #include <curl/curl.h>
+#include <memory>
 #include <set>
 #include <string>
 #include <vector>
@@ -49,6 +50,9 @@
 #include "greentop/account/UpdateApplicationSubscriptionResponse.h"
 #include "greentop/account/VendorAccessTokenInfo.h"
 #include "greentop/account/VendorDetails.h"
+
+#include "greentop/curl/Curl.h"
+#include "greentop/curl/ICurl.h"
 
 #include "greentop/heartbeat/HeartbeatRequest.h"
 #include "greentop/heartbeat/HeartbeatReport.h"
@@ -134,8 +138,9 @@ class ExchangeApi {
          *
          * @param applicationKey The user's application key.  It is required by all operations except login,
          *        createDeveloperAppKeys and getDeveloperAppKeys.
+         * @param curl A wrapper around libcurl.
          */
-        ExchangeApi(const std::string& applicationKey = "");
+        ExchangeApi(const std::string& applicationKey = "", std::unique_ptr<ICurl>&& curl = std::unique_ptr<Curl>(new Curl()));
 
         /**
          * Sets the login end point to use.
@@ -525,8 +530,6 @@ class ExchangeApi {
          */
         HeartbeatReport heartbeat(const HeartbeatRequest& request) const;
 
-        ~ExchangeApi();
-
     private:
         static const std::string HOST_UK;
 
@@ -536,8 +539,9 @@ class ExchangeApi {
         std::string applicationKey;
         menu::Menu menu;
         Json::Value pendingMenuJson;
+        std::unique_ptr<ICurl> curl;
 
-        bool initRequest(const Api api, const std::string method, CURL* curl, SList& headers) const;
+        bool initRequest(const Api api, const std::string method, const CurlHandle& handle, SList& headers) const;
 
         bool performRequest(
             const Api api,
