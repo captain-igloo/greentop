@@ -25,7 +25,7 @@ Json::Value GetExposureReuseEnabledEventsResponse::toJson() const {
     Json::Value json(Json::arrayValue);
     if (response.size() > 0) {
         for (unsigned i = 0; i < response.size(); ++i) {
-            json.append(response[i]);
+            json.append(Json::Value::Int64(response[i]));
         }
     }
     return json;

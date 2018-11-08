@@ -25,7 +25,7 @@ Json::Value AddExposureReuseEnabledEventsRequest::toJson() const {
     Json::Value json(Json::objectValue);
     if (eventIds.size() > 0) {
         for (unsigned i = 0; i < eventIds.size(); ++i) {
-            json["eventIds"].append(eventIds[i]);
+            json["eventIds"].append(Json::Value::Int64(eventIds[i]));
         }
     }
     return json;

@@ -1,3 +1,15 @@
+libgreentop (0.12.0+xenial) xenial; urgency=medium
+
+  * fix amd64 compile error
+
+ -- Colin Doig <colindoig@gmail.com>  Thu, 08 Nov 2018 20:46:07 +1300
+
+libgreentop (0.11.0+xenial) xenial; urgency=medium
+
+  * inject curl into ExchangeApi so it can be mocked for testing
+
+ -- Colin Doig <colindoig@gmail.com>  Sun, 30 Sep 2018 21:37:07 +1300
+
 libgreentop (0.10.0+xenial) xenial; urgency=medium
 
   * correct mistake in betfair's xml
