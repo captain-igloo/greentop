@@ -74,8 +74,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\..\curl-7.59.0\include;..\..\include;..\..\..\jsoncpp\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\..\curl-7.59.0\I386;..\..\Debug;..\..\..\jsoncpp\src\lib_json\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\..\curl-7.59.0\include;..\..\include;..\..\..\jsoncpp-1.8.4\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\..\curl-7.59.0\I386;..\..\Debug;..\..\..\jsoncpp-1.8.4\src\lib_json\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -84,8 +84,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\..\..\curl-7.59.0\include;..\..\include;..\..\..\jsoncpp\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\..\curl-7.59.0\I386;..\..\Release;..\..\..\jsoncpp\src\lib_json\Release;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\..\curl-7.59.0\include;..\..\include;..\..\..\jsoncpp-1.8.4\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\..\curl-7.59.0\I386;..\..\Release;..\..\..\jsoncpp-1.8.4\src\lib_json\Release;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
