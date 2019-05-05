@@ -1,3 +1,9 @@
+libgreentop (0.13.0+xenial) xenial; urgency=medium
+
+  * fix libcurl dependency
+
+ -- Colin Doig <colindoig@gmail.com>  Sun, 05 May 2019 18:58:44 +1200
+
 libgreentop (0.12.0+xenial) xenial; urgency=medium
 
   * fix amd64 compile error

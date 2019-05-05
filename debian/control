@@ -13,6 +13,6 @@ Description: Betfair API client (development)
 
 Package: libgreentop
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, libjsoncpp1, libcurl4-openssl-dev
+Depends: ${shlibs:Depends}, ${misc:Depends}, libjsoncpp1, libcurl3
 Description: Betfair API client (library)
  Use the Betfair API to read markets and prices, place bets, manage your account, and more.
