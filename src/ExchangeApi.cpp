@@ -21,7 +21,6 @@ const std::string ExchangeApi::LOGIN_END_POINT_ROMANIA = "https://identitysso.be
 const std::string ExchangeApi::LOGIN_END_POINT_GLOBAL_CERT = "https://identitysso.betfair.com/api/certlogin";
 
 const std::string ExchangeApi::HOST_UK = "https://api.betfair.com";
-// const std::string ExchangeApi::HOST_AUS = "https://api-au.betfair.com";
 
 size_t writeToStream(char* buffer, size_t size, size_t nitems, std::ostream* stream) {
 
@@ -125,6 +124,10 @@ void ExchangeApi::setApplicationKey(const std::string& appKey) {
 
 void ExchangeApi::setSsoid(const std::string& ssoid) {
     this->ssoid = ssoid;
+}
+
+const std::string& ExchangeApi::getSsoid() const {
+    return ssoid;
 }
 
 bool ExchangeApi::retrieveMenu(const std::string& cacheFilename) {
