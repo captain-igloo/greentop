@@ -1,3 +1,9 @@
+libgreentop (0.14.0+bionic) bionic; urgency=medium
+
+  * add ExchangeApi::getSsoid()
+
+ -- Colin Doig <colindoig@gmail.com>  Sun, 28 Jul 2019 11:40:39 +1200
+
 libgreentop (0.13.0+bionic) bionic; urgency=medium
 
   * fix libcurl dependency

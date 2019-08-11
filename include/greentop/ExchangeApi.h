@@ -181,6 +181,13 @@ class ExchangeApi {
         void setSsoid(const std::string& ssoid);
 
         /**
+         * Returns the current ssoid.
+         *
+         * @return The current ssoid.
+         */
+        const std::string& getSsoid() const;
+
+        /**
          * Retrieves the navigation menu from Betfair but does not parse it.  Call refreshMenu() to do both.  If
          * the cache filename is provided, the menu JSON is saved to this file.
          *
