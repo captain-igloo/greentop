@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Colin Doig.  Distributed under the MIT license.
+ * Copyright 2019 Colin Doig.  Distributed under the MIT license.
  */
 #ifndef CURL_CURL_H
 #define CURL_CURL_H
@@ -48,7 +48,27 @@ class Curl : public ICurl {
             const std::stringstream* parameter
         ) const;
 
+        virtual CURLcode easySend(
+            const CurlHandle& handle,
+            const void* buffer,
+            size_t buflen,
+            size_t* n
+        ) const;
+
+        virtual CURLcode easyRecv(
+            const CurlHandle& handle,
+            void* buffer,
+            size_t buflen,
+            size_t* n
+        ) const;
+
         virtual CURLcode easyPerform(const CurlHandle& handle) const;
+
+        virtual CURLcode easyGetinfo(
+            const CurlHandle& handle,
+            const CURLINFO& info,
+            const curl_socket_t* socket
+        ) const;
 
         virtual ~Curl();
     private:
