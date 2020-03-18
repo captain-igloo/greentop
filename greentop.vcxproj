@@ -309,6 +309,20 @@
     <ClCompile Include="src\sport\UpdateInstructionReport.cpp" />
     <ClCompile Include="src\sport\UpdateOrdersRequest.cpp" />
     <ClCompile Include="src\sport\VenueResult.cpp" />
+    <ClCompile Include="src\StreamApi.cpp" />
+    <ClCompile Include="src\stream\AuthenticationMessage.cpp" />
+    <ClCompile Include="src\stream\KeyLineDefinition.cpp" />
+    <ClCompile Include="src\stream\KeyLineSelection.cpp" />
+    <ClCompile Include="src\stream\MarketChange.cpp" />
+    <ClCompile Include="src\stream\MarketChangeMessage.cpp" />
+    <ClCompile Include="src\stream\MarketDataFilter.cpp" />
+    <ClCompile Include="src\stream\MarketDefinition.cpp" />
+    <ClCompile Include="src\stream\MarketFilter.cpp" />
+    <ClCompile Include="src\stream\MarketSubscriptionMessage.cpp" />
+    <ClCompile Include="src\stream\Observable.cpp" />
+    <ClCompile Include="src\stream\PriceLadderDefinition.cpp" />
+    <ClCompile Include="src\stream\RunnerChange.cpp" />
+    <ClCompile Include="src\stream\RunnerDefinition.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\greentop\account\AccountDetailsResponse.h" />
@@ -511,6 +525,23 @@
     <ClInclude Include="include\greentop\sport\UpdateInstructionReport.h" />
     <ClInclude Include="include\greentop\sport\UpdateOrdersRequest.h" />
     <ClInclude Include="include\greentop\sport\VenueResult.h" />
+    <ClInclude Include="include\greentop\StreamApi.h" />
+    <ClInclude Include="include\greentop\stream\AuthenticationMessage.h" />
+    <ClInclude Include="include\greentop\stream\KeyLineDefinition.h" />
+    <ClInclude Include="include\greentop\stream\KeyLineSelection.h" />
+    <ClInclude Include="include\greentop\stream\MarketChange.h" />
+    <ClInclude Include="include\greentop\stream\MarketChangeMessage.h" />
+    <ClInclude Include="include\greentop\stream\MarketDataFilter.h" />
+    <ClInclude Include="include\greentop\stream\MarketDefinition.h" />
+    <ClInclude Include="include\greentop\stream\MarketFilter.h" />
+    <ClInclude Include="include\greentop\stream\MarketSubscriptionMessage.h" />
+    <ClInclude Include="include\greentop\stream\Observable.h" />
+    <ClInclude Include="include\greentop\stream\Observer.h" />
+    <ClInclude Include="include\greentop\stream\PriceLadderDefinition.h" />
+    <ClInclude Include="include\greentop\stream\RequestMessage.h" />
+    <ClInclude Include="include\greentop\stream\ResponseMessage.h" />
+    <ClInclude Include="include\greentop\stream\RunnerChange.h" />
+    <ClInclude Include="include\greentop\stream\RunnerDefinition.h" />
     <ClInclude Include="include\greentop\Time.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
