@@ -11,6 +11,7 @@ all:
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o listClearedOrders -std=c++0x -I../include -L../lib listClearedOrders.cpp -lgreentop -ljsoncpp -lcurl
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o refreshMenu -std=c++0x -I../include -L../lib refreshMenu.cpp -lgreentop -ljsoncpp -lcurl
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o login -std=c++0x -I../include -L../lib login.cpp -lgreentop -ljsoncpp -lcurl
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o stream -std=c++0x -I../include -L../lib stream.cpp -lgreentop -ljsoncpp -lcurl
 
 clean:
 	rm listEventTypes listCompetitions listEvents listMarketCatalogue listMarketBook getAccountStatement listClearedOrders transferFunds refreshMenu login
