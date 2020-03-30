@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETCHANGEMESSAGE_H
-#define MARKETCHANGEMESSAGE_H
+#ifndef STREAM_MARKETCHANGEMESSAGE_H
+#define STREAM_MARKETCHANGEMESSAGE_H
 
 #include <json/json.h>
 #include <string>
@@ -127,4 +127,4 @@ class MarketChangeMessage : public ResponseMessage {
 }
 }
 
-#endif // MARKETCHANGEMESSAGE_H
+#endif // STREAM_MARKETCHANGEMESSAGE_H

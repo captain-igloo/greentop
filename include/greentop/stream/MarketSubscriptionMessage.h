@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETSUBSCRIPTIONMESSAGE_H
-#define MARKETSUBSCRIPTIONMESSAGE_H
+#ifndef STREAM_MARKETSUBSCRIPTIONMESSAGE_H
+#define STREAM_MARKETSUBSCRIPTIONMESSAGE_H
 
 #include <json/json.h>
 #include <string>
@@ -106,4 +106,4 @@ class MarketSubscriptionMessage : public RequestMessage {
 }
 }
 
-#endif // MARKETSUBSCRIPTIONMESSAGE_H
+#endif // STREAM_MARKETSUBSCRIPTIONMESSAGE_H

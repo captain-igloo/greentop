@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef AUTHENTICATIONMESSAGE_H
-#define AUTHENTICATIONMESSAGE_H
+#ifndef STREAM_AUTHENTICATIONMESSAGE_H
+#define STREAM_AUTHENTICATIONMESSAGE_H
 
 #include <json/json.h>
 #include <string>
@@ -55,4 +55,4 @@ class AuthenticationMessage : public RequestMessage {
 }
 }
 
-#endif // AUTHENTICATIONMESSAGE_H
+#endif // STREAM_AUTHENTICATIONMESSAGE_H

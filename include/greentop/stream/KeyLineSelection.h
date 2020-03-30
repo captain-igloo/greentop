@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef KEYLINESELECTION_H
-#define KEYLINESELECTION_H
+#ifndef STREAM_KEYLINESELECTION_H
+#define STREAM_KEYLINESELECTION_H
 
 #include <json/json.h>
 
@@ -42,4 +42,4 @@ class KeyLineSelection : public JsonMember {
 }
 }
 
-#endif // KEYLINESELECTION_H
+#endif // STREAM_KEYLINESELECTION_H

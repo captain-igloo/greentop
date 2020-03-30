@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETDEFINITION_H
-#define MARKETDEFINITION_H
+#ifndef STREAM_MARKETDEFINITION_H
+#define STREAM_MARKETDEFINITION_H
 
 #include <json/json.h>
 #include <set>
@@ -266,4 +266,4 @@ class MarketDefinition : public JsonMember {
 }
 }
 
-#endif // MARKETDEFINITION_H
+#endif // STREAM_MARKETDEFINITION_H

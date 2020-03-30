@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETDATAFILTER_H
-#define MARKETDATAFILTER_H
+#ifndef STREAM_MARKETDATAFILTER_H
+#define STREAM_MARKETDATAFILTER_H
 
 #include <json/json.h>
 #include <set>
@@ -43,4 +43,4 @@ class MarketDataFilter : public JsonMember {
 }
 }
 
-#endif // MARKETDATAFILTER_H
+#endif // STREAM_MARKETDATAFILTER_H

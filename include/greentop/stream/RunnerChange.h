@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef RUNNERCHANGE_H
-#define RUNNERCHANGE_H
+#ifndef STREAM_RUNNERCHANGE_H
+#define STREAM_RUNNERCHANGE_H
 
 #include <json/json.h>
 #include <vector>
@@ -155,4 +155,4 @@ class RunnerChange : public JsonMember {
 }
 }
 
-#endif // RUNNERCHANGE_H
+#endif // STREAM_RUNNERCHANGE_H
