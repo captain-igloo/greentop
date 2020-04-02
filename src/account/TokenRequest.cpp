@@ -10,11 +10,11 @@ namespace account {
 TokenRequest::TokenRequest() {
 }
 
-TokenRequest::TokenRequest(const std::string& clientId,
-    const GrantType& grantType,
+TokenRequest::TokenRequest(const std::string& client_id,
+    const GrantType& grant_type,
     const std::string& code,
-    const std::string& clientSecret,
-    const std::string& refreshToken) :
+    const std::string& client_secret,
+    const std::string& refresh_token) :
     client_id(client_id),
     grant_type(grant_type),
     code(code),

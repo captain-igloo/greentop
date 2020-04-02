@@ -8,9 +8,9 @@ namespace greentop {
 namespace account {
 
 
-SubscriptionOptions::SubscriptionOptions(const Optional<int32_t>& subscriptionLength,
-    const std::string& subscriptionToken,
-    const std::string& clientReference) :
+SubscriptionOptions::SubscriptionOptions(const Optional<int32_t>& subscription_length,
+    const std::string& subscription_token,
+    const std::string& client_reference) :
     subscription_length(subscription_length),
     subscription_token(subscription_token),
     client_reference(client_reference) {
