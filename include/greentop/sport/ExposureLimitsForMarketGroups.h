@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef EXPOSURELIMITSFORMARKETGROUPS_H
-#define EXPOSURELIMITSFORMARKETGROUPS_H
+#ifndef SPORT_EXPOSURELIMITSFORMARKETGROUPS_H
+#define SPORT_EXPOSURELIMITSFORMARKETGROUPS_H
 
 #include <json/json.h>
 #include <vector>
@@ -15,6 +15,7 @@
 #include "greentop/sport/enum/MarketGroupType.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Wrapper type that contains accounts exposure limits for a market group type. If default limit
  * exists for group type, defaultLimit value will be populated. Group limits to return can be
@@ -68,5 +69,6 @@ class ExposureLimitsForMarketGroups : public JsonMember {
 };
 
 }
+}
 
-#endif // EXPOSURELIMITSFORMARKETGROUPS_H
+#endif // SPORT_EXPOSURELIMITSFORMARKETGROUPS_H

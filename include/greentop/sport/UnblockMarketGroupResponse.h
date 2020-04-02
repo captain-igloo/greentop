@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef UNBLOCKMARKETGROUPRESPONSE_H
-#define UNBLOCKMARKETGROUPRESPONSE_H
+#ifndef SPORT_UNBLOCKMARKETGROUPRESPONSE_H
+#define SPORT_UNBLOCKMARKETGROUPRESPONSE_H
 
 #include <json/json.h>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/JsonResponse.h"
 
 namespace greentop {
+namespace sport {
 
 class UnblockMarketGroupResponse : public JsonResponse {
     public:
@@ -34,5 +35,6 @@ class UnblockMarketGroupResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // UNBLOCKMARKETGROUPRESPONSE_H
+#endif // SPORT_UNBLOCKMARKETGROUPRESPONSE_H

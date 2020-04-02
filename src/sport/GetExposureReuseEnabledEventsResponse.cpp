@@ -5,6 +5,7 @@
 #include "greentop/sport/GetExposureReuseEnabledEventsResponse.h"
 
 namespace greentop {
+namespace sport {
 
 GetExposureReuseEnabledEventsResponse::GetExposureReuseEnabledEventsResponse() {
 }
@@ -44,6 +45,4 @@ void GetExposureReuseEnabledEventsResponse::setResponse(const std::vector<int64_
 
 
 }
-
-
-
+}

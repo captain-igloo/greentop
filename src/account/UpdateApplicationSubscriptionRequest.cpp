@@ -5,6 +5,7 @@
 #include "greentop/account/UpdateApplicationSubscriptionRequest.h"
 
 namespace greentop {
+namespace account {
 
 UpdateApplicationSubscriptionRequest::UpdateApplicationSubscriptionRequest() {
 }
@@ -55,6 +56,4 @@ void UpdateApplicationSubscriptionRequest::setSubscriptionLength(const Optional<
 
 
 }
-
-
-
+}

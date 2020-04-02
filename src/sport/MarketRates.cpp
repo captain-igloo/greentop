@@ -5,6 +5,7 @@
 #include "greentop/sport/MarketRates.h"
 
 namespace greentop {
+namespace sport {
 
 MarketRates::MarketRates() {
 }
@@ -55,6 +56,4 @@ void MarketRates::setDiscountAllowed(const Optional<bool>& discountAllowed) {
 
 
 }
-
-
-
+}

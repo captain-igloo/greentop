@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef KEYLINEDESCRIPTION_H
-#define KEYLINEDESCRIPTION_H
+#ifndef SPORT_KEYLINEDESCRIPTION_H
+#define SPORT_KEYLINEDESCRIPTION_H
 
 #include <json/json.h>
 #include <vector>
@@ -12,6 +12,7 @@
 #include "greentop/sport/KeyLineSelection.h"
 
 namespace greentop {
+namespace sport {
 /**
  * A list of KeyLineSelection objects describing the key line for the market
  */
@@ -39,5 +40,6 @@ class KeyLineDescription : public JsonMember {
 };
 
 }
+}
 
-#endif // KEYLINEDESCRIPTION_H
+#endif // SPORT_KEYLINEDESCRIPTION_H

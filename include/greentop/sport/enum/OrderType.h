@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef ORDERTYPE_H
-#define ORDERTYPE_H
+#ifndef SPORT_ENUM_ORDERTYPE_H
+#define SPORT_ENUM_ORDERTYPE_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class OrderType : public Enum<OrderType> {
 
@@ -41,5 +42,6 @@ class OrderType : public Enum<OrderType> {
 };
 
 }
+}
 
-#endif // ORDERTYPE_H
+#endif // SPORT_ENUM_ORDERTYPE_H

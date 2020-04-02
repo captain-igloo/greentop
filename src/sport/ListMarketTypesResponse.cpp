@@ -5,6 +5,7 @@
 #include "greentop/sport/ListMarketTypesResponse.h"
 
 namespace greentop {
+namespace sport {
 
 ListMarketTypesResponse::ListMarketTypesResponse() {
 }
@@ -46,6 +47,4 @@ void ListMarketTypesResponse::setMarketTypeResults(const std::vector<MarketTypeR
 
 
 }
-
-
-
+}

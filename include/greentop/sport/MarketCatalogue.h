@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETCATALOGUE_H
-#define MARKETCATALOGUE_H
+#ifndef SPORT_MARKETCATALOGUE_H
+#define SPORT_MARKETCATALOGUE_H
 
 #include <ctime>
 #include <json/json.h>
@@ -20,6 +20,7 @@
 #include "greentop/sport/RunnerCatalog.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Information about a market
  */
@@ -113,5 +114,6 @@ class MarketCatalogue : public JsonMember {
 };
 
 }
+}
 
-#endif // MARKETCATALOGUE_H
+#endif // SPORT_MARKETCATALOGUE_H

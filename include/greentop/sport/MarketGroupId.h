@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETGROUPID_H
-#define MARKETGROUPID_H
+#ifndef SPORT_MARKETGROUPID_H
+#define SPORT_MARKETGROUPID_H
 
 #include <json/json.h>
 
@@ -11,6 +11,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Container type for market group ID
  */
@@ -37,5 +38,6 @@ class MarketGroupId : public JsonMember {
 };
 
 }
+}
 
-#endif // MARKETGROUPID_H
+#endif // SPORT_MARKETGROUPID_H

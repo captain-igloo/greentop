@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef AFFILIATERELATIONSTATUS_H
-#define AFFILIATERELATIONSTATUS_H
+#ifndef ACCOUNT_ENUM_AFFILIATERELATIONSTATUS_H
+#define ACCOUNT_ENUM_AFFILIATERELATIONSTATUS_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace account {
 
 class AffiliateRelationStatus : public Enum<AffiliateRelationStatus> {
 
@@ -41,5 +42,6 @@ class AffiliateRelationStatus : public Enum<AffiliateRelationStatus> {
 };
 
 }
+}
 
-#endif // AFFILIATERELATIONSTATUS_H
+#endif // ACCOUNT_ENUM_AFFILIATERELATIONSTATUS_H

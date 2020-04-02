@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LISTCOMPETITIONSRESPONSE_H
-#define LISTCOMPETITIONSRESPONSE_H
+#ifndef SPORT_LISTCOMPETITIONSRESPONSE_H
+#define SPORT_LISTCOMPETITIONSRESPONSE_H
 
 #include <json/json.h>
 #include <vector>
@@ -12,6 +12,7 @@
 #include "greentop/sport/CompetitionResult.h"
 
 namespace greentop {
+namespace sport {
 
 class ListCompetitionsResponse : public JsonResponse {
     public:
@@ -35,5 +36,6 @@ class ListCompetitionsResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // LISTCOMPETITIONSRESPONSE_H
+#endif // SPORT_LISTCOMPETITIONSRESPONSE_H

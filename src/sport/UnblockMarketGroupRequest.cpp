@@ -5,6 +5,7 @@
 #include "greentop/sport/UnblockMarketGroupRequest.h"
 
 namespace greentop {
+namespace sport {
 
 UnblockMarketGroupRequest::UnblockMarketGroupRequest() {
 }
@@ -40,6 +41,4 @@ void UnblockMarketGroupRequest::setMarketGroup(const MarketGroup& marketGroup) {
 
 
 }
-
-
-
+}

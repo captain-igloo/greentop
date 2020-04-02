@@ -5,6 +5,7 @@
 #include "greentop/sport/StartingPrices.h"
 
 namespace greentop {
+namespace sport {
 
 
 StartingPrices::StartingPrices(const Optional<double>& nearPrice,
@@ -110,6 +111,4 @@ void StartingPrices::setActualSP(const Optional<double>& actualSP) {
 
 
 }
-
-
-
+}

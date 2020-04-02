@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETBOOK_H
-#define MARKETBOOK_H
+#ifndef SPORT_MARKETBOOK_H
+#define SPORT_MARKETBOOK_H
 
 #include <ctime>
 #include <json/json.h>
@@ -18,6 +18,7 @@
 #include "greentop/sport/enum/MarketStatus.h"
 
 namespace greentop {
+namespace sport {
 /**
  * The dynamic data in a market
  */
@@ -184,5 +185,6 @@ class MarketBook : public JsonMember {
 };
 
 }
+}
 
-#endif // MARKETBOOK_H
+#endif // SPORT_MARKETBOOK_H

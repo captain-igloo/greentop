@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace account {
 
 const std::string Status::SUCCESS = "SUCCESS";
 
@@ -34,4 +35,5 @@ bool Status::operator!=(const Status& other) const {
     return value != other.value;
 }
 
+}
 }

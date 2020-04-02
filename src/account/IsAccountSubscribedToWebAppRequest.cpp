@@ -5,6 +5,7 @@
 #include "greentop/account/IsAccountSubscribedToWebAppRequest.h"
 
 namespace greentop {
+namespace account {
 
 IsAccountSubscribedToWebAppRequest::IsAccountSubscribedToWebAppRequest() {
 }
@@ -40,6 +41,4 @@ void IsAccountSubscribedToWebAppRequest::setVendorId(const std::string& vendorId
 
 
 }
-
-
-
+}

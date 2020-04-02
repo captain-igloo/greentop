@@ -5,6 +5,7 @@
 #include "greentop/sport/LimitBreachAction.h"
 
 namespace greentop {
+namespace sport {
 
 LimitBreachAction::LimitBreachAction() {
 }
@@ -40,6 +41,4 @@ void LimitBreachAction::setActionType(const LimitBreachActionType& actionType) {
 
 
 }
-
-
-
+}

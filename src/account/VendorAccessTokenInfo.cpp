@@ -5,15 +5,16 @@
 #include "greentop/account/VendorAccessTokenInfo.h"
 
 namespace greentop {
+namespace account {
 
 VendorAccessTokenInfo::VendorAccessTokenInfo() {
 }
 
-VendorAccessTokenInfo::VendorAccessTokenInfo(const std::string& access_token,
-    const TokenType& token_type,
-    const Optional<int64_t>& expires_in,
-    const std::string& refresh_token,
-    const ApplicationSubscription& application_subscription) :
+VendorAccessTokenInfo::VendorAccessTokenInfo(const std::string& accessToken,
+    const TokenType& tokenType,
+    const Optional<int64_t>& expiresIn,
+    const std::string& refreshToken,
+    const ApplicationSubscription& applicationSubscription) :
     access_token(access_token),
     token_type(token_type),
     expires_in(expires_in),
@@ -102,6 +103,4 @@ void VendorAccessTokenInfo::setApplication_subscription(const ApplicationSubscri
 
 
 }
-
-
-
+}

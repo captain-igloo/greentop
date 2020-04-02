@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef REVOKEACCESSTOWEBAPPREQUEST_H
-#define REVOKEACCESSTOWEBAPPREQUEST_H
+#ifndef ACCOUNT_REVOKEACCESSTOWEBAPPREQUEST_H
+#define ACCOUNT_REVOKEACCESSTOWEBAPPREQUEST_H
 
 #include <json/json.h>
 
@@ -11,6 +11,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace account {
 
 class RevokeAccessToWebAppRequest : public JsonRequest {
     public:
@@ -36,5 +37,6 @@ class RevokeAccessToWebAppRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // REVOKEACCESSTOWEBAPPREQUEST_H
+#endif // ACCOUNT_REVOKEACCESSTOWEBAPPREQUEST_H

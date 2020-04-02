@@ -5,6 +5,7 @@
 #include "greentop/sport/CurrentOrderSummary.h"
 
 namespace greentop {
+namespace sport {
 
 CurrentOrderSummary::CurrentOrderSummary() {
 }
@@ -359,6 +360,4 @@ void CurrentOrderSummary::setCustomerStrategyRef(const std::string& customerStra
 
 
 }
-
-
-
+}

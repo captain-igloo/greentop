@@ -5,6 +5,7 @@
 #include "greentop/sport/MarketGroupId.h"
 
 namespace greentop {
+namespace sport {
 
 
 MarketGroupId::MarketGroupId(const Optional<int64_t>& eventId) :
@@ -38,6 +39,4 @@ void MarketGroupId::setEventId(const Optional<int64_t>& eventId) {
 
 
 }
-
-
-
+}

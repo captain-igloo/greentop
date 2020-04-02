@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef DEVELOPERAPP_H
-#define DEVELOPERAPP_H
+#ifndef ACCOUNT_DEVELOPERAPP_H
+#define ACCOUNT_DEVELOPERAPP_H
 
 #include <json/json.h>
 #include <string>
@@ -14,6 +14,7 @@
 #include "greentop/account/DeveloperAppVersion.h"
 
 namespace greentop {
+namespace account {
 /**
  * Describes developer/vendor specific application
  */
@@ -57,5 +58,6 @@ class DeveloperApp : public JsonResponse {
 };
 
 }
+}
 
-#endif // DEVELOPERAPP_H
+#endif // ACCOUNT_DEVELOPERAPP_H

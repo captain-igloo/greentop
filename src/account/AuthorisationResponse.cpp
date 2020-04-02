@@ -5,6 +5,7 @@
 #include "greentop/account/AuthorisationResponse.h"
 
 namespace greentop {
+namespace account {
 
 AuthorisationResponse::AuthorisationResponse() {
 }
@@ -57,6 +58,4 @@ void AuthorisationResponse::setRedirectUrl(const std::string& redirectUrl) {
 
 
 }
-
-
-
+}

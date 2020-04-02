@@ -5,6 +5,7 @@
 #include "greentop/sport/CountryCodeResult.h"
 
 namespace greentop {
+namespace sport {
 
 
 CountryCodeResult::CountryCodeResult(const std::string& countryCode,
@@ -53,6 +54,4 @@ void CountryCodeResult::setMarketCount(const Optional<int32_t>& marketCount) {
 
 
 }
-
-
-
+}

@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LISTMARKETCATALOGUEREQUEST_H
-#define LISTMARKETCATALOGUEREQUEST_H
+#ifndef SPORT_LISTMARKETCATALOGUEREQUEST_H
+#define SPORT_LISTMARKETCATALOGUEREQUEST_H
 
 #include <json/json.h>
 #include <set>
@@ -16,6 +16,7 @@
 #include "greentop/sport/enum/MarketSort.h"
 
 namespace greentop {
+namespace sport {
 
 class ListMarketCatalogueRequest : public JsonRequest {
     public:
@@ -75,5 +76,6 @@ class ListMarketCatalogueRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // LISTMARKETCATALOGUEREQUEST_H
+#endif // SPORT_LISTMARKETCATALOGUEREQUEST_H

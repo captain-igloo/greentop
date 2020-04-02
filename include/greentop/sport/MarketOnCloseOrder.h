@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETONCLOSEORDER_H
-#define MARKETONCLOSEORDER_H
+#ifndef SPORT_MARKETONCLOSEORDER_H
+#define SPORT_MARKETONCLOSEORDER_H
 
 #include <json/json.h>
 
@@ -11,6 +11,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Place a new MARKET_ON_CLOSE bet
  */
@@ -38,5 +39,6 @@ class MarketOnCloseOrder : public JsonMember {
 };
 
 }
+}
 
-#endif // MARKETONCLOSEORDER_H
+#endif // SPORT_MARKETONCLOSEORDER_H

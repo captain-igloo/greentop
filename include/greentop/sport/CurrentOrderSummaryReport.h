@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef CURRENTORDERSUMMARYREPORT_H
-#define CURRENTORDERSUMMARYREPORT_H
+#ifndef SPORT_CURRENTORDERSUMMARYREPORT_H
+#define SPORT_CURRENTORDERSUMMARYREPORT_H
 
 #include <json/json.h>
 #include <vector>
@@ -13,6 +13,7 @@
 #include "greentop/sport/CurrentOrderSummary.h"
 
 namespace greentop {
+namespace sport {
 /**
  * A container representing search results.
  */
@@ -51,5 +52,6 @@ class CurrentOrderSummaryReport : public JsonResponse {
 };
 
 }
+}
 
-#endif // CURRENTORDERSUMMARYREPORT_H
+#endif // SPORT_CURRENTORDERSUMMARYREPORT_H

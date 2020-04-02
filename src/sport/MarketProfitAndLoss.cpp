@@ -5,6 +5,7 @@
 #include "greentop/sport/MarketProfitAndLoss.h"
 
 namespace greentop {
+namespace sport {
 
 
 MarketProfitAndLoss::MarketProfitAndLoss(const std::string& marketId,
@@ -74,6 +75,4 @@ void MarketProfitAndLoss::setProfitAndLosses(const std::vector<RunnerProfitAndLo
 
 
 }
-
-
-
+}

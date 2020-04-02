@@ -5,6 +5,7 @@
 #include "greentop/sport/ListClearedOrdersRequest.h"
 
 namespace greentop {
+namespace sport {
 
 ListClearedOrdersRequest::ListClearedOrdersRequest() {
 }
@@ -18,7 +19,7 @@ ListClearedOrdersRequest::ListClearedOrdersRequest(const BetStatus& betStatus,
     const std::set<std::string>& customerOrderRefs,
     const std::set<std::string>& customerStrategyRefs,
     const Side& side,
-    const TimeRange& settledDateRange,
+    const common::TimeRange& settledDateRange,
     const GroupBy& groupBy,
     const Optional<bool>& includeItemDescription,
     const std::string& locale,
@@ -236,10 +237,10 @@ void ListClearedOrdersRequest::setSide(const Side& side) {
     this->side = side;
 }
 
-const TimeRange& ListClearedOrdersRequest::getSettledDateRange() const {
+const common::TimeRange& ListClearedOrdersRequest::getSettledDateRange() const {
     return settledDateRange;
 }
-void ListClearedOrdersRequest::setSettledDateRange(const TimeRange& settledDateRange) {
+void ListClearedOrdersRequest::setSettledDateRange(const common::TimeRange& settledDateRange) {
     this->settledDateRange = settledDateRange;
 }
 
@@ -280,6 +281,4 @@ void ListClearedOrdersRequest::setRecordCount(const Optional<int32_t>& recordCou
 
 
 }
-
-
-
+}

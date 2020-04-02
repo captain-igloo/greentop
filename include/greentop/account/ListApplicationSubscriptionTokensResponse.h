@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LISTAPPLICATIONSUBSCRIPTIONTOKENSRESPONSE_H
-#define LISTAPPLICATIONSUBSCRIPTIONTOKENSRESPONSE_H
+#ifndef ACCOUNT_LISTAPPLICATIONSUBSCRIPTIONTOKENSRESPONSE_H
+#define ACCOUNT_LISTAPPLICATIONSUBSCRIPTIONTOKENSRESPONSE_H
 
 #include <json/json.h>
 #include <vector>
@@ -12,6 +12,7 @@
 #include "greentop/account/ApplicationSubscription.h"
 
 namespace greentop {
+namespace account {
 
 class ListApplicationSubscriptionTokensResponse : public JsonResponse {
     public:
@@ -35,5 +36,6 @@ class ListApplicationSubscriptionTokensResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // LISTAPPLICATIONSUBSCRIPTIONTOKENSRESPONSE_H
+#endif // ACCOUNT_LISTAPPLICATIONSUBSCRIPTIONTOKENSRESPONSE_H

@@ -5,6 +5,7 @@
 #include "greentop/sport/ReplaceOrdersRequest.h"
 
 namespace greentop {
+namespace sport {
 
 ReplaceOrdersRequest::ReplaceOrdersRequest() {
 }
@@ -106,6 +107,4 @@ void ReplaceOrdersRequest::setAsync(const Optional<bool>& async) {
 
 
 }
-
-
-
+}

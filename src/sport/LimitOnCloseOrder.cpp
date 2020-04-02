@@ -5,6 +5,7 @@
 #include "greentop/sport/LimitOnCloseOrder.h"
 
 namespace greentop {
+namespace sport {
 
 LimitOnCloseOrder::LimitOnCloseOrder() {
 }
@@ -55,6 +56,4 @@ void LimitOnCloseOrder::setPrice(const Optional<double>& price) {
 
 
 }
-
-
-
+}

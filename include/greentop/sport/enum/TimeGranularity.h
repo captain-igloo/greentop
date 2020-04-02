@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef TIMEGRANULARITY_H
-#define TIMEGRANULARITY_H
+#ifndef SPORT_ENUM_TIMEGRANULARITY_H
+#define SPORT_ENUM_TIMEGRANULARITY_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class TimeGranularity : public Enum<TimeGranularity> {
 
@@ -35,5 +36,6 @@ class TimeGranularity : public Enum<TimeGranularity> {
 };
 
 }
+}
 
-#endif // TIMEGRANULARITY_H
+#endif // SPORT_ENUM_TIMEGRANULARITY_H

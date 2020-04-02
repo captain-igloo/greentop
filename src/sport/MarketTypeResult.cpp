@@ -5,6 +5,7 @@
 #include "greentop/sport/MarketTypeResult.h"
 
 namespace greentop {
+namespace sport {
 
 
 MarketTypeResult::MarketTypeResult(const std::string& marketType,
@@ -53,6 +54,4 @@ void MarketTypeResult::setMarketCount(const Optional<int32_t>& marketCount) {
 
 
 }
-
-
-
+}

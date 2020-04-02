@@ -5,6 +5,7 @@
 #include "greentop/sport/PriceProjection.h"
 
 namespace greentop {
+namespace sport {
 
 
 PriceProjection::PriceProjection(const std::set<PriceData>& priceData,
@@ -88,6 +89,4 @@ void PriceProjection::setRolloverStakes(const Optional<bool>& rolloverStakes) {
 
 
 }
-
-
-
+}

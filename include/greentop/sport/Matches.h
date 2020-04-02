@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MATCHES_H
-#define MATCHES_H
+#ifndef SPORT_MATCHES_H
+#define SPORT_MATCHES_H
 
 #include <json/json.h>
 #include <vector>
@@ -12,6 +12,7 @@
 #include "greentop/sport/Match.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Match list.
  */
@@ -38,5 +39,6 @@ class Matches : public JsonMember {
 };
 
 }
+}
 
-#endif // MATCHES_H
+#endif // SPORT_MATCHES_H

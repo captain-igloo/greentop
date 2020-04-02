@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef UPDATEINSTRUCTION_H
-#define UPDATEINSTRUCTION_H
+#ifndef SPORT_UPDATEINSTRUCTION_H
+#define SPORT_UPDATEINSTRUCTION_H
 
 #include <json/json.h>
 #include <string>
@@ -12,6 +12,7 @@
 #include "greentop/sport/enum/PersistenceType.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Instruction to update LIMIT bet's persistence of an order that do not affect exposure
  */
@@ -45,5 +46,6 @@ class UpdateInstruction : public JsonMember {
 };
 
 }
+}
 
-#endif // UPDATEINSTRUCTION_H
+#endif // SPORT_UPDATEINSTRUCTION_H

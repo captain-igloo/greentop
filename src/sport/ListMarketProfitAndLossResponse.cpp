@@ -5,6 +5,7 @@
 #include "greentop/sport/ListMarketProfitAndLossResponse.h"
 
 namespace greentop {
+namespace sport {
 
 ListMarketProfitAndLossResponse::ListMarketProfitAndLossResponse() {
 }
@@ -46,6 +47,4 @@ void ListMarketProfitAndLossResponse::setMarketProfitAndLosses(const std::vector
 
 
 }
-
-
-
+}

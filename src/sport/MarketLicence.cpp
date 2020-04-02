@@ -5,6 +5,7 @@
 #include "greentop/sport/MarketLicence.h"
 
 namespace greentop {
+namespace sport {
 
 MarketLicence::MarketLicence() {
 }
@@ -85,6 +86,4 @@ void MarketLicence::setClarifications(const std::string& clarifications) {
 
 
 }
-
-
-
+}

@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef BETTARGETTYPE_H
-#define BETTARGETTYPE_H
+#ifndef SPORT_ENUM_BETTARGETTYPE_H
+#define SPORT_ENUM_BETTARGETTYPE_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class BetTargetType : public Enum<BetTargetType> {
 
@@ -39,5 +40,6 @@ class BetTargetType : public Enum<BetTargetType> {
 };
 
 }
+}
 
-#endif // BETTARGETTYPE_H
+#endif // SPORT_ENUM_BETTARGETTYPE_H

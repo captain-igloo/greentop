@@ -5,6 +5,7 @@
 #include "greentop/account/ActivateApplicationSubscriptionResponse.h"
 
 namespace greentop {
+namespace account {
 
 ActivateApplicationSubscriptionResponse::ActivateApplicationSubscriptionResponse() {
 }
@@ -40,6 +41,4 @@ void ActivateApplicationSubscriptionResponse::setResponse(const Status& response
 
 
 }
-
-
-
+}

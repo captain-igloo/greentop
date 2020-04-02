@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef PRICESIZE_H
-#define PRICESIZE_H
+#ifndef SPORT_PRICESIZE_H
+#define SPORT_PRICESIZE_H
 
 #include <json/json.h>
 
@@ -11,6 +11,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace sport {
 
 class PriceSize : public JsonMember {
     public:
@@ -40,5 +41,6 @@ class PriceSize : public JsonMember {
 };
 
 }
+}
 
-#endif // PRICESIZE_H
+#endif // SPORT_PRICESIZE_H

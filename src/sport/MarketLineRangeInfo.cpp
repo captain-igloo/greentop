@@ -5,6 +5,7 @@
 #include "greentop/sport/MarketLineRangeInfo.h"
 
 namespace greentop {
+namespace sport {
 
 MarketLineRangeInfo::MarketLineRangeInfo() {
 }
@@ -85,6 +86,4 @@ void MarketLineRangeInfo::setMarketUnit(const std::string& marketUnit) {
 
 
 }
-
-
-
+}

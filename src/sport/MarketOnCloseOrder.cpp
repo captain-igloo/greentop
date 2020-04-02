@@ -5,6 +5,7 @@
 #include "greentop/sport/MarketOnCloseOrder.h"
 
 namespace greentop {
+namespace sport {
 
 MarketOnCloseOrder::MarketOnCloseOrder() {
 }
@@ -40,6 +41,4 @@ void MarketOnCloseOrder::setLiability(const Optional<double>& liability) {
 
 
 }
-
-
-
+}

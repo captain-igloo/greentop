@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef GETACCOUNTFUNDSREQUEST_H
-#define GETACCOUNTFUNDSREQUEST_H
+#ifndef ACCOUNT_GETACCOUNTFUNDSREQUEST_H
+#define ACCOUNT_GETACCOUNTFUNDSREQUEST_H
 
 #include <json/json.h>
 
@@ -11,6 +11,7 @@
 #include "greentop/account/enum/Wallet.h"
 
 namespace greentop {
+namespace account {
 
 class GetAccountFundsRequest : public JsonRequest {
     public:
@@ -35,5 +36,6 @@ class GetAccountFundsRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // GETACCOUNTFUNDSREQUEST_H
+#endif // ACCOUNT_GETACCOUNTFUNDSREQUEST_H

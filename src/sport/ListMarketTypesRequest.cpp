@@ -5,6 +5,7 @@
 #include "greentop/sport/ListMarketTypesRequest.h"
 
 namespace greentop {
+namespace sport {
 
 ListMarketTypesRequest::ListMarketTypesRequest() {
 }
@@ -55,6 +56,4 @@ void ListMarketTypesRequest::setLocale(const std::string& locale) {
 
 
 }
-
-
-
+}

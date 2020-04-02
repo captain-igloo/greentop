@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETGROUPEXPOSURELIMIT_H
-#define MARKETGROUPEXPOSURELIMIT_H
+#ifndef SPORT_MARKETGROUPEXPOSURELIMIT_H
+#define SPORT_MARKETGROUPEXPOSURELIMIT_H
 
 #include <json/json.h>
 
@@ -12,6 +12,7 @@
 #include "greentop/sport/MarketGroupId.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Container type for a group exposure limit
  */
@@ -47,5 +48,6 @@ class MarketGroupExposureLimit : public JsonMember {
 };
 
 }
+}
 
-#endif // MARKETGROUPEXPOSURELIMIT_H
+#endif // SPORT_MARKETGROUPEXPOSURELIMIT_H

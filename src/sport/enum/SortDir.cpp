@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string SortDir::EARLIEST_TO_LATEST = "EARLIEST_TO_LATEST";
 const std::string SortDir::LATEST_TO_EARLIEST = "LATEST_TO_EARLIEST";
@@ -36,4 +37,5 @@ bool SortDir::operator!=(const SortDir& other) const {
     return value != other.value;
 }
 
+}
 }

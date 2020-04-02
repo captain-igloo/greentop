@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LIMITORDER_H
-#define LIMITORDER_H
+#ifndef SPORT_LIMITORDER_H
+#define SPORT_LIMITORDER_H
 
 #include <json/json.h>
 
@@ -14,6 +14,7 @@
 #include "greentop/sport/enum/TimeInForce.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Place a new LIMIT order (simple exchange bet for immediate execution)
  */
@@ -106,5 +107,6 @@ class LimitOrder : public JsonMember {
 };
 
 }
+}
 
-#endif // LIMITORDER_H
+#endif // SPORT_LIMITORDER_H

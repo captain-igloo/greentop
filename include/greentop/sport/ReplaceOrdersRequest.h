@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef REPLACEORDERSREQUEST_H
-#define REPLACEORDERSREQUEST_H
+#ifndef SPORT_REPLACEORDERSREQUEST_H
+#define SPORT_REPLACEORDERSREQUEST_H
 
 #include <json/json.h>
 #include <string>
@@ -15,6 +15,7 @@
 #include "greentop/sport/ReplaceInstruction.h"
 
 namespace greentop {
+namespace sport {
 
 class ReplaceOrdersRequest : public JsonRequest {
     public:
@@ -76,5 +77,6 @@ class ReplaceOrdersRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // REPLACEORDERSREQUEST_H
+#endif // SPORT_REPLACEORDERSREQUEST_H

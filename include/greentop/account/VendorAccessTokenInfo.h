@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef VENDORACCESSTOKENINFO_H
-#define VENDORACCESSTOKENINFO_H
+#ifndef ACCOUNT_VENDORACCESSTOKENINFO_H
+#define ACCOUNT_VENDORACCESSTOKENINFO_H
 
 #include <json/json.h>
 #include <string>
@@ -14,6 +14,7 @@
 #include "greentop/account/enum/TokenType.h"
 
 namespace greentop {
+namespace account {
 /**
  * Wrapper object containing UserVendorSessionToken, RefreshToken and optionally a Subscription
  * Token if one was created
@@ -22,11 +23,11 @@ class VendorAccessTokenInfo : public JsonResponse {
     public:
         VendorAccessTokenInfo();
 
-        VendorAccessTokenInfo(const std::string& access_token,
-            const TokenType& token_type,
-            const Optional<int64_t>& expires_in,
-            const std::string& refresh_token,
-            const ApplicationSubscription& application_subscription);
+        VendorAccessTokenInfo(const std::string& accessToken,
+            const TokenType& tokenType,
+            const Optional<int64_t>& expiresIn,
+            const std::string& refreshToken,
+            const ApplicationSubscription& applicationSubscription);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -74,5 +75,6 @@ class VendorAccessTokenInfo : public JsonResponse {
 };
 
 }
+}
 
-#endif // VENDORACCESSTOKENINFO_H
+#endif // ACCOUNT_VENDORACCESSTOKENINFO_H

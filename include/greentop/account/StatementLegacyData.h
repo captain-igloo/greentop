@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef STATEMENTLEGACYDATA_H
-#define STATEMENTLEGACYDATA_H
+#ifndef ACCOUNT_STATEMENTLEGACYDATA_H
+#define ACCOUNT_STATEMENTLEGACYDATA_H
 
 #include <ctime>
 #include <json/json.h>
@@ -14,6 +14,7 @@
 #include "greentop/Time.h"
 
 namespace greentop {
+namespace account {
 /**
  * Summary of a cleared order.
  */
@@ -140,5 +141,6 @@ class StatementLegacyData : public JsonMember {
 };
 
 }
+}
 
-#endif // STATEMENTLEGACYDATA_H
+#endif // ACCOUNT_STATEMENTLEGACYDATA_H

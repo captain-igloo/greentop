@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string OrderType::LIMIT = "LIMIT";
 const std::string OrderType::LIMIT_ON_CLOSE = "LIMIT_ON_CLOSE";
@@ -38,4 +39,5 @@ bool OrderType::operator!=(const OrderType& other) const {
     return value != other.value;
 }
 
+}
 }

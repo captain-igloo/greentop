@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef SIDE_H
-#define SIDE_H
+#ifndef SPORT_ENUM_SIDE_H
+#define SPORT_ENUM_SIDE_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class Side : public Enum<Side> {
 
@@ -41,5 +42,6 @@ class Side : public Enum<Side> {
 };
 
 }
+}
 
-#endif // SIDE_H
+#endif // SPORT_ENUM_SIDE_H

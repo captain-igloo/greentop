@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef KEYLINESELECTION_H
-#define KEYLINESELECTION_H
+#ifndef SPORT_KEYLINESELECTION_H
+#define SPORT_KEYLINESELECTION_H
 
 #include <json/json.h>
 
@@ -11,6 +11,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Description of a markets key line selection, comprising the selectionId and handicap of the team
  * it is applied to.
@@ -47,5 +48,6 @@ class KeyLineSelection : public JsonMember {
 };
 
 }
+}
 
-#endif // KEYLINESELECTION_H
+#endif // SPORT_KEYLINESELECTION_H

@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LISTRUNNERBOOKRESPONSE_H
-#define LISTRUNNERBOOKRESPONSE_H
+#ifndef SPORT_LISTRUNNERBOOKRESPONSE_H
+#define SPORT_LISTRUNNERBOOKRESPONSE_H
 
 #include <json/json.h>
 #include <vector>
@@ -12,6 +12,7 @@
 #include "greentop/sport/MarketBook.h"
 
 namespace greentop {
+namespace sport {
 
 class ListRunnerBookResponse : public JsonResponse {
     public:
@@ -35,5 +36,6 @@ class ListRunnerBookResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // LISTRUNNERBOOKRESPONSE_H
+#endif // SPORT_LISTRUNNERBOOKRESPONSE_H

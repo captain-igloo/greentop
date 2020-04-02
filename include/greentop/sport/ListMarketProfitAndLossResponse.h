@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LISTMARKETPROFITANDLOSSRESPONSE_H
-#define LISTMARKETPROFITANDLOSSRESPONSE_H
+#ifndef SPORT_LISTMARKETPROFITANDLOSSRESPONSE_H
+#define SPORT_LISTMARKETPROFITANDLOSSRESPONSE_H
 
 #include <json/json.h>
 #include <vector>
@@ -12,6 +12,7 @@
 #include "greentop/sport/MarketProfitAndLoss.h"
 
 namespace greentop {
+namespace sport {
 
 class ListMarketProfitAndLossResponse : public JsonResponse {
     public:
@@ -35,5 +36,6 @@ class ListMarketProfitAndLossResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // LISTMARKETPROFITANDLOSSRESPONSE_H
+#endif // SPORT_LISTMARKETPROFITANDLOSSRESPONSE_H

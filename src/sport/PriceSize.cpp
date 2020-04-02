@@ -5,6 +5,7 @@
 #include "greentop/sport/PriceSize.h"
 
 namespace greentop {
+namespace sport {
 
 PriceSize::PriceSize() {
 }
@@ -55,6 +56,4 @@ void PriceSize::setSize(const Optional<double>& size) {
 
 
 }
-
-
-
+}

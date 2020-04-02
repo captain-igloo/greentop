@@ -5,6 +5,7 @@
 #include "greentop/account/GetApplicationSubscriptionHistoryResponse.h"
 
 namespace greentop {
+namespace account {
 
 GetApplicationSubscriptionHistoryResponse::GetApplicationSubscriptionHistoryResponse() {
 }
@@ -46,6 +47,4 @@ void GetApplicationSubscriptionHistoryResponse::setSubscriptionHistorys(const st
 
 
 }
-
-
-
+}

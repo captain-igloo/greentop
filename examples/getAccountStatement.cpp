@@ -15,21 +15,21 @@ int main(int argc, char* argv[]) {
 
     if (exchangeApi.login(argv[2], argv[3])) {
 
-        GetAccountStatementRequest gasr;
+        account::GetAccountStatementRequest gasr;
         gasr.setFromRecord(0);
 
         if (gasr.isValid()) {
 
-            AccountStatementReport asr = exchangeApi.getAccountStatement(gasr);
+            account::AccountStatementReport asr = exchangeApi.getAccountStatement(gasr);
 
             if (asr.isSuccess()) {
 
-                std::vector<StatementItem> items = asr.getAccountStatement();
+                std::vector<account::StatementItem> items = asr.getAccountStatement();
 
                 for (unsigned i = 0; i < items.size(); ++i) {
-                    StatementItem item = items[i];
+                    account::StatementItem item = items[i];
 
-                    StatementLegacyData legacyData = item.getLegacyData();
+                    account::StatementLegacyData legacyData = item.getLegacyData();
 
                     std::cout << legacyData.getMarketName() << " / " << legacyData.getSelectionName() <<
                         " " << legacyData.getBetType() << " amount: " << legacyData.getBetSize() <<

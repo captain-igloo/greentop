@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef SUBSCRIPTIONOPTIONS_H
-#define SUBSCRIPTIONOPTIONS_H
+#ifndef ACCOUNT_SUBSCRIPTIONOPTIONS_H
+#define ACCOUNT_SUBSCRIPTIONOPTIONS_H
 
 #include <json/json.h>
 #include <string>
@@ -12,15 +12,16 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace account {
 /**
  * Wrapper object containing details of how a subscription should be created
  */
 class SubscriptionOptions : public JsonMember {
     public:
 
-        SubscriptionOptions(const Optional<int32_t>& subscription_length = Optional<int32_t>(),
-            const std::string& subscription_token = std::string(),
-            const std::string& client_reference = std::string());
+        SubscriptionOptions(const Optional<int32_t>& subscriptionLength = Optional<int32_t>(),
+            const std::string& subscriptionToken = std::string(),
+            const std::string& clientReference = std::string());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -56,5 +57,6 @@ class SubscriptionOptions : public JsonMember {
 };
 
 }
+}
 
-#endif // SUBSCRIPTIONOPTIONS_H
+#endif // ACCOUNT_SUBSCRIPTIONOPTIONS_H

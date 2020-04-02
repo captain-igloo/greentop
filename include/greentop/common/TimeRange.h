@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef TIMERANGE_H
-#define TIMERANGE_H
+#ifndef COMMON_TIMERANGE_H
+#define COMMON_TIMERANGE_H
 
 #include <ctime>
 #include <json/json.h>
@@ -12,6 +12,7 @@
 #include "greentop/Time.h"
 
 namespace greentop {
+namespace common {
 /**
  * TimeRange
  */
@@ -46,5 +47,6 @@ class TimeRange : public JsonMember {
 };
 
 }
+}
 
-#endif // TIMERANGE_H
+#endif // COMMON_TIMERANGE_H

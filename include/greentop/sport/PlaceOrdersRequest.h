@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef PLACEORDERSREQUEST_H
-#define PLACEORDERSREQUEST_H
+#ifndef SPORT_PLACEORDERSREQUEST_H
+#define SPORT_PLACEORDERSREQUEST_H
 
 #include <json/json.h>
 #include <string>
@@ -15,6 +15,7 @@
 #include "greentop/sport/PlaceInstruction.h"
 
 namespace greentop {
+namespace sport {
 
 class PlaceOrdersRequest : public JsonRequest {
     public:
@@ -89,5 +90,6 @@ class PlaceOrdersRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // PLACEORDERSREQUEST_H
+#endif // SPORT_PLACEORDERSREQUEST_H

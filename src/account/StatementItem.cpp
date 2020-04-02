@@ -5,6 +5,7 @@
 #include "greentop/account/StatementItem.h"
 
 namespace greentop {
+namespace account {
 
 
 StatementItem::StatementItem(const std::string& refId,
@@ -137,6 +138,4 @@ void StatementItem::setLegacyData(const StatementLegacyData& legacyData) {
 
 
 }
-
-
-
+}

@@ -5,6 +5,7 @@
 #include "greentop/sport/ListExposureLimitsForMarketGroupsRequest.h"
 
 namespace greentop {
+namespace sport {
 
 
 ListExposureLimitsForMarketGroupsRequest::ListExposureLimitsForMarketGroupsRequest(const MarketGroupType& marketGroupTypeFilter,
@@ -59,6 +60,4 @@ void ListExposureLimitsForMarketGroupsRequest::setMarketGroupFilter(const std::v
 
 
 }
-
-
-
+}

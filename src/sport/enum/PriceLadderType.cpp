@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string PriceLadderType::CLASSIC = "CLASSIC";
 const std::string PriceLadderType::FINEST = "FINEST";
@@ -38,4 +39,5 @@ bool PriceLadderType::operator!=(const PriceLadderType& other) const {
     return value != other.value;
 }
 
+}
 }

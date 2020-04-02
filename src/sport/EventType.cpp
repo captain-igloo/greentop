@@ -5,6 +5,7 @@
 #include "greentop/sport/EventType.h"
 
 namespace greentop {
+namespace sport {
 
 
 EventType::EventType(const std::string& id,
@@ -53,6 +54,4 @@ void EventType::setName(const std::string& name) {
 
 
 }
-
-
-
+}

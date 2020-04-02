@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LISTMARKETBOOKREQUEST_H
-#define LISTMARKETBOOKREQUEST_H
+#ifndef SPORT_LISTMARKETBOOKREQUEST_H
+#define SPORT_LISTMARKETBOOKREQUEST_H
 
 #include <ctime>
 #include <json/json.h>
@@ -19,6 +19,7 @@
 #include "greentop/sport/enum/OrderProjection.h"
 
 namespace greentop {
+namespace sport {
 
 class ListMarketBookRequest : public JsonRequest {
     public:
@@ -134,5 +135,6 @@ class ListMarketBookRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // LISTMARKETBOOKREQUEST_H
+#endif // SPORT_LISTMARKETBOOKREQUEST_H

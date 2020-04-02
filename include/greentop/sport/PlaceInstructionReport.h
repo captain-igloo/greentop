@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef PLACEINSTRUCTIONREPORT_H
-#define PLACEINSTRUCTIONREPORT_H
+#ifndef SPORT_PLACEINSTRUCTIONREPORT_H
+#define SPORT_PLACEINSTRUCTIONREPORT_H
 
 #include <ctime>
 #include <json/json.h>
@@ -18,6 +18,7 @@
 #include "greentop/sport/enum/OrderStatus.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Response to a PlaceInstruction
  */
@@ -105,5 +106,6 @@ class PlaceInstructionReport : public JsonMember {
 };
 
 }
+}
 
-#endif // PLACEINSTRUCTIONREPORT_H
+#endif // SPORT_PLACEINSTRUCTIONREPORT_H

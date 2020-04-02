@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef RUNNERID_H
-#define RUNNERID_H
+#ifndef SPORT_RUNNERID_H
+#define SPORT_RUNNERID_H
 
 #include <json/json.h>
 #include <string>
@@ -12,6 +12,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace sport {
 /**
  * This object contains the unique identifier for a runner
  */
@@ -56,5 +57,6 @@ class RunnerId : public JsonMember {
 };
 
 }
+}
 
-#endif // RUNNERID_H
+#endif // SPORT_RUNNERID_H

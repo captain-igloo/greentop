@@ -15,18 +15,18 @@ int main(int argc, char* argv[]) {
 
     if (exchangeApi.login(argv[2], argv[3])) {
 
-        MarketFilter filter;
-        ListEventTypesRequest req(filter);
+        sport::MarketFilter filter;
+        sport::ListEventTypesRequest req(filter);
 
         if (req.isValid()) {
-            ListEventTypesResponse resp = exchangeApi.listEventTypes(req);
+            sport::ListEventTypesResponse resp = exchangeApi.listEventTypes(req);
 
             if (resp.isSuccess()) {
 
-                std::vector<EventTypeResult> eventTypeResults = resp.getEventTypeResults();
+                std::vector<sport::EventTypeResult> eventTypeResults = resp.getEventTypeResults();
                 for (unsigned i = 0; i < eventTypeResults.size(); ++i) {
-                    EventTypeResult etr = eventTypeResults[i];
-                    EventType et = etr.getEventType();
+                    sport::EventTypeResult etr = eventTypeResults[i];
+                    sport::EventType et = etr.getEventType();
                     std::cout << et.getId() << " " << et.getName() << std::endl;
                 }
 

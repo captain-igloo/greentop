@@ -5,11 +5,12 @@
 #include "greentop/account/SubscriptionOptions.h"
 
 namespace greentop {
+namespace account {
 
 
-SubscriptionOptions::SubscriptionOptions(const Optional<int32_t>& subscription_length,
-    const std::string& subscription_token,
-    const std::string& client_reference) :
+SubscriptionOptions::SubscriptionOptions(const Optional<int32_t>& subscriptionLength,
+    const std::string& subscriptionToken,
+    const std::string& clientReference) :
     subscription_length(subscription_length),
     subscription_token(subscription_token),
     client_reference(client_reference) {
@@ -68,6 +69,4 @@ void SubscriptionOptions::setClient_reference(const std::string& client_referenc
 
 
 }
-
-
-
+}

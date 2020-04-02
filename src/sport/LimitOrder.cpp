@@ -5,6 +5,7 @@
 #include "greentop/sport/LimitOrder.h"
 
 namespace greentop {
+namespace sport {
 
 
 LimitOrder::LimitOrder(const Optional<double>& size,
@@ -128,6 +129,4 @@ void LimitOrder::setBetTargetSize(const Optional<double>& betTargetSize) {
 
 
 }
-
-
-
+}

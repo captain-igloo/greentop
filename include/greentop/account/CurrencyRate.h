@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef CURRENCYRATE_H
-#define CURRENCYRATE_H
+#ifndef ACCOUNT_CURRENCYRATE_H
+#define ACCOUNT_CURRENCYRATE_H
 
 #include <json/json.h>
 #include <string>
@@ -12,6 +12,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace account {
 /**
  * Currency rate
  */
@@ -46,5 +47,6 @@ class CurrencyRate : public JsonMember {
 };
 
 }
+}
 
-#endif // CURRENCYRATE_H
+#endif // ACCOUNT_CURRENCYRATE_H

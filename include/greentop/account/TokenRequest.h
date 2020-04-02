@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef TOKENREQUEST_H
-#define TOKENREQUEST_H
+#ifndef ACCOUNT_TOKENREQUEST_H
+#define ACCOUNT_TOKENREQUEST_H
 
 #include <json/json.h>
 #include <string>
@@ -12,16 +12,17 @@
 #include "greentop/account/enum/GrantType.h"
 
 namespace greentop {
+namespace account {
 
 class TokenRequest : public JsonRequest {
     public:
         TokenRequest();
 
-        TokenRequest(const std::string& client_id,
-            const GrantType& grant_type,
+        TokenRequest(const std::string& clientId,
+            const GrantType& grantType,
             const std::string& code = std::string(),
-            const std::string& client_secret = std::string(),
-            const std::string& refresh_token = std::string());
+            const std::string& clientSecret = std::string(),
+            const std::string& refreshToken = std::string());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -69,5 +70,6 @@ class TokenRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // TOKENREQUEST_H
+#endif // ACCOUNT_TOKENREQUEST_H

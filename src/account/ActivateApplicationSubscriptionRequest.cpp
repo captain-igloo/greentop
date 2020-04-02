@@ -5,6 +5,7 @@
 #include "greentop/account/ActivateApplicationSubscriptionRequest.h"
 
 namespace greentop {
+namespace account {
 
 ActivateApplicationSubscriptionRequest::ActivateApplicationSubscriptionRequest() {
 }
@@ -40,6 +41,4 @@ void ActivateApplicationSubscriptionRequest::setSubscriptionToken(const std::str
 
 
 }
-
-
-
+}

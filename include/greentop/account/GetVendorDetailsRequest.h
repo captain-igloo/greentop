@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef GETVENDORDETAILSREQUEST_H
-#define GETVENDORDETAILSREQUEST_H
+#ifndef ACCOUNT_GETVENDORDETAILSREQUEST_H
+#define ACCOUNT_GETVENDORDETAILSREQUEST_H
 
 #include <json/json.h>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/JsonRequest.h"
 
 namespace greentop {
+namespace account {
 
 class GetVendorDetailsRequest : public JsonRequest {
     public:
@@ -36,5 +37,6 @@ class GetVendorDetailsRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // GETVENDORDETAILSREQUEST_H
+#endif // ACCOUNT_GETVENDORDETAILSREQUEST_H

@@ -5,6 +5,7 @@
 #include "greentop/account/ListApplicationSubscriptionTokensResponse.h"
 
 namespace greentop {
+namespace account {
 
 ListApplicationSubscriptionTokensResponse::ListApplicationSubscriptionTokensResponse() {
 }
@@ -46,6 +47,4 @@ void ListApplicationSubscriptionTokensResponse::setApplicationSubscriptions(cons
 
 
 }
-
-
-
+}

@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef CREATEDEVELOPERAPPKEYSREQUEST_H
-#define CREATEDEVELOPERAPPKEYSREQUEST_H
+#ifndef ACCOUNT_CREATEDEVELOPERAPPKEYSREQUEST_H
+#define ACCOUNT_CREATEDEVELOPERAPPKEYSREQUEST_H
 
 #include <json/json.h>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/JsonRequest.h"
 
 namespace greentop {
+namespace account {
 
 class CreateDeveloperAppKeysRequest : public JsonRequest {
     public:
@@ -36,5 +37,6 @@ class CreateDeveloperAppKeysRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // CREATEDEVELOPERAPPKEYSREQUEST_H
+#endif // ACCOUNT_CREATEDEVELOPERAPPKEYSREQUEST_H

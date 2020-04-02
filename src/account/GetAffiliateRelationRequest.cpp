@@ -5,6 +5,7 @@
 #include "greentop/account/GetAffiliateRelationRequest.h"
 
 namespace greentop {
+namespace account {
 
 GetAffiliateRelationRequest::GetAffiliateRelationRequest() {
 }
@@ -44,6 +45,4 @@ void GetAffiliateRelationRequest::setVendorClientIds(const std::vector<std::stri
 
 
 }
-
-
-
+}

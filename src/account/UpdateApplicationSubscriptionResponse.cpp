@@ -5,6 +5,7 @@
 #include "greentop/account/UpdateApplicationSubscriptionResponse.h"
 
 namespace greentop {
+namespace account {
 
 UpdateApplicationSubscriptionResponse::UpdateApplicationSubscriptionResponse() {
 }
@@ -40,6 +41,4 @@ void UpdateApplicationSubscriptionResponse::setResponse(const std::string& respo
 
 
 }
-
-
-
+}

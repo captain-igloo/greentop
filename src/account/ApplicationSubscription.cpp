@@ -5,6 +5,7 @@
 #include "greentop/account/ApplicationSubscription.h"
 
 namespace greentop {
+namespace account {
 
 ApplicationSubscription::ApplicationSubscription() {
 }
@@ -170,6 +171,4 @@ void ApplicationSubscription::setVendorClientId(const std::string& vendorClientI
 
 
 }
-
-
-
+}

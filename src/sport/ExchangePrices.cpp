@@ -5,6 +5,7 @@
 #include "greentop/sport/ExchangePrices.h"
 
 namespace greentop {
+namespace sport {
 
 
 ExchangePrices::ExchangePrices(const std::vector<PriceSize>& availableToBack,
@@ -86,6 +87,4 @@ void ExchangePrices::setTradedVolume(const std::vector<PriceSize>& tradedVolume)
 
 
 }
-
-
-
+}

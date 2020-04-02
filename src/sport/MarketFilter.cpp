@@ -5,6 +5,7 @@
 #include "greentop/sport/MarketFilter.h"
 
 namespace greentop {
+namespace sport {
 
 
 MarketFilter::MarketFilter(const std::string& textQuery,
@@ -20,7 +21,7 @@ MarketFilter::MarketFilter(const std::string& textQuery,
     const std::set<MarketBettingType>& marketBettingTypes,
     const std::set<std::string>& marketCountries,
     const std::set<std::string>& marketTypeCodes,
-    const TimeRange& marketStartTime,
+    const common::TimeRange& marketStartTime,
     const std::set<OrderStatus>& withOrders,
     const std::set<std::string>& raceTypes) :
     textQuery(textQuery),
@@ -286,10 +287,10 @@ void MarketFilter::setMarketTypeCodes(const std::set<std::string>& marketTypeCod
     this->marketTypeCodes = marketTypeCodes;
 }
 
-const TimeRange& MarketFilter::getMarketStartTime() const {
+const common::TimeRange& MarketFilter::getMarketStartTime() const {
     return marketStartTime;
 }
-void MarketFilter::setMarketStartTime(const TimeRange& marketStartTime) {
+void MarketFilter::setMarketStartTime(const common::TimeRange& marketStartTime) {
     this->marketStartTime = marketStartTime;
 }
 
@@ -309,6 +310,4 @@ void MarketFilter::setRaceTypes(const std::set<std::string>& raceTypes) {
 
 
 }
-
-
-
+}

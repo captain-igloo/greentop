@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string TimeInForce::FILL_OR_KILL = "FILL_OR_KILL";
 
@@ -34,4 +35,5 @@ bool TimeInForce::operator!=(const TimeInForce& other) const {
     return value != other.value;
 }
 
+}
 }

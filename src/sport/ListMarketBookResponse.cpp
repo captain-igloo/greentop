@@ -5,6 +5,7 @@
 #include "greentop/sport/ListMarketBookResponse.h"
 
 namespace greentop {
+namespace sport {
 
 ListMarketBookResponse::ListMarketBookResponse() {
 }
@@ -46,6 +47,4 @@ void ListMarketBookResponse::setMarketBooks(const std::vector<MarketBook>& marke
 
 
 }
-
-
-
+}

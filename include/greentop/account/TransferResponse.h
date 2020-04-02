@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef TRANSFERRESPONSE_H
-#define TRANSFERRESPONSE_H
+#ifndef ACCOUNT_TRANSFERRESPONSE_H
+#define ACCOUNT_TRANSFERRESPONSE_H
 
 #include <json/json.h>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/JsonResponse.h"
 
 namespace greentop {
+namespace account {
 /**
  * Transfer operation response
  */
@@ -39,5 +40,6 @@ class TransferResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // TRANSFERRESPONSE_H
+#endif // ACCOUNT_TRANSFERRESPONSE_H

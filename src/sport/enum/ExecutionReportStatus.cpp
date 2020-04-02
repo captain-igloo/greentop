@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string ExecutionReportStatus::SUCCESS = "SUCCESS";
 const std::string ExecutionReportStatus::FAILURE = "FAILURE";
@@ -40,4 +41,5 @@ bool ExecutionReportStatus::operator!=(const ExecutionReportStatus& other) const
     return value != other.value;
 }
 
+}
 }

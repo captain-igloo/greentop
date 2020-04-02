@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LISTCURRENCYRATESREQUEST_H
-#define LISTCURRENCYRATESREQUEST_H
+#ifndef ACCOUNT_LISTCURRENCYRATESREQUEST_H
+#define ACCOUNT_LISTCURRENCYRATESREQUEST_H
 
 #include <json/json.h>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/JsonRequest.h"
 
 namespace greentop {
+namespace account {
 
 class ListCurrencyRatesRequest : public JsonRequest {
     public:
@@ -35,5 +36,6 @@ class ListCurrencyRatesRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // LISTCURRENCYRATESREQUEST_H
+#endif // ACCOUNT_LISTCURRENCYRATESREQUEST_H

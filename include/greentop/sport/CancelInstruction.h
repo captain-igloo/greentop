@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef CANCELINSTRUCTION_H
-#define CANCELINSTRUCTION_H
+#ifndef SPORT_CANCELINSTRUCTION_H
+#define SPORT_CANCELINSTRUCTION_H
 
 #include <json/json.h>
 #include <string>
@@ -12,6 +12,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Instruction to fully or partially cancel an order (only applies to LIMIT orders)
  */
@@ -45,5 +46,6 @@ class CancelInstruction : public JsonMember {
 };
 
 }
+}
 
-#endif // CANCELINSTRUCTION_H
+#endif // SPORT_CANCELINSTRUCTION_H

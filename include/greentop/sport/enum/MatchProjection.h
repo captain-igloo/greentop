@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MATCHPROJECTION_H
-#define MATCHPROJECTION_H
+#ifndef SPORT_ENUM_MATCHPROJECTION_H
+#define SPORT_ENUM_MATCHPROJECTION_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class MatchProjection : public Enum<MatchProjection> {
 
@@ -35,5 +36,6 @@ class MatchProjection : public Enum<MatchProjection> {
 };
 
 }
+}
 
-#endif // MATCHPROJECTION_H
+#endif // SPORT_ENUM_MATCHPROJECTION_H

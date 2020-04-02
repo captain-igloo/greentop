@@ -5,6 +5,7 @@
 #include "greentop/heartbeat/HeartbeatReport.h"
 
 namespace greentop {
+namespace heartbeat {
 
 HeartbeatReport::HeartbeatReport() {
 }
@@ -57,6 +58,4 @@ void HeartbeatReport::setActualTimeoutSeconds(const Optional<int32_t>& actualTim
 
 
 }
-
-
-
+}

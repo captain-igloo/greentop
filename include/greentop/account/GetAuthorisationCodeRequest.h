@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef GETAUTHORISATIONCODEREQUEST_H
-#define GETAUTHORISATIONCODEREQUEST_H
+#ifndef ACCOUNT_GETAUTHORISATIONCODEREQUEST_H
+#define ACCOUNT_GETAUTHORISATIONCODEREQUEST_H
 
 #include <json/json.h>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/JsonRequest.h"
 
 namespace greentop {
+namespace account {
 
 class GetAuthorisationCodeRequest : public JsonRequest {
     public:
@@ -36,5 +37,6 @@ class GetAuthorisationCodeRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // GETAUTHORISATIONCODEREQUEST_H
+#endif // ACCOUNT_GETAUTHORISATIONCODEREQUEST_H

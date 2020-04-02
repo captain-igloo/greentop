@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LISTEVENTSREQUEST_H
-#define LISTEVENTSREQUEST_H
+#ifndef SPORT_LISTEVENTSREQUEST_H
+#define SPORT_LISTEVENTSREQUEST_H
 
 #include <json/json.h>
 #include <string>
@@ -12,6 +12,7 @@
 #include "greentop/sport/MarketFilter.h"
 
 namespace greentop {
+namespace sport {
 
 class ListEventsRequest : public JsonRequest {
     public:
@@ -46,5 +47,6 @@ class ListEventsRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // LISTEVENTSREQUEST_H
+#endif // SPORT_LISTEVENTSREQUEST_H

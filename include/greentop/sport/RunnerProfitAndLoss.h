@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef RUNNERPROFITANDLOSS_H
-#define RUNNERPROFITANDLOSS_H
+#ifndef SPORT_RUNNERPROFITANDLOSS_H
+#define SPORT_RUNNERPROFITANDLOSS_H
 
 #include <json/json.h>
 
@@ -11,6 +11,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Profit and loss if selection is wins or loses
  */
@@ -63,5 +64,6 @@ class RunnerProfitAndLoss : public JsonMember {
 };
 
 }
+}
 
-#endif // RUNNERPROFITANDLOSS_H
+#endif // SPORT_RUNNERPROFITANDLOSS_H

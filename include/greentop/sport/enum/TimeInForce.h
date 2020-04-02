@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef TIMEINFORCE_H
-#define TIMEINFORCE_H
+#ifndef SPORT_ENUM_TIMEINFORCE_H
+#define SPORT_ENUM_TIMEINFORCE_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class TimeInForce : public Enum<TimeInForce> {
 
@@ -35,5 +36,6 @@ class TimeInForce : public Enum<TimeInForce> {
 };
 
 }
+}
 
-#endif // TIMEINFORCE_H
+#endif // SPORT_ENUM_TIMEINFORCE_H

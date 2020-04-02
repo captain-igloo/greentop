@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LISTMARKETPROFITANDLOSSREQUEST_H
-#define LISTMARKETPROFITANDLOSSREQUEST_H
+#ifndef SPORT_LISTMARKETPROFITANDLOSSREQUEST_H
+#define SPORT_LISTMARKETPROFITANDLOSSREQUEST_H
 
 #include <json/json.h>
 #include <set>
@@ -12,6 +12,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace sport {
 
 class ListMarketProfitAndLossRequest : public JsonRequest {
     public:
@@ -63,5 +64,6 @@ class ListMarketProfitAndLossRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // LISTMARKETPROFITANDLOSSREQUEST_H
+#endif // SPORT_LISTMARKETPROFITANDLOSSREQUEST_H

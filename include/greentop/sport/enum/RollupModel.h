@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef ROLLUPMODEL_H
-#define ROLLUPMODEL_H
+#ifndef SPORT_ENUM_ROLLUPMODEL_H
+#define SPORT_ENUM_ROLLUPMODEL_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class RollupModel : public Enum<RollupModel> {
 
@@ -50,5 +51,6 @@ class RollupModel : public Enum<RollupModel> {
 };
 
 }
+}
 
-#endif // ROLLUPMODEL_H
+#endif // SPORT_ENUM_ROLLUPMODEL_H

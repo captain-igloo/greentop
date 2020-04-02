@@ -5,6 +5,7 @@
 #include "greentop/account/GetAffiliateRelationResponse.h"
 
 namespace greentop {
+namespace account {
 
 GetAffiliateRelationResponse::GetAffiliateRelationResponse() {
 }
@@ -46,6 +47,4 @@ void GetAffiliateRelationResponse::setAffiliateRelations(const std::vector<Affil
 
 
 }
-
-
-
+}

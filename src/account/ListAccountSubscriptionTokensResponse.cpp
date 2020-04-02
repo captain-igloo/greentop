@@ -5,6 +5,7 @@
 #include "greentop/account/ListAccountSubscriptionTokensResponse.h"
 
 namespace greentop {
+namespace account {
 
 ListAccountSubscriptionTokensResponse::ListAccountSubscriptionTokensResponse() {
 }
@@ -46,6 +47,4 @@ void ListAccountSubscriptionTokensResponse::setAccountSubscriptions(const std::v
 
 
 }
-
-
-
+}

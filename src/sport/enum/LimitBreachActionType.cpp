@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string LimitBreachActionType::REJECT_BETS = "REJECT_BETS";
 const std::string LimitBreachActionType::STOP_BETTING = "STOP_BETTING";
@@ -38,4 +39,5 @@ bool LimitBreachActionType::operator!=(const LimitBreachActionType& other) const
     return value != other.value;
 }
 
+}
 }

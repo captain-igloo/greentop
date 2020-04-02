@@ -5,15 +5,16 @@
 #include "greentop/account/TokenRequest.h"
 
 namespace greentop {
+namespace account {
 
 TokenRequest::TokenRequest() {
 }
 
-TokenRequest::TokenRequest(const std::string& client_id,
-    const GrantType& grant_type,
+TokenRequest::TokenRequest(const std::string& clientId,
+    const GrantType& grantType,
     const std::string& code,
-    const std::string& client_secret,
-    const std::string& refresh_token) :
+    const std::string& clientSecret,
+    const std::string& refreshToken) :
     client_id(client_id),
     grant_type(grant_type),
     code(code),
@@ -100,6 +101,4 @@ void TokenRequest::setRefresh_token(const std::string& refresh_token) {
 
 
 }
-
-
-
+}

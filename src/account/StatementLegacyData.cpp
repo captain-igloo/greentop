@@ -5,6 +5,7 @@
 #include "greentop/account/StatementLegacyData.h"
 
 namespace greentop {
+namespace account {
 
 
 StatementLegacyData::StatementLegacyData(const Optional<double>& avgPrice,
@@ -297,6 +298,4 @@ void StatementLegacyData::setWinLose(const std::string& winLose) {
 
 
 }
-
-
-
+}

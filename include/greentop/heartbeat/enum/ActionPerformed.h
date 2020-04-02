@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef ACTIONPERFORMED_H
-#define ACTIONPERFORMED_H
+#ifndef HEARTBEAT_ENUM_ACTIONPERFORMED_H
+#define HEARTBEAT_ENUM_ACTIONPERFORMED_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace heartbeat {
 
 class ActionPerformed : public Enum<ActionPerformed> {
 
@@ -53,5 +54,6 @@ class ActionPerformed : public Enum<ActionPerformed> {
 };
 
 }
+}
 
-#endif // ACTIONPERFORMED_H
+#endif // HEARTBEAT_ENUM_ACTIONPERFORMED_H

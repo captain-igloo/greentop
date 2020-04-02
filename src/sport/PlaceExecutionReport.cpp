@@ -5,6 +5,7 @@
 #include "greentop/sport/PlaceExecutionReport.h"
 
 namespace greentop {
+namespace sport {
 
 
 PlaceExecutionReport::PlaceExecutionReport(const std::string& customerRef,
@@ -106,6 +107,4 @@ void PlaceExecutionReport::setInstructionReports(const std::vector<PlaceInstruct
 
 
 }
-
-
-
+}

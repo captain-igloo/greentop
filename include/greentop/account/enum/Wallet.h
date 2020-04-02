@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef WALLET_H
-#define WALLET_H
+#ifndef ACCOUNT_ENUM_WALLET_H
+#define ACCOUNT_ENUM_WALLET_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace account {
 
 class Wallet : public Enum<Wallet> {
 
@@ -33,5 +34,6 @@ class Wallet : public Enum<Wallet> {
 };
 
 }
+}
 
-#endif // WALLET_H
+#endif // ACCOUNT_ENUM_WALLET_H

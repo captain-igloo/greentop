@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LISTCOUNTRIESRESPONSE_H
-#define LISTCOUNTRIESRESPONSE_H
+#ifndef SPORT_LISTCOUNTRIESRESPONSE_H
+#define SPORT_LISTCOUNTRIESRESPONSE_H
 
 #include <json/json.h>
 #include <vector>
@@ -12,6 +12,7 @@
 #include "greentop/sport/CountryCodeResult.h"
 
 namespace greentop {
+namespace sport {
 
 class ListCountriesResponse : public JsonResponse {
     public:
@@ -35,5 +36,6 @@ class ListCountriesResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // LISTCOUNTRIESRESPONSE_H
+#endif // SPORT_LISTCOUNTRIESRESPONSE_H

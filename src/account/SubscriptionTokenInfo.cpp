@@ -5,6 +5,7 @@
 #include "greentop/account/SubscriptionTokenInfo.h"
 
 namespace greentop {
+namespace account {
 
 SubscriptionTokenInfo::SubscriptionTokenInfo() {
 }
@@ -123,6 +124,4 @@ void SubscriptionTokenInfo::setSubscriptionStatus(const std::string& subscriptio
 
 
 }
-
-
-
+}

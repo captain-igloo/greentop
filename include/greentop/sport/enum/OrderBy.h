@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef ORDERBY_H
-#define ORDERBY_H
+#ifndef SPORT_ENUM_ORDERBY_H
+#define SPORT_ENUM_ORDERBY_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class OrderBy : public Enum<OrderBy> {
 
@@ -56,5 +57,6 @@ class OrderBy : public Enum<OrderBy> {
 };
 
 }
+}
 
-#endif // ORDERBY_H
+#endif // SPORT_ENUM_ORDERBY_H

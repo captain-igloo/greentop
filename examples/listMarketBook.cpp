@@ -16,14 +16,14 @@ int main(int argc, char* argv[]) {
     if (exchangeApi.login(argv[2], argv[3])) {
 
         std::vector<std::string> marketIds = {argv[4]};
-        std::set<PriceData> priceData = {PriceData::EX_BEST_OFFERS};
-        PriceProjection priceProjection(priceData);
-        OrderProjection orderProjection(OrderProjection::EXECUTABLE);
-        MatchProjection matchProjection(MatchProjection::ROLLED_UP_BY_AVG_PRICE);
+        std::set<sport::PriceData> priceData = {sport::PriceData::EX_BEST_OFFERS};
+        sport::PriceProjection priceProjection(priceData);
+        sport::OrderProjection orderProjection(sport::OrderProjection::EXECUTABLE);
+        sport::MatchProjection matchProjection(sport::MatchProjection::ROLLED_UP_BY_AVG_PRICE);
 
-        ListMarketBookRequest req(marketIds, priceProjection, orderProjection, matchProjection);
+        sport::ListMarketBookRequest req(marketIds, priceProjection, orderProjection, matchProjection);
 
-        ListMarketBookResponse resp = exchangeApi.listMarketBook(req);
+        sport::ListMarketBookResponse resp = exchangeApi.listMarketBook(req);
 
         if (resp.isSuccess()) {
 

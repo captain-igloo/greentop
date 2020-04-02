@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace account {
 
 const std::string TokenType::BEARER = "BEARER";
 
@@ -34,4 +35,5 @@ bool TokenType::operator!=(const TokenType& other) const {
     return value != other.value;
 }
 
+}
 }

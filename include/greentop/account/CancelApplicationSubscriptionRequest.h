@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef CANCELAPPLICATIONSUBSCRIPTIONREQUEST_H
-#define CANCELAPPLICATIONSUBSCRIPTIONREQUEST_H
+#ifndef ACCOUNT_CANCELAPPLICATIONSUBSCRIPTIONREQUEST_H
+#define ACCOUNT_CANCELAPPLICATIONSUBSCRIPTIONREQUEST_H
 
 #include <json/json.h>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/JsonRequest.h"
 
 namespace greentop {
+namespace account {
 
 class CancelApplicationSubscriptionRequest : public JsonRequest {
     public:
@@ -36,5 +37,6 @@ class CancelApplicationSubscriptionRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // CANCELAPPLICATIONSUBSCRIPTIONREQUEST_H
+#endif // ACCOUNT_CANCELAPPLICATIONSUBSCRIPTIONREQUEST_H

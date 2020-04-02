@@ -5,6 +5,7 @@
 #include "greentop/sport/ListTimeRangesRequest.h"
 
 namespace greentop {
+namespace sport {
 
 ListTimeRangesRequest::ListTimeRangesRequest() {
 }
@@ -55,6 +56,4 @@ void ListTimeRangesRequest::setGranularity(const TimeGranularity& granularity) {
 
 
 }
-
-
-
+}

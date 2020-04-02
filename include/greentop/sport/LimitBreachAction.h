@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LIMITBREACHACTION_H
-#define LIMITBREACHACTION_H
+#ifndef SPORT_LIMITBREACHACTION_H
+#define SPORT_LIMITBREACHACTION_H
 
 #include <json/json.h>
 
@@ -11,6 +11,7 @@
 #include "greentop/sport/enum/LimitBreachActionType.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Action that should be execute when limit is breached
  */
@@ -38,5 +39,6 @@ class LimitBreachAction : public JsonMember {
 };
 
 }
+}
 
-#endif // LIMITBREACHACTION_H
+#endif // SPORT_LIMITBREACHACTION_H

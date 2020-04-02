@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LISTAUTHORIZEDWEBAPPSRESPONSE_H
-#define LISTAUTHORIZEDWEBAPPSRESPONSE_H
+#ifndef ACCOUNT_LISTAUTHORIZEDWEBAPPSRESPONSE_H
+#define ACCOUNT_LISTAUTHORIZEDWEBAPPSRESPONSE_H
 
 #include <json/json.h>
 #include <vector>
@@ -12,6 +12,7 @@
 #include "greentop/account/VendorDetails.h"
 
 namespace greentop {
+namespace account {
 
 class ListAuthorizedWebAppsResponse : public JsonResponse {
     public:
@@ -35,5 +36,6 @@ class ListAuthorizedWebAppsResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // LISTAUTHORIZEDWEBAPPSRESPONSE_H
+#endif // ACCOUNT_LISTAUTHORIZEDWEBAPPSRESPONSE_H

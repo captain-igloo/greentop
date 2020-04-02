@@ -5,6 +5,7 @@
 #include "greentop/sport/UnblockMarketGroupResponse.h"
 
 namespace greentop {
+namespace sport {
 
 UnblockMarketGroupResponse::UnblockMarketGroupResponse() {
 }
@@ -40,6 +41,4 @@ void UnblockMarketGroupResponse::setResponse(const std::string& response) {
 
 
 }
-
-
-
+}

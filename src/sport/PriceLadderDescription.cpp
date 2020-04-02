@@ -5,6 +5,7 @@
 #include "greentop/sport/PriceLadderDescription.h"
 
 namespace greentop {
+namespace sport {
 
 PriceLadderDescription::PriceLadderDescription() {
 }
@@ -40,6 +41,4 @@ void PriceLadderDescription::setType(const PriceLadderType& type) {
 
 
 }
-
-
-
+}

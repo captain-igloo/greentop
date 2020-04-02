@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef SETEXPOSURELIMITFORMARKETGROUPRESPONSE_H
-#define SETEXPOSURELIMITFORMARKETGROUPRESPONSE_H
+#ifndef SPORT_SETEXPOSURELIMITFORMARKETGROUPRESPONSE_H
+#define SPORT_SETEXPOSURELIMITFORMARKETGROUPRESPONSE_H
 
 #include <json/json.h>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/JsonResponse.h"
 
 namespace greentop {
+namespace sport {
 
 class SetExposureLimitForMarketGroupResponse : public JsonResponse {
     public:
@@ -34,5 +35,6 @@ class SetExposureLimitForMarketGroupResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // SETEXPOSURELIMITFORMARKETGROUPRESPONSE_H
+#endif // SPORT_SETEXPOSURELIMITFORMARKETGROUPRESPONSE_H

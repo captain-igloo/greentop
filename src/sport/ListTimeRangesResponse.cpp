@@ -5,6 +5,7 @@
 #include "greentop/sport/ListTimeRangesResponse.h"
 
 namespace greentop {
+namespace sport {
 
 ListTimeRangesResponse::ListTimeRangesResponse() {
 }
@@ -46,6 +47,4 @@ void ListTimeRangesResponse::setTimeRangeResults(const std::vector<TimeRangeResu
 
 
 }
-
-
-
+}

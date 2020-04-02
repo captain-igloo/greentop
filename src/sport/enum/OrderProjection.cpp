@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string OrderProjection::ALL = "ALL";
 const std::string OrderProjection::EXECUTABLE = "EXECUTABLE";
@@ -38,4 +39,5 @@ bool OrderProjection::operator!=(const OrderProjection& other) const {
     return value != other.value;
 }
 
+}
 }

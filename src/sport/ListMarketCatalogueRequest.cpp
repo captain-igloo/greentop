@@ -5,6 +5,7 @@
 #include "greentop/sport/ListMarketCatalogueRequest.h"
 
 namespace greentop {
+namespace sport {
 
 ListMarketCatalogueRequest::ListMarketCatalogueRequest() {
 }
@@ -105,6 +106,4 @@ void ListMarketCatalogueRequest::setLocale(const std::string& locale) {
 
 
 }
-
-
-
+}

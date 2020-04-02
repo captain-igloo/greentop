@@ -5,6 +5,7 @@
 #include "greentop/account/CancelApplicationSubscriptionRequest.h"
 
 namespace greentop {
+namespace account {
 
 CancelApplicationSubscriptionRequest::CancelApplicationSubscriptionRequest() {
 }
@@ -40,6 +41,4 @@ void CancelApplicationSubscriptionRequest::setSubscriptionToken(const std::strin
 
 
 }
-
-
-
+}

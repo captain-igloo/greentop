@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef GETVENDORCLIENTIDRESPONSE_H
-#define GETVENDORCLIENTIDRESPONSE_H
+#ifndef ACCOUNT_GETVENDORCLIENTIDRESPONSE_H
+#define ACCOUNT_GETVENDORCLIENTIDRESPONSE_H
 
 #include <json/json.h>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/JsonResponse.h"
 
 namespace greentop {
+namespace account {
 
 class GetVendorClientIdResponse : public JsonResponse {
     public:
@@ -34,5 +35,6 @@ class GetVendorClientIdResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // GETVENDORCLIENTIDRESPONSE_H
+#endif // ACCOUNT_GETVENDORCLIENTIDRESPONSE_H

@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef CANCELORDERSREQUEST_H
-#define CANCELORDERSREQUEST_H
+#ifndef SPORT_CANCELORDERSREQUEST_H
+#define SPORT_CANCELORDERSREQUEST_H
 
 #include <json/json.h>
 #include <string>
@@ -13,6 +13,7 @@
 #include "greentop/sport/CancelInstruction.h"
 
 namespace greentop {
+namespace sport {
 
 class CancelOrdersRequest : public JsonRequest {
     public:
@@ -55,5 +56,6 @@ class CancelOrdersRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // CANCELORDERSREQUEST_H
+#endif // SPORT_CANCELORDERSREQUEST_H

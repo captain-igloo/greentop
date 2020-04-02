@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef STARTINGPRICES_H
-#define STARTINGPRICES_H
+#ifndef SPORT_STARTINGPRICES_H
+#define SPORT_STARTINGPRICES_H
 
 #include <json/json.h>
 #include <vector>
@@ -13,6 +13,7 @@
 #include "greentop/sport/PriceSize.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Information about the Betfair Starting Price. Only available in BSP markets
  */
@@ -71,5 +72,6 @@ class StartingPrices : public JsonMember {
 };
 
 }
+}
 
-#endif // STARTINGPRICES_H
+#endif // SPORT_STARTINGPRICES_H

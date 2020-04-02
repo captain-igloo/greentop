@@ -5,6 +5,7 @@
 #include "greentop/sport/ListCompetitionsResponse.h"
 
 namespace greentop {
+namespace sport {
 
 ListCompetitionsResponse::ListCompetitionsResponse() {
 }
@@ -46,6 +47,4 @@ void ListCompetitionsResponse::setCompetitionResults(const std::vector<Competiti
 
 
 }
-
-
-
+}

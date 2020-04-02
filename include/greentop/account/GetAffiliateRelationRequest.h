@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef GETAFFILIATERELATIONREQUEST_H
-#define GETAFFILIATERELATIONREQUEST_H
+#ifndef ACCOUNT_GETAFFILIATERELATIONREQUEST_H
+#define ACCOUNT_GETAFFILIATERELATIONREQUEST_H
 
 #include <json/json.h>
 #include <vector>
@@ -11,6 +11,7 @@
 #include "greentop/JsonRequest.h"
 
 namespace greentop {
+namespace account {
 
 class GetAffiliateRelationRequest : public JsonRequest {
     public:
@@ -36,5 +37,6 @@ class GetAffiliateRelationRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // GETAFFILIATERELATIONREQUEST_H
+#endif // ACCOUNT_GETAFFILIATERELATIONREQUEST_H

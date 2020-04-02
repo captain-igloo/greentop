@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef INCLUDEITEM_H
-#define INCLUDEITEM_H
+#ifndef ACCOUNT_ENUM_INCLUDEITEM_H
+#define ACCOUNT_ENUM_INCLUDEITEM_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace account {
 
 class IncludeItem : public Enum<IncludeItem> {
 
@@ -37,5 +38,6 @@ class IncludeItem : public Enum<IncludeItem> {
 };
 
 }
+}
 
-#endif // INCLUDEITEM_H
+#endif // ACCOUNT_ENUM_INCLUDEITEM_H

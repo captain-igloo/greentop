@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef EVENT_H
-#define EVENT_H
+#ifndef SPORT_EVENT_H
+#define SPORT_EVENT_H
 
 #include <ctime>
 #include <json/json.h>
@@ -13,6 +13,7 @@
 #include "greentop/Time.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Event
  */
@@ -79,5 +80,6 @@ class Event : public JsonMember {
 };
 
 }
+}
 
-#endif // EVENT_H
+#endif // SPORT_EVENT_H

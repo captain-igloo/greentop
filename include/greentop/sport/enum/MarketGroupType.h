@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETGROUPTYPE_H
-#define MARKETGROUPTYPE_H
+#ifndef SPORT_ENUM_MARKETGROUPTYPE_H
+#define SPORT_ENUM_MARKETGROUPTYPE_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class MarketGroupType : public Enum<MarketGroupType> {
 
@@ -34,5 +35,6 @@ class MarketGroupType : public Enum<MarketGroupType> {
 };
 
 }
+}
 
-#endif // MARKETGROUPTYPE_H
+#endif // SPORT_ENUM_MARKETGROUPTYPE_H

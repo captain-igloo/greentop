@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef REPLACEINSTRUCTION_H
-#define REPLACEINSTRUCTION_H
+#ifndef SPORT_REPLACEINSTRUCTION_H
+#define SPORT_REPLACEINSTRUCTION_H
 
 #include <json/json.h>
 #include <string>
@@ -12,6 +12,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Instruction to replace a LIMIT or LIMIT_ON_CLOSE order at a new price. Original order will be
  * cancelled and a new order placed at the new price for the remaining stake.
@@ -46,5 +47,6 @@ class ReplaceInstruction : public JsonMember {
 };
 
 }
+}
 
-#endif // REPLACEINSTRUCTION_H
+#endif // SPORT_REPLACEINSTRUCTION_H

@@ -5,6 +5,7 @@
 #include "greentop/heartbeat/HeartbeatRequest.h"
 
 namespace greentop {
+namespace heartbeat {
 
 HeartbeatRequest::HeartbeatRequest() {
 }
@@ -40,6 +41,4 @@ void HeartbeatRequest::setPreferredTimeoutSeconds(const Optional<int32_t>& prefe
 
 
 }
-
-
-
+}

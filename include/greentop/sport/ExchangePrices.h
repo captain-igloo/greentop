@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef EXCHANGEPRICES_H
-#define EXCHANGEPRICES_H
+#ifndef SPORT_EXCHANGEPRICES_H
+#define SPORT_EXCHANGEPRICES_H
 
 #include <json/json.h>
 #include <vector>
@@ -12,6 +12,7 @@
 #include "greentop/sport/PriceSize.h"
 
 namespace greentop {
+namespace sport {
 
 class ExchangePrices : public JsonMember {
     public:
@@ -46,5 +47,6 @@ class ExchangePrices : public JsonMember {
 };
 
 }
+}
 
-#endif // EXCHANGEPRICES_H
+#endif // SPORT_EXCHANGEPRICES_H

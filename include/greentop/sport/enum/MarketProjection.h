@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETPROJECTION_H
-#define MARKETPROJECTION_H
+#ifndef SPORT_ENUM_MARKETPROJECTION_H
+#define SPORT_ENUM_MARKETPROJECTION_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class MarketProjection : public Enum<MarketProjection> {
 
@@ -59,5 +60,6 @@ class MarketProjection : public Enum<MarketProjection> {
 };
 
 }
+}
 
-#endif // MARKETPROJECTION_H
+#endif // SPORT_ENUM_MARKETPROJECTION_H

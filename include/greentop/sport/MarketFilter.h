@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETFILTER_H
-#define MARKETFILTER_H
+#ifndef SPORT_MARKETFILTER_H
+#define SPORT_MARKETFILTER_H
 
 #include <json/json.h>
 #include <set>
@@ -16,6 +16,7 @@
 #include "greentop/sport/enum/OrderStatus.h"
 
 namespace greentop {
+namespace sport {
 
 class MarketFilter : public JsonMember {
     public:
@@ -33,7 +34,7 @@ class MarketFilter : public JsonMember {
             const std::set<MarketBettingType>& marketBettingTypes = std::set<MarketBettingType>(),
             const std::set<std::string>& marketCountries = std::set<std::string>(),
             const std::set<std::string>& marketTypeCodes = std::set<std::string>(),
-            const TimeRange& marketStartTime = TimeRange(),
+            const common::TimeRange& marketStartTime = common::TimeRange(),
             const std::set<OrderStatus>& withOrders = std::set<OrderStatus>(),
             const std::set<std::string>& raceTypes = std::set<std::string>());
 
@@ -82,8 +83,8 @@ class MarketFilter : public JsonMember {
         const std::set<std::string>& getMarketTypeCodes() const;
         void setMarketTypeCodes(const std::set<std::string>& marketTypeCodes);
 
-        const TimeRange& getMarketStartTime() const;
-        void setMarketStartTime(const TimeRange& marketStartTime);
+        const common::TimeRange& getMarketStartTime() const;
+        void setMarketStartTime(const common::TimeRange& marketStartTime);
 
         const std::set<OrderStatus>& getWithOrders() const;
         void setWithOrders(const std::set<OrderStatus>& withOrders);
@@ -158,7 +159,7 @@ class MarketFilter : public JsonMember {
         /**
          * Restrict to markets with a market start time before or after the specified date
          */
-        TimeRange marketStartTime;
+        common::TimeRange marketStartTime;
         /**
          * Restrict to markets that I have one or more orders in these status.
          */
@@ -170,5 +171,6 @@ class MarketFilter : public JsonMember {
 };
 
 }
+}
 
-#endif // MARKETFILTER_H
+#endif // SPORT_MARKETFILTER_H

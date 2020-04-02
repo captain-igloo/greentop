@@ -5,6 +5,7 @@
 #include "greentop/account/RevokeAccessToWebAppRequest.h"
 
 namespace greentop {
+namespace account {
 
 RevokeAccessToWebAppRequest::RevokeAccessToWebAppRequest() {
 }
@@ -40,6 +41,4 @@ void RevokeAccessToWebAppRequest::setVendorId(const Optional<int64_t>& vendorId)
 
 
 }
-
-
-
+}

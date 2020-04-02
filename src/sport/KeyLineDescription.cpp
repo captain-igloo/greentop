@@ -5,6 +5,7 @@
 #include "greentop/sport/KeyLineDescription.h"
 
 namespace greentop {
+namespace sport {
 
 KeyLineDescription::KeyLineDescription() {
 }
@@ -46,6 +47,4 @@ void KeyLineDescription::setKeyLine(const std::vector<KeyLineSelection>& keyLine
 
 
 }
-
-
-
+}

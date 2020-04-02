@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef GRANTTYPE_H
-#define GRANTTYPE_H
+#ifndef ACCOUNT_ENUM_GRANTTYPE_H
+#define ACCOUNT_ENUM_GRANTTYPE_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace account {
 
 class GrantType : public Enum<GrantType> {
 
@@ -33,5 +34,6 @@ class GrantType : public Enum<GrantType> {
 };
 
 }
+}
 
-#endif // GRANTTYPE_H
+#endif // ACCOUNT_ENUM_GRANTTYPE_H

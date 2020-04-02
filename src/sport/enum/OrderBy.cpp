@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string OrderBy::BY_BET = "BY_BET";
 const std::string OrderBy::BY_MARKET = "BY_MARKET";
@@ -44,4 +45,5 @@ bool OrderBy::operator!=(const OrderBy& other) const {
     return value != other.value;
 }
 
+}
 }

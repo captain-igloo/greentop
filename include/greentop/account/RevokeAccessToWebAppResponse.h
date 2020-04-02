@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef REVOKEACCESSTOWEBAPPRESPONSE_H
-#define REVOKEACCESSTOWEBAPPRESPONSE_H
+#ifndef ACCOUNT_REVOKEACCESSTOWEBAPPRESPONSE_H
+#define ACCOUNT_REVOKEACCESSTOWEBAPPRESPONSE_H
 
 #include <json/json.h>
 
@@ -11,6 +11,7 @@
 #include "greentop/account/enum/Status.h"
 
 namespace greentop {
+namespace account {
 
 class RevokeAccessToWebAppResponse : public JsonResponse {
     public:
@@ -34,5 +35,6 @@ class RevokeAccessToWebAppResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // REVOKEACCESSTOWEBAPPRESPONSE_H
+#endif // ACCOUNT_REVOKEACCESSTOWEBAPPRESPONSE_H

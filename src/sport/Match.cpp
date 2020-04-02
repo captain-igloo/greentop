@@ -5,6 +5,7 @@
 #include "greentop/sport/Match.h"
 
 namespace greentop {
+namespace sport {
 
 
 Match::Match(const std::string& betId,
@@ -115,6 +116,4 @@ void Match::setMatchDate(const std::tm& matchDate) {
 
 
 }
-
-
-
+}

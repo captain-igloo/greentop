@@ -5,6 +5,7 @@
 #include "greentop/account/AccountFundsResponse.h"
 
 namespace greentop {
+namespace account {
 
 
 AccountFundsResponse::AccountFundsResponse(const Optional<double>& availableToBetBalance,
@@ -130,6 +131,4 @@ void AccountFundsResponse::setWallet(const std::string& wallet) {
 
 
 }
-
-
-
+}

@@ -5,6 +5,7 @@
 #include "greentop/sport/Matches.h"
 
 namespace greentop {
+namespace sport {
 
 
 Matches::Matches(const std::vector<Match>& matches) :
@@ -44,6 +45,4 @@ void Matches::setMatches(const std::vector<Match>& matches) {
 
 
 }
-
-
-
+}

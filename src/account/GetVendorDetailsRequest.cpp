@@ -5,6 +5,7 @@
 #include "greentop/account/GetVendorDetailsRequest.h"
 
 namespace greentop {
+namespace account {
 
 GetVendorDetailsRequest::GetVendorDetailsRequest() {
 }
@@ -40,6 +41,4 @@ void GetVendorDetailsRequest::setVendorId(const std::string& vendorId) {
 
 
 }
-
-
-
+}

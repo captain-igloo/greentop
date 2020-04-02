@@ -5,6 +5,7 @@
 #include "greentop/account/ListApplicationSubscriptionTokensRequest.h"
 
 namespace greentop {
+namespace account {
 
 
 ListApplicationSubscriptionTokensRequest::ListApplicationSubscriptionTokensRequest(const SubscriptionStatus& subscriptionStatus) :
@@ -38,6 +39,4 @@ void ListApplicationSubscriptionTokensRequest::setSubscriptionStatus(const Subsc
 
 
 }
-
-
-
+}

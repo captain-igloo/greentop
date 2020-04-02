@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef SUBSCRIPTIONHISTORY_H
-#define SUBSCRIPTIONHISTORY_H
+#ifndef ACCOUNT_SUBSCRIPTIONHISTORY_H
+#define ACCOUNT_SUBSCRIPTIONHISTORY_H
 
 #include <ctime>
 #include <json/json.h>
@@ -13,6 +13,7 @@
 #include "greentop/Time.h"
 
 namespace greentop {
+namespace account {
 /**
  * Application subscription history details
  */
@@ -96,5 +97,6 @@ class SubscriptionHistory : public JsonMember {
 };
 
 }
+}
 
-#endif // SUBSCRIPTIONHISTORY_H
+#endif // ACCOUNT_SUBSCRIPTIONHISTORY_H

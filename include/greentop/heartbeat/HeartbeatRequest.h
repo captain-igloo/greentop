@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef HEARTBEATREQUEST_H
-#define HEARTBEATREQUEST_H
+#ifndef HEARTBEAT_HEARTBEATREQUEST_H
+#define HEARTBEAT_HEARTBEATREQUEST_H
 
 #include <json/json.h>
 
@@ -11,6 +11,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace heartbeat {
 
 class HeartbeatRequest : public JsonRequest {
     public:
@@ -48,5 +49,6 @@ class HeartbeatRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // HEARTBEATREQUEST_H
+#endif // HEARTBEAT_HEARTBEATREQUEST_H

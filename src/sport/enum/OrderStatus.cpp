@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string OrderStatus::PENDING = "PENDING";
 const std::string OrderStatus::EXECUTION_COMPLETE = "EXECUTION_COMPLETE";
@@ -40,4 +41,5 @@ bool OrderStatus::operator!=(const OrderStatus& other) const {
     return value != other.value;
 }
 
+}
 }

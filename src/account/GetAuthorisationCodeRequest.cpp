@@ -5,6 +5,7 @@
 #include "greentop/account/GetAuthorisationCodeRequest.h"
 
 namespace greentop {
+namespace account {
 
 GetAuthorisationCodeRequest::GetAuthorisationCodeRequest() {
 }
@@ -40,6 +41,4 @@ void GetAuthorisationCodeRequest::setVendorId(const std::string& vendorId) {
 
 
 }
-
-
-
+}

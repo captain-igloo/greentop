@@ -5,6 +5,7 @@
 #include "greentop/sport/MarketBook.h"
 
 namespace greentop {
+namespace sport {
 
 MarketBook::MarketBook() {
 }
@@ -303,6 +304,4 @@ void MarketBook::setKeyLineDescription(const KeyLineDescription& keyLineDescript
 
 
 }
-
-
-
+}

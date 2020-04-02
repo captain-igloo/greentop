@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef COMPETITIONRESULT_H
-#define COMPETITIONRESULT_H
+#ifndef SPORT_COMPETITIONRESULT_H
+#define SPORT_COMPETITIONRESULT_H
 
 #include <json/json.h>
 #include <string>
@@ -13,6 +13,7 @@
 #include "greentop/sport/Competition.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Competition Result
  */
@@ -55,5 +56,6 @@ class CompetitionResult : public JsonMember {
 };
 
 }
+}
 
-#endif // COMPETITIONRESULT_H
+#endif // SPORT_COMPETITIONRESULT_H

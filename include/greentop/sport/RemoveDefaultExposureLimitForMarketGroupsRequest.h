@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef REMOVEDEFAULTEXPOSURELIMITFORMARKETGROUPSREQUEST_H
-#define REMOVEDEFAULTEXPOSURELIMITFORMARKETGROUPSREQUEST_H
+#ifndef SPORT_REMOVEDEFAULTEXPOSURELIMITFORMARKETGROUPSREQUEST_H
+#define SPORT_REMOVEDEFAULTEXPOSURELIMITFORMARKETGROUPSREQUEST_H
 
 #include <json/json.h>
 
@@ -11,6 +11,7 @@
 #include "greentop/sport/enum/MarketGroupType.h"
 
 namespace greentop {
+namespace sport {
 
 class RemoveDefaultExposureLimitForMarketGroupsRequest : public JsonRequest {
     public:
@@ -36,5 +37,6 @@ class RemoveDefaultExposureLimitForMarketGroupsRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // REMOVEDEFAULTEXPOSURELIMITFORMARKETGROUPSREQUEST_H
+#endif // SPORT_REMOVEDEFAULTEXPOSURELIMITFORMARKETGROUPSREQUEST_H

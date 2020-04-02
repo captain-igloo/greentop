@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string GroupBy::EVENT_TYPE = "EVENT_TYPE";
 const std::string GroupBy::EVENT = "EVENT";
@@ -46,4 +47,5 @@ bool GroupBy::operator!=(const GroupBy& other) const {
     return value != other.value;
 }
 
+}
 }

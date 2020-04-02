@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef ITEMDESCRIPTION_H
-#define ITEMDESCRIPTION_H
+#ifndef SPORT_ITEMDESCRIPTION_H
+#define SPORT_ITEMDESCRIPTION_H
 
 #include <ctime>
 #include <json/json.h>
@@ -14,6 +14,7 @@
 #include "greentop/Time.h"
 
 namespace greentop {
+namespace sport {
 /**
  * This object contains some text which may be useful to render a betting history view. It offers
  * no long-term warranty as to the correctness of the text.
@@ -103,5 +104,6 @@ class ItemDescription : public JsonMember {
 };
 
 }
+}
 
-#endif // ITEMDESCRIPTION_H
+#endif // SPORT_ITEMDESCRIPTION_H

@@ -5,6 +5,7 @@
 #include "greentop/account/GetVendorClientIdResponse.h"
 
 namespace greentop {
+namespace account {
 
 GetVendorClientIdResponse::GetVendorClientIdResponse() {
 }
@@ -40,6 +41,4 @@ void GetVendorClientIdResponse::setResponse(const std::string& response) {
 
 
 }
-
-
-
+}

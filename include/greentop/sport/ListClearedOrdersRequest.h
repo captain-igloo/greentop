@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LISTCLEAREDORDERSREQUEST_H
-#define LISTCLEAREDORDERSREQUEST_H
+#ifndef SPORT_LISTCLEAREDORDERSREQUEST_H
+#define SPORT_LISTCLEAREDORDERSREQUEST_H
 
 #include <json/json.h>
 #include <set>
@@ -19,6 +19,7 @@
 #include "greentop/sport/enum/Side.h"
 
 namespace greentop {
+namespace sport {
 
 class ListClearedOrdersRequest : public JsonRequest {
     public:
@@ -33,7 +34,7 @@ class ListClearedOrdersRequest : public JsonRequest {
             const std::set<std::string>& customerOrderRefs = std::set<std::string>(),
             const std::set<std::string>& customerStrategyRefs = std::set<std::string>(),
             const Side& side = Side(),
-            const TimeRange& settledDateRange = TimeRange(),
+            const common::TimeRange& settledDateRange = common::TimeRange(),
             const GroupBy& groupBy = GroupBy(),
             const Optional<bool>& includeItemDescription = Optional<bool>(),
             const std::string& locale = std::string(),
@@ -73,8 +74,8 @@ class ListClearedOrdersRequest : public JsonRequest {
         const Side& getSide() const;
         void setSide(const Side& side);
 
-        const TimeRange& getSettledDateRange() const;
-        void setSettledDateRange(const TimeRange& settledDateRange);
+        const common::TimeRange& getSettledDateRange() const;
+        void setSettledDateRange(const common::TimeRange& settledDateRange);
 
         const GroupBy& getGroupBy() const;
         void setGroupBy(const GroupBy& groupBy);
@@ -135,7 +136,7 @@ class ListClearedOrdersRequest : public JsonRequest {
          * will be included in the results. If the from is later than the to, no results will be
          * returned.
          */
-        TimeRange settledDateRange;
+        common::TimeRange settledDateRange;
         /**
          * How to aggregate the lines, if not supplied then the lowest level is returned, i.e. bet
          * by bet This is only applicable to SETTLED BetStatus.
@@ -163,5 +164,6 @@ class ListClearedOrdersRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // LISTCLEAREDORDERSREQUEST_H
+#endif // SPORT_LISTCLEAREDORDERSREQUEST_H

@@ -5,6 +5,7 @@
 #include "greentop/sport/CancelInstruction.h"
 
 namespace greentop {
+namespace sport {
 
 CancelInstruction::CancelInstruction() {
 }
@@ -55,6 +56,4 @@ void CancelInstruction::setSizeReduction(const Optional<double>& sizeReduction) 
 
 
 }
-
-
-
+}
