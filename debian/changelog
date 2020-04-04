@@ -1,3 +1,9 @@
+libgreentop (0.16.0+xenial) xenial; urgency=medium
+
+  * add namespaces to prevent clashes
+
+ -- Colin Doig <colindoig@gmail.com>  Sun, 05 Apr 2020 09:14:02 +1200
+
 libgreentop (0.15.0+xenial) xenial; urgency=medium
 
   * stream API
