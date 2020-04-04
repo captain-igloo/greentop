@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string TimeGranularity::DAYS = "DAYS";
 const std::string TimeGranularity::HOURS = "HOURS";
@@ -38,4 +39,5 @@ bool TimeGranularity::operator!=(const TimeGranularity& other) const {
     return value != other.value;
 }
 
+}
 }

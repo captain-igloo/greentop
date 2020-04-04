@@ -5,6 +5,7 @@
 #include "greentop/account/AffiliateRelation.h"
 
 namespace greentop {
+namespace account {
 
 AffiliateRelation::AffiliateRelation() {
 }
@@ -55,6 +56,4 @@ void AffiliateRelation::setStatus(const AffiliateRelationStatus& status) {
 
 
 }
-
-
-
+}

@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef ORDERPROJECTION_H
-#define ORDERPROJECTION_H
+#ifndef SPORT_ENUM_ORDERPROJECTION_H
+#define SPORT_ENUM_ORDERPROJECTION_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class OrderProjection : public Enum<OrderProjection> {
 
@@ -35,5 +36,6 @@ class OrderProjection : public Enum<OrderProjection> {
 };
 
 }
+}
 
-#endif // ORDERPROJECTION_H
+#endif // SPORT_ENUM_ORDERPROJECTION_H

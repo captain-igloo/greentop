@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef ORDER_H
-#define ORDER_H
+#ifndef SPORT_ORDER_H
+#define SPORT_ORDER_H
 
 #include <ctime>
 #include <json/json.h>
@@ -18,6 +18,7 @@
 #include "greentop/sport/enum/Side.h"
 
 namespace greentop {
+namespace sport {
 
 class Order : public JsonMember {
     public:
@@ -170,5 +171,6 @@ class Order : public JsonMember {
 };
 
 }
+}
 
-#endif // ORDER_H
+#endif // SPORT_ORDER_H

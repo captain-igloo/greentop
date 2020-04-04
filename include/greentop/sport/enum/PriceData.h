@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef PRICEDATA_H
-#define PRICEDATA_H
+#ifndef SPORT_ENUM_PRICEDATA_H
+#define SPORT_ENUM_PRICEDATA_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class PriceData : public Enum<PriceData> {
 
@@ -41,5 +42,6 @@ class PriceData : public Enum<PriceData> {
 };
 
 }
+}
 
-#endif // PRICEDATA_H
+#endif // SPORT_ENUM_PRICEDATA_H

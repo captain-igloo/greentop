@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace account {
 
 const std::string IncludeItem::ALL = "ALL";
 const std::string IncludeItem::EXCHANGE = "EXCHANGE";
@@ -40,4 +41,5 @@ bool IncludeItem::operator!=(const IncludeItem& other) const {
     return value != other.value;
 }
 
+}
 }

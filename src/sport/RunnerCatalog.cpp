@@ -5,6 +5,7 @@
 #include "greentop/sport/RunnerCatalog.h"
 
 namespace greentop {
+namespace sport {
 
 RunnerCatalog::RunnerCatalog() {
 }
@@ -107,6 +108,4 @@ void RunnerCatalog::setMetadata(const std::map<std::string, std::string>& metada
 
 
 }
-
-
-
+}

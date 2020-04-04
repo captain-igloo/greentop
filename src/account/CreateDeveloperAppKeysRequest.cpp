@@ -5,6 +5,7 @@
 #include "greentop/account/CreateDeveloperAppKeysRequest.h"
 
 namespace greentop {
+namespace account {
 
 CreateDeveloperAppKeysRequest::CreateDeveloperAppKeysRequest() {
 }
@@ -40,6 +41,4 @@ void CreateDeveloperAppKeysRequest::setAppName(const std::string& appName) {
 
 
 }
-
-
-
+}

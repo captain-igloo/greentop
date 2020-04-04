@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef TIMERANGERESULT_H
-#define TIMERANGERESULT_H
+#ifndef SPORT_TIMERANGERESULT_H
+#define SPORT_TIMERANGERESULT_H
 
 #include <json/json.h>
 
@@ -12,13 +12,14 @@
 #include "greentop/common/TimeRange.h"
 
 namespace greentop {
+namespace sport {
 /**
  * TimeRange Result
  */
 class TimeRangeResult : public JsonMember {
     public:
 
-        TimeRangeResult(const TimeRange& timeRange = TimeRange(),
+        TimeRangeResult(const common::TimeRange& timeRange = common::TimeRange(),
             const Optional<int32_t>& marketCount = Optional<int32_t>());
 
         virtual void fromJson(const Json::Value& json);
@@ -27,8 +28,8 @@ class TimeRangeResult : public JsonMember {
 
         virtual bool isValid() const;
 
-        const TimeRange& getTimeRange() const;
-        void setTimeRange(const TimeRange& timeRange);
+        const common::TimeRange& getTimeRange() const;
+        void setTimeRange(const common::TimeRange& timeRange);
 
         const Optional<int32_t>& getMarketCount() const;
         void setMarketCount(const Optional<int32_t>& marketCount);
@@ -38,7 +39,7 @@ class TimeRangeResult : public JsonMember {
         /**
          * TimeRange
          */
-        TimeRange timeRange;
+        common::TimeRange timeRange;
         /**
          * Count of markets associated with this TimeRange
          */
@@ -46,5 +47,6 @@ class TimeRangeResult : public JsonMember {
 };
 
 }
+}
 
-#endif // TIMERANGERESULT_H
+#endif // SPORT_TIMERANGERESULT_H

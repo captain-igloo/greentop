@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef CLEAREDORDERSUMMARYREPORT_H
-#define CLEAREDORDERSUMMARYREPORT_H
+#ifndef SPORT_CLEAREDORDERSUMMARYREPORT_H
+#define SPORT_CLEAREDORDERSUMMARYREPORT_H
 
 #include <json/json.h>
 #include <vector>
@@ -13,6 +13,7 @@
 #include "greentop/sport/ClearedOrderSummary.h"
 
 namespace greentop {
+namespace sport {
 /**
  * A container representing search results.
  */
@@ -51,5 +52,6 @@ class ClearedOrderSummaryReport : public JsonResponse {
 };
 
 }
+}
 
-#endif // CLEAREDORDERSUMMARYREPORT_H
+#endif // SPORT_CLEAREDORDERSUMMARYREPORT_H

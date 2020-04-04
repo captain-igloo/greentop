@@ -5,6 +5,7 @@
 #include "greentop/sport/Runner.h"
 
 namespace greentop {
+namespace sport {
 
 Runner::Runner() {
 }
@@ -226,6 +227,4 @@ void Runner::setMatchesByStrategy(const std::map<std::string, Matches>& matchesB
 
 
 }
-
-
-
+}

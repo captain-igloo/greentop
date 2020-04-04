@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef GETDEVELOPERAPPKEYSRESPONSE_H
-#define GETDEVELOPERAPPKEYSRESPONSE_H
+#ifndef ACCOUNT_GETDEVELOPERAPPKEYSRESPONSE_H
+#define ACCOUNT_GETDEVELOPERAPPKEYSRESPONSE_H
 
 #include <json/json.h>
 #include <vector>
@@ -12,6 +12,7 @@
 #include "greentop/account/DeveloperApp.h"
 
 namespace greentop {
+namespace account {
 
 class GetDeveloperAppKeysResponse : public JsonResponse {
     public:
@@ -35,5 +36,6 @@ class GetDeveloperAppKeysResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // GETDEVELOPERAPPKEYSRESPONSE_H
+#endif // ACCOUNT_GETDEVELOPERAPPKEYSRESPONSE_H

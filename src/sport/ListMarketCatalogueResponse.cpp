@@ -5,6 +5,7 @@
 #include "greentop/sport/ListMarketCatalogueResponse.h"
 
 namespace greentop {
+namespace sport {
 
 ListMarketCatalogueResponse::ListMarketCatalogueResponse() {
 }
@@ -46,6 +47,4 @@ void ListMarketCatalogueResponse::setMarketCatalogues(const std::vector<MarketCa
 
 
 }
-
-
-
+}

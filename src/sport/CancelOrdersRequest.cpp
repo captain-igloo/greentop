@@ -5,6 +5,7 @@
 #include "greentop/sport/CancelOrdersRequest.h"
 
 namespace greentop {
+namespace sport {
 
 
 CancelOrdersRequest::CancelOrdersRequest(const std::string& marketId,
@@ -74,6 +75,4 @@ void CancelOrdersRequest::setCustomerRef(const std::string& customerRef) {
 
 
 }
-
-
-
+}

@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef BETSTATUS_H
-#define BETSTATUS_H
+#ifndef SPORT_ENUM_BETSTATUS_H
+#define SPORT_ENUM_BETSTATUS_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class BetStatus : public Enum<BetStatus> {
 
@@ -46,5 +47,6 @@ class BetStatus : public Enum<BetStatus> {
 };
 
 }
+}
 
-#endif // BETSTATUS_H
+#endif // SPORT_ENUM_BETSTATUS_H

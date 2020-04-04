@@ -197,351 +197,351 @@ menu::Menu& ExchangeApi::getMenu() {
     return menu;
 }
 
-ListEventTypesResponse
-ExchangeApi::listEventTypes(const ListEventTypesRequest& request) const {
-    ListEventTypesResponse response;
+sport::ListEventTypesResponse
+ExchangeApi::listEventTypes(const sport::ListEventTypesRequest& request) const {
+    sport::ListEventTypesResponse response;
     performRequest(Api::BETTING, "listEventTypes", request, response);
     return response;
 }
 
-ListCompetitionsResponse
-ExchangeApi::listCompetitions(const ListCompetitionsRequest& request) const {
-    ListCompetitionsResponse response;
+sport::ListCompetitionsResponse
+ExchangeApi::listCompetitions(const sport::ListCompetitionsRequest& request) const {
+    sport::ListCompetitionsResponse response;
     performRequest(Api::BETTING, "listCompetitions", request, response);
     return response;
 }
 
-ListTimeRangesResponse
-ExchangeApi::listTimeRanges(const ListTimeRangesRequest& request) const {
-    ListTimeRangesResponse response;
+sport::ListTimeRangesResponse
+ExchangeApi::listTimeRanges(const sport::ListTimeRangesRequest& request) const {
+    sport::ListTimeRangesResponse response;
     performRequest(Api::BETTING, "listTimeRanges", request, response);
     return response;
 }
 
-ListEventsResponse
-ExchangeApi::listEvents(const ListEventsRequest& request) const {
-    ListEventsResponse response;
+sport::ListEventsResponse
+ExchangeApi::listEvents(const sport::ListEventsRequest& request) const {
+    sport::ListEventsResponse response;
     performRequest(Api::BETTING, "listEvents", request, response);
     return response;
 }
 
-ListMarketTypesResponse
-ExchangeApi::listMarketTypes(const ListMarketTypesRequest& request) const {
-    ListMarketTypesResponse response;
+sport::ListMarketTypesResponse
+ExchangeApi::listMarketTypes(const sport::ListMarketTypesRequest& request) const {
+    sport::ListMarketTypesResponse response;
     performRequest(Api::BETTING, "listMarketTypes", request, response);
     return response;
 }
 
-ListCountriesResponse
-ExchangeApi::listCountries(const ListCountriesRequest& request) const {
-    ListCountriesResponse response;
+sport::ListCountriesResponse
+ExchangeApi::listCountries(const sport::ListCountriesRequest& request) const {
+    sport::ListCountriesResponse response;
     performRequest(Api::BETTING, "listCountries", request, response);
     return response;
 }
 
-ListVenuesResponse
-ExchangeApi::listVenues(const ListVenuesRequest& request) const {
-    ListVenuesResponse response;
+sport::ListVenuesResponse
+ExchangeApi::listVenues(const sport::ListVenuesRequest& request) const {
+    sport::ListVenuesResponse response;
     performRequest(Api::BETTING, "listVenues", request, response);
     return response;
 }
 
-ListMarketCatalogueResponse
-ExchangeApi::listMarketCatalogue(const ListMarketCatalogueRequest& request) const {
-    ListMarketCatalogueResponse response;
+sport::ListMarketCatalogueResponse
+ExchangeApi::listMarketCatalogue(const sport::ListMarketCatalogueRequest& request) const {
+    sport::ListMarketCatalogueResponse response;
     performRequest(Api::BETTING, "listMarketCatalogue", request, response);
     return response;
 }
 
-ListMarketBookResponse
-ExchangeApi::listMarketBook(const ListMarketBookRequest& request) const {
-    ListMarketBookResponse response;
+sport::ListMarketBookResponse
+ExchangeApi::listMarketBook(const sport::ListMarketBookRequest& request) const {
+    sport::ListMarketBookResponse response;
     performRequest(Api::BETTING, "listMarketBook", request, response);
     return response;
 }
 
-ListRunnerBookResponse
-ExchangeApi::listRunnerBook(const ListRunnerBookRequest& request) const {
-    ListRunnerBookResponse response;
+sport::ListRunnerBookResponse
+ExchangeApi::listRunnerBook(const sport::ListRunnerBookRequest& request) const {
+    sport::ListRunnerBookResponse response;
     performRequest(Api::BETTING, "listRunnerBook", request, response);
     return response;
 }
 
-CurrentOrderSummaryReport
-ExchangeApi::listCurrentOrders(const ListCurrentOrdersRequest& request) const {
-    CurrentOrderSummaryReport response;
+sport::CurrentOrderSummaryReport
+ExchangeApi::listCurrentOrders(const sport::ListCurrentOrdersRequest& request) const {
+    sport::CurrentOrderSummaryReport response;
     performRequest(Api::BETTING, "listCurrentOrders", request, response);
     return response;
 }
 
-ClearedOrderSummaryReport
-ExchangeApi::listClearedOrders(const ListClearedOrdersRequest& request) const {
-    ClearedOrderSummaryReport response;
+sport::ClearedOrderSummaryReport
+ExchangeApi::listClearedOrders(const sport::ListClearedOrdersRequest& request) const {
+    sport::ClearedOrderSummaryReport response;
     performRequest(Api::BETTING, "listClearedOrders", request, response);
     return response;
 }
 
-PlaceExecutionReport
-ExchangeApi::placeOrders(const PlaceOrdersRequest& request) const {
-    PlaceExecutionReport response;
+sport::PlaceExecutionReport
+ExchangeApi::placeOrders(const sport::PlaceOrdersRequest& request) const {
+    sport::PlaceExecutionReport response;
     performRequest(Api::BETTING, "placeOrders", request, response);
     return response;
 }
 
-CancelExecutionReport
-ExchangeApi::cancelOrders(const CancelOrdersRequest& request) const {
-    CancelExecutionReport response;
+sport::CancelExecutionReport
+ExchangeApi::cancelOrders(const sport::CancelOrdersRequest& request) const {
+    sport::CancelExecutionReport response;
     performRequest(Api::BETTING, "cancelOrders", request, response);
     return response;
 }
 
-ReplaceExecutionReport
-ExchangeApi::replaceOrders(const ReplaceOrdersRequest& request) const {
-    ReplaceExecutionReport response;
+sport::ReplaceExecutionReport
+ExchangeApi::replaceOrders(const sport::ReplaceOrdersRequest& request) const {
+    sport::ReplaceExecutionReport response;
     performRequest(Api::BETTING, "replaceOrders", request, response);
     return response;
 }
 
-UpdateExecutionReport
-ExchangeApi::updateOrders(const UpdateOrdersRequest& request) const {
-    UpdateExecutionReport response;
+sport::UpdateExecutionReport
+ExchangeApi::updateOrders(const sport::UpdateOrdersRequest& request) const {
+    sport::UpdateExecutionReport response;
     performRequest(Api::BETTING, "updateOrders", request, response);
     return response;
 }
 
-ListMarketProfitAndLossResponse
-ExchangeApi::listMarketProfitAndLoss(const ListMarketProfitAndLossRequest& request) const {
-    ListMarketProfitAndLossResponse response;
+sport::ListMarketProfitAndLossResponse
+ExchangeApi::listMarketProfitAndLoss(const sport::ListMarketProfitAndLossRequest& request) const {
+    sport::ListMarketProfitAndLossResponse response;
     performRequest(Api::BETTING, "listMarketProfitAndLoss", request, response);
     return response;
 }
 
-SetDefaultExposureLimitForMarketGroupsResponse
-ExchangeApi::setDefaultExposureLimitForMarketGroups(const SetDefaultExposureLimitForMarketGroupsRequest& request) const {
-    SetDefaultExposureLimitForMarketGroupsResponse response;
+sport::SetDefaultExposureLimitForMarketGroupsResponse
+ExchangeApi::setDefaultExposureLimitForMarketGroups(const sport::SetDefaultExposureLimitForMarketGroupsRequest& request) const {
+    sport::SetDefaultExposureLimitForMarketGroupsResponse response;
     performRequest(Api::BETTING, "setDefaultExposureLimitForMarketGroups", request, response);
     return response;
 }
 
-SetExposureLimitForMarketGroupResponse
-ExchangeApi::setExposureLimitForMarketGroup(const SetExposureLimitForMarketGroupRequest& request) const {
-    SetExposureLimitForMarketGroupResponse response;
+sport::SetExposureLimitForMarketGroupResponse
+ExchangeApi::setExposureLimitForMarketGroup(const sport::SetExposureLimitForMarketGroupRequest& request) const {
+    sport::SetExposureLimitForMarketGroupResponse response;
     performRequest(Api::BETTING, "setExposureLimitForMarketGroup", request, response);
     return response;
 }
 
-RemoveDefaultExposureLimitForMarketGroupsResponse
-ExchangeApi::removeDefaultExposureLimitForMarketGroups(const RemoveDefaultExposureLimitForMarketGroupsRequest& request) const {
-    RemoveDefaultExposureLimitForMarketGroupsResponse response;
+sport::RemoveDefaultExposureLimitForMarketGroupsResponse
+ExchangeApi::removeDefaultExposureLimitForMarketGroups(const sport::RemoveDefaultExposureLimitForMarketGroupsRequest& request) const {
+    sport::RemoveDefaultExposureLimitForMarketGroupsResponse response;
     performRequest(Api::BETTING, "removeDefaultExposureLimitForMarketGroups", request, response);
     return response;
 }
 
-RemoveExposureLimitForMarketGroupResponse
-ExchangeApi::removeExposureLimitForMarketGroup(const RemoveExposureLimitForMarketGroupRequest& request) const {
-    RemoveExposureLimitForMarketGroupResponse response;
+sport::RemoveExposureLimitForMarketGroupResponse
+ExchangeApi::removeExposureLimitForMarketGroup(const sport::RemoveExposureLimitForMarketGroupRequest& request) const {
+    sport::RemoveExposureLimitForMarketGroupResponse response;
     performRequest(Api::BETTING, "removeExposureLimitForMarketGroup", request, response);
     return response;
 }
 
-ListExposureLimitsForMarketGroupsResponse
-ExchangeApi::listExposureLimitsForMarketGroups(const ListExposureLimitsForMarketGroupsRequest& request) const {
-    ListExposureLimitsForMarketGroupsResponse response;
+sport::ListExposureLimitsForMarketGroupsResponse
+ExchangeApi::listExposureLimitsForMarketGroups(const sport::ListExposureLimitsForMarketGroupsRequest& request) const {
+    sport::ListExposureLimitsForMarketGroupsResponse response;
     performRequest(Api::BETTING, "listExposureLimitsForMarketGroups", request, response);
     return response;
 }
 
-UnblockMarketGroupResponse
-ExchangeApi::unblockMarketGroup(const UnblockMarketGroupRequest& request) const {
-    UnblockMarketGroupResponse response;
+sport::UnblockMarketGroupResponse
+ExchangeApi::unblockMarketGroup(const sport::UnblockMarketGroupRequest& request) const {
+    sport::UnblockMarketGroupResponse response;
     performRequest(Api::BETTING, "unblockMarketGroup", request, response);
     return response;
 }
 
-GetExposureReuseEnabledEventsResponse
+sport::GetExposureReuseEnabledEventsResponse
 ExchangeApi::getExposureReuseEnabledEvents() const {
     DummyRequest request;
-    GetExposureReuseEnabledEventsResponse response;
+    sport::GetExposureReuseEnabledEventsResponse response;
     performRequest(Api::BETTING, "getExposureReuseEnabledEvents", request, response);
     return response;
 }
 
-AddExposureReuseEnabledEventsResponse
-ExchangeApi::addExposureReuseEnabledEvents(const AddExposureReuseEnabledEventsRequest& request) const {
-    AddExposureReuseEnabledEventsResponse response;
+sport::AddExposureReuseEnabledEventsResponse
+ExchangeApi::addExposureReuseEnabledEvents(const sport::AddExposureReuseEnabledEventsRequest& request) const {
+    sport::AddExposureReuseEnabledEventsResponse response;
     performRequest(Api::BETTING, "addExposureReuseEnabledEvents", request, response);
     return response;
 }
 
-RemoveExposureReuseEnabledEventsResponse
-ExchangeApi::removeExposureReuseEnabledEvents(const RemoveExposureReuseEnabledEventsRequest& request) const {
-    RemoveExposureReuseEnabledEventsResponse response;
+sport::RemoveExposureReuseEnabledEventsResponse
+ExchangeApi::removeExposureReuseEnabledEvents(const sport::RemoveExposureReuseEnabledEventsRequest& request) const {
+    sport::RemoveExposureReuseEnabledEventsResponse response;
     performRequest(Api::BETTING, "removeExposureReuseEnabledEvents", request, response);
     return response;
 }
 
-DeveloperApp
-ExchangeApi::createDeveloperAppKeys(const CreateDeveloperAppKeysRequest& request) const {
-    DeveloperApp response;
+account::DeveloperApp
+ExchangeApi::createDeveloperAppKeys(const account::CreateDeveloperAppKeysRequest& request) const {
+    account::DeveloperApp response;
     performRequest(Api::ACCOUNT, "createDeveloperAppKeys", request, response);
     return response;
 }
 
-GetDeveloperAppKeysResponse
+account::GetDeveloperAppKeysResponse
 ExchangeApi::getDeveloperAppKeys() const {
     DummyRequest request;
-    GetDeveloperAppKeysResponse response;
+    account::GetDeveloperAppKeysResponse response;
     performRequest(Api::ACCOUNT, "getDeveloperAppKeys", request, response);
     return response;
 }
 
-AccountFundsResponse
-ExchangeApi::getAccountFunds(const GetAccountFundsRequest& request) const {
-    AccountFundsResponse response;
+account::AccountFundsResponse
+ExchangeApi::getAccountFunds(const account::GetAccountFundsRequest& request) const {
+    account::AccountFundsResponse response;
     performRequest(Api::ACCOUNT, "getAccountFunds", request, response);
     return response;
 }
 
-TransferResponse
-ExchangeApi::transferFunds(const TransferFundsRequest& request) const {
-    TransferResponse response;
+account::TransferResponse
+ExchangeApi::transferFunds(const account::TransferFundsRequest& request) const {
+    account::TransferResponse response;
     performRequest(Api::ACCOUNT, "transferFunds", request, response);
     return response;
 }
 
-AccountDetailsResponse
+account::AccountDetailsResponse
 ExchangeApi::getAccountDetails() const {
     DummyRequest request;
-    AccountDetailsResponse response;
+    account::AccountDetailsResponse response;
     performRequest(Api::ACCOUNT, "getAccountDetails", request, response);
     return response;
 }
 
-GetVendorClientIdResponse
+account::GetVendorClientIdResponse
 ExchangeApi::getVendorClientId() const {
     DummyRequest request;
-    GetVendorClientIdResponse response;
+    account::GetVendorClientIdResponse response;
     performRequest(Api::ACCOUNT, "getVendorClientId", request, response);
     return response;
 }
 
-GetApplicationSubscriptionTokenResponse
-ExchangeApi::getApplicationSubscriptionToken(const GetApplicationSubscriptionTokenRequest& request) const {
-    GetApplicationSubscriptionTokenResponse response;
+account::GetApplicationSubscriptionTokenResponse
+ExchangeApi::getApplicationSubscriptionToken(const account::GetApplicationSubscriptionTokenRequest& request) const {
+    account::GetApplicationSubscriptionTokenResponse response;
     performRequest(Api::ACCOUNT, "getApplicationSubscriptionToken", request, response);
     return response;
 }
 
-ActivateApplicationSubscriptionResponse
-ExchangeApi::activateApplicationSubscription(const ActivateApplicationSubscriptionRequest& request) const {
-    ActivateApplicationSubscriptionResponse response;
+account::ActivateApplicationSubscriptionResponse
+ExchangeApi::activateApplicationSubscription(const account::ActivateApplicationSubscriptionRequest& request) const {
+    account::ActivateApplicationSubscriptionResponse response;
     performRequest(Api::ACCOUNT, "activateApplicationSubscription", request, response);
     return response;
 }
 
-CancelApplicationSubscriptionResponse
-ExchangeApi::cancelApplicationSubscription(const CancelApplicationSubscriptionRequest& request) const {
-    CancelApplicationSubscriptionResponse response;
+account::CancelApplicationSubscriptionResponse
+ExchangeApi::cancelApplicationSubscription(const account::CancelApplicationSubscriptionRequest& request) const {
+    account::CancelApplicationSubscriptionResponse response;
     performRequest(Api::ACCOUNT, "cancelApplicationSubscription", request, response);
     return response;
 }
 
-UpdateApplicationSubscriptionResponse
-ExchangeApi::updateApplicationSubscription(const UpdateApplicationSubscriptionRequest& request) const {
-    UpdateApplicationSubscriptionResponse response;
+account::UpdateApplicationSubscriptionResponse
+ExchangeApi::updateApplicationSubscription(const account::UpdateApplicationSubscriptionRequest& request) const {
+    account::UpdateApplicationSubscriptionResponse response;
     performRequest(Api::ACCOUNT, "updateApplicationSubscription", request, response);
     return response;
 }
 
-ListApplicationSubscriptionTokensResponse
-ExchangeApi::listApplicationSubscriptionTokens(const ListApplicationSubscriptionTokensRequest& request) const {
-    ListApplicationSubscriptionTokensResponse response;
+account::ListApplicationSubscriptionTokensResponse
+ExchangeApi::listApplicationSubscriptionTokens(const account::ListApplicationSubscriptionTokensRequest& request) const {
+    account::ListApplicationSubscriptionTokensResponse response;
     performRequest(Api::ACCOUNT, "listApplicationSubscriptionTokens", request, response);
     return response;
 }
 
-ListAccountSubscriptionTokensResponse
+account::ListAccountSubscriptionTokensResponse
 ExchangeApi::listAccountSubscriptionTokens() const {
     DummyRequest request;
-    ListAccountSubscriptionTokensResponse response;
+    account::ListAccountSubscriptionTokensResponse response;
     performRequest(Api::ACCOUNT, "listAccountSubscriptionTokens", request, response);
     return response;
 }
 
-GetApplicationSubscriptionHistoryResponse
-ExchangeApi::getApplicationSubscriptionHistory(const GetApplicationSubscriptionHistoryRequest& request) const {
-    GetApplicationSubscriptionHistoryResponse response;
+account::GetApplicationSubscriptionHistoryResponse
+ExchangeApi::getApplicationSubscriptionHistory(const account::GetApplicationSubscriptionHistoryRequest& request) const {
+    account::GetApplicationSubscriptionHistoryResponse response;
     performRequest(Api::ACCOUNT, "getApplicationSubscriptionHistory", request, response);
     return response;
 }
 
-AccountStatementReport
-ExchangeApi::getAccountStatement(const GetAccountStatementRequest& request) const {
-    AccountStatementReport response;
+account::AccountStatementReport
+ExchangeApi::getAccountStatement(const account::GetAccountStatementRequest& request) const {
+    account::AccountStatementReport response;
     performRequest(Api::ACCOUNT, "getAccountStatement", request, response);
     return response;
 }
 
-ListCurrencyRatesResponse
-ExchangeApi::listCurrencyRates(const ListCurrencyRatesRequest& request) const {
-    ListCurrencyRatesResponse response;
+account::ListCurrencyRatesResponse
+ExchangeApi::listCurrencyRates(const account::ListCurrencyRatesRequest& request) const {
+    account::ListCurrencyRatesResponse response;
     performRequest(Api::ACCOUNT, "listCurrencyRates", request, response);
     return response;
 }
 
-AuthorisationResponse
-ExchangeApi::getAuthorisationCode(const GetAuthorisationCodeRequest& request) const {
-    AuthorisationResponse response;
+account::AuthorisationResponse
+ExchangeApi::getAuthorisationCode(const account::GetAuthorisationCodeRequest& request) const {
+    account::AuthorisationResponse response;
     performRequest(Api::ACCOUNT, "getAuthorisationCode", request, response);
     return response;
 }
 
-VendorAccessTokenInfo
-ExchangeApi::token(const TokenRequest& request) const {
-    VendorAccessTokenInfo response;
+account::VendorAccessTokenInfo
+ExchangeApi::token(const account::TokenRequest& request) const {
+    account::VendorAccessTokenInfo response;
     performRequest(Api::ACCOUNT, "token", request, response);
     return response;
 }
 
-VendorDetails
-ExchangeApi::getVendorDetails(const GetVendorDetailsRequest& request) const {
-    VendorDetails response;
+account::VendorDetails
+ExchangeApi::getVendorDetails(const account::GetVendorDetailsRequest& request) const {
+    account::VendorDetails response;
     performRequest(Api::ACCOUNT, "getVendorDetails", request, response);
     return response;
 }
 
-RevokeAccessToWebAppResponse
-ExchangeApi::revokeAccessToWebApp(const RevokeAccessToWebAppRequest& request) const {
-    RevokeAccessToWebAppResponse response;
+account::RevokeAccessToWebAppResponse
+ExchangeApi::revokeAccessToWebApp(const account::RevokeAccessToWebAppRequest& request) const {
+    account::RevokeAccessToWebAppResponse response;
     performRequest(Api::ACCOUNT, "revokeAccessToWebApp", request, response);
     return response;
 }
 
-ListAuthorizedWebAppsResponse
+account::ListAuthorizedWebAppsResponse
 ExchangeApi::listAuthorizedWebApps() const {
     DummyRequest request;
-    ListAuthorizedWebAppsResponse response;
+    account::ListAuthorizedWebAppsResponse response;
     performRequest(Api::ACCOUNT, "listAuthorizedWebApps", request, response);
     return response;
 }
 
-IsAccountSubscribedToWebAppResponse
-ExchangeApi::isAccountSubscribedToWebApp(const IsAccountSubscribedToWebAppRequest& request) const {
-    IsAccountSubscribedToWebAppResponse response;
+account::IsAccountSubscribedToWebAppResponse
+ExchangeApi::isAccountSubscribedToWebApp(const account::IsAccountSubscribedToWebAppRequest& request) const {
+    account::IsAccountSubscribedToWebAppResponse response;
     performRequest(Api::ACCOUNT, "listAuthorizedWebApps", request, response);
     return response;
 }
 
-GetAffiliateRelationResponse
-ExchangeApi::getAffiliateRelation(const GetAffiliateRelationRequest& request) const {
-    GetAffiliateRelationResponse response;
+account::GetAffiliateRelationResponse
+ExchangeApi::getAffiliateRelation(const account::GetAffiliateRelationRequest& request) const {
+    account::GetAffiliateRelationResponse response;
     performRequest(Api::ACCOUNT, "getAffiliateRelation", request, response);
     return response;
 }
 
-HeartbeatReport
-ExchangeApi::heartbeat(const HeartbeatRequest& request) const {
-    HeartbeatReport response;
+heartbeat::HeartbeatReport
+ExchangeApi::heartbeat(const heartbeat::HeartbeatRequest& request) const {
+    heartbeat::HeartbeatReport response;
     performRequest(Api::HEARTBEAT, "heartbeat", request, response);
     return response;
 }

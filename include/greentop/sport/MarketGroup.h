@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETGROUP_H
-#define MARKETGROUP_H
+#ifndef SPORT_MARKETGROUP_H
+#define SPORT_MARKETGROUP_H
 
 #include <json/json.h>
 
@@ -12,6 +12,7 @@
 #include "greentop/sport/enum/MarketGroupType.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Represents a market group
  */
@@ -47,5 +48,6 @@ class MarketGroup : public JsonMember {
 };
 
 }
+}
 
-#endif // MARKETGROUP_H
+#endif // SPORT_MARKETGROUP_H

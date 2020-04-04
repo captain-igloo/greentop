@@ -5,6 +5,7 @@
 #include "greentop/sport/UpdateInstructionReport.h"
 
 namespace greentop {
+namespace sport {
 
 UpdateInstructionReport::UpdateInstructionReport() {
 }
@@ -70,6 +71,4 @@ void UpdateInstructionReport::setInstruction(const UpdateInstruction& instructio
 
 
 }
-
-
-
+}

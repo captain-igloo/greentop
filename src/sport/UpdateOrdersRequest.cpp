@@ -5,6 +5,7 @@
 #include "greentop/sport/UpdateOrdersRequest.h"
 
 namespace greentop {
+namespace sport {
 
 UpdateOrdersRequest::UpdateOrdersRequest() {
 }
@@ -76,6 +77,4 @@ void UpdateOrdersRequest::setCustomerRef(const std::string& customerRef) {
 
 
 }
-
-
-
+}

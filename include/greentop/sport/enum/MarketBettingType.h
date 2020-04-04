@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETBETTINGTYPE_H
-#define MARKETBETTINGTYPE_H
+#ifndef SPORT_ENUM_MARKETBETTINGTYPE_H
+#define SPORT_ENUM_MARKETBETTINGTYPE_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class MarketBettingType : public Enum<MarketBettingType> {
 
@@ -59,5 +60,6 @@ class MarketBettingType : public Enum<MarketBettingType> {
 };
 
 }
+}
 
-#endif // MARKETBETTINGTYPE_H
+#endif // SPORT_ENUM_MARKETBETTINGTYPE_H

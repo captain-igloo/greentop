@@ -5,6 +5,7 @@
 #include "greentop/account/GetDeveloperAppKeysResponse.h"
 
 namespace greentop {
+namespace account {
 
 GetDeveloperAppKeysResponse::GetDeveloperAppKeysResponse() {
 }
@@ -46,6 +47,4 @@ void GetDeveloperAppKeysResponse::setDeveloperApps(const std::vector<DeveloperAp
 
 
 }
-
-
-
+}

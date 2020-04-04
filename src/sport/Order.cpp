@@ -5,6 +5,7 @@
 #include "greentop/sport/Order.h"
 
 namespace greentop {
+namespace sport {
 
 Order::Order() {
 }
@@ -282,6 +283,4 @@ void Order::setCustomerStrategyRef(const std::string& customerStrategyRef) {
 
 
 }
-
-
-
+}

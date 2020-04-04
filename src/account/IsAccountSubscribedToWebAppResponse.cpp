@@ -5,6 +5,7 @@
 #include "greentop/account/IsAccountSubscribedToWebAppResponse.h"
 
 namespace greentop {
+namespace account {
 
 IsAccountSubscribedToWebAppResponse::IsAccountSubscribedToWebAppResponse() {
 }
@@ -40,6 +41,4 @@ void IsAccountSubscribedToWebAppResponse::setResponse(const Optional<bool>& resp
 
 
 }
-
-
-
+}

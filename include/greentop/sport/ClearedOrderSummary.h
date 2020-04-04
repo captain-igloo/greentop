@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef CLEAREDORDERSUMMARY_H
-#define CLEAREDORDERSUMMARY_H
+#ifndef SPORT_CLEAREDORDERSUMMARY_H
+#define SPORT_CLEAREDORDERSUMMARY_H
 
 #include <ctime>
 #include <json/json.h>
@@ -18,6 +18,7 @@
 #include "greentop/sport/enum/Side.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Summary of a cleared order.
  */
@@ -246,5 +247,6 @@ class ClearedOrderSummary : public JsonMember {
 };
 
 }
+}
 
-#endif // CLEAREDORDERSUMMARY_H
+#endif // SPORT_CLEAREDORDERSUMMARY_H

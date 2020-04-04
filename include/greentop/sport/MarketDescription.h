@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETDESCRIPTION_H
-#define MARKETDESCRIPTION_H
+#ifndef SPORT_MARKETDESCRIPTION_H
+#define SPORT_MARKETDESCRIPTION_H
 
 #include <ctime>
 #include <json/json.h>
@@ -17,6 +17,7 @@
 #include "greentop/sport/enum/MarketBettingType.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Market definition
  */
@@ -176,5 +177,6 @@ class MarketDescription : public JsonMember {
 };
 
 }
+}
 
-#endif // MARKETDESCRIPTION_H
+#endif // SPORT_MARKETDESCRIPTION_H

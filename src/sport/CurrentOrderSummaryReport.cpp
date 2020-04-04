@@ -5,6 +5,7 @@
 #include "greentop/sport/CurrentOrderSummaryReport.h"
 
 namespace greentop {
+namespace sport {
 
 CurrentOrderSummaryReport::CurrentOrderSummaryReport() {
 }
@@ -63,6 +64,4 @@ void CurrentOrderSummaryReport::setMoreAvailable(const Optional<bool>& moreAvail
 
 
 }
-
-
-
+}

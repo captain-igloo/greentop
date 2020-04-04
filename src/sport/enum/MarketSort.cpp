@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string MarketSort::MINIMUM_TRADED = "MINIMUM_TRADED";
 const std::string MarketSort::MAXIMUM_TRADED = "MAXIMUM_TRADED";
@@ -44,4 +45,5 @@ bool MarketSort::operator!=(const MarketSort& other) const {
     return value != other.value;
 }
 
+}
 }

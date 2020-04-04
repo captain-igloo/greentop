@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LISTCURRENCYRATESRESPONSE_H
-#define LISTCURRENCYRATESRESPONSE_H
+#ifndef ACCOUNT_LISTCURRENCYRATESRESPONSE_H
+#define ACCOUNT_LISTCURRENCYRATESRESPONSE_H
 
 #include <json/json.h>
 #include <vector>
@@ -12,6 +12,7 @@
 #include "greentop/account/CurrencyRate.h"
 
 namespace greentop {
+namespace account {
 
 class ListCurrencyRatesResponse : public JsonResponse {
     public:
@@ -35,5 +36,6 @@ class ListCurrencyRatesResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // LISTCURRENCYRATESRESPONSE_H
+#endif // ACCOUNT_LISTCURRENCYRATESRESPONSE_H

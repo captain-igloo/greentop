@@ -5,6 +5,7 @@
 #include "greentop/sport/ExposureLimitsForMarketGroups.h"
 
 namespace greentop {
+namespace sport {
 
 ExposureLimitsForMarketGroups::ExposureLimitsForMarketGroups() {
 }
@@ -97,6 +98,4 @@ void ExposureLimitsForMarketGroups::setBlockedMarketGroups(const std::vector<Mar
 
 
 }
-
-
-
+}

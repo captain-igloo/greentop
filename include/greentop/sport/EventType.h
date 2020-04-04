@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef EVENTTYPE_H
-#define EVENTTYPE_H
+#ifndef SPORT_EVENTTYPE_H
+#define SPORT_EVENTTYPE_H
 
 #include <json/json.h>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/JsonMember.h"
 
 namespace greentop {
+namespace sport {
 /**
  * EventType
  */
@@ -45,5 +46,6 @@ class EventType : public JsonMember {
 };
 
 }
+}
 
-#endif // EVENTTYPE_H
+#endif // SPORT_EVENTTYPE_H

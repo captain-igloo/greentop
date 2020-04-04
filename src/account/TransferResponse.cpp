@@ -5,6 +5,7 @@
 #include "greentop/account/TransferResponse.h"
 
 namespace greentop {
+namespace account {
 
 TransferResponse::TransferResponse() {
 }
@@ -42,6 +43,4 @@ void TransferResponse::setTransactionId(const std::string& transactionId) {
 
 
 }
-
-
-
+}

@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string ExecutionReportErrorCode::ERROR_IN_MATCHER = "ERROR_IN_MATCHER";
 const std::string ExecutionReportErrorCode::PROCESSED_WITH_ERRORS = "PROCESSED_WITH_ERRORS";
@@ -80,4 +81,5 @@ bool ExecutionReportErrorCode::operator!=(const ExecutionReportErrorCode& other)
     return value != other.value;
 }
 
+}
 }

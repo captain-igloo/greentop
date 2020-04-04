@@ -5,6 +5,7 @@
 #include "greentop/sport/MarketGroup.h"
 
 namespace greentop {
+namespace sport {
 
 MarketGroup::MarketGroup() {
 }
@@ -55,6 +56,4 @@ void MarketGroup::setId(const MarketGroupId& id) {
 
 
 }
-
-
-
+}

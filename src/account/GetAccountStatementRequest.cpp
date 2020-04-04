@@ -5,12 +5,13 @@
 #include "greentop/account/GetAccountStatementRequest.h"
 
 namespace greentop {
+namespace account {
 
 
 GetAccountStatementRequest::GetAccountStatementRequest(const std::string& locale,
     const Optional<int32_t>& fromRecord,
     const Optional<int32_t>& recordCount,
-    const TimeRange& itemDateRange,
+    const common::TimeRange& itemDateRange,
     const IncludeItem& includeItem,
     const Wallet& wallet) :
     locale(locale),
@@ -90,10 +91,10 @@ void GetAccountStatementRequest::setRecordCount(const Optional<int32_t>& recordC
     this->recordCount = recordCount;
 }
 
-const TimeRange& GetAccountStatementRequest::getItemDateRange() const {
+const common::TimeRange& GetAccountStatementRequest::getItemDateRange() const {
     return itemDateRange;
 }
-void GetAccountStatementRequest::setItemDateRange(const TimeRange& itemDateRange) {
+void GetAccountStatementRequest::setItemDateRange(const common::TimeRange& itemDateRange) {
     this->itemDateRange = itemDateRange;
 }
 
@@ -113,6 +114,4 @@ void GetAccountStatementRequest::setWallet(const Wallet& wallet) {
 
 
 }
-
-
-
+}

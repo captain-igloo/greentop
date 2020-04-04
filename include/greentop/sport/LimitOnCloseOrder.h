@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LIMITONCLOSEORDER_H
-#define LIMITONCLOSEORDER_H
+#ifndef SPORT_LIMITONCLOSEORDER_H
+#define SPORT_LIMITONCLOSEORDER_H
 
 #include <json/json.h>
 
@@ -11,6 +11,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Place a new LIMIT_ON_CLOSE bet
  */
@@ -46,5 +47,6 @@ class LimitOnCloseOrder : public JsonMember {
 };
 
 }
+}
 
-#endif // LIMITONCLOSEORDER_H
+#endif // SPORT_LIMITONCLOSEORDER_H

@@ -5,6 +5,7 @@
 #include "greentop/sport/ListMarketProfitAndLossRequest.h"
 
 namespace greentop {
+namespace sport {
 
 ListMarketProfitAndLossRequest::ListMarketProfitAndLossRequest() {
 }
@@ -89,6 +90,4 @@ void ListMarketProfitAndLossRequest::setNetOfCommission(const Optional<bool>& ne
 
 
 }
-
-
-
+}

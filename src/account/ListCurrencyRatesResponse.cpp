@@ -5,6 +5,7 @@
 #include "greentop/account/ListCurrencyRatesResponse.h"
 
 namespace greentop {
+namespace account {
 
 ListCurrencyRatesResponse::ListCurrencyRatesResponse() {
 }
@@ -46,6 +47,4 @@ void ListCurrencyRatesResponse::setCurrencyRates(const std::vector<CurrencyRate>
 
 
 }
-
-
-
+}

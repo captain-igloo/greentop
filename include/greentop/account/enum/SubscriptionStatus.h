@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef SUBSCRIPTIONSTATUS_H
-#define SUBSCRIPTIONSTATUS_H
+#ifndef ACCOUNT_ENUM_SUBSCRIPTIONSTATUS_H
+#define ACCOUNT_ENUM_SUBSCRIPTIONSTATUS_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace account {
 
 class SubscriptionStatus : public Enum<SubscriptionStatus> {
 
@@ -49,5 +50,6 @@ class SubscriptionStatus : public Enum<SubscriptionStatus> {
 };
 
 }
+}
 
-#endif // SUBSCRIPTIONSTATUS_H
+#endif // ACCOUNT_ENUM_SUBSCRIPTIONSTATUS_H

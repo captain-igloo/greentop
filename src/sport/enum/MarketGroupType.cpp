@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string MarketGroupType::EVENT = "EVENT";
 
@@ -34,4 +35,5 @@ bool MarketGroupType::operator!=(const MarketGroupType& other) const {
     return value != other.value;
 }
 
+}
 }

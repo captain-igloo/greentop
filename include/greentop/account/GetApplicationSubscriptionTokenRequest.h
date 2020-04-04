@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef GETAPPLICATIONSUBSCRIPTIONTOKENREQUEST_H
-#define GETAPPLICATIONSUBSCRIPTIONTOKENREQUEST_H
+#ifndef ACCOUNT_GETAPPLICATIONSUBSCRIPTIONTOKENREQUEST_H
+#define ACCOUNT_GETAPPLICATIONSUBSCRIPTIONTOKENREQUEST_H
 
 #include <json/json.h>
 #include <string>
@@ -12,6 +12,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace account {
 
 class GetApplicationSubscriptionTokenRequest : public JsonRequest {
     public:
@@ -45,5 +46,6 @@ class GetApplicationSubscriptionTokenRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // GETAPPLICATIONSUBSCRIPTIONTOKENREQUEST_H
+#endif // ACCOUNT_GETAPPLICATIONSUBSCRIPTIONTOKENREQUEST_H

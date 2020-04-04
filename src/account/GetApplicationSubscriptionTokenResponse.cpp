@@ -5,6 +5,7 @@
 #include "greentop/account/GetApplicationSubscriptionTokenResponse.h"
 
 namespace greentop {
+namespace account {
 
 GetApplicationSubscriptionTokenResponse::GetApplicationSubscriptionTokenResponse() {
 }
@@ -40,6 +41,4 @@ void GetApplicationSubscriptionTokenResponse::setResponse(const std::string& res
 
 
 }
-
-
-
+}

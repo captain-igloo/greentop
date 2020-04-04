@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef EVENTRESULT_H
-#define EVENTRESULT_H
+#ifndef SPORT_EVENTRESULT_H
+#define SPORT_EVENTRESULT_H
 
 #include <json/json.h>
 
@@ -12,6 +12,7 @@
 #include "greentop/sport/Event.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Event Result
  */
@@ -46,5 +47,6 @@ class EventResult : public JsonMember {
 };
 
 }
+}
 
-#endif // EVENTRESULT_H
+#endif // SPORT_EVENTRESULT_H

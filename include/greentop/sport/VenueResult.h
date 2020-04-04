@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef VENUERESULT_H
-#define VENUERESULT_H
+#ifndef SPORT_VENUERESULT_H
+#define SPORT_VENUERESULT_H
 
 #include <json/json.h>
 #include <string>
@@ -12,6 +12,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Venue Result
  */
@@ -46,5 +47,6 @@ class VenueResult : public JsonMember {
 };
 
 }
+}
 
-#endif // VENUERESULT_H
+#endif // SPORT_VENUERESULT_H

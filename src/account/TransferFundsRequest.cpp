@@ -5,6 +5,7 @@
 #include "greentop/account/TransferFundsRequest.h"
 
 namespace greentop {
+namespace account {
 
 TransferFundsRequest::TransferFundsRequest() {
 }
@@ -70,6 +71,4 @@ void TransferFundsRequest::setAmount(const Optional<double>& amount) {
 
 
 }
-
-
-
+}

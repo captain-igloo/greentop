@@ -15,19 +15,19 @@ int main(int argc, char* argv[]) {
 
     if (exchangeApi.login(argv[2], argv[3])) {
 
-        BetStatus betStatus(BetStatus::SETTLED);
+        sport::BetStatus betStatus(sport::BetStatus::SETTLED);
 
-        ListClearedOrdersRequest req(betStatus);
+        sport::ListClearedOrdersRequest req(betStatus);
         req.setFromRecord(0);
         req.setRecordCount(5);
 
         if (req.isValid()) {
 
-            ClearedOrderSummaryReport resp = exchangeApi.listClearedOrders(req);
+            sport::ClearedOrderSummaryReport resp = exchangeApi.listClearedOrders(req);
 
             if (resp.isSuccess()) {
 
-                std::vector<ClearedOrderSummary> clearedOrders = resp.getClearedOrders();
+                std::vector<sport::ClearedOrderSummary> clearedOrders = resp.getClearedOrders();
 
                 for (unsigned i = 0; i < clearedOrders.size(); ++i) {
                     std::cout << "Bet id: " << clearedOrders[i].getBetId() << std::endl;

@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef PRICELADDERDESCRIPTION_H
-#define PRICELADDERDESCRIPTION_H
+#ifndef SPORT_PRICELADDERDESCRIPTION_H
+#define SPORT_PRICELADDERDESCRIPTION_H
 
 #include <json/json.h>
 
@@ -11,6 +11,7 @@
 #include "greentop/sport/enum/PriceLadderType.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Description of the price ladder type and any related data.
  */
@@ -38,5 +39,6 @@ class PriceLadderDescription : public JsonMember {
 };
 
 }
+}
 
-#endif // PRICELADDERDESCRIPTION_H
+#endif // SPORT_PRICELADDERDESCRIPTION_H

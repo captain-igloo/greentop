@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef ADDEXPOSUREREUSEENABLEDEVENTSRESPONSE_H
-#define ADDEXPOSUREREUSEENABLEDEVENTSRESPONSE_H
+#ifndef SPORT_ADDEXPOSUREREUSEENABLEDEVENTSRESPONSE_H
+#define SPORT_ADDEXPOSUREREUSEENABLEDEVENTSRESPONSE_H
 
 #include <json/json.h>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/JsonResponse.h"
 
 namespace greentop {
+namespace sport {
 
 class AddExposureReuseEnabledEventsResponse : public JsonResponse {
     public:
@@ -34,5 +35,6 @@ class AddExposureReuseEnabledEventsResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // ADDEXPOSUREREUSEENABLEDEVENTSRESPONSE_H
+#endif // SPORT_ADDEXPOSUREREUSEENABLEDEVENTSRESPONSE_H

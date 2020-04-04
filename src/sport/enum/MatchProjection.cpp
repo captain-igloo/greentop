@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string MatchProjection::NO_ROLLUP = "NO_ROLLUP";
 const std::string MatchProjection::ROLLED_UP_BY_PRICE = "ROLLED_UP_BY_PRICE";
@@ -38,4 +39,5 @@ bool MatchProjection::operator!=(const MatchProjection& other) const {
     return value != other.value;
 }
 
+}
 }

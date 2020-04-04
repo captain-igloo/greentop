@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef KEYLINEDEFINITION_H
-#define KEYLINEDEFINITION_H
+#ifndef STREAM_KEYLINEDEFINITION_H
+#define STREAM_KEYLINEDEFINITION_H
 
 #include <json/json.h>
 #include <vector>
@@ -37,4 +37,4 @@ class KeyLineDefinition : public JsonMember {
 }
 }
 
-#endif // KEYLINEDEFINITION_H
+#endif // STREAM_KEYLINEDEFINITION_H

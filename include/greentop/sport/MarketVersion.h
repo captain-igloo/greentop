@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETVERSION_H
-#define MARKETVERSION_H
+#ifndef SPORT_MARKETVERSION_H
+#define SPORT_MARKETVERSION_H
 
 #include <json/json.h>
 
@@ -11,6 +11,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Market version
  */
@@ -37,5 +38,6 @@ class MarketVersion : public JsonMember {
 };
 
 }
+}
 
-#endif // MARKETVERSION_H
+#endif // SPORT_MARKETVERSION_H

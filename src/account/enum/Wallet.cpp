@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace account {
 
 const std::string Wallet::UK = "UK";
 const std::string Wallet::AUSTRALIAN = "AUSTRALIAN";
@@ -36,4 +37,5 @@ bool Wallet::operator!=(const Wallet& other) const {
     return value != other.value;
 }
 
+}
 }

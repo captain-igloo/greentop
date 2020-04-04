@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef RUNNER_H
-#define RUNNER_H
+#ifndef SPORT_RUNNER_H
+#define SPORT_RUNNER_H
 
 #include <ctime>
 #include <json/json.h>
@@ -20,6 +20,7 @@
 #include "greentop/sport/enum/RunnerStatus.h"
 
 namespace greentop {
+namespace sport {
 /**
  * The dynamic data about runners in a market
  */
@@ -135,5 +136,6 @@ class Runner : public JsonMember {
 };
 
 }
+}
 
-#endif // RUNNER_H
+#endif // SPORT_RUNNER_H

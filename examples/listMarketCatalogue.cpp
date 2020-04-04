@@ -15,21 +15,21 @@ int main(int argc, char* argv[]) {
 
     if (exchangeApi.login(argv[2], argv[3])) {
 
-        MarketFilter filter;
+        sport::MarketFilter filter;
         std::set<std::string> eventIds = {argv[4]};
         filter.setEventIds(eventIds);
 
-        std::set<MarketProjection> marketProjection = {MarketProjection::RUNNER_DESCRIPTION, MarketProjection::MARKET_START_TIME};
-        ListMarketCatalogueRequest req(filter, marketProjection);
+        std::set<sport::MarketProjection> marketProjection = {sport::MarketProjection::RUNNER_DESCRIPTION, sport::MarketProjection::MARKET_START_TIME};
+        sport::ListMarketCatalogueRequest req(filter, marketProjection);
         req.setMaxResults(1000);
 
         if (req.isValid()) {
 
-            ListMarketCatalogueResponse resp = exchangeApi.listMarketCatalogue(req);
+            sport::ListMarketCatalogueResponse resp = exchangeApi.listMarketCatalogue(req);
 
             if (resp.isSuccess()) {
 
-                std::vector<MarketCatalogue> marketCatalogues = resp.getMarketCatalogues();
+                std::vector<sport::MarketCatalogue> marketCatalogues = resp.getMarketCatalogues();
 
                 for (unsigned i = 0; i < marketCatalogues.size(); ++i) {
                     std::cout << marketCatalogues[i].getMarketId() << " " << marketCatalogues[i].getMarketName() << std::endl;

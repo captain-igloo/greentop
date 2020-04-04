@@ -5,6 +5,7 @@
 #include "greentop/account/AccountSubscription.h"
 
 namespace greentop {
+namespace account {
 
 AccountSubscription::AccountSubscription() {
 }
@@ -76,6 +77,4 @@ void AccountSubscription::setApplicationVersionId(const std::string& application
 
 
 }
-
-
-
+}

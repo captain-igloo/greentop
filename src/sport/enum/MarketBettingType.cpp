@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string MarketBettingType::ODDS = "ODDS";
 const std::string MarketBettingType::LINE = "LINE";
@@ -44,4 +45,5 @@ bool MarketBettingType::operator!=(const MarketBettingType& other) const {
     return value != other.value;
 }
 
+}
 }

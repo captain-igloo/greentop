@@ -5,6 +5,7 @@
 #include "greentop/sport/PlaceOrdersRequest.h"
 
 namespace greentop {
+namespace sport {
 
 PlaceOrdersRequest::PlaceOrdersRequest() {
 }
@@ -121,6 +122,4 @@ void PlaceOrdersRequest::setAsync(const Optional<bool>& async) {
 
 
 }
-
-
-
+}

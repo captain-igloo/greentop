@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETLINERANGEINFO_H
-#define MARKETLINERANGEINFO_H
+#ifndef SPORT_MARKETLINERANGEINFO_H
+#define SPORT_MARKETLINERANGEINFO_H
 
 #include <json/json.h>
 #include <string>
@@ -12,6 +12,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Market Line and Range Info
  */
@@ -67,5 +68,6 @@ class MarketLineRangeInfo : public JsonMember {
 };
 
 }
+}
 
-#endif // MARKETLINERANGEINFO_H
+#endif // SPORT_MARKETLINERANGEINFO_H

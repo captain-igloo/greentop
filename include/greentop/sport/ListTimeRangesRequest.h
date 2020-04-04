@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LISTTIMERANGESREQUEST_H
-#define LISTTIMERANGESREQUEST_H
+#ifndef SPORT_LISTTIMERANGESREQUEST_H
+#define SPORT_LISTTIMERANGESREQUEST_H
 
 #include <json/json.h>
 
@@ -12,6 +12,7 @@
 #include "greentop/sport/enum/TimeGranularity.h"
 
 namespace greentop {
+namespace sport {
 
 class ListTimeRangesRequest : public JsonRequest {
     public:
@@ -47,5 +48,6 @@ class ListTimeRangesRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // LISTTIMERANGESREQUEST_H
+#endif // SPORT_LISTTIMERANGESREQUEST_H

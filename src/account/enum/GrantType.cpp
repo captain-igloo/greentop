@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace account {
 
 const std::string GrantType::AUTHORIZATION_CODE = "AUTHORIZATION_CODE";
 const std::string GrantType::REFRESH_TOKEN = "REFRESH_TOKEN";
@@ -36,4 +37,5 @@ bool GrantType::operator!=(const GrantType& other) const {
     return value != other.value;
 }
 
+}
 }

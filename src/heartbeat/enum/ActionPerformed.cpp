@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace heartbeat {
 
 const std::string ActionPerformed::NONE = "NONE";
 const std::string ActionPerformed::CANCELLATION_REQUEST_SUBMITTED = "CANCELLATION_REQUEST_SUBMITTED";
@@ -44,4 +45,5 @@ bool ActionPerformed::operator!=(const ActionPerformed& other) const {
     return value != other.value;
 }
 
+}
 }

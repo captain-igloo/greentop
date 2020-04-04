@@ -5,6 +5,7 @@
 #include "greentop/account/CancelApplicationSubscriptionResponse.h"
 
 namespace greentop {
+namespace account {
 
 CancelApplicationSubscriptionResponse::CancelApplicationSubscriptionResponse() {
 }
@@ -40,6 +41,4 @@ void CancelApplicationSubscriptionResponse::setResponse(const Status& response) 
 
 
 }
-
-
-
+}

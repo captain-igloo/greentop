@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef STATEMENTITEM_H
-#define STATEMENTITEM_H
+#ifndef ACCOUNT_STATEMENTITEM_H
+#define ACCOUNT_STATEMENTITEM_H
 
 #include <ctime>
 #include <json/json.h>
@@ -16,6 +16,7 @@
 #include "greentop/account/enum/ItemClass.h"
 
 namespace greentop {
+namespace account {
 /**
  * Summary of a cleared order.
  */
@@ -95,5 +96,6 @@ class StatementItem : public JsonMember {
 };
 
 }
+}
 
-#endif // STATEMENTITEM_H
+#endif // ACCOUNT_STATEMENTITEM_H

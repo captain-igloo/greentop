@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef UPDATEAPPLICATIONSUBSCRIPTIONRESPONSE_H
-#define UPDATEAPPLICATIONSUBSCRIPTIONRESPONSE_H
+#ifndef ACCOUNT_UPDATEAPPLICATIONSUBSCRIPTIONRESPONSE_H
+#define ACCOUNT_UPDATEAPPLICATIONSUBSCRIPTIONRESPONSE_H
 
 #include <json/json.h>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/JsonResponse.h"
 
 namespace greentop {
+namespace account {
 
 class UpdateApplicationSubscriptionResponse : public JsonResponse {
     public:
@@ -34,5 +35,6 @@ class UpdateApplicationSubscriptionResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // UPDATEAPPLICATIONSUBSCRIPTIONRESPONSE_H
+#endif // ACCOUNT_UPDATEAPPLICATIONSUBSCRIPTIONRESPONSE_H

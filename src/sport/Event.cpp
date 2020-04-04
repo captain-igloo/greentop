@@ -5,6 +5,7 @@
 #include "greentop/sport/Event.h"
 
 namespace greentop {
+namespace sport {
 
 
 Event::Event(const std::string& id,
@@ -115,6 +116,4 @@ void Event::setOpenDate(const std::tm& openDate) {
 
 
 }
-
-
-
+}

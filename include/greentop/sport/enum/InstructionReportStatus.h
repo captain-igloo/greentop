@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef INSTRUCTIONREPORTSTATUS_H
-#define INSTRUCTIONREPORTSTATUS_H
+#ifndef SPORT_ENUM_INSTRUCTIONREPORTSTATUS_H
+#define SPORT_ENUM_INSTRUCTIONREPORTSTATUS_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class InstructionReportStatus : public Enum<InstructionReportStatus> {
 
@@ -35,5 +36,6 @@ class InstructionReportStatus : public Enum<InstructionReportStatus> {
 };
 
 }
+}
 
-#endif // INSTRUCTIONREPORTSTATUS_H
+#endif // SPORT_ENUM_INSTRUCTIONREPORTSTATUS_H

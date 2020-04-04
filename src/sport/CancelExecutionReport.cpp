@@ -5,6 +5,7 @@
 #include "greentop/sport/CancelExecutionReport.h"
 
 namespace greentop {
+namespace sport {
 
 
 CancelExecutionReport::CancelExecutionReport(const std::string& customerRef,
@@ -106,6 +107,4 @@ void CancelExecutionReport::setInstructionReports(const std::vector<CancelInstru
 
 
 }
-
-
-
+}

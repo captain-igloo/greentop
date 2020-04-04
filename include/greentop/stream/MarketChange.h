@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETCHANGE_H
-#define MARKETCHANGE_H
+#ifndef STREAM_MARKETCHANGE_H
+#define STREAM_MARKETCHANGE_H
 
 #include <json/json.h>
 #include <string>
@@ -84,4 +84,4 @@ class MarketChange : public JsonMember {
 }
 }
 
-#endif // MARKETCHANGE_H
+#endif // STREAM_MARKETCHANGE_H

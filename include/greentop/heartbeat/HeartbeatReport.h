@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef HEARTBEATREPORT_H
-#define HEARTBEATREPORT_H
+#ifndef HEARTBEAT_HEARTBEATREPORT_H
+#define HEARTBEAT_HEARTBEATREPORT_H
 
 #include <json/json.h>
 
@@ -12,6 +12,7 @@
 #include "greentop/heartbeat/enum/ActionPerformed.h"
 
 namespace greentop {
+namespace heartbeat {
 /**
  * Response from heartbeat operation
  */
@@ -48,5 +49,6 @@ class HeartbeatReport : public JsonResponse {
 };
 
 }
+}
 
-#endif // HEARTBEATREPORT_H
+#endif // HEARTBEAT_HEARTBEATREPORT_H

@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef SUBSCRIPTIONTOKENINFO_H
-#define SUBSCRIPTIONTOKENINFO_H
+#ifndef ACCOUNT_SUBSCRIPTIONTOKENINFO_H
+#define ACCOUNT_SUBSCRIPTIONTOKENINFO_H
 
 #include <ctime>
 #include <json/json.h>
@@ -13,6 +13,7 @@
 #include "greentop/Time.h"
 
 namespace greentop {
+namespace account {
 /**
  * Subscription token information
  */
@@ -80,5 +81,6 @@ class SubscriptionTokenInfo : public JsonMember {
 };
 
 }
+}
 
-#endif // SUBSCRIPTIONTOKENINFO_H
+#endif // ACCOUNT_SUBSCRIPTIONTOKENINFO_H

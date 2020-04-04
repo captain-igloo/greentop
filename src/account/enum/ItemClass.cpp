@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace account {
 
 const std::string ItemClass::UNKNOWN = "UNKNOWN";
 
@@ -34,4 +35,5 @@ bool ItemClass::operator!=(const ItemClass& other) const {
     return value != other.value;
 }
 
+}
 }

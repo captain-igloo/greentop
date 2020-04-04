@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef DEVELOPERAPPVERSION_H
-#define DEVELOPERAPPVERSION_H
+#ifndef ACCOUNT_DEVELOPERAPPVERSION_H
+#define ACCOUNT_DEVELOPERAPPVERSION_H
 
 #include <json/json.h>
 #include <string>
@@ -12,6 +12,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace account {
 /**
  * Describes a version of an external application
  */
@@ -115,5 +116,6 @@ class DeveloperAppVersion : public JsonMember {
 };
 
 }
+}
 
-#endif // DEVELOPERAPPVERSION_H
+#endif // ACCOUNT_DEVELOPERAPPVERSION_H

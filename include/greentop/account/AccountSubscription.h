@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef ACCOUNTSUBSCRIPTION_H
-#define ACCOUNTSUBSCRIPTION_H
+#ifndef ACCOUNT_ACCOUNTSUBSCRIPTION_H
+#define ACCOUNT_ACCOUNTSUBSCRIPTION_H
 
 #include <json/json.h>
 #include <string>
@@ -13,6 +13,7 @@
 #include "greentop/account/SubscriptionTokenInfo.h"
 
 namespace greentop {
+namespace account {
 /**
  * Application subscription details
  */
@@ -56,5 +57,6 @@ class AccountSubscription : public JsonMember {
 };
 
 }
+}
 
-#endif // ACCOUNTSUBSCRIPTION_H
+#endif // ACCOUNT_ACCOUNTSUBSCRIPTION_H

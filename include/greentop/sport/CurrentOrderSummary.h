@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef CURRENTORDERSUMMARY_H
-#define CURRENTORDERSUMMARY_H
+#ifndef SPORT_CURRENTORDERSUMMARY_H
+#define SPORT_CURRENTORDERSUMMARY_H
 
 #include <ctime>
 #include <json/json.h>
@@ -19,6 +19,7 @@
 #include "greentop/sport/enum/Side.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Summary of a current order.
  */
@@ -217,5 +218,6 @@ class CurrentOrderSummary : public JsonMember {
 };
 
 }
+}
 
-#endif // CURRENTORDERSUMMARY_H
+#endif // SPORT_CURRENTORDERSUMMARY_H

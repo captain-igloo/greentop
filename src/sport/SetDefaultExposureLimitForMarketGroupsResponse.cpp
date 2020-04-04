@@ -5,6 +5,7 @@
 #include "greentop/sport/SetDefaultExposureLimitForMarketGroupsResponse.h"
 
 namespace greentop {
+namespace sport {
 
 SetDefaultExposureLimitForMarketGroupsResponse::SetDefaultExposureLimitForMarketGroupsResponse() {
 }
@@ -40,6 +41,4 @@ void SetDefaultExposureLimitForMarketGroupsResponse::setResponse(const std::stri
 
 
 }
-
-
-
+}

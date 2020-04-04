@@ -5,6 +5,7 @@
 #include "greentop/account/GetAccountFundsRequest.h"
 
 namespace greentop {
+namespace account {
 
 
 GetAccountFundsRequest::GetAccountFundsRequest(const Wallet& wallet) :
@@ -38,6 +39,4 @@ void GetAccountFundsRequest::setWallet(const Wallet& wallet) {
 
 
 }
-
-
-
+}

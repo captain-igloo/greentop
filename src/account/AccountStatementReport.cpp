@@ -5,6 +5,7 @@
 #include "greentop/account/AccountStatementReport.h"
 
 namespace greentop {
+namespace account {
 
 AccountStatementReport::AccountStatementReport() {
 }
@@ -63,6 +64,4 @@ void AccountStatementReport::setMoreAvailable(const Optional<bool>& moreAvailabl
 
 
 }
-
-
-
+}

@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef ACCOUNTDETAILSRESPONSE_H
-#define ACCOUNTDETAILSRESPONSE_H
+#ifndef ACCOUNT_ACCOUNTDETAILSRESPONSE_H
+#define ACCOUNT_ACCOUNTDETAILSRESPONSE_H
 
 #include <json/json.h>
 #include <string>
@@ -12,6 +12,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace account {
 /**
  * Response for Account details.
  */
@@ -102,5 +103,6 @@ class AccountDetailsResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // ACCOUNTDETAILSRESPONSE_H
+#endif // ACCOUNT_ACCOUNTDETAILSRESPONSE_H

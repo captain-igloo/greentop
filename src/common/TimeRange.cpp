@@ -5,6 +5,7 @@
 #include "greentop/common/TimeRange.h"
 
 namespace greentop {
+namespace common {
 
 
 TimeRange::TimeRange(const std::tm& from,
@@ -57,6 +58,4 @@ void TimeRange::setTo(const std::tm& to) {
 
 
 }
-
-
-
+}

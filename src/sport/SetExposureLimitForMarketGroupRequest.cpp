@@ -5,6 +5,7 @@
 #include "greentop/sport/SetExposureLimitForMarketGroupRequest.h"
 
 namespace greentop {
+namespace sport {
 
 SetExposureLimitForMarketGroupRequest::SetExposureLimitForMarketGroupRequest() {
 }
@@ -55,6 +56,4 @@ void SetExposureLimitForMarketGroupRequest::setLimit(const ExposureLimit& limit)
 
 
 }
-
-
-
+}

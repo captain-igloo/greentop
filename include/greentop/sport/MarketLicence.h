@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETLICENCE_H
-#define MARKETLICENCE_H
+#ifndef SPORT_MARKETLICENCE_H
+#define SPORT_MARKETLICENCE_H
 
 #include <json/json.h>
 #include <string>
@@ -12,6 +12,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Market Licence
  */
@@ -63,5 +64,6 @@ class MarketLicence : public JsonMember {
 };
 
 }
+}
 
-#endif // MARKETLICENCE_H
+#endif // SPORT_MARKETLICENCE_H

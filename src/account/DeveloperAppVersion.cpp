@@ -5,6 +5,7 @@
 #include "greentop/account/DeveloperAppVersion.h"
 
 namespace greentop {
+namespace account {
 
 DeveloperAppVersion::DeveloperAppVersion() {
 }
@@ -175,6 +176,4 @@ void DeveloperAppVersion::setVendorSecret(const std::string& vendorSecret) {
 
 
 }
-
-
-
+}

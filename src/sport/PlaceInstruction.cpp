@@ -5,6 +5,7 @@
 #include "greentop/sport/PlaceInstruction.h"
 
 namespace greentop {
+namespace sport {
 
 PlaceInstruction::PlaceInstruction() {
 }
@@ -145,6 +146,4 @@ void PlaceInstruction::setCustomerOrderRef(const std::string& customerOrderRef) 
 
 
 }
-
-
-
+}

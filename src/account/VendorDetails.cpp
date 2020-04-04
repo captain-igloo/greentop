@@ -5,6 +5,7 @@
 #include "greentop/account/VendorDetails.h"
 
 namespace greentop {
+namespace account {
 
 VendorDetails::VendorDetails() {
 }
@@ -72,6 +73,4 @@ void VendorDetails::setRedirectUrl(const std::string& redirectUrl) {
 
 
 }
-
-
-
+}

@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef RUNNERSTATUS_H
-#define RUNNERSTATUS_H
+#ifndef SPORT_ENUM_RUNNERSTATUS_H
+#define SPORT_ENUM_RUNNERSTATUS_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class RunnerStatus : public Enum<RunnerStatus> {
 
@@ -51,5 +52,6 @@ class RunnerStatus : public Enum<RunnerStatus> {
 };
 
 }
+}
 
-#endif // RUNNERSTATUS_H
+#endif // SPORT_ENUM_RUNNERSTATUS_H

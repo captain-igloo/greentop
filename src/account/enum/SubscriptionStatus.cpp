@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace account {
 
 const std::string SubscriptionStatus::ALL = "ALL";
 const std::string SubscriptionStatus::ACTIVATED = "ACTIVATED";
@@ -42,4 +43,5 @@ bool SubscriptionStatus::operator!=(const SubscriptionStatus& other) const {
     return value != other.value;
 }
 
+}
 }

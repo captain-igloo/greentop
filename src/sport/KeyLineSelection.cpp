@@ -5,6 +5,7 @@
 #include "greentop/sport/KeyLineSelection.h"
 
 namespace greentop {
+namespace sport {
 
 KeyLineSelection::KeyLineSelection() {
 }
@@ -55,6 +56,4 @@ void KeyLineSelection::setHandicap(const Optional<double>& handicap) {
 
 
 }
-
-
-
+}

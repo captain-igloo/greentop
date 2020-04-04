@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef RUNNERCATALOG_H
-#define RUNNERCATALOG_H
+#ifndef SPORT_RUNNERCATALOG_H
+#define SPORT_RUNNERCATALOG_H
 
 #include <json/json.h>
 #include <string>
@@ -12,6 +12,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Information about the Runners (selections) in a market
  */
@@ -71,5 +72,6 @@ class RunnerCatalog : public JsonMember {
 };
 
 }
+}
 
-#endif // RUNNERCATALOG_H
+#endif // SPORT_RUNNERCATALOG_H

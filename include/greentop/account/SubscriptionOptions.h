@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef SUBSCRIPTIONOPTIONS_H
-#define SUBSCRIPTIONOPTIONS_H
+#ifndef ACCOUNT_SUBSCRIPTIONOPTIONS_H
+#define ACCOUNT_SUBSCRIPTIONOPTIONS_H
 
 #include <json/json.h>
 #include <string>
@@ -12,15 +12,16 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace account {
 /**
  * Wrapper object containing details of how a subscription should be created
  */
 class SubscriptionOptions : public JsonMember {
     public:
 
-        SubscriptionOptions(const Optional<int32_t>& subscription_length = Optional<int32_t>(),
-            const std::string& subscription_token = std::string(),
-            const std::string& client_reference = std::string());
+        SubscriptionOptions(const Optional<int32_t>& subscriptionLength = Optional<int32_t>(),
+            const std::string& subscriptionToken = std::string(),
+            const std::string& clientReference = std::string());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -28,14 +29,14 @@ class SubscriptionOptions : public JsonMember {
 
         virtual bool isValid() const;
 
-        const Optional<int32_t>& getSubscription_length() const;
-        void setSubscription_length(const Optional<int32_t>& subscription_length);
+        const Optional<int32_t>& getSubscriptionLength() const;
+        void setSubscriptionLength(const Optional<int32_t>& subscriptionLength);
 
-        const std::string& getSubscription_token() const;
-        void setSubscription_token(const std::string& subscription_token);
+        const std::string& getSubscriptionToken() const;
+        void setSubscriptionToken(const std::string& subscriptionToken);
 
-        const std::string& getClient_reference() const;
-        void setClient_reference(const std::string& client_reference);
+        const std::string& getClientReference() const;
+        void setClientReference(const std::string& clientReference);
 
 
     private:
@@ -43,18 +44,19 @@ class SubscriptionOptions : public JsonMember {
          * How many days should a created subscription last for. Open ended subscription created if
          * value not provided. Relevant only if createdSubscription is true.
          */
-        Optional<int32_t> subscription_length;
+        Optional<int32_t> subscriptionLength;
         /**
          * An existing subscription token that the caller wishes to be activated instead of
          * creating a new one. Ignored is createSubscription is true.
          */
-        std::string subscription_token;
+        std::string subscriptionToken;
         /**
          * Any client reference for this subscription token request.
          */
-        std::string client_reference;
+        std::string clientReference;
 };
 
 }
+}
 
-#endif // SUBSCRIPTIONOPTIONS_H
+#endif // ACCOUNT_SUBSCRIPTIONOPTIONS_H

@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef GETAPPLICATIONSUBSCRIPTIONTOKENRESPONSE_H
-#define GETAPPLICATIONSUBSCRIPTIONTOKENRESPONSE_H
+#ifndef ACCOUNT_GETAPPLICATIONSUBSCRIPTIONTOKENRESPONSE_H
+#define ACCOUNT_GETAPPLICATIONSUBSCRIPTIONTOKENRESPONSE_H
 
 #include <json/json.h>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/JsonResponse.h"
 
 namespace greentop {
+namespace account {
 
 class GetApplicationSubscriptionTokenResponse : public JsonResponse {
     public:
@@ -34,5 +35,6 @@ class GetApplicationSubscriptionTokenResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // GETAPPLICATIONSUBSCRIPTIONTOKENRESPONSE_H
+#endif // ACCOUNT_GETAPPLICATIONSUBSCRIPTIONTOKENRESPONSE_H

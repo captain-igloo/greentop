@@ -16,16 +16,16 @@ int main(int argc, char* argv[]) {
 
     if (exchangeApi.login(argv[2], argv[3])) {
 
-        ListCurrencyRatesRequest req("GBP");
+        account::ListCurrencyRatesRequest req("GBP");
 
-        ListCurrencyRatesResponse resp = exchangeApi.listCurrencyRates(req);
+        account::ListCurrencyRatesResponse resp = exchangeApi.listCurrencyRates(req);
 
         if (resp.isSuccess()) {
 
-            std::vector<CurrencyRate> rates = resp.getCurrencyRates();
+            std::vector<account::CurrencyRate> rates = resp.getCurrencyRates();
 
             for (unsigned i = 0; i < rates.size(); ++i) {
-                CurrencyRate rate = rates[i];
+                account::CurrencyRate rate = rates[i];
                 std::cout << rate.getCurrencyCode() << " " << rate.getRate() << std::endl;
             }
 

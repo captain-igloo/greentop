@@ -222,65 +222,65 @@ class ExchangeApi {
          * Returns a list of Event Types (i.e. Sports) associated with the markets selected by the
          * MarketFilter.
          */
-        ListEventTypesResponse listEventTypes(const ListEventTypesRequest& request) const;
+        sport::ListEventTypesResponse listEventTypes(const sport::ListEventTypesRequest& request) const;
 
         /**
          * Returns a list of Competitions (i.e., World Cup 2013) associated with the markets
          * selected by the MarketFilter. Currently only Football markets have an associated
          * competition.
          */
-        ListCompetitionsResponse listCompetitions(const ListCompetitionsRequest& request) const;
+        sport::ListCompetitionsResponse listCompetitions(const sport::ListCompetitionsRequest& request) const;
 
         /**
          * Returns a list of time ranges in the granularity specified in the request (i.e. 3PM to
          * 4PM, Aug 14th to Aug 15th) associated with the markets selected by the MarketFilter.
          */
-        ListTimeRangesResponse listTimeRanges(const ListTimeRangesRequest& request) const;
+        sport::ListTimeRangesResponse listTimeRanges(const sport::ListTimeRangesRequest& request) const;
 
         /**
          * Returns a list of Events (i.e, Reading vs. Man United) associated with the markets
          * selected by the MarketFilter.
          */
-        ListEventsResponse listEvents(const ListEventsRequest& request) const;
+        sport::ListEventsResponse listEvents(const sport::ListEventsRequest& request) const;
 
         /**
          * Returns a list of market types (i.e. MATCH_ODDS, NEXT_GOAL) associated with the markets
          * selected by the MarketFilter. The market types are always the same, regardless of
          * locale.
          */
-        ListMarketTypesResponse listMarketTypes(const ListMarketTypesRequest& request) const;
+        sport::ListMarketTypesResponse listMarketTypes(const sport::ListMarketTypesRequest& request) const;
 
         /**
          * Returns a list of Countries associated with the markets selected by the MarketFilter.
          */
-        ListCountriesResponse listCountries(const ListCountriesRequest& request) const;
+        sport::ListCountriesResponse listCountries(const sport::ListCountriesRequest& request) const;
 
         /**
          * Returns a list of Venues (i.e. Cheltenham, Ascot) associated with the markets selected
          * by the MarketFilter. Currently, only Horse Racing markets are associated with a Venue.
          */
-        ListVenuesResponse listVenues(const ListVenuesRequest& request) const;
+        sport::ListVenuesResponse listVenues(const sport::ListVenuesRequest& request) const;
 
         /**
          * Returns a list of information about markets that does not change (or changes very
          * rarely). You use listMarketCatalogue to retrieve the name of the market, the names of
          * selections and other information about markets.
          */
-        ListMarketCatalogueResponse listMarketCatalogue(const ListMarketCatalogueRequest& request) const;
+        sport::ListMarketCatalogueResponse listMarketCatalogue(const sport::ListMarketCatalogueRequest& request) const;
 
         /**
          * Returns a list of dynamic data about markets. Dynamic data includes prices, the status
          * of the market, the status of selections, the traded volume, and the status of any orders
          * you have placed in the market.
          */
-        ListMarketBookResponse listMarketBook(const ListMarketBookRequest& request) const;
+        sport::ListMarketBookResponse listMarketBook(const sport::ListMarketBookRequest& request) const;
 
         /**
          * Returns a list of dynamic data about a market and a specified runner. Dynamic data
          * includes prices, the status of the market, the status of selections, the traded volume,
          * and the status of any orders you have placed in the market.
          */
-        ListRunnerBookResponse listRunnerBook(const ListRunnerBookRequest& request) const;
+        sport::ListRunnerBookResponse listRunnerBook(const sport::ListRunnerBookRequest& request) const;
 
         /**
          * Returns a list of your current orders. Optionally you can filter and sort your current
@@ -289,26 +289,26 @@ class ExchangeApi {
          * EARLIEST_TO_LATEST. To retrieve more than 1000 orders, you need to make use of the
          * fromRecord and recordCount parameters.
          */
-        CurrentOrderSummaryReport listCurrentOrders(const ListCurrentOrdersRequest& request) const;
+        sport::CurrentOrderSummaryReport listCurrentOrders(const sport::ListCurrentOrdersRequest& request) const;
 
         /**
          * Returns a List of bets based on the bet status, ordered by settled date.
          */
-        ClearedOrderSummaryReport listClearedOrders(const ListClearedOrdersRequest& request) const;
+        sport::ClearedOrderSummaryReport listClearedOrders(const sport::ListClearedOrdersRequest& request) const;
 
         /**
          * Place new orders into market. LIMIT orders below the minimum bet size are allowed if
          * there is an unmatched bet at the same price in the market. This operation is atomic in
          * that all orders will be placed or none will be placed.
          */
-        PlaceExecutionReport placeOrders(const PlaceOrdersRequest& request) const;
+        sport::PlaceExecutionReport placeOrders(const sport::PlaceOrdersRequest& request) const;
 
         /**
          * Cancel all bets OR cancel all bets on a market OR fully or partially cancel particular
          * orders on a market. Only LIMIT orders an be cancelled or partially cancelled once
          * placed.
          */
-        CancelExecutionReport cancelOrders(const CancelOrdersRequest& request) const;
+        sport::CancelExecutionReport cancelOrders(const sport::CancelOrdersRequest& request) const;
 
         /**
          * This operation is logically a bulk cancel followed by a bulk place. The cancel is
@@ -318,19 +318,19 @@ class ExchangeApi {
          * back.
          * See ReplaceInstruction.
          */
-        ReplaceExecutionReport replaceOrders(const ReplaceOrdersRequest& request) const;
+        sport::ReplaceExecutionReport replaceOrders(const sport::ReplaceOrdersRequest& request) const;
 
         /**
          * Update non-exposure changing fields.
          */
-        UpdateExecutionReport updateOrders(const UpdateOrdersRequest& request) const;
+        sport::UpdateExecutionReport updateOrders(const sport::UpdateOrdersRequest& request) const;
 
         /**
          * Retrieve profit and loss for a given list of markets. The values are calculated using
          * matched bets and optionally settled bets. Only odds markets are implemented, markets of
          * other types are silently ignored.
          */
-        ListMarketProfitAndLossResponse listMarketProfitAndLoss(const ListMarketProfitAndLossRequest& request) const;
+        sport::ListMarketProfitAndLossResponse listMarketProfitAndLoss(const sport::ListMarketProfitAndLossRequest& request) const;
 
         /**
          * Create/update default exposure limit for market groups of given type. New value and
@@ -341,7 +341,7 @@ class ExchangeApi {
          * be used. It's not allowed to set default limit to an empty limit (see type
          * ExposureLimit).
          */
-        SetDefaultExposureLimitForMarketGroupsResponse setDefaultExposureLimitForMarketGroups(const SetDefaultExposureLimitForMarketGroupsRequest& request) const;
+        sport::SetDefaultExposureLimitForMarketGroupsResponse setDefaultExposureLimitForMarketGroups(const sport::SetDefaultExposureLimitForMarketGroupsRequest& request) const;
 
         /**
          * Create/update exposure limit for a market group. New limit will be applied immediately
@@ -352,19 +352,19 @@ class ExchangeApi {
          * request, the effective limit for this group will be the one set by this request
          * (Properties will NOT be inherited from default limit).
          */
-        SetExposureLimitForMarketGroupResponse setExposureLimitForMarketGroup(const SetExposureLimitForMarketGroupRequest& request) const;
+        sport::SetExposureLimitForMarketGroupResponse setExposureLimitForMarketGroup(const sport::SetExposureLimitForMarketGroupRequest& request) const;
 
         /**
          * Remove default exposure limit for a market group type. This operation will NOT
          * remove/update any market group limits.
          */
-        RemoveDefaultExposureLimitForMarketGroupsResponse removeDefaultExposureLimitForMarketGroups(const RemoveDefaultExposureLimitForMarketGroupsRequest& request) const;
+        sport::RemoveDefaultExposureLimitForMarketGroupsResponse removeDefaultExposureLimitForMarketGroups(const sport::RemoveDefaultExposureLimitForMarketGroupsRequest& request) const;
 
         /**
          * Delete exposure limit for a market group. If a default exposure limit exist for market
          * type, it takes effect immediately.
          */
-        RemoveExposureLimitForMarketGroupResponse removeExposureLimitForMarketGroup(const RemoveExposureLimitForMarketGroupRequest& request) const;
+        sport::RemoveExposureLimitForMarketGroupResponse removeExposureLimitForMarketGroup(const sport::RemoveExposureLimitForMarketGroupRequest& request) const;
 
         /**
          * Response to this request returns default group limit and group limits grouped by type.
@@ -375,143 +375,143 @@ class ExchangeApi {
          * marketGroupTypeFilter and marketGroupsFilter used together, all groups in
          * marketGroupsFilter are required to be of same type (type used in marketGroupTypeFilter).
          */
-        ListExposureLimitsForMarketGroupsResponse listExposureLimitsForMarketGroups(const ListExposureLimitsForMarketGroupsRequest& request) const;
+        sport::ListExposureLimitsForMarketGroupsResponse listExposureLimitsForMarketGroups(const sport::ListExposureLimitsForMarketGroupsRequest& request) const;
 
         /**
          * Unblock a market group after it has been blocked due to the breach of a previously set
          * exposure limit.
          */
-        UnblockMarketGroupResponse unblockMarketGroup(const UnblockMarketGroupRequest& request) const;
+        sport::UnblockMarketGroupResponse unblockMarketGroup(const sport::UnblockMarketGroupRequest& request) const;
 
         /**
          * Retrieves events from exposure reuse enabled events list. To edit this list use
          * addExposureReuseEnabledEvents and removeExposureReuseEnabledEvents operations.
          */
-        GetExposureReuseEnabledEventsResponse getExposureReuseEnabledEvents() const;
+        sport::GetExposureReuseEnabledEventsResponse getExposureReuseEnabledEvents() const;
 
         /**
          * Enables events for exposure reuse by appending them to the current list of events
          * already enabled.
          */
-        AddExposureReuseEnabledEventsResponse addExposureReuseEnabledEvents(const AddExposureReuseEnabledEventsRequest& request) const;
+        sport::AddExposureReuseEnabledEventsResponse addExposureReuseEnabledEvents(const sport::AddExposureReuseEnabledEventsRequest& request) const;
 
         /**
          * Removes events from exposure reuse enabled events list.
          */
-        RemoveExposureReuseEnabledEventsResponse removeExposureReuseEnabledEvents(const RemoveExposureReuseEnabledEventsRequest& request) const;
+        sport::RemoveExposureReuseEnabledEventsResponse removeExposureReuseEnabledEvents(const sport::RemoveExposureReuseEnabledEventsRequest& request) const;
 
         /**
          * Create 2 application keys for given user; one active and the other delayed.
          */
-        DeveloperApp createDeveloperAppKeys(const CreateDeveloperAppKeysRequest& request) const;
+        account::DeveloperApp createDeveloperAppKeys(const account::CreateDeveloperAppKeysRequest& request) const;
 
         /**
          * Get all application keys owned by the given developer/vendor.
          */
-        GetDeveloperAppKeysResponse getDeveloperAppKeys() const;
+        account::GetDeveloperAppKeysResponse getDeveloperAppKeys() const;
 
         /**
          * Get available to bet amount.
          */
-        AccountFundsResponse getAccountFunds(const GetAccountFundsRequest& request) const;
+        account::AccountFundsResponse getAccountFunds(const account::GetAccountFundsRequest& request) const;
 
         /**
          * Transfer funds between wallets.
          */
-        TransferResponse transferFunds(const TransferFundsRequest& request) const;
+        account::TransferResponse transferFunds(const account::TransferFundsRequest& request) const;
 
         /**
          * Get Account details.
          */
-        AccountDetailsResponse getAccountDetails() const;
+        account::AccountDetailsResponse getAccountDetails() const;
 
         /**
          * Get vendor client id for customer account.
          */
-        GetVendorClientIdResponse getVendorClientId() const;
+        account::GetVendorClientIdResponse getVendorClientId() const;
 
         /**
          * Returns the newly generate subscription token.
          */
-        GetApplicationSubscriptionTokenResponse getApplicationSubscriptionToken(const GetApplicationSubscriptionTokenRequest& request) const;
+        account::GetApplicationSubscriptionTokenResponse getApplicationSubscriptionToken(const account::GetApplicationSubscriptionTokenRequest& request) const;
 
         /**
          * Activate the subscription token for the customer.
          */
-        ActivateApplicationSubscriptionResponse activateApplicationSubscription(const ActivateApplicationSubscriptionRequest& request) const;
+        account::ActivateApplicationSubscriptionResponse activateApplicationSubscription(const account::ActivateApplicationSubscriptionRequest& request) const;
 
         /**
          * Cancel application subscription.
          */
-        CancelApplicationSubscriptionResponse cancelApplicationSubscription(const CancelApplicationSubscriptionRequest& request) const;
+        account::CancelApplicationSubscriptionResponse cancelApplicationSubscription(const account::CancelApplicationSubscriptionRequest& request) const;
 
         /**
          * Update an application subscription with a new expiry date.
          */
-        UpdateApplicationSubscriptionResponse updateApplicationSubscription(const UpdateApplicationSubscriptionRequest& request) const;
+        account::UpdateApplicationSubscriptionResponse updateApplicationSubscription(const account::UpdateApplicationSubscriptionRequest& request) const;
 
         /**
          * List of subscription tokens for an application.
          */
-        ListApplicationSubscriptionTokensResponse listApplicationSubscriptionTokens(const ListApplicationSubscriptionTokensRequest& request) const;
+        account::ListApplicationSubscriptionTokensResponse listApplicationSubscriptionTokens(const account::ListApplicationSubscriptionTokensRequest& request) const;
 
         /**
          * List of subscription tokens associated with the account.
          */
-        ListAccountSubscriptionTokensResponse listAccountSubscriptionTokens() const;
+        account::ListAccountSubscriptionTokensResponse listAccountSubscriptionTokens() const;
 
         /**
          * Identify all subscriptions, regardless of status, for a single client for a single
          * application key. The operation may be called by either the application key owner or a client.
          */
-        GetApplicationSubscriptionHistoryResponse getApplicationSubscriptionHistory(const GetApplicationSubscriptionHistoryRequest& request) const;
+        account::GetApplicationSubscriptionHistoryResponse getApplicationSubscriptionHistory(const account::GetApplicationSubscriptionHistoryRequest& request) const;
 
         /**
          * Get account statement.
          */
-        AccountStatementReport getAccountStatement(const GetAccountStatementRequest& request) const;
+        account::AccountStatementReport getAccountStatement(const account::GetAccountStatementRequest& request) const;
 
         /**
          * Returns a list of currency rates based on given currency.
          */
-        ListCurrencyRatesResponse listCurrencyRates(const ListCurrencyRatesRequest& listCurrencyRatesRequest) const;
+        account::ListCurrencyRatesResponse listCurrencyRates(const account::ListCurrencyRatesRequest& listCurrencyRatesRequest) const;
 
         /**
          * Generate auth code for web vendor, used to get vendor session.
          */
-        AuthorisationResponse getAuthorisationCode(const GetAuthorisationCodeRequest& request) const;
+        account::AuthorisationResponse getAuthorisationCode(const account::GetAuthorisationCodeRequest& request) const;
 
         /**
          * Generate web vendor session based on a standard session identifiable by auth code, vendor secret and app
          * key.
          */
-        VendorAccessTokenInfo token(const TokenRequest& request) const;
+        account::VendorAccessTokenInfo token(const account::TokenRequest& request) const;
 
         /**
          * Return details about a vendor from its identifier. Response includes Vendor Name and URL.
          */
-        VendorDetails getVendorDetails(const GetVendorDetailsRequest& request) const;
+        account::VendorDetails getVendorDetails(const account::GetVendorDetailsRequest& request) const;
 
         /**
          * Remove the link between an account and a vendor web app. This will remove the refreshToken for this
          * user-vendor pair subscription.
          */
-        RevokeAccessToWebAppResponse revokeAccessToWebApp(const RevokeAccessToWebAppRequest& request) const;
+        account::RevokeAccessToWebAppResponse revokeAccessToWebApp(const account::RevokeAccessToWebAppRequest& request) const;
 
         /**
          * Retrieve all vendors applications currently subscribed to by the user making the request.
          */
-        ListAuthorizedWebAppsResponse listAuthorizedWebApps() const;
+        account::ListAuthorizedWebAppsResponse listAuthorizedWebApps() const;
 
         /**
          * Return whether an account has authorised a web app.
          */
-        IsAccountSubscribedToWebAppResponse isAccountSubscribedToWebApp(const IsAccountSubscribedToWebAppRequest& request) const;
+        account::IsAccountSubscribedToWebAppResponse isAccountSubscribedToWebApp(const account::IsAccountSubscribedToWebAppRequest& request) const;
 
         /**
          * Return relation between a list of users and an affiliate.
          */
-        GetAffiliateRelationResponse getAffiliateRelation(const GetAffiliateRelationRequest& request) const;
+        account::GetAffiliateRelationResponse getAffiliateRelation(const account::GetAffiliateRelationRequest& request) const;
 
         /**
          * This heartbeat operation is provided to help customers have their positions managed
@@ -535,7 +535,7 @@ class ExchangeApi {
          * cluster, which may result in your position not being managed until a subsequent
          * heartbeat request is received.
          */
-        HeartbeatReport heartbeat(const HeartbeatRequest& request) const;
+        heartbeat::HeartbeatReport heartbeat(const heartbeat::HeartbeatRequest& request) const;
 
     private:
         static const std::string HOST_UK;

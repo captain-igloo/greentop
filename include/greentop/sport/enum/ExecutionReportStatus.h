@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef EXECUTIONREPORTSTATUS_H
-#define EXECUTIONREPORTSTATUS_H
+#ifndef SPORT_ENUM_EXECUTIONREPORTSTATUS_H
+#define SPORT_ENUM_EXECUTIONREPORTSTATUS_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class ExecutionReportStatus : public Enum<ExecutionReportStatus> {
 
@@ -37,5 +38,6 @@ class ExecutionReportStatus : public Enum<ExecutionReportStatus> {
 };
 
 }
+}
 
-#endif // EXECUTIONREPORTSTATUS_H
+#endif // SPORT_ENUM_EXECUTIONREPORTSTATUS_H

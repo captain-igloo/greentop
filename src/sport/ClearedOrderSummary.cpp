@@ -5,6 +5,7 @@
 #include "greentop/sport/ClearedOrderSummary.h"
 
 namespace greentop {
+namespace sport {
 
 
 ClearedOrderSummary::ClearedOrderSummary(const std::string& eventTypeId,
@@ -389,6 +390,4 @@ void ClearedOrderSummary::setCustomerStrategyRef(const std::string& customerStra
 
 
 }
-
-
-
+}

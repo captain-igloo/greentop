@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string BetTargetType::PAYOUT = "PAYOUT";
 const std::string BetTargetType::BACKERS_PROFIT = "BACKERS_PROFIT";
@@ -36,4 +37,5 @@ bool BetTargetType::operator!=(const BetTargetType& other) const {
     return value != other.value;
 }
 
+}
 }

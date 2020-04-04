@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef GETAPPLICATIONSUBSCRIPTIONHISTORYREQUEST_H
-#define GETAPPLICATIONSUBSCRIPTIONHISTORYREQUEST_H
+#ifndef ACCOUNT_GETAPPLICATIONSUBSCRIPTIONHISTORYREQUEST_H
+#define ACCOUNT_GETAPPLICATIONSUBSCRIPTIONHISTORYREQUEST_H
 
 #include <json/json.h>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/JsonRequest.h"
 
 namespace greentop {
+namespace account {
 
 class GetApplicationSubscriptionHistoryRequest : public JsonRequest {
     public:
@@ -48,5 +49,6 @@ class GetApplicationSubscriptionHistoryRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // GETAPPLICATIONSUBSCRIPTIONHISTORYREQUEST_H
+#endif // ACCOUNT_GETAPPLICATIONSUBSCRIPTIONHISTORYREQUEST_H

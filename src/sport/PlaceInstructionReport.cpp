@@ -5,6 +5,7 @@
 #include "greentop/sport/PlaceInstructionReport.h"
 
 namespace greentop {
+namespace sport {
 
 PlaceInstructionReport::PlaceInstructionReport() {
 }
@@ -147,6 +148,4 @@ void PlaceInstructionReport::setSizeMatched(const Optional<double>& sizeMatched)
 
 
 }
-
-
-
+}

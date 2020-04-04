@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef ISACCOUNTSUBSCRIBEDTOWEBAPPREQUEST_H
-#define ISACCOUNTSUBSCRIBEDTOWEBAPPREQUEST_H
+#ifndef ACCOUNT_ISACCOUNTSUBSCRIBEDTOWEBAPPREQUEST_H
+#define ACCOUNT_ISACCOUNTSUBSCRIBEDTOWEBAPPREQUEST_H
 
 #include <json/json.h>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/JsonRequest.h"
 
 namespace greentop {
+namespace account {
 
 class IsAccountSubscribedToWebAppRequest : public JsonRequest {
     public:
@@ -36,5 +37,6 @@ class IsAccountSubscribedToWebAppRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // ISACCOUNTSUBSCRIBEDTOWEBAPPREQUEST_H
+#endif // ACCOUNT_ISACCOUNTSUBSCRIBEDTOWEBAPPREQUEST_H

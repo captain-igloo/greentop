@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef RUNNERDEFINITION_H
-#define RUNNERDEFINITION_H
+#ifndef STREAM_RUNNERDEFINITION_H
+#define STREAM_RUNNERDEFINITION_H
 
 #include <json/json.h>
 #include <string>
@@ -77,4 +77,4 @@ class RunnerDefinition : public JsonMember {
 }
 }
 
-#endif // RUNNERDEFINITION_H
+#endif // STREAM_RUNNERDEFINITION_H

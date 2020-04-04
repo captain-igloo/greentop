@@ -5,6 +5,7 @@
 #include "greentop/account/SubscriptionHistory.h"
 
 namespace greentop {
+namespace account {
 
 SubscriptionHistory::SubscriptionHistory() {
 }
@@ -155,6 +156,4 @@ void SubscriptionHistory::setClientReference(const std::string& clientReference)
 
 
 }
-
-
-
+}

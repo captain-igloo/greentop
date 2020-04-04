@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef VENDORACCESSTOKENINFO_H
-#define VENDORACCESSTOKENINFO_H
+#ifndef ACCOUNT_VENDORACCESSTOKENINFO_H
+#define ACCOUNT_VENDORACCESSTOKENINFO_H
 
 #include <json/json.h>
 #include <string>
@@ -14,6 +14,7 @@
 #include "greentop/account/enum/TokenType.h"
 
 namespace greentop {
+namespace account {
 /**
  * Wrapper object containing UserVendorSessionToken, RefreshToken and optionally a Subscription
  * Token if one was created
@@ -22,11 +23,11 @@ class VendorAccessTokenInfo : public JsonResponse {
     public:
         VendorAccessTokenInfo();
 
-        VendorAccessTokenInfo(const std::string& access_token,
-            const TokenType& token_type,
-            const Optional<int64_t>& expires_in,
-            const std::string& refresh_token,
-            const ApplicationSubscription& application_subscription);
+        VendorAccessTokenInfo(const std::string& accessToken,
+            const TokenType& tokenType,
+            const Optional<int64_t>& expiresIn,
+            const std::string& refreshToken,
+            const ApplicationSubscription& applicationSubscription);
 
         virtual void fromJson(const Json::Value& json);
 
@@ -34,45 +35,46 @@ class VendorAccessTokenInfo : public JsonResponse {
 
         virtual bool isValid() const;
 
-        const std::string& getAccess_token() const;
-        void setAccess_token(const std::string& access_token);
+        const std::string& getAccessToken() const;
+        void setAccessToken(const std::string& accessToken);
 
-        const TokenType& getToken_type() const;
-        void setToken_type(const TokenType& token_type);
+        const TokenType& getTokenType() const;
+        void setTokenType(const TokenType& tokenType);
 
-        const Optional<int64_t>& getExpires_in() const;
-        void setExpires_in(const Optional<int64_t>& expires_in);
+        const Optional<int64_t>& getExpiresIn() const;
+        void setExpiresIn(const Optional<int64_t>& expiresIn);
 
-        const std::string& getRefresh_token() const;
-        void setRefresh_token(const std::string& refresh_token);
+        const std::string& getRefreshToken() const;
+        void setRefreshToken(const std::string& refreshToken);
 
-        const ApplicationSubscription& getApplication_subscription() const;
-        void setApplication_subscription(const ApplicationSubscription& application_subscription);
+        const ApplicationSubscription& getApplicationSubscription() const;
+        void setApplicationSubscription(const ApplicationSubscription& applicationSubscription);
 
 
     private:
         /**
          * Session token used by web vendors
          */
-        std::string access_token;
+        std::string accessToken;
         /**
          * Type of the token
          */
-        TokenType token_type;
+        TokenType tokenType;
         /**
          * How long until the token expires
          */
-        Optional<int64_t> expires_in;
+        Optional<int64_t> expiresIn;
         /**
          * Token used to refresh the session token in future
          */
-        std::string refresh_token;
+        std::string refreshToken;
         /**
          * Object containing the vendor client id and optionally some subscription information
          */
-        ApplicationSubscription application_subscription;
+        ApplicationSubscription applicationSubscription;
 };
 
 }
+}
 
-#endif // VENDORACCESSTOKENINFO_H
+#endif // ACCOUNT_VENDORACCESSTOKENINFO_H

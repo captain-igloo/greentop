@@ -5,6 +5,7 @@
 #include "greentop/sport/ItemDescription.h"
 
 namespace greentop {
+namespace sport {
 
 
 ItemDescription::ItemDescription(const std::string& eventTypeDesc,
@@ -145,6 +146,4 @@ void ItemDescription::setEachWayDivisor(const Optional<double>& eachWayDivisor) 
 
 
 }
-
-
-
+}

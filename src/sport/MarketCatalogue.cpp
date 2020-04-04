@@ -5,6 +5,7 @@
 #include "greentop/sport/MarketCatalogue.h"
 
 namespace greentop {
+namespace sport {
 
 MarketCatalogue::MarketCatalogue() {
 }
@@ -168,6 +169,4 @@ void MarketCatalogue::setEvent(const Event& event) {
 
 
 }
-
-
-
+}

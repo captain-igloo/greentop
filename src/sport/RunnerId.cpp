@@ -5,6 +5,7 @@
 #include "greentop/sport/RunnerId.h"
 
 namespace greentop {
+namespace sport {
 
 RunnerId::RunnerId() {
 }
@@ -70,6 +71,4 @@ void RunnerId::setHandicap(const Optional<double>& handicap) {
 
 
 }
-
-
-
+}

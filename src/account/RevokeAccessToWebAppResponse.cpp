@@ -5,6 +5,7 @@
 #include "greentop/account/RevokeAccessToWebAppResponse.h"
 
 namespace greentop {
+namespace account {
 
 RevokeAccessToWebAppResponse::RevokeAccessToWebAppResponse() {
 }
@@ -40,6 +41,4 @@ void RevokeAccessToWebAppResponse::setResponse(const Status& response) {
 
 
 }
-
-
-
+}

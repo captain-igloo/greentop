@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETSTATE_H
-#define MARKETSTATE_H
+#ifndef SPORT_MARKETSTATE_H
+#define SPORT_MARKETSTATE_H
 
 #include <ctime>
 #include <json/json.h>
@@ -15,6 +15,7 @@
 #include "greentop/sport/KeyLineDescription.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Market definition
  */
@@ -112,5 +113,6 @@ class MarketState : public JsonMember {
 };
 
 }
+}
 
-#endif // MARKETSTATE_H
+#endif // SPORT_MARKETSTATE_H

@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef INSTRUCTIONREPORTERRORCODE_H
-#define INSTRUCTIONREPORTERRORCODE_H
+#ifndef SPORT_ENUM_INSTRUCTIONREPORTERRORCODE_H
+#define SPORT_ENUM_INSTRUCTIONREPORTERRORCODE_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class InstructionReportErrorCode : public Enum<InstructionReportErrorCode> {
 
@@ -155,5 +156,6 @@ class InstructionReportErrorCode : public Enum<InstructionReportErrorCode> {
 };
 
 }
+}
 
-#endif // INSTRUCTIONREPORTERRORCODE_H
+#endif // SPORT_ENUM_INSTRUCTIONREPORTERRORCODE_H

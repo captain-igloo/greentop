@@ -5,6 +5,7 @@
 #include "greentop/sport/Competition.h"
 
 namespace greentop {
+namespace sport {
 
 
 Competition::Competition(const std::string& id,
@@ -53,6 +54,4 @@ void Competition::setName(const std::string& name) {
 
 
 }
-
-
-
+}

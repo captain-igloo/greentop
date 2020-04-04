@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef ACCOUNTSTATEMENTREPORT_H
-#define ACCOUNTSTATEMENTREPORT_H
+#ifndef ACCOUNT_ACCOUNTSTATEMENTREPORT_H
+#define ACCOUNT_ACCOUNTSTATEMENTREPORT_H
 
 #include <json/json.h>
 #include <vector>
@@ -13,6 +13,7 @@
 #include "greentop/account/StatementItem.h"
 
 namespace greentop {
+namespace account {
 /**
  * A container representing search results.
  */
@@ -48,5 +49,6 @@ class AccountStatementReport : public JsonResponse {
 };
 
 }
+}
 
-#endif // ACCOUNTSTATEMENTREPORT_H
+#endif // ACCOUNT_ACCOUNTSTATEMENTREPORT_H

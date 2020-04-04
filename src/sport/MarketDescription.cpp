@@ -5,6 +5,7 @@
 #include "greentop/sport/MarketDescription.h"
 
 namespace greentop {
+namespace sport {
 
 MarketDescription::MarketDescription() {
 }
@@ -316,6 +317,4 @@ void MarketDescription::setPriceLadderDescription(const PriceLadderDescription& 
 
 
 }
-
-
-
+}

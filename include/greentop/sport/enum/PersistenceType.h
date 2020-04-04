@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef PERSISTENCETYPE_H
-#define PERSISTENCETYPE_H
+#ifndef SPORT_ENUM_PERSISTENCETYPE_H
+#define SPORT_ENUM_PERSISTENCETYPE_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class PersistenceType : public Enum<PersistenceType> {
 
@@ -41,5 +42,6 @@ class PersistenceType : public Enum<PersistenceType> {
 };
 
 }
+}
 
-#endif // PERSISTENCETYPE_H
+#endif // SPORT_ENUM_PERSISTENCETYPE_H

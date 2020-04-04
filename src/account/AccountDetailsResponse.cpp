@@ -5,6 +5,7 @@
 #include "greentop/account/AccountDetailsResponse.h"
 
 namespace greentop {
+namespace account {
 
 
 AccountDetailsResponse::AccountDetailsResponse(const std::string& currencyCode,
@@ -160,6 +161,4 @@ void AccountDetailsResponse::setCountryCode(const std::string& countryCode) {
 
 
 }
-
-
-
+}

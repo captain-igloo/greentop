@@ -5,6 +5,7 @@
 #include "greentop/sport/CancelInstructionReport.h"
 
 namespace greentop {
+namespace sport {
 
 CancelInstructionReport::CancelInstructionReport() {
 }
@@ -102,6 +103,4 @@ void CancelInstructionReport::setCancelledDate(const std::tm& cancelledDate) {
 
 
 }
-
-
-
+}

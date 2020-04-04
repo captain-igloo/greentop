@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string Side::BACK = "BACK";
 const std::string Side::LAY = "LAY";
@@ -36,4 +37,5 @@ bool Side::operator!=(const Side& other) const {
     return value != other.value;
 }
 
+}
 }

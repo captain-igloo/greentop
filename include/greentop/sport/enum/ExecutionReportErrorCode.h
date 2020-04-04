@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef EXECUTIONREPORTERRORCODE_H
-#define EXECUTIONREPORTERRORCODE_H
+#ifndef SPORT_ENUM_EXECUTIONREPORTERRORCODE_H
+#define SPORT_ENUM_EXECUTIONREPORTERRORCODE_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class ExecutionReportErrorCode : public Enum<ExecutionReportErrorCode> {
 
@@ -131,5 +132,6 @@ class ExecutionReportErrorCode : public Enum<ExecutionReportErrorCode> {
 };
 
 }
+}
 
-#endif // EXECUTIONREPORTERRORCODE_H
+#endif // SPORT_ENUM_EXECUTIONREPORTERRORCODE_H

@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LISTAPPLICATIONSUBSCRIPTIONTOKENSREQUEST_H
-#define LISTAPPLICATIONSUBSCRIPTIONTOKENSREQUEST_H
+#ifndef ACCOUNT_LISTAPPLICATIONSUBSCRIPTIONTOKENSREQUEST_H
+#define ACCOUNT_LISTAPPLICATIONSUBSCRIPTIONTOKENSREQUEST_H
 
 #include <json/json.h>
 
@@ -11,6 +11,7 @@
 #include "greentop/account/enum/SubscriptionStatus.h"
 
 namespace greentop {
+namespace account {
 
 class ListApplicationSubscriptionTokensRequest : public JsonRequest {
     public:
@@ -35,5 +36,6 @@ class ListApplicationSubscriptionTokensRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // LISTAPPLICATIONSUBSCRIPTIONTOKENSREQUEST_H
+#endif // ACCOUNT_LISTAPPLICATIONSUBSCRIPTIONTOKENSREQUEST_H

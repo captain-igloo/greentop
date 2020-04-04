@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef GETACCOUNTSTATEMENTREQUEST_H
-#define GETACCOUNTSTATEMENTREQUEST_H
+#ifndef ACCOUNT_GETACCOUNTSTATEMENTREQUEST_H
+#define ACCOUNT_GETACCOUNTSTATEMENTREQUEST_H
 
 #include <json/json.h>
 #include <string>
@@ -15,6 +15,7 @@
 #include "greentop/common/TimeRange.h"
 
 namespace greentop {
+namespace account {
 
 class GetAccountStatementRequest : public JsonRequest {
     public:
@@ -22,7 +23,7 @@ class GetAccountStatementRequest : public JsonRequest {
         GetAccountStatementRequest(const std::string& locale = std::string(),
             const Optional<int32_t>& fromRecord = Optional<int32_t>(),
             const Optional<int32_t>& recordCount = Optional<int32_t>(),
-            const TimeRange& itemDateRange = TimeRange(),
+            const common::TimeRange& itemDateRange = common::TimeRange(),
             const IncludeItem& includeItem = IncludeItem(),
             const Wallet& wallet = Wallet());
 
@@ -41,8 +42,8 @@ class GetAccountStatementRequest : public JsonRequest {
         const Optional<int32_t>& getRecordCount() const;
         void setRecordCount(const Optional<int32_t>& recordCount);
 
-        const TimeRange& getItemDateRange() const;
-        void setItemDateRange(const TimeRange& itemDateRange);
+        const common::TimeRange& getItemDateRange() const;
+        void setItemDateRange(const common::TimeRange& itemDateRange);
 
         const IncludeItem& getIncludeItem() const;
         void setIncludeItem(const IncludeItem& includeItem);
@@ -74,7 +75,7 @@ class GetAccountStatementRequest : public JsonRequest {
          * currently only applied when includeItem is set to ALL or not specified, else items are
          * NOT bound by itemDate.
          */
-        TimeRange itemDateRange;
+        common::TimeRange itemDateRange;
         /**
          * Which items to include, if not specified then defaults to ALL.
          */
@@ -87,5 +88,6 @@ class GetAccountStatementRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // GETACCOUNTSTATEMENTREQUEST_H
+#endif // ACCOUNT_GETACCOUNTSTATEMENTREQUEST_H

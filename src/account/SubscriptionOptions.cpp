@@ -5,38 +5,39 @@
 #include "greentop/account/SubscriptionOptions.h"
 
 namespace greentop {
+namespace account {
 
 
-SubscriptionOptions::SubscriptionOptions(const Optional<int32_t>& subscription_length,
-    const std::string& subscription_token,
-    const std::string& client_reference) :
-    subscription_length(subscription_length),
-    subscription_token(subscription_token),
-    client_reference(client_reference) {
+SubscriptionOptions::SubscriptionOptions(const Optional<int32_t>& subscriptionLength,
+    const std::string& subscriptionToken,
+    const std::string& clientReference) :
+    subscriptionLength(subscriptionLength),
+    subscriptionToken(subscriptionToken),
+    clientReference(clientReference) {
 }
 
 void SubscriptionOptions::fromJson(const Json::Value& json) {
     if (json.isMember("subscription_length")) {
-        subscription_length = json["subscription_length"].asInt();
+        subscriptionLength = json["subscription_length"].asInt();
     }
     if (json.isMember("subscription_token")) {
-        subscription_token = json["subscription_token"].asString();
+        subscriptionToken = json["subscription_token"].asString();
     }
     if (json.isMember("client_reference")) {
-        client_reference = json["client_reference"].asString();
+        clientReference = json["client_reference"].asString();
     }
 }
 
 Json::Value SubscriptionOptions::toJson() const {
     Json::Value json(Json::objectValue);
-    if (subscription_length.isValid()) {
-        json["subscription_length"] = subscription_length.toJson();
+    if (subscriptionLength.isValid()) {
+        json["subscription_length"] = subscriptionLength.toJson();
     }
-    if (subscription_token != "") {
-        json["subscription_token"] = subscription_token;
+    if (subscriptionToken != "") {
+        json["subscription_token"] = subscriptionToken;
     }
-    if (client_reference != "") {
-        json["client_reference"] = client_reference;
+    if (clientReference != "") {
+        json["client_reference"] = clientReference;
     }
     return json;
 }
@@ -45,29 +46,27 @@ bool SubscriptionOptions::isValid() const {
     return true;
 }
 
-const Optional<int32_t>& SubscriptionOptions::getSubscription_length() const {
-    return subscription_length;
+const Optional<int32_t>& SubscriptionOptions::getSubscriptionLength() const {
+    return subscriptionLength;
 }
-void SubscriptionOptions::setSubscription_length(const Optional<int32_t>& subscription_length) {
-    this->subscription_length = subscription_length;
-}
-
-const std::string& SubscriptionOptions::getSubscription_token() const {
-    return subscription_token;
-}
-void SubscriptionOptions::setSubscription_token(const std::string& subscription_token) {
-    this->subscription_token = subscription_token;
+void SubscriptionOptions::setSubscriptionLength(const Optional<int32_t>& subscriptionLength) {
+    this->subscriptionLength = subscriptionLength;
 }
 
-const std::string& SubscriptionOptions::getClient_reference() const {
-    return client_reference;
+const std::string& SubscriptionOptions::getSubscriptionToken() const {
+    return subscriptionToken;
 }
-void SubscriptionOptions::setClient_reference(const std::string& client_reference) {
-    this->client_reference = client_reference;
+void SubscriptionOptions::setSubscriptionToken(const std::string& subscriptionToken) {
+    this->subscriptionToken = subscriptionToken;
 }
 
-
+const std::string& SubscriptionOptions::getClientReference() const {
+    return clientReference;
+}
+void SubscriptionOptions::setClientReference(const std::string& clientReference) {
+    this->clientReference = clientReference;
 }
 
 
-
+}
+}

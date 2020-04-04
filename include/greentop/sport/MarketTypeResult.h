@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETTYPERESULT_H
-#define MARKETTYPERESULT_H
+#ifndef SPORT_MARKETTYPERESULT_H
+#define SPORT_MARKETTYPERESULT_H
 
 #include <json/json.h>
 #include <string>
@@ -12,6 +12,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace sport {
 /**
  * MarketType Result
  */
@@ -46,5 +47,6 @@ class MarketTypeResult : public JsonMember {
 };
 
 }
+}
 
-#endif // MARKETTYPERESULT_H
+#endif // SPORT_MARKETTYPERESULT_H

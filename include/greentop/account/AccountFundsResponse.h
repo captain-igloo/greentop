@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef ACCOUNTFUNDSRESPONSE_H
-#define ACCOUNTFUNDSRESPONSE_H
+#ifndef ACCOUNT_ACCOUNTFUNDSRESPONSE_H
+#define ACCOUNT_ACCOUNTFUNDSRESPONSE_H
 
 #include <json/json.h>
 #include <string>
@@ -12,6 +12,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace account {
 /**
  * Response for retrieving available to bet.
  */
@@ -86,5 +87,6 @@ class AccountFundsResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // ACCOUNTFUNDSRESPONSE_H
+#endif // ACCOUNT_ACCOUNTFUNDSRESPONSE_H

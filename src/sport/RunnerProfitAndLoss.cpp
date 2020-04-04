@@ -5,6 +5,7 @@
 #include "greentop/sport/RunnerProfitAndLoss.h"
 
 namespace greentop {
+namespace sport {
 
 
 RunnerProfitAndLoss::RunnerProfitAndLoss(const Optional<int64_t>& selectionId,
@@ -83,6 +84,4 @@ void RunnerProfitAndLoss::setIfPlace(const Optional<double>& ifPlace) {
 
 
 }
-
-
-
+}

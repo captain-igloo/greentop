@@ -5,6 +5,7 @@
 #include "greentop/sport/RemoveDefaultExposureLimitForMarketGroupsRequest.h"
 
 namespace greentop {
+namespace sport {
 
 RemoveDefaultExposureLimitForMarketGroupsRequest::RemoveDefaultExposureLimitForMarketGroupsRequest() {
 }
@@ -40,6 +41,4 @@ void RemoveDefaultExposureLimitForMarketGroupsRequest::setMarketGroupType(const 
 
 
 }
-
-
-
+}

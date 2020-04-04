@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef UPDATEORDERSREQUEST_H
-#define UPDATEORDERSREQUEST_H
+#ifndef SPORT_UPDATEORDERSREQUEST_H
+#define SPORT_UPDATEORDERSREQUEST_H
 
 #include <json/json.h>
 #include <string>
@@ -13,6 +13,7 @@
 #include "greentop/sport/UpdateInstruction.h"
 
 namespace greentop {
+namespace sport {
 
 class UpdateOrdersRequest : public JsonRequest {
     public:
@@ -53,5 +54,6 @@ class UpdateOrdersRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // UPDATEORDERSREQUEST_H
+#endif // SPORT_UPDATEORDERSREQUEST_H

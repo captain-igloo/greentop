@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef REPLACEINSTRUCTIONREPORT_H
-#define REPLACEINSTRUCTIONREPORT_H
+#ifndef SPORT_REPLACEINSTRUCTIONREPORT_H
+#define SPORT_REPLACEINSTRUCTIONREPORT_H
 
 #include <json/json.h>
 
@@ -14,6 +14,7 @@
 #include "greentop/sport/enum/InstructionReportStatus.h"
 
 namespace greentop {
+namespace sport {
 
 class ReplaceInstructionReport : public JsonMember {
     public:
@@ -63,5 +64,6 @@ class ReplaceInstructionReport : public JsonMember {
 };
 
 }
+}
 
-#endif // REPLACEINSTRUCTIONREPORT_H
+#endif // SPORT_REPLACEINSTRUCTIONREPORT_H

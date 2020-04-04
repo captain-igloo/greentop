@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef EXBESTOFFERSOVERRIDES_H
-#define EXBESTOFFERSOVERRIDES_H
+#ifndef SPORT_EXBESTOFFERSOVERRIDES_H
+#define SPORT_EXBESTOFFERSOVERRIDES_H
 
 #include <json/json.h>
 
@@ -12,6 +12,7 @@
 #include "greentop/sport/enum/RollupModel.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Options to alter the default representation of best offer prices
  */
@@ -80,5 +81,6 @@ class ExBestOffersOverrides : public JsonMember {
 };
 
 }
+}
 
-#endif // EXBESTOFFERSOVERRIDES_H
+#endif // SPORT_EXBESTOFFERSOVERRIDES_H

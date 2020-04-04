@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace account {
 
 const std::string AffiliateRelationStatus::INVALID_USER = "INVALID_USER";
 const std::string AffiliateRelationStatus::AFFILIATED = "AFFILIATED";
@@ -38,4 +39,5 @@ bool AffiliateRelationStatus::operator!=(const AffiliateRelationStatus& other) c
     return value != other.value;
 }
 
+}
 }

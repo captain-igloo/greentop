@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef ORDERSTATUS_H
-#define ORDERSTATUS_H
+#ifndef SPORT_ENUM_ORDERSTATUS_H
+#define SPORT_ENUM_ORDERSTATUS_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class OrderStatus : public Enum<OrderStatus> {
 
@@ -50,5 +51,6 @@ class OrderStatus : public Enum<OrderStatus> {
 };
 
 }
+}
 
-#endif // ORDERSTATUS_H
+#endif // SPORT_ENUM_ORDERSTATUS_H

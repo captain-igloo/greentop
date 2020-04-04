@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LISTCURRENTORDERSREQUEST_H
-#define LISTCURRENTORDERSREQUEST_H
+#ifndef SPORT_LISTCURRENTORDERSREQUEST_H
+#define SPORT_LISTCURRENTORDERSREQUEST_H
 
 #include <json/json.h>
 #include <set>
@@ -16,6 +16,7 @@
 #include "greentop/sport/enum/SortDir.h"
 
 namespace greentop {
+namespace sport {
 
 class ListCurrentOrdersRequest : public JsonRequest {
     public:
@@ -25,8 +26,8 @@ class ListCurrentOrdersRequest : public JsonRequest {
             const OrderProjection& orderProjection = OrderProjection(),
             const std::set<std::string>& customerOrderRefs = std::set<std::string>(),
             const std::set<std::string>& customerStrategyRefs = std::set<std::string>(),
-            const TimeRange& placedDateRange = TimeRange(),
-            const TimeRange& dateRange = TimeRange(),
+            const common::TimeRange& placedDateRange = common::TimeRange(),
+            const common::TimeRange& dateRange = common::TimeRange(),
             const OrderBy& orderBy = OrderBy(),
             const SortDir& sortDir = SortDir(),
             const Optional<int32_t>& fromRecord = Optional<int32_t>(),
@@ -53,11 +54,11 @@ class ListCurrentOrdersRequest : public JsonRequest {
         const std::set<std::string>& getCustomerStrategyRefs() const;
         void setCustomerStrategyRefs(const std::set<std::string>& customerStrategyRefs);
 
-        const TimeRange& getPlacedDateRange() const;
-        void setPlacedDateRange(const TimeRange& placedDateRange);
+        const common::TimeRange& getPlacedDateRange() const;
+        void setPlacedDateRange(const common::TimeRange& placedDateRange);
 
-        const TimeRange& getDateRange() const;
-        void setDateRange(const TimeRange& dateRange);
+        const common::TimeRange& getDateRange() const;
+        void setDateRange(const common::TimeRange& dateRange);
 
         const OrderBy& getOrderBy() const;
         void setOrderBy(const OrderBy& orderBy);
@@ -99,7 +100,7 @@ class ListCurrentOrdersRequest : public JsonRequest {
          * this date (to the millisecond) then it will be included in the results. If the from is
          * later than the to, no results will be returned.
          */
-        TimeRange placedDateRange;
+        common::TimeRange placedDateRange;
         /**
          * Replacement for placedDateRange to allow filtering by other date fields rather than just
          * placedDate. Optionally restricts the results to be from/to the specified date, these
@@ -109,7 +110,7 @@ class ListCurrentOrdersRequest : public JsonRequest {
          * millisecond) then it will be included in the results. If the from is later than the to,
          * no results will be returned.
          */
-        TimeRange dateRange;
+        common::TimeRange dateRange;
         /**
          * Specifies how the results will be ordered. If no value is passed in, it defaults to
          * BY_BET. Also acts as a filter such that only orders with a valid value in the field
@@ -137,5 +138,6 @@ class ListCurrentOrdersRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // LISTCURRENTORDERSREQUEST_H
+#endif // SPORT_LISTCURRENTORDERSREQUEST_H

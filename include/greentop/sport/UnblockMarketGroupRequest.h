@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef UNBLOCKMARKETGROUPREQUEST_H
-#define UNBLOCKMARKETGROUPREQUEST_H
+#ifndef SPORT_UNBLOCKMARKETGROUPREQUEST_H
+#define SPORT_UNBLOCKMARKETGROUPREQUEST_H
 
 #include <json/json.h>
 
@@ -11,6 +11,7 @@
 #include "greentop/sport/MarketGroup.h"
 
 namespace greentop {
+namespace sport {
 
 class UnblockMarketGroupRequest : public JsonRequest {
     public:
@@ -36,5 +37,6 @@ class UnblockMarketGroupRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // UNBLOCKMARKETGROUPREQUEST_H
+#endif // SPORT_UNBLOCKMARKETGROUPREQUEST_H

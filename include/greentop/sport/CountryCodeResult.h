@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef COUNTRYCODERESULT_H
-#define COUNTRYCODERESULT_H
+#ifndef SPORT_COUNTRYCODERESULT_H
+#define SPORT_COUNTRYCODERESULT_H
 
 #include <json/json.h>
 #include <string>
@@ -12,6 +12,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace sport {
 /**
  * CountryCode Result
  */
@@ -46,5 +47,6 @@ class CountryCodeResult : public JsonMember {
 };
 
 }
+}
 
-#endif // COUNTRYCODERESULT_H
+#endif // SPORT_COUNTRYCODERESULT_H

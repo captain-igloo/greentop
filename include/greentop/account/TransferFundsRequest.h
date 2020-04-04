@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef TRANSFERFUNDSREQUEST_H
-#define TRANSFERFUNDSREQUEST_H
+#ifndef ACCOUNT_TRANSFERFUNDSREQUEST_H
+#define ACCOUNT_TRANSFERFUNDSREQUEST_H
 
 #include <json/json.h>
 
@@ -12,6 +12,7 @@
 #include "greentop/account/enum/Wallet.h"
 
 namespace greentop {
+namespace account {
 
 class TransferFundsRequest : public JsonRequest {
     public:
@@ -53,5 +54,6 @@ class TransferFundsRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // TRANSFERFUNDSREQUEST_H
+#endif // ACCOUNT_TRANSFERFUNDSREQUEST_H

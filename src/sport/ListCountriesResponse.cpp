@@ -5,6 +5,7 @@
 #include "greentop/sport/ListCountriesResponse.h"
 
 namespace greentop {
+namespace sport {
 
 ListCountriesResponse::ListCountriesResponse() {
 }
@@ -46,6 +47,4 @@ void ListCountriesResponse::setCountryCodeResults(const std::vector<CountryCodeR
 
 
 }
-
-
-
+}

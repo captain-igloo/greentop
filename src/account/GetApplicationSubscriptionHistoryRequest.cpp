@@ -5,6 +5,7 @@
 #include "greentop/account/GetApplicationSubscriptionHistoryRequest.h"
 
 namespace greentop {
+namespace account {
 
 
 GetApplicationSubscriptionHistoryRequest::GetApplicationSubscriptionHistoryRequest(const std::string& vendorClientId,
@@ -53,6 +54,4 @@ void GetApplicationSubscriptionHistoryRequest::setApplicationKey(const std::stri
 
 
 }
-
-
-
+}

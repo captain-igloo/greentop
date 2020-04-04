@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef CANCELEXECUTIONREPORT_H
-#define CANCELEXECUTIONREPORT_H
+#ifndef SPORT_CANCELEXECUTIONREPORT_H
+#define SPORT_CANCELEXECUTIONREPORT_H
 
 #include <json/json.h>
 #include <string>
@@ -15,6 +15,7 @@
 #include "greentop/sport/enum/ExecutionReportStatus.h"
 
 namespace greentop {
+namespace sport {
 
 class CancelExecutionReport : public JsonResponse {
     public:
@@ -65,5 +66,6 @@ class CancelExecutionReport : public JsonResponse {
 };
 
 }
+}
 
-#endif // CANCELEXECUTIONREPORT_H
+#endif // SPORT_CANCELEXECUTIONREPORT_H

@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LISTTIMERANGESRESPONSE_H
-#define LISTTIMERANGESRESPONSE_H
+#ifndef SPORT_LISTTIMERANGESRESPONSE_H
+#define SPORT_LISTTIMERANGESRESPONSE_H
 
 #include <json/json.h>
 #include <vector>
@@ -12,6 +12,7 @@
 #include "greentop/sport/TimeRangeResult.h"
 
 namespace greentop {
+namespace sport {
 
 class ListTimeRangesResponse : public JsonResponse {
     public:
@@ -35,5 +36,6 @@ class ListTimeRangesResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // LISTTIMERANGESRESPONSE_H
+#endif // SPORT_LISTTIMERANGESRESPONSE_H

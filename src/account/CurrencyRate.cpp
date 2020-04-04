@@ -5,6 +5,7 @@
 #include "greentop/account/CurrencyRate.h"
 
 namespace greentop {
+namespace account {
 
 
 CurrencyRate::CurrencyRate(const std::string& currencyCode,
@@ -53,6 +54,4 @@ void CurrencyRate::setRate(const Optional<double>& rate) {
 
 
 }
-
-
-
+}

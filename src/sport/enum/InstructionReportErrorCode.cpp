@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string InstructionReportErrorCode::INVALID_BET_SIZE = "INVALID_BET_SIZE";
 const std::string InstructionReportErrorCode::INVALID_RUNNER = "INVALID_RUNNER";
@@ -88,4 +89,5 @@ bool InstructionReportErrorCode::operator!=(const InstructionReportErrorCode& ot
     return value != other.value;
 }
 
+}
 }

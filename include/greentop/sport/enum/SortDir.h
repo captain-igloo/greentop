@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef SORTDIR_H
-#define SORTDIR_H
+#ifndef SPORT_ENUM_SORTDIR_H
+#define SPORT_ENUM_SORTDIR_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class SortDir : public Enum<SortDir> {
 
@@ -37,5 +38,6 @@ class SortDir : public Enum<SortDir> {
 };
 
 }
+}
 
-#endif // SORTDIR_H
+#endif // SPORT_ENUM_SORTDIR_H

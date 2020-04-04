@@ -5,6 +5,7 @@
 #include "greentop/sport/ListMarketBookRequest.h"
 
 namespace greentop {
+namespace sport {
 
 ListMarketBookRequest::ListMarketBookRequest() {
 }
@@ -204,6 +205,4 @@ void ListMarketBookRequest::setBetIds(const std::set<std::string>& betIds) {
 
 
 }
-
-
-
+}

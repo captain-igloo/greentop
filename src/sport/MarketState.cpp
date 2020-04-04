@@ -5,6 +5,7 @@
 #include "greentop/sport/MarketState.h"
 
 namespace greentop {
+namespace sport {
 
 MarketState::MarketState() {
 }
@@ -177,6 +178,4 @@ void MarketState::setKeyLineDescription(const KeyLineDescription& keyLineDescrip
 
 
 }
-
-
-
+}

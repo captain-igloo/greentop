@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef TOKENTYPE_H
-#define TOKENTYPE_H
+#ifndef ACCOUNT_ENUM_TOKENTYPE_H
+#define ACCOUNT_ENUM_TOKENTYPE_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace account {
 
 class TokenType : public Enum<TokenType> {
 
@@ -31,5 +32,6 @@ class TokenType : public Enum<TokenType> {
 };
 
 }
+}
 
-#endif // TOKENTYPE_H
+#endif // ACCOUNT_ENUM_TOKENTYPE_H

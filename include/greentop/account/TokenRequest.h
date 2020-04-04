@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef TOKENREQUEST_H
-#define TOKENREQUEST_H
+#ifndef ACCOUNT_TOKENREQUEST_H
+#define ACCOUNT_TOKENREQUEST_H
 
 #include <json/json.h>
 #include <string>
@@ -12,16 +12,17 @@
 #include "greentop/account/enum/GrantType.h"
 
 namespace greentop {
+namespace account {
 
 class TokenRequest : public JsonRequest {
     public:
         TokenRequest();
 
-        TokenRequest(const std::string& client_id,
-            const GrantType& grant_type,
+        TokenRequest(const std::string& clientId,
+            const GrantType& grantType,
             const std::string& code = std::string(),
-            const std::string& client_secret = std::string(),
-            const std::string& refresh_token = std::string());
+            const std::string& clientSecret = std::string(),
+            const std::string& refreshToken = std::string());
 
         virtual void fromJson(const Json::Value& json);
 
@@ -29,31 +30,31 @@ class TokenRequest : public JsonRequest {
 
         virtual bool isValid() const;
 
-        const std::string& getClient_id() const;
-        void setClient_id(const std::string& client_id);
+        const std::string& getClientId() const;
+        void setClientId(const std::string& clientId);
 
-        const GrantType& getGrant_type() const;
-        void setGrant_type(const GrantType& grant_type);
+        const GrantType& getGrantType() const;
+        void setGrantType(const GrantType& grantType);
 
         const std::string& getCode() const;
         void setCode(const std::string& code);
 
-        const std::string& getClient_secret() const;
-        void setClient_secret(const std::string& client_secret);
+        const std::string& getClientSecret() const;
+        void setClientSecret(const std::string& clientSecret);
 
-        const std::string& getRefresh_token() const;
-        void setRefresh_token(const std::string& refresh_token);
+        const std::string& getRefreshToken() const;
+        void setRefreshToken(const std::string& refreshToken);
 
 
     private:
         /**
          * The vendor's vendorId
          */
-        std::string client_id;
+        std::string clientId;
         /**
          * Whether the vendor is using an authorisation code or a refresh token to get a session
          */
-        GrantType grant_type;
+        GrantType grantType;
         /**
          * The authorisation code used to lookup the session to be returned
          */
@@ -61,13 +62,14 @@ class TokenRequest : public JsonRequest {
         /**
          * The vendor's private key used to verify their identity
          */
-        std::string client_secret;
+        std::string clientSecret;
         /**
          * The vendor's refresh token if the grant_type is refresh_token
          */
-        std::string refresh_token;
+        std::string refreshToken;
 };
 
 }
+}
 
-#endif // TOKENREQUEST_H
+#endif // ACCOUNT_TOKENREQUEST_H

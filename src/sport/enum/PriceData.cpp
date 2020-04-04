@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string PriceData::SP_AVAILABLE = "SP_AVAILABLE";
 const std::string PriceData::SP_TRADED = "SP_TRADED";
@@ -42,4 +43,5 @@ bool PriceData::operator!=(const PriceData& other) const {
     return value != other.value;
 }
 
+}
 }

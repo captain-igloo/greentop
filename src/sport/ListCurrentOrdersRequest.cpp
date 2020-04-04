@@ -5,6 +5,7 @@
 #include "greentop/sport/ListCurrentOrdersRequest.h"
 
 namespace greentop {
+namespace sport {
 
 
 ListCurrentOrdersRequest::ListCurrentOrdersRequest(const std::set<std::string>& betIds,
@@ -12,8 +13,8 @@ ListCurrentOrdersRequest::ListCurrentOrdersRequest(const std::set<std::string>& 
     const OrderProjection& orderProjection,
     const std::set<std::string>& customerOrderRefs,
     const std::set<std::string>& customerStrategyRefs,
-    const TimeRange& placedDateRange,
-    const TimeRange& dateRange,
+    const common::TimeRange& placedDateRange,
+    const common::TimeRange& dateRange,
     const OrderBy& orderBy,
     const SortDir& sortDir,
     const Optional<int32_t>& fromRecord,
@@ -160,17 +161,17 @@ void ListCurrentOrdersRequest::setCustomerStrategyRefs(const std::set<std::strin
     this->customerStrategyRefs = customerStrategyRefs;
 }
 
-const TimeRange& ListCurrentOrdersRequest::getPlacedDateRange() const {
+const common::TimeRange& ListCurrentOrdersRequest::getPlacedDateRange() const {
     return placedDateRange;
 }
-void ListCurrentOrdersRequest::setPlacedDateRange(const TimeRange& placedDateRange) {
+void ListCurrentOrdersRequest::setPlacedDateRange(const common::TimeRange& placedDateRange) {
     this->placedDateRange = placedDateRange;
 }
 
-const TimeRange& ListCurrentOrdersRequest::getDateRange() const {
+const common::TimeRange& ListCurrentOrdersRequest::getDateRange() const {
     return dateRange;
 }
-void ListCurrentOrdersRequest::setDateRange(const TimeRange& dateRange) {
+void ListCurrentOrdersRequest::setDateRange(const common::TimeRange& dateRange) {
     this->dateRange = dateRange;
 }
 
@@ -204,6 +205,4 @@ void ListCurrentOrdersRequest::setRecordCount(const Optional<int32_t>& recordCou
 
 
 }
-
-
-
+}

@@ -5,6 +5,7 @@
 #include "greentop/sport/ListEventsRequest.h"
 
 namespace greentop {
+namespace sport {
 
 ListEventsRequest::ListEventsRequest() {
 }
@@ -55,6 +56,4 @@ void ListEventsRequest::setLocale(const std::string& locale) {
 
 
 }
-
-
-
+}

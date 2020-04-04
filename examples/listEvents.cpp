@@ -15,21 +15,21 @@ int main(int argc, char* argv[]) {
 
     if (exchangeApi.login(argv[2], argv[3])) {
 
-        MarketFilter filter;
+        sport::MarketFilter filter;
         std::set<std::string> competitionIds = {argv[4]};
         filter.setCompetitionIds(competitionIds);
-        ListEventsRequest req(filter);
+        sport::ListEventsRequest req(filter);
 
         if (req.isValid()) {
 
-            ListEventsResponse resp = exchangeApi.listEvents(req);
+            sport::ListEventsResponse resp = exchangeApi.listEvents(req);
 
             if (resp.isSuccess()) {
 
-                std::vector<EventResult> eventResults = resp.getEventResults();
+                std::vector<sport::EventResult> eventResults = resp.getEventResults();
 
                 for (unsigned i = 0; i < eventResults.size() && i < 10; ++i) {
-                    Event event = eventResults[i].getEvent();
+                    sport::Event event = eventResults[i].getEvent();
                     std::cout << event.getId() << " " << event.getName() << std::endl;
                 }
 

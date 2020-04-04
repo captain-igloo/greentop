@@ -5,9 +5,10 @@
 #include "greentop/sport/TimeRangeResult.h"
 
 namespace greentop {
+namespace sport {
 
 
-TimeRangeResult::TimeRangeResult(const TimeRange& timeRange,
+TimeRangeResult::TimeRangeResult(const common::TimeRange& timeRange,
     const Optional<int32_t>& marketCount) :
     timeRange(timeRange),
     marketCount(marketCount) {
@@ -37,10 +38,10 @@ bool TimeRangeResult::isValid() const {
     return true;
 }
 
-const TimeRange& TimeRangeResult::getTimeRange() const {
+const common::TimeRange& TimeRangeResult::getTimeRange() const {
     return timeRange;
 }
-void TimeRangeResult::setTimeRange(const TimeRange& timeRange) {
+void TimeRangeResult::setTimeRange(const common::TimeRange& timeRange) {
     this->timeRange = timeRange;
 }
 
@@ -53,6 +54,4 @@ void TimeRangeResult::setMarketCount(const Optional<int32_t>& marketCount) {
 
 
 }
-
-
-
+}

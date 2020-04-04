@@ -5,6 +5,7 @@
 #include "greentop/sport/VenueResult.h"
 
 namespace greentop {
+namespace sport {
 
 
 VenueResult::VenueResult(const std::string& venue,
@@ -53,6 +54,4 @@ void VenueResult::setMarketCount(const Optional<int32_t>& marketCount) {
 
 
 }
-
-
-
+}

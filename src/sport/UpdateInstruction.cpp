@@ -5,6 +5,7 @@
 #include "greentop/sport/UpdateInstruction.h"
 
 namespace greentop {
+namespace sport {
 
 UpdateInstruction::UpdateInstruction() {
 }
@@ -55,6 +56,4 @@ void UpdateInstruction::setNewPersistenceType(const PersistenceType& newPersiste
 
 
 }
-
-
-
+}

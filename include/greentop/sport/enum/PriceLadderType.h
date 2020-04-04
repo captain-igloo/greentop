@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef PRICELADDERTYPE_H
-#define PRICELADDERTYPE_H
+#ifndef SPORT_ENUM_PRICELADDERTYPE_H
+#define SPORT_ENUM_PRICELADDERTYPE_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class PriceLadderType : public Enum<PriceLadderType> {
 
@@ -42,5 +43,6 @@ class PriceLadderType : public Enum<PriceLadderType> {
 };
 
 }
+}
 
-#endif // PRICELADDERTYPE_H
+#endif // SPORT_ENUM_PRICELADDERTYPE_H

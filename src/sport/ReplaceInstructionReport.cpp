@@ -5,6 +5,7 @@
 #include "greentop/sport/ReplaceInstructionReport.h"
 
 namespace greentop {
+namespace sport {
 
 ReplaceInstructionReport::ReplaceInstructionReport() {
 }
@@ -85,6 +86,4 @@ void ReplaceInstructionReport::setPlaceInstructionReport(const PlaceInstructionR
 
 
 }
-
-
-
+}

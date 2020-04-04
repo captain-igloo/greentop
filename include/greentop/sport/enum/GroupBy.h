@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef GROUPBY_H
-#define GROUPBY_H
+#ifndef SPORT_ENUM_GROUPBY_H
+#define SPORT_ENUM_GROUPBY_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class GroupBy : public Enum<GroupBy> {
 
@@ -63,5 +64,6 @@ class GroupBy : public Enum<GroupBy> {
 };
 
 }
+}
 
-#endif // GROUPBY_H
+#endif // SPORT_ENUM_GROUPBY_H

@@ -5,6 +5,7 @@
 #include "greentop/account/DeveloperApp.h"
 
 namespace greentop {
+namespace account {
 
 DeveloperApp::DeveloperApp() {
 }
@@ -78,6 +79,4 @@ void DeveloperApp::setAppVersions(const std::vector<DeveloperAppVersion>& appVer
 
 
 }
-
-
-
+}

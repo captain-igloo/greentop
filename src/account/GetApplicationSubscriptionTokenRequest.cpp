@@ -5,6 +5,7 @@
 #include "greentop/account/GetApplicationSubscriptionTokenRequest.h"
 
 namespace greentop {
+namespace account {
 
 
 GetApplicationSubscriptionTokenRequest::GetApplicationSubscriptionTokenRequest(const Optional<int32_t>& subscriptionLength,
@@ -53,6 +54,4 @@ void GetApplicationSubscriptionTokenRequest::setClientReference(const std::strin
 
 
 }
-
-
-
+}

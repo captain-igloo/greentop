@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string PersistenceType::LAPSE = "LAPSE";
 const std::string PersistenceType::PERSIST = "PERSIST";
@@ -38,4 +39,5 @@ bool PersistenceType::operator!=(const PersistenceType& other) const {
     return value != other.value;
 }
 
+}
 }

@@ -5,6 +5,7 @@
 #include "greentop/sport/ReplaceExecutionReport.h"
 
 namespace greentop {
+namespace sport {
 
 
 ReplaceExecutionReport::ReplaceExecutionReport(const std::string& customerRef,
@@ -106,6 +107,4 @@ void ReplaceExecutionReport::setInstructionReports(const std::vector<ReplaceInst
 
 
 }
-
-
-
+}

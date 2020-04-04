@@ -5,6 +5,7 @@
 #include "greentop/account/ListAuthorizedWebAppsResponse.h"
 
 namespace greentop {
+namespace account {
 
 ListAuthorizedWebAppsResponse::ListAuthorizedWebAppsResponse() {
 }
@@ -46,6 +47,4 @@ void ListAuthorizedWebAppsResponse::setVendorDetailses(const std::vector<VendorD
 
 
 }
-
-
-
+}

@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef GETAPPLICATIONSUBSCRIPTIONHISTORYRESPONSE_H
-#define GETAPPLICATIONSUBSCRIPTIONHISTORYRESPONSE_H
+#ifndef ACCOUNT_GETAPPLICATIONSUBSCRIPTIONHISTORYRESPONSE_H
+#define ACCOUNT_GETAPPLICATIONSUBSCRIPTIONHISTORYRESPONSE_H
 
 #include <json/json.h>
 #include <vector>
@@ -12,6 +12,7 @@
 #include "greentop/account/SubscriptionHistory.h"
 
 namespace greentop {
+namespace account {
 
 class GetApplicationSubscriptionHistoryResponse : public JsonResponse {
     public:
@@ -35,5 +36,6 @@ class GetApplicationSubscriptionHistoryResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // GETAPPLICATIONSUBSCRIPTIONHISTORYRESPONSE_H
+#endif // ACCOUNT_GETAPPLICATIONSUBSCRIPTIONHISTORYRESPONSE_H

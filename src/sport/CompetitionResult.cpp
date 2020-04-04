@@ -5,6 +5,7 @@
 #include "greentop/sport/CompetitionResult.h"
 
 namespace greentop {
+namespace sport {
 
 
 CompetitionResult::CompetitionResult(const Competition& competition,
@@ -68,6 +69,4 @@ void CompetitionResult::setCompetitionRegion(const std::string& competitionRegio
 
 
 }
-
-
-
+}

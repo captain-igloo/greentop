@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef CANCELAPPLICATIONSUBSCRIPTIONRESPONSE_H
-#define CANCELAPPLICATIONSUBSCRIPTIONRESPONSE_H
+#ifndef ACCOUNT_CANCELAPPLICATIONSUBSCRIPTIONRESPONSE_H
+#define ACCOUNT_CANCELAPPLICATIONSUBSCRIPTIONRESPONSE_H
 
 #include <json/json.h>
 
@@ -11,6 +11,7 @@
 #include "greentop/account/enum/Status.h"
 
 namespace greentop {
+namespace account {
 
 class CancelApplicationSubscriptionResponse : public JsonResponse {
     public:
@@ -34,5 +35,6 @@ class CancelApplicationSubscriptionResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // CANCELAPPLICATIONSUBSCRIPTIONRESPONSE_H
+#endif // ACCOUNT_CANCELAPPLICATIONSUBSCRIPTIONRESPONSE_H

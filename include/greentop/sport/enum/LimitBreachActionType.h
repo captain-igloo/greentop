@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LIMITBREACHACTIONTYPE_H
-#define LIMITBREACHACTIONTYPE_H
+#ifndef SPORT_ENUM_LIMITBREACHACTIONTYPE_H
+#define SPORT_ENUM_LIMITBREACHACTIONTYPE_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class LimitBreachActionType : public Enum<LimitBreachActionType> {
 
@@ -47,5 +48,6 @@ class LimitBreachActionType : public Enum<LimitBreachActionType> {
 };
 
 }
+}
 
-#endif // LIMITBREACHACTIONTYPE_H
+#endif // SPORT_ENUM_LIMITBREACHACTIONTYPE_H

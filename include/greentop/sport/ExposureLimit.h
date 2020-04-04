@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef EXPOSURELIMIT_H
-#define EXPOSURELIMIT_H
+#ifndef SPORT_EXPOSURELIMIT_H
+#define SPORT_EXPOSURELIMIT_H
 
 #include <json/json.h>
 
@@ -12,6 +12,7 @@
 #include "greentop/sport/LimitBreachAction.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Exposure limit and limit breach action. Not populating one of total or matched parameters
  * indicates that no limit should be set for that exposure value. A special use of this type is
@@ -55,5 +56,6 @@ class ExposureLimit : public JsonMember {
 };
 
 }
+}
 
-#endif // EXPOSURELIMIT_H
+#endif // SPORT_EXPOSURELIMIT_H

@@ -7,6 +7,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 const std::string RollupModel::STAKE = "STAKE";
 const std::string RollupModel::PAYOUT = "PAYOUT";
@@ -40,4 +41,5 @@ bool RollupModel::operator!=(const RollupModel& other) const {
     return value != other.value;
 }
 
+}
 }

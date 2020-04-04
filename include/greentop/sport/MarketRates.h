@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETRATES_H
-#define MARKETRATES_H
+#ifndef SPORT_MARKETRATES_H
+#define SPORT_MARKETRATES_H
 
 #include <json/json.h>
 
@@ -11,6 +11,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace sport {
 /**
  * Market Rates
  */
@@ -46,5 +47,6 @@ class MarketRates : public JsonMember {
 };
 
 }
+}
 
-#endif // MARKETRATES_H
+#endif // SPORT_MARKETRATES_H

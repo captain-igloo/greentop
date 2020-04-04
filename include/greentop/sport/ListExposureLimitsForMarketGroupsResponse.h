@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LISTEXPOSURELIMITSFORMARKETGROUPSRESPONSE_H
-#define LISTEXPOSURELIMITSFORMARKETGROUPSRESPONSE_H
+#ifndef SPORT_LISTEXPOSURELIMITSFORMARKETGROUPSRESPONSE_H
+#define SPORT_LISTEXPOSURELIMITSFORMARKETGROUPSRESPONSE_H
 
 #include <json/json.h>
 #include <vector>
@@ -12,6 +12,7 @@
 #include "greentop/sport/ExposureLimitsForMarketGroups.h"
 
 namespace greentop {
+namespace sport {
 
 class ListExposureLimitsForMarketGroupsResponse : public JsonResponse {
     public:
@@ -35,5 +36,6 @@ class ListExposureLimitsForMarketGroupsResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // LISTEXPOSURELIMITSFORMARKETGROUPSRESPONSE_H
+#endif // SPORT_LISTEXPOSURELIMITSFORMARKETGROUPSRESPONSE_H

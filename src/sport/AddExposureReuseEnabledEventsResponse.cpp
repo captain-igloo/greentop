@@ -5,6 +5,7 @@
 #include "greentop/sport/AddExposureReuseEnabledEventsResponse.h"
 
 namespace greentop {
+namespace sport {
 
 AddExposureReuseEnabledEventsResponse::AddExposureReuseEnabledEventsResponse() {
 }
@@ -40,6 +41,4 @@ void AddExposureReuseEnabledEventsResponse::setResponse(const std::string& respo
 
 
 }
-
-
-
+}

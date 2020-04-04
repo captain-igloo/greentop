@@ -5,6 +5,7 @@
 #include "greentop/sport/AddExposureReuseEnabledEventsRequest.h"
 
 namespace greentop {
+namespace sport {
 
 AddExposureReuseEnabledEventsRequest::AddExposureReuseEnabledEventsRequest() {
 }
@@ -44,6 +45,4 @@ void AddExposureReuseEnabledEventsRequest::setEventIds(const std::vector<int64_t
 
 
 }
-
-
-
+}

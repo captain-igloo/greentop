@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MATCH_H
-#define MATCH_H
+#ifndef SPORT_MATCH_H
+#define SPORT_MATCH_H
 
 #include <ctime>
 #include <json/json.h>
@@ -15,6 +15,7 @@
 #include "greentop/sport/enum/Side.h"
 
 namespace greentop {
+namespace sport {
 /**
  * An individual bet Match, or rollup by price or avg price. Rollup depends on the requested
  * MatchProjection
@@ -82,5 +83,6 @@ class Match : public JsonMember {
 };
 
 }
+}
 
-#endif // MATCH_H
+#endif // SPORT_MATCH_H

@@ -5,6 +5,7 @@
 #include "greentop/sport/ExposureLimit.h"
 
 namespace greentop {
+namespace sport {
 
 
 ExposureLimit::ExposureLimit(const Optional<double>& matched,
@@ -68,6 +69,4 @@ void ExposureLimit::setLimitBreachAction(const LimitBreachAction& limitBreachAct
 
 
 }
-
-
-
+}

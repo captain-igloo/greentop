@@ -5,6 +5,7 @@
 #include "greentop/sport/MarketVersion.h"
 
 namespace greentop {
+namespace sport {
 
 
 MarketVersion::MarketVersion(const Optional<int64_t>& version) :
@@ -38,6 +39,4 @@ void MarketVersion::setVersion(const Optional<int64_t>& version) {
 
 
 }
-
-
-
+}

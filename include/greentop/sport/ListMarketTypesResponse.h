@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LISTMARKETTYPESRESPONSE_H
-#define LISTMARKETTYPESRESPONSE_H
+#ifndef SPORT_LISTMARKETTYPESRESPONSE_H
+#define SPORT_LISTMARKETTYPESRESPONSE_H
 
 #include <json/json.h>
 #include <vector>
@@ -12,6 +12,7 @@
 #include "greentop/sport/MarketTypeResult.h"
 
 namespace greentop {
+namespace sport {
 
 class ListMarketTypesResponse : public JsonResponse {
     public:
@@ -35,5 +36,6 @@ class ListMarketTypesResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // LISTMARKETTYPESRESPONSE_H
+#endif // SPORT_LISTMARKETTYPESRESPONSE_H

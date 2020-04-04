@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef MARKETSORT_H
-#define MARKETSORT_H
+#ifndef SPORT_ENUM_MARKETSORT_H
+#define SPORT_ENUM_MARKETSORT_H
 
 #include <stdexcept>
 #include <string>
@@ -11,6 +11,7 @@
 #include "greentop/Enum.h"
 
 namespace greentop {
+namespace sport {
 
 class MarketSort : public Enum<MarketSort> {
 
@@ -53,5 +54,6 @@ class MarketSort : public Enum<MarketSort> {
 };
 
 }
+}
 
-#endif // MARKETSORT_H
+#endif // SPORT_ENUM_MARKETSORT_H

@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef LISTRUNNERBOOKREQUEST_H
-#define LISTRUNNERBOOKREQUEST_H
+#ifndef SPORT_LISTRUNNERBOOKREQUEST_H
+#define SPORT_LISTRUNNERBOOKREQUEST_H
 
 #include <ctime>
 #include <json/json.h>
@@ -18,6 +18,7 @@
 #include "greentop/sport/enum/OrderProjection.h"
 
 namespace greentop {
+namespace sport {
 
 class ListRunnerBookRequest : public JsonRequest {
     public:
@@ -149,5 +150,6 @@ class ListRunnerBookRequest : public JsonRequest {
 };
 
 }
+}
 
-#endif // LISTRUNNERBOOKREQUEST_H
+#endif // SPORT_LISTRUNNERBOOKREQUEST_H

@@ -5,6 +5,7 @@
 #include "greentop/account/ListCurrencyRatesRequest.h"
 
 namespace greentop {
+namespace account {
 
 
 ListCurrencyRatesRequest::ListCurrencyRatesRequest(const std::string& fromCurrency) :
@@ -38,6 +39,4 @@ void ListCurrencyRatesRequest::setFromCurrency(const std::string& fromCurrency) 
 
 
 }
-
-
-
+}

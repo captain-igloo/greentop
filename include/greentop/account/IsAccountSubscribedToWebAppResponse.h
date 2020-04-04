@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef ISACCOUNTSUBSCRIBEDTOWEBAPPRESPONSE_H
-#define ISACCOUNTSUBSCRIBEDTOWEBAPPRESPONSE_H
+#ifndef ACCOUNT_ISACCOUNTSUBSCRIBEDTOWEBAPPRESPONSE_H
+#define ACCOUNT_ISACCOUNTSUBSCRIBEDTOWEBAPPRESPONSE_H
 
 #include <json/json.h>
 
@@ -11,6 +11,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace account {
 
 class IsAccountSubscribedToWebAppResponse : public JsonResponse {
     public:
@@ -34,5 +35,6 @@ class IsAccountSubscribedToWebAppResponse : public JsonResponse {
 };
 
 }
+}
 
-#endif // ISACCOUNTSUBSCRIBEDTOWEBAPPRESPONSE_H
+#endif // ACCOUNT_ISACCOUNTSUBSCRIBEDTOWEBAPPRESPONSE_H

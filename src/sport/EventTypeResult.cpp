@@ -5,6 +5,7 @@
 #include "greentop/sport/EventTypeResult.h"
 
 namespace greentop {
+namespace sport {
 
 
 EventTypeResult::EventTypeResult(const EventType& eventType,
@@ -53,6 +54,4 @@ void EventTypeResult::setMarketCount(const Optional<int32_t>& marketCount) {
 
 
 }
-
-
-
+}

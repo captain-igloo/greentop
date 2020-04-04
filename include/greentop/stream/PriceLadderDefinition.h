@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef PRICELADDERDEFINITION_H
-#define PRICELADDERDEFINITION_H
+#ifndef STREAM_PRICELADDERDEFINITION_H
+#define STREAM_PRICELADDERDEFINITION_H
 
 #include <json/json.h>
 #include <string>
@@ -36,4 +36,4 @@ class PriceLadderDefinition : public JsonMember {
 }
 }
 
-#endif // PRICELADDERDEFINITION_H
+#endif // STREAM_PRICELADDERDEFINITION_H

@@ -2,8 +2,8 @@
  * Copyright 2017 Colin Doig.  Distributed under the MIT license.
  */
 
-#ifndef VENDORDETAILS_H
-#define VENDORDETAILS_H
+#ifndef ACCOUNT_VENDORDETAILS_H
+#define ACCOUNT_VENDORDETAILS_H
 
 #include <json/json.h>
 #include <string>
@@ -12,6 +12,7 @@
 #include "greentop/Optional.h"
 
 namespace greentop {
+namespace account {
 /**
  * Wrapper object containing vendor name and redirect url
  */
@@ -55,5 +56,6 @@ class VendorDetails : public JsonResponse {
 };
 
 }
+}
 
-#endif // VENDORDETAILS_H
+#endif // ACCOUNT_VENDORDETAILS_H

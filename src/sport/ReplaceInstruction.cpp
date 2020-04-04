@@ -5,6 +5,7 @@
 #include "greentop/sport/ReplaceInstruction.h"
 
 namespace greentop {
+namespace sport {
 
 ReplaceInstruction::ReplaceInstruction() {
 }
@@ -55,6 +56,4 @@ void ReplaceInstruction::setNewPrice(const Optional<double>& newPrice) {
 
 
 }
-
-
-
+}
