@@ -29,14 +29,14 @@ class SubscriptionOptions : public JsonMember {
 
         virtual bool isValid() const;
 
-        const Optional<int32_t>& getSubscription_length() const;
-        void setSubscription_length(const Optional<int32_t>& subscription_length);
+        const Optional<int32_t>& getSubscriptionLength() const;
+        void setSubscriptionLength(const Optional<int32_t>& subscriptionLength);
 
-        const std::string& getSubscription_token() const;
-        void setSubscription_token(const std::string& subscription_token);
+        const std::string& getSubscriptionToken() const;
+        void setSubscriptionToken(const std::string& subscriptionToken);
 
-        const std::string& getClient_reference() const;
-        void setClient_reference(const std::string& client_reference);
+        const std::string& getClientReference() const;
+        void setClientReference(const std::string& clientReference);
 
 
     private:
@@ -44,16 +44,16 @@ class SubscriptionOptions : public JsonMember {
          * How many days should a created subscription last for. Open ended subscription created if
          * value not provided. Relevant only if createdSubscription is true.
          */
-        Optional<int32_t> subscription_length;
+        Optional<int32_t> subscriptionLength;
         /**
          * An existing subscription token that the caller wishes to be activated instead of
          * creating a new one. Ignored is createSubscription is true.
          */
-        std::string subscription_token;
+        std::string subscriptionToken;
         /**
          * Any client reference for this subscription token request.
          */
-        std::string client_reference;
+        std::string clientReference;
 };
 
 }

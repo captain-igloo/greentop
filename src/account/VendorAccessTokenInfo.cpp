@@ -10,95 +10,95 @@ namespace account {
 VendorAccessTokenInfo::VendorAccessTokenInfo() {
 }
 
-VendorAccessTokenInfo::VendorAccessTokenInfo(const std::string& access_token,
-    const TokenType& token_type,
-    const Optional<int64_t>& expires_in,
-    const std::string& refresh_token,
-    const ApplicationSubscription& application_subscription) :
-    access_token(access_token),
-    token_type(token_type),
-    expires_in(expires_in),
-    refresh_token(refresh_token),
-    application_subscription(application_subscription) {
+VendorAccessTokenInfo::VendorAccessTokenInfo(const std::string& accessToken,
+    const TokenType& tokenType,
+    const Optional<int64_t>& expiresIn,
+    const std::string& refreshToken,
+    const ApplicationSubscription& applicationSubscription) :
+    accessToken(accessToken),
+    tokenType(tokenType),
+    expiresIn(expiresIn),
+    refreshToken(refreshToken),
+    applicationSubscription(applicationSubscription) {
 }
 
 void VendorAccessTokenInfo::fromJson(const Json::Value& json) {
     if (validateJson(json)) {
         if (json.isMember("access_token")) {
-            access_token = json["access_token"].asString();
+            accessToken = json["access_token"].asString();
         }
         if (json.isMember("token_type")) {
-            token_type = json["token_type"].asString();
+            tokenType = json["token_type"].asString();
         }
         if (json.isMember("expires_in")) {
-            expires_in = json["expires_in"].asInt64();
+            expiresIn = json["expires_in"].asInt64();
         }
         if (json.isMember("refresh_token")) {
-            refresh_token = json["refresh_token"].asString();
+            refreshToken = json["refresh_token"].asString();
         }
         if (json.isMember("application_subscription")) {
-            application_subscription.fromJson(json["application_subscription"]);
+            applicationSubscription.fromJson(json["application_subscription"]);
         }
     }
 }
 
 Json::Value VendorAccessTokenInfo::toJson() const {
     Json::Value json(Json::objectValue);
-    if (access_token != "") {
-        json["access_token"] = access_token;
+    if (accessToken != "") {
+        json["access_token"] = accessToken;
     }
-    if (token_type.isValid()) {
-        json["token_type"] = token_type.getValue();
+    if (tokenType.isValid()) {
+        json["token_type"] = tokenType.getValue();
     }
-    if (expires_in.isValid()) {
-        json["expires_in"] = expires_in.toJson();
+    if (expiresIn.isValid()) {
+        json["expires_in"] = expiresIn.toJson();
     }
-    if (refresh_token != "") {
-        json["refresh_token"] = refresh_token;
+    if (refreshToken != "") {
+        json["refresh_token"] = refreshToken;
     }
-    if (application_subscription.isValid()) {
-        json["application_subscription"] = application_subscription.toJson();
+    if (applicationSubscription.isValid()) {
+        json["application_subscription"] = applicationSubscription.toJson();
     }
     return json;
 }
 
 bool VendorAccessTokenInfo::isValid() const {
-    return access_token != "" && token_type.isValid() && expires_in.isValid() && refresh_token != "" && application_subscription.isValid();
+    return accessToken != "" && tokenType.isValid() && expiresIn.isValid() && refreshToken != "" && applicationSubscription.isValid();
 }
 
-const std::string& VendorAccessTokenInfo::getAccess_token() const {
-    return access_token;
+const std::string& VendorAccessTokenInfo::getAccessToken() const {
+    return accessToken;
 }
-void VendorAccessTokenInfo::setAccess_token(const std::string& access_token) {
-    this->access_token = access_token;
-}
-
-const TokenType& VendorAccessTokenInfo::getToken_type() const {
-    return token_type;
-}
-void VendorAccessTokenInfo::setToken_type(const TokenType& token_type) {
-    this->token_type = token_type;
+void VendorAccessTokenInfo::setAccessToken(const std::string& accessToken) {
+    this->accessToken = accessToken;
 }
 
-const Optional<int64_t>& VendorAccessTokenInfo::getExpires_in() const {
-    return expires_in;
+const TokenType& VendorAccessTokenInfo::getTokenType() const {
+    return tokenType;
 }
-void VendorAccessTokenInfo::setExpires_in(const Optional<int64_t>& expires_in) {
-    this->expires_in = expires_in;
-}
-
-const std::string& VendorAccessTokenInfo::getRefresh_token() const {
-    return refresh_token;
-}
-void VendorAccessTokenInfo::setRefresh_token(const std::string& refresh_token) {
-    this->refresh_token = refresh_token;
+void VendorAccessTokenInfo::setTokenType(const TokenType& tokenType) {
+    this->tokenType = tokenType;
 }
 
-const ApplicationSubscription& VendorAccessTokenInfo::getApplication_subscription() const {
-    return application_subscription;
+const Optional<int64_t>& VendorAccessTokenInfo::getExpiresIn() const {
+    return expiresIn;
 }
-void VendorAccessTokenInfo::setApplication_subscription(const ApplicationSubscription& application_subscription) {
-    this->application_subscription = application_subscription;
+void VendorAccessTokenInfo::setExpiresIn(const Optional<int64_t>& expiresIn) {
+    this->expiresIn = expiresIn;
+}
+
+const std::string& VendorAccessTokenInfo::getRefreshToken() const {
+    return refreshToken;
+}
+void VendorAccessTokenInfo::setRefreshToken(const std::string& refreshToken) {
+    this->refreshToken = refreshToken;
+}
+
+const ApplicationSubscription& VendorAccessTokenInfo::getApplicationSubscription() const {
+    return applicationSubscription;
+}
+void VendorAccessTokenInfo::setApplicationSubscription(const ApplicationSubscription& applicationSubscription) {
+    this->applicationSubscription = applicationSubscription;
 }
 
 
