@@ -151,7 +151,7 @@ Json::Value RunnerChange::toJson() const {
         for (unsigned i = 0; i < batb.size(); ++i) {
             Json::Value temp(Json::arrayValue);
             for (unsigned j = 0; j < batb[i].size(); ++j) {
-                temp.append(json["batb"][i][j]);
+                temp.append(batb[i][j]);
             }
             json["batb"].append(temp);
         }
@@ -160,7 +160,7 @@ Json::Value RunnerChange::toJson() const {
         for (unsigned i = 0; i < spb.size(); ++i) {
             Json::Value temp(Json::arrayValue);
             for (unsigned j = 0; j < spb[i].size(); ++j) {
-                temp.append(json["spb"][i][j]);
+                temp.append(spb[i][j]);
             }
             json["spb"].append(temp);
         }
@@ -169,7 +169,7 @@ Json::Value RunnerChange::toJson() const {
         for (unsigned i = 0; i < bdatl.size(); ++i) {
             Json::Value temp(Json::arrayValue);
             for (unsigned j = 0; j < bdatl[i].size(); ++j) {
-                temp.append(json["bdatl"][i][j]);
+                temp.append(bdatl[i][j]);
             }
             json["bdatl"].append(temp);
         }
@@ -178,7 +178,7 @@ Json::Value RunnerChange::toJson() const {
         for (unsigned i = 0; i < trd.size(); ++i) {
             Json::Value temp(Json::arrayValue);
             for (unsigned j = 0; j < trd[i].size(); ++j) {
-                temp.append(json["trd"][i][j]);
+                temp.append(trd[i][j]);
             }
             json["trd"].append(temp);
         }
@@ -193,7 +193,7 @@ Json::Value RunnerChange::toJson() const {
         for (unsigned i = 0; i < atb.size(); ++i) {
             Json::Value temp(Json::arrayValue);
             for (unsigned j = 0; j < atb[i].size(); ++j) {
-                temp.append(json["atb"][i][j]);
+                temp.append(atb[i][j]);
             }
             json["atb"].append(temp);
         }
@@ -202,7 +202,7 @@ Json::Value RunnerChange::toJson() const {
         for (unsigned i = 0; i < spl.size(); ++i) {
             Json::Value temp(Json::arrayValue);
             for (unsigned j = 0; j < spl[i].size(); ++j) {
-                temp.append(json["spl"][i][j]);
+                temp.append(spl[i][j]);
             }
             json["spl"].append(temp);
         }
@@ -214,7 +214,7 @@ Json::Value RunnerChange::toJson() const {
         for (unsigned i = 0; i < atl.size(); ++i) {
             Json::Value temp(Json::arrayValue);
             for (unsigned j = 0; j < atl[i].size(); ++j) {
-                temp.append(json["atl"][i][j]);
+                temp.append(atl[i][j]);
             }
             json["atl"].append(temp);
         }
@@ -223,7 +223,7 @@ Json::Value RunnerChange::toJson() const {
         for (unsigned i = 0; i < batl.size(); ++i) {
             Json::Value temp(Json::arrayValue);
             for (unsigned j = 0; j < batl[i].size(); ++j) {
-                temp.append(json["batl"][i][j]);
+                temp.append(batl[i][j]);
             }
             json["batl"].append(temp);
         }
@@ -238,7 +238,7 @@ Json::Value RunnerChange::toJson() const {
         for (unsigned i = 0; i < bdatb.size(); ++i) {
             Json::Value temp(Json::arrayValue);
             for (unsigned j = 0; j < bdatb[i].size(); ++j) {
-                temp.append(json["bdatb"][i][j]);
+                temp.append(bdatb[i][j]);
             }
             json["bdatb"].append(temp);
         }
