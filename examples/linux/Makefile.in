@@ -14,4 +14,4 @@ all:
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o stream -std=c++0x -I../include -L../lib stream.cpp -lgreentop -ljsoncpp -lcurl
 
 clean:
-	rm listEventTypes listCompetitions listEvents listMarketCatalogue listMarketBook getAccountStatement listClearedOrders refreshMenu login
+	rm listEventTypes listCompetitions listEvents listMarketCatalogue listMarketBook getAccountStatement listClearedOrders refreshMenu login stream listCurrencyRates
