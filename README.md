@@ -26,11 +26,16 @@ Requirements
 Build (Linux)
 -------------
 
+You can install jsoncpp from your distro's repositories, eg:
 ```
-export CPPFLAGS=-I/usr/include/jsoncpp
-./configure --prefix=/usr
-make
-make install
+sudo apt install libjsoncpp-dev
+```
+Then configure and compile:
+```
+$ export CPPFLAGS=-I/usr/include/jsoncpp
+$ ./configure --prefix=/usr
+$ make
+$ sudo make install
 ```
 
 Build (Windows)

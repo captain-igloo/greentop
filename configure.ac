@@ -17,4 +17,4 @@ then
     AC_MSG_ERROR([curl/curl.h not found])
 fi
 
-AC_OUTPUT(Makefile examples/Makefile)
+AC_OUTPUT(Makefile examples/linux/Makefile)

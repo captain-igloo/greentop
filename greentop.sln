@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "greentop", "greentop.vcxproj", "{D359D602-2EB0-4F58-8304-DC76C1BC649A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "getAccountStatement", "examples\getAccountStatement\getAccountStatement.vcxproj", "{0F45D8EA-12D5-49B4-A36C-EF3991E4198B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "getAccountStatement", "examples\windows\getAccountStatement\getAccountStatement.vcxproj", "{0F45D8EA-12D5-49B4-A36C-EF3991E4198B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
